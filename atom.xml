@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-11-11T11:49:06.946Z</updated>
+  <updated>2023-11-11T12:25:11.183Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,8 +21,15 @@
     <link href="http://example.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/"/>
     <id>http://example.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/</id>
     <published>2023-11-11T06:50:29.953Z</published>
-    <updated>2023-11-11T11:49:06.946Z</updated>
+    <updated>2023-11-11T12:25:11.183Z</updated>
     
+    <content type="html"><![CDATA[<h2 id="一-爬虫概念"><a href="#一-爬虫概念" class="headerlink" title="一.爬虫概念"></a>一.爬虫概念</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念:"></a>概念:</h3><p>网络爬虫也叫网络蜘蛛，特指一类自动批量下载网络资源的程序，这是一个比较口语化的定义。<br>更加专业和全面对的定义是：<strong>网络爬虫是伪装成客户端与服务端进行数据交互的程序</strong>.</p><h3 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h3><ol><li>数据采集</li><li>搜索引擎</li><li>模拟操作</li></ol><h3 id="爬虫开发的重难点"><a href="#爬虫开发的重难点" class="headerlink" title="爬虫开发的重难点"></a>爬虫开发的重难点</h3><ol><li>数据的获取</li><li>采集的速度</li></ol><h2 id="二-HTTP与HTTPS"><a href="#二-HTTP与HTTPS" class="headerlink" title="二.HTTP与HTTPS"></a>二.HTTP与HTTPS</h2><h3 id="网络架构"><a href="#网络架构" class="headerlink" title="网络架构"></a>网络架构</h3><ol><li>c&#x2F;s 即 client server</li><li>b&#x2F;s 即 browser server</li><li>m&#x2F;s 即 mobile server</li></ol><p><img src="https://cdn.jsdelivr.net/gh/CosmicTrace/blog_img/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/CosmicTrace/blog_img/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p><h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><p><strong>1.原因</strong></p><p>计算机之间也是需要一种规则,保障之间信息的有效交流,这就是HTTP协议;</p><p><strong>2.概念及特点</strong></p><ul><li><p>HTTP是Hyper Text Transfer Protocol（超文本传输协议）的缩写，是用于从万维网（WWW: World Wide Web ）服务器传输超文本到本地浏览器的传送协议。</p></li><li><p>目前互连网上90%的网络传输都是基于http协议。</p></li><li><p>HTTP是一个基于TCP&#x2F;IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）;ps:使用TCP通信协议的重要的原因是基于其   面向连接的  特点;</p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">osi模型  7层</span><br><span class="line">   </span><br><span class="line">   应用层    应用层开发</span><br><span class="line">   传输层    tcp  udp</span><br><span class="line">   网络层    ip协议</span><br><span class="line">   物理层    物理介质</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;一-爬虫概念&quot;&gt;&lt;a href=&quot;#一-爬虫概念&quot; class=&quot;headerlink&quot; title=&quot;一.爬虫概念&quot;&gt;&lt;/a&gt;一.爬虫概念&lt;/h2&gt;&lt;h3 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念:&quot;&gt;</summary>
+      
     
     
     
