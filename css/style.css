@@ -253,6 +253,13 @@ td,
 th {
   padding: 0;
 }
+@font-face {
+  font-family: 'UbuntuMono';
+  src: url("https://unpkg.com/volantis-static@0.0.1654736714924/media/fonts/Monaco/Monaco.ttf");
+  font-weight: 'normal';
+  font-style: 'normal';
+  font-display: swap;
+}
 article#arc,
 article#cat,
 article#tag {
@@ -1481,7 +1488,7 @@ svg.loading {
 #l_main.no_sidebar {
   width: 100%;
   padding-right: 0;
-  max-width: 840px;
+  max-width: 1920px;
   margin: auto;
 }
 @media screen and (min-width: 2048px) {
@@ -1892,7 +1899,7 @@ svg.loading {
   display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
   display: flex;
   width: 100%;
-  max-width: 1080px;
+  max-width: 2160px;
   margin: 0 auto;
   flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
@@ -3295,10 +3302,10 @@ img.lazyload:not(.placeholder).loaded {
   z-index: 2;
 }
 .snackbar-content {
-  max-width: 1080px;
+  max-width: 2160px;
   margin: 16px auto;
 }
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 2160px) {
   .snackbar-content {
     max-width: 100%;
   }
@@ -6739,9 +6746,11 @@ pre {
   -moz-transition: all 0.28s ease;
   -o-transition: all 0.28s ease;
   -ms-transition: all 0.28s ease;
+  filter: grayscale(100%);
 }
 .highlight:hover {
   background: var(--color-codeblock);
+  filter: grayscale(0%);
 }
 .highlight:hover figcaption {
   transition: all 0.28s ease;
