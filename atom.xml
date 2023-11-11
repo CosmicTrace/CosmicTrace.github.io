@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>数据工具箱</title>
+  
+  <subtitle>全栈也不是不行</subtitle>
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2023-11-11T10:27:05.414Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>陈耀铿</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>认识爬虫</title>
+    <link href="http://example.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/"/>
+    <id>http://example.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/</id>
+    <published>2023-11-11T06:50:29.953Z</published>
+    <updated>2023-11-11T10:27:05.414Z</updated>
+    
+    
+    
+    
+    <category term="数据抓取" scheme="http://example.com/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
+    
+    
+    <category term="爬虫" scheme="http://example.com/tags/%E7%88%AC%E8%99%AB/"/>
+    
+    <category term="基础" scheme="http://example.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="理论" scheme="http://example.com/tags/%E7%90%86%E8%AE%BA/"/>
+    
+  </entry>
+  
+</feed>
