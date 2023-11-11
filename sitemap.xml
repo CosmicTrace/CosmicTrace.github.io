@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/</loc>
+    <loc>https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/</loc>
     
     <lastmod>2023-11-11</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/about/index.html</loc>
+    <loc>https://www.yiuhangblog.com/about/index.html</loc>
     
     <lastmod>2023-11-11</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/index.html</loc>
+    <loc>https://www.yiuhangblog.com/tags/index.html</loc>
     
     <lastmod>2023-11-11</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/index.html</loc>
+    <loc>https://www.yiuhangblog.com/categories/index.html</loc>
     
     <lastmod>2023-11-11</lastmod>
     
@@ -39,7 +39,7 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
+    <loc>https://www.yiuhangblog.com/</loc>
     <lastmod>2023-11-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -47,21 +47,21 @@
 
   
   <url>
-    <loc>http://example.com/tags/%E7%88%AC%E8%99%AB/</loc>
+    <loc>https://www.yiuhangblog.com/tags/%E7%88%AC%E8%99%AB/</loc>
     <lastmod>2023-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E5%9F%BA%E7%A1%80/</loc>
+    <loc>https://www.yiuhangblog.com/tags/%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2023-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E7%90%86%E8%AE%BA/</loc>
+    <loc>https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/</loc>
     <lastmod>2023-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -70,7 +70,7 @@
 
   
   <url>
-    <loc>http://example.com/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/</loc>
+    <loc>https://www.yiuhangblog.com/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/</loc>
     <lastmod>2023-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
