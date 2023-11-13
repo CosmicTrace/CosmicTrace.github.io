@@ -47,7 +47,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-11-11T06:50:29.953Z">
-<meta property="article:modified_time" content="2023-11-13T14:43:44.375Z">
+<meta property="article:modified_time" content="2023-11-13T15:07:30.988Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="爬虫">
 <meta property="article:tag" content="基础">
@@ -1735,7 +1735,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1699886775762),
+    lastupdate: new Date(1699888063696),
     sidebar: {
       for_page: ["blogger","category","tagcloud","webinfo","lastupdate"],
       for_post: ["toc"],
@@ -2536,7 +2536,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：2k 字</p>
+      <p>字数：2.2k 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -2630,7 +2630,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ol>
 <img src="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%" />
 
-<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><h5 id="背景知识：OSI模型"><a href="#背景知识：OSI模型" class="headerlink" title="背景知识：OSI模型"></a>背景知识：OSI模型</h5><blockquote>
+<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><h4 id="背景知识：OSI模型"><a href="#背景知识：OSI模型" class="headerlink" title="背景知识：OSI模型"></a>背景知识：OSI模型</h4><blockquote>
 <p>OSI模型，全称是“开放式系统互连参考模型”（Open Systems Interconnection Reference Model），是一个用于解释和标准化网络内不同计算机系统之间通信过程的概念模型。这个模型由国际标准化组织（ISO）在1980年代初期开发，目的是促进不同类型计算机系统之间的兼容性和标准化通信。</p>
 <table>
 <thead>
@@ -2736,7 +2736,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><strong>ACK</strong>：客户端收到服务器的SYN-ACK包后，再发送一个ACK包作为响应，完成连接建立。</li>
 </ol>
 <p>这个过程主要确保双方都准备好开始新的连接。</p>
-<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20190802171545900.gif" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20190802171545900.gif" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="40%" height="40%" />
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20190802171545900.gif" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20190802171545900.gif" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="25%" height="25%" />
+
+<h4 id="数据传输（正在连接）"><a href="#数据传输（正在连接）" class="headerlink" title="数据传输（正在连接）"></a>数据传输（正在连接）</h4><p>一旦TCP连接建立，HTTP请求就可以通过这个连接发送了。</p>
+<ol>
+<li><strong>HTTP请求</strong>：客户端通过建立好的TCP连接，发送一个HTTP请求到服务器。这个请求包含了请求方法（如GET或POST）、请求的资源（如网页）、以及其他必要的头信息。</li>
+<li><strong>服务器处理</strong>：服务器接收并处理这个请求，然后准备相应的HTTP响应。</li>
+<li><strong>HTTP响应</strong>：服务器通过同一个TCP连接返回一个HTTP响应。响应通常包含状态码（如200 OK），响应头信息，以及请求的数据（如HTML文档）。</li>
+</ol>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20190802171645102.gif" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20190802171645102.gif" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="25%" height="25%" />
 
 <h4 id="TCP四次挥手（关闭连接）"><a href="#TCP四次挥手（关闭连接）" class="headerlink" title="TCP四次挥手（关闭连接）"></a>TCP四次挥手（关闭连接）</h4><ol>
 <li><strong>FIN</strong>：当通信结束时，发起关闭的一方（通常是客户端）会发送一个FIN（结束）标志的TCP包，表明它已经没有数据发送了。</li>
@@ -2744,8 +2752,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><strong>FIN</strong>：接着，接收方发送一个带有FIN标志的TCP包，以表明它也没有数据发送了。</li>
 <li><strong>ACK</strong>：最后，发起关闭的一方收到FIN后，再发送一个ACK包作为响应。一段时间后，连接被完全关闭。</li>
 </ol>
-</blockquote>
 <p>这个过程确保了双方都能够完成所有数据的发送和接收，从而安全地关闭连接。</p>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20190802171756779.gif" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20190802171756779.gif" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="25%" height="25%" />
+
+
+</blockquote>
 
   </div>
   
@@ -2770,7 +2781,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-11-13T22:43:44+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-11-13T23:07:30+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2023年11月13日</p>
@@ -2845,7 +2856,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：2k 字</p>
+      <p>字数：2.2k 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -2922,7 +2933,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%88%AC%E8%99%AB%E6%A6%82%E5%BF%B5"><span class="toc-text">一.爬虫概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%8D%E7%B1%BB%EF%BC%9A"><span class="toc-text">种类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E7%9A%84%E9%87%8D%E9%9A%BE%E7%82%B9%EF%BC%9A"><span class="toc-text">爬虫开发的重难点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-HTTP%E4%B8%8EHTTPS"><span class="toc-text">二.HTTP与HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84"><span class="toc-text">网络架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="toc-text">HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86%EF%BC%9AOSI%E6%A8%A1%E5%9E%8B"><span class="toc-text">背景知识：OSI模型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-text">原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E5%8F%8A%E7%89%B9%E7%82%B9"><span class="toc-text">概念及特点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-HTTP%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">三.HTTP协议的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B"><span class="toc-text">HTTP请求流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%88%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">TCP三次握手（建立连接）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%EF%BC%88%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">TCP四次挥手（关闭连接）</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%88%AC%E8%99%AB%E6%A6%82%E5%BF%B5"><span class="toc-text">一.爬虫概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%8D%E7%B1%BB%EF%BC%9A"><span class="toc-text">种类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E7%9A%84%E9%87%8D%E9%9A%BE%E7%82%B9%EF%BC%9A"><span class="toc-text">爬虫开发的重难点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-HTTP%E4%B8%8EHTTPS"><span class="toc-text">二.HTTP与HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84"><span class="toc-text">网络架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="toc-text">HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86%EF%BC%9AOSI%E6%A8%A1%E5%9E%8B"><span class="toc-text">背景知识：OSI模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-text">原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E5%8F%8A%E7%89%B9%E7%82%B9"><span class="toc-text">概念及特点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-HTTP%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">三.HTTP协议的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B"><span class="toc-text">HTTP请求流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%88%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">TCP三次握手（建立连接）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%EF%BC%88%E6%AD%A3%E5%9C%A8%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">数据传输（正在连接）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%EF%BC%88%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">TCP四次挥手（关闭连接）</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
@@ -3952,7 +3963,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","sameAs":["https://github.com/volantis-x"],"description":"谦逊"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://www.yiuhangblog.com/","name":"数据工具箱"}},{"@type":"ListItem","position":2,"item":{"@id":"https://www.yiuhangblog.com/categories/数据抓取/","name":"数据抓取"}},{"@type":"ListItem","position":3,"item":{"@id":"https://www.yiuhangblog.com/2023/11/11/认识爬虫/","name":"认识爬虫"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"数据工具箱","url":"https://www.yiuhangblog.com/","keywords":null,"description":"谦逊","author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","description":"谦逊"},"publisher":{"@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://www.yiuhangblog.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"认识爬虫","description":"谦逊","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/"},"author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/"},"publisher":{"@type":"Organization","name":"数据工具箱","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/","wordCount":0,"datePublished":"2023-11-11T06:50:29.953Z","dateModified":"2023-11-13T14:43:44.375Z","articleSection":"数据抓取","keywords":"爬虫,基础,理论","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","sameAs":["https://github.com/volantis-x"],"description":"谦逊"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://www.yiuhangblog.com/","name":"数据工具箱"}},{"@type":"ListItem","position":2,"item":{"@id":"https://www.yiuhangblog.com/categories/数据抓取/","name":"数据抓取"}},{"@type":"ListItem","position":3,"item":{"@id":"https://www.yiuhangblog.com/2023/11/11/认识爬虫/","name":"认识爬虫"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"数据工具箱","url":"https://www.yiuhangblog.com/","keywords":null,"description":"谦逊","author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","description":"谦逊"},"publisher":{"@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://www.yiuhangblog.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"认识爬虫","description":"谦逊","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/"},"author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/"},"publisher":{"@type":"Organization","name":"数据工具箱","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/","wordCount":0,"datePublished":"2023-11-11T06:50:29.953Z","dateModified":"2023-11-13T15:07:30.988Z","articleSection":"数据抓取","keywords":"爬虫,基础,理论","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
