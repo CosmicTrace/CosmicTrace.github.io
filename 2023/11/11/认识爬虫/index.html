@@ -35,21 +35,23 @@
   <!-- feed -->
       <link rel="alternate" href="/atom.xml" title="数据工具箱" type="application/atom+xml">
   <!-- 页面元数据 -->
-  <title>认识爬虫 - 数据工具箱</title>
-  <meta name="keywords" content="爬虫,基础,理论,null">
+  <title>爬虫与网络基础理论 - 数据工具箱</title>
+  <meta name="keywords" content="爬虫,网络协议,网络架构,基础,理论,null">
   <meta desc name="description" content="谦逊 - Yiuhang Chan - 数据工具箱">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="认识爬虫">
+<meta property="og:title" content="爬虫与网络基础理论">
 <meta property="og:url" content="https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/index.html">
 <meta property="og:site_name" content="数据工具箱">
 <meta property="og:description" content="一.爬虫概念概念: 网络爬虫也叫网络蜘蛛，特指一类自动批量下载网络资源的程序，这是一个比较口语化的定义。 更加专业和全面对的定义是：网络爬虫是伪装成客户端与服务端进行数据交互的程序。  作用: 数据采集（重要） 大数据监控，产品推荐 大数据杀熟，某平台订酒店时间长了会贵一点 灰产，内部买卖   搜索引擎 百度，谷歌（比较少），主要还是页面存储   模拟操作 测试机器人 灌水机器人（快速刷屏）">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-11-11T06:50:29.953Z">
-<meta property="article:modified_time" content="2023-11-13T15:08:33.134Z">
+<meta property="article:modified_time" content="2023-11-13T15:31:39.626Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="网络协议">
+<meta property="article:tag" content="网络架构">
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="理论">
 <meta name="twitter:card" content="summary">
@@ -1735,7 +1737,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1699888120967),
+    lastupdate: new Date(1699889509725),
     sidebar: {
       for_page: ["blogger","category","tagcloud","webinfo","lastupdate"],
       for_post: ["toc"],
@@ -2470,7 +2472,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        认识爬虫
+        爬虫与网络基础理论
       </h1>
       <div class='new-meta-box'>
         
@@ -2519,7 +2521,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <p>
       <i class="fa-solid fa-eye fa-fw" aria-hidden="true"></i>
       
-      <span id="lc-pv" data-title="认识爬虫" data-path="/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/">
+      <span id="lc-pv" data-title="爬虫与网络基础理论" data-path="/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/">
         <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
       </span>
       
@@ -2536,13 +2538,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：2.2k 字</p>
+      <p>字数：2.5k 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fa-solid fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：7 分钟</p>
+      <p>时长：8 分钟</p>
     </a>
   </div>
 
@@ -2611,7 +2613,25 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 </li>
 </ol>
-<h2 id="二-HTTP与HTTPS"><a href="#二-HTTP与HTTPS" class="headerlink" title="二.HTTP与HTTPS"></a>二.HTTP与HTTPS</h2><h3 id="网络架构"><a href="#网络架构" class="headerlink" title="网络架构"></a>网络架构</h3><ol>
+<h2 id="二-网络与HTTP-HTTPS协议"><a href="#二-网络与HTTP-HTTPS协议" class="headerlink" title="二.网络与HTTP&#x2F;HTTPS协议"></a>二.网络与HTTP&#x2F;HTTPS协议</h2><h3 id="网络类型（Network-Types）"><a href="#网络类型（Network-Types）" class="headerlink" title="网络类型（Network  Types）"></a>网络类型<strong>（Network  Types）</strong></h3><p>网络类型主要指的是不同的网络构建方式和范围：</p>
+<p>更多关注于网络的物理或逻辑结构和地理范围。它们描述的是网络的“形状”和“大小”，以及设备间连接的物理或无线方式。</p>
+<blockquote>
+<h3 id="1-本地区域网-LAN-Local-Area-Network"><a href="#1-本地区域网-LAN-Local-Area-Network" class="headerlink" title="1. 本地区域网 (LAN - Local Area Network)"></a>1. 本地区域网 (LAN - Local Area Network)</h3><ul>
+<li><strong>定义</strong>：LAN是一个小范围内的网络，通常用于单个建筑或一组紧密相连的建筑。</li>
+<li><strong>用途</strong>：用于连接个人电脑或工作站，以便于共享资源（如打印机）和交换信息。</li>
+</ul>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20231113232724.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20231113232724.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="40%" height="40%"/>
+</blockquote>
+<blockquote>
+<h3 id="2-广域网-WAN-Wide-Area-Network"><a href="#2-广域网-WAN-Wide-Area-Network" class="headerlink" title="2. 广域网 (WAN - Wide Area Network)"></a>2. 广域网 (WAN - Wide Area Network)</h3><ul>
+<li><strong>定义</strong>：WAN覆盖广泛的地理区域，可以是城市、国家甚至跨国。</li>
+<li><strong>用途</strong>：用于连接不同地理位置的LANs，允许不同地区的用户和组织之间交换数据。</li>
+</ul>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/wan-network.gif" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/wan-network.gif" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="40%" height="40%"/>
+</blockquote>
+<h3 id="网络架构（Network-Architectures）"><a href="#网络架构（Network-Architectures）" class="headerlink" title="网络架构（Network  Architectures）"></a>网络架构<strong>（Network  Architectures）</strong></h3><p>架构模式则是指在这些网络中实现数据交换和处理的方法和设计：</p>
+<p>关注于如何在网络中设计和组织资源、服务和数据流。它们描述的是网络内部数据和服务的组织和流动方式。</p>
+<ol>
 <li><p>c&#x2F;s 即 client server</p>
 <ul>
 <li>客户端与服务器</li>
@@ -2628,8 +2648,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 </li>
 </ol>
-<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%" />
-
+<p>总的来说，网络类型和架构模式是网络设计的两个不同层面。类型更侧重于网络的物理和逻辑布局，而架构则侧重于系统的内部设计和数据流动。两者相辅相成，共同构成完整的网络系统。</p>
 <h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><h4 id="背景知识：OSI模型"><a href="#背景知识：OSI模型" class="headerlink" title="背景知识：OSI模型"></a>背景知识：OSI模型</h4><blockquote>
 <p>OSI模型，全称是“开放式系统互连参考模型”（Open Systems Interconnection Reference Model），是一个用于解释和标准化网络内不同计算机系统之间通信过程的概念模型。这个模型由国际标准化组织（ISO）在1980年代初期开发，目的是促进不同类型计算机系统之间的兼容性和标准化通信。</p>
 <table>
@@ -2780,7 +2799,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-11-13T23:08:33+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-11-13T23:31:39+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2023年11月13日</p>
@@ -2792,8 +2811,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%88%AC%E8%99%AB/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>爬虫</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%9F%BA%E7%A1%80/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>基础</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%90%86%E8%AE%BA/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>理论</p></a></div>
-  <span hidden itemprop="keywords">爬虫 基础 理论</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%88%AC%E8%99%AB/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>爬虫</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>网络协议</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>网络架构</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%9F%BA%E7%A1%80/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>基础</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%90%86%E8%AE%BA/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>理论</p></a></div>
+  <span hidden itemprop="keywords">爬虫 网络协议 网络架构 基础 理论</span>
 
 
         
@@ -2806,7 +2825,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/&title=认识爬虫 - 数据工具箱&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/&title=爬虫与网络基础理论 - 数据工具箱&summary="
           
           >
           
@@ -2818,7 +2837,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/&title=认识爬虫 - 数据工具箱&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/&title=爬虫与网络基础理论 - 数据工具箱&summary="
           
           >
           
@@ -2830,7 +2849,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/&title=认识爬虫 - 数据工具箱&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/&title=爬虫与网络基础理论 - 数据工具箱&summary="
           
           >
           
@@ -2855,13 +2874,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：2.2k 字</p>
+      <p>字数：2.5k 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fa-solid fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：7 分钟</p>
+      <p>时长：8 分钟</p>
     </a>
   </div>
 
@@ -2932,7 +2951,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%88%AC%E8%99%AB%E6%A6%82%E5%BF%B5"><span class="toc-text">一.爬虫概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%8D%E7%B1%BB%EF%BC%9A"><span class="toc-text">种类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E7%9A%84%E9%87%8D%E9%9A%BE%E7%82%B9%EF%BC%9A"><span class="toc-text">爬虫开发的重难点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-HTTP%E4%B8%8EHTTPS"><span class="toc-text">二.HTTP与HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84"><span class="toc-text">网络架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="toc-text">HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86%EF%BC%9AOSI%E6%A8%A1%E5%9E%8B"><span class="toc-text">背景知识：OSI模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-text">原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E5%8F%8A%E7%89%B9%E7%82%B9"><span class="toc-text">概念及特点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-HTTP%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">三.HTTP协议的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B"><span class="toc-text">HTTP请求流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%88%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">TCP三次握手（建立连接）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%EF%BC%88%E6%AD%A3%E5%9C%A8%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">数据传输（正在连接）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%EF%BC%88%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">TCP四次挥手（关闭连接）</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%88%AC%E8%99%AB%E6%A6%82%E5%BF%B5"><span class="toc-text">一.爬虫概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%8D%E7%B1%BB%EF%BC%9A"><span class="toc-text">种类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E7%9A%84%E9%87%8D%E9%9A%BE%E7%82%B9%EF%BC%9A"><span class="toc-text">爬虫开发的重难点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BD%91%E7%BB%9C%E4%B8%8EHTTP-HTTPS%E5%8D%8F%E8%AE%AE"><span class="toc-text">二.网络与HTTP&#x2F;HTTPS协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B%EF%BC%88Network-Types%EF%BC%89"><span class="toc-text">网络类型（Network  Types）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9C%AC%E5%9C%B0%E5%8C%BA%E5%9F%9F%E7%BD%91-LAN-Local-Area-Network"><span class="toc-text">1. 本地区域网 (LAN - Local Area Network)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B9%BF%E5%9F%9F%E7%BD%91-WAN-Wide-Area-Network"><span class="toc-text">2. 广域网 (WAN - Wide Area Network)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84%EF%BC%88Network-Architectures%EF%BC%89"><span class="toc-text">网络架构（Network  Architectures）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="toc-text">HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86%EF%BC%9AOSI%E6%A8%A1%E5%9E%8B"><span class="toc-text">背景知识：OSI模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-text">原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E5%8F%8A%E7%89%B9%E7%82%B9"><span class="toc-text">概念及特点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-HTTP%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">三.HTTP协议的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B"><span class="toc-text">HTTP请求流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%88%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">TCP三次握手（建立连接）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%EF%BC%88%E6%AD%A3%E5%9C%A8%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">数据传输（正在连接）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%EF%BC%88%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">TCP四次挥手（关闭连接）</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
@@ -3962,7 +3981,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","sameAs":["https://github.com/volantis-x"],"description":"谦逊"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://www.yiuhangblog.com/","name":"数据工具箱"}},{"@type":"ListItem","position":2,"item":{"@id":"https://www.yiuhangblog.com/categories/数据抓取/","name":"数据抓取"}},{"@type":"ListItem","position":3,"item":{"@id":"https://www.yiuhangblog.com/2023/11/11/认识爬虫/","name":"认识爬虫"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"数据工具箱","url":"https://www.yiuhangblog.com/","keywords":null,"description":"谦逊","author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","description":"谦逊"},"publisher":{"@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://www.yiuhangblog.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"认识爬虫","description":"谦逊","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/"},"author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/"},"publisher":{"@type":"Organization","name":"数据工具箱","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/","wordCount":0,"datePublished":"2023-11-11T06:50:29.953Z","dateModified":"2023-11-13T15:08:33.134Z","articleSection":"数据抓取","keywords":"爬虫,基础,理论","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","sameAs":["https://github.com/volantis-x"],"description":"谦逊"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://www.yiuhangblog.com/","name":"数据工具箱"}},{"@type":"ListItem","position":2,"item":{"@id":"https://www.yiuhangblog.com/categories/数据抓取/","name":"数据抓取"}},{"@type":"ListItem","position":3,"item":{"@id":"https://www.yiuhangblog.com/2023/11/11/认识爬虫/","name":"爬虫与网络基础理论"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"数据工具箱","url":"https://www.yiuhangblog.com/","keywords":null,"description":"谦逊","author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","description":"谦逊"},"publisher":{"@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://www.yiuhangblog.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"爬虫与网络基础理论","description":"谦逊","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/"},"author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/"},"publisher":{"@type":"Organization","name":"数据工具箱","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/","wordCount":0,"datePublished":"2023-11-11T06:50:29.953Z","dateModified":"2023-11-13T15:31:39.626Z","articleSection":"数据抓取","keywords":"爬虫,网络协议,网络架构,基础,理论","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
