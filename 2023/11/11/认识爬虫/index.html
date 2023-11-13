@@ -43,11 +43,11 @@
 <meta property="og:title" content="认识爬虫">
 <meta property="og:url" content="https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/index.html">
 <meta property="og:site_name" content="数据工具箱">
-<meta property="og:description" content="一.爬虫概念概念:网络爬虫也叫网络蜘蛛，特指一类自动批量下载网络资源的程序，这是一个比较口语化的定义。更加专业和全面对的定义是：网络爬虫是伪装成客户端与服务端进行数据交互的程序. 作用: 数据采集 搜索引擎 模拟操作  爬虫开发的重难点 数据的获取 采集的速度  二.HTTP与HTTPS网络架构 c&#x2F;s 即 client server b&#x2F;s 即 browser server">
+<meta property="og:description" content="一.爬虫概念概念: 网络爬虫也叫网络蜘蛛，特指一类自动批量下载网络资源的程序，这是一个比较口语化的定义。 更加专业和全面对的定义是：网络爬虫是伪装成客户端与服务端进行数据交互的程序。  作用:1. 数据采集**（重要）**    - 大数据监控，产品推荐    - 大数据杀熟，某平台订酒店时间长了会贵一点    - 灰产，内部买卖 2. 搜索引擎    - 百度，谷歌（比较少），主要还是页面存储">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-11-11T06:50:29.953Z">
-<meta property="article:modified_time" content="2023-11-13T10:57:08.081Z">
+<meta property="article:modified_time" content="2023-11-13T13:38:13.595Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="爬虫">
 <meta property="article:tag" content="基础">
@@ -1735,7 +1735,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1699874201093),
+    lastupdate: new Date(1699882705572),
     sidebar: {
       for_page: ["blogger","category","tagcloud","webinfo","lastupdate"],
       for_post: ["toc"],
@@ -2536,7 +2536,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：329 字</p>
+      <p>字数：468 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -2559,13 +2559,39 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="一-爬虫概念"><a href="#一-爬虫概念" class="headerlink" title="一.爬虫概念"></a>一.爬虫概念</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念:"></a>概念:</h3><p>网络爬虫也叫网络蜘蛛，特指一类自动批量下载网络资源的程序，这是一个比较口语化的定义。<br>更加专业和全面对的定义是：<strong>网络爬虫是<font color=red>伪装</font>成客户端与服务端进行<font color=red>数据交互</font>的程序</strong>.</p>
-<h3 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h3><ol>
-<li>数据采集</li>
-<li>搜索引擎</li>
-<li>模拟操作</li>
+    <h2 id="一-爬虫概念"><a href="#一-爬虫概念" class="headerlink" title="一.爬虫概念"></a>一.爬虫概念</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念:"></a>概念:</h3><ul>
+<li>网络爬虫也叫网络蜘蛛，特指一类自动批量下载网络资源的程序，这是一个比较口语化的定义。</li>
+<li>更加专业和全面对的定义是：<strong>网络爬虫是<font color=red>伪装</font>成客户端与服务端进行<font color=red>数据交互</font>的程序</strong>。</li>
+</ul>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h3><pre><code>1. 数据采集**（重要）**
+   - 大数据监控，产品推荐
+   - 大数据杀熟，某平台订酒店时间长了会贵一点
+   - 灰产，内部买卖
+2. 搜索引擎
+   - 百度，谷歌（比较少），主要还是页面存储
+3. 模拟操作
+   - 测试机器人
+   - 灌水机器人（快速刷屏）
+</code></pre>
+<h3 id="种类："><a href="#种类：" class="headerlink" title="种类："></a>种类：</h3><ol>
+<li>通用爬虫<ul>
+<li>百度，谷歌</li>
+</ul>
+</li>
+<li>聚焦爬虫<ul>
+<li>专门为某站点制作的</li>
+</ul>
+</li>
+<li>增量爬虫<ul>
+<li>监控站点，一旦有更新就爬取（在线小说，漫画）</li>
+</ul>
+</li>
+<li>深网爬虫<ul>
+<li>输入表单才能获取数据（登录账号密码之后才能获取）</li>
+</ul>
+</li>
 </ol>
-<h3 id="爬虫开发的重难点"><a href="#爬虫开发的重难点" class="headerlink" title="爬虫开发的重难点"></a>爬虫开发的重难点</h3><ol>
+<h3 id="爬虫开发的重难点："><a href="#爬虫开发的重难点：" class="headerlink" title="爬虫开发的重难点："></a>爬虫开发的重难点：</h3><ol>
 <li>数据的获取</li>
 <li>采集的速度</li>
 </ol>
@@ -2610,7 +2636,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-11-13T18:57:08+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-11-13T21:38:13+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2023年11月13日</p>
@@ -2685,7 +2711,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：329 字</p>
+      <p>字数：468 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -2762,7 +2788,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%88%AC%E8%99%AB%E6%A6%82%E5%BF%B5"><span class="toc-text">一.爬虫概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E7%9A%84%E9%87%8D%E9%9A%BE%E7%82%B9"><span class="toc-text">爬虫开发的重难点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-HTTP%E4%B8%8EHTTPS"><span class="toc-text">二.HTTP与HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84"><span class="toc-text">网络架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="toc-text">HTTP协议</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%88%AC%E8%99%AB%E6%A6%82%E5%BF%B5"><span class="toc-text">一.爬虫概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%8D%E7%B1%BB%EF%BC%9A"><span class="toc-text">种类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E7%9A%84%E9%87%8D%E9%9A%BE%E7%82%B9%EF%BC%9A"><span class="toc-text">爬虫开发的重难点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-HTTP%E4%B8%8EHTTPS"><span class="toc-text">二.HTTP与HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84"><span class="toc-text">网络架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="toc-text">HTTP协议</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3792,7 +3818,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","sameAs":["https://github.com/volantis-x"],"description":"谦逊"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://www.yiuhangblog.com/","name":"数据工具箱"}},{"@type":"ListItem","position":2,"item":{"@id":"https://www.yiuhangblog.com/categories/数据抓取/","name":"数据抓取"}},{"@type":"ListItem","position":3,"item":{"@id":"https://www.yiuhangblog.com/2023/11/11/认识爬虫/","name":"认识爬虫"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"数据工具箱","url":"https://www.yiuhangblog.com/","keywords":null,"description":"谦逊","author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","description":"谦逊"},"publisher":{"@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://www.yiuhangblog.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"认识爬虫","description":"谦逊","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/"},"author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/"},"publisher":{"@type":"Organization","name":"数据工具箱","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/","wordCount":0,"datePublished":"2023-11-11T06:50:29.953Z","dateModified":"2023-11-13T10:57:08.081Z","articleSection":"数据抓取","keywords":"爬虫,基础,理论","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","sameAs":["https://github.com/volantis-x"],"description":"谦逊"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://www.yiuhangblog.com/","name":"数据工具箱"}},{"@type":"ListItem","position":2,"item":{"@id":"https://www.yiuhangblog.com/categories/数据抓取/","name":"数据抓取"}},{"@type":"ListItem","position":3,"item":{"@id":"https://www.yiuhangblog.com/2023/11/11/认识爬虫/","name":"认识爬虫"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"数据工具箱","url":"https://www.yiuhangblog.com/","keywords":null,"description":"谦逊","author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","description":"谦逊"},"publisher":{"@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://www.yiuhangblog.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"认识爬虫","description":"谦逊","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/"},"author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/"},"publisher":{"@type":"Organization","name":"数据工具箱","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/","wordCount":0,"datePublished":"2023-11-11T06:50:29.953Z","dateModified":"2023-11-13T13:38:13.595Z","articleSection":"数据抓取","keywords":"爬虫,基础,理论","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

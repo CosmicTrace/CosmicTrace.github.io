@@ -337,7 +337,7 @@ article#arc .timenode .meta i.blue {
   color: #1bcdfc;
 }
 article#arc .timenode .meta i.theme {
-  color: #3dd9b6;
+  color: #2092ec;
 }
 article#arc .timenode .meta i.accent {
   color: #ff5722;
@@ -540,7 +540,7 @@ article#tag .all-tags ul li span:before {
 }
 .article blockquote {
   background: var(--color-block);
-  border-left: 4px solid #3dd9b6;
+  border-left: 4px solid #2092ec;
   border-radius: 4px;
   -webkit-border-radius: 4px;
 }
@@ -582,7 +582,7 @@ article#tag .all-tags ul li span:before {
 }
 .article blockquote.pullquote.right {
   border-left: none;
-  border-right: 4px solid #3dd9b6;
+  border-right: 4px solid #2092ec;
 }
 .article blockquote.pullquote.right p {
   text-align: right;
@@ -1450,7 +1450,7 @@ svg.loading {
   -ms-transform: translateY(0) scale(1);
 }
 #l_body #s-top.show.hl {
-  background: #3dd9b6;
+  background: #2092ec;
   color: #fff;
   box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
   -webkit-box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
@@ -1465,7 +1465,7 @@ svg.loading {
     -ms-transform: scale(1.2);
     border-radius: 25%;
     -webkit-border-radius: 25%;
-    background: #3dd9b6;
+    background: #2092ec;
     color: #fff;
     box-shadow: 0 2px 4px 0px rgba(0,0,0,0.1), 0 4px 8px 0px rgba(0,0,0,0.1), 0 8px 16px 0px rgba(0,0,0,0.1);
     -webkit-box-shadow: 0 2px 4px 0px rgba(0,0,0,0.1), 0 4px 8px 0px rgba(0,0,0,0.1), 0 8px 16px 0px rgba(0,0,0,0.1);
@@ -1953,7 +1953,7 @@ article#comments #loading-comments a.load-comments {
   border-radius: 2px;
   -webkit-border-radius: 2px;
   cursor: pointer;
-  background: #44d7b6;
+  background: #ff5722;
   color: #fff;
   padding-left: 48px;
   padding-right: 48px;
@@ -2130,10 +2130,10 @@ img.lazyload:not(.placeholder).loaded {
 .md .ori-link {
   margin: auto;
   padding: 1em 3em;
-  border: 1px solid #3dd9b6;
+  border: 1px solid #2092ec;
   border-radius: 4px;
   -webkit-border-radius: 4px;
-  color: #3dd9b6;
+  color: #2092ec;
   font-weight: 500;
 }
 .md .ori-link:hover {
@@ -2484,7 +2484,7 @@ img.lazyload:not(.placeholder).loaded {
   height: 64px;
   top: 0;
   right: 0;
-  color: #3dd9b6;
+  color: #2092ec;
   cursor: pointer;
   text-align: center;
   line-height: 64px;
@@ -2554,7 +2554,7 @@ img.lazyload:not(.placeholder).loaded {
   width: 50px;
   height: 64px;
   vertical-align: middle;
-  color: #3dd9b6;
+  color: #2092ec;
   z-index: 2;
 }
 #u-search .modal .modal-body {
@@ -2578,7 +2578,7 @@ img.lazyload:not(.placeholder).loaded {
   background: transparent;
 }
 #u-search .modal .modal-body::-webkit-scrollbar-thumb {
-  background: #3dd9b6;
+  background: #2092ec;
   cursor: pointer;
   border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -2599,7 +2599,7 @@ img.lazyload:not(.placeholder).loaded {
   -webkit-border-radius: 8px;
 }
 #u-search .modal .modal-body .modal-results .result b[mark] {
-  color: #25be9c;
+  color: #1177c8;
   text-decoration: underline;
 }
 #u-search .modal .modal-body .modal-results .result:hover {
@@ -2701,7 +2701,7 @@ img.lazyload:not(.placeholder).loaded {
   background: transparent;
 }
 #l_side .widget >.content::-webkit-scrollbar-thumb {
-  background: #3dd9b6;
+  background: #2092ec;
   cursor: pointer;
   border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -2825,12 +2825,12 @@ img.lazyload:not(.placeholder).loaded {
 }
 .widget >.content ul.entry a.active,
 .widget >.content ul.popular-posts a.active {
-  border-left: 2px solid #3dd9b6;
+  border-left: 2px solid #2092ec;
   color: var(--color-list-hl);
 }
 .widget >.content ul.entry a.active .badge,
 .widget >.content ul.popular-posts a.active .badge {
-  color: rgba(61,217,182,0.9);
+  color: rgba(32,146,236,0.9);
 }
 .widget >.content ul.entry a.child,
 .widget >.content ul.popular-posts a.child {
@@ -2838,7 +2838,7 @@ img.lazyload:not(.placeholder).loaded {
 }
 .widget >.content ul.entry a:hover,
 .widget >.content ul.popular-posts a:hover {
-  border-left: 2px solid #3dd9b6;
+  border-left: 2px solid #2092ec;
   color: var(--color-list-hl);
   background: var(--color-site-bg);
 }
@@ -2994,8 +2994,8 @@ img.lazyload:not(.placeholder).loaded {
   -webkit-border-radius: 100px;
 }
 .widget.blogger .content .social-wrapper a.social:hover {
-  background: #ebfbf7;
-  color: #3dd9b6;
+  background: #e8f4fd;
+  color: #2092ec;
 }
 @media screen and (max-width: 768px) {
   .widget.blogger .content .social-wrapper {
@@ -3297,7 +3297,7 @@ img.lazyload:not(.placeholder).loaded {
   width: 100%;
   left: 0;
   bottom: 0;
-  background: #3dd9b6;
+  background: #2092ec;
   padding: 16px;
   z-index: 2;
 }
@@ -3339,7 +3339,7 @@ img.lazyload:not(.placeholder).loaded {
   border: 1px solid #fff;
 }
 .snackbar-content .action a:hover {
-  color: #3dd9b6;
+  color: #2092ec;
   background: #fff;
 }
 .snackbar-wrap[theme='warning'] {
@@ -3389,12 +3389,12 @@ img.lazyload:not(.placeholder).loaded {
 }
 #l_side .toc-wrapper .content a.active {
   color: var(--color-list-hl);
-  border-left: 2px solid #3dd9b6;
+  border-left: 2px solid #2092ec;
 }
 #l_side .toc-wrapper .content a:hover {
   color: var(--color-list-hl);
   background: var(--color-site-bg);
-  border-left: 2px solid #3dd9b6;
+  border-left: 2px solid #2092ec;
 }
 @media screen and (max-width: 768px) {
   #l_side .toc-wrapper {
@@ -3504,7 +3504,7 @@ img.lazyload:not(.placeholder).loaded {
 }
 #l_side .toc-wrapper .toc-item.active>.toc-link {
   color: var(--color-list-hl);
-  border-left: 2px solid #3dd9b6;
+  border-left: 2px solid #2092ec;
 }
 #l_side .toc-wrapper .toc-item.active>.toc-child {
   max-height: 1000px;
@@ -3555,8 +3555,8 @@ img.lazyload:not(.placeholder).loaded {
 .md span.btn a,
 .article span.btn.regular a,
 .md span.btn.regular a {
-  color: #44d7b6;
-  border: 1px solid #44d7b6;
+  color: #ff5722;
+  border: 1px solid #ff5722;
 }
 .article span.btn a:hover,
 .md span.btn a:hover,
@@ -3580,7 +3580,7 @@ img.lazyload:not(.placeholder).loaded {
 .article span.btn.solid a,
 .md span.btn.solid a {
   border: none;
-  background: #44d7b6;
+  background: #ff5722;
   color: #fff;
 }
 .article span.btn.solid a:hover,
@@ -3823,7 +3823,7 @@ img.lazyload:not(.placeholder).loaded {
 .article div.btns a>i:first-child,
 .md div.btns a>i:first-child {
   color: #fff;
-  background: #3dd9b6;
+  background: #2092ec;
 }
 .article div.btns a p,
 .md div.btns a p,
@@ -4150,13 +4150,13 @@ img.lazyload:not(.placeholder).loaded {
   -ms-transform: scale(1);
 }
 .md .checkbox input {
-  border: 2px solid #3dd9b6;
+  border: 2px solid #2092ec;
 }
 .md .checkbox input[type=checkbox]:checked {
-  background: #3dd9b6;
+  background: #2092ec;
 }
 .md .checkbox input[type=radio]:checked:before {
-  background: #3dd9b6;
+  background: #2092ec;
 }
 .md .checkbox.red input {
   border-color: #fe5f58;
@@ -5100,7 +5100,7 @@ div.note {
   -webkit-border-radius: 4px;
   font-size: 0.9375rem;
   background: var(--color-block);
-  border-left: 4px solid #3dd9b6;
+  border-left: 4px solid #2092ec;
 }
 div.note h2,
 div.note h3,
@@ -5136,7 +5136,7 @@ div.note::before {
   font-family: 'Font Awesome 6 Free';
 }
 div.note::before {
-  color: #3dd9b6;
+  color: #2092ec;
   content: '\f054';
 }
 div.note::before {
@@ -5151,11 +5151,11 @@ div.note.quote::before {
   content: '\f10d';
 }
 div.note.info {
-  background: #ebfbf7;
-  border-color: #3dd9b6;
+  background: #e8f4fd;
+  border-color: #2092ec;
 }
 div.note.info::before {
-  color: #3dd9b6;
+  color: #2092ec;
   content: '\f129';
 }
 div.note.success,
@@ -5241,11 +5241,11 @@ div.note.gray::before {
   color: #696969;
 }
 div.note.theme {
-  background: #ebfbf7;
-  border-color: #3dd9b6;
+  background: #e8f4fd;
+  border-color: #2092ec;
 }
 div.note.theme::before {
-  color: #3dd9b6;
+  color: #2092ec;
 }
 div.note.red {
   background: #feefee;
@@ -5431,7 +5431,7 @@ div.note.blue::before {
 }
 p.p.subtitle {
   font-weight: bold;
-  color: #3eb399;
+  color: #297ec2;
   font-size: 1.25rem !important;
   padding-top: 1.5rem;
 }
@@ -5822,7 +5822,7 @@ div.timenode:after {
   content: '';
   z-index: 1;
   position: absolute;
-  background: rgba(61,217,182,0.5);
+  background: rgba(32,146,236,0.5);
   width: 2px;
   left: 7px;
 }
@@ -5858,14 +5858,14 @@ div.timenode .meta:after {
   z-index: 2;
 }
 div.timenode .meta:before {
-  background: rgba(61,217,182,0.5);
+  background: rgba(32,146,236,0.5);
   width: 16px;
   height: 16px;
   border-radius: 8px;
   -webkit-border-radius: 8px;
 }
 div.timenode .meta:after {
-  background: #3dd9b6;
+  background: #2092ec;
   margin-left: 2px;
   margin-top: 2px;
   width: 12px;
@@ -6717,7 +6717,7 @@ pre {
   background: transparent;
 }
 .hljs::-webkit-scrollbar-thumb {
-  background: #3dd9b6;
+  background: #2092ec;
   cursor: pointer;
   border-radius: 2px;
   -webkit-border-radius: 2px;
