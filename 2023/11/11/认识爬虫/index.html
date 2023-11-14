@@ -47,7 +47,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-11-11T06:50:29.953Z">
-<meta property="article:modified_time" content="2023-11-13T15:37:10.523Z">
+<meta property="article:modified_time" content="2023-11-14T05:14:21.288Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="爬虫">
 <meta property="article:tag" content="网络协议">
@@ -1737,7 +1737,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1699889842162),
+    lastupdate: new Date(1699938902628),
     sidebar: {
       for_page: ["blogger","category","tagcloud","webinfo","lastupdate"],
       for_post: ["toc"],
@@ -2538,13 +2538,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：2.5k 字</p>
+      <p>字数：5.3k 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fa-solid fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：8 分钟</p>
+      <p>时长：19 分钟</p>
     </a>
   </div>
 
@@ -2628,26 +2628,182 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><strong>用途</strong>：用于连接不同地理位置的LANs，允许不同地区的用户和组织之间交换数据。</li>
 </ul>
 <img src="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/wan-network.gif" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/wan-network.gif" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="70%" height="70%"/>
+
+<h3 id="芝加哥（Accounts-Receivable）"><a href="#芝加哥（Accounts-Receivable）" class="headerlink" title="芝加哥（Accounts Receivable）"></a>芝加哥（Accounts Receivable）</h3><ul>
+<li><strong>网络</strong>：使用IPv4。</li>
+<li><strong>设备</strong>：包括iSeries A服务器，有一个IPv6地址（4321::54bc）和一个IPv4地址（10.1.1.1）。</li>
+<li><strong>IPv4路由器</strong>：连接iSeries A服务器和Internet。</li>
+</ul>
+<h3 id="达拉斯（Accounts-Payable）"><a href="#达拉斯（Accounts-Payable）" class="headerlink" title="达拉斯（Accounts Payable）"></a>达拉斯（Accounts Payable）</h3><ul>
+<li><strong>网络</strong>：使用IPv6。</li>
+<li><strong>设备</strong>：包括iSeries B服务器，有一个IPv6地址（9876::55cc）。</li>
+<li><strong>客户端</strong>：连接到iSeries B服务器。</li>
+<li><strong>2838 Ethernet adapter</strong>：表示连接设备使用的网络适配器。</li>
+</ul>
+<h3 id="中间部分"><a href="#中间部分" class="headerlink" title="中间部分"></a>中间部分</h3><ul>
+<li><strong>IPv4&#x2F;6路由器</strong>：具有IPv4地址（10.1.2.1）和IPv6地址（9876::55bb），这表明它能够处理IPv4和IPv6的数据包。</li>
+</ul>
+<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><ul>
+<li><strong>绿色线</strong>：表示配置了一个隧道，它允许在IPv4和IPv6网络之间安全地传输数据。隧道的本地端点是芝加哥的IPv4地址（10.1.1.1），远程端点是达拉斯的IPv4地址（10.1.2.1），并且隧道的本地IPv6地址是芝加哥的IPv6地址（4321::54bc）。</li>
+</ul>
+<p>图示展示了两个使用不同IP协议版本的网络之间的互联方式，并通过一个配置了隧道的路由器进行数据传输。这显示了在IPv4和IPv6共存环境中如何实现网络互操作性。</p>
+<p>IPv4和IPv6是两种互联网协议版本，它们是互联网通信的基础。</p>
+<h3 id="IPv4（Internet-Protocol-version-4）"><a href="#IPv4（Internet-Protocol-version-4）" class="headerlink" title="IPv4（Internet Protocol version 4）"></a>IPv4（Internet Protocol version 4）</h3><ul>
+<li><strong>IPv4</strong> 是第四版的互联网协议，目前广泛使用于互联网中。</li>
+<li>它基于32位地址长度，这意味着它可以支持大约43亿个独特的IP地址。</li>
+<li>IPv4地址通常以点分十进制形式表示，例如192.168.1.1。</li>
+</ul>
+<h3 id="IPv6（Internet-Protocol-version-6）"><a href="#IPv6（Internet-Protocol-version-6）" class="headerlink" title="IPv6（Internet Protocol version 6）"></a>IPv6（Internet Protocol version 6）</h3><ul>
+<li><strong>IPv6</strong> 是为了解决IPv4地址耗尽问题而设计的下一代互联网协议。</li>
+<li>它基于128位地址长度，这意味着它可以支持几乎无限数量的设备。</li>
+<li>IPv6地址通常以冒号分隔的十六进制形式表示，例如2001:0db8:85a3:0000:0000:8a2e:0370:7334。</li>
+</ul>
+<h3 id="主要区别"><a href="#主要区别" class="headerlink" title="主要区别"></a>主要区别</h3><ul>
+<li><strong>地址空间</strong>：IPv4的地址空间相对较小，而IPv6提供了更大的地址空间来满足互联网的增长需求。</li>
+<li><strong>安全性</strong>：IPv6设计之初就考虑了安全性，包括IPsec（一种用于IP网络通信加密和认证的框架）作为标准部分，而IPv4中IPsec是可选的。</li>
+<li><strong>配置</strong>：IPv6支持自动配置能力，设备可以自动分配IP地址，而IPv4通常需要手动分配或通过DHCP（动态主机配置协议）实现自动分配。</li>
+<li><strong>数据包处理</strong>：IPv6简化了数据包头部结构，以提高处理速度和效率。</li>
+<li><strong>移动性和多播</strong>：IPv6原生支持移动性和多播传输，而IPv4则需要额外的协议支持。</li>
+</ul>
+<p>IPv4到IPv6的过渡是一个复杂的过程，因为它们不直接兼容。为了解决这个问题，实施了多种过渡技术，例如隧道和双栈策略，以便两种协议可以在同一网络内协同工作。</p>
+</blockquote>
+<blockquote>
+<h3 id="3-城域网-MAN-Metropolitan-Area-Network"><a href="#3-城域网-MAN-Metropolitan-Area-Network" class="headerlink" title="3. 城域网 (MAN - Metropolitan Area Network)"></a>3. 城域网 (MAN - Metropolitan Area Network)</h3><ul>
+<li><strong>定义</strong>：MAN是介于LAN和WAN之间的网络，通常覆盖一个城市。</li>
+<li><strong>用途</strong>：常用于连接多个局域网，提供高速网络服务给整个城市</li>
+</ul>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20210927135238.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20210927135238.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+
+<p>MAN连接了多个局域网（LAN - Local Area Network），每个LAN都通过一个网络处理引擎（NPE - Network Processing Engine）与MAN相连。</p>
+<ol>
+<li><strong>城域网（MAN）</strong>：位于图中心，代表了城市或都市区域的网络。</li>
+<li><strong>局域网（LAN）</strong>：分布在MAN周围，每个LAN可能代表一个不同的组织、办公室建筑或校园网络。</li>
+<li><strong>网络处理引擎（NPE）</strong>：在每个LAN和MAN之间的连接点处，有一个标记为NPE的设备。这些设备负责处理进入和离开局域网的数据，可能执行数据路由、交换、安全和其他网络服务。</li>
+</ol>
+<p>NPE（Network Processing Engine）通常指的是一种高性能的网络处理器，它被设计用来处理和转发数据包。在城域网（MAN - Metropolitan Area Network）的环境中，NPE的作用是尤为关键的，因为它可以处理高速网络流量，确保数据包的快速和有效传输。</p>
+<p>在城域网中，NPE可以用于以下几个主要方面：</p>
+<ol>
+<li><strong>数据包转发</strong>：NPE负责在网络设备中高效地处理和转发数据包。由于城域网通常连接着多个局域网（LANs），NPE在处理大量跨网络流量时的性能至关重要。</li>
+<li><strong>路由决策</strong>：NPE可以进行复杂的路由计算，以确定数据包的最佳路径。这对于确保在城域网环境中数据传输的高效性和可靠性非常重要。</li>
+<li><strong>流量管理</strong>：在城域网中，NPE可能涉及流量整形、负载平衡和拥塞管理等任务，以优化网络性能和资源利用。</li>
+<li><strong>安全处理</strong>：NPE还可以执行一些安全相关的功能，比如入侵检测、防火墙功能和VPN支持。</li>
+<li><strong>质量服务（QoS）</strong>：NPE可以帮助实施QoS策略，确保关键应用和服务得到优先的网络资源，保证服务质量。</li>
+</ol>
+<p>在城域网这样的高速网络环境中，NPE的作用不仅仅局限于数据包的基本转发，它还涉及到整个网络性能和服务质量的维护和提升。随着网络技术的发展，NPE的功能和重要性只会继续增长。</p>
+</blockquote>
+<blockquote>
+<h3 id="4-个人区域网-PAN-Personal-Area-Network"><a href="#4-个人区域网-PAN-Personal-Area-Network" class="headerlink" title="4. 个人区域网 (PAN - Personal Area Network)"></a>4. 个人区域网 (PAN - Personal Area Network)</h3><ul>
+<li><strong>定义</strong>：PAN是一个非常小的网络，用于连接个人设备，如手机、笔记本电脑和平板电脑。</li>
+<li><strong>用途</strong>：用于个人设备间的数据传输，如通过蓝牙或Wi-Fi。</li>
+</ul>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20231114125659.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20231114125659.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="70%" height="70%" />
+</blockquote>
+<blockquote>
+<h3 id="5-无线局域网-WLAN-Wireless-Local-Area-Network"><a href="#5-无线局域网-WLAN-Wireless-Local-Area-Network" class="headerlink" title="5. 无线局域网 (WLAN - Wireless Local Area Network)"></a>5. 无线局域网 (WLAN - Wireless Local Area Network)</h3><ul>
+<li><strong>定义</strong>：WLAN是一种无线的局域网，使用无线数据连接来链接多个设备。</li>
+<li><strong>用途</strong>：提供与LAN相似的功能，但无需物理连线，增加了移动性。</li>
+</ul>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20231114130030.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20231114130030.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="70%" height="70%"/>
+</blockquote>
+<blockquote>
+<h3 id="6-虚拟私人网-VPN-Virtual-Private-Network"><a href="#6-虚拟私人网-VPN-Virtual-Private-Network" class="headerlink" title="6. 虚拟私人网 (VPN - Virtual Private Network)"></a>6. 虚拟私人网 (VPN - Virtual Private Network)</h3><ul>
+<li><strong>定义</strong>：VPN是一种通过公共网络（如互联网）提供加密连接的网络技术。</li>
+<li><strong>用途</strong>：允许远程用户安全地访问内部网络资源，常用于企业远程工作和数据保护。</li>
+</ul>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20231114130727.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/blog_img/20231114130727.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+</blockquote>
+<blockquote>
+<h3 id="7-企业私人网络-EPN-Enterprise-Private-Network"><a href="#7-企业私人网络-EPN-Enterprise-Private-Network" class="headerlink" title="7. 企业私人网络 (EPN - Enterprise Private Network)"></a>7. 企业私人网络 (EPN - Enterprise Private Network)</h3><ul>
+<li><strong>定义</strong>：EPN是专为特定企业设计的私人网络，用于连接企业内部各部门和资源。</li>
+<li><strong>用途</strong>：用于大型企业，确保数据安全性和网络管理的高效性。</li>
+</ul>
+</blockquote>
+<blockquote>
+<h3 id="8-内容分发网络-CDN-Content-Delivery-Network"><a href="#8-内容分发网络-CDN-Content-Delivery-Network" class="headerlink" title="8. 内容分发网络 (CDN - Content Delivery Network)"></a>8. 内容分发网络 (CDN - Content Delivery Network)</h3><ul>
+<li><strong>定义</strong>：CDN是一组分布在多个地理位置的服务器，用于有效地传递互联网内容。</li>
+<li><strong>用途</strong>：用于快速传送大量数据，常用于网页内容、视频流媒体等。</li>
+</ul>
+</blockquote>
+<blockquote>
+<h3 id="9-云计算网络"><a href="#9-云计算网络" class="headerlink" title="9. 云计算网络"></a>9. 云计算网络</h3><ul>
+<li><strong>定义</strong>：这类网络是基于云计算技术，提供资源和服务的虚拟化网络。</li>
+<li><strong>用途</strong>：支持各种云服务，如软件即服务（SaaS）、平台即服务（PaaS）和基础设施即服务（IaaS）。</li>
+</ul>
+</blockquote>
+<blockquote>
+<h3 id="10-其它"><a href="#10-其它" class="headerlink" title="10.其它"></a>10.其它</h3><ul>
+<li><strong>传感器网络（Sensor Networks）</strong>：由许多分布式传感器组成，用于监测和记录物理环境的条件，并将收集的数据传输到一个中心位置。</li>
+<li><strong>虚拟网络（Virtual Networks）</strong>：通常建立在其他网络之上，通过软件定义网络（SDN）等技术实现。</li>
+<li><strong>存储区域网络（SAN - Storage Area Network）</strong>：连接存储设备和服务器的专用高速网络，允许服务器访问共享存储资源。</li>
+<li><strong>集成服务数字网络（ISDN - Integrated Services Digital Network）</strong>：早期的高速网络服务，提供语音和数据服务。</li>
+</ul>
 </blockquote>
 <h3 id="网络架构（Network-Architectures）"><a href="#网络架构（Network-Architectures）" class="headerlink" title="网络架构（Network  Architectures）"></a>网络架构<strong>（Network  Architectures）</strong></h3><p>架构模式则是指在这些网络中实现数据交换和处理的方法和设计：</p>
 <p>关注于如何在网络中设计和组织资源、服务和数据流。它们描述的是网络内部数据和服务的组织和流动方式。</p>
-<ol>
-<li><p>c&#x2F;s 即 client server</p>
-<ul>
-<li>客户端与服务器</li>
+<blockquote>
+<h3 id="1-客户端-服务器（C-S-Client-Server）"><a href="#1-客户端-服务器（C-S-Client-Server）" class="headerlink" title="1. 客户端&#x2F;服务器（C&#x2F;S - Client&#x2F;Server）"></a>1. 客户端&#x2F;服务器（C&#x2F;S - Client&#x2F;Server）</h3><ul>
+<li><strong>定义</strong>：C&#x2F;S架构中，客户端和服务器是两个独立的实体。客户端发送请求到服务器，服务器处理请求并返回数据。</li>
+<li><strong>特点</strong>：客户端软件通常需要安装在用户的设备上，可以提供丰富的功能和良好的用户体验。服务器负责数据处理和存储。</li>
+<li><strong>应用</strong>：常见于企业应用、多用户系统、网络游戏等领域。</li>
 </ul>
-</li>
-<li><p>b&#x2F;s 即 browser server</p>
-<ul>
-<li>浏览器与服务器</li>
+</blockquote>
+<blockquote>
+<h3 id="2-浏览器-服务器（B-S-Browser-Server）"><a href="#2-浏览器-服务器（B-S-Browser-Server）" class="headerlink" title="2. 浏览器&#x2F;服务器（B&#x2F;S - Browser&#x2F;Server）"></a>2. 浏览器&#x2F;服务器（B&#x2F;S - Browser&#x2F;Server）</h3><ul>
+<li><strong>定义</strong>：B&#x2F;S架构中，用户通过浏览器（作为客户端）来访问服务器上的资源和服务。</li>
+<li><strong>特点</strong>：不需要在客户端安装特定的软件，只需一个浏览器即可访问服务。服务器处理后端逻辑和数据存储。</li>
+<li><strong>应用</strong>：互联网网站、Web应用程序等。</li>
 </ul>
-</li>
-<li><p>m&#x2F;s 即 mobile server</p>
-<ul>
-<li>移动端与服务器</li>
+</blockquote>
+<blockquote>
+<h3 id="3-移动端-服务器（M-S-Mobile-Server）"><a href="#3-移动端-服务器（M-S-Mobile-Server）" class="headerlink" title="3. 移动端&#x2F;服务器（M&#x2F;S - Mobile&#x2F;Server）"></a>3. 移动端&#x2F;服务器（M&#x2F;S - Mobile&#x2F;Server）</h3><ul>
+<li><strong>定义</strong>：M&#x2F;S架构专注于移动设备作为客户端，与服务器进行交互。</li>
+<li><strong>特点</strong>：适应了移动设备的特性，如触摸界面、定位服务和推送通知。服务器处理复杂的逻辑和数据存储。</li>
+<li><strong>应用</strong>：移动应用程序，如社交媒体应用、移动电子商务应用等。</li>
 </ul>
-</li>
-</ol>
+</blockquote>
+<blockquote>
+<h3 id="4-对等网络（P2P-Peer-to-Peer）"><a href="#4-对等网络（P2P-Peer-to-Peer）" class="headerlink" title="4. 对等网络（P2P - Peer-to-Peer）"></a>4. 对等网络（P2P - Peer-to-Peer）</h3><ul>
+<li><strong>定义</strong>：在P2P架构中，每个节点既作为客户端又作为服务器，节点之间直接交换数据。</li>
+<li><strong>特点</strong>：不依赖中心化的服务器，提高了系统的可扩展性和容错能力。</li>
+<li><strong>应用</strong>：文件共享系统、加密货币网络、某些通信应用等。</li>
+</ul>
+</blockquote>
+<blockquote>
+<h3 id="5-微服务架构（Microservices-Architecture）"><a href="#5-微服务架构（Microservices-Architecture）" class="headerlink" title="5.微服务架构（Microservices Architecture）"></a>5.微服务架构（Microservices Architecture）</h3><ul>
+<li><strong>定义</strong>：微服务架构是一种将应用程序作为一组小服务开发的方法，每个服务在其自己的进程中运行，通常围绕业务能力构建。</li>
+<li><strong>特点</strong>：服务之间通过轻量级的通信机制进行交互，每个服务独立部署，可在不同的环境中独立扩展。</li>
+<li><strong>应用</strong>：现代云应用、大型企业级应用等。</li>
+</ul>
+</blockquote>
+<blockquote>
+<h3 id="6-服务导向架构（SOA-Service-Oriented-Architecture）"><a href="#6-服务导向架构（SOA-Service-Oriented-Architecture）" class="headerlink" title="6. 服务导向架构（SOA - Service-Oriented Architecture）"></a>6. 服务导向架构（SOA - Service-Oriented Architecture）</h3><ul>
+<li><strong>定义</strong>：SOA是一种设计模式，其中应用程序的组件提供服务给其他组件，通过网络中的通信协议进行交互。</li>
+<li><strong>特点</strong>：强调可重用的服务，服务之间通常是松耦合的。</li>
+<li><strong>应用</strong>：企业级应用、系统集成等。</li>
+</ul>
+</blockquote>
+<blockquote>
+<h3 id="7-网格计算（Grid-Computing）"><a href="#7-网格计算（Grid-Computing）" class="headerlink" title="7. 网格计算（Grid Computing）"></a>7. 网格计算（Grid Computing）</h3><ul>
+<li><strong>定义</strong>：网格计算是一种分布式计算形式，它将来自不同域的计算资源连接起来，以达到共同的目标。</li>
+<li><strong>特点</strong>：高度分布式，适合于大规模的数据处理和复杂计算任务。</li>
+<li><strong>应用</strong>：科学研究、大规模模拟、数据分析等。</li>
+</ul>
+</blockquote>
+<blockquote>
+<h3 id="8-雾计算（Fog-Computing）"><a href="#8-雾计算（Fog-Computing）" class="headerlink" title="8. 雾计算（Fog Computing）"></a>8. 雾计算（Fog Computing）</h3><ul>
+<li><strong>定义</strong>：雾计算是一种分布式计算架构，它将计算、存储和网络服务扩展到网络的边缘。</li>
+<li><strong>特点</strong>：减少了对中心数据中心的依赖，减少延迟，提高了数据处理的速度。</li>
+<li><strong>应用</strong>：物联网（IoT）、实时数据分析、智能城市等。</li>
+</ul>
+</blockquote>
+<blockquote>
+<h3 id="9-其它"><a href="#9-其它" class="headerlink" title="9.其它"></a>9.其它</h3><ul>
+<li><strong>分布式计算（Distributed Computing）</strong>：分布式系统中，组件分布在不同网络节点上，彼此协作以完成任务。</li>
+<li><strong>单体架构（Monolithic Architecture）</strong>：一个应用程序作为一个单独的单元运行，所有功能都紧密集成在一起。</li>
+<li><strong>事件驱动架构（Event-Driven Architecture）</strong>：组件通过事件进行通信和互动，系统以事件为核心来触发和处理业务流程。</li>
+<li><strong>服务网格（Service Mesh）</strong>：用于处理服务到服务通信的基础架构层，通常在微服务架构中使用。</li>
+</ul>
+</blockquote>
 <p>总的来说，网络类型和架构模式是网络设计的两个不同层面。类型更侧重于网络的物理和逻辑布局，而架构则侧重于系统的内部设计和数据流动。两者相辅相成，共同构成完整的网络系统。</p>
 <h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><h4 id="背景知识：OSI模型"><a href="#背景知识：OSI模型" class="headerlink" title="背景知识：OSI模型"></a>背景知识：OSI模型</h4><blockquote>
 <p>OSI模型，全称是“开放式系统互连参考模型”（Open Systems Interconnection Reference Model），是一个用于解释和标准化网络内不同计算机系统之间通信过程的概念模型。这个模型由国际标准化组织（ISO）在1980年代初期开发，目的是促进不同类型计算机系统之间的兼容性和标准化通信。</p>
@@ -2799,10 +2955,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-11-13T23:37:10+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-11-14T13:14:21+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2023年11月13日</p>
+    <p>更新于：2023年11月14日</p>
   </a>
 </div>
 
@@ -2874,13 +3030,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：2.5k 字</p>
+      <p>字数：5.3k 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fa-solid fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：8 分钟</p>
+      <p>时长：19 分钟</p>
     </a>
   </div>
 
@@ -2951,7 +3107,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%88%AC%E8%99%AB%E6%A6%82%E5%BF%B5"><span class="toc-text">一.爬虫概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%8D%E7%B1%BB%EF%BC%9A"><span class="toc-text">种类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E7%9A%84%E9%87%8D%E9%9A%BE%E7%82%B9%EF%BC%9A"><span class="toc-text">爬虫开发的重难点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BD%91%E7%BB%9C%E4%B8%8EHTTP-HTTPS%E5%8D%8F%E8%AE%AE"><span class="toc-text">二.网络与HTTP&#x2F;HTTPS协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B%EF%BC%88Network-Types%EF%BC%89"><span class="toc-text">网络类型（Network  Types）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9C%AC%E5%9C%B0%E5%8C%BA%E5%9F%9F%E7%BD%91-LAN-Local-Area-Network"><span class="toc-text">1. 本地区域网 (LAN - Local Area Network)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B9%BF%E5%9F%9F%E7%BD%91-WAN-Wide-Area-Network"><span class="toc-text">2. 广域网 (WAN - Wide Area Network)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84%EF%BC%88Network-Architectures%EF%BC%89"><span class="toc-text">网络架构（Network  Architectures）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="toc-text">HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86%EF%BC%9AOSI%E6%A8%A1%E5%9E%8B"><span class="toc-text">背景知识：OSI模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-text">原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E5%8F%8A%E7%89%B9%E7%82%B9"><span class="toc-text">概念及特点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-HTTP%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">三.HTTP协议的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B"><span class="toc-text">HTTP请求流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%88%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">TCP三次握手（建立连接）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%EF%BC%88%E6%AD%A3%E5%9C%A8%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">数据传输（正在连接）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%EF%BC%88%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">TCP四次挥手（关闭连接）</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%88%AC%E8%99%AB%E6%A6%82%E5%BF%B5"><span class="toc-text">一.爬虫概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%8D%E7%B1%BB%EF%BC%9A"><span class="toc-text">种类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E7%9A%84%E9%87%8D%E9%9A%BE%E7%82%B9%EF%BC%9A"><span class="toc-text">爬虫开发的重难点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BD%91%E7%BB%9C%E4%B8%8EHTTP-HTTPS%E5%8D%8F%E8%AE%AE"><span class="toc-text">二.网络与HTTP&#x2F;HTTPS协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B%EF%BC%88Network-Types%EF%BC%89"><span class="toc-text">网络类型（Network  Types）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9C%AC%E5%9C%B0%E5%8C%BA%E5%9F%9F%E7%BD%91-LAN-Local-Area-Network"><span class="toc-text">1. 本地区域网 (LAN - Local Area Network)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B9%BF%E5%9F%9F%E7%BD%91-WAN-Wide-Area-Network"><span class="toc-text">2. 广域网 (WAN - Wide Area Network)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%9D%E5%8A%A0%E5%93%A5%EF%BC%88Accounts-Receivable%EF%BC%89"><span class="toc-text">芝加哥（Accounts Receivable）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%BE%E6%8B%89%E6%96%AF%EF%BC%88Accounts-Payable%EF%BC%89"><span class="toc-text">达拉斯（Accounts Payable）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E9%83%A8%E5%88%86"><span class="toc-text">中间部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5"><span class="toc-text">连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IPv4%EF%BC%88Internet-Protocol-version-4%EF%BC%89"><span class="toc-text">IPv4（Internet Protocol version 4）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IPv6%EF%BC%88Internet-Protocol-version-6%EF%BC%89"><span class="toc-text">IPv6（Internet Protocol version 6）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="toc-text">主要区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9F%8E%E5%9F%9F%E7%BD%91-MAN-Metropolitan-Area-Network"><span class="toc-text">3. 城域网 (MAN - Metropolitan Area Network)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B8%AA%E4%BA%BA%E5%8C%BA%E5%9F%9F%E7%BD%91-PAN-Personal-Area-Network"><span class="toc-text">4. 个人区域网 (PAN - Personal Area Network)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91-WLAN-Wireless-Local-Area-Network"><span class="toc-text">5. 无线局域网 (WLAN - Wireless Local Area Network)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%99%9A%E6%8B%9F%E7%A7%81%E4%BA%BA%E7%BD%91-VPN-Virtual-Private-Network"><span class="toc-text">6. 虚拟私人网 (VPN - Virtual Private Network)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E4%BC%81%E4%B8%9A%E7%A7%81%E4%BA%BA%E7%BD%91%E7%BB%9C-EPN-Enterprise-Private-Network"><span class="toc-text">7. 企业私人网络 (EPN - Enterprise Private Network)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%86%85%E5%AE%B9%E5%88%86%E5%8F%91%E7%BD%91%E7%BB%9C-CDN-Content-Delivery-Network"><span class="toc-text">8. 内容分发网络 (CDN - Content Delivery Network)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E4%BA%91%E8%AE%A1%E7%AE%97%E7%BD%91%E7%BB%9C"><span class="toc-text">9. 云计算网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E5%85%B6%E5%AE%83"><span class="toc-text">10.其它</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84%EF%BC%88Network-Architectures%EF%BC%89"><span class="toc-text">网络架构（Network  Architectures）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%A2%E6%88%B7%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88C-S-Client-Server%EF%BC%89"><span class="toc-text">1. 客户端&#x2F;服务器（C&#x2F;S - Client&#x2F;Server）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B5%8F%E8%A7%88%E5%99%A8-%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88B-S-Browser-Server%EF%BC%89"><span class="toc-text">2. 浏览器&#x2F;服务器（B&#x2F;S - Browser&#x2F;Server）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88M-S-Mobile-Server%EF%BC%89"><span class="toc-text">3. 移动端&#x2F;服务器（M&#x2F;S - Mobile&#x2F;Server）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AF%B9%E7%AD%89%E7%BD%91%E7%BB%9C%EF%BC%88P2P-Peer-to-Peer%EF%BC%89"><span class="toc-text">4. 对等网络（P2P - Peer-to-Peer）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%EF%BC%88Microservices-Architecture%EF%BC%89"><span class="toc-text">5.微服务架构（Microservices Architecture）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%9C%8D%E5%8A%A1%E5%AF%BC%E5%90%91%E6%9E%B6%E6%9E%84%EF%BC%88SOA-Service-Oriented-Architecture%EF%BC%89"><span class="toc-text">6. 服务导向架构（SOA - Service-Oriented Architecture）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E7%BD%91%E6%A0%BC%E8%AE%A1%E7%AE%97%EF%BC%88Grid-Computing%EF%BC%89"><span class="toc-text">7. 网格计算（Grid Computing）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E9%9B%BE%E8%AE%A1%E7%AE%97%EF%BC%88Fog-Computing%EF%BC%89"><span class="toc-text">8. 雾计算（Fog Computing）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%85%B6%E5%AE%83"><span class="toc-text">9.其它</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="toc-text">HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86%EF%BC%9AOSI%E6%A8%A1%E5%9E%8B"><span class="toc-text">背景知识：OSI模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-text">原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E5%8F%8A%E7%89%B9%E7%82%B9"><span class="toc-text">概念及特点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-HTTP%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">三.HTTP协议的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B"><span class="toc-text">HTTP请求流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%88%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">TCP三次握手（建立连接）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%EF%BC%88%E6%AD%A3%E5%9C%A8%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">数据传输（正在连接）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%EF%BC%88%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">TCP四次挥手（关闭连接）</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
@@ -3981,7 +4137,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","sameAs":["https://github.com/volantis-x"],"description":"谦逊"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://www.yiuhangblog.com/","name":"数据工具箱"}},{"@type":"ListItem","position":2,"item":{"@id":"https://www.yiuhangblog.com/categories/数据抓取/","name":"数据抓取"}},{"@type":"ListItem","position":3,"item":{"@id":"https://www.yiuhangblog.com/2023/11/11/认识爬虫/","name":"爬虫与网络基础理论"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"数据工具箱","url":"https://www.yiuhangblog.com/","keywords":null,"description":"谦逊","author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","description":"谦逊"},"publisher":{"@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://www.yiuhangblog.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"爬虫与网络基础理论","description":"谦逊","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/"},"author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/"},"publisher":{"@type":"Organization","name":"数据工具箱","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/","wordCount":0,"datePublished":"2023-11-11T06:50:29.953Z","dateModified":"2023-11-13T15:37:10.523Z","articleSection":"数据抓取","keywords":"爬虫,网络协议,网络架构,基础,理论","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","sameAs":["https://github.com/volantis-x"],"description":"谦逊"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://www.yiuhangblog.com/","name":"数据工具箱"}},{"@type":"ListItem","position":2,"item":{"@id":"https://www.yiuhangblog.com/categories/数据抓取/","name":"数据抓取"}},{"@type":"ListItem","position":3,"item":{"@id":"https://www.yiuhangblog.com/2023/11/11/认识爬虫/","name":"爬虫与网络基础理论"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"数据工具箱","url":"https://www.yiuhangblog.com/","keywords":null,"description":"谦逊","author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","description":"谦逊"},"publisher":{"@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://www.yiuhangblog.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"爬虫与网络基础理论","description":"谦逊","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/"},"author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/"},"publisher":{"@type":"Organization","name":"数据工具箱","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://www.yiuhangblog.com/2023/11/11/%E8%AE%A4%E8%AF%86%E7%88%AC%E8%99%AB/","wordCount":0,"datePublished":"2023-11-11T06:50:29.953Z","dateModified":"2023-11-14T05:14:21.288Z","articleSection":"数据抓取","keywords":"爬虫,网络协议,网络架构,基础,理论","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
