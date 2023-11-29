@@ -36,22 +36,23 @@
       <link rel="alternate" href="/atom.xml" title="数据工具箱" type="application/atom+xml">
   <!-- 页面元数据 -->
   <title>爬虫与网络基础理论 - 数据工具箱</title>
-  <meta name="keywords" content="爬虫,基础,理论,null">
+  <meta name="keywords" content="爬虫,基础,理论,Requests,null">
   <meta desc name="description" content="谦逊 - Yiuhang Chan - 数据工具箱">
   
 <meta property="og:type" content="article">
 <meta property="og:title" content="爬虫与网络基础理论">
 <meta property="og:url" content="https://www.yiuhangblog.com/2021/02/22/20210222_requests/index.html">
 <meta property="og:site_name" content="数据工具箱">
-<meta property="og:description" content="谦逊">
+<meta property="og:description" content="一.Requests简介   Requests是一个优雅而简单的Python HTTP库，专为人类而构建。 中文官方文档：http:&#x2F;&#x2F;cn.python-requests.org&#x2F;zh_CN&#x2F;latest&#x2F;。 英文文档：http:&#x2F;&#x2F;docs.python-requests.org&#x2F;en&#x2F;master&#x2F;api&#x2F;  作者Requests的作者Kenneth Reitz同样是一个富有传奇色彩的人物。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-02-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-29T10:59:06.839Z">
+<meta property="article:modified_time" content="2023-11-29T11:57:15.015Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="爬虫">
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="理论">
+<meta property="article:tag" content="Requests">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -1735,7 +1736,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1701255577641),
+    lastupdate: new Date(1701259048757),
     sidebar: {
       for_page: ["blogger","category","tagcloud","webinfo","lastupdate"],
       for_post: ["toc"],
@@ -2536,13 +2537,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：0 字</p>
+      <p>字数：1.3k 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fa-solid fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：1 分钟</p>
+      <p>时长：4 分钟</p>
     </a>
   </div>
 
@@ -2559,7 +2560,102 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    
+    <h2 id="一-Requests"><a href="#一-Requests" class="headerlink" title="一.Requests"></a>一.Requests</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/简介图片.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/简介图片.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="25%" height="25%"/>
+
+<ol>
+<li>Requests是一个优雅而简单的Python HTTP库，专为人类而构建。</li>
+<li>中文官方文档：<a target="_blank" rel="noopener" href="http://cn.python-requests.org/zh_CN/latest/%E3%80%82">http://cn.python-requests.org/zh_CN/latest/。</a></li>
+<li>英文文档：<a target="_blank" rel="noopener" href="http://docs.python-requests.org/en/master/api/">http://docs.python-requests.org/en/master/api/</a></li>
+</ol>
+<h4 id="作者"><a href="#作者" class="headerlink" title="作者"></a>作者</h4><p>Requests的作者Kenneth Reitz同样是一个富有传奇色彩的人物。</p>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/作者1.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/作者1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%"/>
+
+<p>Requests目前基本上完全满足web请求的所有需求，以下是requests的特性:</p>
+<ol>
+<li>Keep-Alive &amp; 连接池</li>
+<li>国际化域名和URL</li>
+<li>带持久Cookie的会话</li>
+<li>浏览器式的SSL认证</li>
+<li>自动内容解码</li>
+<li>基本&#x2F;摘要时的身份认证</li>
+<li>优雅的 key&#x2F;value Cookie</li>
+<li>自动解压</li>
+<li>Unicode 响应体</li>
+<li>HTTP(S) 代理支持</li>
+<li>文件分块上传</li>
+<li>流下载</li>
+<li>连接超时</li>
+<li>分块请求</li>
+<li>支持 .netrc</li>
+</ol>
+<h3 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h3><p>使用 Requests 发送网络请求非常简单。导包, 之后添加方法进行。</p>
+<p>Requests的请求不再像urllib一样需要去构造各种Request、opener和handler，使用Requests构造的方法，并在其中传入需要的参数即可。</p>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/requests请求.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/requests请求.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%"/>
+
+<p>发起请求的方法变得简单，只需要着重关注一下发起请求的参数 ，10个重要的参数。</p>
+<pre><code>    method, 请求方法
+    url,  资源地址
+    params=None, 查询参数也叫做查询字符串
+    data=None,   post请求的表单数据
+    headers=None, 请求头
+    cookies=None, cookies
+    files=None, # 文件
+    auth=None, # 校验身份
+    timeout=None, 超时时间
+    allow_redirects=True, # 重定向
+    proxies=None, 代理
+    hooks=None,#  钩子函数
+    stream=None,# 
+    verify=None, 证书忽略
+    cert=None, # 字符串 --证书的地址  元组（）
+    json=None,  post 请求的JSON数据
+</code></pre>
+<h4 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h4><p>传递URL参数也不用再像urllib中那样需要去拼接URL，而是简单的，构造一个字典，并在请求时将其传递给params参数，此时，查看请求的URL，则可以看到URL已经构造正确了，并且，有时候我们会遇到相同的url参数名，但有不同的值，而python的字典又不支持键的重名，那么我们可以把键的值用列表表示：</p>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/url参数.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/url参数.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%"/>
+
+<h4 id="添加请求头"><a href="#添加请求头" class="headerlink" title="添加请求头"></a>添加请求头</h4><p>如果想自定义请求的Headers，同样的将字典数据传递给headers参数。</p>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/requests请求头.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/requests请求头.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%"/>
+
+<h4 id="添加cookies"><a href="#添加cookies" class="headerlink" title="添加cookies"></a>添加cookies</h4><p>Requests中自定义Cookies也不用再去构造CookieJar对象，直接将字典递给cookies参数。</p>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/自定义cookies.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/自定义cookies.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%"/>
+
+<h4 id="设置超时时间"><a href="#设置超时时间" class="headerlink" title="设置超时时间"></a>设置超时时间</h4><p>设置访问超时，设置timeout参数即可。</p>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/设置超时时间.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/设置超时时间.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%"/>
+
+<h4 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h4><p>当我们需要使用代理时，同样构造代理字典，传递给proxies参数。</p>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/设置代理.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/设置代理.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%"/>
+
+<h4 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h4><p>很多网站是http开头，为了不影响老客户，原网站不动，当访问http的原网址时，重定向到新的https网址，在requests中 allow_redirects默认是True，如果是False则不允许重定向，也就无法重定向新网址获取数据。</p>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/重定向.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/重定向.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%"/>
+
+<h4 id="证书忽略验证"><a href="#证书忽略验证" class="headerlink" title="证书忽略验证"></a>证书忽略验证</h4><p>有时候我们使用了抓包工具，这个时候由于抓包工具提供的证书并不是由受信任的数字证书颁发机构颁发的，所以证书的验证会失败，所以我们就需要关闭证书验证。在请求的时候把verify参数设置为False就可以关闭证书验证了。</p>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/忽略证书验证.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/忽略证书验证.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%"/>
+
+<p>但是关闭验证后，会有一个比较烦人的warning：</p>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/验证警告.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/验证警告.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%"/>
+
+<p>可以使用以下方法关闭警告：</p>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/关闭验证警告.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/关闭验证警告.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%"/>
+
+<h4 id="POST请求发送Json数据"><a href="#POST请求发送Json数据" class="headerlink" title="POST请求发送Json数据"></a>POST请求发送Json数据</h4><img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/发送json数据.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/发送json数据.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%"/>
+
+<h4 id="POST请求发送Form表单数据"><a href="#POST请求发送Form表单数据" class="headerlink" title="POST请求发送Form表单数据"></a>POST请求发送Form表单数据</h4><img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/发送表单数据.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/发送表单数据.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%"/>
+
+<h3 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h3><p><strong>属性</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">print(res.text)#直接转换成字符串 非字节码</span><br><span class="line">print(res.content)#图片数据 使用此参数</span><br><span class="line">print(res.status_code)#状态码</span><br><span class="line">print(res.json()[&quot;headers&quot;][&quot;User-Agent&quot;])#自动转换成 字典格式</span><br><span class="line"># 一定要确保你使用的格式是json格式的数据</span><br><span class="line">print(res.headers)#响应头</span><br><span class="line">print(res.cookies)#响应cookie</span><br><span class="line">print(res.url)#请求的url</span><br><span class="line">print(res.request.url)#请求的url</span><br><span class="line">print(res.request.headers)#请求头</span><br></pre></td></tr></table></figure>
+
+<h4 id="响应内容"><a href="#响应内容" class="headerlink" title="响应内容"></a>响应内容</h4><p>通过Requests发起请求获取到的，是一个requests.models.Response对象。通过这个对象我们可以很方便的获取响应的内容。<br>之前通过urllib获取的响应，读取的内容都是bytes的二进制格式，需要我们自己去将结果decode()一次转换成字符串数据。<br>而Requests通过text属性，就可以获得字符串格式的响应内容。</p>
+<h4 id="字符编码和二进制数据"><a href="#字符编码和二进制数据" class="headerlink" title="字符编码和二进制数据"></a>字符编码和二进制数据</h4><p>Requests会自动的根据响应的报头来猜测网页的编码是什么，然后根据猜测的编码来解码网页内容，基本上大部分的网页都能够正确的被解码。而如果发现text解码不正确的时候，就需要我们自己手动的去指定解码的编码格式。而如果你需要获得原始的二进制数据，那么使用content属性即可。</p>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/字符编码.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/字符编码.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%"/>
+
+<h3 id="session方法"><a href="#session方法" class="headerlink" title="session方法"></a>session方法</h3><p>session方法是requests库发起请求的一种方法，这种方法会自动保存访问页面得到的cookie值，从而再次访问的时候会自动携带cookie，使得操作cookie方便，不需要我们自己添加cookie了。常用于登录；</p>
+<h4 id="经典的登录逻辑"><a href="#经典的登录逻辑" class="headerlink" title="经典的登录逻辑"></a>经典的登录逻辑</h4><p>功能:自动更新请求头信息，常用在账号登录的时候，先访问登录页url，再访问数据提交的url<br>例:12306</p>
+<img src="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/session逻辑.png" class="lazyload" data-srcset="https://gcore.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/session逻辑.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50%" height="50%"/>
+
+<h4 id="session的使用"><a href="#session的使用" class="headerlink" title="session的使用"></a>session的使用</h4><p>基本的使用方法与requests.get 相似，使用的session的时候需要先创建session对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">session=requests.session()#创建session对象</span><br><span class="line">session.headers=headers#添加请求头</span><br><span class="line">res_ss=session.get(index_url)</span><br></pre></td></tr></table></figure>
+
+
   </div>
   
   
@@ -2583,7 +2679,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-11-29T18:59:06+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-11-29T19:57:15+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2023年11月29日</p>
@@ -2595,8 +2691,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%88%AC%E8%99%AB/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>爬虫</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%9F%BA%E7%A1%80/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>基础</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%90%86%E8%AE%BA/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>理论</p></a></div>
-  <span hidden itemprop="keywords">爬虫 基础 理论</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%88%AC%E8%99%AB/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>爬虫</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%9F%BA%E7%A1%80/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>基础</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%90%86%E8%AE%BA/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>理论</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Requests/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Requests</p></a></div>
+  <span hidden itemprop="keywords">爬虫 基础 理论 Requests</span>
 
 
         
@@ -2658,13 +2754,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：0 字</p>
+      <p>字数：1.3k 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fa-solid fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：1 分钟</p>
+      <p>时长：4 分钟</p>
     </a>
   </div>
 
@@ -2740,9 +2836,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
 
 
-  <div class="">
-    <!-- pjax占位 -->
-  </div>
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-Requests"><span class="toc-text">一.Requests</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E8%80%85"><span class="toc-text">作者</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82"><span class="toc-text">发送请求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#URL"><span class="toc-text">URL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="toc-text">添加请求头</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0cookies"><span class="toc-text">添加cookies</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E8%B6%85%E6%97%B6%E6%97%B6%E9%97%B4"><span class="toc-text">设置超时时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86"><span class="toc-text">设置代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">重定向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%81%E4%B9%A6%E5%BF%BD%E7%95%A5%E9%AA%8C%E8%AF%81"><span class="toc-text">证书忽略验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#POST%E8%AF%B7%E6%B1%82%E5%8F%91%E9%80%81Json%E6%95%B0%E6%8D%AE"><span class="toc-text">POST请求发送Json数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#POST%E8%AF%B7%E6%B1%82%E5%8F%91%E9%80%81Form%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE"><span class="toc-text">POST请求发送Form表单数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#response%E5%AF%B9%E8%B1%A1"><span class="toc-text">response对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%86%85%E5%AE%B9"><span class="toc-text">响应内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E5%92%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE"><span class="toc-text">字符编码和二进制数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#session%E6%96%B9%E6%B3%95"><span class="toc-text">session方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E7%9A%84%E7%99%BB%E5%BD%95%E9%80%BB%E8%BE%91"><span class="toc-text">经典的登录逻辑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">session的使用</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </section>
 
   
 
@@ -3770,7 +3876,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","sameAs":["https://github.com/volantis-x"],"description":"谦逊"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://www.yiuhangblog.com/","name":"数据工具箱"}},{"@type":"ListItem","position":2,"item":{"@id":"https://www.yiuhangblog.com/categories/数据抓取/","name":"数据抓取"}},{"@type":"ListItem","position":3,"item":{"@id":"https://www.yiuhangblog.com/2021/02/22/20210222_requests/","name":"爬虫与网络基础理论"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"数据工具箱","url":"https://www.yiuhangblog.com/","keywords":null,"description":"谦逊","author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","description":"谦逊"},"publisher":{"@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://www.yiuhangblog.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"爬虫与网络基础理论","description":"谦逊","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.yiuhangblog.com/2021/02/22/20210222_requests/"},"author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/"},"publisher":{"@type":"Organization","name":"数据工具箱","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://www.yiuhangblog.com/2021/02/22/20210222_requests/","wordCount":0,"datePublished":"2021-02-21T16:00:00.000Z","dateModified":"2023-11-29T10:59:06.839Z","articleSection":"数据抓取","keywords":"爬虫,基础,理论","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","sameAs":["https://github.com/volantis-x"],"description":"谦逊"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://www.yiuhangblog.com/","name":"数据工具箱"}},{"@type":"ListItem","position":2,"item":{"@id":"https://www.yiuhangblog.com/categories/数据抓取/","name":"数据抓取"}},{"@type":"ListItem","position":3,"item":{"@id":"https://www.yiuhangblog.com/2021/02/22/20210222_requests/","name":"爬虫与网络基础理论"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"数据工具箱","url":"https://www.yiuhangblog.com/","keywords":null,"description":"谦逊","author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/","description":"谦逊"},"publisher":{"@type":"Organization","name":"数据工具箱","url":"https://www.yiuhangblog.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://www.yiuhangblog.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"爬虫与网络基础理论","description":"谦逊","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.yiuhangblog.com/2021/02/22/20210222_requests/"},"author":{"@type":"Person","name":"Yiuhang Chan","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://www.yiuhangblog.com/"},"publisher":{"@type":"Organization","name":"数据工具箱","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://www.yiuhangblog.com/2021/02/22/20210222_requests/","wordCount":0,"datePublished":"2021-02-21T16:00:00.000Z","dateModified":"2023-11-29T11:57:15.015Z","articleSection":"数据抓取","keywords":"爬虫,基础,理论,Requests","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
