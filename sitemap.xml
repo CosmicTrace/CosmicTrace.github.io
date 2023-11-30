@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.yiuhangblog.com/2021/02/25/20210224%E5%AD%97%E7%AC%A6%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/</loc>
+    
+    <lastmod>2023-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yiuhangblog.com/2021/02/23/20210223selenium/</loc>
     
     <lastmod>2023-11-30</lastmod>
@@ -123,6 +132,34 @@
   </url>
   
   <url>
+    <loc>https://www.yiuhangblog.com/tags/Selenium/</loc>
+    <lastmod>2023-11-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2023-11-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E5%AD%97%E7%AC%A6%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/</loc>
+    <lastmod>2023-11-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/</loc>
+    <lastmod>2023-11-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yiuhangblog.com/tags/%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90/</loc>
     <lastmod>2023-11-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -145,20 +182,6 @@
   
   <url>
     <loc>https://www.yiuhangblog.com/tags/Xpath/</loc>
-    <lastmod>2023-11-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/Selenium/</loc>
-    <lastmod>2023-11-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2023-11-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
