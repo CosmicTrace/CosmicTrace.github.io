@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.yiuhangblog.com/2021/02/23/20210223selenium/</loc>
+    
+    <lastmod>2023-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yiuhangblog.com/2021/02/23/20210223%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7/</loc>
     
     <lastmod>2023-11-30</lastmod>
@@ -80,6 +89,20 @@
   
   <url>
     <loc>https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/</loc>
+    <lastmod>2023-11-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/Selenium/</loc>
+    <lastmod>2023-11-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2023-11-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
