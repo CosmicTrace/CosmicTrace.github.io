@@ -6,7 +6,7 @@
   <link href="https://www.yiuhangblog.com/atom.xml" rel="self"/>
   
   <link href="https://www.yiuhangblog.com/"/>
-  <updated>2023-11-30T06:06:17.180Z</updated>
+  <updated>2023-11-30T06:17:02.067Z</updated>
   <id>https://www.yiuhangblog.com/</id>
   
   <author>
@@ -17,9 +17,47 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>页面解析工具 beautifulsoup4 Xpath</title>
+    <link href="https://www.yiuhangblog.com/2021/02/23/20210223%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7/"/>
+    <id>https://www.yiuhangblog.com/2021/02/23/20210223%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7/</id>
+    <published>2021-02-22T16:00:00.000Z</published>
+    <updated>2023-11-30T06:17:02.067Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="页面解析工具"><a href="#页面解析工具" class="headerlink" title="页面解析工具"></a>页面解析工具</h2><h3 id="BS4"><a href="#BS4" class="headerlink" title="BS4"></a>BS4</h3><p>BeautifulSoup 是一个可以从HTML或XML文件中提取数据的Python库，它的使用方式相对于正则来说更加的简单方便，常常能够节省我们大量的时间。</p><h4 id="官方中文文档"><a href="#官方中文文档" class="headerlink" title="官方中文文档"></a><strong>官方中文文档</strong></h4><p><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html">https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html</a></p><h4 id="解析器"><a href="#解析器" class="headerlink" title="解析器"></a><strong>解析器</strong></h4><table><thead><tr><th><strong>解析器</strong></th><th><strong>使用方法</strong></th><th><strong>优势</strong></th><th><strong>劣势</strong></th></tr></thead><tbody><tr><td>Python标准库</td><td>BeautifulSoup(markup, “html.parser”)</td><td>Python的内置标准库执行速度适中文档容错能力强</td><td>Python 2.7.3 or 3.2.2)前 的版本中文档容错能力差</td></tr><tr><td>lxml HTML 解析器</td><td>BeautifulSoup(markup, “lxml”)</td><td>速度快文档容错能力强</td><td>需要安装C语言库</td></tr><tr><td>lxml XML 解析器</td><td>BeautifulSoup(markup, [“lxml”, “xml”])&#96;&#96;BeautifulSoup(markup, “xml”)</td><td>速度快唯一支持XML的解析器</td><td>需要安装C语言库</td></tr><tr><td>html5lib</td><td>BeautifulSoup(markup, “html5lib”)</td><td>最好的容错性以浏览器的方式解析文档生成HTML5格式的文档</td><td>速度慢不依赖外部扩展</td></tr></tbody></table><p>由于这个解析的过程在大规模的爬取中是会影响到整个爬虫系统的速度的，所以推荐使用的是lxml，速度会快很多，而lxml需要单独安装：</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;页面解析工具&quot;&gt;&lt;a href=&quot;#页面解析工具&quot; class=&quot;headerlink&quot; title=&quot;页面解析工具&quot;&gt;&lt;/a&gt;页面解析工具&lt;/h2&gt;&lt;h3 id=&quot;BS4&quot;&gt;&lt;a href=&quot;#BS4&quot; class=&quot;headerlink&quot; title=&quot;BS4</summary>
+      
+    
+    
+    
+    <category term="数据抓取" scheme="https://www.yiuhangblog.com/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
+    
+    
+    <category term="爬虫" scheme="https://www.yiuhangblog.com/tags/%E7%88%AC%E8%99%AB/"/>
+    
+    <category term="基础" scheme="https://www.yiuhangblog.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="理论" scheme="https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/"/>
+    
+    <category term="Requests" scheme="https://www.yiuhangblog.com/tags/Requests/"/>
+    
+    <category term="页面解析" scheme="https://www.yiuhangblog.com/tags/%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90/"/>
+    
+    <category term="BS4" scheme="https://www.yiuhangblog.com/tags/BS4/"/>
+    
+    <category term="beautifulsoup4" scheme="https://www.yiuhangblog.com/tags/beautifulsoup4/"/>
+    
+    <category term="Xpath" scheme="https://www.yiuhangblog.com/tags/Xpath/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Requests Python 包</title>
-    <link href="https://www.yiuhangblog.com/2021/02/22/20210222_requests/"/>
-    <id>https://www.yiuhangblog.com/2021/02/22/20210222_requests/</id>
+    <link href="https://www.yiuhangblog.com/2021/02/22/20210222requests/"/>
+    <id>https://www.yiuhangblog.com/2021/02/22/20210222requests/</id>
     <published>2021-02-21T16:00:00.000Z</published>
     <updated>2023-11-30T06:06:17.180Z</updated>
     
@@ -68,15 +106,15 @@
     
     <category term="爬虫" scheme="https://www.yiuhangblog.com/tags/%E7%88%AC%E8%99%AB/"/>
     
-    <category term="基础" scheme="https://www.yiuhangblog.com/tags/%E5%9F%BA%E7%A1%80/"/>
-    
-    <category term="理论" scheme="https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/"/>
-    
     <category term="网络协议" scheme="https://www.yiuhangblog.com/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
     
     <category term="网络类型" scheme="https://www.yiuhangblog.com/tags/%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/"/>
     
     <category term="网络架构" scheme="https://www.yiuhangblog.com/tags/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84/"/>
+    
+    <category term="基础" scheme="https://www.yiuhangblog.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="理论" scheme="https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/"/>
     
   </entry>
   
