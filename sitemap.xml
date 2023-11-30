@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.yiuhangblog.com/2021/02/23/20210223selenium/</loc>
-    
-    <lastmod>2023-11-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yiuhangblog.com/2021/02/23/20210223%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7/</loc>
     
     <lastmod>2023-11-30</lastmod>
@@ -31,7 +22,16 @@
   <url>
     <loc>https://www.yiuhangblog.com/2021/02/21/20210221%E7%88%AC%E8%99%AB%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/</loc>
     
-    <lastmod>2023-11-15</lastmod>
+    <lastmod>2023-11-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/2021/02/23/20210223selenium/</loc>
+    
+    <lastmod>2023-11-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -102,20 +102,6 @@
   </url>
   
   <url>
-    <loc>https://www.yiuhangblog.com/tags/Selenium/</loc>
-    <lastmod>2023-11-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2023-11-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yiuhangblog.com/tags/%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90/</loc>
     <lastmod>2023-11-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -159,6 +145,20 @@
   
   <url>
     <loc>https://www.yiuhangblog.com/tags/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84/</loc>
+    <lastmod>2023-11-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/Selenium/</loc>
+    <lastmod>2023-11-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2023-11-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
