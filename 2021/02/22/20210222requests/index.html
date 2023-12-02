@@ -1744,7 +1744,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1701531861414),
+    lastupdate: new Date(1701531958238),
     sidebar: {
       for_page: ["blogger","category","tagcloud","webinfo","lastupdate"],
       for_post: ["toc"],
@@ -2829,12 +2829,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/02/23/20210223selenium/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Selenium 自动化工具</p>
-          <p class='content'>简介概念Selenium 是一个web自动化工具
-作用
-自动化测试通过它，我们可以写出自动化程序，模拟浏览器里操作web界面。 比如点击界面按钮，在文本框中输入文字 等操作。
-获取信息而且还能从...</p>
+        <a class='prev' href='/2021/02/23/20210223%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>页面解析工具 beautifulsoup4 Xpath JSONPath</p>
+          <p class='content'>BS4BeautifulSoup 是一个可以从HTML或XML文件中提取数据的Python库，它的使用方式相对于正则来说更加的简单方便，常常能够节省我们大量的时间。
+官方中文文档https://...</p>
         </a>
       
       
@@ -3467,45 +3465,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  
-  
-<script src="https://unpkg.com/prismjs/components/prism-core.min.js"></script>
-
-
-  
-<script src="https://unpkg.com/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
-
-
-  
-<script src="https://unpkg.com/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script>
 
 
 
-  
-<link rel="stylesheet" href="https://unpkg.com/prismjs/themes/prism-dark.css">
-
-
-  
-<link rel="stylesheet" href="https://unpkg.com/prismjs/plugins/line-numbers/prism-line-numbers.css">
-
-
-<script>
-
-  function pjax_prismjs_copyCode(){
-    if (!document.querySelector("pre")) {
+  function pjax_highlightjs_copyCode(){
+    if (!(document.querySelector(".highlight .code pre") ||
+      document.querySelector(".article pre code"))) {
       return;
     }
-    let pres = document.querySelectorAll("pre")
-    pres.forEach(pre=>{
-      var wrapper = document.createElement('div');
-      wrapper.classList.add('code-toolbar');
-      pre.parentNode.insertBefore(wrapper, pre);
-      wrapper.appendChild(pre);
-    })
-    VolantisApp.utilCopyCode(".code-toolbar pre")
+    VolantisApp.utilCopyCode(".highlight .code pre, .article pre code")
   }
-  volantis.requestAnimationFrame(pjax_prismjs_copyCode)
-  volantis.pjax.push(pjax_prismjs_copyCode)
+  volantis.requestAnimationFrame(pjax_highlightjs_copyCode)
+  volantis.pjax.push(pjax_highlightjs_copyCode)
 
 </script>
 
