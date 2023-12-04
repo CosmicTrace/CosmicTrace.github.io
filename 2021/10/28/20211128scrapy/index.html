@@ -18,19 +18,19 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 其最初是为了页面抓取 (更确切来说, 网络抓取 )所设计的，也可以应用在获取API所返回的数据或者通用的网络爬虫。 Scrapy用途广泛,可以用于数据挖掘、监测和自动化测试 Scrapy使用了Twisted 异步网络库来处理网络通讯。">
+        <meta name="description" content="Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Scrapy">
 <meta property="og:url" content="https://www.yiuhangblog.com/2021/10/28/20211128scrapy/index.html">
 <meta property="og:site_name" content="数据工具箱">
-<meta property="og:description" content="Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 其最初是为了页面抓取 (更确切来说, 网络抓取 )所设计的，也可以应用在获取API所返回的数据或者通用的网络爬虫。 Scrapy用途广泛,可以用于数据挖掘、监测和自动化测试 Scrapy使用了Twisted 异步网络库来处理网络通讯。">
+<meta property="og:description" content="Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231204181849.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/1_s4f8-BSHMu4DXaHhY3qy8w.gif">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/%E7%BC%96%E5%86%99%E7%88%AC%E8%99%AB7.png">
 <meta property="article:published_time" content="2021-10-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-04T10:47:15.676Z">
+<meta property="article:modified_time" content="2023-12-04T12:58:30.376Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="理论">
@@ -423,8 +423,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-12-04 18:47:15</span>
-            <span class="mobile">2023-12-04 18:47:15</span>
+            <span class="desktop">2023-12-04 20:58:30</span>
+            <span class="mobile">2023-12-04 20:58:30</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -478,12 +478,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.6k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>3.2k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>9 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>11 分钟</span>
         </span>
     
     
@@ -502,8 +502,36 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Scrapy是<strong>纯Python开发</strong>的一个高效,结构化的网页抓取框架；</p>
-<p>Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 其最初是为了页面抓取 (更确切来说, 网络抓取 )所设计的，也可以应用在获取API所返回的数据(例如 Amazon Associates Web Services ) 或者通用的网络爬虫。 Scrapy用途广泛,可以用于数据挖掘、监测和自动化测试 Scrapy使用了<strong>Twisted 异步网络库</strong>来处理网络通讯。</p>
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Scrapy是一个用Python编写的高效且结构化的网页抓取框架，广泛应用于数据挖掘、网站监测和自动化测试。它的设计初衷是为了方便用户爬取网站数据和提取结构化数据，但它的用途不仅限于网页抓取，还包括处理API返回的数据（如Amazon Associates Web Services）或进行更广泛的网络爬取任务。</p>
+<p>Scrapy的一个关键特性是它使用了Twisted异步网络库来处理网络通信。</p>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <ol>
+<li><strong>异步编程</strong>:<ul>
+<li>在传统的同步编程模型中，任务按顺序一个接一个地执行。如果一个任务需要等待（例如，等待网络响应），程序将在此期间停止执行后续任务。</li>
+<li>异步编程允许程序在等待一个任务完成的同时继续执行其他任务。这种方式非常适合处理I&#x2F;O密集型任务，比如网络请求，因为程序不需要在每个请求完成时都暂停执行。</li>
+</ul>
+</li>
+<li><strong>Twisted异步网络库</strong>:<ul>
+<li>Twisted是一个事件驱动的网络编程框架，专为Python设计。它支持多种协议，可以用于创建高性能的网络服务器和客户端。</li>
+<li>在Scrapy中，Twisted用于处理网络请求。当Scrapy发出一个请求并等待服务器响应时，它不会阻塞整个爬虫的进程。相反，Scrapy可以利用这段时间执行其他任务，如处理已经收到的数据或发出更多的网络请求。</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+  </div>
+
+<p><strong>Scrapy中的应用</strong>:</p>
+<ul>
+<li>Scrapy利用Twisted的异步特性来提高爬虫的效率。它能够同时处理多个网络请求，而不会因为单个请求的延迟而阻塞整个爬虫。</li>
+<li>这使得Scrapy非常适合执行大规模的网络抓取任务，因为它可以有效地利用网络资源和处理能力，同时维持高效率的数据收集。</li>
+</ul>
 <p><strong>使用原因：</strong></p>
 <p>1.为了更利于我们将精力集中在请求与解析上<br>2.企业级的要求</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">op1=&gt;operation: 1.找到目标数据</span><br><span class="line">op2=&gt;operation: 2.分析请求流程</span><br><span class="line">op3=&gt;operation: 3.构造http请求</span><br><span class="line">op4=&gt;operation: 4.提取数据</span><br><span class="line">op5=&gt;operation: 5.数据持久化</span><br><span class="line"></span><br><span class="line">op1(right)-&gt;op2(right)-&gt;op3(right)-&gt;op4(right)-&gt;op5(right)</span><br></pre></td></tr></table></figure></div>
@@ -539,7 +567,7 @@
 
     </div>
     <div class="notel-content">
-      <p>Downloader Middleware（下载中间件）</p>
+      <p><strong>Downloader Middleware（下载中间件）</strong></p>
 <p>这些钩子允许处理、修改和自定义发往下载器的请求以及从下载器返回的响应。下载中间件在Scrapy的请求&#x2F;响应处理流程中提供了几个关键的扩展点。例如，可以使用它来添加HTTP头部到请求中，或者处理从网站返回的HTTP响应。这些中间件的用途包括：</p>
 <ul>
 <li>在请求发送到下载器之前修改或过滤请求。</li>
@@ -547,7 +575,7 @@
 <li>直接生成新的请求，而不是处理当前的响应。</li>
 <li>选择性地放弃某些请求</li>
 </ul>
-<p>Spider Middleware（爬虫中间件）</p>
+<p><strong>Spider Middleware（爬虫中间件）</strong></p>
 <p>爬虫中间件则是处理传入响应、传出项目（item）和请求的钩子。这些中间件在Scrapy的数据处理流程中处于核心位置，允许用户对爬虫的输入和输出进行细致的控制。使用爬虫中间件，可以：</p>
 <ul>
 <li>在爬虫处理回调之后处理请求或项目。</li>
@@ -591,10 +619,28 @@
 </ul>
 </li>
 </ol>
-<h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><h4 id="一-项目命令"><a href="#一-项目命令" class="headerlink" title="一.项目命令"></a>一.项目命令</h4><p>1.创建项目:<br>scrapy startproject <project_name>  [project_dir]<br>    ps: “&lt;&gt;”表示必填 ,”[]”表示可选<br>scrapy startproject  db </p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">You can start your first spider <span class="keyword">with</span>:</span><br><span class="line">    cd my_spider</span><br><span class="line">    scrapy genspider example example.com</span><br></pre></td></tr></table></figure></div>
-
-<p>2.cd 到项目下<br>    scrapy genspider [options]   <name>   <domain><br>        scrapy genspider example example.com<br>    会创建在项目&#x2F;spider下 ;其中example 是爬虫文件名,   example.com 是 域名<br>3.运行项目<br>    scrapy  crawl 爬虫文件名   #注重流程<br>4.setting 里配置    ROBOTSTXT_OBEY;DEFAULT_REQUEST_HEADERS	</p>
+<h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><h4 id="一-项目命令"><a href="#一-项目命令" class="headerlink" title="一.项目命令"></a>一.项目命令</h4><ol>
+<li><strong>创建项目</strong>:<ul>
+<li>使用命令 <code>scrapy startproject &lt;project_name&gt; [project_dir]</code> 创建新项目。其中 <code>&lt;project_name&gt;</code> 是必填项，表示项目名称；<code>[project_dir]</code> 是可选项，表示项目目录。</li>
+<li>例如：<code>scrapy startproject db</code> 会创建一个名为 ‘db’ 的Scrapy项目。</li>
+</ul>
+</li>
+<li><strong>创建第一个爬虫</strong>:<ul>
+<li>首先，需要进入到你的项目目录中，使用 <code>cd &lt;project_name&gt;</code> 命令。</li>
+<li>然后，使用 <code>scrapy genspider &lt;name&gt; &lt;domain&gt;</code> 创建一个新的爬虫。这里 <code>&lt;name&gt;</code> 是爬虫的名称，而 <code>&lt;domain&gt;</code> 是爬虫将要爬取的域名。</li>
+<li>例如：<code>scrapy genspider example example.com</code> 会在你的项目的 <code>spiders</code> 目录下创建一个名为 ‘example’ 的爬虫，它针对的是 ‘example.com’ 网站。</li>
+</ul>
+</li>
+<li><strong>运行项目</strong>:<ul>
+<li>使用命令 <code>scrapy crawl &lt;spider_name&gt;</code> 来运行你的爬虫。这里 <code>&lt;spider_name&gt;</code> 是你在创建爬虫时指定的名称。</li>
+<li>例如：<code>scrapy crawl example</code> 会运行名为 ‘example’ 的爬虫。</li>
+</ul>
+</li>
+<li><strong>设置配置文件</strong>:<ul>
+<li>在 <code>settings.py</code> 文件中，你可以配置各种参数，比如 <code>ROBOTSTXT_OBEY</code>（是否遵守网站的robots.txt规则）和 <code>DEFAULT_REQUEST_HEADERS</code>（默认的HTTP头部）。</li>
+</ul>
+</li>
+</ol>
 <h4 id="二-shell-交互式平台"><a href="#二-shell-交互式平台" class="headerlink" title="二.shell  交互式平台"></a>二.shell  交互式平台</h4><p>scrapy shell url (start_url)  获取我们项目中的response<br>测试  xpath进行匹配</p>
 <h4 id="项目文件介绍"><a href="#项目文件介绍" class="headerlink" title="项目文件介绍"></a>项目文件介绍</h4><img  
                      lazyload
@@ -673,7 +719,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-12-04 18:47:15
+                    :</strong> 2023-12-04 20:58:30
             </li>
         
         <li>
