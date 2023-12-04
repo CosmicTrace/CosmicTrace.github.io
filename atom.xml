@@ -3,11 +3,11 @@
   <title>数据工具箱</title>
   
   <subtitle>全栈也不是不行</subtitle>
-  <link href="https://www.yiuhangblog.com/atom.xml" rel="self"/>
+  <link href="https://111.230.88.212/atom.xml" rel="self"/>
   
-  <link href="https://www.yiuhangblog.com/"/>
+  <link href="https://111.230.88.212/"/>
   <updated>2023-12-03T14:25:22.818Z</updated>
-  <id>https://www.yiuhangblog.com/</id>
+  <id>https://111.230.88.212/</id>
   
   <author>
     <name>Yiuhang Chan</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>滑块验证识别</title>
-    <link href="https://www.yiuhangblog.com/2021/10/26/20211026%E6%BB%91%E5%9D%97%E9%AA%8C%E8%AF%81%E8%AF%86%E5%88%AB/"/>
-    <id>https://www.yiuhangblog.com/2021/10/26/20211026%E6%BB%91%E5%9D%97%E9%AA%8C%E8%AF%81%E8%AF%86%E5%88%AB/</id>
+    <link href="https://111.230.88.212/2021/10/26/20211026%E6%BB%91%E5%9D%97%E9%AA%8C%E8%AF%81%E8%AF%86%E5%88%AB/"/>
+    <id>https://111.230.88.212/2021/10/26/20211026%E6%BB%91%E5%9D%97%E9%AA%8C%E8%AF%81%E8%AF%86%E5%88%AB/</id>
     <published>2021-10-25T16:00:00.000Z</published>
     <updated>2023-12-03T14:25:22.818Z</updated>
     
@@ -30,27 +30,27 @@
     
     
     
-    <category term="数据抓取" scheme="https://www.yiuhangblog.com/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
+    <category term="数据抓取" scheme="https://111.230.88.212/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
     
     
-    <category term="基础" scheme="https://www.yiuhangblog.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    <category term="基础" scheme="https://111.230.88.212/tags/%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="理论" scheme="https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/"/>
+    <category term="理论" scheme="https://111.230.88.212/tags/%E7%90%86%E8%AE%BA/"/>
     
-    <category term="爬虫" scheme="https://www.yiuhangblog.com/tags/%E7%88%AC%E8%99%AB/"/>
+    <category term="爬虫" scheme="https://111.230.88.212/tags/%E7%88%AC%E8%99%AB/"/>
     
-    <category term="自动化工具" scheme="https://www.yiuhangblog.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+    <category term="自动化工具" scheme="https://111.230.88.212/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-    <category term="图像识别" scheme="https://www.yiuhangblog.com/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/"/>
+    <category term="图像识别" scheme="https://111.230.88.212/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/"/>
     
-    <category term="滑块验证" scheme="https://www.yiuhangblog.com/tags/%E6%BB%91%E5%9D%97%E9%AA%8C%E8%AF%81/"/>
+    <category term="滑块验证" scheme="https://111.230.88.212/tags/%E6%BB%91%E5%9D%97%E9%AA%8C%E8%AF%81/"/>
     
   </entry>
   
   <entry>
     <title>点触验证码识别</title>
-    <link href="https://www.yiuhangblog.com/2021/10/25/20211025%E7%82%B9%E8%A7%A6%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/"/>
-    <id>https://www.yiuhangblog.com/2021/10/25/20211025%E7%82%B9%E8%A7%A6%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/</id>
+    <link href="https://111.230.88.212/2021/10/25/20211025%E7%82%B9%E8%A7%A6%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/"/>
+    <id>https://111.230.88.212/2021/10/25/20211025%E7%82%B9%E8%A7%A6%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/</id>
     <published>2021-10-24T16:00:00.000Z</published>
     <updated>2023-12-01T11:08:01.164Z</updated>
     
@@ -64,27 +64,27 @@
     
     
     
-    <category term="数据抓取" scheme="https://www.yiuhangblog.com/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
+    <category term="数据抓取" scheme="https://111.230.88.212/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
     
     
-    <category term="基础" scheme="https://www.yiuhangblog.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    <category term="基础" scheme="https://111.230.88.212/tags/%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="理论" scheme="https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/"/>
+    <category term="理论" scheme="https://111.230.88.212/tags/%E7%90%86%E8%AE%BA/"/>
     
-    <category term="爬虫" scheme="https://www.yiuhangblog.com/tags/%E7%88%AC%E8%99%AB/"/>
+    <category term="爬虫" scheme="https://111.230.88.212/tags/%E7%88%AC%E8%99%AB/"/>
     
-    <category term="自动化工具" scheme="https://www.yiuhangblog.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+    <category term="自动化工具" scheme="https://111.230.88.212/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
-    <category term="图像识别" scheme="https://www.yiuhangblog.com/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/"/>
+    <category term="图像识别" scheme="https://111.230.88.212/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/"/>
     
-    <category term="点触验证码" scheme="https://www.yiuhangblog.com/tags/%E7%82%B9%E8%A7%A6%E9%AA%8C%E8%AF%81%E7%A0%81/"/>
+    <category term="点触验证码" scheme="https://111.230.88.212/tags/%E7%82%B9%E8%A7%A6%E9%AA%8C%E8%AF%81%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>字符验证码识别</title>
-    <link href="https://www.yiuhangblog.com/2021/02/24/20210224%E5%AD%97%E7%AC%A6%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/"/>
-    <id>https://www.yiuhangblog.com/2021/02/24/20210224%E5%AD%97%E7%AC%A6%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/</id>
+    <link href="https://111.230.88.212/2021/02/24/20210224%E5%AD%97%E7%AC%A6%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/"/>
+    <id>https://111.230.88.212/2021/02/24/20210224%E5%AD%97%E7%AC%A6%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/</id>
     <published>2021-02-23T16:00:00.000Z</published>
     <updated>2023-12-01T11:07:36.293Z</updated>
     
@@ -98,25 +98,25 @@
     
     
     
-    <category term="数据抓取" scheme="https://www.yiuhangblog.com/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
+    <category term="数据抓取" scheme="https://111.230.88.212/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
     
     
-    <category term="基础" scheme="https://www.yiuhangblog.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    <category term="基础" scheme="https://111.230.88.212/tags/%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="理论" scheme="https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/"/>
+    <category term="理论" scheme="https://111.230.88.212/tags/%E7%90%86%E8%AE%BA/"/>
     
-    <category term="爬虫" scheme="https://www.yiuhangblog.com/tags/%E7%88%AC%E8%99%AB/"/>
+    <category term="爬虫" scheme="https://111.230.88.212/tags/%E7%88%AC%E8%99%AB/"/>
     
-    <category term="图像识别" scheme="https://www.yiuhangblog.com/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/"/>
+    <category term="字符验证码识别" scheme="https://111.230.88.212/tags/%E5%AD%97%E7%AC%A6%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/"/>
     
-    <category term="字符验证码识别" scheme="https://www.yiuhangblog.com/tags/%E5%AD%97%E7%AC%A6%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/"/>
+    <category term="图像识别" scheme="https://111.230.88.212/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/"/>
     
   </entry>
   
   <entry>
     <title>Selenium 自动化工具</title>
-    <link href="https://www.yiuhangblog.com/2021/02/23/20210223selenium/"/>
-    <id>https://www.yiuhangblog.com/2021/02/23/20210223selenium/</id>
+    <link href="https://111.230.88.212/2021/02/23/20210223selenium/"/>
+    <id>https://111.230.88.212/2021/02/23/20210223selenium/</id>
     <published>2021-02-22T16:00:00.000Z</published>
     <updated>2023-11-30T15:54:28.071Z</updated>
     
@@ -130,25 +130,25 @@
     
     
     
-    <category term="数据抓取" scheme="https://www.yiuhangblog.com/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
+    <category term="数据抓取" scheme="https://111.230.88.212/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
     
     
-    <category term="基础" scheme="https://www.yiuhangblog.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    <category term="基础" scheme="https://111.230.88.212/tags/%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="理论" scheme="https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/"/>
+    <category term="理论" scheme="https://111.230.88.212/tags/%E7%90%86%E8%AE%BA/"/>
     
-    <category term="爬虫" scheme="https://www.yiuhangblog.com/tags/%E7%88%AC%E8%99%AB/"/>
+    <category term="爬虫" scheme="https://111.230.88.212/tags/%E7%88%AC%E8%99%AB/"/>
     
-    <category term="Selenium" scheme="https://www.yiuhangblog.com/tags/Selenium/"/>
+    <category term="Selenium" scheme="https://111.230.88.212/tags/Selenium/"/>
     
-    <category term="自动化工具" scheme="https://www.yiuhangblog.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+    <category term="自动化工具" scheme="https://111.230.88.212/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>页面解析工具 beautifulsoup4 Xpath JSONPath</title>
-    <link href="https://www.yiuhangblog.com/2021/02/23/20210223%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7/"/>
-    <id>https://www.yiuhangblog.com/2021/02/23/20210223%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7/</id>
+    <link href="https://111.230.88.212/2021/02/23/20210223%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7/"/>
+    <id>https://111.230.88.212/2021/02/23/20210223%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7/</id>
     <published>2021-02-22T16:00:00.000Z</published>
     <updated>2023-11-30T11:44:28.991Z</updated>
     
@@ -162,31 +162,31 @@
     
     
     
-    <category term="数据抓取" scheme="https://www.yiuhangblog.com/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
+    <category term="数据抓取" scheme="https://111.230.88.212/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
     
     
-    <category term="基础" scheme="https://www.yiuhangblog.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    <category term="基础" scheme="https://111.230.88.212/tags/%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="理论" scheme="https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/"/>
+    <category term="理论" scheme="https://111.230.88.212/tags/%E7%90%86%E8%AE%BA/"/>
     
-    <category term="爬虫" scheme="https://www.yiuhangblog.com/tags/%E7%88%AC%E8%99%AB/"/>
+    <category term="爬虫" scheme="https://111.230.88.212/tags/%E7%88%AC%E8%99%AB/"/>
     
-    <category term="Requests" scheme="https://www.yiuhangblog.com/tags/Requests/"/>
+    <category term="Requests" scheme="https://111.230.88.212/tags/Requests/"/>
     
-    <category term="页面解析" scheme="https://www.yiuhangblog.com/tags/%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90/"/>
+    <category term="页面解析" scheme="https://111.230.88.212/tags/%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90/"/>
     
-    <category term="BS4" scheme="https://www.yiuhangblog.com/tags/BS4/"/>
+    <category term="BS4" scheme="https://111.230.88.212/tags/BS4/"/>
     
-    <category term="beautifulsoup4" scheme="https://www.yiuhangblog.com/tags/beautifulsoup4/"/>
+    <category term="beautifulsoup4" scheme="https://111.230.88.212/tags/beautifulsoup4/"/>
     
-    <category term="Xpath" scheme="https://www.yiuhangblog.com/tags/Xpath/"/>
+    <category term="Xpath" scheme="https://111.230.88.212/tags/Xpath/"/>
     
   </entry>
   
   <entry>
     <title>Requests Python 包</title>
-    <link href="https://www.yiuhangblog.com/2021/02/22/20210222requests/"/>
-    <id>https://www.yiuhangblog.com/2021/02/22/20210222requests/</id>
+    <link href="https://111.230.88.212/2021/02/22/20210222requests/"/>
+    <id>https://111.230.88.212/2021/02/22/20210222requests/</id>
     <published>2021-02-21T16:00:00.000Z</published>
     <updated>2023-11-30T11:42:51.942Z</updated>
     
@@ -202,23 +202,23 @@
     
     
     
-    <category term="数据抓取" scheme="https://www.yiuhangblog.com/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
+    <category term="数据抓取" scheme="https://111.230.88.212/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
     
     
-    <category term="基础" scheme="https://www.yiuhangblog.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    <category term="基础" scheme="https://111.230.88.212/tags/%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="理论" scheme="https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/"/>
+    <category term="理论" scheme="https://111.230.88.212/tags/%E7%90%86%E8%AE%BA/"/>
     
-    <category term="爬虫" scheme="https://www.yiuhangblog.com/tags/%E7%88%AC%E8%99%AB/"/>
+    <category term="爬虫" scheme="https://111.230.88.212/tags/%E7%88%AC%E8%99%AB/"/>
     
-    <category term="Requests" scheme="https://www.yiuhangblog.com/tags/Requests/"/>
+    <category term="Requests" scheme="https://111.230.88.212/tags/Requests/"/>
     
   </entry>
   
   <entry>
     <title>爬虫与网络基础理论</title>
-    <link href="https://www.yiuhangblog.com/2021/02/21/20210221%E7%88%AC%E8%99%AB%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/"/>
-    <id>https://www.yiuhangblog.com/2021/02/21/20210221%E7%88%AC%E8%99%AB%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/</id>
+    <link href="https://111.230.88.212/2021/02/21/20210221%E7%88%AC%E8%99%AB%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/"/>
+    <id>https://111.230.88.212/2021/02/21/20210221%E7%88%AC%E8%99%AB%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/</id>
     <published>2021-02-20T16:00:00.000Z</published>
     <updated>2023-11-30T11:41:01.651Z</updated>
     
@@ -232,27 +232,27 @@
     
     
     
-    <category term="数据抓取" scheme="https://www.yiuhangblog.com/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
+    <category term="数据抓取" scheme="https://111.230.88.212/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/"/>
     
     
-    <category term="基础" scheme="https://www.yiuhangblog.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    <category term="基础" scheme="https://111.230.88.212/tags/%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="理论" scheme="https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/"/>
+    <category term="理论" scheme="https://111.230.88.212/tags/%E7%90%86%E8%AE%BA/"/>
     
-    <category term="爬虫" scheme="https://www.yiuhangblog.com/tags/%E7%88%AC%E8%99%AB/"/>
+    <category term="爬虫" scheme="https://111.230.88.212/tags/%E7%88%AC%E8%99%AB/"/>
     
-    <category term="网络协议" scheme="https://www.yiuhangblog.com/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
+    <category term="网络协议" scheme="https://111.230.88.212/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
     
-    <category term="网络类型" scheme="https://www.yiuhangblog.com/tags/%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/"/>
+    <category term="网络类型" scheme="https://111.230.88.212/tags/%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/"/>
     
-    <category term="网络架构" scheme="https://www.yiuhangblog.com/tags/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84/"/>
+    <category term="网络架构" scheme="https://111.230.88.212/tags/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title>数据分析基础 (FineBI)</title>
-    <link href="https://www.yiuhangblog.com/2020/05/11/20200511%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/"/>
-    <id>https://www.yiuhangblog.com/2020/05/11/20200511%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/</id>
+    <link href="https://111.230.88.212/2020/05/11/20200511%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/"/>
+    <id>https://111.230.88.212/2020/05/11/20200511%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/</id>
     <published>2020-05-10T16:00:00.000Z</published>
     <updated>2023-12-02T14:15:58.361Z</updated>
     
@@ -268,27 +268,27 @@
     
     
     
-    <category term="数据分析" scheme="https://www.yiuhangblog.com/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    <category term="数据分析" scheme="https://111.230.88.212/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
     
-    <category term="基础" scheme="https://www.yiuhangblog.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    <category term="基础" scheme="https://111.230.88.212/tags/%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="理论" scheme="https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/"/>
+    <category term="理论" scheme="https://111.230.88.212/tags/%E7%90%86%E8%AE%BA/"/>
     
-    <category term="数据分析" scheme="https://www.yiuhangblog.com/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    <category term="数据分析" scheme="https://111.230.88.212/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
-    <category term="商务智能" scheme="https://www.yiuhangblog.com/tags/%E5%95%86%E5%8A%A1%E6%99%BA%E8%83%BD/"/>
+    <category term="商务智能" scheme="https://111.230.88.212/tags/%E5%95%86%E5%8A%A1%E6%99%BA%E8%83%BD/"/>
     
-    <category term="模型" scheme="https://www.yiuhangblog.com/tags/%E6%A8%A1%E5%9E%8B/"/>
+    <category term="模型" scheme="https://111.230.88.212/tags/%E6%A8%A1%E5%9E%8B/"/>
     
-    <category term="FineBI" scheme="https://www.yiuhangblog.com/tags/FineBI/"/>
+    <category term="FineBI" scheme="https://111.230.88.212/tags/FineBI/"/>
     
   </entry>
   
   <entry>
     <title>控制流程</title>
-    <link href="https://www.yiuhangblog.com/2018/08/02/20180802%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/"/>
-    <id>https://www.yiuhangblog.com/2018/08/02/20180802%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</id>
+    <link href="https://111.230.88.212/2018/08/02/20180802%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/"/>
+    <id>https://111.230.88.212/2018/08/02/20180802%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</id>
     <published>2018-08-01T16:00:00.000Z</published>
     <updated>2023-12-02T15:38:33.361Z</updated>
     
@@ -302,31 +302,31 @@
     
     
     
-    <category term="Python" scheme="https://www.yiuhangblog.com/categories/Python/"/>
+    <category term="Python" scheme="https://111.230.88.212/categories/Python/"/>
     
     
-    <category term="Python" scheme="https://www.yiuhangblog.com/tags/Python/"/>
+    <category term="Python" scheme="https://111.230.88.212/tags/Python/"/>
     
-    <category term="基础" scheme="https://www.yiuhangblog.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    <category term="基础" scheme="https://111.230.88.212/tags/%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="理论" scheme="https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/"/>
+    <category term="理论" scheme="https://111.230.88.212/tags/%E7%90%86%E8%AE%BA/"/>
     
-    <category term="控制流程" scheme="https://www.yiuhangblog.com/tags/%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B/"/>
+    <category term="控制流程" scheme="https://111.230.88.212/tags/%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B/"/>
     
-    <category term="条件判断" scheme="https://www.yiuhangblog.com/tags/%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/"/>
+    <category term="条件判断" scheme="https://111.230.88.212/tags/%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/"/>
     
-    <category term="循环语句" scheme="https://www.yiuhangblog.com/tags/%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5/"/>
+    <category term="循环语句" scheme="https://111.230.88.212/tags/%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5/"/>
     
-    <category term="嵌套" scheme="https://www.yiuhangblog.com/tags/%E5%B5%8C%E5%A5%97/"/>
+    <category term="嵌套" scheme="https://111.230.88.212/tags/%E5%B5%8C%E5%A5%97/"/>
     
-    <category term="三目运算" scheme="https://www.yiuhangblog.com/tags/%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97/"/>
+    <category term="三目运算" scheme="https://111.230.88.212/tags/%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97/"/>
     
   </entry>
   
   <entry>
     <title>数据类型和其方法</title>
-    <link href="https://www.yiuhangblog.com/2018/07/23/20180723%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/"/>
-    <id>https://www.yiuhangblog.com/2018/07/23/20180723%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/</id>
+    <link href="https://111.230.88.212/2018/07/23/20180723%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/"/>
+    <id>https://111.230.88.212/2018/07/23/20180723%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/</id>
     <published>2018-07-22T16:00:00.000Z</published>
     <updated>2023-12-03T09:19:22.225Z</updated>
     
@@ -344,22 +344,22 @@
     
     
     
-    <category term="Python" scheme="https://www.yiuhangblog.com/categories/Python/"/>
+    <category term="Python" scheme="https://111.230.88.212/categories/Python/"/>
     
     
-    <category term="Python" scheme="https://www.yiuhangblog.com/tags/Python/"/>
+    <category term="Python" scheme="https://111.230.88.212/tags/Python/"/>
     
-    <category term="基础" scheme="https://www.yiuhangblog.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    <category term="基础" scheme="https://111.230.88.212/tags/%E5%9F%BA%E7%A1%80/"/>
     
-    <category term="理论" scheme="https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/"/>
+    <category term="理论" scheme="https://111.230.88.212/tags/%E7%90%86%E8%AE%BA/"/>
     
-    <category term="数据类型" scheme="https://www.yiuhangblog.com/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    <category term="数据类型" scheme="https://111.230.88.212/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
     
-    <category term="序列类型" scheme="https://www.yiuhangblog.com/tags/%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/"/>
+    <category term="序列类型" scheme="https://111.230.88.212/tags/%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/"/>
     
-    <category term="方法" scheme="https://www.yiuhangblog.com/tags/%E6%96%B9%E6%B3%95/"/>
+    <category term="方法" scheme="https://111.230.88.212/tags/%E6%96%B9%E6%B3%95/"/>
     
-    <category term="编码和解码" scheme="https://www.yiuhangblog.com/tags/%E7%BC%96%E7%A0%81%E5%92%8C%E8%A7%A3%E7%A0%81/"/>
+    <category term="编码和解码" scheme="https://111.230.88.212/tags/%E7%BC%96%E7%A0%81%E5%92%8C%E8%A7%A3%E7%A0%81/"/>
     
   </entry>
   
