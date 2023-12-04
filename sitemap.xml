@@ -2,24 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.yiuhangblog.com/2021/02/21/20210221%E7%88%AC%E8%99%AB%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/</loc>
-    
-    <lastmod>2023-12-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/2021/02/22/20210222requests/</loc>
-    
-    <lastmod>2023-12-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yiuhangblog.com/2020/05/11/20200511%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/</loc>
     
     <lastmod>2023-12-04</lastmod>
@@ -30,6 +12,24 @@
   
   <url>
     <loc>https://www.yiuhangblog.com/2018/08/02/20180802%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</loc>
+    
+    <lastmod>2023-12-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/2021/02/21/20210221%E7%88%AC%E8%99%AB%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/</loc>
+    
+    <lastmod>2023-12-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/2021/02/22/20210222requests/</loc>
     
     <lastmod>2023-12-04</lastmod>
     
@@ -110,7 +110,7 @@
 
   
   <url>
-    <loc>https://www.yiuhangblog.com/tags/%E7%88%AC%E8%99%AB/</loc>
+    <loc>https://www.yiuhangblog.com/tags/Python/</loc>
     <lastmod>2023-12-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -125,97 +125,6 @@
   
   <url>
     <loc>https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/</loc>
-    <lastmod>2023-12-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/Requests/</loc>
-    <lastmod>2023-12-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</loc>
-    <lastmod>2023-12-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/%E5%95%86%E5%8A%A1%E6%99%BA%E8%83%BD/</loc>
-    <lastmod>2023-12-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/%E6%A8%A1%E5%9E%8B/</loc>
-    <lastmod>2023-12-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/FineBI/</loc>
-    <lastmod>2023-12-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/Python/</loc>
-    <lastmod>2023-12-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</loc>
-    <lastmod>2023-12-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/</loc>
-    <lastmod>2023-12-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/%E6%96%B9%E6%B3%95/</loc>
-    <lastmod>2023-12-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/%E7%BC%96%E7%A0%81%E5%92%8C%E8%A7%A3%E7%A0%81/</loc>
-    <lastmod>2023-12-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</loc>
-    <lastmod>2023-12-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/</loc>
-    <lastmod>2023-12-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yiuhangblog.com/tags/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84/</loc>
     <lastmod>2023-12-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -251,6 +160,97 @@
   
   <url>
     <loc>https://www.yiuhangblog.com/tags/%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97/</loc>
+    <lastmod>2023-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</loc>
+    <lastmod>2023-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/</loc>
+    <lastmod>2023-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2023-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E7%BC%96%E7%A0%81%E5%92%8C%E8%A7%A3%E7%A0%81/</loc>
+    <lastmod>2023-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2023-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E5%95%86%E5%8A%A1%E6%99%BA%E8%83%BD/</loc>
+    <lastmod>2023-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E6%A8%A1%E5%9E%8B/</loc>
+    <lastmod>2023-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/FineBI/</loc>
+    <lastmod>2023-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E7%88%AC%E8%99%AB/</loc>
+    <lastmod>2023-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</loc>
+    <lastmod>2023-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/</loc>
+    <lastmod>2023-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84/</loc>
+    <lastmod>2023-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/Requests/</loc>
     <lastmod>2023-12-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -336,7 +336,7 @@
 
   
   <url>
-    <loc>https://www.yiuhangblog.com/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/</loc>
+    <loc>https://www.yiuhangblog.com/categories/Python/</loc>
     <lastmod>2023-12-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -350,7 +350,7 @@
   </url>
   
   <url>
-    <loc>https://www.yiuhangblog.com/categories/Python/</loc>
+    <loc>https://www.yiuhangblog.com/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/</loc>
     <lastmod>2023-12-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
