@@ -18,12 +18,12 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="一.爬虫概念概念 网络爬虫也叫网络蜘蛛，特指一类自动批量下载网络资源的程序，这是一个比较口语化的定义。 更加专业和全面对的定义是：网络爬虫是伪装成客户端与服务端进行数据交互的程序。  作用 数据采集（重要） 大数据监控，产品推荐 大数据杀熟，某平台订酒店时间长了会贵一点 灰产，内部买卖   搜索引擎 百度，谷歌（比较少），主要还是页面存储   模拟操作 测试机器人 灌水机器人（快速刷屏）    种">
+        <meta name="description" content="爬虫基本网络架构，协议和代理的基础理论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="爬虫与网络基础理论">
 <meta property="og:url" content="https://www.yiuhangblog.com/2021/02/21/20210221%E7%88%AC%E8%99%AB%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/index.html">
 <meta property="og:site_name" content="数据工具箱">
-<meta property="og:description" content="一.爬虫概念概念 网络爬虫也叫网络蜘蛛，特指一类自动批量下载网络资源的程序，这是一个比较口语化的定义。 更加专业和全面对的定义是：网络爬虫是伪装成客户端与服务端进行数据交互的程序。  作用 数据采集（重要） 大数据监控，产品推荐 大数据杀熟，某平台订酒店时间长了会贵一点 灰产，内部买卖   搜索引擎 百度，谷歌（比较少），主要还是页面存储   模拟操作 测试机器人 灌水机器人（快速刷屏）    种">
+<meta property="og:description" content="爬虫基本网络架构，协议和代理的基础理论">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231113232724.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/wan-network.gif">
@@ -57,7 +57,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/HTTP%E5%93%8D%E5%BA%94%E5%88%86%E6%9E%90.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/HTTP%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B.png">
 <meta property="article:published_time" content="2021-02-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-30T11:41:01.651Z">
+<meta property="article:modified_time" content="2023-12-04T05:24:09.681Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="理论">
@@ -414,8 +414,12 @@
 
         <div class="article-title relative w-full">
             
-                <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">爬虫与网络基础理论</h1>
+                
+                
+                <img src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231204132016.png" alt="爬虫与网络基础理论" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">爬虫与网络基础理论</h1>
                 </div>
             
             </div>
@@ -441,8 +445,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-11-30 19:41:01</span>
-            <span class="mobile">2023-11-30 19:41:01</span>
+            <span class="desktop">2023-12-04 13:24:09</span>
+            <span class="mobile">2023-12-04 13:24:09</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -587,7 +591,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231113232724.png"
-                      width="50%" height="50%"
+                      width = "500"
                 >
 </blockquote>
 <blockquote>
@@ -599,7 +603,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/wan-network.gif"
-                      width="50%" height="50%"
+                      width = "500"
                 >
 
 <p><strong>芝加哥（Accounts Receivable）</strong></p>
@@ -656,7 +660,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20210927135238.png"
-                     
+                      width = "500"
                 >
 
 <p>MAN连接了多个局域网（LAN - Local Area Network），每个LAN都通过一个网络处理引擎（NPE - Network Processing Engine）与MAN相连。</p>
@@ -685,7 +689,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231114125659.png"
-                      width="60%" height="60%" 
+                      width = "500"
                 >
 </blockquote>
 <blockquote>
@@ -697,7 +701,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231114130030.png"
-                      width="50%" height="50%"
+                      width = "500"
                 >
 </blockquote>
 <blockquote>
@@ -709,7 +713,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231114130727.png"
-                     
+                      width = "500"
                 >
 
 <ol>
@@ -735,7 +739,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231114220841.png"
-                      width="60%" height="60%"
+                      width = "500"
                 >
 
 <p>远程工作者（Telecommuters）如何通过本地互联网服务提供商（Local ISP）连接到企业局域网（Enterprise LAN），并访问位于企业内部的资源:</p>
@@ -761,7 +765,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/1698387465525.gif"
-                       width="65%" height="65%"
+                       width = "500"
                 >
 </blockquote>
 <blockquote>
@@ -773,7 +777,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/sd.gif"
-                      width="60%" height="60%"
+                      width = "500" 
                 >
 
 <p><strong>云计算（Cloud Computing）</strong></p>
@@ -814,7 +818,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/191015_Sports_KINEXONSystem_Courts_Basketball_App.gif"
-                      width="50%" height="50%"
+                      width = "500"
                 >
 
 <ul>
@@ -824,7 +828,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231114224912.png"
-                      width="50%" height="50%"
+                      width = "500"
                 >
 
 <ul>
@@ -834,7 +838,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231114232221.png"
-                      width="50%" height="50%"
+                      width = "500"
                 >
 
 <p>​		        <strong>特点</strong>：</p>
@@ -857,7 +861,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231114232116.png"
-                      width="50%" height="50%"
+                      width = "500"
                 >
 
 <p>​			<strong>DAS（直接附加存储 Direct  Attached  Storage）</strong></p>
@@ -872,7 +876,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231114232027.png"
-                      width="50%" height="50%"
+                      width = "500"
                 >
 
 <ul>
@@ -881,7 +885,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231114232723.png"
-                      
+                      width = "500"
                 ></li>
 </ul>
 </blockquote>
@@ -897,7 +901,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231114232910.png"
-                     
+                      width = "500"
                 >
 </blockquote>
 <blockquote>
@@ -910,7 +914,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231114233356.png"
-                      width="65%" height="65%"
+                      width = "500"
                 >
 </blockquote>
 <blockquote>
@@ -930,7 +934,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/p2p-vs-client-server.webp"
-                     
+                      width = "500"
                 >
 </blockquote>
 <blockquote>
@@ -943,7 +947,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/c1de72bfea7d3fbb91a5d077973e8064639e36e3.gif"
-                      width="60%" height="60%"
+                      width = "500"
                 >
 </blockquote>
 <blockquote>
@@ -956,7 +960,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/Automotive-apps-op-2-1.gif"
-                      width="60%" height="60%"
+                      width = "500"
                 >
 </blockquote>
 <blockquote>
@@ -969,7 +973,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/56-1.png"
-                      width="50%" height="50%"
+                      width = "500"
                 >
 </blockquote>
 <blockquote>
@@ -982,7 +986,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load//Blog/20231115193813.png"
-                      width="60%" height="60%"
+                      width = "500"
                 >
 </blockquote>
 <p>总的来说，网络类型和架构模式是网络设计的两个不同层面。类型更侧重于网络的物理和逻辑布局，而架构则侧重于系统的内部设计和数据流动。两者相辅相成，共同构成完整的网络系统。</p>
@@ -1108,7 +1112,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/HTTP%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B.png"
-                      width="60%" height="60%" 
+                      width = "500"
                 >
 
 <ol>
@@ -1128,7 +1132,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20190802171545900.gif"
-                      width="50%" height="50%" 
+                      width = "500" 
                 >
 
 <p>这个过程主要确保双方都准备好开始新的连接。</p>
@@ -1142,7 +1146,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20190802171645102.gif"
-                      width="50%" height="50%" 
+                      width = "500" 
                 >
 
 <h4 id="TCP四次挥手（关闭连接）"><a href="#TCP四次挥手（关闭连接）" class="headerlink" title="TCP四次挥手（关闭连接）"></a>TCP四次挥手（关闭连接）</h4><ol>
@@ -1155,7 +1159,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20190802171756779.gif"
-                      width="50%" height="50%" 
+                      width = "500" 
                 >
 
 <p>这个过程确保了双方都能够完成所有数据的发送和接收，从而安全地关闭连接。</p>
@@ -1166,7 +1170,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/URL%E8%A7%A3%E6%9E%90.png"
-                      width="70%" height="70%" 
+                      width = "500" 
                 >
 
 <blockquote>
@@ -1263,7 +1267,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87.png"
-                     
+                      width = "500"
                 >
 
 <p>一旦TCP连接建立，HTTP请求就发生在这个连接上。HTTP请求是在<strong>应用层</strong>发生的，HTTP请求依赖于TCP连接。在HTTP请求发送之前，TCP三次握手必须先完成，以确保数据传输的可靠性，具体分为以下几个部分：</p>
@@ -1340,14 +1344,14 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/HTTP%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87.png"
-                      width="50%" height="50%"
+                      width = "500"
                 >
 
 <img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/HTTP%E5%93%8D%E5%BA%94%E5%88%86%E6%9E%90.png"
-                      width="50%" height="50%"
+                      width = "500"
                 >
 
 <ol>
@@ -1417,7 +1421,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/HTTP%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B.png"
-                      width="50%" height="50%"
+                      width = "500"
                 >
 
 <h2 id="四-会话技术"><a href="#四-会话技术" class="headerlink" title="四.会话技术"></a>四.会话技术</h2><p><strong>原因</strong></p>
@@ -1458,7 +1462,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-11-30 19:41:01
+                    :</strong> 2023-12-04 13:24:09
             </li>
         
         <li>
@@ -1524,7 +1528,7 @@
                                 <i class="fa-solid fa-chevron-left"></i>
                             </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Requests Python 包</span>
+                                <span class="post-nav-title-item">Requests</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
@@ -1534,10 +1538,10 @@
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2020/05/11/20200511%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/"
+                        href="/2018/08/02/20180802%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">数据分析基础 (FineBI)</span>
+                                <span class="post-nav-title-item">控制流程</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
