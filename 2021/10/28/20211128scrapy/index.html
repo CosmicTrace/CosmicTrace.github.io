@@ -26,11 +26,11 @@
 <meta property="og:description" content="Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 其最初是为了页面抓取 (更确切来说, 网络抓取 )所设计的，也可以应用在获取API所返回的数据或者通用的网络爬虫。 Scrapy用途广泛,可以用于数据挖掘、监测和自动化测试 Scrapy使用了Twisted 异步网络库来处理网络通讯。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231204181849.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/%E6%B5%81%E7%A8%8B%E4%B8%BE%E4%BE%8B.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/1_s4f8-BSHMu4DXaHhY3qy8w.gif">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/%E7%BC%96%E5%86%99%E7%88%AC%E8%99%AB7.png">
 <meta property="article:published_time" content="2021-10-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-04T10:24:14.093Z">
+<meta property="article:modified_time" content="2023-12-04T10:47:15.676Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="理论">
@@ -423,8 +423,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-12-04 18:24:14</span>
-            <span class="mobile">2023-12-04 18:24:14</span>
+            <span class="desktop">2023-12-04 18:47:15</span>
+            <span class="mobile">2023-12-04 18:47:15</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -478,12 +478,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.8k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.6k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>10 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>9 分钟</span>
         </span>
     
     
@@ -508,33 +508,6 @@
 <p>1.为了更利于我们将精力集中在请求与解析上<br>2.企业级的要求</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">op1=&gt;operation: 1.找到目标数据</span><br><span class="line">op2=&gt;operation: 2.分析请求流程</span><br><span class="line">op3=&gt;operation: 3.构造http请求</span><br><span class="line">op4=&gt;operation: 4.提取数据</span><br><span class="line">op5=&gt;operation: 5.数据持久化</span><br><span class="line"></span><br><span class="line">op1(right)-&gt;op2(right)-&gt;op3(right)-&gt;op4(right)-&gt;op5(right)</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>scrapy支持Python2.7和python3.4以上版本。<br>python包可以用全局安装(也称为系统范围),也可以安装在用户空间中。</p>
-<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a><strong>Windows</strong></h3><ul>
-<li><p>一.直接安装</p>
-<ol>
-<li>在<a class="link"   target="_blank" rel="noopener" href="https://www.lfd.uci.edu/~gohlke/pythonlibs/" >https://www.lfd.uci.edu/~gohlke/pythonlibs/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 下载对应的Twisted的版本文件</li>
-<li>在命令行进入到Twisted的目录  执行pip install +Twisted文件名</li>
-<li>执行pip install scrapy</li>
-</ol>
-</li>
-<li><p>二.annaconda 下安装</p>
-<ol>
-<li><p>安装conda</p>
-<p>conda旧版本  <a class="link"   target="_blank" rel="noopener" href="https://docs.anaconda.com/anaconda/packages/oldpkglists/" >https://docs.anaconda.com/anaconda/packages/oldpkglists/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>安装方法     <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/ychgyyn/article/details/82119201" >https://blog.csdn.net/ychgyyn/article/details/82119201 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>	</p>
-</li>
-<li><p>安装scrapy   conda install scrapy</p>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="Ubuntu-14-04或以上-安装"><a href="#Ubuntu-14-04或以上-安装" class="headerlink" title="Ubuntu 14.04或以上 安装"></a><strong>Ubuntu 14.04或以上 安装</strong></h3><p>scrapy目前正在使用最新版的lxml，twisted和pyOpenSSL进行测试，并且与最近的Ubuntu发行版兼容。但它也支持旧版本的Ubuntu，比如Ubuntu14.04，尽管可能存在TLS连接问题。</p>
-<p><strong>Ubuntu安装注意事项</strong><br>不要使用 python-scrapyUbuntu提供的软件包，它们通常太旧而且速度慢，无法赶上最新的Scrapy。</p>
-<p>要在Ubuntu（或基于Ubuntu）系统上安装scrapy，您需要安装这些依赖项：</p>
-<p><strong>sudo apt-get install python-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev  libffi-dev  libssl-dev</strong></p>
-<p>如果你想在python3上安装scrapy，你还需要Python3的开发头文件：</p>
-<p><strong>sudo apt-get install python3-dev</strong></p>
-<p>在virtualenv中，你可以使用pip安装Scrapy：</p>
-<p><strong>pip install scrapy</strong></p>
 <h2 id="运行流程"><a href="#运行流程" class="headerlink" title="运行流程"></a>运行流程</h2><img  
                      lazyload
                      src="/images/loading.svg"
@@ -542,56 +515,84 @@
                       width = "500"
                 >
 
-<ul>
-<li>spiders网页爬虫</li>
-<li>items项目</li>
-<li>engine引擎</li>
-<li>scheduler调度器</li>
-<li>downloader下载器</li>
-<li>item pipelines项目管道</li>
-<li>middleware中间设备，中间件</li>
-</ul>
 <img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/%E6%B5%81%E7%A8%8B%E4%B8%BE%E4%BE%8B.png"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/1_s4f8-BSHMu4DXaHhY3qy8w.gif"
                       width = "500"
                 >
 
-<h3 id="数据流："><a href="#数据流：" class="headerlink" title="数据流："></a>数据流：</h3><p>上图显示了Scrapy框架的体系结构及其组件，以及系统内部发生的数据流（由红色的箭头显示。）<br>Scrapy中的数据流由执行引擎控制,流程如下：</p>
+<h3 id="Scrapy框架的体系结构"><a href="#Scrapy框架的体系结构" class="headerlink" title="Scrapy框架的体系结构"></a>Scrapy框架的体系结构</h3><p>Scrapy框架的体系结构由几个重要组件组成，这些组件协同工作，实现了从发送请求到提取数据再到存储数据的整个流程：</p>
 <ol>
-<li>首先从网页爬虫获取初始的请求</li>
-<li>将请求放入调度模块，然后获取下一个需要爬取的请求</li>
-<li>调度模块返回下一个需要爬取的请求给引擎</li>
-<li>引擎将请求发送给下载器，依次穿过所有的下载中间件</li>
-<li>一旦页面下载完成，下载器会返回一个响应包含了页面数据，然后再依次穿过所有的下载中间件。</li>
-<li>引擎从下载器接收到响应，然后发送给爬虫进行解析，依次穿过所有的爬虫中间件</li>
-<li>爬虫处理接收到的响应，然后解析出item和生成新的请求，并发送给引擎</li>
-<li>引擎将已经处理好的item发送给管道组件，将生成好的新的请求发送给调度模块，并请求下一个请求</li>
-<li>该过程重复，直到调度程序不再有请求为止。</li>
+<li><strong>引擎（Engine）</strong>: Scrapy引擎是框架的核心，负责控制数据流在各组件之间的流动，触发事件。</li>
+<li><strong>调度器（Scheduler）</strong>: 负责接收引擎发送的请求，并将它们加入队列中。在引擎请求新请求时，调度器发送下一个要抓取的请求给引擎。</li>
+<li><strong>下载器（Downloader）</strong>: 负责从Internet上下载网页内容，并将其封装为响应对象，然后返回给引擎。</li>
+<li><strong>蜘蛛（Spiders）</strong>: 是用户编写用来解析响应并从中提取数据（提取的项目）或额外的跟进URL的类。</li>
+<li><strong>项目管道（Item Pipeline）</strong>: 负责处理由蜘蛛提取出来的项目，通常包括清洗、验证和存储等。</li>
+<li><strong>下载器中间件（Downloader Middlewares）</strong>: 位于引擎和下载器之间，处理引擎和下载器之间的请求和响应。</li>
+<li><strong>蜘蛛中间件（Spider Middlewares）</strong>: 位于引擎和蜘蛛之间，处理蜘蛛的输入（响应）和输出（项目和新的请求）。</li>
 </ol>
-<h3 id="组件介绍"><a href="#组件介绍" class="headerlink" title="组件介绍"></a>组件介绍</h3><ul>
-<li><p>Scrapy Engine(引擎)<br>引擎负责控制系统所有组件之间的数据流，并在发生某些操作时触发事件。</p>
-</li>
-<li><p>scheduler（调度器)<br>调度程序接收来自引擎的请求，将它们排入队列，以便稍后引擎请求它们。</p>
-</li>
-<li><p>Downloader（下载器)<br>下载程序负责获取web页面并将它们提供给引擎，引擎再将它们提供给spider。</p>
-</li>
-<li><p>spider（爬虫）<br>爬虫是由用户编写的自定义的类，用于解析响应，从中提取数据，或其他要抓取的请求。</p>
-</li>
-<li><p>Item pipeline（管道)<br>管道负责在数据被爬虫提取后进行后续处理。典型的任务包括清理，验证和持久性（如将数据存储在数据库中）</p>
-</li>
-<li><p>下载中间件<br>下载中间件是位于引擎和下载器之间的特定的钩子，它们处理从引擎传递到下载器的请求，以及下载器传递到引擎的响应。<br>如果你要执行以下操作之一，请使用Downloader中间件：<br>在请求发送到下载程序之前处理请求（即在scrapy将请求发送到网站之前）<br>在响应发送给爬虫之前<br>直接发送新的请求，而不是将收到的响应传递给蜘蛛<br>将响应传递给爬行器而不获取web页面;<br>默默的放弃一些请求</p>
-</li>
-<li><p>爬虫中间件<br>爬虫中间件是位于引擎和爬虫之间的特定的钩子，能够处理传入的响应和传递出去的item和请求。<br>如果你需要以下操作请使用爬虫中间件：<br>处理爬虫回调之后的 请求或item<br>处理start_requests<br>处理爬虫异常，根据响应内容调用errback而不是回调请求</p>
-</li>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <p>Downloader Middleware（下载中间件）</p>
+<p>这些钩子允许处理、修改和自定义发往下载器的请求以及从下载器返回的响应。下载中间件在Scrapy的请求&#x2F;响应处理流程中提供了几个关键的扩展点。例如，可以使用它来添加HTTP头部到请求中，或者处理从网站返回的HTTP响应。这些中间件的用途包括：</p>
+<ul>
+<li>在请求发送到下载器之前修改或过滤请求。</li>
+<li>在响应发送到爬虫之前处理或修改响应。</li>
+<li>直接生成新的请求，而不是处理当前的响应。</li>
+<li>选择性地放弃某些请求</li>
 </ul>
+<p>Spider Middleware（爬虫中间件）</p>
+<p>爬虫中间件则是处理传入响应、传出项目（item）和请求的钩子。这些中间件在Scrapy的数据处理流程中处于核心位置，允许用户对爬虫的输入和输出进行细致的控制。使用爬虫中间件，可以：</p>
+<ul>
+<li>在爬虫处理回调之后处理请求或项目。</li>
+<li>修改或过滤开始请求（由 <code>start_requests</code> 方法生成的请求）。</li>
+<li>处理由于响应内容引发的异常，根据响应内容调用错误回调（errback）。</li>
+</ul>
+
+    </div>
+  </div>
+
+<h3 id="数据流过程"><a href="#数据流过程" class="headerlink" title="数据流过程"></a>数据流过程</h3><ol>
+<li><strong>启动过程</strong>:<ul>
+<li>Scrapy开始运行，初始化了调度器、下载器以及蜘蛛。</li>
+</ul>
+</li>
+<li><strong>爬取过程</strong>:<ul>
+<li>引擎向蜘蛛请求第一个要爬取的URL。</li>
+<li>蜘蛛返回第一个要爬取的请求给引擎。</li>
+<li>引擎将请求发送到调度器，并请求下一个URL。</li>
+<li>调度器返回下一个要爬取的请求给引擎。</li>
+</ul>
+</li>
+<li><strong>下载过程</strong>:<ul>
+<li>引擎从调度器中取出请求，通过下载器中间件发送到下载器。</li>
+<li>下载器处理请求，返回响应给引擎。</li>
+<li>引擎收到响应后，通过蜘蛛中间件发送给相应的蜘蛛处理。</li>
+</ul>
+</li>
+<li><strong>解析和提取数据</strong>:<ul>
+<li>蜘蛛处理响应，提取数据并生成新的请求，返回给引擎。</li>
+<li>引擎将提取的数据发送到项目管道，并将新的请求发送到调度器。</li>
+<li>项目管道处理提取出的数据。</li>
+</ul>
+</li>
+<li><strong>循环处理</strong>:<ul>
+<li>以上过程在整个爬取过程中不断重复，直到调度器中没有更多的请求。</li>
+</ul>
+</li>
+<li><strong>关闭过程</strong>:<ul>
+<li>当所有预定的URL都被爬取，且调度器中没有更多的请求时，Scrapy关闭，爬取过程结束。</li>
+</ul>
+</li>
+</ol>
 <h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><h4 id="一-项目命令"><a href="#一-项目命令" class="headerlink" title="一.项目命令"></a>一.项目命令</h4><p>1.创建项目:<br>scrapy startproject <project_name>  [project_dir]<br>    ps: “&lt;&gt;”表示必填 ,”[]”表示可选<br>scrapy startproject  db </p>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">You can start your first spider <span class="keyword">with</span>:</span><br><span class="line">    cd my_spider</span><br><span class="line">    scrapy genspider example example.com</span><br></pre></td></tr></table></figure></div>
-
-
-
-
 
 <p>2.cd 到项目下<br>    scrapy genspider [options]   <name>   <domain><br>        scrapy genspider example example.com<br>    会创建在项目&#x2F;spider下 ;其中example 是爬虫文件名,   example.com 是 域名<br>3.运行项目<br>    scrapy  crawl 爬虫文件名   #注重流程<br>4.setting 里配置    ROBOTSTXT_OBEY;DEFAULT_REQUEST_HEADERS	</p>
 <h4 id="二-shell-交互式平台"><a href="#二-shell-交互式平台" class="headerlink" title="二.shell  交互式平台"></a>二.shell  交互式平台</h4><p>scrapy shell url (start_url)  获取我们项目中的response<br>测试  xpath进行匹配</p>
@@ -672,7 +673,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-12-04 18:24:14
+                    :</strong> 2023-12-04 18:47:15
             </li>
         
         <li>
@@ -793,7 +794,7 @@
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
         <div class="page-title">Scrapy</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows"><span class="nav-text">Windows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu-14-04%E6%88%96%E4%BB%A5%E4%B8%8A-%E5%AE%89%E8%A3%85"><span class="nav-text">Ubuntu 14.04或以上 安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-text">运行流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%EF%BC%9A"><span class="nav-text">数据流：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="nav-text">组件介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="nav-text">简单使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80-%E9%A1%B9%E7%9B%AE%E5%91%BD%E4%BB%A4"><span class="nav-text">一.项目命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C-shell-%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%B9%B3%E5%8F%B0"><span class="nav-text">二.shell  交互式平台</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="nav-text">项目文件介绍</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1"><span class="nav-text">爬取豆瓣电影</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E6%95%B0%E6%8D%AE%E8%A6%81%E6%B1%82%EF%BC%9A"><span class="nav-text">目标数据要求：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">项目注意事项</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-text">运行流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrapy%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-text">Scrapy框架的体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%87%E7%A8%8B"><span class="nav-text">数据流过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="nav-text">简单使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80-%E9%A1%B9%E7%9B%AE%E5%91%BD%E4%BB%A4"><span class="nav-text">一.项目命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C-shell-%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%B9%B3%E5%8F%B0"><span class="nav-text">二.shell  交互式平台</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="nav-text">项目文件介绍</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1"><span class="nav-text">爬取豆瓣电影</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E6%95%B0%E6%8D%AE%E8%A6%81%E6%B1%82%EF%BC%9A"><span class="nav-text">目标数据要求：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">项目注意事项</span></a></li></ol></li></ol></li></ol></li></ol>
 
     </div>
 </div>
