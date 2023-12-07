@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.yiuhangblog.com/2018/09/08/20180908%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</loc>
+    
+    <lastmod>2023-12-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yiuhangblog.com/2018/08/12/20180812%E5%87%BD%E6%95%B0/</loc>
     
     <lastmod>2023-12-07</lastmod>
@@ -416,6 +425,27 @@
   
   <url>
     <loc>https://www.yiuhangblog.com/tags/Xpath/</loc>
+    <lastmod>2023-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E5%AF%B9%E8%B1%A1/</loc>
+    <lastmod>2023-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2023-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yiuhangblog.com/tags/%E7%B1%BB/</loc>
     <lastmod>2023-12-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
