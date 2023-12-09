@@ -1383,8 +1383,8 @@
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>新版本的Selenium已经不在支持phantomjs，原作者也已经放弃维护该项目了。</p>
 <p>还有在做爬虫的时候尽量不要用这种方法，Selenium+浏览器的组合速度慢，应付不了数据量比较大的爬取以及并发爬取。并且很吃电脑资源。</p>
 <h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><pre class="mermaid">flowchart TD
-    A(自动化程序selenium库) --> B(浏览器 Chrome，Firefox)
-    B --> C(浏览器驱动，浏览器厂商提供)</pre>
+    A(selenium) --> B(Chrome)
+    B --> C(Chrome Drive)</pre>
 
 <div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"># selenium ------http------&gt; 浏览器驱动， 去操作浏览器实现效果 -------&gt; 浏览器驱动 ----------&gt; selenium</span><br><span class="line"># 浏览器驱动相当于 http server</span><br><span class="line"># 浏览器驱动和浏览器版本要一致</span><br></pre></td></tr></table></figure></div>
 
@@ -1408,7 +1408,7 @@
 <img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231130193716.png"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2740a8fa-10ec-4b01-54bb-8b122882a300/public"
                       width = "500"
                 >
 
@@ -1485,7 +1485,7 @@ chrome.find_element_by_css_selector(&quot;submit button&quot;).click()
 <img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231130195734.png"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/0978a1c2-4285-4bfe-9363-4a9f645ef900/public"
                       width = "500"
                 >
 
@@ -1493,7 +1493,7 @@ chrome.find_element_by_css_selector(&quot;submit button&quot;).click()
 <img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231130195932.png"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/02973d1e-8c41-469c-f871-89dacc9f6500/public"
                       width = "500"
                 >
 
