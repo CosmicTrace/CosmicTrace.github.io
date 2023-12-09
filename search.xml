@@ -1,6 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>控制流程</title>
+    <url>/2018/08/02/20180802%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><h3 id="前置知识：Input方法"><a href="#前置知识：Input方法" class="headerlink" title="前置知识：Input方法"></a>前置知识：Input方法</h3><p>在 Python 中，<code>input()</code>是一个内置函数，用于从标准输入中获取用户输入的数据</p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ol>
+<li>输入的值是字符串类型</li>
+<li>如果你想输入是整数 那就需要进行类型转换</li>
+</ol>
+<p><code>a = int(input(&quot;请输入你想输入的内容&#39;))</code></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 变量a 就存储着用户输入的数据</span></span><br><span class="line">a = <span class="built_in">input</span>(<span class="string">&#x27;请输入你想输入的内容 )</span></span><br><span class="line"><span class="string"># 当我们输入完后可以通过print将你输入的内容打印出来</span></span><br><span class="line"><span class="string">print(a)</span></span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231202222527.png"
+                      width = "500"
+                >
+
+<h3 id="一-什么是条件判断"><a href="#一-什么是条件判断" class="headerlink" title="一. 什么是条件判断"></a>一. 什么是条件判断</h3><p>条件判断是编程中一种非常常见的控制结构，它可以帮助我们根据不同的条件来执行不同的代码。可以把它想象成我们生活中的决策过程。</p>
+<p>判断的过程中，比较的类型需要一样，例如都是数值类型</p>
+<h4 id="1-语法："><a href="#1-语法：" class="headerlink" title="1. 语法："></a>1. 语法：</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> 判断条件:</span><br><span class="line">	<span class="comment"># 执行语句....</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="comment"># 执行语句....</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># if：如果</span></span><br><span class="line"><span class="comment"># else 否则</span></span><br><span class="line"><span class="comment"># if 可以单独存在，如果不满足就不会执行if里面的代码，但会继续执行if外面的代码</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="2-案例-1"><a href="#2-案例-1" class="headerlink" title="2. 案例 1"></a>2. 案例 1</h4><p>假如天气晴朗，我就去打篮球，否则我就去看电影。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个a变量 存储今天的天气</span></span><br><span class="line">a = <span class="built_in">input</span>(<span class="string">&#x27;输入今天的天气:&#x27;</span>) </span><br><span class="line"><span class="keyword">if</span> a == <span class="string">&#x27;晴天&#x27;</span>: <span class="comment"># == 是否等于</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;今天是晴天,我要出去打篮球&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;今天是下雨天,我要去看电影&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231202223809.png"
+                      width = "500"
+                >
+
+<h4 id="3-案例-2"><a href="#3-案例-2" class="headerlink" title="3. 案例 2"></a>3. 案例 2</h4><p>随意输入0-100的整数，如果大于60 就在控制台返回  会当凌绝顶一览众山小 如果小于60就返回 三十年河东三十年河西 莫欺少年穷</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;随意输入0-100的整数:&#x27;</span>))</span><br><span class="line"><span class="keyword">if</span> a &gt; <span class="number">60</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;会当凌绝顶一览众山小&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;三十年河东三十年河西 莫欺少年穷&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231202224028.png"
+                      width = "500"
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231202224052.png"
+                      width = "500"
+                >
+
+<h3 id="二-多个条件判断"><a href="#二-多个条件判断" class="headerlink" title="二. 多个条件判断"></a>二. 多个条件判断</h3><h4 id="1-什么是多个条件判断"><a href="#1-什么是多个条件判断" class="headerlink" title="1. 什么是多个条件判断"></a>1. 什么是多个条件判断</h4><p>有些时候，我们的判断语句不可能只有两个，有些时候需要多个，比如说大于等于 60 的为及格，那我们还要判断大于等于 90 的为优秀，在 80 到 90 之间的良好呢？</p>
+<p>这时候需要用到 if 语句多个判断条件</p>
+<h4 id="2-语法"><a href="#2-语法" class="headerlink" title="2. 语法"></a>2. 语法</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> 判断条件<span class="number">1</span>:</span><br><span class="line">	<span class="comment"># 执行语句1.....</span></span><br><span class="line"><span class="keyword">elif</span> 判断条件<span class="number">2</span>:</span><br><span class="line">	<span class="comment"># 执行语句2.....</span></span><br><span class="line"><span class="keyword">elif</span> 判断条件<span class="number">3</span>:</span><br><span class="line">	<span class="comment"># 执行语句3.....</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="comment"># 执行语句4.....</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># if：如果</span></span><br><span class="line"><span class="comment"># elif:或者</span></span><br><span class="line"><span class="comment"># else 否则</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-案例-1"><a href="#3-案例-1" class="headerlink" title="3. 案例 1"></a>3. 案例 1</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入你的分数&#x27;</span>))</span><br><span class="line"><span class="keyword">if</span> a &gt;= <span class="number">90</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;优秀&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt;= <span class="number">80</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;良好&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt;= <span class="number">60</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;及格&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;恭喜你 没有及格 )</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="4-案例-2"><a href="#4-案例-2" class="headerlink" title="4. 案例 2"></a>4. 案例 2</h4><p>有时候我们会遇到多个条件的时候该怎么操作呢？</p>
+<p>比如说：学校举行一场考试，要求小明的python和java两门语言 都达到80分才算优秀。</p>
+<ul>
+<li>这时候我们可以结合 or 和 and 来使用。</li>
+<li>or (或)表示两个条件有一个成立时判断条件成功</li>
+<li>and (与)表示只有两个条件同时成立的情况下，判断条件才成功。</li>
+</ul>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入python分数&#x27;</span>))</span><br><span class="line">java = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入java分数&#x27;</span>))</span><br><span class="line"><span class="comment"># 当我们输入完 我们的变量python和java就分别存储着 python和java的分数</span></span><br><span class="line"><span class="keyword">if</span> python &gt;= <span class="number">80</span> <span class="keyword">and</span> java &gt;= <span class="number">80</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;优秀&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;不优秀&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入python分数&#x27;</span>))</span><br><span class="line">java = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入java分数&#x27;</span>))</span><br><span class="line"><span class="comment"># 当我们输入完 我们的变量python和java就分别存储着 python和java的分数</span></span><br><span class="line"><span class="comment"># 将and改为or 就意味着 只需要一个条件满足就是优秀</span></span><br><span class="line"><span class="keyword">if</span> python &gt;= <span class="number">80</span> <span class="keyword">or</span> java &gt;= <span class="number">80</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;优秀&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;不优秀&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="三-嵌套"><a href="#三-嵌套" class="headerlink" title="三. 嵌套"></a>三. 嵌套</h3><h4 id="1-嵌套是指什么"><a href="#1-嵌套是指什么" class="headerlink" title="1. 嵌套是指什么"></a>1. 嵌套是指什么</h4><p>就跟字面意思差不多，指 if 语句中可以嵌套 if 语句。</p>
+<h4 id="2-案例-1-1"><a href="#2-案例-1-1" class="headerlink" title="2. 案例 1"></a>2. 案例 1</h4><p>小明，平时正常上班太累了，到了周末如果是晴天，那就出去打篮球，如果不是那就在家看电视</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个变量来保存今天是不是周末</span></span><br><span class="line"><span class="comment"># 定义一个变量b来保存今天的天气</span></span><br><span class="line">a = <span class="string">&#x27;周末&#x27;</span></span><br><span class="line">b = <span class="string">&#x27;晴&#x27;</span></span><br><span class="line"><span class="keyword">if</span> a == <span class="string">&#x27;周末&#x27;</span>:</span><br><span class="line">    <span class="keyword">if</span> b == <span class="string">&#x27;晴&#x27;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;今天是周末，又是晴天可以去打篮球&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;今天是周末，但是下雨在家乖乖看电视&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;乖乖上班&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="四-三目运算"><a href="#四-三目运算" class="headerlink" title="四. 三目运算"></a>四. 三目运算</h3><ol>
+<li>也叫三元运算符，是一种简洁的条件语句表达式。它可以根据条件的成立与否来返回两个值中的一个。</li>
+</ol>
+<p>​	<strong>作用</strong>：简化代码</p>
+<ol start="2">
+<li>之前案例，今天学校期末数学考试(60分及格)，小明考了66分，请问小明是及格还是没有及格。</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个变量a 来保存小明的数学成绩</span></span><br><span class="line">a = <span class="number">66</span></span><br><span class="line"><span class="comment"># 三目运算</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;及格&#x27;</span>) <span class="keyword">if</span> a &gt; <span class="number">6</span> <span class="keyword">else</span> <span class="built_in">print</span>(<span class="string">&#x27;不及格&#x27;</span>)</span><br><span class="line"><span class="comment"># 普通的if判断</span></span><br><span class="line"><span class="keyword">if</span> a &gt; <span class="number">60</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;及格&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;不及格&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="五-循环语句"><a href="#五-循环语句" class="headerlink" title="五. 循环语句"></a>五. 循环语句</h3><h4 id="1-什么是循环"><a href="#1-什么是循环" class="headerlink" title="1. 什么是循环"></a>1. 什么是循环</h4><p>可以让程序自动地执行多次相同或类似的任务，从而节省编写代码的时间和精力。</p>
+<p>一共有两种循环：</p>
+<ul>
+<li>for循环</li>
+<li>while循环</li>
+</ul>
+<h4 id="2-for循环"><a href="#2-for循环" class="headerlink" title="2. for循环"></a>2. for循环</h4><p>可以遍历一个序列或其他可迭代对象中的元素，并执行特定的代码块。</p>
+<h5 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> 形参 <span class="keyword">in</span> 遍历对象: 	</span><br><span class="line">	<span class="built_in">print</span>(形参)</span><br></pre></td></tr></table></figure></div>
+
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>对象（Objects）</strong>：</p>
+<p>在Python中，几乎所有东西都是对象。这包括数字、字符串、列表、函数，甚至是类和类型本身。每个对象都有三个特性：身份、类型和值。</p>
+<ul>
+<li>身份：每个对象都有一个唯一的身份，用于区分不同的对象。可以通过 <code>id()</code> 函数来查看对象的身份。</li>
+<li>类型：对象的类型定义了它可以进行哪些操作或拥有哪些方法。类型可以通过 <code>type()</code> 函数查看。</li>
+<li>值：对象表示的数据。</li>
+</ul>
+<p><strong>形参（Formal Parameters）</strong>：</p>
+<p>当你定义一个函数时，你可以在函数定义中指定一些参数。这些参数被称为形式参数（形参），它们是函数内部的局部变量。当函数被调用时，形参会接收传递给函数的实际值。这些值被称为实参（实际参数）。</p>
+<p>例如：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):  <span class="comment"># a 和 b 是形参</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br></pre></td></tr></table></figure></div>
+
+<p>在这个例子中，<code>a</code> 和 <code>b</code> 是形参，它们在函数 <code>add</code> 被调用时接收实际的输入值。</p>
+
+    </div>
+  </div>
+
+<h5 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 案例: 将List的内容全部打印出来</span></span><br><span class="line"><span class="comment"># 定义一个列表List</span></span><br><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>]</span><br><span class="line"><span class="comment"># 以前</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">2</span>])</span><br><span class="line"><span class="comment"># 如果List里面有1000 个值呢，是不是要写一干遍</span></span><br><span class="line"><span class="comment"># 我们学习for循环后</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> <span class="built_in">list</span>:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="range函数"><a href="#range函数" class="headerlink" title="range函数"></a>range函数</h5><h6 id="什么是range"><a href="#什么是range" class="headerlink" title="什么是range"></a>什么是range</h6><p>是 Python 内置的一个函数，用于生成一个整数序列</p>
+<h6 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h6><p>常用于for循环中，用于循环的次数</p>
+<h6 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h6><p><code>range()</code>函数有三种用法:</p>
+<ol>
+<li><code>range(stop)</code>: 生成从 0 开始到 stop-1 的整数序列。</li>
+<li><code>range(start，stop)</code>: 生成从 start 开始到 stop-1 的整数序列。</li>
+<li><code>range(start，stop，step)</code>: 生成从 start 开始到 stop-1 的整数序列，步长为 step。</li>
+</ol>
+<h6 id="range案例"><a href="#range案例" class="headerlink" title="range案例"></a>range案例</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    <span class="comment"># item:次数</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;range让我循环<span class="subst">&#123;item&#125;</span>次&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># range让我循环0次</span></span><br><span class="line"><span class="comment"># range让我循环1次</span></span><br><span class="line"><span class="comment"># range让我循环2次</span></span><br><span class="line"><span class="comment"># range让我循环3次</span></span><br><span class="line"><span class="comment"># range让我循环4次</span></span><br><span class="line"><span class="comment"># range让我循环5次</span></span><br><span class="line"><span class="comment"># range让我循环6次</span></span><br><span class="line"><span class="comment"># range让我循环7次</span></span><br><span class="line"><span class="comment"># range让我循环8次</span></span><br><span class="line"><span class="comment"># range让我循环9次</span></span><br></pre></td></tr></table></figure></div>
+
+<h5 id="列表、元组、集合、字典、字符串的for循环的使用案例"><a href="#列表、元组、集合、字典、字符串的for循环的使用案例" class="headerlink" title="列表、元组、集合、字典、字符串的for循环的使用案例"></a>列表、元组、集合、字典、字符串的for循环的使用案例</h5>
+  <div class="note p-4 mb-4 rounded-small primary icon-padding">
+    <i class="note-icon fa-solid fa-square-arrow-up-right"></i><p>列表、元组、集合、字典、字符串皆为<a class="button " href='https://www.yiuhangblog.com/2018/07/23/20180723%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/' title='数值类型'><i class='fa-solid fa-play-circle'></i> 数值类型</a>，详细内容与调用方法跳转查阅</p>
+
+  </div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列表</span></span><br><span class="line">List_test = [<span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> List_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># 香蕉</span></span><br><span class="line"><span class="comment"># 苹果</span></span><br><span class="line"><span class="comment"># 梨子</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment"># 元组</span></span><br><span class="line">tuple_test = (<span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> tuple_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># 香蕉</span></span><br><span class="line"><span class="comment"># 苹果</span></span><br><span class="line"><span class="comment"># 梨子</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 集合</span></span><br><span class="line">set_test = &#123;<span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> set_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># 香蕉</span></span><br><span class="line"><span class="comment"># 苹果</span></span><br><span class="line"><span class="comment"># 梨子</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字典</span></span><br><span class="line">dict_test = &#123;</span><br><span class="line">    <span class="string">&quot;username&quot;</span>: <span class="string">&#x27;user&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;age&#x27;</span>: <span class="number">25</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> dict_test:</span><br><span class="line">    <span class="comment"># 在字典中 item:key</span></span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line">    <span class="comment"># 如果想拿到vaLue的值 : List[item] </span></span><br><span class="line">    <span class="built_in">print</span>(item, dict_test[item])</span><br><span class="line"><span class="comment"># username</span></span><br><span class="line"><span class="comment"># username user</span></span><br><span class="line"><span class="comment"># age</span></span><br><span class="line"><span class="comment"># age 25</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">#字符串</span></span><br><span class="line">str_test = <span class="string">&#x27;hello word&#x27;</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> str_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># h</span></span><br><span class="line"><span class="comment"># e</span></span><br><span class="line"><span class="comment"># l</span></span><br><span class="line"><span class="comment"># l</span></span><br><span class="line"><span class="comment"># o</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># w</span></span><br><span class="line"><span class="comment"># o</span></span><br><span class="line"><span class="comment"># r</span></span><br><span class="line"><span class="comment"># d</span></span><br></pre></td></tr></table></figure></div>
+
+<h5 id="双层for循环"><a href="#双层for循环" class="headerlink" title="双层for循环"></a>双层for循环</h5><p>也可以用于遍历嵌套的数据结构</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列表里面包字典，这是开发最常见的一种数据方式，我们需要把里面的数据给拿出来</span></span><br><span class="line">list_dic = [&#123;</span><br><span class="line">    <span class="string">&#x27;username&#x27;</span>: <span class="string">&#x27;users1&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;age&#x27;</span>: <span class="number">18</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">    <span class="string">&#x27;username&#x27;</span>: <span class="string">&#x27;users2&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;age&#x27;</span>: <span class="number">20</span></span><br><span class="line">&#125;]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一层for循环遍历出两个字典</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> list_dic:</span><br><span class="line">    <span class="comment"># 第二层for循环遍历出字典里面的值</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> item: <span class="comment"># 通过i形参就是传递出字典里的值</span></span><br><span class="line">        <span class="comment"># item就是字典本身，通过遍历item获取value</span></span><br><span class="line">        <span class="built_in">print</span>(i, item[i]) <span class="comment"># items 就是拿到了，item字典里面的key</span></span><br><span class="line">        </span><br><span class="line"><span class="comment"># username users1</span></span><br><span class="line"><span class="comment"># age 18</span></span><br><span class="line"><span class="comment"># username users2</span></span><br><span class="line"><span class="comment"># age 20</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-while循环"><a href="#3-while循环" class="headerlink" title="3. while循环"></a>3. while循环</h4><p>常见的循环结构，它可以在条件满足的情况下重复执行一段代码块，直到条件不再满足为止。</p>
+<h5 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> 判断条件: </span><br><span class="line">	输出内容</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">11</span></span><br><span class="line"><span class="keyword">while</span> a &gt; <span class="number">10</span>:</span><br><span class="line">    <span class="comment"># 这样会陷入无尽的循环 因为a会一直大于 10 这个时候</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;a大于10 这行代码就会一直运行&#x27;</span>)</span><br><span class="line">    <span class="keyword">break</span> <span class="comment">#我们可以用break来终止</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># a大于10 这行代码就会一直运行</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">8</span></span><br><span class="line"><span class="keyword">while</span> a &lt; <span class="number">10</span>:</span><br><span class="line">    <span class="comment"># 可以在循环里面加改变条件的运算 让循环变成 有限循环 而不是无限循环</span></span><br><span class="line">    a += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;aaaaaaa&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># aaaaaaa</span></span><br><span class="line"><span class="comment"># aaaaaaa</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>基础</tag>
+        <tag>理论</tag>
+        <tag>控制流程</tag>
+        <tag>条件判断</tag>
+        <tag>循环语句</tag>
+        <tag>嵌套</tag>
+        <tag>三目运算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据类型和其方法</title>
     <url>/2018/07/23/20180723%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/</url>
     <content><![CDATA[<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>Python数据类型分为 三大类：</p>
@@ -313,322 +470,6 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象</title>
-    <url>/2018/09/08/20180908%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
-    <content><![CDATA[<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><p>面向对象编程（Object-Oriented Programming, OOP）是一种编程范式，它使用“对象”来设计软件。这种方法不仅侧重于数据（即属性），还侧重于操作这些数据的代码（即方法）。面向对象编程基于几个核心概念，包括类、对象、继承、多态和封装。</p>
-<ol>
-<li><strong>类（Class）</strong>：类是创建对象的蓝图或模板。它定义了对象的属性和方法。属性是类中的变量，方法是类中的函数。类本身不占用内存空间，它只是定义了对象的结构。</li>
-<li><strong>对象（Object）</strong>：对象是类的实例。当类被实例化时，会创建一个对象。对象具有类定义的属性和方法。每个对象都有自己的属性值，但共享相同的方法。</li>
-<li><strong>继承（Inheritance）</strong>：继承允许一个类继承另一个类的属性和方法。这有助于代码重用，并实现多层次的分类。在继承关系中，有基类（父类）和派生类（子类）。</li>
-<li><strong>多态（Polymorphism）</strong>：多态是指即使不同类的对象可能有不同的实现，但它们可以通过相同的接口进行交互。这意味着，可以用统一的方式来处理不同类的对象，即使它们具有不同的内部结构。</li>
-<li><strong>封装（Encapsulation）</strong>：封装是隐藏对象内部实现细节的过程，仅公开必要的接口。这有助于防止外部代码随意更改对象内部状态，从而保护对象的完整性并简化接口。</li>
-<li><strong>抽象（Abstraction）</strong>：抽象是将复杂的现实世界问题简化为模型的过程。在面向对象编程中，这通常意味着创建类，这些类代表了现实世界中的实体或概念，但只包括与当前问题相关的部分。</li>
-</ol>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/Types-of-OOPS-2.gif"
-                      width="300"
-                >
-
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
-<li><strong>模块化</strong>：OOP 促进了代码的模块化，使得不同模块可以独立开发和测试，提高了代码的可维护性和复用性。</li>
-<li><strong>可扩展性</strong>：通过继承和多态，可以在现有代码的基础上添加新功能，而不必大幅修改现有代码。</li>
-<li><strong>可维护性</strong>：封装提供了一种方式，使得代码更易于理解和维护。</li>
-</ul>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li><strong>性能</strong>：相较于面向过程的编程，面向对象的程序可能在性能上稍微逊色，因为它需要额外的内存和处理。</li>
-<li><strong>复杂性</strong>：面向对象的系统可能比简单的面向过程的系统更复杂。</li>
-</ul>
-<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>面向对象编程在软件工程中广泛应用，从桌面和移动应用程序到大型企业级系统。众多流行的编程语言，如 Java、C#、Python、Ruby 和 C++，都支持面向对象的编程范式。</p>
-<h2 id="类-Class"><a href="#类-Class" class="headerlink" title="类 Class"></a>类 Class</h2><p>类（Class）是面向对象编程（OOP）中的一个核心概念。在很多现代编程语言中，类作为一种构造，提供了一种封装数据和行为（即代码）的方式。它们允许开发者创建复杂的数据结构</p>
-<h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><p>首先，我们定义一个名为<code>Car</code>的类：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="comment"># 这些是成员属性</span></span><br><span class="line">    brand = <span class="literal">None</span></span><br><span class="line">    color = <span class="literal">None</span></span><br><span class="line">    speed = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 这是一个成员方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车启动了。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">accelerate</span>(<span class="params">self, increase</span>):</span><br><span class="line">        self.speed += increase</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车加速到了<span class="subst">&#123;self.speed&#125;</span>公里/小时。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">brake</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车正在刹车。&quot;</span>)</span><br><span class="line">        self.speed = <span class="number">0</span></span><br></pre></td></tr></table></figure></div>
-
-<p>在这个<code>Car</code>类中：</p>
-<ul>
-<li><strong>成员属性</strong>：<code>brand</code>（品牌）、<code>color</code>（颜色）和<code>speed</code>（速度）是类的属性。它们用来描述这个类的状态。</li>
-<li><strong>成员方法</strong>：<code>start</code>、<code>accelerate</code> 和 <code>brake</code> 是类的方法。它们描述了<code>Car</code>可以执行的操作。</li>
-</ul>
-<h3 id="实例化类"><a href="#实例化类" class="headerlink" title="实例化类"></a>实例化类</h3><p>接下来，我们创建几个<code>Car</code>类的实例：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">first_car = Car()  <span class="comment"># 实例化第一辆车</span></span><br><span class="line">first_car.brand = <span class="string">&#x27;Toyota&#x27;</span></span><br><span class="line">first_car.color = <span class="string">&#x27;红色&#x27;</span></span><br><span class="line">first_car.start()</span><br><span class="line">first_car.accelerate(<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line">second_car = Car() <span class="comment"># 实例化第二辆车</span></span><br><span class="line">second_car.brand = <span class="string">&#x27;Ford&#x27;</span></span><br><span class="line">second_car.color = <span class="string">&#x27;蓝色&#x27;</span></span><br><span class="line">second_car.start()</span><br><span class="line">second_car.accelerate(<span class="number">40</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>每次调用<code>Car()</code>时，我们都创建了一个新的<code>Car</code>类的实例（即一个新的汽车对象）。通过为不同的实例分别设置属性（如<code>brand</code>和<code>color</code>），每辆车都有自己的特点。</p>
-<h3 id="成员方法中的self"><a href="#成员方法中的self" class="headerlink" title="成员方法中的self"></a>成员方法中的<code>self</code></h3><p>在<code>Car</code>类的成员方法中，<code>self</code>关键字是对当前对象实例的引用。它用于访问对象的属性和调用其他方法。例如，在<code>accelerate</code>方法中，<code>self.speed += increase</code>表示将当前车辆的速度增加<code>increase</code>单位。</p>
-<h3 id="init-初始化方法-魔术方法-构造器"><a href="#init-初始化方法-魔术方法-构造器" class="headerlink" title="_ _init_ _初始化方法(魔术方法&#x2F;构造器)"></a>_ _init_ _初始化方法(魔术方法&#x2F;构造器)</h3><p><code>__init__</code> 是一个在 Python 中特别重要的方法，它是类的一个特殊方法（有时被称为“魔术方法”或“构造器”）。当创建类的新实例时，<code>__init__</code> 方法被自动调用，用于为新创建的对象初始化其属性或执行其他必要的设置。以下是关于 <code>__init__</code> 方法的一些关键点：</p>
-<ol>
-<li><strong>构造器</strong>：<code>__init__</code> 方法可以看作是类的“构造器”。它在对象创建时立即执行，允许类接受参数并据此初始化对象的属性。</li>
-<li><strong>self 参数</strong>：<code>__init__</code> 方法的第一个参数总是 <code>self</code>，它是对类实例本身的引用。通过 <code>self</code>，你可以在方法内部访问类的属性和其他方法。</li>
-<li><strong>初始化属性</strong>：可以在 <code>__init__</code> 方法中定义并初始化对象的属性。这样做的好处是，可以为不同的对象实例设置不同的初始状态。</li>
-<li><strong>接受参数</strong>：<code>__init__</code> 方法可以接受参数（除了自身 <code>self</code> 参数外），这些参数在创建类实例时传递给它，用于设置对象的属性或进行其他操作。</li>
-</ol>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="comment"># 使用 __init__ 方法初始化成员属性</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, brand, color</span>):</span><br><span class="line">        self.brand = brand</span><br><span class="line">        self.color = color</span><br><span class="line">        self.speed = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 成员方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车启动了。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">accelerate</span>(<span class="params">self, increase</span>):</span><br><span class="line">        self.speed += increase</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车加速到了<span class="subst">&#123;self.speed&#125;</span>公里/小时。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">brake</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车正在刹车。&quot;</span>)</span><br><span class="line">        self.speed = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 __init__ 方法实例化第一辆车</span></span><br><span class="line">first_car = Car(<span class="string">&#x27;Toyota&#x27;</span>, <span class="string">&#x27;红色&#x27;</span>)</span><br><span class="line">first_car.start()</span><br><span class="line">first_car.accelerate(<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 __init__ 方法实例化第二辆车</span></span><br><span class="line">second_car = Car(<span class="string">&#x27;Ford&#x27;</span>, <span class="string">&#x27;蓝色&#x27;</span>)</span><br><span class="line">second_car.start()</span><br><span class="line">second_car.accelerate(<span class="number">40</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>在这个例子中， <code>Car</code> 类中添加了 <code>__init__</code> 方法，它接受 <code>brand</code> 和 <code>color</code> 作为参数，并将它们分别赋值给实例的 <code>brand</code> 和 <code>color</code> 属性。现在，在创建 <code>Car</code> 类的实例时，我们需要提供品牌和颜色作为参数。这样一来，每个 <code>Car</code> 实例在创建时都会有自己的品牌和颜色属性。</p>
-
-  <div class="note-large orange">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-circle-question"></i><p>QA</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>问：</strong>为什么accelerate不在<code>car(brand, color)</code>里直接写？</p>
-<p><strong>答：</strong>将 <code>accelerate</code> 方法放在 <code>Car</code> 类的构造方法 (<code>__init__</code>) 中与放在类的外部作为一个独立的方法有不同的含义和用途。理解这一点，需要对面向对象编程中的一些基本概念有所了解：</p>
-<ol>
-<li><strong>构造方法 (<code>__init__</code>)</strong>: <code>__init__</code> 方法用于初始化新创建的对象的状态。它通常用于设置对象的初始属性值。构造方法在对象被创建时自动调用一次，用于设置对象的初始状态。</li>
-<li><strong>成员方法</strong>: 类中定义的其他方法（如 <code>accelerate</code>）用于描述对象的行为。这些方法可以在对象的整个生命周期内被多次调用，并且通常用于执行特定的操作，比如修改对象的状态或者与其他对象进行交互。</li>
-<li><strong>职责分离</strong>: 在面向对象设计中，通常推荐遵循单一职责原则。这意味着每个部分（如方法）应该只负责一项功能。将 <code>accelerate</code> 方法放在类的外部作为一个独立的方法，而不是在 <code>__init__</code> 中定义，可以使类的结构更加清晰，每个方法的职责更加明确。</li>
-<li><strong>灵活性与可重用性</strong>: 将 <code>accelerate</code> 作为独立的方法可以在任何时候调用以改变对象的速度属性。如果它被放在 <code>__init__</code> 中，它只能在对象创建时执行，这限制了方法的用途。</li>
-</ol>
-<p>总结来说，<code>accelerate</code> 不放在 <code>__init__</code> 中是为了保持代码的清晰性和组织性，确保每个方法只负责一项特定的功能，并允许在对象的生命周期中多次调用 <code>accelerate</code> 方法。这是一种更灵活、可维护和符合面向对象设计原则的做法。</p>
-<p><strong>问：</strong><code>self.speed = 0</code> 为什么在(<code>__init__</code>) 里？</p>
-<p><strong>答：</strong>将 <code>self.speed = 0</code> 放在 <code>__init__</code> 方法中是为了初始化 <code>Car</code> 类的每个实例的速度属性。这是一种常见的做法，用于设定对象的初始状态。以下是放置这个语句在 <code>__init__</code> 中的几个理由：</p>
-<ol>
-<li><strong>初始状态设定</strong>：在面向对象编程中，构造方法（如 Python 中的 <code>__init__</code>）用于设定对象的初始状态。对于汽车来说，初始速度设为 0 是合理的，因为当汽车被“创建”（或实例化）时，它通常是静止的。</li>
-<li><strong>统一属性管理</strong>：将所有属性的初始化集中在 <code>__init__</code> 方法中可以使代码更加清晰和易于维护。这样，你可以在一个地方看到对象所有属性的初始值。</li>
-<li><strong>确保属性存在</strong>：在 <code>__init__</code> 方法中初始化 <code>speed</code> 确保了每个 <code>Car</code> 实例都具有 <code>speed</code> 属性，并且有一个明确的初始值。这避免了在其他方法（如 <code>accelerate</code> 或 <code>brake</code>）中使用 <code>speed</code> 属性之前需要检查其是否存在的情况。</li>
-<li><strong>避免未初始化的属性</strong>：如果不在 <code>__init__</code> 中初始化 <code>speed</code>，那么在调用 <code>accelerate</code> 方法之前，尝试访问 <code>speed</code> 属性可能会导致错误，因为 Python 不会自动为你创建这个属性。</li>
-</ol>
-<p>综上所述，将 <code>self.speed = 0</code> 放在 <code>__init__</code> 方法中是为了初始化对象的速度属性，保证对象的完整性，并为后续的操作（如加速或刹车）提供一个明确和稳定的起点。</p>
-
-    </div>
-  </div>
-
-<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><h5 id="类定义与初始化"><a href="#类定义与初始化" class="headerlink" title="类定义与初始化"></a>类定义与初始化</h5><p>首先，我们定义一个名为<code>Car</code>的类，并在其中使用<code>__init__</code>方法来初始化类的实例。<code>__init__</code>是一个特殊的方法，它在类的实例化时自动调用。我们可以通过它来设置初始的成员属性。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="comment"># 使用 __init__ 方法初始化成员属性</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, brand, color, weight</span>):</span><br><span class="line">        <span class="comment"># self.brand 创建了一个名为 brand 的属性</span></span><br><span class="line">        <span class="comment"># brand = None 的效果类似于此</span></span><br><span class="line">        <span class="comment"># self.brand = brand 用传入的参数 brand 初始化</span></span><br><span class="line">        self.brand = brand</span><br><span class="line">        <span class="comment"># 同理，为 color 和 weight 属性赋值</span></span><br><span class="line">        self.color = color</span><br><span class="line">        self.weight = weight</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义一个成员方法用于显示汽车的信息</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">display_info</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;这辆车是 <span class="subst">&#123;self.color&#125;</span>色的 <span class="subst">&#123;self.brand&#125;</span>，重 <span class="subst">&#123;self.weight&#125;</span>公斤。&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<h5 id="实例化类-1"><a href="#实例化类-1" class="headerlink" title="实例化类"></a>实例化类</h5><p>当我们实例化这个类时，我们需要提供品牌、颜色和重量这三个参数。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 实例化 Car 类</span></span><br><span class="line">first_car = Car(<span class="string">&quot;Toyota&quot;</span>, <span class="string">&quot;红色&quot;</span>, <span class="number">1500</span>)</span><br><span class="line"><span class="comment"># 调用方法显示信息</span></span><br><span class="line">first_car.display_info()</span><br></pre></td></tr></table></figure></div>
-
-<p>这里，<code>first_car</code> 是 <code>Car</code> 类的一个实例，代表了一辆特定的汽车。我们给它赋予了“Toyota”品牌、“红色”颜色和1500公斤重量的属性，并通过<code>display_info</code>方法打印了这些信息。</p>
-<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>通过修改这个例子，我们可以看到如何在类中使用初始化方法（<code>__init__</code>）来设置对象的初始状态，并通过实例化这个类来创建具体的对象。每个对象都有自己的属性值，但它们共享相同的方法（如<code>display_info</code>）。</p>
-
-  <div class="note-large orange">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-circle-question"></i><p>QA</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>问：</strong>以女娲造人为例子</p>
-<ul>
-<li>什么是类？</li>
-<li>什么是实例化类？</li>
-<li>什么是面向对象？</li>
-</ul>
-<p><strong>答：</strong></p>
-<p><strong>什么是类？</strong></p>
-<p>在女娲造人的故事中，女娲的想法或设计可以被看作是一个“类”（Class）。这个类是一个抽象的概念，它定义了人类将拥有的特征（如眼睛、鼻子、嘴巴）和行为（如走路、说话）。类是面向对象编程中定义数据结构和行为的蓝图或模板。</p>
-<p><strong>什么是实例化类？</strong></p>
-<p>当女娲根据她的想法创造出一个具体的人时，这个过程就像是在面向对象编程中的“实例化”（Instantiation）。实例化类的过程就是根据类的定义创建一个具体的对象（在这个故事中就是一个具体的人）。每个人（对象）都有类定义的特征和行为，但每个人也有自己的个性（即对象的状态可以独立于其他对象）。</p>
-<p><strong>什么是面向对象？</strong></p>
-<p>面向对象编程（Object-Oriented Programming, OOP）是一种编程范式，它使用对象来模拟现实世界的实体。在女娲造人的故事中，整个造人过程（设计-创造-赋予行为）就类似于面向对象的过程。面向对象编程的核心是类和对象，以及它们之间的交互。</p>
-<p><strong>问：</strong>面向对象的好处是什么？我们以后开发代码需要怎么做？</p>
-<p><strong>答：</strong></p>
-<p><strong>好处</strong></p>
-<ol>
-<li><strong>封装</strong>：面向对象允许封装数据和方法，提高数据安全性。</li>
-<li><strong>继承</strong>：通过继承，新的类可以扩展现有类的功能。</li>
-<li><strong>多态</strong>：相同的接口可以用在不同的对象上，提高代码的灵活性和可重用性。</li>
-<li><strong>代码组织和可读性</strong>：OOP 提高了代码的组织性和可读性，使大型项目更易于管理。</li>
-</ol>
-<p><strong>开发时的做法</strong></p>
-<ul>
-<li>使用类和对象来模拟现实世界的实体和概念。</li>
-<li>封装相关的属性和方法，确保数据安全性和减少外部干扰。</li>
-<li>通过继承和多态性来重用代码和提高代码的灵活性。</li>
-<li>关注对象之间的交互，而不仅仅是代码的执行流程。</li>
-</ul>
-<p><strong>问：</strong> <code>self</code> 在初始化<code>__init__</code>的作用是什么？ 在普通方法中的作用是什么？</p>
-<p><strong>答：</strong></p>
-<p><strong>在 <code>__init__</code> 方法中</strong></p>
-<ul>
-<li><code>self</code> 在 <code>__init__</code> 方法中代表新创建的对象本身。</li>
-<li>它用于初始化对象的属性。</li>
-<li>通过 <code>self</code>，可以将对象的属性与局部变量区分开来。</li>
-</ul>
-<p><strong>在普通方法中</strong></p>
-<ul>
-<li><code>self</code> 在类的其他方法中也代表对象本身。</li>
-<li>它用于访问和修改对象的属性。</li>
-<li>同样，<code>self</code> 用于调用对象的其他方法。</li>
-</ul>
-<p>简而言之，<code>self</code> 是类方法中的一个参数，它提供了对类实例本身的引用。这允许类的方法在操作对象时访问和修改对象的属性，以及调用其他方法。</p>
-<p><strong>问：</strong>请根据闹钟 来写一个类 并创造三个闹钟</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> playsound <span class="keyword">import</span> playsound</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(current_time) 测试格式</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Alarm</span>:</span><br><span class="line">    <span class="comment"># 使用init方法初始化成员属性</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, time, music</span>):</span><br><span class="line">        self.time = time  <span class="comment"># time 是字符串格式 &#x27;HH:MM:SS&#x27;</span></span><br><span class="line">        self.music = music</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 成员方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sound</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 一些写音乐文件调用的逻辑</span></span><br><span class="line">        playsound(self.music)  <span class="comment"># 播放歌曲</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.music&#125;</span> has been played&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">clock</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 调用当前当前时间</span></span><br><span class="line">        current_time = datetime.now().strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> self.time == current_time:</span><br><span class="line">            Alarm.sound(self)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.time&#125;</span>, time to wake up !&quot;</span>)  <span class="comment"># 起床</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;Current time is <span class="subst">&#123;current_time&#125;</span>, wake up at <span class="subst">&#123;self.time&#125;</span>&quot;</span>)  <span class="comment"># 报时</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化</span></span><br><span class="line">first_alarm = Alarm(<span class="string">&#x27;15:46:25&#x27;</span>, <span class="string">&#x27;test1.mp3&#x27;</span>)</span><br><span class="line">second_alarm = Alarm(<span class="string">&#x27;22:06:50&#x27;</span>, <span class="string">&#x27;test2.mp3&#x27;</span>)</span><br><span class="line">third_alarm = Alarm(<span class="string">&#x27;05:10:33&#x27;</span>, <span class="string">&#x27;test3.mp3&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用 clock 方法</span></span><br><span class="line">first_alarm.clock()</span><br><span class="line">second_alarm.clock()</span><br><span class="line">third_alarm.clock()</span><br></pre></td></tr></table></figure></div>
-
-    </div>
-  </div>]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>基础</tag>
-        <tag>理论</tag>
-        <tag>基本语法</tag>
-        <tag>对象</tag>
-        <tag>面向对象编程</tag>
-        <tag>类</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>控制流程</title>
-    <url>/2018/08/02/20180802%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><h3 id="前置知识：Input方法"><a href="#前置知识：Input方法" class="headerlink" title="前置知识：Input方法"></a>前置知识：Input方法</h3><p>在 Python 中，<code>input()</code>是一个内置函数，用于从标准输入中获取用户输入的数据</p>
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ol>
-<li>输入的值是字符串类型</li>
-<li>如果你想输入是整数 那就需要进行类型转换</li>
-</ol>
-<p><code>a = int(input(&quot;请输入你想输入的内容&#39;))</code></p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 变量a 就存储着用户输入的数据</span></span><br><span class="line">a = <span class="built_in">input</span>(<span class="string">&#x27;请输入你想输入的内容 )</span></span><br><span class="line"><span class="string"># 当我们输入完后可以通过print将你输入的内容打印出来</span></span><br><span class="line"><span class="string">print(a)</span></span><br></pre></td></tr></table></figure></div>
-
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231202222527.png"
-                      width = "500"
-                >
-
-<h3 id="一-什么是条件判断"><a href="#一-什么是条件判断" class="headerlink" title="一. 什么是条件判断"></a>一. 什么是条件判断</h3><p>条件判断是编程中一种非常常见的控制结构，它可以帮助我们根据不同的条件来执行不同的代码。可以把它想象成我们生活中的决策过程。</p>
-<p>判断的过程中，比较的类型需要一样，例如都是数值类型</p>
-<h4 id="1-语法："><a href="#1-语法：" class="headerlink" title="1. 语法："></a>1. 语法：</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> 判断条件:</span><br><span class="line">	<span class="comment"># 执行语句....</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="comment"># 执行语句....</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># if：如果</span></span><br><span class="line"><span class="comment"># else 否则</span></span><br><span class="line"><span class="comment"># if 可以单独存在，如果不满足就不会执行if里面的代码，但会继续执行if外面的代码</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="2-案例-1"><a href="#2-案例-1" class="headerlink" title="2. 案例 1"></a>2. 案例 1</h4><p>假如天气晴朗，我就去打篮球，否则我就去看电影。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个a变量 存储今天的天气</span></span><br><span class="line">a = <span class="built_in">input</span>(<span class="string">&#x27;输入今天的天气:&#x27;</span>) </span><br><span class="line"><span class="keyword">if</span> a == <span class="string">&#x27;晴天&#x27;</span>: <span class="comment"># == 是否等于</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;今天是晴天,我要出去打篮球&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;今天是下雨天,我要去看电影&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231202223809.png"
-                      width = "500"
-                >
-
-<h4 id="3-案例-2"><a href="#3-案例-2" class="headerlink" title="3. 案例 2"></a>3. 案例 2</h4><p>随意输入0-100的整数，如果大于60 就在控制台返回  会当凌绝顶一览众山小 如果小于60就返回 三十年河东三十年河西 莫欺少年穷</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;随意输入0-100的整数:&#x27;</span>))</span><br><span class="line"><span class="keyword">if</span> a &gt; <span class="number">60</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;会当凌绝顶一览众山小&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;三十年河东三十年河西 莫欺少年穷&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231202224028.png"
-                      width = "500"
-                >
-
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231202224052.png"
-                      width = "500"
-                >
-
-<h3 id="二-多个条件判断"><a href="#二-多个条件判断" class="headerlink" title="二. 多个条件判断"></a>二. 多个条件判断</h3><h4 id="1-什么是多个条件判断"><a href="#1-什么是多个条件判断" class="headerlink" title="1. 什么是多个条件判断"></a>1. 什么是多个条件判断</h4><p>有些时候，我们的判断语句不可能只有两个，有些时候需要多个，比如说大于等于 60 的为及格，那我们还要判断大于等于 90 的为优秀，在 80 到 90 之间的良好呢？</p>
-<p>这时候需要用到 if 语句多个判断条件</p>
-<h4 id="2-语法"><a href="#2-语法" class="headerlink" title="2. 语法"></a>2. 语法</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> 判断条件<span class="number">1</span>:</span><br><span class="line">	<span class="comment"># 执行语句1.....</span></span><br><span class="line"><span class="keyword">elif</span> 判断条件<span class="number">2</span>:</span><br><span class="line">	<span class="comment"># 执行语句2.....</span></span><br><span class="line"><span class="keyword">elif</span> 判断条件<span class="number">3</span>:</span><br><span class="line">	<span class="comment"># 执行语句3.....</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="comment"># 执行语句4.....</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># if：如果</span></span><br><span class="line"><span class="comment"># elif:或者</span></span><br><span class="line"><span class="comment"># else 否则</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="3-案例-1"><a href="#3-案例-1" class="headerlink" title="3. 案例 1"></a>3. 案例 1</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入你的分数&#x27;</span>))</span><br><span class="line"><span class="keyword">if</span> a &gt;= <span class="number">90</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;优秀&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt;= <span class="number">80</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;良好&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt;= <span class="number">60</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;及格&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;恭喜你 没有及格 )</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="4-案例-2"><a href="#4-案例-2" class="headerlink" title="4. 案例 2"></a>4. 案例 2</h4><p>有时候我们会遇到多个条件的时候该怎么操作呢？</p>
-<p>比如说：学校举行一场考试，要求小明的python和java两门语言 都达到80分才算优秀。</p>
-<ul>
-<li>这时候我们可以结合 or 和 and 来使用。</li>
-<li>or (或)表示两个条件有一个成立时判断条件成功</li>
-<li>and (与)表示只有两个条件同时成立的情况下，判断条件才成功。</li>
-</ul>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入python分数&#x27;</span>))</span><br><span class="line">java = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入java分数&#x27;</span>))</span><br><span class="line"><span class="comment"># 当我们输入完 我们的变量python和java就分别存储着 python和java的分数</span></span><br><span class="line"><span class="keyword">if</span> python &gt;= <span class="number">80</span> <span class="keyword">and</span> java &gt;= <span class="number">80</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;优秀&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;不优秀&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入python分数&#x27;</span>))</span><br><span class="line">java = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入java分数&#x27;</span>))</span><br><span class="line"><span class="comment"># 当我们输入完 我们的变量python和java就分别存储着 python和java的分数</span></span><br><span class="line"><span class="comment"># 将and改为or 就意味着 只需要一个条件满足就是优秀</span></span><br><span class="line"><span class="keyword">if</span> python &gt;= <span class="number">80</span> <span class="keyword">or</span> java &gt;= <span class="number">80</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;优秀&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;不优秀&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="三-嵌套"><a href="#三-嵌套" class="headerlink" title="三. 嵌套"></a>三. 嵌套</h3><h4 id="1-嵌套是指什么"><a href="#1-嵌套是指什么" class="headerlink" title="1. 嵌套是指什么"></a>1. 嵌套是指什么</h4><p>就跟字面意思差不多，指 if 语句中可以嵌套 if 语句。</p>
-<h4 id="2-案例-1-1"><a href="#2-案例-1-1" class="headerlink" title="2. 案例 1"></a>2. 案例 1</h4><p>小明，平时正常上班太累了，到了周末如果是晴天，那就出去打篮球，如果不是那就在家看电视</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个变量来保存今天是不是周末</span></span><br><span class="line"><span class="comment"># 定义一个变量b来保存今天的天气</span></span><br><span class="line">a = <span class="string">&#x27;周末&#x27;</span></span><br><span class="line">b = <span class="string">&#x27;晴&#x27;</span></span><br><span class="line"><span class="keyword">if</span> a == <span class="string">&#x27;周末&#x27;</span>:</span><br><span class="line">    <span class="keyword">if</span> b == <span class="string">&#x27;晴&#x27;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;今天是周末，又是晴天可以去打篮球&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;今天是周末，但是下雨在家乖乖看电视&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;乖乖上班&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="四-三目运算"><a href="#四-三目运算" class="headerlink" title="四. 三目运算"></a>四. 三目运算</h3><ol>
-<li>也叫三元运算符，是一种简洁的条件语句表达式。它可以根据条件的成立与否来返回两个值中的一个。</li>
-</ol>
-<p>​	<strong>作用</strong>：简化代码</p>
-<ol start="2">
-<li>之前案例，今天学校期末数学考试(60分及格)，小明考了66分，请问小明是及格还是没有及格。</li>
-</ol>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个变量a 来保存小明的数学成绩</span></span><br><span class="line">a = <span class="number">66</span></span><br><span class="line"><span class="comment"># 三目运算</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;及格&#x27;</span>) <span class="keyword">if</span> a &gt; <span class="number">6</span> <span class="keyword">else</span> <span class="built_in">print</span>(<span class="string">&#x27;不及格&#x27;</span>)</span><br><span class="line"><span class="comment"># 普通的if判断</span></span><br><span class="line"><span class="keyword">if</span> a &gt; <span class="number">60</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;及格&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;不及格&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="五-循环语句"><a href="#五-循环语句" class="headerlink" title="五. 循环语句"></a>五. 循环语句</h3><h4 id="1-什么是循环"><a href="#1-什么是循环" class="headerlink" title="1. 什么是循环"></a>1. 什么是循环</h4><p>可以让程序自动地执行多次相同或类似的任务，从而节省编写代码的时间和精力。</p>
-<p>一共有两种循环：</p>
-<ul>
-<li>for循环</li>
-<li>while循环</li>
-</ul>
-<h4 id="2-for循环"><a href="#2-for循环" class="headerlink" title="2. for循环"></a>2. for循环</h4><p>可以遍历一个序列或其他可迭代对象中的元素，并执行特定的代码块。</p>
-<h5 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> 形参 <span class="keyword">in</span> 遍历对象: 	</span><br><span class="line">	<span class="built_in">print</span>(形参)</span><br></pre></td></tr></table></figure></div>
-
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>对象（Objects）</strong>：</p>
-<p>在Python中，几乎所有东西都是对象。这包括数字、字符串、列表、函数，甚至是类和类型本身。每个对象都有三个特性：身份、类型和值。</p>
-<ul>
-<li>身份：每个对象都有一个唯一的身份，用于区分不同的对象。可以通过 <code>id()</code> 函数来查看对象的身份。</li>
-<li>类型：对象的类型定义了它可以进行哪些操作或拥有哪些方法。类型可以通过 <code>type()</code> 函数查看。</li>
-<li>值：对象表示的数据。</li>
-</ul>
-<p><strong>形参（Formal Parameters）</strong>：</p>
-<p>当你定义一个函数时，你可以在函数定义中指定一些参数。这些参数被称为形式参数（形参），它们是函数内部的局部变量。当函数被调用时，形参会接收传递给函数的实际值。这些值被称为实参（实际参数）。</p>
-<p>例如：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):  <span class="comment"># a 和 b 是形参</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br></pre></td></tr></table></figure></div>
-
-<p>在这个例子中，<code>a</code> 和 <code>b</code> 是形参，它们在函数 <code>add</code> 被调用时接收实际的输入值。</p>
-
-    </div>
-  </div>
-
-<h5 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 案例: 将List的内容全部打印出来</span></span><br><span class="line"><span class="comment"># 定义一个列表List</span></span><br><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>]</span><br><span class="line"><span class="comment"># 以前</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">2</span>])</span><br><span class="line"><span class="comment"># 如果List里面有1000 个值呢，是不是要写一干遍</span></span><br><span class="line"><span class="comment"># 我们学习for循环后</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> <span class="built_in">list</span>:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br></pre></td></tr></table></figure></div>
-
-<h5 id="range函数"><a href="#range函数" class="headerlink" title="range函数"></a>range函数</h5><h6 id="什么是range"><a href="#什么是range" class="headerlink" title="什么是range"></a>什么是range</h6><p>是 Python 内置的一个函数，用于生成一个整数序列</p>
-<h6 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h6><p>常用于for循环中，用于循环的次数</p>
-<h6 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h6><p><code>range()</code>函数有三种用法:</p>
-<ol>
-<li><code>range(stop)</code>: 生成从 0 开始到 stop-1 的整数序列。</li>
-<li><code>range(start，stop)</code>: 生成从 start 开始到 stop-1 的整数序列。</li>
-<li><code>range(start，stop，step)</code>: 生成从 start 开始到 stop-1 的整数序列，步长为 step。</li>
-</ol>
-<h6 id="range案例"><a href="#range案例" class="headerlink" title="range案例"></a>range案例</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    <span class="comment"># item:次数</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;range让我循环<span class="subst">&#123;item&#125;</span>次&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># range让我循环0次</span></span><br><span class="line"><span class="comment"># range让我循环1次</span></span><br><span class="line"><span class="comment"># range让我循环2次</span></span><br><span class="line"><span class="comment"># range让我循环3次</span></span><br><span class="line"><span class="comment"># range让我循环4次</span></span><br><span class="line"><span class="comment"># range让我循环5次</span></span><br><span class="line"><span class="comment"># range让我循环6次</span></span><br><span class="line"><span class="comment"># range让我循环7次</span></span><br><span class="line"><span class="comment"># range让我循环8次</span></span><br><span class="line"><span class="comment"># range让我循环9次</span></span><br></pre></td></tr></table></figure></div>
-
-<h5 id="列表、元组、集合、字典、字符串的for循环的使用案例"><a href="#列表、元组、集合、字典、字符串的for循环的使用案例" class="headerlink" title="列表、元组、集合、字典、字符串的for循环的使用案例"></a>列表、元组、集合、字典、字符串的for循环的使用案例</h5>
-  <div class="note p-4 mb-4 rounded-small primary icon-padding">
-    <i class="note-icon fa-solid fa-square-arrow-up-right"></i><p>列表、元组、集合、字典、字符串皆为<a class="button " href='https://www.yiuhangblog.com/2018/07/23/20180723%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/' title='数值类型'><i class='fa-solid fa-play-circle'></i> 数值类型</a>，详细内容与调用方法跳转查阅</p>
-
-  </div>
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列表</span></span><br><span class="line">List_test = [<span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> List_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># 香蕉</span></span><br><span class="line"><span class="comment"># 苹果</span></span><br><span class="line"><span class="comment"># 梨子</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment"># 元组</span></span><br><span class="line">tuple_test = (<span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> tuple_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># 香蕉</span></span><br><span class="line"><span class="comment"># 苹果</span></span><br><span class="line"><span class="comment"># 梨子</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 集合</span></span><br><span class="line">set_test = &#123;<span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> set_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># 香蕉</span></span><br><span class="line"><span class="comment"># 苹果</span></span><br><span class="line"><span class="comment"># 梨子</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字典</span></span><br><span class="line">dict_test = &#123;</span><br><span class="line">    <span class="string">&quot;username&quot;</span>: <span class="string">&#x27;user&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;age&#x27;</span>: <span class="number">25</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> dict_test:</span><br><span class="line">    <span class="comment"># 在字典中 item:key</span></span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line">    <span class="comment"># 如果想拿到vaLue的值 : List[item] </span></span><br><span class="line">    <span class="built_in">print</span>(item, dict_test[item])</span><br><span class="line"><span class="comment"># username</span></span><br><span class="line"><span class="comment"># username user</span></span><br><span class="line"><span class="comment"># age</span></span><br><span class="line"><span class="comment"># age 25</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">#字符串</span></span><br><span class="line">str_test = <span class="string">&#x27;hello word&#x27;</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> str_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># h</span></span><br><span class="line"><span class="comment"># e</span></span><br><span class="line"><span class="comment"># l</span></span><br><span class="line"><span class="comment"># l</span></span><br><span class="line"><span class="comment"># o</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># w</span></span><br><span class="line"><span class="comment"># o</span></span><br><span class="line"><span class="comment"># r</span></span><br><span class="line"><span class="comment"># d</span></span><br></pre></td></tr></table></figure></div>
-
-<h5 id="双层for循环"><a href="#双层for循环" class="headerlink" title="双层for循环"></a>双层for循环</h5><p>也可以用于遍历嵌套的数据结构</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列表里面包字典，这是开发最常见的一种数据方式，我们需要把里面的数据给拿出来</span></span><br><span class="line">list_dic = [&#123;</span><br><span class="line">    <span class="string">&#x27;username&#x27;</span>: <span class="string">&#x27;users1&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;age&#x27;</span>: <span class="number">18</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">    <span class="string">&#x27;username&#x27;</span>: <span class="string">&#x27;users2&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;age&#x27;</span>: <span class="number">20</span></span><br><span class="line">&#125;]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一层for循环遍历出两个字典</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> list_dic:</span><br><span class="line">    <span class="comment"># 第二层for循环遍历出字典里面的值</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> item: <span class="comment"># 通过i形参就是传递出字典里的值</span></span><br><span class="line">        <span class="comment"># item就是字典本身，通过遍历item获取value</span></span><br><span class="line">        <span class="built_in">print</span>(i, item[i]) <span class="comment"># items 就是拿到了，item字典里面的key</span></span><br><span class="line">        </span><br><span class="line"><span class="comment"># username users1</span></span><br><span class="line"><span class="comment"># age 18</span></span><br><span class="line"><span class="comment"># username users2</span></span><br><span class="line"><span class="comment"># age 20</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="3-while循环"><a href="#3-while循环" class="headerlink" title="3. while循环"></a>3. while循环</h4><p>常见的循环结构，它可以在条件满足的情况下重复执行一段代码块，直到条件不再满足为止。</p>
-<h5 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> 判断条件: </span><br><span class="line">	输出内容</span><br></pre></td></tr></table></figure></div>
-
-<h5 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">11</span></span><br><span class="line"><span class="keyword">while</span> a &gt; <span class="number">10</span>:</span><br><span class="line">    <span class="comment"># 这样会陷入无尽的循环 因为a会一直大于 10 这个时候</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;a大于10 这行代码就会一直运行&#x27;</span>)</span><br><span class="line">    <span class="keyword">break</span> <span class="comment">#我们可以用break来终止</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># a大于10 这行代码就会一直运行</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">8</span></span><br><span class="line"><span class="keyword">while</span> a &lt; <span class="number">10</span>:</span><br><span class="line">    <span class="comment"># 可以在循环里面加改变条件的运算 让循环变成 有限循环 而不是无限循环</span></span><br><span class="line">    a += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;aaaaaaa&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># aaaaaaa</span></span><br><span class="line"><span class="comment"># aaaaaaa</span></span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>基础</tag>
-        <tag>理论</tag>
-        <tag>控制流程</tag>
-        <tag>条件判断</tag>
-        <tag>循环语句</tag>
-        <tag>嵌套</tag>
-        <tag>三目运算</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>函数</title>
     <url>/2018/08/12/20180812%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<h2 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h2><p>函数是一段可重复使用的代码块，用于执行特定的任务</p>
@@ -768,8 +609,8 @@
         <tag>Python</tag>
         <tag>基础</tag>
         <tag>理论</tag>
-        <tag>基本语法</tag>
         <tag>嵌套</tag>
+        <tag>基本语法</tag>
         <tag>内置函数</tag>
         <tag>形参</tag>
         <tag>实参</tag>
@@ -1050,6 +891,239 @@
         <tag>商务智能</tag>
         <tag>模型</tag>
         <tag>FineBI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Requests</title>
+    <url>/2021/02/22/20210222requests/</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ol>
+<li>Requests是一个优雅而简单的Python HTTP库，专为人类而构建。</li>
+<li>中文官方文档：<a class="link"   href="http://cn.python-requests.org/zh_CN/latest/%E3%80%82" >http://cn.python-requests.org/zh_CN/latest/。 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>英文文档：<a class="link"   href="http://docs.python-requests.org/en/master/api/" >http://docs.python-requests.org/en/master/api/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ol>
+<h3 id="作者"><a href="#作者" class="headerlink" title="作者"></a>作者</h3><p>Requests的作者Kenneth Reitz同样是一个富有传奇色彩的人物。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/作者1.png"
+                      width = "300"
+                >
+
+<p>Requests目前基本上完全满足web请求的所有需求，以下是requests的特性:</p>
+<ol>
+<li>Keep-Alive &amp; 连接池</li>
+<li>国际化域名和URL</li>
+<li>带持久Cookie的会话</li>
+<li>浏览器式的SSL认证</li>
+<li>自动内容解码</li>
+<li>基本&#x2F;摘要时的身份认证</li>
+<li>优雅的 key&#x2F;value Cookie</li>
+<li>自动解压</li>
+<li>Unicode 响应体</li>
+<li>HTTP(S) 代理支持</li>
+<li>文件分块上传</li>
+<li>流下载</li>
+<li>连接超时</li>
+<li>分块请求</li>
+<li>支持 .netrc</li>
+</ol>
+<h2 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h2><p>使用 Requests 发送网络请求非常简单。导包, 之后添加方法进行。</p>
+<p>Requests的请求不再像urllib一样需要去构造各种Request、opener和handler，使用Requests构造的方法，并在其中传入需要的参数即可。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/requests请求.png"
+                      width = "500"
+                >
+
+<p>发起请求的方法变得简单，只需要着重关注一下发起请求的参数 ，10个重要的参数。</p>
+<pre><code>    method, 请求方法
+    url,  资源地址
+    params=None, 查询参数也叫做查询字符串
+    data=None,   post请求的表单数据
+    headers=None, 请求头
+    cookies=None, cookies
+    files=None, # 文件
+    auth=None, # 校验身份
+    timeout=None, 超时时间
+    allow_redirects=True, # 重定向
+    proxies=None, 代理
+    hooks=None,#  钩子函数
+    stream=None,# 
+    verify=None, 证书忽略
+    cert=None, # 字符串 --证书的地址  元组（）
+    json=None,  post 请求的JSON数据
+</code></pre>
+<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p>传递URL参数也不用再像urllib中那样需要去拼接URL，而是简单的，构造一个字典，并在请求时将其传递给params参数，此时，查看请求的URL，则可以看到URL已经构造正确了，并且，有时候我们会遇到相同的url参数名，但有不同的值，而python的字典又不支持键的重名，那么我们可以把键的值用列表表示：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/url参数.png"
+                      width = "500"
+                >
+
+<h3 id="添加请求头"><a href="#添加请求头" class="headerlink" title="添加请求头"></a>添加请求头</h3><p>如果想自定义请求的Headers，同样的将字典数据传递给headers参数。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/requests请求头.png"
+                      width = "500"
+                >
+
+<h3 id="添加cookies"><a href="#添加cookies" class="headerlink" title="添加cookies"></a>添加cookies</h3><p>Requests中自定义Cookies也不用再去构造CookieJar对象，直接将字典递给cookies参数。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/自定义cookies.png"
+                      width = "500"
+                >
+
+<h3 id="设置超时时间"><a href="#设置超时时间" class="headerlink" title="设置超时时间"></a>设置超时时间</h3><p>设置访问超时，设置timeout参数即可。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/设置超时时间.png"
+                      width = "500"
+                >
+
+<h3 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h3><p>当我们需要使用代理时，同样构造代理字典，传递给proxies参数。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/设置代理.png"
+                      width = "500"
+                >
+
+<h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><p>很多网站是http开头，为了不影响老客户，原网站不动，当访问http的原网址时，重定向到新的https网址，在requests中 allow_redirects默认是True，如果是False则不允许重定向，也就无法重定向新网址获取数据。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/重定向.png"
+                      width = "500"
+                >
+
+<h3 id="证书忽略验证"><a href="#证书忽略验证" class="headerlink" title="证书忽略验证"></a>证书忽略验证</h3><p>有时候我们使用了抓包工具，这个时候由于抓包工具提供的证书并不是由受信任的数字证书颁发机构颁发的，所以证书的验证会失败，所以我们就需要关闭证书验证。在请求的时候把verify参数设置为False就可以关闭证书验证了。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/忽略证书验证.png"
+                      width = "500" 
+                >
+
+<p>但是关闭验证后，会有一个比较烦人的warning：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/验证警告.png"
+                      width = "500"
+                >
+
+<p>可以使用以下方法关闭警告：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/关闭验证警告.png"
+                      width = "500"
+                >
+
+<h3 id="POST请求发送Json数据"><a href="#POST请求发送Json数据" class="headerlink" title="POST请求发送Json数据"></a>POST请求发送Json数据</h3><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/发送json数据.png"
+                      width = "500"
+                >
+
+<h3 id="POST请求发送Form表单数据"><a href="#POST请求发送Form表单数据" class="headerlink" title="POST请求发送Form表单数据"></a>POST请求发送Form表单数据</h3><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/发送表单数据.png"
+                      width = "500"
+                >
+
+<h3 id="POST示例"><a href="#POST示例" class="headerlink" title="POST示例"></a>POST示例</h3><p>以<a class="link"   href="https://www.17k.com/%E7%99%BB%E5%BD%95%E4%B8%BA%E6%A1%88%E4%BE%8B%EF%BC%8C%E9%A6%96%E5%85%88%E5%88%86%E6%9E%90%E7%99%BB%E5%BD%95%E9%80%BB%E8%BE%91" >https://www.17k.com/登录为案例，首先分析登录逻辑 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<blockquote>
+<p>尝试登录操作，发现操作后会其Headers下会显示请求的网址<a class="link"   href="https://passport.17k.com/ck/user/login%EF%BC%8C%E4%B8%94%E8%AF%B7%E6%B1%82%E7%B1%BB%E5%9E%8B%E4%B8%BAPOST" >https://passport.17k.com/ck/user/login，且请求类型为POST <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231130125526.png"
+                      width = "500"
+                >
+</blockquote>
+<p>随后分析所需的构造参数</p>
+<blockquote>
+<p>在Payload下可以发现其为表单数据，应构造的参数为{loginName:  123， password: 123}</p>
+<p>另外还需添加headers伪装</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231130130020.png"
+                      width = "500"
+                >
+</blockquote>
+<p>接着根据分析的要素，构造请求，向服务器提交数据即可</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url=<span class="string">&#x27;https://passport.17k.com/ck/user/login&#x27;</span></span><br><span class="line"></span><br><span class="line">form_data = &#123;</span><br><span class="line">    <span class="string">&#x27;loginName&#x27;</span>:  <span class="string">&#x27;123&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">headers = &#123;</span><br><span class="line"><span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">resp = requests.post(url, data=form_data, headers=headers)</span><br><span class="line"><span class="built_in">print</span>(resp.text)</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h2><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a><strong>属性</strong></h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(res.text)#直接转换成字符串 非字节码</span><br><span class="line">print(res.content)#图片数据 使用此参数</span><br><span class="line">print(res.status_code)#状态码</span><br><span class="line">print(res.json()[&quot;headers&quot;][&quot;User-Agent&quot;])#自动转换成 字典格式</span><br><span class="line"># 一定要确保你使用的格式是json格式的数据</span><br><span class="line">print(res.headers)#响应头</span><br><span class="line">print(res.cookies)#响应cookie</span><br><span class="line">print(res.url)#请求的url</span><br><span class="line">print(res.request.url)#请求的url</span><br><span class="line">print(res.request.headers)#请求头</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="响应内容"><a href="#响应内容" class="headerlink" title="响应内容"></a>响应内容</h3><p>通过Requests发起请求获取到的，是一个requests.models.Response对象。通过这个对象我们可以很方便的获取响应的内容。<br>之前通过urllib获取的响应，读取的内容都是bytes的二进制格式，需要我们自己去将结果decode()一次转换成字符串数据。<br>而Requests通过text属性，就可以获得字符串格式的响应内容。</p>
+<h3 id="字符编码和二进制数据"><a href="#字符编码和二进制数据" class="headerlink" title="字符编码和二进制数据"></a>字符编码和二进制数据</h3><p>Requests会自动的根据响应的报头来猜测网页的编码是什么，然后根据猜测的编码来解码网页内容，基本上大部分的网页都能够正确的被解码。而如果发现text解码不正确的时候，就需要我们自己手动的去指定解码的编码格式。而如果你需要获得原始的二进制数据，那么使用content属性即可。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/字符编码.png"
+                      width = "500"
+                >
+
+<h2 id="session方法"><a href="#session方法" class="headerlink" title="session方法"></a>session方法</h2><p>session方法是requests库发起请求的一种方法，这种方法会自动保存访问页面得到的cookie值，从而再次访问的时候会自动携带cookie，使得操作cookie方便，不需要我们自己添加cookie了。常用于登录；</p>
+<h3 id="经典的登录逻辑"><a href="#经典的登录逻辑" class="headerlink" title="经典的登录逻辑"></a>经典的登录逻辑</h3><p>功能:自动更新请求头信息，常用在账号登录的时候，先访问登录页url，再访问数据提交的url<br>例:12306</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/session逻辑.png"
+                      width = "500"
+                >
+
+<h3 id="session的使用"><a href="#session的使用" class="headerlink" title="session的使用"></a>session的使用</h3><p>基本的使用方法与requests.get 相似，使用的session的时候需要先创建session对象</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">session=requests.session()#创建session对象</span><br><span class="line">session.headers=headers#添加请求头</span><br><span class="line">res_ss=session.get(index_url)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="session示例"><a href="#session示例" class="headerlink" title="session示例"></a>session示例</h3><p>首先利用测试网址编入cookies</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">session = requests.session()</span><br><span class="line">resp_ss = session.get(<span class="string">&#x27;http://httpbin.org/cookies/set/CosTrace/12345678&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(resp_ss.text)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">  &quot;cookies&quot;: &#123;</span></span><br><span class="line"><span class="string">    &quot;CosTrace&quot;: &quot;12345678&quot;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>采用<code>requests.get</code>方法尝试获取cookies，发现不存在值，这是因为<code>requests</code>方法本身不存在存储的功能</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">resp_req = requests.get(<span class="string">&#x27;http://httpbin.org/cookies&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(resp_req.text)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">  &quot;cookies&quot;: &#123;&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>随后我们用<code>session</code>方法尝试获取cookies，发现成功</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">resp_req = session.get(<span class="string">&#x27;http://httpbin.org/cookies&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(resp_req.text)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">  &quot;cookies&quot;: &#123;</span></span><br><span class="line"><span class="string">    &quot;CosTrace&quot;: &quot;12345678&quot;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="Requests案例1-简易百度图片抓取"><a href="#Requests案例1-简易百度图片抓取" class="headerlink" title="Requests案例1  - 简易百度图片抓取"></a>Requests案例1  - 简易百度图片抓取</h2><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">目标：百度图片抓取</span></span><br><span class="line"><span class="string">1. 打开网页 --&gt;请求 --&gt;伪装</span></span><br><span class="line"><span class="string">    a. 安装模块 pip install requests</span></span><br><span class="line"><span class="string">    b. 请求失败的话就在伪装继续添加标头</span></span><br><span class="line"><span class="string">2. 下载图片 --保存本地 --&gt;交互</span></span><br><span class="line"><span class="string">    a. 把响应内容中的图片url提取出来</span></span><br><span class="line"><span class="string">    b. 对每个图片的url，进行请求二进制的方法进行保存</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> md5</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests, re</span><br><span class="line"></span><br><span class="line"><span class="comment"># 赋值url</span></span><br><span class="line">url = <span class="string">&#x27;https://image.baidu.com/search/index?tn=baiduimage&amp;ipn=r&amp;ct=201326592&amp;cl=2&amp;lm=-1&amp;st=-1&amp;fm=index&amp;fr=&amp;hs=0&amp;xthttps=000000&amp;sf=1&amp;fmq=&amp;pv=&amp;ic=0&amp;nc=1&amp;z=&amp;se=1&amp;showtab=0&amp;fb=0&amp;width=&amp;height=&amp;face=0&amp;istype=2&amp;ie=utf-8&amp;word=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;oq=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;rsp=-1&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 表头字典，制作伪装</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 赋值请求服务, 获取http数据</span></span><br><span class="line">resp = requests.get(url, headers=headers)</span><br><span class="line">http_data = resp.text</span><br><span class="line"></span><br><span class="line"><span class="comment"># 正则表达式提取图片</span></span><br><span class="line">re_data = re.findall(<span class="string">&#x27;thumbURL&quot;:&quot;(.*?)&quot;&#x27;</span>, http_data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 循环提取, md5去重命名</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> re_data:</span><br><span class="line">    name_encode = md5(i.encode()).hexdigest()</span><br><span class="line">    img_resp = requests.get(i)</span><br><span class="line">    b_img_data = img_resp.content</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">f&#x27;<span class="subst">&#123;name_encode&#125;</span>.jpg&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(b_img_data)</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="Requests案例2-多页百度图片抓取"><a href="#Requests案例2-多页百度图片抓取" class="headerlink" title="Requests案例2 - 多页百度图片抓取"></a>Requests案例2 - 多页百度图片抓取</h2><blockquote>
+<p>首先分析，在标头的响应查看滚动页面时返回的URL，分析翻页时的变化：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在标头的响应查看滚动页面时返回的url</span></span><br><span class="line">url_1 = <span class="string">&#x27;https://image.baidu.com/search/acjson?tn=resultjson_com&amp;logid=8578568584458070132&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;fr=&amp;word=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;queryWord=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=&amp;z=&amp;ic=&amp;hd=&amp;latest=&amp;copyright=&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=&amp;istype=&amp;qc=&amp;nc=1&amp;expermode=&amp;nojc=&amp;isAsync=&amp;pn=60&amp;rn=30&amp;gsm=3c&amp;1701269373791=&#x27;</span></span><br><span class="line">url_2 = <span class="string">&#x27;https://image.baidu.com/search/acjson?tn=resultjson_com&amp;logid=8578568584458070132&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;fr=&amp;word=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;queryWord=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=&amp;z=&amp;ic=&amp;hd=&amp;latest=&amp;copyright=&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=&amp;istype=&amp;qc=&amp;nc=1&amp;expermode=&amp;nojc=&amp;isAsync=&amp;pn=90&amp;rn=30&amp;gsm=5a&amp;1701269630311=&#x27;</span></span><br><span class="line">url_3 = <span class="string">&#x27;https://image.baidu.com/search/acjson?tn=resultjson_com&amp;logid=8578568584458070132&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;fr=&amp;word=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;queryWord=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=&amp;z=&amp;ic=&amp;hd=&amp;latest=&amp;copyright=&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=&amp;istype=&amp;qc=&amp;nc=1&amp;expermode=&amp;nojc=&amp;isAsync=&amp;pn=120&amp;rn=30&amp;gsm=78&amp;1701269630813=&#x27;</span></span><br></pre></td></tr></table></figure></div>
+</blockquote>
+<blockquote>
+<p>随后比较三个URL直接的关系，可以发现大部分都是相同，因此删除所有相同的部分进行比较：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 分析链接不同的规律，下面是不同的部分：</span></span><br><span class="line"><span class="comment"># pn: 当前显示的图片数量，一次翻页显示30张，pn（Page Number）: 这个参数通常用于分页功能，表示当前显示的页面编号或者某些情况下显示的项目数量。</span></span><br><span class="line"><span class="comment"># 例如，在图像搜索结果中，pn=90可能表示当前显示的是第90张图片或第90页的内容。</span></span><br><span class="line"><span class="comment"># gsm未知，可能表示一个特定的标识符或编码，用于追踪请求或控制返回的内容</span></span><br><span class="line"><span class="comment"># 后面的长数值是时间戳，时间戳通常用于记录事件发生的具体时间，有时用于缓存控制或确保请求的唯一性</span></span><br><span class="line"></span><br><span class="line">url_1_compar = <span class="string">&#x27;pn=60&amp;gsm=3c&amp;1701269373791=&#x27;</span></span><br><span class="line">url_2_compar = <span class="string">&#x27;pn=90&amp;gsm=5a&amp;1701269630311=&#x27;</span></span><br><span class="line">url_3_compar = <span class="string">&#x27;pn=120&amp;gsm=78&amp;1701269630813=&#x27;</span></span><br></pre></td></tr></table></figure></div>
+</blockquote>
+<blockquote>
+<p>最后把完整URL输入到浏览器，查看删减这三个不同的部分哪些会影响数据的获取：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 通过删减url发现时间戳和gsm均不影响翻页，因此剩余影响数据获取的不同点是pn，且每30一获取：</span></span><br><span class="line">url_1_compar_2 = <span class="string">&#x27;pn=60&#x27;</span></span><br><span class="line">url_2_compar_2 = <span class="string">&#x27;pn=90&#x27;</span></span><br><span class="line">url_3_compar_2 = <span class="string">&#x27;pn=120&#x27;</span></span><br></pre></td></tr></table></figure></div>
+</blockquote>
+<p>通过分析可以发现百度翻页规律，随后编写循环（此例为三页）配合案例1的伪装即可获取</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 表头字典，制作伪装</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">&#x27;images&#x27;</span>):</span><br><span class="line">    os.mkdir(<span class="string">&#x27;images&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编写循环，每30返回一次：</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">4</span>):</span><br><span class="line">    url = <span class="string">f&#x27;https://image.baidu.com/search/acjson?tn=resultjson_com&amp;logid=8578568584458070132&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;fr=&amp;word=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;queryWord=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=&amp;z=&amp;ic=&amp;hd=&amp;latest=&amp;copyright=&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=&amp;istype=&amp;qc=&amp;nc=1&amp;expermode=&amp;nojc=&amp;isAsync=&amp;pn=<span class="subst">&#123;i * <span class="number">30</span>&#125;</span>&amp;rn=30&#x27;</span></span><br><span class="line">    resp = requests.get(url, headers=headers)  <span class="comment"># 赋值请求服务, 获取http数据</span></span><br><span class="line">    data = resp.json()  <span class="comment"># json -&gt; 字符串转成dict格式，前提条件就是resp一定时json格式</span></span><br><span class="line">    data_list = data.get(<span class="string">&quot;data&quot;</span>)  <span class="comment"># 这是一个列表</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> data_list:</span><br><span class="line">        img_url = j.get(<span class="string">&quot;thumbURL&quot;</span>)  <span class="comment"># 获取该变量下的值</span></span><br><span class="line">        <span class="keyword">if</span> img_url:  <span class="comment"># 当请求到数据时</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                img_url_encode = md5(img_url.encode()).hexdigest()  <span class="comment"># md5去重，唯一标识符</span></span><br><span class="line">                img_resp = requests.get(img_url)</span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="built_in">print</span>(e)  <span class="comment"># 是否有脏数据</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                b_img_data = img_resp.content</span><br><span class="line">                <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;images/&#x27;</span> + img_url_encode + <span class="string">&#x27;.jpg&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                    f.write(b_img_data)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>数据抓取</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+        <tag>理论</tag>
+        <tag>爬虫</tag>
+        <tag>Requests</tag>
       </tags>
   </entry>
   <entry>
@@ -1675,6 +1749,165 @@ chrome.find_element_by_css_selector(&quot;submit button&quot;).click()
         <tag>爬虫</tag>
         <tag>Selenium</tag>
         <tag>自动化工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象</title>
+    <url>/2018/09/08/20180908%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><p>面向对象编程（Object-Oriented Programming, OOP）是一种编程范式，它使用“对象”来设计软件。这种方法不仅侧重于数据（即属性），还侧重于操作这些数据的代码（即方法）。面向对象编程基于几个核心概念，包括类、对象、继承、多态和封装。</p>
+<ol>
+<li><strong>类（Class）</strong>：类是创建对象的蓝图或模板。它定义了对象的属性和方法。属性是类中的变量，方法是类中的函数。类本身不占用内存空间，它只是定义了对象的结构。</li>
+<li><strong>对象（Object）</strong>：对象是类的实例。当类被实例化时，会创建一个对象。对象具有类定义的属性和方法。每个对象都有自己的属性值，但共享相同的方法。</li>
+<li><strong>继承（Inheritance）</strong>：继承允许一个类继承另一个类的属性和方法。这有助于代码重用，并实现多层次的分类。在继承关系中，有基类（父类）和派生类（子类）。</li>
+<li><strong>多态（Polymorphism）</strong>：多态是指即使不同类的对象可能有不同的实现，但它们可以通过相同的接口进行交互。这意味着，可以用统一的方式来处理不同类的对象，即使它们具有不同的内部结构。</li>
+<li><strong>封装（Encapsulation）</strong>：封装是隐藏对象内部实现细节的过程，仅公开必要的接口。这有助于防止外部代码随意更改对象内部状态，从而保护对象的完整性并简化接口。</li>
+<li><strong>抽象（Abstraction）</strong>：抽象是将复杂的现实世界问题简化为模型的过程。在面向对象编程中，这通常意味着创建类，这些类代表了现实世界中的实体或概念，但只包括与当前问题相关的部分。</li>
+</ol>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/Types-of-OOPS-2.gif"
+                      width="300"
+                >
+
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li><strong>模块化</strong>：OOP 促进了代码的模块化，使得不同模块可以独立开发和测试，提高了代码的可维护性和复用性。</li>
+<li><strong>可扩展性</strong>：通过继承和多态，可以在现有代码的基础上添加新功能，而不必大幅修改现有代码。</li>
+<li><strong>可维护性</strong>：封装提供了一种方式，使得代码更易于理解和维护。</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li><strong>性能</strong>：相较于面向过程的编程，面向对象的程序可能在性能上稍微逊色，因为它需要额外的内存和处理。</li>
+<li><strong>复杂性</strong>：面向对象的系统可能比简单的面向过程的系统更复杂。</li>
+</ul>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>面向对象编程在软件工程中广泛应用，从桌面和移动应用程序到大型企业级系统。众多流行的编程语言，如 Java、C#、Python、Ruby 和 C++，都支持面向对象的编程范式。</p>
+<h2 id="类-Class"><a href="#类-Class" class="headerlink" title="类 Class"></a>类 Class</h2><p>类（Class）是面向对象编程（OOP）中的一个核心概念。在很多现代编程语言中，类作为一种构造，提供了一种封装数据和行为（即代码）的方式。它们允许开发者创建复杂的数据结构</p>
+<h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><p>首先，我们定义一个名为<code>Car</code>的类：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="comment"># 这些是成员属性</span></span><br><span class="line">    brand = <span class="literal">None</span></span><br><span class="line">    color = <span class="literal">None</span></span><br><span class="line">    speed = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 这是一个成员方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车启动了。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">accelerate</span>(<span class="params">self, increase</span>):</span><br><span class="line">        self.speed += increase</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车加速到了<span class="subst">&#123;self.speed&#125;</span>公里/小时。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">brake</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车正在刹车。&quot;</span>)</span><br><span class="line">        self.speed = <span class="number">0</span></span><br></pre></td></tr></table></figure></div>
+
+<p>在这个<code>Car</code>类中：</p>
+<ul>
+<li><strong>成员属性</strong>：<code>brand</code>（品牌）、<code>color</code>（颜色）和<code>speed</code>（速度）是类的属性。它们用来描述这个类的状态。</li>
+<li><strong>成员方法</strong>：<code>start</code>、<code>accelerate</code> 和 <code>brake</code> 是类的方法。它们描述了<code>Car</code>可以执行的操作。</li>
+</ul>
+<h3 id="实例化类"><a href="#实例化类" class="headerlink" title="实例化类"></a>实例化类</h3><p>接下来，我们创建几个<code>Car</code>类的实例：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">first_car = Car()  <span class="comment"># 实例化第一辆车</span></span><br><span class="line">first_car.brand = <span class="string">&#x27;Toyota&#x27;</span></span><br><span class="line">first_car.color = <span class="string">&#x27;红色&#x27;</span></span><br><span class="line">first_car.start()</span><br><span class="line">first_car.accelerate(<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line">second_car = Car() <span class="comment"># 实例化第二辆车</span></span><br><span class="line">second_car.brand = <span class="string">&#x27;Ford&#x27;</span></span><br><span class="line">second_car.color = <span class="string">&#x27;蓝色&#x27;</span></span><br><span class="line">second_car.start()</span><br><span class="line">second_car.accelerate(<span class="number">40</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>每次调用<code>Car()</code>时，我们都创建了一个新的<code>Car</code>类的实例（即一个新的汽车对象）。通过为不同的实例分别设置属性（如<code>brand</code>和<code>color</code>），每辆车都有自己的特点。</p>
+<h3 id="成员方法中的self"><a href="#成员方法中的self" class="headerlink" title="成员方法中的self"></a>成员方法中的<code>self</code></h3><p>在<code>Car</code>类的成员方法中，<code>self</code>关键字是对当前对象实例的引用。它用于访问对象的属性和调用其他方法。例如，在<code>accelerate</code>方法中，<code>self.speed += increase</code>表示将当前车辆的速度增加<code>increase</code>单位。</p>
+<h3 id="init-初始化方法-魔术方法-构造器"><a href="#init-初始化方法-魔术方法-构造器" class="headerlink" title="_ _init_ _初始化方法(魔术方法&#x2F;构造器)"></a>_ _init_ _初始化方法(魔术方法&#x2F;构造器)</h3><p><code>__init__</code> 是一个在 Python 中特别重要的方法，它是类的一个特殊方法（有时被称为“魔术方法”或“构造器”）。当创建类的新实例时，<code>__init__</code> 方法被自动调用，用于为新创建的对象初始化其属性或执行其他必要的设置。以下是关于 <code>__init__</code> 方法的一些关键点：</p>
+<ol>
+<li><strong>构造器</strong>：<code>__init__</code> 方法可以看作是类的“构造器”。它在对象创建时立即执行，允许类接受参数并据此初始化对象的属性。</li>
+<li><strong>self 参数</strong>：<code>__init__</code> 方法的第一个参数总是 <code>self</code>，它是对类实例本身的引用。通过 <code>self</code>，你可以在方法内部访问类的属性和其他方法。</li>
+<li><strong>初始化属性</strong>：可以在 <code>__init__</code> 方法中定义并初始化对象的属性。这样做的好处是，可以为不同的对象实例设置不同的初始状态。</li>
+<li><strong>接受参数</strong>：<code>__init__</code> 方法可以接受参数（除了自身 <code>self</code> 参数外），这些参数在创建类实例时传递给它，用于设置对象的属性或进行其他操作。</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="comment"># 使用 __init__ 方法初始化成员属性</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, brand, color</span>):</span><br><span class="line">        self.brand = brand</span><br><span class="line">        self.color = color</span><br><span class="line">        self.speed = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 成员方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车启动了。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">accelerate</span>(<span class="params">self, increase</span>):</span><br><span class="line">        self.speed += increase</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车加速到了<span class="subst">&#123;self.speed&#125;</span>公里/小时。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">brake</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车正在刹车。&quot;</span>)</span><br><span class="line">        self.speed = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 __init__ 方法实例化第一辆车</span></span><br><span class="line">first_car = Car(<span class="string">&#x27;Toyota&#x27;</span>, <span class="string">&#x27;红色&#x27;</span>)</span><br><span class="line">first_car.start()</span><br><span class="line">first_car.accelerate(<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 __init__ 方法实例化第二辆车</span></span><br><span class="line">second_car = Car(<span class="string">&#x27;Ford&#x27;</span>, <span class="string">&#x27;蓝色&#x27;</span>)</span><br><span class="line">second_car.start()</span><br><span class="line">second_car.accelerate(<span class="number">40</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>在这个例子中， <code>Car</code> 类中添加了 <code>__init__</code> 方法，它接受 <code>brand</code> 和 <code>color</code> 作为参数，并将它们分别赋值给实例的 <code>brand</code> 和 <code>color</code> 属性。现在，在创建 <code>Car</code> 类的实例时，我们需要提供品牌和颜色作为参数。这样一来，每个 <code>Car</code> 实例在创建时都会有自己的品牌和颜色属性。</p>
+
+  <div class="note-large orange">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-question"></i><p>QA</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>问：</strong>为什么accelerate不在<code>car(brand, color)</code>里直接写？</p>
+<p><strong>答：</strong>将 <code>accelerate</code> 方法放在 <code>Car</code> 类的构造方法 (<code>__init__</code>) 中与放在类的外部作为一个独立的方法有不同的含义和用途。理解这一点，需要对面向对象编程中的一些基本概念有所了解：</p>
+<ol>
+<li><strong>构造方法 (<code>__init__</code>)</strong>: <code>__init__</code> 方法用于初始化新创建的对象的状态。它通常用于设置对象的初始属性值。构造方法在对象被创建时自动调用一次，用于设置对象的初始状态。</li>
+<li><strong>成员方法</strong>: 类中定义的其他方法（如 <code>accelerate</code>）用于描述对象的行为。这些方法可以在对象的整个生命周期内被多次调用，并且通常用于执行特定的操作，比如修改对象的状态或者与其他对象进行交互。</li>
+<li><strong>职责分离</strong>: 在面向对象设计中，通常推荐遵循单一职责原则。这意味着每个部分（如方法）应该只负责一项功能。将 <code>accelerate</code> 方法放在类的外部作为一个独立的方法，而不是在 <code>__init__</code> 中定义，可以使类的结构更加清晰，每个方法的职责更加明确。</li>
+<li><strong>灵活性与可重用性</strong>: 将 <code>accelerate</code> 作为独立的方法可以在任何时候调用以改变对象的速度属性。如果它被放在 <code>__init__</code> 中，它只能在对象创建时执行，这限制了方法的用途。</li>
+</ol>
+<p>总结来说，<code>accelerate</code> 不放在 <code>__init__</code> 中是为了保持代码的清晰性和组织性，确保每个方法只负责一项特定的功能，并允许在对象的生命周期中多次调用 <code>accelerate</code> 方法。这是一种更灵活、可维护和符合面向对象设计原则的做法。</p>
+<p><strong>问：</strong><code>self.speed = 0</code> 为什么在(<code>__init__</code>) 里？</p>
+<p><strong>答：</strong>将 <code>self.speed = 0</code> 放在 <code>__init__</code> 方法中是为了初始化 <code>Car</code> 类的每个实例的速度属性。这是一种常见的做法，用于设定对象的初始状态。以下是放置这个语句在 <code>__init__</code> 中的几个理由：</p>
+<ol>
+<li><strong>初始状态设定</strong>：在面向对象编程中，构造方法（如 Python 中的 <code>__init__</code>）用于设定对象的初始状态。对于汽车来说，初始速度设为 0 是合理的，因为当汽车被“创建”（或实例化）时，它通常是静止的。</li>
+<li><strong>统一属性管理</strong>：将所有属性的初始化集中在 <code>__init__</code> 方法中可以使代码更加清晰和易于维护。这样，你可以在一个地方看到对象所有属性的初始值。</li>
+<li><strong>确保属性存在</strong>：在 <code>__init__</code> 方法中初始化 <code>speed</code> 确保了每个 <code>Car</code> 实例都具有 <code>speed</code> 属性，并且有一个明确的初始值。这避免了在其他方法（如 <code>accelerate</code> 或 <code>brake</code>）中使用 <code>speed</code> 属性之前需要检查其是否存在的情况。</li>
+<li><strong>避免未初始化的属性</strong>：如果不在 <code>__init__</code> 中初始化 <code>speed</code>，那么在调用 <code>accelerate</code> 方法之前，尝试访问 <code>speed</code> 属性可能会导致错误，因为 Python 不会自动为你创建这个属性。</li>
+</ol>
+<p>综上所述，将 <code>self.speed = 0</code> 放在 <code>__init__</code> 方法中是为了初始化对象的速度属性，保证对象的完整性，并为后续的操作（如加速或刹车）提供一个明确和稳定的起点。</p>
+
+    </div>
+  </div>
+
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><h5 id="类定义与初始化"><a href="#类定义与初始化" class="headerlink" title="类定义与初始化"></a>类定义与初始化</h5><p>首先，我们定义一个名为<code>Car</code>的类，并在其中使用<code>__init__</code>方法来初始化类的实例。<code>__init__</code>是一个特殊的方法，它在类的实例化时自动调用。我们可以通过它来设置初始的成员属性。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="comment"># 使用 __init__ 方法初始化成员属性</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, brand, color, weight</span>):</span><br><span class="line">        <span class="comment"># self.brand 创建了一个名为 brand 的属性</span></span><br><span class="line">        <span class="comment"># brand = None 的效果类似于此</span></span><br><span class="line">        <span class="comment"># self.brand = brand 用传入的参数 brand 初始化</span></span><br><span class="line">        self.brand = brand</span><br><span class="line">        <span class="comment"># 同理，为 color 和 weight 属性赋值</span></span><br><span class="line">        self.color = color</span><br><span class="line">        self.weight = weight</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义一个成员方法用于显示汽车的信息</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">display_info</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;这辆车是 <span class="subst">&#123;self.color&#125;</span>色的 <span class="subst">&#123;self.brand&#125;</span>，重 <span class="subst">&#123;self.weight&#125;</span>公斤。&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="实例化类-1"><a href="#实例化类-1" class="headerlink" title="实例化类"></a>实例化类</h5><p>当我们实例化这个类时，我们需要提供品牌、颜色和重量这三个参数。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 实例化 Car 类</span></span><br><span class="line">first_car = Car(<span class="string">&quot;Toyota&quot;</span>, <span class="string">&quot;红色&quot;</span>, <span class="number">1500</span>)</span><br><span class="line"><span class="comment"># 调用方法显示信息</span></span><br><span class="line">first_car.display_info()</span><br></pre></td></tr></table></figure></div>
+
+<p>这里，<code>first_car</code> 是 <code>Car</code> 类的一个实例，代表了一辆特定的汽车。我们给它赋予了“Toyota”品牌、“红色”颜色和1500公斤重量的属性，并通过<code>display_info</code>方法打印了这些信息。</p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>通过修改这个例子，我们可以看到如何在类中使用初始化方法（<code>__init__</code>）来设置对象的初始状态，并通过实例化这个类来创建具体的对象。每个对象都有自己的属性值，但它们共享相同的方法（如<code>display_info</code>）。</p>
+
+  <div class="note-large orange">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-question"></i><p>QA</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>问：</strong>以女娲造人为例子</p>
+<ul>
+<li>什么是类？</li>
+<li>什么是实例化类？</li>
+<li>什么是面向对象？</li>
+</ul>
+<p><strong>答：</strong></p>
+<p><strong>什么是类？</strong></p>
+<p>在女娲造人的故事中，女娲的想法或设计可以被看作是一个“类”（Class）。这个类是一个抽象的概念，它定义了人类将拥有的特征（如眼睛、鼻子、嘴巴）和行为（如走路、说话）。类是面向对象编程中定义数据结构和行为的蓝图或模板。</p>
+<p><strong>什么是实例化类？</strong></p>
+<p>当女娲根据她的想法创造出一个具体的人时，这个过程就像是在面向对象编程中的“实例化”（Instantiation）。实例化类的过程就是根据类的定义创建一个具体的对象（在这个故事中就是一个具体的人）。每个人（对象）都有类定义的特征和行为，但每个人也有自己的个性（即对象的状态可以独立于其他对象）。</p>
+<p><strong>什么是面向对象？</strong></p>
+<p>面向对象编程（Object-Oriented Programming, OOP）是一种编程范式，它使用对象来模拟现实世界的实体。在女娲造人的故事中，整个造人过程（设计-创造-赋予行为）就类似于面向对象的过程。面向对象编程的核心是类和对象，以及它们之间的交互。</p>
+<p><strong>问：</strong>面向对象的好处是什么？我们以后开发代码需要怎么做？</p>
+<p><strong>答：</strong></p>
+<p><strong>好处</strong></p>
+<ol>
+<li><strong>封装</strong>：面向对象允许封装数据和方法，提高数据安全性。</li>
+<li><strong>继承</strong>：通过继承，新的类可以扩展现有类的功能。</li>
+<li><strong>多态</strong>：相同的接口可以用在不同的对象上，提高代码的灵活性和可重用性。</li>
+<li><strong>代码组织和可读性</strong>：OOP 提高了代码的组织性和可读性，使大型项目更易于管理。</li>
+</ol>
+<p><strong>开发时的做法</strong></p>
+<ul>
+<li>使用类和对象来模拟现实世界的实体和概念。</li>
+<li>封装相关的属性和方法，确保数据安全性和减少外部干扰。</li>
+<li>通过继承和多态性来重用代码和提高代码的灵活性。</li>
+<li>关注对象之间的交互，而不仅仅是代码的执行流程。</li>
+</ul>
+<p><strong>问：</strong> <code>self</code> 在初始化<code>__init__</code>的作用是什么？ 在普通方法中的作用是什么？</p>
+<p><strong>答：</strong></p>
+<p><strong>在 <code>__init__</code> 方法中</strong></p>
+<ul>
+<li><code>self</code> 在 <code>__init__</code> 方法中代表新创建的对象本身。</li>
+<li>它用于初始化对象的属性。</li>
+<li>通过 <code>self</code>，可以将对象的属性与局部变量区分开来。</li>
+</ul>
+<p><strong>在普通方法中</strong></p>
+<ul>
+<li><code>self</code> 在类的其他方法中也代表对象本身。</li>
+<li>它用于访问和修改对象的属性。</li>
+<li>同样，<code>self</code> 用于调用对象的其他方法。</li>
+</ul>
+<p>简而言之，<code>self</code> 是类方法中的一个参数，它提供了对类实例本身的引用。这允许类的方法在操作对象时访问和修改对象的属性，以及调用其他方法。</p>
+<p><strong>问：</strong>请根据闹钟 来写一个类 并创造三个闹钟</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> playsound <span class="keyword">import</span> playsound</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(current_time) 测试格式</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Alarm</span>:</span><br><span class="line">    <span class="comment"># 使用init方法初始化成员属性</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, time, music</span>):</span><br><span class="line">        self.time = time  <span class="comment"># time 是字符串格式 &#x27;HH:MM:SS&#x27;</span></span><br><span class="line">        self.music = music</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 成员方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sound</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 一些写音乐文件调用的逻辑</span></span><br><span class="line">        playsound(self.music)  <span class="comment"># 播放歌曲</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.music&#125;</span> has been played&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">clock</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 调用当前当前时间</span></span><br><span class="line">        current_time = datetime.now().strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> self.time == current_time:</span><br><span class="line">            Alarm.sound(self)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.time&#125;</span>, time to wake up !&quot;</span>)  <span class="comment"># 起床</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;Current time is <span class="subst">&#123;current_time&#125;</span>, wake up at <span class="subst">&#123;self.time&#125;</span>&quot;</span>)  <span class="comment"># 报时</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化</span></span><br><span class="line">first_alarm = Alarm(<span class="string">&#x27;15:46:25&#x27;</span>, <span class="string">&#x27;test1.mp3&#x27;</span>)</span><br><span class="line">second_alarm = Alarm(<span class="string">&#x27;22:06:50&#x27;</span>, <span class="string">&#x27;test2.mp3&#x27;</span>)</span><br><span class="line">third_alarm = Alarm(<span class="string">&#x27;05:10:33&#x27;</span>, <span class="string">&#x27;test3.mp3&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用 clock 方法</span></span><br><span class="line">first_alarm.clock()</span><br><span class="line">second_alarm.clock()</span><br><span class="line">third_alarm.clock()</span><br></pre></td></tr></table></figure></div>
+
+    </div>
+  </div>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>基础</tag>
+        <tag>理论</tag>
+        <tag>基本语法</tag>
+        <tag>对象</tag>
+        <tag>面向对象编程</tag>
+        <tag>类</tag>
       </tags>
   </entry>
   <entry>
@@ -2614,227 +2847,211 @@ chrome.find_element_by_css_selector(&quot;submit button&quot;).click()
       </tags>
   </entry>
   <entry>
-    <title>Requests</title>
-    <url>/2021/02/22/20210222requests/</url>
-    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ol>
-<li>Requests是一个优雅而简单的Python HTTP库，专为人类而构建。</li>
-<li>中文官方文档：<a class="link"   href="http://cn.python-requests.org/zh_CN/latest/%E3%80%82" >http://cn.python-requests.org/zh_CN/latest/。 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
-<li>英文文档：<a class="link"   href="http://docs.python-requests.org/en/master/api/" >http://docs.python-requests.org/en/master/api/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+    <title>Scrapy</title>
+    <url>/2021/10/28/20211128scrapy/</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Scrapy是一个用Python编写的高效且结构化的网页抓取框架，广泛应用于数据挖掘、网站监测和自动化测试。它的设计初衷是为了方便用户爬取网站数据和提取结构化数据，但它的用途不仅限于网页抓取，还包括处理API返回的数据（如Amazon Associates Web Services）或进行更广泛的网络爬取任务。</p>
+<p>Scrapy的一个关键特性是它使用了Twisted异步网络库来处理网络通信。</p>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <ol>
+<li><strong>异步编程</strong>:<ul>
+<li>在传统的同步编程模型中，任务按顺序一个接一个地执行。如果一个任务需要等待（例如，等待网络响应），程序将在此期间停止执行后续任务。</li>
+<li>异步编程允许程序在等待一个任务完成的同时继续执行其他任务。这种方式非常适合处理I&#x2F;O密集型任务，比如网络请求，因为程序不需要在每个请求完成时都暂停执行。</li>
+</ul>
+</li>
+<li><strong>Twisted异步网络库</strong>:<ul>
+<li>Twisted是一个事件驱动的网络编程框架，专为Python设计。它支持多种协议，可以用于创建高性能的网络服务器和客户端。</li>
+<li>在Scrapy中，Twisted用于处理网络请求。当Scrapy发出一个请求并等待服务器响应时，它不会阻塞整个爬虫的进程。相反，Scrapy可以利用这段时间执行其他任务，如处理已经收到的数据或发出更多的网络请求。</li>
+</ul>
+</li>
 </ol>
-<h3 id="作者"><a href="#作者" class="headerlink" title="作者"></a>作者</h3><p>Requests的作者Kenneth Reitz同样是一个富有传奇色彩的人物。</p>
+
+    </div>
+  </div>
+
+<p><strong>Scrapy中的应用</strong>:</p>
+<ul>
+<li>Scrapy利用Twisted的异步特性来提高爬虫的效率。它能够同时处理多个网络请求，而不会因为单个请求的延迟而阻塞整个爬虫。</li>
+<li>这使得Scrapy非常适合执行大规模的网络抓取任务，因为它可以有效地利用网络资源和处理能力，同时维持高效率的数据收集。</li>
+</ul>
+<p><strong>使用原因：</strong></p>
+<p>1.为了更利于我们将精力集中在请求与解析上<br>2.企业级的要求</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">op1=&gt;operation: 1.找到目标数据</span><br><span class="line">op2=&gt;operation: 2.分析请求流程</span><br><span class="line">op3=&gt;operation: 3.构造http请求</span><br><span class="line">op4=&gt;operation: 4.提取数据</span><br><span class="line">op5=&gt;operation: 5.数据持久化</span><br><span class="line"></span><br><span class="line">op1(right)-&gt;op2(right)-&gt;op3(right)-&gt;op4(right)-&gt;op5(right)</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="运行流程"><a href="#运行流程" class="headerlink" title="运行流程"></a>运行流程</h2><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231204181849.png"
+                      width = "500"
+                >
+
 <img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/作者1.png"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/1_s4f8-BSHMu4DXaHhY3qy8w.gif"
+                      width = "500"
+                >
+
+<h3 id="Scrapy框架的体系结构"><a href="#Scrapy框架的体系结构" class="headerlink" title="Scrapy框架的体系结构"></a>Scrapy框架的体系结构</h3><p>Scrapy框架的体系结构由几个重要组件组成，这些组件协同工作，实现了从发送请求到提取数据再到存储数据的整个流程：</p>
+<ol>
+<li><strong>引擎（Engine）</strong>: Scrapy引擎是框架的核心，负责控制数据流在各组件之间的流动，触发事件。</li>
+<li><strong>调度器（Scheduler）</strong>: 负责接收引擎发送的请求，并将它们加入队列中。在引擎请求新请求时，调度器发送下一个要抓取的请求给引擎。</li>
+<li><strong>下载器（Downloader）</strong>: 负责从Internet上下载网页内容，并将其封装为响应对象，然后返回给引擎。</li>
+<li><strong>蜘蛛（Spiders）</strong>: 是用户编写用来解析响应并从中提取数据（提取的项目）或额外的跟进URL的类。</li>
+<li><strong>项目管道（Item Pipeline）</strong>: 负责处理由蜘蛛提取出来的项目，通常包括清洗、验证和存储等。</li>
+<li><strong>下载器中间件（Downloader Middlewares）</strong>: 位于引擎和下载器之间，处理引擎和下载器之间的请求和响应。</li>
+<li><strong>蜘蛛中间件（Spider Middlewares）</strong>: 位于引擎和蜘蛛之间，处理蜘蛛的输入（响应）和输出（项目和新的请求）。</li>
+</ol>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>Downloader Middleware（下载中间件）</strong></p>
+<p>这些钩子允许处理、修改和自定义发往下载器的请求以及从下载器返回的响应。下载中间件在Scrapy的请求&#x2F;响应处理流程中提供了几个关键的扩展点。例如，可以使用它来添加HTTP头部到请求中，或者处理从网站返回的HTTP响应。这些中间件的用途包括：</p>
+<ul>
+<li>在请求发送到下载器之前修改或过滤请求。</li>
+<li>在响应发送到爬虫之前处理或修改响应。</li>
+<li>直接生成新的请求，而不是处理当前的响应。</li>
+<li>选择性地放弃某些请求</li>
+</ul>
+<p><strong>Spider Middleware（爬虫中间件）</strong></p>
+<p>爬虫中间件则是处理传入响应、传出项目（item）和请求的钩子。这些中间件在Scrapy的数据处理流程中处于核心位置，允许用户对爬虫的输入和输出进行细致的控制。使用爬虫中间件，可以：</p>
+<ul>
+<li>在爬虫处理回调之后处理请求或项目。</li>
+<li>修改或过滤开始请求（由 <code>start_requests</code> 方法生成的请求）。</li>
+<li>处理由于响应内容引发的异常，根据响应内容调用错误回调（errback）。</li>
+</ul>
+
+    </div>
+  </div>
+
+<h3 id="数据流过程"><a href="#数据流过程" class="headerlink" title="数据流过程"></a>数据流过程</h3><ol>
+<li><strong>启动过程</strong>:<ul>
+<li>Scrapy开始运行，初始化了调度器、下载器以及蜘蛛。</li>
+</ul>
+</li>
+<li><strong>爬取过程</strong>:<ul>
+<li>引擎向蜘蛛请求第一个要爬取的URL。</li>
+<li>蜘蛛返回第一个要爬取的请求给引擎。</li>
+<li>引擎将请求发送到调度器，并请求下一个URL。</li>
+<li>调度器返回下一个要爬取的请求给引擎。</li>
+</ul>
+</li>
+<li><strong>下载过程</strong>:<ul>
+<li>引擎从调度器中取出请求，通过下载器中间件发送到下载器。</li>
+<li>下载器处理请求，返回响应给引擎。</li>
+<li>引擎收到响应后，通过蜘蛛中间件发送给相应的蜘蛛处理。</li>
+</ul>
+</li>
+<li><strong>解析和提取数据</strong>:<ul>
+<li>蜘蛛处理响应，提取数据并生成新的请求，返回给引擎。</li>
+<li>引擎将提取的数据发送到项目管道，并将新的请求发送到调度器。</li>
+<li>项目管道处理提取出的数据。</li>
+</ul>
+</li>
+<li><strong>循环处理</strong>:<ul>
+<li>以上过程在整个爬取过程中不断重复，直到调度器中没有更多的请求。</li>
+</ul>
+</li>
+<li><strong>关闭过程</strong>:<ul>
+<li>当所有预定的URL都被爬取，且调度器中没有更多的请求时，Scrapy关闭，爬取过程结束。</li>
+</ul>
+</li>
+</ol>
+<h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><h4 id="一-项目命令"><a href="#一-项目命令" class="headerlink" title="一.项目命令"></a>一.项目命令</h4><ol>
+<li><strong>创建项目</strong>:<ul>
+<li>使用命令 <code>scrapy startproject &lt;project_name&gt; [project_dir]</code> 创建新项目。其中 <code>&lt;project_name&gt;</code> 是必填项，表示项目名称；<code>[project_dir]</code> 是可选项，表示项目目录。</li>
+<li>例如：<code>scrapy startproject db</code> 会创建一个名为 ‘db’ 的Scrapy项目。</li>
+</ul>
+</li>
+<li><strong>创建第一个爬虫</strong>:<ul>
+<li>首先，需要进入到你的项目目录中，使用 <code>cd &lt;project_name&gt;</code> 命令。</li>
+<li>然后，使用 <code>scrapy genspider &lt;name&gt; &lt;domain&gt;</code> 创建一个新的爬虫。这里 <code>&lt;name&gt;</code> 是爬虫的名称，而 <code>&lt;domain&gt;</code> 是爬虫将要爬取的域名。</li>
+<li>例如：<code>scrapy genspider example example.com</code> 会在你的项目的 <code>spiders</code> 目录下创建一个名为 ‘example’ 的爬虫，它针对的是 ‘example.com’ 网站。</li>
+</ul>
+</li>
+<li><strong>运行项目</strong>:<ul>
+<li>使用命令 <code>scrapy crawl &lt;spider_name&gt;</code> 来运行你的爬虫。这里 <code>&lt;spider_name&gt;</code> 是你在创建爬虫时指定的名称。</li>
+<li>例如：<code>scrapy crawl example</code> 会运行名为 ‘example’ 的爬虫。</li>
+</ul>
+</li>
+<li><strong>设置配置文件</strong>:<ul>
+<li>在 <code>settings.py</code> 文件中，你可以配置各种参数，比如 <code>ROBOTSTXT_OBEY</code>（是否遵守网站的robots.txt规则）和 <code>DEFAULT_REQUEST_HEADERS</code>（默认的HTTP头部）。</li>
+</ul>
+</li>
+</ol>
+<h4 id="二-shell-交互式平台"><a href="#二-shell-交互式平台" class="headerlink" title="二.shell  交互式平台"></a>二.shell  交互式平台</h4><p>scrapy shell url (start_url)  获取我们项目中的response<br>测试  xpath进行匹配</p>
+<h4 id="项目文件介绍"><a href="#项目文件介绍" class="headerlink" title="项目文件介绍"></a>项目文件介绍</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.png"
+                      width = "500"
+                >
+
+<h2 id="爬取豆瓣电影"><a href="#爬取豆瓣电影" class="headerlink" title="爬取豆瓣电影"></a>爬取豆瓣电影</h2><h5 id="目标数据要求："><a href="#目标数据要求：" class="headerlink" title="目标数据要求："></a><strong>目标数据要求：</strong></h5><ol>
+<li>豆瓣电影250个电影信息</li>
+<li>电影信息为：电影名字,导演信息(可以包含演员信息),评分</li>
+<li>将电影信息直接本地保存</li>
+<li>将电影信息通过管道进行保存</li>
+</ol>
+<p><strong>项目搭建：</strong></p>
+<p>项目创建一个Db250Spider的类，它必须继承scrapy.Spider类，需要定义一下三个属性：</p>
+<ul>
+<li>name: spider的名字，必须且唯一</li>
+<li>start_urls: 初始的url列表</li>
+<li>parse(self, response) 方法：每个初始url完成之后被调用。这个函数要完成以下两个功能：<ol>
+<li>解析响应，封装成item对象并返回这个对象</li>
+<li>提取新的需要下载的url，创建新的request，并返回它</li>
+</ol>
+</li>
+</ul>
+<p>命令如下：<br>语法格式：scrapy genspider [-t template] <name> <domain><br>运行命令：scrapy genspider db250 movie.douban.com<br>会在spiders文件下生成db250.py文件</p>
+<p>parse()会在请求完成时被调用。</p>
+<p>response是请求返回来的响应，可以通过xpath或者css方法很方便的解析。</p>
+<p><strong>要求</strong></p>
+<p>分析页面结构，提取课程需要的数据，生成一个字典，然后通过json模块，转成字符串，写入项目根目录下的film.txt 文件内。</p>
+<p><strong>运行爬虫</strong><br>进入项目根目录，运行命令：scrapy crawl db250</p>
+<p><strong>定义item</strong></p>
+<p>抓取的主要目标是从非结构化数据源(通常是web页面)中提取结构化数据。Scrapy spider可以将提取的数据作为Python的dicts返回。虽然方便且熟悉，但Python的dicts缺乏结构:很容易在字段名中犯错误或返回不一致的数据，特别是在有许多爬虫的大型项目中。</p>
+<p>若要定义公共输出数据格式，Scrapy提供了Item类。Item对象是用于收集剪贴数据的简单容器。它们提供了一个类似词典的API，提供了一种方便的语法来声明它们的可用字段。 scray.Item对象是用于收集抓取数据的简单容器，使用方法和python的字典类似。编辑项目目录下items.py文件。</p>
+<p>然后我们只需要在爬虫中导入我们定义的Item类，实例化后用它进行数据结构化。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/%E7%BC%96%E5%86%99%E7%88%AC%E8%99%AB7.png"
                       width = "300"
                 >
 
-<p>Requests目前基本上完全满足web请求的所有需求，以下是requests的特性:</p>
-<ol>
-<li>Keep-Alive &amp; 连接池</li>
-<li>国际化域名和URL</li>
-<li>带持久Cookie的会话</li>
-<li>浏览器式的SSL认证</li>
-<li>自动内容解码</li>
-<li>基本&#x2F;摘要时的身份认证</li>
-<li>优雅的 key&#x2F;value Cookie</li>
-<li>自动解压</li>
-<li>Unicode 响应体</li>
-<li>HTTP(S) 代理支持</li>
-<li>文件分块上传</li>
-<li>流下载</li>
-<li>连接超时</li>
-<li>分块请求</li>
-<li>支持 .netrc</li>
+<p><strong>追踪链接</strong></p>
+<p>上面的爬虫仅仅只爬取了一页，当然不符合我们的要求，我们需要爬取下一页，下一页，直到所有的信息都被下载。我们从页面中提取连接，或者根据规则构建。现在来看我们的爬虫修改为递归的爬取下一页的链接，从中提取数据。</p>
+<p>我们创建了一个类变量page_num用来记录当前爬取到的页码，在parse函数中提取课程信息，然后通过爬虫对象给变量page__num自加1，构造下一页的url，然后创建scrapy.Request对象并返回。如果response中提取不到课程信息，我们判断已经到了最后一页，parse函数直接return结束。</p>
+<p><strong>定义item管道</strong></p>
+<p>到目前为止，我们通过scrapy写出的爬虫还看不出优越性在哪里，并且上面的爬虫还有个很严重的问题，就是对文件的操作。每次调用parse方法会打开文件关闭文件，这极大的浪费了资源。parse函数在解析出我们需要的信息之后，可以将这些信息打包成一个字典对象或scray.Item对象（一般都是item对象，下面我们再讲），然后返回。这个对象会被发送到item管道，该管道会通过顺序执行几个组件处理它。每个item管道组件是一个实现简单方法的Python类。他们收到一个item并对其执行操作，同时决定该item是否应该继续通过管道或者被丢弃并且不再处理。<br>item管道的典型用途是：</p>
+<ul>
+<li>清理HTML数据</li>
+<li>验证已删除的数据（检查项目是否包含某些字段）</li>
+<li>检查重复项（并删除它们）</li>
+<li>将已爬取的item进行数据持久化</li>
+</ul>
+<p><strong>编写管道类</strong></p>
+<p>我们编写一个用来存储课程信息到film.txt文件中的管道类，修改项目下piplines.py文件</p>
+<p>要激活这个管道组件，必须将其添加到ITEM_PIPELINES设置中,在settings文件中设置</p>
+<p>在此设置中为类分配的整数值决定了它们运行的顺序：按照从较低值到较高值的顺序进行。</p>
+<p>注意：这个管道的目的只是介绍如何编写项目管道，如果要将所有爬取的item存储到json文件中，则应使用Feed导出，在运行爬虫是加上如下参数：<code>scrapy crawl xxx -o xxxx.json</code></p>
+<h5 id="项目注意事项"><a href="#项目注意事项" class="headerlink" title="项目注意事项"></a>项目注意事项</h5><ol>
+<li>settings文件中 项目默认的是  ROBOTSTXT_OBEY &#x3D; True,即遵循robots协议,则不能爬取到数据<br>则更改为 ROBOTSTXT_OBEY &#x3D; False</li>
+<li>settings中,有些网站需要添加User-Agent ,才能获取到数据  (伪装成客户端)</li>
+<li>settings中,需要将管道打开,才可以将数据传递到pipelines文件中</li>
+<li>items中需要设置相应的字段,使用Item对象传递数据,(可以理解为mysql先定义字段,才能写入数据一样)</li>
 </ol>
-<h2 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h2><p>使用 Requests 发送网络请求非常简单。导包, 之后添加方法进行。</p>
-<p>Requests的请求不再像urllib一样需要去构造各种Request、opener和handler，使用Requests构造的方法，并在其中传入需要的参数即可。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/requests请求.png"
-                      width = "500"
-                >
-
-<p>发起请求的方法变得简单，只需要着重关注一下发起请求的参数 ，10个重要的参数。</p>
-<pre><code>    method, 请求方法
-    url,  资源地址
-    params=None, 查询参数也叫做查询字符串
-    data=None,   post请求的表单数据
-    headers=None, 请求头
-    cookies=None, cookies
-    files=None, # 文件
-    auth=None, # 校验身份
-    timeout=None, 超时时间
-    allow_redirects=True, # 重定向
-    proxies=None, 代理
-    hooks=None,#  钩子函数
-    stream=None,# 
-    verify=None, 证书忽略
-    cert=None, # 字符串 --证书的地址  元组（）
-    json=None,  post 请求的JSON数据
-</code></pre>
-<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p>传递URL参数也不用再像urllib中那样需要去拼接URL，而是简单的，构造一个字典，并在请求时将其传递给params参数，此时，查看请求的URL，则可以看到URL已经构造正确了，并且，有时候我们会遇到相同的url参数名，但有不同的值，而python的字典又不支持键的重名，那么我们可以把键的值用列表表示：</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/url参数.png"
-                      width = "500"
-                >
-
-<h3 id="添加请求头"><a href="#添加请求头" class="headerlink" title="添加请求头"></a>添加请求头</h3><p>如果想自定义请求的Headers，同样的将字典数据传递给headers参数。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/requests请求头.png"
-                      width = "500"
-                >
-
-<h3 id="添加cookies"><a href="#添加cookies" class="headerlink" title="添加cookies"></a>添加cookies</h3><p>Requests中自定义Cookies也不用再去构造CookieJar对象，直接将字典递给cookies参数。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/自定义cookies.png"
-                      width = "500"
-                >
-
-<h3 id="设置超时时间"><a href="#设置超时时间" class="headerlink" title="设置超时时间"></a>设置超时时间</h3><p>设置访问超时，设置timeout参数即可。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/设置超时时间.png"
-                      width = "500"
-                >
-
-<h3 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h3><p>当我们需要使用代理时，同样构造代理字典，传递给proxies参数。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/设置代理.png"
-                      width = "500"
-                >
-
-<h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><p>很多网站是http开头，为了不影响老客户，原网站不动，当访问http的原网址时，重定向到新的https网址，在requests中 allow_redirects默认是True，如果是False则不允许重定向，也就无法重定向新网址获取数据。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/重定向.png"
-                      width = "500"
-                >
-
-<h3 id="证书忽略验证"><a href="#证书忽略验证" class="headerlink" title="证书忽略验证"></a>证书忽略验证</h3><p>有时候我们使用了抓包工具，这个时候由于抓包工具提供的证书并不是由受信任的数字证书颁发机构颁发的，所以证书的验证会失败，所以我们就需要关闭证书验证。在请求的时候把verify参数设置为False就可以关闭证书验证了。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/忽略证书验证.png"
-                      width = "500" 
-                >
-
-<p>但是关闭验证后，会有一个比较烦人的warning：</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/验证警告.png"
-                      width = "500"
-                >
-
-<p>可以使用以下方法关闭警告：</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/关闭验证警告.png"
-                      width = "500"
-                >
-
-<h3 id="POST请求发送Json数据"><a href="#POST请求发送Json数据" class="headerlink" title="POST请求发送Json数据"></a>POST请求发送Json数据</h3><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/发送json数据.png"
-                      width = "500"
-                >
-
-<h3 id="POST请求发送Form表单数据"><a href="#POST请求发送Form表单数据" class="headerlink" title="POST请求发送Form表单数据"></a>POST请求发送Form表单数据</h3><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/发送表单数据.png"
-                      width = "500"
-                >
-
-<h3 id="POST示例"><a href="#POST示例" class="headerlink" title="POST示例"></a>POST示例</h3><p>以<a class="link"   href="https://www.17k.com/%E7%99%BB%E5%BD%95%E4%B8%BA%E6%A1%88%E4%BE%8B%EF%BC%8C%E9%A6%96%E5%85%88%E5%88%86%E6%9E%90%E7%99%BB%E5%BD%95%E9%80%BB%E8%BE%91" >https://www.17k.com/登录为案例，首先分析登录逻辑 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<blockquote>
-<p>尝试登录操作，发现操作后会其Headers下会显示请求的网址<a class="link"   href="https://passport.17k.com/ck/user/login%EF%BC%8C%E4%B8%94%E8%AF%B7%E6%B1%82%E7%B1%BB%E5%9E%8B%E4%B8%BAPOST" >https://passport.17k.com/ck/user/login，且请求类型为POST <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231130125526.png"
-                      width = "500"
-                >
-</blockquote>
-<p>随后分析所需的构造参数</p>
-<blockquote>
-<p>在Payload下可以发现其为表单数据，应构造的参数为{loginName:  123， password: 123}</p>
-<p>另外还需添加headers伪装</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231130130020.png"
-                      width = "500"
-                >
-</blockquote>
-<p>接着根据分析的要素，构造请求，向服务器提交数据即可</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url=<span class="string">&#x27;https://passport.17k.com/ck/user/login&#x27;</span></span><br><span class="line"></span><br><span class="line">form_data = &#123;</span><br><span class="line">    <span class="string">&#x27;loginName&#x27;</span>:  <span class="string">&#x27;123&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">headers = &#123;</span><br><span class="line"><span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">resp = requests.post(url, data=form_data, headers=headers)</span><br><span class="line"><span class="built_in">print</span>(resp.text)</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h2><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a><strong>属性</strong></h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(res.text)#直接转换成字符串 非字节码</span><br><span class="line">print(res.content)#图片数据 使用此参数</span><br><span class="line">print(res.status_code)#状态码</span><br><span class="line">print(res.json()[&quot;headers&quot;][&quot;User-Agent&quot;])#自动转换成 字典格式</span><br><span class="line"># 一定要确保你使用的格式是json格式的数据</span><br><span class="line">print(res.headers)#响应头</span><br><span class="line">print(res.cookies)#响应cookie</span><br><span class="line">print(res.url)#请求的url</span><br><span class="line">print(res.request.url)#请求的url</span><br><span class="line">print(res.request.headers)#请求头</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="响应内容"><a href="#响应内容" class="headerlink" title="响应内容"></a>响应内容</h3><p>通过Requests发起请求获取到的，是一个requests.models.Response对象。通过这个对象我们可以很方便的获取响应的内容。<br>之前通过urllib获取的响应，读取的内容都是bytes的二进制格式，需要我们自己去将结果decode()一次转换成字符串数据。<br>而Requests通过text属性，就可以获得字符串格式的响应内容。</p>
-<h3 id="字符编码和二进制数据"><a href="#字符编码和二进制数据" class="headerlink" title="字符编码和二进制数据"></a>字符编码和二进制数据</h3><p>Requests会自动的根据响应的报头来猜测网页的编码是什么，然后根据猜测的编码来解码网页内容，基本上大部分的网页都能够正确的被解码。而如果发现text解码不正确的时候，就需要我们自己手动的去指定解码的编码格式。而如果你需要获得原始的二进制数据，那么使用content属性即可。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/字符编码.png"
-                      width = "500"
-                >
-
-<h2 id="session方法"><a href="#session方法" class="headerlink" title="session方法"></a>session方法</h2><p>session方法是requests库发起请求的一种方法，这种方法会自动保存访问页面得到的cookie值，从而再次访问的时候会自动携带cookie，使得操作cookie方便，不需要我们自己添加cookie了。常用于登录；</p>
-<h3 id="经典的登录逻辑"><a href="#经典的登录逻辑" class="headerlink" title="经典的登录逻辑"></a>经典的登录逻辑</h3><p>功能:自动更新请求头信息，常用在账号登录的时候，先访问登录页url，再访问数据提交的url<br>例:12306</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/session逻辑.png"
-                      width = "500"
-                >
-
-<h3 id="session的使用"><a href="#session的使用" class="headerlink" title="session的使用"></a>session的使用</h3><p>基本的使用方法与requests.get 相似，使用的session的时候需要先创建session对象</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">session=requests.session()#创建session对象</span><br><span class="line">session.headers=headers#添加请求头</span><br><span class="line">res_ss=session.get(index_url)</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="session示例"><a href="#session示例" class="headerlink" title="session示例"></a>session示例</h3><p>首先利用测试网址编入cookies</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">session = requests.session()</span><br><span class="line">resp_ss = session.get(<span class="string">&#x27;http://httpbin.org/cookies/set/CosTrace/12345678&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(resp_ss.text)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">  &quot;cookies&quot;: &#123;</span></span><br><span class="line"><span class="string">    &quot;CosTrace&quot;: &quot;12345678&quot;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>采用<code>requests.get</code>方法尝试获取cookies，发现不存在值，这是因为<code>requests</code>方法本身不存在存储的功能</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">resp_req = requests.get(<span class="string">&#x27;http://httpbin.org/cookies&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(resp_req.text)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">  &quot;cookies&quot;: &#123;&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>随后我们用<code>session</code>方法尝试获取cookies，发现成功</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">resp_req = session.get(<span class="string">&#x27;http://httpbin.org/cookies&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(resp_req.text)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">  &quot;cookies&quot;: &#123;</span></span><br><span class="line"><span class="string">    &quot;CosTrace&quot;: &quot;12345678&quot;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-
-
-<h2 id="Requests案例1-简易百度图片抓取"><a href="#Requests案例1-简易百度图片抓取" class="headerlink" title="Requests案例1  - 简易百度图片抓取"></a>Requests案例1  - 简易百度图片抓取</h2><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">目标：百度图片抓取</span></span><br><span class="line"><span class="string">1. 打开网页 --&gt;请求 --&gt;伪装</span></span><br><span class="line"><span class="string">    a. 安装模块 pip install requests</span></span><br><span class="line"><span class="string">    b. 请求失败的话就在伪装继续添加标头</span></span><br><span class="line"><span class="string">2. 下载图片 --保存本地 --&gt;交互</span></span><br><span class="line"><span class="string">    a. 把响应内容中的图片url提取出来</span></span><br><span class="line"><span class="string">    b. 对每个图片的url，进行请求二进制的方法进行保存</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> md5</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests, re</span><br><span class="line"></span><br><span class="line"><span class="comment"># 赋值url</span></span><br><span class="line">url = <span class="string">&#x27;https://image.baidu.com/search/index?tn=baiduimage&amp;ipn=r&amp;ct=201326592&amp;cl=2&amp;lm=-1&amp;st=-1&amp;fm=index&amp;fr=&amp;hs=0&amp;xthttps=000000&amp;sf=1&amp;fmq=&amp;pv=&amp;ic=0&amp;nc=1&amp;z=&amp;se=1&amp;showtab=0&amp;fb=0&amp;width=&amp;height=&amp;face=0&amp;istype=2&amp;ie=utf-8&amp;word=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;oq=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;rsp=-1&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 表头字典，制作伪装</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 赋值请求服务, 获取http数据</span></span><br><span class="line">resp = requests.get(url, headers=headers)</span><br><span class="line">http_data = resp.text</span><br><span class="line"></span><br><span class="line"><span class="comment"># 正则表达式提取图片</span></span><br><span class="line">re_data = re.findall(<span class="string">&#x27;thumbURL&quot;:&quot;(.*?)&quot;&#x27;</span>, http_data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 循环提取, md5去重命名</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> re_data:</span><br><span class="line">    name_encode = md5(i.encode()).hexdigest()</span><br><span class="line">    img_resp = requests.get(i)</span><br><span class="line">    b_img_data = img_resp.content</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">f&#x27;<span class="subst">&#123;name_encode&#125;</span>.jpg&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(b_img_data)</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="Requests案例2-多页百度图片抓取"><a href="#Requests案例2-多页百度图片抓取" class="headerlink" title="Requests案例2 - 多页百度图片抓取"></a>Requests案例2 - 多页百度图片抓取</h2><blockquote>
-<p>首先分析，在标头的响应查看滚动页面时返回的URL，分析翻页时的变化：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在标头的响应查看滚动页面时返回的url</span></span><br><span class="line">url_1 = <span class="string">&#x27;https://image.baidu.com/search/acjson?tn=resultjson_com&amp;logid=8578568584458070132&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;fr=&amp;word=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;queryWord=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=&amp;z=&amp;ic=&amp;hd=&amp;latest=&amp;copyright=&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=&amp;istype=&amp;qc=&amp;nc=1&amp;expermode=&amp;nojc=&amp;isAsync=&amp;pn=60&amp;rn=30&amp;gsm=3c&amp;1701269373791=&#x27;</span></span><br><span class="line">url_2 = <span class="string">&#x27;https://image.baidu.com/search/acjson?tn=resultjson_com&amp;logid=8578568584458070132&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;fr=&amp;word=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;queryWord=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=&amp;z=&amp;ic=&amp;hd=&amp;latest=&amp;copyright=&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=&amp;istype=&amp;qc=&amp;nc=1&amp;expermode=&amp;nojc=&amp;isAsync=&amp;pn=90&amp;rn=30&amp;gsm=5a&amp;1701269630311=&#x27;</span></span><br><span class="line">url_3 = <span class="string">&#x27;https://image.baidu.com/search/acjson?tn=resultjson_com&amp;logid=8578568584458070132&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;fr=&amp;word=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;queryWord=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=&amp;z=&amp;ic=&amp;hd=&amp;latest=&amp;copyright=&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=&amp;istype=&amp;qc=&amp;nc=1&amp;expermode=&amp;nojc=&amp;isAsync=&amp;pn=120&amp;rn=30&amp;gsm=78&amp;1701269630813=&#x27;</span></span><br></pre></td></tr></table></figure></div>
-</blockquote>
-<blockquote>
-<p>随后比较三个URL直接的关系，可以发现大部分都是相同，因此删除所有相同的部分进行比较：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 分析链接不同的规律，下面是不同的部分：</span></span><br><span class="line"><span class="comment"># pn: 当前显示的图片数量，一次翻页显示30张，pn（Page Number）: 这个参数通常用于分页功能，表示当前显示的页面编号或者某些情况下显示的项目数量。</span></span><br><span class="line"><span class="comment"># 例如，在图像搜索结果中，pn=90可能表示当前显示的是第90张图片或第90页的内容。</span></span><br><span class="line"><span class="comment"># gsm未知，可能表示一个特定的标识符或编码，用于追踪请求或控制返回的内容</span></span><br><span class="line"><span class="comment"># 后面的长数值是时间戳，时间戳通常用于记录事件发生的具体时间，有时用于缓存控制或确保请求的唯一性</span></span><br><span class="line"></span><br><span class="line">url_1_compar = <span class="string">&#x27;pn=60&amp;gsm=3c&amp;1701269373791=&#x27;</span></span><br><span class="line">url_2_compar = <span class="string">&#x27;pn=90&amp;gsm=5a&amp;1701269630311=&#x27;</span></span><br><span class="line">url_3_compar = <span class="string">&#x27;pn=120&amp;gsm=78&amp;1701269630813=&#x27;</span></span><br></pre></td></tr></table></figure></div>
-</blockquote>
-<blockquote>
-<p>最后把完整URL输入到浏览器，查看删减这三个不同的部分哪些会影响数据的获取：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 通过删减url发现时间戳和gsm均不影响翻页，因此剩余影响数据获取的不同点是pn，且每30一获取：</span></span><br><span class="line">url_1_compar_2 = <span class="string">&#x27;pn=60&#x27;</span></span><br><span class="line">url_2_compar_2 = <span class="string">&#x27;pn=90&#x27;</span></span><br><span class="line">url_3_compar_2 = <span class="string">&#x27;pn=120&#x27;</span></span><br></pre></td></tr></table></figure></div>
-</blockquote>
-<p>通过分析可以发现百度翻页规律，随后编写循环（此例为三页）配合案例1的伪装即可获取</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 表头字典，制作伪装</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">&#x27;images&#x27;</span>):</span><br><span class="line">    os.mkdir(<span class="string">&#x27;images&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编写循环，每30返回一次：</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">4</span>):</span><br><span class="line">    url = <span class="string">f&#x27;https://image.baidu.com/search/acjson?tn=resultjson_com&amp;logid=8578568584458070132&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;fr=&amp;word=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;queryWord=%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=&amp;z=&amp;ic=&amp;hd=&amp;latest=&amp;copyright=&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=&amp;istype=&amp;qc=&amp;nc=1&amp;expermode=&amp;nojc=&amp;isAsync=&amp;pn=<span class="subst">&#123;i * <span class="number">30</span>&#125;</span>&amp;rn=30&#x27;</span></span><br><span class="line">    resp = requests.get(url, headers=headers)  <span class="comment"># 赋值请求服务, 获取http数据</span></span><br><span class="line">    data = resp.json()  <span class="comment"># json -&gt; 字符串转成dict格式，前提条件就是resp一定时json格式</span></span><br><span class="line">    data_list = data.get(<span class="string">&quot;data&quot;</span>)  <span class="comment"># 这是一个列表</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> data_list:</span><br><span class="line">        img_url = j.get(<span class="string">&quot;thumbURL&quot;</span>)  <span class="comment"># 获取该变量下的值</span></span><br><span class="line">        <span class="keyword">if</span> img_url:  <span class="comment"># 当请求到数据时</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                img_url_encode = md5(img_url.encode()).hexdigest()  <span class="comment"># md5去重，唯一标识符</span></span><br><span class="line">                img_resp = requests.get(img_url)</span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="built_in">print</span>(e)  <span class="comment"># 是否有脏数据</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                b_img_data = img_resp.content</span><br><span class="line">                <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;images/&#x27;</span> + img_url_encode + <span class="string">&#x27;.jpg&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                    f.write(b_img_data)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br></pre></td></tr></table></figure></div>
-
 ]]></content>
       <categories>
         <category>数据抓取</category>
@@ -2843,7 +3060,8 @@ chrome.find_element_by_css_selector(&quot;submit button&quot;).click()
         <tag>基础</tag>
         <tag>理论</tag>
         <tag>爬虫</tag>
-        <tag>Requests</tag>
+        <tag>Scrapy</tag>
+        <tag>网页抓取</tag>
       </tags>
   </entry>
   <entry>
@@ -3201,224 +3419,6 @@ chrome.find_element_by_css_selector(&quot;submit button&quot;).click()
         <tag>滑块验证</tag>
         <tag>点触验证</tag>
         <tag>字符验证</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Scrapy</title>
-    <url>/2021/10/28/20211128scrapy/</url>
-    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Scrapy是一个用Python编写的高效且结构化的网页抓取框架，广泛应用于数据挖掘、网站监测和自动化测试。它的设计初衷是为了方便用户爬取网站数据和提取结构化数据，但它的用途不仅限于网页抓取，还包括处理API返回的数据（如Amazon Associates Web Services）或进行更广泛的网络爬取任务。</p>
-<p>Scrapy的一个关键特性是它使用了Twisted异步网络库来处理网络通信。</p>
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
-
-    </div>
-    <div class="notel-content">
-      <ol>
-<li><strong>异步编程</strong>:<ul>
-<li>在传统的同步编程模型中，任务按顺序一个接一个地执行。如果一个任务需要等待（例如，等待网络响应），程序将在此期间停止执行后续任务。</li>
-<li>异步编程允许程序在等待一个任务完成的同时继续执行其他任务。这种方式非常适合处理I&#x2F;O密集型任务，比如网络请求，因为程序不需要在每个请求完成时都暂停执行。</li>
-</ul>
-</li>
-<li><strong>Twisted异步网络库</strong>:<ul>
-<li>Twisted是一个事件驱动的网络编程框架，专为Python设计。它支持多种协议，可以用于创建高性能的网络服务器和客户端。</li>
-<li>在Scrapy中，Twisted用于处理网络请求。当Scrapy发出一个请求并等待服务器响应时，它不会阻塞整个爬虫的进程。相反，Scrapy可以利用这段时间执行其他任务，如处理已经收到的数据或发出更多的网络请求。</li>
-</ul>
-</li>
-</ol>
-
-    </div>
-  </div>
-
-<p><strong>Scrapy中的应用</strong>:</p>
-<ul>
-<li>Scrapy利用Twisted的异步特性来提高爬虫的效率。它能够同时处理多个网络请求，而不会因为单个请求的延迟而阻塞整个爬虫。</li>
-<li>这使得Scrapy非常适合执行大规模的网络抓取任务，因为它可以有效地利用网络资源和处理能力，同时维持高效率的数据收集。</li>
-</ul>
-<p><strong>使用原因：</strong></p>
-<p>1.为了更利于我们将精力集中在请求与解析上<br>2.企业级的要求</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">op1=&gt;operation: 1.找到目标数据</span><br><span class="line">op2=&gt;operation: 2.分析请求流程</span><br><span class="line">op3=&gt;operation: 3.构造http请求</span><br><span class="line">op4=&gt;operation: 4.提取数据</span><br><span class="line">op5=&gt;operation: 5.数据持久化</span><br><span class="line"></span><br><span class="line">op1(right)-&gt;op2(right)-&gt;op3(right)-&gt;op4(right)-&gt;op5(right)</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="运行流程"><a href="#运行流程" class="headerlink" title="运行流程"></a>运行流程</h2><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/20231204181849.png"
-                      width = "500"
-                >
-
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/1_s4f8-BSHMu4DXaHhY3qy8w.gif"
-                      width = "500"
-                >
-
-<h3 id="Scrapy框架的体系结构"><a href="#Scrapy框架的体系结构" class="headerlink" title="Scrapy框架的体系结构"></a>Scrapy框架的体系结构</h3><p>Scrapy框架的体系结构由几个重要组件组成，这些组件协同工作，实现了从发送请求到提取数据再到存储数据的整个流程：</p>
-<ol>
-<li><strong>引擎（Engine）</strong>: Scrapy引擎是框架的核心，负责控制数据流在各组件之间的流动，触发事件。</li>
-<li><strong>调度器（Scheduler）</strong>: 负责接收引擎发送的请求，并将它们加入队列中。在引擎请求新请求时，调度器发送下一个要抓取的请求给引擎。</li>
-<li><strong>下载器（Downloader）</strong>: 负责从Internet上下载网页内容，并将其封装为响应对象，然后返回给引擎。</li>
-<li><strong>蜘蛛（Spiders）</strong>: 是用户编写用来解析响应并从中提取数据（提取的项目）或额外的跟进URL的类。</li>
-<li><strong>项目管道（Item Pipeline）</strong>: 负责处理由蜘蛛提取出来的项目，通常包括清洗、验证和存储等。</li>
-<li><strong>下载器中间件（Downloader Middlewares）</strong>: 位于引擎和下载器之间，处理引擎和下载器之间的请求和响应。</li>
-<li><strong>蜘蛛中间件（Spider Middlewares）</strong>: 位于引擎和蜘蛛之间，处理蜘蛛的输入（响应）和输出（项目和新的请求）。</li>
-</ol>
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>Downloader Middleware（下载中间件）</strong></p>
-<p>这些钩子允许处理、修改和自定义发往下载器的请求以及从下载器返回的响应。下载中间件在Scrapy的请求&#x2F;响应处理流程中提供了几个关键的扩展点。例如，可以使用它来添加HTTP头部到请求中，或者处理从网站返回的HTTP响应。这些中间件的用途包括：</p>
-<ul>
-<li>在请求发送到下载器之前修改或过滤请求。</li>
-<li>在响应发送到爬虫之前处理或修改响应。</li>
-<li>直接生成新的请求，而不是处理当前的响应。</li>
-<li>选择性地放弃某些请求</li>
-</ul>
-<p><strong>Spider Middleware（爬虫中间件）</strong></p>
-<p>爬虫中间件则是处理传入响应、传出项目（item）和请求的钩子。这些中间件在Scrapy的数据处理流程中处于核心位置，允许用户对爬虫的输入和输出进行细致的控制。使用爬虫中间件，可以：</p>
-<ul>
-<li>在爬虫处理回调之后处理请求或项目。</li>
-<li>修改或过滤开始请求（由 <code>start_requests</code> 方法生成的请求）。</li>
-<li>处理由于响应内容引发的异常，根据响应内容调用错误回调（errback）。</li>
-</ul>
-
-    </div>
-  </div>
-
-<h3 id="数据流过程"><a href="#数据流过程" class="headerlink" title="数据流过程"></a>数据流过程</h3><ol>
-<li><strong>启动过程</strong>:<ul>
-<li>Scrapy开始运行，初始化了调度器、下载器以及蜘蛛。</li>
-</ul>
-</li>
-<li><strong>爬取过程</strong>:<ul>
-<li>引擎向蜘蛛请求第一个要爬取的URL。</li>
-<li>蜘蛛返回第一个要爬取的请求给引擎。</li>
-<li>引擎将请求发送到调度器，并请求下一个URL。</li>
-<li>调度器返回下一个要爬取的请求给引擎。</li>
-</ul>
-</li>
-<li><strong>下载过程</strong>:<ul>
-<li>引擎从调度器中取出请求，通过下载器中间件发送到下载器。</li>
-<li>下载器处理请求，返回响应给引擎。</li>
-<li>引擎收到响应后，通过蜘蛛中间件发送给相应的蜘蛛处理。</li>
-</ul>
-</li>
-<li><strong>解析和提取数据</strong>:<ul>
-<li>蜘蛛处理响应，提取数据并生成新的请求，返回给引擎。</li>
-<li>引擎将提取的数据发送到项目管道，并将新的请求发送到调度器。</li>
-<li>项目管道处理提取出的数据。</li>
-</ul>
-</li>
-<li><strong>循环处理</strong>:<ul>
-<li>以上过程在整个爬取过程中不断重复，直到调度器中没有更多的请求。</li>
-</ul>
-</li>
-<li><strong>关闭过程</strong>:<ul>
-<li>当所有预定的URL都被爬取，且调度器中没有更多的请求时，Scrapy关闭，爬取过程结束。</li>
-</ul>
-</li>
-</ol>
-<h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><h4 id="一-项目命令"><a href="#一-项目命令" class="headerlink" title="一.项目命令"></a>一.项目命令</h4><ol>
-<li><strong>创建项目</strong>:<ul>
-<li>使用命令 <code>scrapy startproject &lt;project_name&gt; [project_dir]</code> 创建新项目。其中 <code>&lt;project_name&gt;</code> 是必填项，表示项目名称；<code>[project_dir]</code> 是可选项，表示项目目录。</li>
-<li>例如：<code>scrapy startproject db</code> 会创建一个名为 ‘db’ 的Scrapy项目。</li>
-</ul>
-</li>
-<li><strong>创建第一个爬虫</strong>:<ul>
-<li>首先，需要进入到你的项目目录中，使用 <code>cd &lt;project_name&gt;</code> 命令。</li>
-<li>然后，使用 <code>scrapy genspider &lt;name&gt; &lt;domain&gt;</code> 创建一个新的爬虫。这里 <code>&lt;name&gt;</code> 是爬虫的名称，而 <code>&lt;domain&gt;</code> 是爬虫将要爬取的域名。</li>
-<li>例如：<code>scrapy genspider example example.com</code> 会在你的项目的 <code>spiders</code> 目录下创建一个名为 ‘example’ 的爬虫，它针对的是 ‘example.com’ 网站。</li>
-</ul>
-</li>
-<li><strong>运行项目</strong>:<ul>
-<li>使用命令 <code>scrapy crawl &lt;spider_name&gt;</code> 来运行你的爬虫。这里 <code>&lt;spider_name&gt;</code> 是你在创建爬虫时指定的名称。</li>
-<li>例如：<code>scrapy crawl example</code> 会运行名为 ‘example’ 的爬虫。</li>
-</ul>
-</li>
-<li><strong>设置配置文件</strong>:<ul>
-<li>在 <code>settings.py</code> 文件中，你可以配置各种参数，比如 <code>ROBOTSTXT_OBEY</code>（是否遵守网站的robots.txt规则）和 <code>DEFAULT_REQUEST_HEADERS</code>（默认的HTTP头部）。</li>
-</ul>
-</li>
-</ol>
-<h4 id="二-shell-交互式平台"><a href="#二-shell-交互式平台" class="headerlink" title="二.shell  交互式平台"></a>二.shell  交互式平台</h4><p>scrapy shell url (start_url)  获取我们项目中的response<br>测试  xpath进行匹配</p>
-<h4 id="项目文件介绍"><a href="#项目文件介绍" class="headerlink" title="项目文件介绍"></a>项目文件介绍</h4><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.png"
-                      width = "500"
-                >
-
-<h2 id="爬取豆瓣电影"><a href="#爬取豆瓣电影" class="headerlink" title="爬取豆瓣电影"></a>爬取豆瓣电影</h2><h5 id="目标数据要求："><a href="#目标数据要求：" class="headerlink" title="目标数据要求："></a><strong>目标数据要求：</strong></h5><ol>
-<li>豆瓣电影250个电影信息</li>
-<li>电影信息为：电影名字,导演信息(可以包含演员信息),评分</li>
-<li>将电影信息直接本地保存</li>
-<li>将电影信息通过管道进行保存</li>
-</ol>
-<p><strong>项目搭建：</strong></p>
-<p>项目创建一个Db250Spider的类，它必须继承scrapy.Spider类，需要定义一下三个属性：</p>
-<ul>
-<li>name: spider的名字，必须且唯一</li>
-<li>start_urls: 初始的url列表</li>
-<li>parse(self, response) 方法：每个初始url完成之后被调用。这个函数要完成以下两个功能：<ol>
-<li>解析响应，封装成item对象并返回这个对象</li>
-<li>提取新的需要下载的url，创建新的request，并返回它</li>
-</ol>
-</li>
-</ul>
-<p>命令如下：<br>语法格式：scrapy genspider [-t template] <name> <domain><br>运行命令：scrapy genspider db250 movie.douban.com<br>会在spiders文件下生成db250.py文件</p>
-<p>parse()会在请求完成时被调用。</p>
-<p>response是请求返回来的响应，可以通过xpath或者css方法很方便的解析。</p>
-<p><strong>要求</strong></p>
-<p>分析页面结构，提取课程需要的数据，生成一个字典，然后通过json模块，转成字符串，写入项目根目录下的film.txt 文件内。</p>
-<p><strong>运行爬虫</strong><br>进入项目根目录，运行命令：scrapy crawl db250</p>
-<p><strong>定义item</strong></p>
-<p>抓取的主要目标是从非结构化数据源(通常是web页面)中提取结构化数据。Scrapy spider可以将提取的数据作为Python的dicts返回。虽然方便且熟悉，但Python的dicts缺乏结构:很容易在字段名中犯错误或返回不一致的数据，特别是在有许多爬虫的大型项目中。</p>
-<p>若要定义公共输出数据格式，Scrapy提供了Item类。Item对象是用于收集剪贴数据的简单容器。它们提供了一个类似词典的API，提供了一种方便的语法来声明它们的可用字段。 scray.Item对象是用于收集抓取数据的简单容器，使用方法和python的字典类似。编辑项目目录下items.py文件。</p>
-<p>然后我们只需要在爬虫中导入我们定义的Item类，实例化后用它进行数据结构化。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/%E7%BC%96%E5%86%99%E7%88%AC%E8%99%AB7.png"
-                      width = "300"
-                >
-
-<p><strong>追踪链接</strong></p>
-<p>上面的爬虫仅仅只爬取了一页，当然不符合我们的要求，我们需要爬取下一页，下一页，直到所有的信息都被下载。我们从页面中提取连接，或者根据规则构建。现在来看我们的爬虫修改为递归的爬取下一页的链接，从中提取数据。</p>
-<p>我们创建了一个类变量page_num用来记录当前爬取到的页码，在parse函数中提取课程信息，然后通过爬虫对象给变量page__num自加1，构造下一页的url，然后创建scrapy.Request对象并返回。如果response中提取不到课程信息，我们判断已经到了最后一页，parse函数直接return结束。</p>
-<p><strong>定义item管道</strong></p>
-<p>到目前为止，我们通过scrapy写出的爬虫还看不出优越性在哪里，并且上面的爬虫还有个很严重的问题，就是对文件的操作。每次调用parse方法会打开文件关闭文件，这极大的浪费了资源。parse函数在解析出我们需要的信息之后，可以将这些信息打包成一个字典对象或scray.Item对象（一般都是item对象，下面我们再讲），然后返回。这个对象会被发送到item管道，该管道会通过顺序执行几个组件处理它。每个item管道组件是一个实现简单方法的Python类。他们收到一个item并对其执行操作，同时决定该item是否应该继续通过管道或者被丢弃并且不再处理。<br>item管道的典型用途是：</p>
-<ul>
-<li>清理HTML数据</li>
-<li>验证已删除的数据（检查项目是否包含某些字段）</li>
-<li>检查重复项（并删除它们）</li>
-<li>将已爬取的item进行数据持久化</li>
-</ul>
-<p><strong>编写管道类</strong></p>
-<p>我们编写一个用来存储课程信息到film.txt文件中的管道类，修改项目下piplines.py文件</p>
-<p>要激活这个管道组件，必须将其添加到ITEM_PIPELINES设置中,在settings文件中设置</p>
-<p>在此设置中为类分配的整数值决定了它们运行的顺序：按照从较低值到较高值的顺序进行。</p>
-<p>注意：这个管道的目的只是介绍如何编写项目管道，如果要将所有爬取的item存储到json文件中，则应使用Feed导出，在运行爬虫是加上如下参数：<code>scrapy crawl xxx -o xxxx.json</code></p>
-<h5 id="项目注意事项"><a href="#项目注意事项" class="headerlink" title="项目注意事项"></a>项目注意事项</h5><ol>
-<li>settings文件中 项目默认的是  ROBOTSTXT_OBEY &#x3D; True,即遵循robots协议,则不能爬取到数据<br>则更改为 ROBOTSTXT_OBEY &#x3D; False</li>
-<li>settings中,有些网站需要添加User-Agent ,才能获取到数据  (伪装成客户端)</li>
-<li>settings中,需要将管道打开,才可以将数据传递到pipelines文件中</li>
-<li>items中需要设置相应的字段,使用Item对象传递数据,(可以理解为mysql先定义字段,才能写入数据一样)</li>
-</ol>
-]]></content>
-      <categories>
-        <category>数据抓取</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-        <tag>理论</tag>
-        <tag>爬虫</tag>
-        <tag>Scrapy</tag>
-        <tag>网页抓取</tag>
       </tags>
   </entry>
 </search>
