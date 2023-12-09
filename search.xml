@@ -1,314 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>控制流程</title>
-    <url>/2018/08/02/20180802%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><h3 id="前置知识：Input方法"><a href="#前置知识：Input方法" class="headerlink" title="前置知识：Input方法"></a>前置知识：Input方法</h3><p>在 Python 中，<code>input()</code>是一个内置函数，用于从标准输入中获取用户输入的数据</p>
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ol>
-<li>输入的值是字符串类型</li>
-<li>如果你想输入是整数 那就需要进行类型转换</li>
-</ol>
-<p><code>a = int(input(&quot;请输入你想输入的内容&#39;))</code></p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 变量a 就存储着用户输入的数据</span></span><br><span class="line">a = <span class="built_in">input</span>(<span class="string">&#x27;请输入你想输入的内容 )</span></span><br><span class="line"><span class="string"># 当我们输入完后可以通过print将你输入的内容打印出来</span></span><br><span class="line"><span class="string">print(a)</span></span><br></pre></td></tr></table></figure></div>
-
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c673f6f3-43db-4e16-3a3c-8ce974b1d800/public"
-                      width = "500"
-                >
-
-<h3 id="一-什么是条件判断"><a href="#一-什么是条件判断" class="headerlink" title="一. 什么是条件判断"></a>一. 什么是条件判断</h3><p>条件判断是编程中一种非常常见的控制结构，它可以帮助我们根据不同的条件来执行不同的代码。可以把它想象成我们生活中的决策过程。</p>
-<p>判断的过程中，比较的类型需要一样，例如都是数值类型</p>
-<h4 id="1-语法："><a href="#1-语法：" class="headerlink" title="1. 语法："></a>1. 语法：</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> 判断条件:</span><br><span class="line">	<span class="comment"># 执行语句....</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="comment"># 执行语句....</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># if：如果</span></span><br><span class="line"><span class="comment"># else 否则</span></span><br><span class="line"><span class="comment"># if 可以单独存在，如果不满足就不会执行if里面的代码，但会继续执行if外面的代码</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="2-案例-1"><a href="#2-案例-1" class="headerlink" title="2. 案例 1"></a>2. 案例 1</h4><p>假如天气晴朗，我就去打篮球，否则我就去看电影。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个a变量 存储今天的天气</span></span><br><span class="line">a = <span class="built_in">input</span>(<span class="string">&#x27;输入今天的天气:&#x27;</span>) </span><br><span class="line"><span class="keyword">if</span> a == <span class="string">&#x27;晴天&#x27;</span>: <span class="comment"># == 是否等于</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;今天是晴天,我要出去打篮球&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;今天是下雨天,我要去看电影&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c8c279d2-95e6-4b4e-a1ab-686a3bf08900/public"
-                      width = "500"
-                >
-
-<h4 id="3-案例-2"><a href="#3-案例-2" class="headerlink" title="3. 案例 2"></a>3. 案例 2</h4><p>随意输入0-100的整数，如果大于60 就在控制台返回  会当凌绝顶一览众山小 如果小于60就返回 三十年河东三十年河西 莫欺少年穷</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;随意输入0-100的整数:&#x27;</span>))</span><br><span class="line"><span class="keyword">if</span> a &gt; <span class="number">60</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;会当凌绝顶一览众山小&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;三十年河东三十年河西 莫欺少年穷&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3676eea8-7f15-4bb8-d94a-c6cf8f1db600/public"
-                      width = "500"
-                >
-
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/73f965d3-ea54-4b85-a67c-76ef7f266e00/public"
-                      width = "500"
-                >
-
-<h3 id="二-多个条件判断"><a href="#二-多个条件判断" class="headerlink" title="二. 多个条件判断"></a>二. 多个条件判断</h3><h4 id="1-什么是多个条件判断"><a href="#1-什么是多个条件判断" class="headerlink" title="1. 什么是多个条件判断"></a>1. 什么是多个条件判断</h4><p>有些时候，我们的判断语句不可能只有两个，有些时候需要多个，比如说大于等于 60 的为及格，那我们还要判断大于等于 90 的为优秀，在 80 到 90 之间的良好呢？</p>
-<p>这时候需要用到 if 语句多个判断条件</p>
-<h4 id="2-语法"><a href="#2-语法" class="headerlink" title="2. 语法"></a>2. 语法</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> 判断条件<span class="number">1</span>:</span><br><span class="line">	<span class="comment"># 执行语句1.....</span></span><br><span class="line"><span class="keyword">elif</span> 判断条件<span class="number">2</span>:</span><br><span class="line">	<span class="comment"># 执行语句2.....</span></span><br><span class="line"><span class="keyword">elif</span> 判断条件<span class="number">3</span>:</span><br><span class="line">	<span class="comment"># 执行语句3.....</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="comment"># 执行语句4.....</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># if：如果</span></span><br><span class="line"><span class="comment"># elif:或者</span></span><br><span class="line"><span class="comment"># else 否则</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="3-案例-1"><a href="#3-案例-1" class="headerlink" title="3. 案例 1"></a>3. 案例 1</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入你的分数&#x27;</span>))</span><br><span class="line"><span class="keyword">if</span> a &gt;= <span class="number">90</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;优秀&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt;= <span class="number">80</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;良好&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt;= <span class="number">60</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;及格&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;恭喜你 没有及格 )</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="4-案例-2"><a href="#4-案例-2" class="headerlink" title="4. 案例 2"></a>4. 案例 2</h4><p>有时候我们会遇到多个条件的时候该怎么操作呢？</p>
-<p>比如说：学校举行一场考试，要求小明的python和java两门语言 都达到80分才算优秀。</p>
-<ul>
-<li>这时候我们可以结合 or 和 and 来使用。</li>
-<li>or (或)表示两个条件有一个成立时判断条件成功</li>
-<li>and (与)表示只有两个条件同时成立的情况下，判断条件才成功。</li>
-</ul>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入python分数&#x27;</span>))</span><br><span class="line">java = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入java分数&#x27;</span>))</span><br><span class="line"><span class="comment"># 当我们输入完 我们的变量python和java就分别存储着 python和java的分数</span></span><br><span class="line"><span class="keyword">if</span> python &gt;= <span class="number">80</span> <span class="keyword">and</span> java &gt;= <span class="number">80</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;优秀&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;不优秀&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入python分数&#x27;</span>))</span><br><span class="line">java = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入java分数&#x27;</span>))</span><br><span class="line"><span class="comment"># 当我们输入完 我们的变量python和java就分别存储着 python和java的分数</span></span><br><span class="line"><span class="comment"># 将and改为or 就意味着 只需要一个条件满足就是优秀</span></span><br><span class="line"><span class="keyword">if</span> python &gt;= <span class="number">80</span> <span class="keyword">or</span> java &gt;= <span class="number">80</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;优秀&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;不优秀&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="三-嵌套"><a href="#三-嵌套" class="headerlink" title="三. 嵌套"></a>三. 嵌套</h3><h4 id="1-嵌套是指什么"><a href="#1-嵌套是指什么" class="headerlink" title="1. 嵌套是指什么"></a>1. 嵌套是指什么</h4><p>就跟字面意思差不多，指 if 语句中可以嵌套 if 语句。</p>
-<h4 id="2-案例-1-1"><a href="#2-案例-1-1" class="headerlink" title="2. 案例 1"></a>2. 案例 1</h4><p>小明，平时正常上班太累了，到了周末如果是晴天，那就出去打篮球，如果不是那就在家看电视</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个变量来保存今天是不是周末</span></span><br><span class="line"><span class="comment"># 定义一个变量b来保存今天的天气</span></span><br><span class="line">a = <span class="string">&#x27;周末&#x27;</span></span><br><span class="line">b = <span class="string">&#x27;晴&#x27;</span></span><br><span class="line"><span class="keyword">if</span> a == <span class="string">&#x27;周末&#x27;</span>:</span><br><span class="line">    <span class="keyword">if</span> b == <span class="string">&#x27;晴&#x27;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;今天是周末，又是晴天可以去打篮球&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;今天是周末，但是下雨在家乖乖看电视&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;乖乖上班&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="四-三目运算"><a href="#四-三目运算" class="headerlink" title="四. 三目运算"></a>四. 三目运算</h3><ol>
-<li>也叫三元运算符，是一种简洁的条件语句表达式。它可以根据条件的成立与否来返回两个值中的一个。</li>
-</ol>
-<p>​	<strong>作用</strong>：简化代码</p>
-<ol start="2">
-<li>之前案例，今天学校期末数学考试(60分及格)，小明考了66分，请问小明是及格还是没有及格。</li>
-</ol>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个变量a 来保存小明的数学成绩</span></span><br><span class="line">a = <span class="number">66</span></span><br><span class="line"><span class="comment"># 三目运算</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;及格&#x27;</span>) <span class="keyword">if</span> a &gt; <span class="number">6</span> <span class="keyword">else</span> <span class="built_in">print</span>(<span class="string">&#x27;不及格&#x27;</span>)</span><br><span class="line"><span class="comment"># 普通的if判断</span></span><br><span class="line"><span class="keyword">if</span> a &gt; <span class="number">60</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;及格&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;不及格&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="五-循环语句"><a href="#五-循环语句" class="headerlink" title="五. 循环语句"></a>五. 循环语句</h3><h4 id="1-什么是循环"><a href="#1-什么是循环" class="headerlink" title="1. 什么是循环"></a>1. 什么是循环</h4><p>可以让程序自动地执行多次相同或类似的任务，从而节省编写代码的时间和精力。</p>
-<p>一共有两种循环：</p>
-<ul>
-<li>for循环</li>
-<li>while循环</li>
-</ul>
-<h4 id="2-for循环"><a href="#2-for循环" class="headerlink" title="2. for循环"></a>2. for循环</h4><p>可以遍历一个序列或其他可迭代对象中的元素，并执行特定的代码块。</p>
-<h5 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> 形参 <span class="keyword">in</span> 遍历对象: 	</span><br><span class="line">	<span class="built_in">print</span>(形参)</span><br></pre></td></tr></table></figure></div>
-
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>对象（Objects）</strong>：</p>
-<p>在Python中，几乎所有东西都是对象。这包括数字、字符串、列表、函数，甚至是类和类型本身。每个对象都有三个特性：身份、类型和值。</p>
-<ul>
-<li>身份：每个对象都有一个唯一的身份，用于区分不同的对象。可以通过 <code>id()</code> 函数来查看对象的身份。</li>
-<li>类型：对象的类型定义了它可以进行哪些操作或拥有哪些方法。类型可以通过 <code>type()</code> 函数查看。</li>
-<li>值：对象表示的数据。</li>
-</ul>
-<p><strong>形参（Formal Parameters）</strong>：</p>
-<p>当你定义一个函数时，你可以在函数定义中指定一些参数。这些参数被称为形式参数（形参），它们是函数内部的局部变量。当函数被调用时，形参会接收传递给函数的实际值。这些值被称为实参（实际参数）。</p>
-<p>例如：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):  <span class="comment"># a 和 b 是形参</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br></pre></td></tr></table></figure></div>
-
-<p>在这个例子中，<code>a</code> 和 <code>b</code> 是形参，它们在函数 <code>add</code> 被调用时接收实际的输入值。</p>
-
-    </div>
-  </div>
-
-<h5 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 案例: 将List的内容全部打印出来</span></span><br><span class="line"><span class="comment"># 定义一个列表List</span></span><br><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>]</span><br><span class="line"><span class="comment"># 以前</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">2</span>])</span><br><span class="line"><span class="comment"># 如果List里面有1000 个值呢，是不是要写一干遍</span></span><br><span class="line"><span class="comment"># 我们学习for循环后</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> <span class="built_in">list</span>:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br></pre></td></tr></table></figure></div>
-
-<h5 id="range函数"><a href="#range函数" class="headerlink" title="range函数"></a>range函数</h5><h6 id="什么是range"><a href="#什么是range" class="headerlink" title="什么是range"></a>什么是range</h6><p>是 Python 内置的一个函数，用于生成一个整数序列</p>
-<h6 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h6><p>常用于for循环中，用于循环的次数</p>
-<h6 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h6><p><code>range()</code>函数有三种用法:</p>
-<ol>
-<li><code>range(stop)</code>: 生成从 0 开始到 stop-1 的整数序列。</li>
-<li><code>range(start，stop)</code>: 生成从 start 开始到 stop-1 的整数序列。</li>
-<li><code>range(start，stop，step)</code>: 生成从 start 开始到 stop-1 的整数序列，步长为 step。</li>
-</ol>
-<h6 id="range案例"><a href="#range案例" class="headerlink" title="range案例"></a>range案例</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    <span class="comment"># item:次数</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;range让我循环<span class="subst">&#123;item&#125;</span>次&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># range让我循环0次</span></span><br><span class="line"><span class="comment"># range让我循环1次</span></span><br><span class="line"><span class="comment"># range让我循环2次</span></span><br><span class="line"><span class="comment"># range让我循环3次</span></span><br><span class="line"><span class="comment"># range让我循环4次</span></span><br><span class="line"><span class="comment"># range让我循环5次</span></span><br><span class="line"><span class="comment"># range让我循环6次</span></span><br><span class="line"><span class="comment"># range让我循环7次</span></span><br><span class="line"><span class="comment"># range让我循环8次</span></span><br><span class="line"><span class="comment"># range让我循环9次</span></span><br></pre></td></tr></table></figure></div>
-
-<h5 id="列表、元组、集合、字典、字符串的for循环的使用案例"><a href="#列表、元组、集合、字典、字符串的for循环的使用案例" class="headerlink" title="列表、元组、集合、字典、字符串的for循环的使用案例"></a>列表、元组、集合、字典、字符串的for循环的使用案例</h5>
-  <div class="note p-4 mb-4 rounded-small primary icon-padding">
-    <i class="note-icon fa-solid fa-square-arrow-up-right"></i><p>列表、元组、集合、字典、字符串皆为<a class="button " href='https://www.yiuhangblog.com/2018/07/23/20180723%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/' title='数值类型'><i class='fa-solid fa-play-circle'></i> 数值类型</a>，详细内容与调用方法跳转查阅</p>
-
-  </div>
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列表</span></span><br><span class="line">List_test = [<span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> List_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># 香蕉</span></span><br><span class="line"><span class="comment"># 苹果</span></span><br><span class="line"><span class="comment"># 梨子</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment"># 元组</span></span><br><span class="line">tuple_test = (<span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> tuple_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># 香蕉</span></span><br><span class="line"><span class="comment"># 苹果</span></span><br><span class="line"><span class="comment"># 梨子</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 集合</span></span><br><span class="line">set_test = &#123;<span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> set_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># 香蕉</span></span><br><span class="line"><span class="comment"># 苹果</span></span><br><span class="line"><span class="comment"># 梨子</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字典</span></span><br><span class="line">dict_test = &#123;</span><br><span class="line">    <span class="string">&quot;username&quot;</span>: <span class="string">&#x27;user&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;age&#x27;</span>: <span class="number">25</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> dict_test:</span><br><span class="line">    <span class="comment"># 在字典中 item:key</span></span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line">    <span class="comment"># 如果想拿到vaLue的值 : List[item] </span></span><br><span class="line">    <span class="built_in">print</span>(item, dict_test[item])</span><br><span class="line"><span class="comment"># username</span></span><br><span class="line"><span class="comment"># username user</span></span><br><span class="line"><span class="comment"># age</span></span><br><span class="line"><span class="comment"># age 25</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">#字符串</span></span><br><span class="line">str_test = <span class="string">&#x27;hello word&#x27;</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> str_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># h</span></span><br><span class="line"><span class="comment"># e</span></span><br><span class="line"><span class="comment"># l</span></span><br><span class="line"><span class="comment"># l</span></span><br><span class="line"><span class="comment"># o</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># w</span></span><br><span class="line"><span class="comment"># o</span></span><br><span class="line"><span class="comment"># r</span></span><br><span class="line"><span class="comment"># d</span></span><br></pre></td></tr></table></figure></div>
-
-<h5 id="双层for循环"><a href="#双层for循环" class="headerlink" title="双层for循环"></a>双层for循环</h5><p>也可以用于遍历嵌套的数据结构</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列表里面包字典，这是开发最常见的一种数据方式，我们需要把里面的数据给拿出来</span></span><br><span class="line">list_dic = [&#123;</span><br><span class="line">    <span class="string">&#x27;username&#x27;</span>: <span class="string">&#x27;users1&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;age&#x27;</span>: <span class="number">18</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">    <span class="string">&#x27;username&#x27;</span>: <span class="string">&#x27;users2&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;age&#x27;</span>: <span class="number">20</span></span><br><span class="line">&#125;]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一层for循环遍历出两个字典</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> list_dic:</span><br><span class="line">    <span class="comment"># 第二层for循环遍历出字典里面的值</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> item: <span class="comment"># 通过i形参就是传递出字典里的值</span></span><br><span class="line">        <span class="comment"># item就是字典本身，通过遍历item获取value</span></span><br><span class="line">        <span class="built_in">print</span>(i, item[i]) <span class="comment"># items 就是拿到了，item字典里面的key</span></span><br><span class="line">        </span><br><span class="line"><span class="comment"># username users1</span></span><br><span class="line"><span class="comment"># age 18</span></span><br><span class="line"><span class="comment"># username users2</span></span><br><span class="line"><span class="comment"># age 20</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="3-while循环"><a href="#3-while循环" class="headerlink" title="3. while循环"></a>3. while循环</h4><p>常见的循环结构，它可以在条件满足的情况下重复执行一段代码块，直到条件不再满足为止。</p>
-<h5 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> 判断条件: </span><br><span class="line">	输出内容</span><br></pre></td></tr></table></figure></div>
-
-<h5 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">11</span></span><br><span class="line"><span class="keyword">while</span> a &gt; <span class="number">10</span>:</span><br><span class="line">    <span class="comment"># 这样会陷入无尽的循环 因为a会一直大于 10 这个时候</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;a大于10 这行代码就会一直运行&#x27;</span>)</span><br><span class="line">    <span class="keyword">break</span> <span class="comment">#我们可以用break来终止</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># a大于10 这行代码就会一直运行</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">8</span></span><br><span class="line"><span class="keyword">while</span> a &lt; <span class="number">10</span>:</span><br><span class="line">    <span class="comment"># 可以在循环里面加改变条件的运算 让循环变成 有限循环 而不是无限循环</span></span><br><span class="line">    a += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;aaaaaaa&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># aaaaaaa</span></span><br><span class="line"><span class="comment"># aaaaaaa</span></span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>基础</tag>
-        <tag>理论</tag>
-        <tag>控制流程</tag>
-        <tag>条件判断</tag>
-        <tag>循环语句</tag>
-        <tag>嵌套</tag>
-        <tag>三目运算</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>函数</title>
-    <url>/2018/08/12/20180812%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h2 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h2><p>函数是一段可重复使用的代码块，用于执行特定的任务</p>
-<h3 id="函数的作用"><a href="#函数的作用" class="headerlink" title="函数的作用"></a>函数的作用</h3><ol>
-<li>提高代码的可重用性: 使用函数可以将代码块组织成更小的可重用模块，减少代码的冗余。</li>
-<li>提高代码的可读性: 使用函数可以使代码更加简洁和易于理解，也更容易进行调试和维护。</li>
-<li>提高代码的模块化: 使用函数可以将程序分解成更小的模块，每个模块都可以处理特定的任务，这样程序的组织结构更加清晰。</li>
-<li>提高代码的可扩展性: 使用函数可以使程序更易于扩展和修改，因为函数可以独立地编写和测试，而不会影响程序的其他部分。</li>
-</ol>
-
-  <div class="note p-4 mb-4 rounded-small info icon-padding">
-    <i class="note-icon fa-solid fa-circle-info"></i><p>函数就是设计一个技能需要时自己调用，调用的方法本质上是个函数 。两者的区别是使用的方式不一样。</p>
-
-  </div>
-
-<h3 id="函数写法"><a href="#函数写法" class="headerlink" title="函数写法"></a>函数写法</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用def定义一个函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">User</span>():</span><br><span class="line">    内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数 必须顶格</span></span><br><span class="line">User()</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="函数的形参和实参"><a href="#函数的形参和实参" class="headerlink" title="函数的形参和实参"></a>函数的形参和实参</h2><ol>
-<li>不传值给函数可以不带形参和实参</li>
-<li>形参名字可以随意定义</li>
-<li>形参和实参数量必须一致</li>
-<li>实参对应形参</li>
-<li>形参可以赋默认参数 没有传就以默认参数 传了就以实参</li>
-<li>实参也可以指定形参</li>
-<li>通过*形参名可以获取所有实参，通过索引获取对应实参</li>
-</ol>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用def定义一个函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">User</span>(<span class="params">形参</span>):</span><br><span class="line">    内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数 必须顶格</span></span><br><span class="line">User(实参)</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 形参的默认参数</span></span><br><span class="line"><span class="comment"># 如果没有传就以默认参数 传了就以实参</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line">    <span class="built_in">print</span>(y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">user(<span class="number">13</span>, <span class="number">14</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 13</span></span><br><span class="line"><span class="comment"># 14</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 通过*形参名可以获取所有实参</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user</span>(<span class="params">*item</span>):</span><br><span class="line">    <span class="comment"># 通过形参名索引获取对应实参</span></span><br><span class="line">    <span class="built_in">print</span>(item[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">user(<span class="number">13</span>, <span class="number">14</span>, <span class="number">16</span>, <span class="number">17</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 13</span></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h2><p>Python自带的一些函数，我们可以直接拿来使用</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打印</span></span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"><span class="comment"># 类型判断</span></span><br><span class="line"><span class="built_in">type</span>()</span><br><span class="line"><span class="comment"># 字符串、列表、元组、集合 的增删改查的方法</span></span><br></pre></td></tr></table></figure></div>
-
-
-  <div class="note p-4 mb-4 rounded-small primary icon-padding">
-    <i class="note-icon fa-solid fa-square-arrow-up-right"></i><p>字符串、列表、元组、集合 的增删改查的方法<a class="button " href='https://www.yiuhangblog.com/2018/07/23/20180723%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/' title='数值类型'><i class='fa-solid fa-play-circle'></i> 数值类型</a>，详细内容与调用方法跳转查阅</p>
-
-  </div>
-
-<h2 id="函数的说明文档"><a href="#函数的说明文档" class="headerlink" title="函数的说明文档"></a>函数的说明文档</h2><ol>
-<li>给函数中的代码做解释说明</li>
-<li>让其他程序员知道函数的作用</li>
-<li>函数里的注释</li>
-</ol>
-<h3 id="如何写说明文档"><a href="#如何写说明文档" class="headerlink" title="如何写说明文档"></a>如何写说明文档</h3><ul>
-<li>三引号包裹</li>
-</ul>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):</span><br><span class="line">	<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">	内容</span></span><br><span class="line"><span class="string">	&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    这个函数用于计算两个数的和。</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    :param a: 第一个加数</span></span><br><span class="line"><span class="string">    :param b: 第二个加数</span></span><br><span class="line"><span class="string">    :return: 两个数的和</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="函数的嵌套"><a href="#函数的嵌套" class="headerlink" title="函数的嵌套"></a>函数的嵌套</h2><p>在函数内部调用其它函数</p>
-<p>尽量不要嵌套太多层，不然就是屎山了</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1.定义一个函数a</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">a</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;我是函数a&#x27;</span>)</span><br><span class="line">    <span class="comment"># 3.在函数a内部调用函数b</span></span><br><span class="line">    b()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.定义一个函数b</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">b</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;我是函数b&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.调用函数a</span></span><br><span class="line">a() </span><br><span class="line"></span><br><span class="line"><span class="comment"># 我是函数a</span></span><br><span class="line"><span class="comment"># 我是函数b</span></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="函数的作用域"><a href="#函数的作用域" class="headerlink" title="函数的作用域"></a>函数的作用域</h2><p>Python 中的函数作用域分为两种: 全局作用域和局部作用域</p>
-<ol>
-<li>全局作用域指的是在模块(文件)中定义的变量和函数，可以在模块的任何地方被访问和使用</li>
-<li>局部作用域指的是在函数内部定义的变量和函数，只能在该函数内部被访问和使用</li>
-</ol>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a728cb1a-a479-43ab-1aa5-318e65e52f00/public"
-                      width="200"
-                >
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 变量a 全局作用域</span></span><br><span class="line">a = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个 函数textA</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">textA</span>():</span><br><span class="line">    <span class="comment"># 变量b 局部作用域</span></span><br><span class="line">    b = <span class="number">20</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为变量a在全局作用域 所以可以访问到</span></span><br><span class="line"><span class="built_in">print</span>(a)	<span class="comment"># 100</span></span><br><span class="line"><span class="comment"># 因为变量b 在局部作用域 变量b 访问不到 所以会报错</span></span><br><span class="line"><span class="built_in">print</span>(b)	<span class="comment"># NameError: name &#x27;b&#x27; is not defined</span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="global-关键字"><a href="#global-关键字" class="headerlink" title="global 关键字"></a>global 关键字</h3><p>使用 <code>global</code> 关键字 可以在函数内部声明变量为全局变量</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义两个变量 textA textB</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">textA</span>():</span><br><span class="line">    <span class="comment"># gLobal 声明 money 为全局变量</span></span><br><span class="line">    <span class="keyword">global</span> money</span><br><span class="line">    money = <span class="number">100</span></span><br><span class="line">    <span class="built_in">print</span>(money)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">textB</span>():</span><br><span class="line">    <span class="built_in">print</span>(money)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">textA() <span class="comment"># 100</span></span><br><span class="line">textB() <span class="comment"># 100</span></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="闭包-Closure"><a href="#闭包-Closure" class="headerlink" title="闭包 Closure"></a>闭包 Closure</h2><p>内部函数使用了外部函数的变量 </p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>(): <span class="comment"># 外部函数</span></span><br><span class="line">    <span class="comment"># 1. 变量a 是func函数的局部变量</span></span><br><span class="line">    a = <span class="number">10</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;函数func调用&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">func1</span>(): <span class="comment"># 内部函数</span></span><br><span class="line">        <span class="comment"># 2. 我们在func1这个内部函数里面 使用了 外部函数的变量a 这种现象就叫闭包，没有用到 变量 就不叫闭包</span></span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> func1  <span class="comment"># 3. 我们需要返回func1函数的本身给外部函数 才能看到闭包的效果 闭包不需要调用只需要返回</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">demo = func() <span class="comment"># 函数func调用</span></span><br><span class="line">demo() <span class="comment"># 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者func()()</span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h3><p>好处: 保存局部变量的状态 我们可以将相关的功能和数据绑定在一起，而不用担心数据被其他代码修改。</p>
-<p>应用：想保存数据状态和不被污染 我们就可以使用闭包。很多框架底层 保存数据都是用的闭包</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():</span><br><span class="line">    a = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">func1</span>():</span><br><span class="line">        <span class="keyword">nonlocal</span> a  <span class="comment"># nonlocal 指向外部函数func的a 不会指向全局作用域 如果外部func没有a就会报错</span></span><br><span class="line">        a += <span class="number">1</span>  <span class="comment"># 累加，主要做逻辑处理，每次调用func1就会累加1</span></span><br><span class="line">        <span class="keyword">return</span> a  <span class="comment"># 将累加的结果返回出来给func1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> func1  <span class="comment"># 返func1本身传递给func 覆盖原始a=0 我们才能看到闭包的效果</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 目的调用func1 让a累加一次</span></span><br><span class="line"><span class="comment"># 需要调用看结果</span></span><br><span class="line">demo = func()</span><br><span class="line"><span class="comment"># 通过demo来调用里面的func1</span></span><br><span class="line"><span class="built_in">print</span>(demo())</span><br><span class="line"><span class="comment"># 输出 1</span></span><br><span class="line"><span class="built_in">print</span>(demo())</span><br><span class="line"><span class="comment"># 输出 2</span></span><br><span class="line"><span class="built_in">print</span>(demo())</span><br><span class="line"><span class="comment"># 输出 3</span></span><br></pre></td></tr></table></figure></div>
-
-<ol>
-<li>因此可以发现通过闭包，可以使得数据状态得到存储，例如存储累加的结果</li>
-<li>且闭包的数据无法通过全局变量进行修改，保证数据完整性，因为是由子函数进行累加的</li>
-<li>需要保存数据状态的时候就需要使用闭包</li>
-<li>使用场景例如 第三方库 能够保存数据状态</li>
-</ol>
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
-
-    </div>
-    <div class="notel-content">
-      <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">&quot;Global&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fun_out</span>():</span><br><span class="line">    a = <span class="string">&quot;external_function&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">fun_in</span>():</span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fun_in</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">demo = fun_out()</span><br><span class="line">demo() <span class="comment"># external_function</span></span><br></pre></td></tr></table></figure></div>
-
-<p>在 Python 中，变量的使用和修改遵循不同的规则，特别是在涉及嵌套函数时。这是因为 Python 对变量的查找（读取）和赋值（修改）有不同的作用域规则。</p>
-<ol>
-<li><strong>读取变量</strong>：当代码尝试读取一个变量的值时（如在 <code>print(a)</code> 中），Python 会遵循作用域查找规则。这意味着它会首先在当前函数的局部作用域查找该变量。如果在当前作用域找不到，它会在外围作用域中查找，一直查找到全局作用域，最后是内置作用域。这就是为什么在上面的例子中，即使没有使用 <code>nonlocal</code> 关键字，<code>fun_in</code> 也能访问 <code>fun_out</code> 中定义的 <code>a</code> 变量。</li>
-<li><strong>修改变量</strong>：当尝试修改一个变量的值时，Python 的默认行为是在当前作用域创建或更新该变量。如果在一个嵌套的函数中不加声明地修改一个变量，Python 会认为这是一个新的局部变量，而不是一个外围作用域中的变量。<ul>
-<li><strong>使用 <code>nonlocal</code> 关键字</strong>：当想在一个嵌套函数中修改外围函数的局部变量时，需要使用 <code>nonlocal</code> 关键字。这样做可以告诉 Python 想修改的是外围作用域中的变量，而不是创建一个新的局部变量。</li>
-<li><strong>全局变量</strong>：如果想在一个函数中修改全局变量，而不是创建同名的局部变量，需要使用 <code>global</code> 关键字。</li>
-</ul>
-</li>
-</ol>
-<p>这种区分是为了避免意外修改外围作用域中的变量，这可能会导致难以追踪的错误。通过要求显式声明 <code>nonlocal</code> 或 <code>global</code>，Python 增强了代码的可读性和可维护性。</p>
-
-    </div>
-  </div>
-
-<h3 id="闭包（Closure）和嵌套函数（Nested-Functions）的区别"><a href="#闭包（Closure）和嵌套函数（Nested-Functions）的区别" class="headerlink" title="闭包（Closure）和嵌套函数（Nested Functions）的区别"></a>闭包（Closure）和嵌套函数（Nested Functions）的区别</h3><p><strong>闭包（Closure）</strong></p>
-<p>在编程中，闭包是指那些能够访问自己外部作用域中变量的函数。一个闭包至少由两部分组成：一个函数以及该函数引用的外部变量。Python 中闭包的一个关键特征是它保持了对其外部变量的引用，即使在外部函数已经结束执行之后。</p>
-<p>在您的代码中，<code>fun_in</code> 是一个闭包，因为它是在 <code>fun_out</code> 内部定义的，并且引用了 <code>fun_out</code> 作用域内的变量 <code>a</code>。当 <code>fun_out</code> 被调用并返回 <code>fun_in</code> 时，尽管 <code>fun_out</code> 的执行已经结束，<code>fun_in</code> 依然保留了对变量 <code>a</code> 的引用。这样，即使是在 <code>fun_out</code> 执行完毕之后，<code>fun_in</code> 仍然可以访问并打印变量 <code>a</code> 的值。</p>
-<p><strong>嵌套函数（Nested Functions）</strong></p>
-<p>嵌套函数是在另一个函数内部定义的函数。虽然所有闭包都是嵌套函数，但并非所有嵌套函数都是闭包。一个嵌套函数只有在引用了其外部函数的变量时，它才构成一个闭包。</p>
-<p><strong>总结</strong></p>
-<p><code>fun_in</code> 作为一个闭包，即使在其外部函数 <code>fun_out</code> 执行完毕后，仍然可以访问并使用 <code>fun_out</code> 作用域中的变量 <code>a</code>。</p>
-<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>匿名函数，通常在 Python 中通过 <code>lambda</code> 关键字来定义，是一种没有显式函数名的简短函数。它们在语法上是简洁的，通常用于编写小的、一次性的、不需要单独定义函数名的函数。</p>
-<p>匿名函数是一个可以定义并立即使用的简洁函数形式。在 Python 中，匿名函数使用 <code>lambda</code> 关键字创建，其基本语法是：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">lambda</span> 参数列表: 表达式</span><br></pre></td></tr></table></figure></div>
-
-<p>这种函数通常用于简单的操作，比如简单的数学运算、字符串操作等。由于它们只是单个表达式，所以不能像普通函数那样执行复杂的操作</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># lambda : 8 创建了一个匿名函数，这个函数没有参数，并且总是返回数字 8</span></span><br><span class="line"></span><br><span class="line">func = <span class="keyword">lambda</span> : <span class="number">8</span> <span class="comment"># lambda 关键字 代表匿名函数</span></span><br><span class="line"><span class="built_in">print</span>(func()) <span class="comment"># 输出: 8</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 匿名函数的一个限制是它只能包含一个表达式，不能包含多个独立的语句或复杂的逻辑。如果函数体较复杂，或者需要重复使用，那么定义一个普通函数会更合适。它与匿名函数执行相同的操作，但是更适合复杂逻辑或多次调用的情况。</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>() :</span><br><span class="line">	<span class="keyword">return</span> <span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(func())</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="匿名函数的作用"><a href="#匿名函数的作用" class="headerlink" title="匿名函数的作用"></a>匿名函数的作用</h3><p>匿名函数的主要作用是简化代码，尤其是在需要小的函数作为参数时，例如在排序操作、高阶函数（如 <code>map()</code>、<code>filter()</code>）或任何需要函数对象的地方。由于它们不需要定义传统的函数结构，因此可以在代码中快速定义和使用。</p>
-<h3 id="何时使用匿名函数"><a href="#何时使用匿名函数" class="headerlink" title="何时使用匿名函数"></a>何时使用匿名函数</h3><p>匿名函数通常在以下情况下使用：</p>
-<ol>
-<li><strong>简单的功能</strong>：当函数的功能非常简单，只需要一行代码就可以实现时，使用匿名函数是一个很好的选择。</li>
-<li><strong>一次性使用</strong>：当你有一个不会在代码的其他地方复用的小函数时，使用匿名函数可以减少不必要的函数定义。</li>
-<li><strong>作为参数传递</strong>：当一个函数接受另一个函数作为参数时，如果这个参数函数非常简短，使用匿名函数可以使代码更加清晰。常见的例子包括 <code>map()</code>、<code>filter()</code> 和 <code>sorted()</code> 等函数。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>基础</tag>
-        <tag>理论</tag>
-        <tag>嵌套</tag>
-        <tag>基本语法</tag>
-        <tag>内置函数</tag>
-        <tag>形参</tag>
-        <tag>实参</tag>
-        <tag>说明文档</tag>
-        <tag>作用域</tag>
-        <tag>闭包</tag>
-        <tag>匿名函数</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据类型和其方法</title>
     <url>/2018/07/23/20180723%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/</url>
     <content><![CDATA[<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>Python数据类型分为 三大类：</p>
@@ -940,7 +632,7 @@
 
 <p>在这个例子中， <code>Car</code> 类中添加了 <code>__init__</code> 方法，它接受 <code>brand</code> 和 <code>color</code> 作为参数，并将它们分别赋值给实例的 <code>brand</code> 和 <code>color</code> 属性。现在，在创建 <code>Car</code> 类的实例时，我们需要提供品牌和颜色作为参数。这样一来，每个 <code>Car</code> 实例在创建时都会有自己的品牌和颜色属性。</p>
 
-  <div class="note-large orange">
+  <div class="note-large green">
     <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
       <i class="notel-icon fa-solid fa-circle-question"></i><p>QA</p>
 
@@ -977,7 +669,7 @@
 <p>这里，<code>first_car</code> 是 <code>Car</code> 类的一个实例，代表了一辆特定的汽车。我们给它赋予了“Toyota”品牌、“红色”颜色和1500公斤重量的属性，并通过<code>display_info</code>方法打印了这些信息。</p>
 <h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>通过修改这个例子，我们可以看到如何在类中使用初始化方法（<code>__init__</code>）来设置对象的初始状态，并通过实例化这个类来创建具体的对象。每个对象都有自己的属性值，但它们共享相同的方法（如<code>display_info</code>）。</p>
 
-  <div class="note-large orange">
+  <div class="note-large green">
     <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
       <i class="notel-icon fa-solid fa-circle-question"></i><p>QA</p>
 
@@ -1054,7 +746,7 @@
 
 <p>在类中，成员属性和成员方法可以通过在名称前加上两个下划线 <code>__</code> 来设为私有。这样做的好处是能够保证这些成员不会被外界直接访问，但它们仍然可以在类的内部通过 <code>self</code> 被访问。这种方式有助于隐藏数据和实现细节，提高了代码的安全性和健壮性。</p>
 
-  <div class="note-large orange">
+  <div class="note-large green">
     <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
       <i class="notel-icon fa-solid fa-circle-question"></i><p>QA</p>
 
@@ -2083,6 +1775,209 @@
       </tags>
   </entry>
   <entry>
+    <title>页面解析工具</title>
+    <url>/2021/02/23/20210223%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<h2 id="BS4"><a href="#BS4" class="headerlink" title="BS4"></a>BS4</h2><p>BeautifulSoup 是一个可以从HTML或XML文件中提取数据的Python库，它的使用方式相对于正则来说更加的简单方便，常常能够节省我们大量的时间。</p>
+<h3 id="官方中文文档"><a href="#官方中文文档" class="headerlink" title="官方中文文档"></a>官方中文文档</h3><p><a class="link"   href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html" >https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><strong>pip install beautifulsoup4</strong></p>
+<h3 id="解析器"><a href="#解析器" class="headerlink" title="解析器"></a>解析器</h3><table>
+<thead>
+<tr>
+<th><strong>解析器</strong></th>
+<th><strong>使用方法</strong></th>
+<th><strong>优势</strong></th>
+<th><strong>劣势</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Python标准库</td>
+<td>BeautifulSoup(markup, “html.parser”)</td>
+<td>Python的内置标准库执行速度适中文档容错能力强</td>
+<td>Python 2.7.3 or 3.2.2)前 的版本中文档容错能力差</td>
+</tr>
+<tr>
+<td>lxml HTML 解析器</td>
+<td>BeautifulSoup(markup, “lxml”)</td>
+<td>速度快文档容错能力强</td>
+<td>需要安装C语言库</td>
+</tr>
+<tr>
+<td>lxml XML 解析器</td>
+<td>BeautifulSoup(markup, [“lxml”, “xml”])&#96;&#96;BeautifulSoup(markup, “xml”)</td>
+<td>速度快唯一支持XML的解析器</td>
+<td>需要安装C语言库</td>
+</tr>
+<tr>
+<td>html5lib</td>
+<td>BeautifulSoup(markup, “html5lib”)</td>
+<td>最好的容错性以浏览器的方式解析文档生成HTML5格式的文档</td>
+<td>速度慢不依赖外部扩展</td>
+</tr>
+</tbody></table>
+<p>由于这个解析的过程在大规模的爬取中是会影响到整个爬虫系统的速度的，所以推荐使用的是lxml，速度会快很多，而lxml需要单独安装：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">pip install lxml</span><br><span class="line">soup = BeautifulSoup(html_doc, <span class="string">&#x27;lxml&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>如果一段HTML或XML文档格式不正确的话,那么在不同的解析器中返回的结果可能是不一样的，所以要指定某一个解析器。</p>
+<h3 id="节点对象"><a href="#节点对象" class="headerlink" title="节点对象"></a>节点对象</h3><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e21bc48e-0303-49dd-5507-71e48db20900/public"
+                      width = "500"
+                >
+
+<h4 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h4><p>tag就是标签的意思，tag还有许多的方法和属性。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7b181ea1-88a1-429b-37cf-d5c83a623500/public"
+                      width = "500"
+                >
+
+<h4 id="NavigableString"><a href="#NavigableString" class="headerlink" title="NavigableString"></a>NavigableString</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ea4c88db-d785-4838-620c-824192d29e00/public"
+                      width = "500"
+                >
+
+<h4 id="BeautifulSoup"><a href="#BeautifulSoup" class="headerlink" title="BeautifulSoup"></a>BeautifulSoup</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ee60116b-f76c-4300-49be-2f984d22f100/public"
+                      width = "500"
+                >
+
+<h4 id="Comment"><a href="#Comment" class="headerlink" title="Comment"></a>Comment</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b910c03f-f531-4694-3d13-2fbd9365e200/public"
+                      width = "500"
+                >
+
+<h3 id="Tag和遍历文档树"><a href="#Tag和遍历文档树" class="headerlink" title="Tag和遍历文档树"></a>Tag和遍历文档树</h3><p>tag对象可以说是BeautifulSoup中最为重要的对象，通过BeautifulSoup来提取数据基本都围绕着这个对象来进行操作。<br>首先，一个节点中是可以包含多个子节点和多个字符串的。例如html节点中包含着head和body节点。所以BeautifulSoup就可以将一个HTML的网页用这样一层层嵌套的节点来进行表示。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2de98c8e-4ce0-4841-7819-d1b9a3695600/public"
+                      width = "500"
+                >
+
+<h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4  <span class="keyword">import</span> BeautifulSoup<span class="comment">#导包</span></span><br><span class="line">soup=BeautifulSoup(html_str,<span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"><span class="built_in">type</span>(soup)</span><br><span class="line"></span><br><span class="line">bs4.BeautifulSoup</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="Tag-标签取出简单示例"><a href="#Tag-标签取出简单示例" class="headerlink" title="Tag 标签取出简单示例"></a>Tag 标签取出简单示例</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html_data = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&lt;html&gt;</span></span><br><span class="line"><span class="string">  &lt;body&gt;</span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">      我们都是害虫</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;div id=&quot;info&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;span&gt;&lt;span class=&quot;pl&quot;&gt;导演&lt;/span&gt;: &lt;span class=&quot;attrs&quot;&gt;&lt;a href=&quot;/celebrity/1362276/&quot; rel=&quot;v:directedBy&quot;&gt;邢文雄&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span&gt;&lt;span class=&quot;pl&quot;&gt;编剧&lt;/span&gt;: &lt;span class=&quot;attrs&quot;&gt;&lt;a href=&quot;/celebrity/1362276/&quot;&gt;邢文雄&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;actor&quot;&gt;&lt;span class=&quot;pl&quot;&gt;主演&lt;/span&gt;: &lt;span class=&quot;attrs&quot;&gt;&lt;span&gt;&lt;a href=&quot;/celebrity/1319032/&quot; rel=&quot;v:starring&quot;&gt;马丽&lt;/a&gt; / &lt;/span&gt;&lt;span&gt;&lt;a href=&quot;/celebrity/1355058/&quot; rel=&quot;v:starring&quot;&gt;魏翔&lt;/a&gt; / &lt;/span&gt;&lt;span&gt;&lt;a href=&quot;/celebrity/1362567/&quot; rel=&quot;v:starring&quot;&gt;陈明昊&lt;/a&gt; / &lt;/span&gt;&lt;span&gt;&lt;a href=&quot;/celebrity/1319540/&quot; rel=&quot;v:starring&quot;&gt;周大勇&lt;/a&gt; / &lt;/span&gt;&lt;span&gt;&lt;a href=&quot;/celebrity/1363857/&quot; rel=&quot;v:starring&quot;&gt;黄才伦&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1350408/&quot; rel=&quot;v:starring&quot;&gt;艾伦&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1394939/&quot; rel=&quot;v:starring&quot;&gt;高海宝&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1386801/&quot; rel=&quot;v:starring&quot;&gt;韩笑&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1444360/&quot; rel=&quot;v:starring&quot;&gt;孙贵权&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1426220/&quot; rel=&quot;v:starring&quot;&gt;许猛&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1467304/&quot; rel=&quot;v:starring&quot;&gt;全容杓&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1467305/&quot; rel=&quot;v:starring&quot;&gt;卜俊男&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1316008/&quot; rel=&quot;v:starring&quot;&gt;张志忠&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1367242/&quot; rel=&quot;v:starring&quot;&gt;张建新&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1398260/&quot; rel=&quot;v:starring&quot;&gt;马驰&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1353283/&quot; rel=&quot;v:starring&quot;&gt;陶亮&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1403276/&quot; rel=&quot;v:starring&quot;&gt;詹卢卡·佐帕&lt;/a&gt;&lt;/span&gt;&lt;a href=&quot;javascript:;&quot; class=&quot;more-actor&quot; title=&quot;更多主演&quot;&gt;更多...&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;类型:&lt;/span&gt; &lt;span property=&quot;v:genre&quot;&gt;喜剧&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;制片国家/地区:&lt;/span&gt; 中国大陆&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;语言:&lt;/span&gt; 汉语普通话&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;上映日期:&lt;/span&gt; &lt;span property=&quot;v:initialReleaseDate&quot; content=&quot;2022-02-01(中国大陆)&quot;&gt;2022-02-01(中国大陆)&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;片长:&lt;/span&gt; &lt;span property=&quot;v:runtime&quot; content=&quot;109&quot;&gt;109分钟&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;又名:&lt;/span&gt; Too Cool To Kill&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;IMDb:&lt;/span&gt; tt16254308&lt;br&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">  &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">soup = BeautifulSoup(html_data, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取第一个a标签(tag)里面的文本信息</span></span><br><span class="line"><span class="built_in">print</span>(soup.a.text, <span class="built_in">type</span>(soup.a.text))  <span class="comment"># 邢文雄 &lt;class &#x27;str&#x27;&gt;</span></span><br><span class="line"><span class="built_in">print</span>(soup.a.string, <span class="built_in">type</span>(soup.a.string))  <span class="comment"># 邢文雄 &lt;class &#x27;bs4.element.NavigableString&#x27;&gt;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;===========================================================&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 标签的属性</span></span><br><span class="line"><span class="built_in">print</span>(soup.a.get(<span class="string">&quot;href&quot;</span>))  <span class="comment"># /celebrity/1362276/</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;===========================================================&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 子代标签</span></span><br><span class="line">body = soup.body</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(body.children))  <span class="comment"># &lt;list_iterator object at 0x000001B973C23BE0&gt;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;===========================================================&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后代标签</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(body.descendants))  <span class="comment"># &lt;generator object Tag.descendants at 0x00000159C796A510&gt;</span></span><br><span class="line">test = body.descendants</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;===========================================================&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 兄弟标签  （同级的标签，有相同的父标签）</span></span><br><span class="line">span = body.span</span><br><span class="line"><span class="built_in">print</span>(span.next_sibling.next_sibling.next_sibling)  <span class="comment"># 下一个兄弟标签</span></span><br><span class="line"><span class="comment"># 第一个兄弟是 &lt;br&gt;</span></span><br><span class="line"><span class="comment"># 第二个兄弟是 \n</span></span><br><span class="line"><span class="comment"># 第三个兄弟是第一个内容标签</span></span><br><span class="line"><span class="built_in">print</span>(span.previous_sibling.previous_sibling)</span><br><span class="line"><span class="comment"># 第一个兄弟是 \n</span></span><br><span class="line"><span class="comment"># 第二个兄弟是 我们所需的标签</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;===========================================================&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 父类标签, 加了s就是所有父类标签，不加就是它本身</span></span><br><span class="line">p_parents = span.parents</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(p_parents))  <span class="comment"># &lt;generator object PageElement.parents at 0x000001A4DBD37E40&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<h5 id="1-find-all"><a href="#1-find-all" class="headerlink" title="1.find_all"></a>1.find_all</h5><p>直接通过名字和属性来进行访问，很多时候只能适用于比较简单的一些场景，所以BeautifulSoup还提供了搜索整个文档树的方法find_all()。</p>
+<ul>
+<li><p>通过<code>name</code>搜索，<code>find_all(&#39;b&#39;)</code>可以直接查找出整个文档树中所有的b标签，并返回列表</p>
+</li>
+<li><p>通过属性搜索，我们在搜索的时候一般只有标签名是不够的，因为可能同名的标签很多，那么这时候我们就要通过标签的属性来进行搜索。这时候我们可以通过传递给<code>attrs</code>一个字典参数来搜索属性。<br><code>soup.find_all(attrs=&#123;&#39;class&#39;: &#39;sister&#39;&#125;)</code></p>
+</li>
+<li><p>通过文本搜索，在find_all()方法中，还可以根据文本内容来进行搜索。<code>soup.find_all(string=&quot;Elsie&quot;)</code></p>
+</li>
+<li><p>限制查找范围为子节点<br><code>find_all()</code>方法会默认的去所有的子孙节点中搜索，而如果将<code>recursive</code>参数设置为<code>False</code>，则可以将搜索范围限制在直接子节点中。 <code>soup.html.find_all(&quot;title&quot;, recursive=False)</code></p>
+</li>
+<li><p>通过正则表达式来筛选查找结果在BeautifulSoup中，也是可以与re模块进行相互配合的，将<code>re.compile</code>编译的对象传入<code>find_all()</code>方法，即可通过正则来进行搜索。<code>tags = soup.find_all(re.compile(&quot;^b&quot;))</code></p>
+</li>
+<li><p>以之前的数据为例子：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(soup.find_all(<span class="string">&#x27;a&#x27;</span>, string=<span class="string">&#x27;邢文雄&#x27;</span>)) </span><br><span class="line"><span class="comment"># [&lt;a href=&quot;/celebrity/1362276/&quot; rel=&quot;v:directedBy&quot;&gt;邢文雄&lt;/a&gt;, &lt;a href=&quot;/celebrity/1362276/&quot;&gt;邢文雄&lt;/a&gt;]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(soup.find_all(<span class="string">&#x27;span&#x27;</span>, attrs=&#123;<span class="string">&#x27;class&#x27;</span>: <span class="string">&#x27;pl&#x27;</span>&#125;))</span><br><span class="line"><span class="comment"># [&lt;span class=&quot;pl&quot;&gt;导演&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;编剧&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;主演&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;类型:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;制片国家/地区:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;语言:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;上映日期:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;片长:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;又名:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;IMDb:&lt;/span&gt;]</span></span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h5 id="2-CSS选择器"><a href="#2-CSS选择器" class="headerlink" title="2.CSS选择器"></a>2.CSS选择器</h5><p>在BeautifulSoup中，同样也支持使用CSS选择器来进行搜索。使用select()，在其中传入字符串参数，就可以使用CSS选择器的语法来找到tag。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(soup.select(<span class="string">&#x27;a&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(soup.select(<span class="string">&#x27;span &gt; a&#x27;</span>))</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="JSON-Path"><a href="#JSON-Path" class="headerlink" title="JSON Path"></a>JSON Path</h2><p>JSON Path 是一种查询语言，用于从 JSON (JavaScript Object Notation) 数据中提取和处理信息。它类似于 SQL，但专门用于与 JSON 数据交互。使用 JSON Path，可以从复杂的 JSON 结构中轻松检索特定元素或值。这在处理大型或嵌套的 JSON 数据时特别有用。</p>
+<p>以下是 JSON Path 的一些主要用途：</p>
+<ol>
+<li><strong>数据提取</strong>：从 JSON 数据中选择和提取数据，例如提取特定属性的值或筛选符合特定条件的元素。</li>
+<li><strong>查询构建</strong>：创建灵活的查询来搜索和筛选 JSON 数据中的信息。</li>
+<li><strong>数据处理</strong>：简化对复杂 JSON 结构的遍历和分析，无需编写复杂的代码。</li>
+<li><strong>API 交互</strong>：常用于与 RESTful API 交互时解析和处理返回的 JSON 数据。</li>
+</ol>
+<p>JSON Path 通过提供一种简洁的语法来实现这些功能，使得从复杂的 JSON 结构中检索信息变得更加简单和直接。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jsonpath  <span class="comment"># pip install jsonpath</span></span><br><span class="line"></span><br><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;resultCode&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;resultMsg&quot;</span>: <span class="string">&quot;success&quot;</span>,</span><br><span class="line">    <span class="string">&quot;reqId&quot;</span>: <span class="string">&quot;52f9f3e1-1d76-47b4-b2ae-226633b61476&quot;</span>,</span><br><span class="line">    <span class="string">&quot;systemTime&quot;</span>: <span class="string">&quot;1681991278593&quot;</span>,</span><br><span class="line">    <span class="string">&quot;videoInfo&quot;</span>: &#123;  <span class="comment"># 父亲</span></span><br><span class="line">        <span class="string">&quot;playSta&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">        <span class="string">&quot;video_image&quot;</span>: <span class="string">&quot;https://image.pearvideo.com/cont/20170714/cont-1110173-10436784.png&quot;</span>,</span><br><span class="line">        <span class="string">&quot;srcUrl&quot;</span>: <span class="string">&quot;https://video.pearvideo.com/mp4/short/20170714/1681991278593-10632788-hd.mp4&quot;</span>,</span><br><span class="line">        <span class="string">&quot;videos&quot;</span>: &#123;  <span class="comment"># 儿子</span></span><br><span class="line">            <span class="string">&quot;hdUrl&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;hdflvUrl&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;sdUrl&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;sdflvUrl&quot;</span>: <span class="string">&quot;&quot;</span>,  <span class="comment"># 孙子</span></span><br><span class="line">            <span class="string">&quot;srcUrl&quot;</span>: <span class="string">&quot;https://video.pearvideo.com/mp4/short/20170714/1681991278593-10632788-hd.mp4&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># jsonpath(数据,&#x27;语法&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># dic.get(&quot;videoInfo&quot;).get(&quot;videos&quot;).get(&quot;srcUrl&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(jsonpath.jsonpath(dic, &#x27;$..srcUrl&#x27;))</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># print(jsonpath.jsonpath(dic, &#x27;$..video_image&#x27;))</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(jsonpath.jsonpath(dic, <span class="string">&#x27;$..videos.srcUrl&#x27;</span>)) </span><br><span class="line"><span class="comment">#[&#x27;https://video.pearvideo.com/mp4/short/20170714/1681991278593-10632788-hd.mp4&#x27;]</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="Xpath"><a href="#Xpath" class="headerlink" title="Xpath"></a>Xpath</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>XPath 是一门在 XML 文档中查找信息的语言。XPath 可用来在 XML 文档中对元素和属性进行遍历。<br>相比于BeautifulSoup，Xpath在提取数据时会更有效率。</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p><code>pip install lxml</code></p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>XPath 使用路径表达式在 XML&#x2F;HTML 文档中选取节点。节点是通过沿着路径或者 step 来选取的。</p>
+<p>下面列出了最有用的路径表达式：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/de2ffe23-49cf-4fe4-345d-94013c995300/public"
+                      width = "500"
+                >
+
+<h3 id="谓语"><a href="#谓语" class="headerlink" title="谓语"></a>谓语</h3><p>谓语用来查找某个或某些特定的节点或者包含某个指定值的节点<br>谓语被嵌在方括号中。在下面的表格中，我们列出了带有谓语的一些路径表达式，以及表达式的结果。实例:</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7e787bdf-efd4-48ce-f495-dd8785421c00/public"
+                      width = "500"
+                >
+
+<h3 id="选取未知节点"><a href="#选取未知节点" class="headerlink" title="选取未知节点"></a>选取未知节点</h3><p>XPath通配符可用来选取未知节点</p>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td>匹配任何元素节点。</td>
+</tr>
+<tr>
+<td>@*</td>
+<td>匹配任何属性节点。</td>
+</tr>
+<tr>
+<td>node()</td>
+<td>匹配任何类型的节点。</td>
+</tr>
+</tbody></table>
+<h3 id="选取多个路径"><a href="#选取多个路径" class="headerlink" title="选取多个路径"></a>选取多个路径</h3><p>通过在路径表达式中使用”|”运算符，您可以选取若干个路径。在下面的表格中，列出了一些路径表达式，以及这些表达式的结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/%E9%80%89%E5%8F%96%E5%A4%9A%E4%B8%AA%E8%B7%AF%E5%BE%84.png"
+                      width = "500"
+                >
+
+<h3 id="获取节点下文本"><a href="#获取节点下文本" class="headerlink" title="获取节点下文本"></a>获取节点下文本</h3><p>用text()获取某个节点下的文本，用string()获取某个节点下所有的文本。</p>
+<h2 id="解析工具应用案例"><a href="#解析工具应用案例" class="headerlink" title="解析工具应用案例"></a>解析工具应用案例</h2><h3 id="1-明确目标："><a href="#1-明确目标：" class="headerlink" title="1. 明确目标："></a>1. 明确目标：</h3><p>以豆瓣电影排行榜为案例，抓取豆瓣电影的排行榜: <a class="link"   href="https://movie.douban.com/chart" >https://movie.douban.com/chart <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>需要提取的数据：</p>
+<pre><code>1. movie_name	2. movie_actor	3. movie_score
+</code></pre>
+<h3 id="2-进行伪装与请求："><a href="#2-进行伪装与请求：" class="headerlink" title="2. 进行伪装与请求："></a>2. 进行伪装与请求：</h3><p>进行伪装与请求：</p>
+<ol>
+<li>requests</li>
+</ol>
+<h3 id="3-交互响应中去提取我们需要的信息："><a href="#3-交互响应中去提取我们需要的信息：" class="headerlink" title="3. 交互响应中去提取我们需要的信息："></a>3. 交互响应中去提取我们需要的信息：</h3><ol>
+<li>正则  	2. bs4 	3.  json() 	 4. xpath（可平替bs4）</li>
+</ol>
+<h3 id="4-保存结果"><a href="#4-保存结果" class="headerlink" title="4. 保存结果"></a>4. 保存结果</h3><ol>
+<li>文件</li>
+</ol>
+<h3 id="5-代码示例"><a href="#5-代码示例" class="headerlink" title="5. 代码示例"></a>5. 代码示例</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://movie.douban.com/chart&#x27;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">     <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36&#x27;</span>,</span><br><span class="line"> &#125;</span><br><span class="line">res = requests.get(url, headers=headers)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;douban.html&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="keyword">as</span> f: <span class="comment"># encoding=&#x27;utf8&#x27; 避免乱码</span></span><br><span class="line">     f.write(res.text)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># 读取已保存的文件 douban.html</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;douban.html&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过etree读取改文件，建立对象page</span></span><br><span class="line">page = etree.HTML(data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例操作，一层一层往下探究对象</span></span><br><span class="line">test = page.xpath(<span class="string">&#x27;//div[@class=&quot;pl2&quot;]/a/text()&#x27;</span>) <span class="comment"># xpath(xpath语法字符串)</span></span><br><span class="line"><span class="built_in">print</span>(test)</span><br><span class="line"> li = []</span><br><span class="line"> <span class="keyword">for</span> i <span class="keyword">in</span> test:</span><br><span class="line">     movie_name = i.replace(<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27;\n&#x27;</span>, <span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">     <span class="keyword">if</span> <span class="keyword">not</span> movie_name:</span><br><span class="line">         <span class="keyword">continue</span></span><br><span class="line">     li.append(movie_name)</span><br><span class="line"></span><br><span class="line"> <span class="built_in">print</span>(li) <span class="comment"># 获取处理后的列表，分析拿到片名，但是因为还有其它值，不可能多个循环，所以实际应用不能这么操作</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 实际操作</span></span><br><span class="line">test2 = page.xpath(<span class="string">&#x27;//tr[@class=&quot;item&quot;]&#x27;</span>)</span><br><span class="line"></span><br><span class="line">movie = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> yao:</span><br><span class="line">    <span class="comment"># 电影的名字</span></span><br><span class="line">    movie_name = i.xpath(<span class="string">&#x27;./td/a[@class=&quot;nbg&quot;]/@title&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    my_key = md5(movie_name.encode()).hexdigest()</span><br><span class="line">    <span class="comment"># print(movie_name)</span></span><br><span class="line">    <span class="comment"># 电影的演员表</span></span><br><span class="line">    movie_actor = i.xpath(<span class="string">&#x27;./td/div/p[@class=&quot;pl&quot;]/text()&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># print(movie_actor)</span></span><br><span class="line">    <span class="comment"># 电影的评分</span></span><br><span class="line">    <span class="comment"># movie_score = i.xpath(&#x27;//span[@class=&quot;rating_nums&quot;]/text()&#x27;)</span></span><br><span class="line">    <span class="comment"># movie_score = i.xpath(&#x27;./td/div/div/span[@class=&quot;rating_nums&quot;]/text()&#x27;)[0]</span></span><br><span class="line">    movie_score = i.xpath(<span class="string">&#x27;./td//span[@class=&quot;rating_nums&quot;]/text()&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># print(movie_score)</span></span><br><span class="line">    movie.update(&#123;my_key: [&#123;<span class="string">&#x27;片名&#x27;</span>:movie_name,<span class="string">&#x27;演员&#x27;</span>: movie_actor, <span class="string">&#x27;评分&#x27;</span>: movie_score&#125;]&#125;)</span><br><span class="line"><span class="built_in">print</span>(movie)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="6-租客网代码示例"><a href="#6-租客网代码示例" class="headerlink" title="6. 租客网代码示例"></a>6. 租客网代码示例</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://cs.zu.anjuke.com/?from=HomePage_TopBar&#x27;</span></span><br><span class="line"></span><br><span class="line">res = requests.get(url)</span><br><span class="line"></span><br><span class="line">tree = etree.HTML(res.text)</span><br><span class="line"></span><br><span class="line">div = tree.xpath(<span class="string">&#x27;//div[@class=&quot;zu-itemmod clearfix&quot;]&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> div:</span><br><span class="line">    <span class="comment"># 标题</span></span><br><span class="line">    title = i.xpath(<span class="string">&#x27;./div/h3/a/b[@class=&quot;strongbox&quot;]/text()&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 价格</span></span><br><span class="line">    price = i.xpath(<span class="string">&#x27;./div//strong[@class=&quot;price&quot;]/text()&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 地址</span></span><br><span class="line">    address = i.xpath(<span class="string">&#x27;./div//address[@class=&quot;details-item tag&quot;]/text()&#x27;</span>)</span><br><span class="line">    <span class="comment"># [&#x27;\n                            &#x27;, &#x27;\xa0\xa0\n                            芙蓉&#x27;, &#x27;五一广场 &#x27;, &#x27;韭菜园路101号                        &#x27;]</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    1.使用join 把列表转换成字符串了</span></span><br><span class="line"><span class="string">    2.字符串使用replace进行替换</span></span><br><span class="line"><span class="string">    总结： 先拼接再替换</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    address = <span class="string">&#x27;&#x27;</span>.join(address).replace(<span class="string">&#x27;\n&#x27;</span>, <span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(address)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 保存进文件中</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;租房信息.txt&#x27;</span>,<span class="string">&#x27;a&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(<span class="string">&quot;标题：&quot;</span>+ title + <span class="string">&quot;\t&quot;</span> + <span class="string">&quot;价格：&quot;</span> + price + <span class="string">&quot;\t&quot;</span>+ <span class="string">&quot;地址：&quot;</span> + address + <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>数据抓取</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+        <tag>理论</tag>
+        <tag>爬虫</tag>
+        <tag>Requests</tag>
+        <tag>页面解析</tag>
+        <tag>BS4</tag>
+        <tag>beautifulsoup4</tag>
+        <tag>Xpath</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Requests</title>
     <url>/2021/02/22/20210222requests/</url>
     <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ol>
@@ -2297,6 +2192,157 @@
         <tag>理论</tag>
         <tag>爬虫</tag>
         <tag>Requests</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>函数</title>
+    <url>/2018/08/12/20180812%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h2 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h2><p>函数是一段可重复使用的代码块，用于执行特定的任务</p>
+<h3 id="函数的作用"><a href="#函数的作用" class="headerlink" title="函数的作用"></a>函数的作用</h3><ol>
+<li>提高代码的可重用性: 使用函数可以将代码块组织成更小的可重用模块，减少代码的冗余。</li>
+<li>提高代码的可读性: 使用函数可以使代码更加简洁和易于理解，也更容易进行调试和维护。</li>
+<li>提高代码的模块化: 使用函数可以将程序分解成更小的模块，每个模块都可以处理特定的任务，这样程序的组织结构更加清晰。</li>
+<li>提高代码的可扩展性: 使用函数可以使程序更易于扩展和修改，因为函数可以独立地编写和测试，而不会影响程序的其他部分。</li>
+</ol>
+
+  <div class="note p-4 mb-4 rounded-small info icon-padding">
+    <i class="note-icon fa-solid fa-circle-info"></i><p>函数就是设计一个技能需要时自己调用，调用的方法本质上是个函数 。两者的区别是使用的方式不一样。</p>
+
+  </div>
+
+<h3 id="函数写法"><a href="#函数写法" class="headerlink" title="函数写法"></a>函数写法</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用def定义一个函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">User</span>():</span><br><span class="line">    内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数 必须顶格</span></span><br><span class="line">User()</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="函数的形参和实参"><a href="#函数的形参和实参" class="headerlink" title="函数的形参和实参"></a>函数的形参和实参</h2><ol>
+<li>不传值给函数可以不带形参和实参</li>
+<li>形参名字可以随意定义</li>
+<li>形参和实参数量必须一致</li>
+<li>实参对应形参</li>
+<li>形参可以赋默认参数 没有传就以默认参数 传了就以实参</li>
+<li>实参也可以指定形参</li>
+<li>通过*形参名可以获取所有实参，通过索引获取对应实参</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用def定义一个函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">User</span>(<span class="params">形参</span>):</span><br><span class="line">    内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数 必须顶格</span></span><br><span class="line">User(实参)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 形参的默认参数</span></span><br><span class="line"><span class="comment"># 如果没有传就以默认参数 传了就以实参</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line">    <span class="built_in">print</span>(y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">user(<span class="number">13</span>, <span class="number">14</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 13</span></span><br><span class="line"><span class="comment"># 14</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 通过*形参名可以获取所有实参</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user</span>(<span class="params">*item</span>):</span><br><span class="line">    <span class="comment"># 通过形参名索引获取对应实参</span></span><br><span class="line">    <span class="built_in">print</span>(item[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">user(<span class="number">13</span>, <span class="number">14</span>, <span class="number">16</span>, <span class="number">17</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 13</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h2><p>Python自带的一些函数，我们可以直接拿来使用</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打印</span></span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"><span class="comment"># 类型判断</span></span><br><span class="line"><span class="built_in">type</span>()</span><br><span class="line"><span class="comment"># 字符串、列表、元组、集合 的增删改查的方法</span></span><br></pre></td></tr></table></figure></div>
+
+
+  <div class="note p-4 mb-4 rounded-small primary icon-padding">
+    <i class="note-icon fa-solid fa-square-arrow-up-right"></i><p>字符串、列表、元组、集合 的增删改查的方法<a class="button " href='https://www.yiuhangblog.com/2018/07/23/20180723%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/' title='数值类型'><i class='fa-solid fa-play-circle'></i> 数值类型</a>，详细内容与调用方法跳转查阅</p>
+
+  </div>
+
+<h2 id="函数的说明文档"><a href="#函数的说明文档" class="headerlink" title="函数的说明文档"></a>函数的说明文档</h2><ol>
+<li>给函数中的代码做解释说明</li>
+<li>让其他程序员知道函数的作用</li>
+<li>函数里的注释</li>
+</ol>
+<h3 id="如何写说明文档"><a href="#如何写说明文档" class="headerlink" title="如何写说明文档"></a>如何写说明文档</h3><ul>
+<li>三引号包裹</li>
+</ul>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):</span><br><span class="line">	<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">	内容</span></span><br><span class="line"><span class="string">	&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    这个函数用于计算两个数的和。</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    :param a: 第一个加数</span></span><br><span class="line"><span class="string">    :param b: 第二个加数</span></span><br><span class="line"><span class="string">    :return: 两个数的和</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="函数的嵌套"><a href="#函数的嵌套" class="headerlink" title="函数的嵌套"></a>函数的嵌套</h2><p>在函数内部调用其它函数</p>
+<p>尽量不要嵌套太多层，不然就是屎山了</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1.定义一个函数a</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">a</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;我是函数a&#x27;</span>)</span><br><span class="line">    <span class="comment"># 3.在函数a内部调用函数b</span></span><br><span class="line">    b()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.定义一个函数b</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">b</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;我是函数b&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.调用函数a</span></span><br><span class="line">a() </span><br><span class="line"></span><br><span class="line"><span class="comment"># 我是函数a</span></span><br><span class="line"><span class="comment"># 我是函数b</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="函数的作用域"><a href="#函数的作用域" class="headerlink" title="函数的作用域"></a>函数的作用域</h2><p>Python 中的函数作用域分为两种: 全局作用域和局部作用域</p>
+<ol>
+<li>全局作用域指的是在模块(文件)中定义的变量和函数，可以在模块的任何地方被访问和使用</li>
+<li>局部作用域指的是在函数内部定义的变量和函数，只能在该函数内部被访问和使用</li>
+</ol>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a728cb1a-a479-43ab-1aa5-318e65e52f00/public"
+                      width="200"
+                >
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 变量a 全局作用域</span></span><br><span class="line">a = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个 函数textA</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">textA</span>():</span><br><span class="line">    <span class="comment"># 变量b 局部作用域</span></span><br><span class="line">    b = <span class="number">20</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为变量a在全局作用域 所以可以访问到</span></span><br><span class="line"><span class="built_in">print</span>(a)	<span class="comment"># 100</span></span><br><span class="line"><span class="comment"># 因为变量b 在局部作用域 变量b 访问不到 所以会报错</span></span><br><span class="line"><span class="built_in">print</span>(b)	<span class="comment"># NameError: name &#x27;b&#x27; is not defined</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="global-关键字"><a href="#global-关键字" class="headerlink" title="global 关键字"></a>global 关键字</h3><p>使用 <code>global</code> 关键字 可以在函数内部声明变量为全局变量</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义两个变量 textA textB</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">textA</span>():</span><br><span class="line">    <span class="comment"># gLobal 声明 money 为全局变量</span></span><br><span class="line">    <span class="keyword">global</span> money</span><br><span class="line">    money = <span class="number">100</span></span><br><span class="line">    <span class="built_in">print</span>(money)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">textB</span>():</span><br><span class="line">    <span class="built_in">print</span>(money)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">textA() <span class="comment"># 100</span></span><br><span class="line">textB() <span class="comment"># 100</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="闭包-Closure"><a href="#闭包-Closure" class="headerlink" title="闭包 Closure"></a>闭包 Closure</h2><p>内部函数使用了外部函数的变量 </p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>(): <span class="comment"># 外部函数</span></span><br><span class="line">    <span class="comment"># 1. 变量a 是func函数的局部变量</span></span><br><span class="line">    a = <span class="number">10</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;函数func调用&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">func1</span>(): <span class="comment"># 内部函数</span></span><br><span class="line">        <span class="comment"># 2. 我们在func1这个内部函数里面 使用了 外部函数的变量a 这种现象就叫闭包，没有用到 变量 就不叫闭包</span></span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> func1  <span class="comment"># 3. 我们需要返回func1函数的本身给外部函数 才能看到闭包的效果 闭包不需要调用只需要返回</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">demo = func() <span class="comment"># 函数func调用</span></span><br><span class="line">demo() <span class="comment"># 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者func()()</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h3><p>好处: 保存局部变量的状态 我们可以将相关的功能和数据绑定在一起，而不用担心数据被其他代码修改。</p>
+<p>应用：想保存数据状态和不被污染 我们就可以使用闭包。很多框架底层 保存数据都是用的闭包</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():</span><br><span class="line">    a = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">func1</span>():</span><br><span class="line">        <span class="keyword">nonlocal</span> a  <span class="comment"># nonlocal 指向外部函数func的a 不会指向全局作用域 如果外部func没有a就会报错</span></span><br><span class="line">        a += <span class="number">1</span>  <span class="comment"># 累加，主要做逻辑处理，每次调用func1就会累加1</span></span><br><span class="line">        <span class="keyword">return</span> a  <span class="comment"># 将累加的结果返回出来给func1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> func1  <span class="comment"># 返func1本身传递给func 覆盖原始a=0 我们才能看到闭包的效果</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 目的调用func1 让a累加一次</span></span><br><span class="line"><span class="comment"># 需要调用看结果</span></span><br><span class="line">demo = func()</span><br><span class="line"><span class="comment"># 通过demo来调用里面的func1</span></span><br><span class="line"><span class="built_in">print</span>(demo())</span><br><span class="line"><span class="comment"># 输出 1</span></span><br><span class="line"><span class="built_in">print</span>(demo())</span><br><span class="line"><span class="comment"># 输出 2</span></span><br><span class="line"><span class="built_in">print</span>(demo())</span><br><span class="line"><span class="comment"># 输出 3</span></span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>因此可以发现通过闭包，可以使得数据状态得到存储，例如存储累加的结果</li>
+<li>且闭包的数据无法通过全局变量进行修改，保证数据完整性，因为是由子函数进行累加的</li>
+<li>需要保存数据状态的时候就需要使用闭包</li>
+<li>使用场景例如 第三方库 能够保存数据状态</li>
+</ol>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">&quot;Global&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fun_out</span>():</span><br><span class="line">    a = <span class="string">&quot;external_function&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">fun_in</span>():</span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fun_in</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">demo = fun_out()</span><br><span class="line">demo() <span class="comment"># external_function</span></span><br></pre></td></tr></table></figure></div>
+
+<p>在 Python 中，变量的使用和修改遵循不同的规则，特别是在涉及嵌套函数时。这是因为 Python 对变量的查找（读取）和赋值（修改）有不同的作用域规则。</p>
+<ol>
+<li><strong>读取变量</strong>：当代码尝试读取一个变量的值时（如在 <code>print(a)</code> 中），Python 会遵循作用域查找规则。这意味着它会首先在当前函数的局部作用域查找该变量。如果在当前作用域找不到，它会在外围作用域中查找，一直查找到全局作用域，最后是内置作用域。这就是为什么在上面的例子中，即使没有使用 <code>nonlocal</code> 关键字，<code>fun_in</code> 也能访问 <code>fun_out</code> 中定义的 <code>a</code> 变量。</li>
+<li><strong>修改变量</strong>：当尝试修改一个变量的值时，Python 的默认行为是在当前作用域创建或更新该变量。如果在一个嵌套的函数中不加声明地修改一个变量，Python 会认为这是一个新的局部变量，而不是一个外围作用域中的变量。<ul>
+<li><strong>使用 <code>nonlocal</code> 关键字</strong>：当想在一个嵌套函数中修改外围函数的局部变量时，需要使用 <code>nonlocal</code> 关键字。这样做可以告诉 Python 想修改的是外围作用域中的变量，而不是创建一个新的局部变量。</li>
+<li><strong>全局变量</strong>：如果想在一个函数中修改全局变量，而不是创建同名的局部变量，需要使用 <code>global</code> 关键字。</li>
+</ul>
+</li>
+</ol>
+<p>这种区分是为了避免意外修改外围作用域中的变量，这可能会导致难以追踪的错误。通过要求显式声明 <code>nonlocal</code> 或 <code>global</code>，Python 增强了代码的可读性和可维护性。</p>
+
+    </div>
+  </div>
+
+<h3 id="闭包（Closure）和嵌套函数（Nested-Functions）的区别"><a href="#闭包（Closure）和嵌套函数（Nested-Functions）的区别" class="headerlink" title="闭包（Closure）和嵌套函数（Nested Functions）的区别"></a>闭包（Closure）和嵌套函数（Nested Functions）的区别</h3><p><strong>闭包（Closure）</strong></p>
+<p>在编程中，闭包是指那些能够访问自己外部作用域中变量的函数。一个闭包至少由两部分组成：一个函数以及该函数引用的外部变量。Python 中闭包的一个关键特征是它保持了对其外部变量的引用，即使在外部函数已经结束执行之后。</p>
+<p>在您的代码中，<code>fun_in</code> 是一个闭包，因为它是在 <code>fun_out</code> 内部定义的，并且引用了 <code>fun_out</code> 作用域内的变量 <code>a</code>。当 <code>fun_out</code> 被调用并返回 <code>fun_in</code> 时，尽管 <code>fun_out</code> 的执行已经结束，<code>fun_in</code> 依然保留了对变量 <code>a</code> 的引用。这样，即使是在 <code>fun_out</code> 执行完毕之后，<code>fun_in</code> 仍然可以访问并打印变量 <code>a</code> 的值。</p>
+<p><strong>嵌套函数（Nested Functions）</strong></p>
+<p>嵌套函数是在另一个函数内部定义的函数。虽然所有闭包都是嵌套函数，但并非所有嵌套函数都是闭包。一个嵌套函数只有在引用了其外部函数的变量时，它才构成一个闭包。</p>
+<p><strong>总结</strong></p>
+<p><code>fun_in</code> 作为一个闭包，即使在其外部函数 <code>fun_out</code> 执行完毕后，仍然可以访问并使用 <code>fun_out</code> 作用域中的变量 <code>a</code>。</p>
+<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>匿名函数，通常在 Python 中通过 <code>lambda</code> 关键字来定义，是一种没有显式函数名的简短函数。它们在语法上是简洁的，通常用于编写小的、一次性的、不需要单独定义函数名的函数。</p>
+<p>匿名函数是一个可以定义并立即使用的简洁函数形式。在 Python 中，匿名函数使用 <code>lambda</code> 关键字创建，其基本语法是：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">lambda</span> 参数列表: 表达式</span><br></pre></td></tr></table></figure></div>
+
+<p>这种函数通常用于简单的操作，比如简单的数学运算、字符串操作等。由于它们只是单个表达式，所以不能像普通函数那样执行复杂的操作</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># lambda : 8 创建了一个匿名函数，这个函数没有参数，并且总是返回数字 8</span></span><br><span class="line"></span><br><span class="line">func = <span class="keyword">lambda</span> : <span class="number">8</span> <span class="comment"># lambda 关键字 代表匿名函数</span></span><br><span class="line"><span class="built_in">print</span>(func()) <span class="comment"># 输出: 8</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 匿名函数的一个限制是它只能包含一个表达式，不能包含多个独立的语句或复杂的逻辑。如果函数体较复杂，或者需要重复使用，那么定义一个普通函数会更合适。它与匿名函数执行相同的操作，但是更适合复杂逻辑或多次调用的情况。</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>() :</span><br><span class="line">	<span class="keyword">return</span> <span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(func())</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="匿名函数的作用"><a href="#匿名函数的作用" class="headerlink" title="匿名函数的作用"></a>匿名函数的作用</h3><p>匿名函数的主要作用是简化代码，尤其是在需要小的函数作为参数时，例如在排序操作、高阶函数（如 <code>map()</code>、<code>filter()</code>）或任何需要函数对象的地方。由于它们不需要定义传统的函数结构，因此可以在代码中快速定义和使用。</p>
+<h3 id="何时使用匿名函数"><a href="#何时使用匿名函数" class="headerlink" title="何时使用匿名函数"></a>何时使用匿名函数</h3><p>匿名函数通常在以下情况下使用：</p>
+<ol>
+<li><strong>简单的功能</strong>：当函数的功能非常简单，只需要一行代码就可以实现时，使用匿名函数是一个很好的选择。</li>
+<li><strong>一次性使用</strong>：当你有一个不会在代码的其他地方复用的小函数时，使用匿名函数可以减少不必要的函数定义。</li>
+<li><strong>作为参数传递</strong>：当一个函数接受另一个函数作为参数时，如果这个参数函数非常简短，使用匿名函数可以使代码更加清晰。常见的例子包括 <code>map()</code>、<code>filter()</code> 和 <code>sorted()</code> 等函数。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>基础</tag>
+        <tag>理论</tag>
+        <tag>基本语法</tag>
+        <tag>内置函数</tag>
+        <tag>形参</tag>
+        <tag>实参</tag>
+        <tag>说明文档</tag>
+        <tag>嵌套</tag>
+        <tag>作用域</tag>
+        <tag>闭包</tag>
+        <tag>匿名函数</tag>
       </tags>
   </entry>
   <entry>
@@ -2644,228 +2690,6 @@
         <tag>滑块验证</tag>
         <tag>点触验证</tag>
         <tag>字符验证</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Scrapy</title>
-    <url>/2021/10/28/20211128scrapy/</url>
-    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Scrapy是一个用Python编写的高效且结构化的网页抓取框架，广泛应用于数据挖掘、网站监测和自动化测试。它的设计初衷是为了方便用户爬取网站数据和提取结构化数据，但它的用途不仅限于网页抓取，还包括处理API返回的数据（如Amazon Associates Web Services）或进行更广泛的网络爬取任务。</p>
-<p>Scrapy的一个关键特性是它使用了Twisted异步网络库来处理网络通信。</p>
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
-
-    </div>
-    <div class="notel-content">
-      <ol>
-<li><strong>异步编程</strong>:<ul>
-<li>在传统的同步编程模型中，任务按顺序一个接一个地执行。如果一个任务需要等待（例如，等待网络响应），程序将在此期间停止执行后续任务。</li>
-<li>异步编程允许程序在等待一个任务完成的同时继续执行其他任务。这种方式非常适合处理I&#x2F;O密集型任务，比如网络请求，因为程序不需要在每个请求完成时都暂停执行。</li>
-</ul>
-</li>
-<li><strong>Twisted异步网络库</strong>:<ul>
-<li>Twisted是一个事件驱动的网络编程框架，专为Python设计。它支持多种协议，可以用于创建高性能的网络服务器和客户端。</li>
-<li>在Scrapy中，Twisted用于处理网络请求。当Scrapy发出一个请求并等待服务器响应时，它不会阻塞整个爬虫的进程。相反，Scrapy可以利用这段时间执行其他任务，如处理已经收到的数据或发出更多的网络请求。</li>
-</ul>
-</li>
-</ol>
-
-    </div>
-  </div>
-
-<p><strong>Scrapy中的应用</strong>:</p>
-<ul>
-<li>Scrapy利用Twisted的异步特性来提高爬虫的效率。它能够同时处理多个网络请求，而不会因为单个请求的延迟而阻塞整个爬虫。</li>
-<li>这使得Scrapy非常适合执行大规模的网络抓取任务，因为它可以有效地利用网络资源和处理能力，同时维持高效率的数据收集。</li>
-</ul>
-<p><strong>使用原因：</strong></p>
-<p>1.为了更利于我们将精力集中在请求与解析上<br>2.企业级的要求</p>
-<pre class="mermaid">flowchart TD
-    A(找到目标数据) --> B(分析请求流程)
-    B --> C(构造http请求)
-    C --> D(提取数据)
-    D --> E(数据持久化)</pre>
-
-<h2 id="运行流程"><a href="#运行流程" class="headerlink" title="运行流程"></a>运行流程</h2><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f796f07e-1ef6-45ba-7001-bcfe018f7300/public"
-                      width = "500"
-                >
-
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6abf6e1a-af6c-433d-6c3b-2d28dd132700/public"
-                      width = "500"
-                >
-
-<h3 id="Scrapy框架的体系结构"><a href="#Scrapy框架的体系结构" class="headerlink" title="Scrapy框架的体系结构"></a>Scrapy框架的体系结构</h3><p>Scrapy框架的体系结构由几个重要组件组成，这些组件协同工作，实现了从发送请求到提取数据再到存储数据的整个流程：</p>
-<ol>
-<li><strong>引擎（Engine）</strong>: Scrapy引擎是框架的核心，负责控制数据流在各组件之间的流动，触发事件。</li>
-<li><strong>调度器（Scheduler）</strong>: 负责接收引擎发送的请求，并将它们加入队列中。在引擎请求新请求时，调度器发送下一个要抓取的请求给引擎。</li>
-<li><strong>下载器（Downloader）</strong>: 负责从Internet上下载网页内容，并将其封装为响应对象，然后返回给引擎。</li>
-<li><strong>蜘蛛（Spiders）</strong>: 是用户编写用来解析响应并从中提取数据（提取的项目）或额外的跟进URL的类。</li>
-<li><strong>项目管道（Item Pipeline）</strong>: 负责处理由蜘蛛提取出来的项目，通常包括清洗、验证和存储等。</li>
-<li><strong>下载器中间件（Downloader Middlewares）</strong>: 位于引擎和下载器之间，处理引擎和下载器之间的请求和响应。</li>
-<li><strong>蜘蛛中间件（Spider Middlewares）</strong>: 位于引擎和蜘蛛之间，处理蜘蛛的输入（响应）和输出（项目和新的请求）。</li>
-</ol>
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>Downloader Middleware（下载中间件）</strong></p>
-<p>这些钩子允许处理、修改和自定义发往下载器的请求以及从下载器返回的响应。下载中间件在Scrapy的请求&#x2F;响应处理流程中提供了几个关键的扩展点。例如，可以使用它来添加HTTP头部到请求中，或者处理从网站返回的HTTP响应。这些中间件的用途包括：</p>
-<ul>
-<li>在请求发送到下载器之前修改或过滤请求。</li>
-<li>在响应发送到爬虫之前处理或修改响应。</li>
-<li>直接生成新的请求，而不是处理当前的响应。</li>
-<li>选择性地放弃某些请求</li>
-</ul>
-<p><strong>Spider Middleware（爬虫中间件）</strong></p>
-<p>爬虫中间件则是处理传入响应、传出项目（item）和请求的钩子。这些中间件在Scrapy的数据处理流程中处于核心位置，允许用户对爬虫的输入和输出进行细致的控制。使用爬虫中间件，可以：</p>
-<ul>
-<li>在爬虫处理回调之后处理请求或项目。</li>
-<li>修改或过滤开始请求（由 <code>start_requests</code> 方法生成的请求）。</li>
-<li>处理由于响应内容引发的异常，根据响应内容调用错误回调（errback）。</li>
-</ul>
-
-    </div>
-  </div>
-
-<h3 id="数据流过程"><a href="#数据流过程" class="headerlink" title="数据流过程"></a>数据流过程</h3><ol>
-<li><strong>启动过程</strong>:<ul>
-<li>Scrapy开始运行，初始化了调度器、下载器以及蜘蛛。</li>
-</ul>
-</li>
-<li><strong>爬取过程</strong>:<ul>
-<li>引擎向蜘蛛请求第一个要爬取的URL。</li>
-<li>蜘蛛返回第一个要爬取的请求给引擎。</li>
-<li>引擎将请求发送到调度器，并请求下一个URL。</li>
-<li>调度器返回下一个要爬取的请求给引擎。</li>
-</ul>
-</li>
-<li><strong>下载过程</strong>:<ul>
-<li>引擎从调度器中取出请求，通过下载器中间件发送到下载器。</li>
-<li>下载器处理请求，返回响应给引擎。</li>
-<li>引擎收到响应后，通过蜘蛛中间件发送给相应的蜘蛛处理。</li>
-</ul>
-</li>
-<li><strong>解析和提取数据</strong>:<ul>
-<li>蜘蛛处理响应，提取数据并生成新的请求，返回给引擎。</li>
-<li>引擎将提取的数据发送到项目管道，并将新的请求发送到调度器。</li>
-<li>项目管道处理提取出的数据。</li>
-</ul>
-</li>
-<li><strong>循环处理</strong>:<ul>
-<li>以上过程在整个爬取过程中不断重复，直到调度器中没有更多的请求。</li>
-</ul>
-</li>
-<li><strong>关闭过程</strong>:<ul>
-<li>当所有预定的URL都被爬取，且调度器中没有更多的请求时，Scrapy关闭，爬取过程结束。</li>
-</ul>
-</li>
-</ol>
-<h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><h4 id="一-项目命令"><a href="#一-项目命令" class="headerlink" title="一.项目命令"></a>一.项目命令</h4><ol>
-<li><strong>创建项目</strong>:<ul>
-<li>使用命令 <code>scrapy startproject &lt;project_name&gt; [project_dir]</code> 创建新项目。其中 <code>&lt;project_name&gt;</code> 是必填项，表示项目名称；<code>[project_dir]</code> 是可选项，表示项目目录。</li>
-<li>例如：<code>scrapy startproject db</code> 会创建一个名为 ‘db’ 的Scrapy项目。</li>
-</ul>
-</li>
-<li><strong>创建第一个爬虫</strong>:<ul>
-<li>首先，需要进入到你的项目目录中，使用 <code>cd &lt;project_name&gt;</code> 命令。</li>
-<li>然后，使用 <code>scrapy genspider &lt;name&gt; &lt;domain&gt;</code> 创建一个新的爬虫。这里 <code>&lt;name&gt;</code> 是爬虫的名称，而 <code>&lt;domain&gt;</code> 是爬虫将要爬取的域名。</li>
-<li>例如：<code>scrapy genspider example example.com</code> 会在你的项目的 <code>spiders</code> 目录下创建一个名为 ‘example’ 的爬虫，它针对的是 ‘example.com’ 网站。</li>
-</ul>
-</li>
-<li><strong>运行项目</strong>:<ul>
-<li>使用命令 <code>scrapy crawl &lt;spider_name&gt;</code> 来运行你的爬虫。这里 <code>&lt;spider_name&gt;</code> 是你在创建爬虫时指定的名称。</li>
-<li>例如：<code>scrapy crawl example</code> 会运行名为 ‘example’ 的爬虫。</li>
-</ul>
-</li>
-<li><strong>设置配置文件</strong>:<ul>
-<li>在 <code>settings.py</code> 文件中，你可以配置各种参数，比如 <code>ROBOTSTXT_OBEY</code>（是否遵守网站的robots.txt规则）和 <code>DEFAULT_REQUEST_HEADERS</code>（默认的HTTP头部）。</li>
-</ul>
-</li>
-</ol>
-<h4 id="二-shell-交互式平台"><a href="#二-shell-交互式平台" class="headerlink" title="二.shell  交互式平台"></a>二.shell  交互式平台</h4><p>scrapy shell url (start_url)  获取我们项目中的response<br>测试  xpath进行匹配</p>
-<h4 id="项目文件介绍"><a href="#项目文件介绍" class="headerlink" title="项目文件介绍"></a>项目文件介绍</h4><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/5d754191-0f99-42c0-e839-335887c57b00/public"
-                      width = "500"
-                >
-
-<h2 id="爬取豆瓣电影"><a href="#爬取豆瓣电影" class="headerlink" title="爬取豆瓣电影"></a>爬取豆瓣电影</h2><h5 id="目标数据要求："><a href="#目标数据要求：" class="headerlink" title="目标数据要求："></a><strong>目标数据要求：</strong></h5><ol>
-<li>豆瓣电影250个电影信息</li>
-<li>电影信息为：电影名字,导演信息(可以包含演员信息),评分</li>
-<li>将电影信息直接本地保存</li>
-<li>将电影信息通过管道进行保存</li>
-</ol>
-<p><strong>项目搭建：</strong></p>
-<p>项目创建一个Db250Spider的类，它必须继承scrapy.Spider类，需要定义一下三个属性：</p>
-<ul>
-<li>name: spider的名字，必须且唯一</li>
-<li>start_urls: 初始的url列表</li>
-<li>parse(self, response) 方法：每个初始url完成之后被调用。这个函数要完成以下两个功能：<ol>
-<li>解析响应，封装成item对象并返回这个对象</li>
-<li>提取新的需要下载的url，创建新的request，并返回它</li>
-</ol>
-</li>
-</ul>
-<p>命令如下：<br>语法格式：scrapy genspider [-t template] <name> <domain><br>运行命令：scrapy genspider db250 movie.douban.com<br>会在spiders文件下生成db250.py文件</p>
-<p>parse()会在请求完成时被调用。</p>
-<p>response是请求返回来的响应，可以通过xpath或者css方法很方便的解析。</p>
-<p><strong>要求</strong></p>
-<p>分析页面结构，提取课程需要的数据，生成一个字典，然后通过json模块，转成字符串，写入项目根目录下的film.txt 文件内。</p>
-<p><strong>运行爬虫</strong><br>进入项目根目录，运行命令：scrapy crawl db250</p>
-<p><strong>定义item</strong></p>
-<p>抓取的主要目标是从非结构化数据源(通常是web页面)中提取结构化数据。Scrapy spider可以将提取的数据作为Python的dicts返回。虽然方便且熟悉，但Python的dicts缺乏结构:很容易在字段名中犯错误或返回不一致的数据，特别是在有许多爬虫的大型项目中。</p>
-<p>若要定义公共输出数据格式，Scrapy提供了Item类。Item对象是用于收集剪贴数据的简单容器。它们提供了一个类似词典的API，提供了一种方便的语法来声明它们的可用字段。 scray.Item对象是用于收集抓取数据的简单容器，使用方法和python的字典类似。编辑项目目录下items.py文件。</p>
-<p>然后我们只需要在爬虫中导入我们定义的Item类，实例化后用它进行数据结构化。</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3ecc9b4c-41ac-4dd3-b56c-3b7c8f6ebf00/public"
-                      width = "300"
-                >
-
-<p><strong>追踪链接</strong></p>
-<p>上面的爬虫仅仅只爬取了一页，当然不符合我们的要求，我们需要爬取下一页，下一页，直到所有的信息都被下载。我们从页面中提取连接，或者根据规则构建。现在来看我们的爬虫修改为递归的爬取下一页的链接，从中提取数据。</p>
-<p>我们创建了一个类变量page_num用来记录当前爬取到的页码，在parse函数中提取课程信息，然后通过爬虫对象给变量page__num自加1，构造下一页的url，然后创建scrapy.Request对象并返回。如果response中提取不到课程信息，我们判断已经到了最后一页，parse函数直接return结束。</p>
-<p><strong>定义item管道</strong></p>
-<p>到目前为止，我们通过scrapy写出的爬虫还看不出优越性在哪里，并且上面的爬虫还有个很严重的问题，就是对文件的操作。每次调用parse方法会打开文件关闭文件，这极大的浪费了资源。parse函数在解析出我们需要的信息之后，可以将这些信息打包成一个字典对象或scray.Item对象（一般都是item对象，下面我们再讲），然后返回。这个对象会被发送到item管道，该管道会通过顺序执行几个组件处理它。每个item管道组件是一个实现简单方法的Python类。他们收到一个item并对其执行操作，同时决定该item是否应该继续通过管道或者被丢弃并且不再处理。<br>item管道的典型用途是：</p>
-<ul>
-<li>清理HTML数据</li>
-<li>验证已删除的数据（检查项目是否包含某些字段）</li>
-<li>检查重复项（并删除它们）</li>
-<li>将已爬取的item进行数据持久化</li>
-</ul>
-<p><strong>编写管道类</strong></p>
-<p>我们编写一个用来存储课程信息到film.txt文件中的管道类，修改项目下piplines.py文件</p>
-<p>要激活这个管道组件，必须将其添加到ITEM_PIPELINES设置中,在settings文件中设置</p>
-<p>在此设置中为类分配的整数值决定了它们运行的顺序：按照从较低值到较高值的顺序进行。</p>
-<p>注意：这个管道的目的只是介绍如何编写项目管道，如果要将所有爬取的item存储到json文件中，则应使用Feed导出，在运行爬虫是加上如下参数：<code>scrapy crawl xxx -o xxxx.json</code></p>
-<h5 id="项目注意事项"><a href="#项目注意事项" class="headerlink" title="项目注意事项"></a>项目注意事项</h5><ol>
-<li>settings文件中 项目默认的是  ROBOTSTXT_OBEY &#x3D; True,即遵循robots协议,则不能爬取到数据<br>则更改为 ROBOTSTXT_OBEY &#x3D; False</li>
-<li>settings中,有些网站需要添加User-Agent ,才能获取到数据  (伪装成客户端)</li>
-<li>settings中,需要将管道打开,才可以将数据传递到pipelines文件中</li>
-<li>items中需要设置相应的字段,使用Item对象传递数据,(可以理解为mysql先定义字段,才能写入数据一样)</li>
-</ol>
-]]></content>
-      <categories>
-        <category>数据抓取</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-        <tag>理论</tag>
-        <tag>爬虫</tag>
-        <tag>Scrapy</tag>
-        <tag>网页抓取</tag>
       </tags>
   </entry>
   <entry>
@@ -3293,193 +3117,499 @@ chrome.find_element_by_css_selector(&quot;submit button&quot;).click()
       </tags>
   </entry>
   <entry>
-    <title>页面解析工具</title>
-    <url>/2021/02/23/20210223%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<h2 id="BS4"><a href="#BS4" class="headerlink" title="BS4"></a>BS4</h2><p>BeautifulSoup 是一个可以从HTML或XML文件中提取数据的Python库，它的使用方式相对于正则来说更加的简单方便，常常能够节省我们大量的时间。</p>
-<h3 id="官方中文文档"><a href="#官方中文文档" class="headerlink" title="官方中文文档"></a>官方中文文档</h3><p><a class="link"   href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html" >https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><strong>pip install beautifulsoup4</strong></p>
-<h3 id="解析器"><a href="#解析器" class="headerlink" title="解析器"></a>解析器</h3><table>
-<thead>
-<tr>
-<th><strong>解析器</strong></th>
-<th><strong>使用方法</strong></th>
-<th><strong>优势</strong></th>
-<th><strong>劣势</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Python标准库</td>
-<td>BeautifulSoup(markup, “html.parser”)</td>
-<td>Python的内置标准库执行速度适中文档容错能力强</td>
-<td>Python 2.7.3 or 3.2.2)前 的版本中文档容错能力差</td>
-</tr>
-<tr>
-<td>lxml HTML 解析器</td>
-<td>BeautifulSoup(markup, “lxml”)</td>
-<td>速度快文档容错能力强</td>
-<td>需要安装C语言库</td>
-</tr>
-<tr>
-<td>lxml XML 解析器</td>
-<td>BeautifulSoup(markup, [“lxml”, “xml”])&#96;&#96;BeautifulSoup(markup, “xml”)</td>
-<td>速度快唯一支持XML的解析器</td>
-<td>需要安装C语言库</td>
-</tr>
-<tr>
-<td>html5lib</td>
-<td>BeautifulSoup(markup, “html5lib”)</td>
-<td>最好的容错性以浏览器的方式解析文档生成HTML5格式的文档</td>
-<td>速度慢不依赖外部扩展</td>
-</tr>
-</tbody></table>
-<p>由于这个解析的过程在大规模的爬取中是会影响到整个爬虫系统的速度的，所以推荐使用的是lxml，速度会快很多，而lxml需要单独安装：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">pip install lxml</span><br><span class="line">soup = BeautifulSoup(html_doc, <span class="string">&#x27;lxml&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+    <title>控制流程</title>
+    <url>/2018/08/02/20180802%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><h3 id="前置知识：Input方法"><a href="#前置知识：Input方法" class="headerlink" title="前置知识：Input方法"></a>前置知识：Input方法</h3><p>在 Python 中，<code>input()</code>是一个内置函数，用于从标准输入中获取用户输入的数据</p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ol>
+<li>输入的值是字符串类型</li>
+<li>如果你想输入是整数 那就需要进行类型转换</li>
+</ol>
+<p><code>a = int(input(&quot;请输入你想输入的内容&#39;))</code></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 变量a 就存储着用户输入的数据</span></span><br><span class="line">a = <span class="built_in">input</span>(<span class="string">&#x27;请输入你想输入的内容 )</span></span><br><span class="line"><span class="string"># 当我们输入完后可以通过print将你输入的内容打印出来</span></span><br><span class="line"><span class="string">print(a)</span></span><br></pre></td></tr></table></figure></div>
 
-<p>如果一段HTML或XML文档格式不正确的话,那么在不同的解析器中返回的结果可能是不一样的，所以要指定某一个解析器。</p>
-<h3 id="节点对象"><a href="#节点对象" class="headerlink" title="节点对象"></a>节点对象</h3><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e21bc48e-0303-49dd-5507-71e48db20900/public"
-                      width = "500"
-                >
-
-<h4 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h4><p>tag就是标签的意思，tag还有许多的方法和属性。</p>
 <img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7b181ea1-88a1-429b-37cf-d5c83a623500/public"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c673f6f3-43db-4e16-3a3c-8ce974b1d800/public"
                       width = "500"
                 >
 
-<h4 id="NavigableString"><a href="#NavigableString" class="headerlink" title="NavigableString"></a>NavigableString</h4><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ea4c88db-d785-4838-620c-824192d29e00/public"
-                      width = "500"
-                >
+<h3 id="一-什么是条件判断"><a href="#一-什么是条件判断" class="headerlink" title="一. 什么是条件判断"></a>一. 什么是条件判断</h3><p>条件判断是编程中一种非常常见的控制结构，它可以帮助我们根据不同的条件来执行不同的代码。可以把它想象成我们生活中的决策过程。</p>
+<p>判断的过程中，比较的类型需要一样，例如都是数值类型</p>
+<h4 id="1-语法："><a href="#1-语法：" class="headerlink" title="1. 语法："></a>1. 语法：</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> 判断条件:</span><br><span class="line">	<span class="comment"># 执行语句....</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="comment"># 执行语句....</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># if：如果</span></span><br><span class="line"><span class="comment"># else 否则</span></span><br><span class="line"><span class="comment"># if 可以单独存在，如果不满足就不会执行if里面的代码，但会继续执行if外面的代码</span></span><br></pre></td></tr></table></figure></div>
 
-<h4 id="BeautifulSoup"><a href="#BeautifulSoup" class="headerlink" title="BeautifulSoup"></a>BeautifulSoup</h4><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ee60116b-f76c-4300-49be-2f984d22f100/public"
-                      width = "500"
-                >
+<h4 id="2-案例-1"><a href="#2-案例-1" class="headerlink" title="2. 案例 1"></a>2. 案例 1</h4><p>假如天气晴朗，我就去打篮球，否则我就去看电影。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个a变量 存储今天的天气</span></span><br><span class="line">a = <span class="built_in">input</span>(<span class="string">&#x27;输入今天的天气:&#x27;</span>) </span><br><span class="line"><span class="keyword">if</span> a == <span class="string">&#x27;晴天&#x27;</span>: <span class="comment"># == 是否等于</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;今天是晴天,我要出去打篮球&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;今天是下雨天,我要去看电影&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
 
-<h4 id="Comment"><a href="#Comment" class="headerlink" title="Comment"></a>Comment</h4><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b910c03f-f531-4694-3d13-2fbd9365e200/public"
-                      width = "500"
-                >
-
-<h3 id="Tag和遍历文档树"><a href="#Tag和遍历文档树" class="headerlink" title="Tag和遍历文档树"></a>Tag和遍历文档树</h3><p>tag对象可以说是BeautifulSoup中最为重要的对象，通过BeautifulSoup来提取数据基本都围绕着这个对象来进行操作。<br>首先，一个节点中是可以包含多个子节点和多个字符串的。例如html节点中包含着head和body节点。所以BeautifulSoup就可以将一个HTML的网页用这样一层层嵌套的节点来进行表示。</p>
 <img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2de98c8e-4ce0-4841-7819-d1b9a3695600/public"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c8c279d2-95e6-4b4e-a1ab-686a3bf08900/public"
                       width = "500"
                 >
 
-<h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4  <span class="keyword">import</span> BeautifulSoup<span class="comment">#导包</span></span><br><span class="line">soup=BeautifulSoup(html_str,<span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"><span class="built_in">type</span>(soup)</span><br><span class="line"></span><br><span class="line">bs4.BeautifulSoup</span><br></pre></td></tr></table></figure></div>
+<h4 id="3-案例-2"><a href="#3-案例-2" class="headerlink" title="3. 案例 2"></a>3. 案例 2</h4><p>随意输入0-100的整数，如果大于60 就在控制台返回  会当凌绝顶一览众山小 如果小于60就返回 三十年河东三十年河西 莫欺少年穷</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;随意输入0-100的整数:&#x27;</span>))</span><br><span class="line"><span class="keyword">if</span> a &gt; <span class="number">60</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;会当凌绝顶一览众山小&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;三十年河东三十年河西 莫欺少年穷&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
 
-<h4 id="Tag-标签取出简单示例"><a href="#Tag-标签取出简单示例" class="headerlink" title="Tag 标签取出简单示例"></a>Tag 标签取出简单示例</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html_data = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&lt;html&gt;</span></span><br><span class="line"><span class="string">  &lt;body&gt;</span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">      我们都是害虫</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;div id=&quot;info&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;span&gt;&lt;span class=&quot;pl&quot;&gt;导演&lt;/span&gt;: &lt;span class=&quot;attrs&quot;&gt;&lt;a href=&quot;/celebrity/1362276/&quot; rel=&quot;v:directedBy&quot;&gt;邢文雄&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span&gt;&lt;span class=&quot;pl&quot;&gt;编剧&lt;/span&gt;: &lt;span class=&quot;attrs&quot;&gt;&lt;a href=&quot;/celebrity/1362276/&quot;&gt;邢文雄&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;actor&quot;&gt;&lt;span class=&quot;pl&quot;&gt;主演&lt;/span&gt;: &lt;span class=&quot;attrs&quot;&gt;&lt;span&gt;&lt;a href=&quot;/celebrity/1319032/&quot; rel=&quot;v:starring&quot;&gt;马丽&lt;/a&gt; / &lt;/span&gt;&lt;span&gt;&lt;a href=&quot;/celebrity/1355058/&quot; rel=&quot;v:starring&quot;&gt;魏翔&lt;/a&gt; / &lt;/span&gt;&lt;span&gt;&lt;a href=&quot;/celebrity/1362567/&quot; rel=&quot;v:starring&quot;&gt;陈明昊&lt;/a&gt; / &lt;/span&gt;&lt;span&gt;&lt;a href=&quot;/celebrity/1319540/&quot; rel=&quot;v:starring&quot;&gt;周大勇&lt;/a&gt; / &lt;/span&gt;&lt;span&gt;&lt;a href=&quot;/celebrity/1363857/&quot; rel=&quot;v:starring&quot;&gt;黄才伦&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1350408/&quot; rel=&quot;v:starring&quot;&gt;艾伦&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1394939/&quot; rel=&quot;v:starring&quot;&gt;高海宝&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1386801/&quot; rel=&quot;v:starring&quot;&gt;韩笑&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1444360/&quot; rel=&quot;v:starring&quot;&gt;孙贵权&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1426220/&quot; rel=&quot;v:starring&quot;&gt;许猛&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1467304/&quot; rel=&quot;v:starring&quot;&gt;全容杓&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1467305/&quot; rel=&quot;v:starring&quot;&gt;卜俊男&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1316008/&quot; rel=&quot;v:starring&quot;&gt;张志忠&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1367242/&quot; rel=&quot;v:starring&quot;&gt;张建新&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1398260/&quot; rel=&quot;v:starring&quot;&gt;马驰&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1353283/&quot; rel=&quot;v:starring&quot;&gt;陶亮&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1403276/&quot; rel=&quot;v:starring&quot;&gt;詹卢卡·佐帕&lt;/a&gt;&lt;/span&gt;&lt;a href=&quot;javascript:;&quot; class=&quot;more-actor&quot; title=&quot;更多主演&quot;&gt;更多...&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;类型:&lt;/span&gt; &lt;span property=&quot;v:genre&quot;&gt;喜剧&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;制片国家/地区:&lt;/span&gt; 中国大陆&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;语言:&lt;/span&gt; 汉语普通话&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;上映日期:&lt;/span&gt; &lt;span property=&quot;v:initialReleaseDate&quot; content=&quot;2022-02-01(中国大陆)&quot;&gt;2022-02-01(中国大陆)&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;片长:&lt;/span&gt; &lt;span property=&quot;v:runtime&quot; content=&quot;109&quot;&gt;109分钟&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;又名:&lt;/span&gt; Too Cool To Kill&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;IMDb:&lt;/span&gt; tt16254308&lt;br&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">  &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">soup = BeautifulSoup(html_data, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取第一个a标签(tag)里面的文本信息</span></span><br><span class="line"><span class="built_in">print</span>(soup.a.text, <span class="built_in">type</span>(soup.a.text))  <span class="comment"># 邢文雄 &lt;class &#x27;str&#x27;&gt;</span></span><br><span class="line"><span class="built_in">print</span>(soup.a.string, <span class="built_in">type</span>(soup.a.string))  <span class="comment"># 邢文雄 &lt;class &#x27;bs4.element.NavigableString&#x27;&gt;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;===========================================================&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 标签的属性</span></span><br><span class="line"><span class="built_in">print</span>(soup.a.get(<span class="string">&quot;href&quot;</span>))  <span class="comment"># /celebrity/1362276/</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;===========================================================&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 子代标签</span></span><br><span class="line">body = soup.body</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(body.children))  <span class="comment"># &lt;list_iterator object at 0x000001B973C23BE0&gt;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;===========================================================&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后代标签</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(body.descendants))  <span class="comment"># &lt;generator object Tag.descendants at 0x00000159C796A510&gt;</span></span><br><span class="line">test = body.descendants</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;===========================================================&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 兄弟标签  （同级的标签，有相同的父标签）</span></span><br><span class="line">span = body.span</span><br><span class="line"><span class="built_in">print</span>(span.next_sibling.next_sibling.next_sibling)  <span class="comment"># 下一个兄弟标签</span></span><br><span class="line"><span class="comment"># 第一个兄弟是 &lt;br&gt;</span></span><br><span class="line"><span class="comment"># 第二个兄弟是 \n</span></span><br><span class="line"><span class="comment"># 第三个兄弟是第一个内容标签</span></span><br><span class="line"><span class="built_in">print</span>(span.previous_sibling.previous_sibling)</span><br><span class="line"><span class="comment"># 第一个兄弟是 \n</span></span><br><span class="line"><span class="comment"># 第二个兄弟是 我们所需的标签</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;===========================================================&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 父类标签, 加了s就是所有父类标签，不加就是它本身</span></span><br><span class="line">p_parents = span.parents</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(p_parents))  <span class="comment"># &lt;generator object PageElement.parents at 0x000001A4DBD37E40&gt;</span></span><br></pre></td></tr></table></figure></div>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3676eea8-7f15-4bb8-d94a-c6cf8f1db600/public"
+                      width = "500"
+                >
 
-<h5 id="1-find-all"><a href="#1-find-all" class="headerlink" title="1.find_all"></a>1.find_all</h5><p>直接通过名字和属性来进行访问，很多时候只能适用于比较简单的一些场景，所以BeautifulSoup还提供了搜索整个文档树的方法find_all()。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/73f965d3-ea54-4b85-a67c-76ef7f266e00/public"
+                      width = "500"
+                >
+
+<h3 id="二-多个条件判断"><a href="#二-多个条件判断" class="headerlink" title="二. 多个条件判断"></a>二. 多个条件判断</h3><h4 id="1-什么是多个条件判断"><a href="#1-什么是多个条件判断" class="headerlink" title="1. 什么是多个条件判断"></a>1. 什么是多个条件判断</h4><p>有些时候，我们的判断语句不可能只有两个，有些时候需要多个，比如说大于等于 60 的为及格，那我们还要判断大于等于 90 的为优秀，在 80 到 90 之间的良好呢？</p>
+<p>这时候需要用到 if 语句多个判断条件</p>
+<h4 id="2-语法"><a href="#2-语法" class="headerlink" title="2. 语法"></a>2. 语法</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> 判断条件<span class="number">1</span>:</span><br><span class="line">	<span class="comment"># 执行语句1.....</span></span><br><span class="line"><span class="keyword">elif</span> 判断条件<span class="number">2</span>:</span><br><span class="line">	<span class="comment"># 执行语句2.....</span></span><br><span class="line"><span class="keyword">elif</span> 判断条件<span class="number">3</span>:</span><br><span class="line">	<span class="comment"># 执行语句3.....</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="comment"># 执行语句4.....</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># if：如果</span></span><br><span class="line"><span class="comment"># elif:或者</span></span><br><span class="line"><span class="comment"># else 否则</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-案例-1"><a href="#3-案例-1" class="headerlink" title="3. 案例 1"></a>3. 案例 1</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入你的分数&#x27;</span>))</span><br><span class="line"><span class="keyword">if</span> a &gt;= <span class="number">90</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;优秀&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt;= <span class="number">80</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;良好&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt;= <span class="number">60</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;及格&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;恭喜你 没有及格 )</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="4-案例-2"><a href="#4-案例-2" class="headerlink" title="4. 案例 2"></a>4. 案例 2</h4><p>有时候我们会遇到多个条件的时候该怎么操作呢？</p>
+<p>比如说：学校举行一场考试，要求小明的python和java两门语言 都达到80分才算优秀。</p>
 <ul>
-<li><p>通过<code>name</code>搜索，<code>find_all(&#39;b&#39;)</code>可以直接查找出整个文档树中所有的b标签，并返回列表</p>
-</li>
-<li><p>通过属性搜索，我们在搜索的时候一般只有标签名是不够的，因为可能同名的标签很多，那么这时候我们就要通过标签的属性来进行搜索。这时候我们可以通过传递给<code>attrs</code>一个字典参数来搜索属性。<br><code>soup.find_all(attrs=&#123;&#39;class&#39;: &#39;sister&#39;&#125;)</code></p>
-</li>
-<li><p>通过文本搜索，在find_all()方法中，还可以根据文本内容来进行搜索。<code>soup.find_all(string=&quot;Elsie&quot;)</code></p>
-</li>
-<li><p>限制查找范围为子节点<br><code>find_all()</code>方法会默认的去所有的子孙节点中搜索，而如果将<code>recursive</code>参数设置为<code>False</code>，则可以将搜索范围限制在直接子节点中。 <code>soup.html.find_all(&quot;title&quot;, recursive=False)</code></p>
-</li>
-<li><p>通过正则表达式来筛选查找结果在BeautifulSoup中，也是可以与re模块进行相互配合的，将<code>re.compile</code>编译的对象传入<code>find_all()</code>方法，即可通过正则来进行搜索。<code>tags = soup.find_all(re.compile(&quot;^b&quot;))</code></p>
-</li>
-<li><p>以之前的数据为例子：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(soup.find_all(<span class="string">&#x27;a&#x27;</span>, string=<span class="string">&#x27;邢文雄&#x27;</span>)) </span><br><span class="line"><span class="comment"># [&lt;a href=&quot;/celebrity/1362276/&quot; rel=&quot;v:directedBy&quot;&gt;邢文雄&lt;/a&gt;, &lt;a href=&quot;/celebrity/1362276/&quot;&gt;邢文雄&lt;/a&gt;]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(soup.find_all(<span class="string">&#x27;span&#x27;</span>, attrs=&#123;<span class="string">&#x27;class&#x27;</span>: <span class="string">&#x27;pl&#x27;</span>&#125;))</span><br><span class="line"><span class="comment"># [&lt;span class=&quot;pl&quot;&gt;导演&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;编剧&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;主演&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;类型:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;制片国家/地区:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;语言:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;上映日期:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;片长:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;又名:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;IMDb:&lt;/span&gt;]</span></span><br></pre></td></tr></table></figure></div></li>
+<li>这时候我们可以结合 or 和 and 来使用。</li>
+<li>or (或)表示两个条件有一个成立时判断条件成功</li>
+<li>and (与)表示只有两个条件同时成立的情况下，判断条件才成功。</li>
 </ul>
-<h5 id="2-CSS选择器"><a href="#2-CSS选择器" class="headerlink" title="2.CSS选择器"></a>2.CSS选择器</h5><p>在BeautifulSoup中，同样也支持使用CSS选择器来进行搜索。使用select()，在其中传入字符串参数，就可以使用CSS选择器的语法来找到tag。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(soup.select(<span class="string">&#x27;a&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(soup.select(<span class="string">&#x27;span &gt; a&#x27;</span>))</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入python分数&#x27;</span>))</span><br><span class="line">java = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入java分数&#x27;</span>))</span><br><span class="line"><span class="comment"># 当我们输入完 我们的变量python和java就分别存储着 python和java的分数</span></span><br><span class="line"><span class="keyword">if</span> python &gt;= <span class="number">80</span> <span class="keyword">and</span> java &gt;= <span class="number">80</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;优秀&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;不优秀&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="JSON-Path"><a href="#JSON-Path" class="headerlink" title="JSON Path"></a>JSON Path</h2><p>JSON Path 是一种查询语言，用于从 JSON (JavaScript Object Notation) 数据中提取和处理信息。它类似于 SQL，但专门用于与 JSON 数据交互。使用 JSON Path，可以从复杂的 JSON 结构中轻松检索特定元素或值。这在处理大型或嵌套的 JSON 数据时特别有用。</p>
-<p>以下是 JSON Path 的一些主要用途：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入python分数&#x27;</span>))</span><br><span class="line">java = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入java分数&#x27;</span>))</span><br><span class="line"><span class="comment"># 当我们输入完 我们的变量python和java就分别存储着 python和java的分数</span></span><br><span class="line"><span class="comment"># 将and改为or 就意味着 只需要一个条件满足就是优秀</span></span><br><span class="line"><span class="keyword">if</span> python &gt;= <span class="number">80</span> <span class="keyword">or</span> java &gt;= <span class="number">80</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;优秀&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;不优秀&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="三-嵌套"><a href="#三-嵌套" class="headerlink" title="三. 嵌套"></a>三. 嵌套</h3><h4 id="1-嵌套是指什么"><a href="#1-嵌套是指什么" class="headerlink" title="1. 嵌套是指什么"></a>1. 嵌套是指什么</h4><p>就跟字面意思差不多，指 if 语句中可以嵌套 if 语句。</p>
+<h4 id="2-案例-1-1"><a href="#2-案例-1-1" class="headerlink" title="2. 案例 1"></a>2. 案例 1</h4><p>小明，平时正常上班太累了，到了周末如果是晴天，那就出去打篮球，如果不是那就在家看电视</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个变量来保存今天是不是周末</span></span><br><span class="line"><span class="comment"># 定义一个变量b来保存今天的天气</span></span><br><span class="line">a = <span class="string">&#x27;周末&#x27;</span></span><br><span class="line">b = <span class="string">&#x27;晴&#x27;</span></span><br><span class="line"><span class="keyword">if</span> a == <span class="string">&#x27;周末&#x27;</span>:</span><br><span class="line">    <span class="keyword">if</span> b == <span class="string">&#x27;晴&#x27;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;今天是周末，又是晴天可以去打篮球&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;今天是周末，但是下雨在家乖乖看电视&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;乖乖上班&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="四-三目运算"><a href="#四-三目运算" class="headerlink" title="四. 三目运算"></a>四. 三目运算</h3><ol>
+<li>也叫三元运算符，是一种简洁的条件语句表达式。它可以根据条件的成立与否来返回两个值中的一个。</li>
+</ol>
+<p>​	<strong>作用</strong>：简化代码</p>
+<ol start="2">
+<li>之前案例，今天学校期末数学考试(60分及格)，小明考了66分，请问小明是及格还是没有及格。</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个变量a 来保存小明的数学成绩</span></span><br><span class="line">a = <span class="number">66</span></span><br><span class="line"><span class="comment"># 三目运算</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;及格&#x27;</span>) <span class="keyword">if</span> a &gt; <span class="number">6</span> <span class="keyword">else</span> <span class="built_in">print</span>(<span class="string">&#x27;不及格&#x27;</span>)</span><br><span class="line"><span class="comment"># 普通的if判断</span></span><br><span class="line"><span class="keyword">if</span> a &gt; <span class="number">60</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;及格&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;不及格&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="五-循环语句"><a href="#五-循环语句" class="headerlink" title="五. 循环语句"></a>五. 循环语句</h3><h4 id="1-什么是循环"><a href="#1-什么是循环" class="headerlink" title="1. 什么是循环"></a>1. 什么是循环</h4><p>可以让程序自动地执行多次相同或类似的任务，从而节省编写代码的时间和精力。</p>
+<p>一共有两种循环：</p>
+<ul>
+<li>for循环</li>
+<li>while循环</li>
+</ul>
+<h4 id="2-for循环"><a href="#2-for循环" class="headerlink" title="2. for循环"></a>2. for循环</h4><p>可以遍历一个序列或其他可迭代对象中的元素，并执行特定的代码块。</p>
+<h5 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> 形参 <span class="keyword">in</span> 遍历对象: 	</span><br><span class="line">	<span class="built_in">print</span>(形参)</span><br></pre></td></tr></table></figure></div>
+
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>对象（Objects）</strong>：</p>
+<p>在Python中，几乎所有东西都是对象。这包括数字、字符串、列表、函数，甚至是类和类型本身。每个对象都有三个特性：身份、类型和值。</p>
+<ul>
+<li>身份：每个对象都有一个唯一的身份，用于区分不同的对象。可以通过 <code>id()</code> 函数来查看对象的身份。</li>
+<li>类型：对象的类型定义了它可以进行哪些操作或拥有哪些方法。类型可以通过 <code>type()</code> 函数查看。</li>
+<li>值：对象表示的数据。</li>
+</ul>
+<p><strong>形参（Formal Parameters）</strong>：</p>
+<p>当你定义一个函数时，你可以在函数定义中指定一些参数。这些参数被称为形式参数（形参），它们是函数内部的局部变量。当函数被调用时，形参会接收传递给函数的实际值。这些值被称为实参（实际参数）。</p>
+<p>例如：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):  <span class="comment"># a 和 b 是形参</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br></pre></td></tr></table></figure></div>
+
+<p>在这个例子中，<code>a</code> 和 <code>b</code> 是形参，它们在函数 <code>add</code> 被调用时接收实际的输入值。</p>
+
+    </div>
+  </div>
+
+<h5 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 案例: 将List的内容全部打印出来</span></span><br><span class="line"><span class="comment"># 定义一个列表List</span></span><br><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>]</span><br><span class="line"><span class="comment"># 以前</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">2</span>])</span><br><span class="line"><span class="comment"># 如果List里面有1000 个值呢，是不是要写一干遍</span></span><br><span class="line"><span class="comment"># 我们学习for循环后</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> <span class="built_in">list</span>:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="range函数"><a href="#range函数" class="headerlink" title="range函数"></a>range函数</h5><h6 id="什么是range"><a href="#什么是range" class="headerlink" title="什么是range"></a>什么是range</h6><p>是 Python 内置的一个函数，用于生成一个整数序列</p>
+<h6 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h6><p>常用于for循环中，用于循环的次数</p>
+<h6 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h6><p><code>range()</code>函数有三种用法:</p>
 <ol>
-<li><strong>数据提取</strong>：从 JSON 数据中选择和提取数据，例如提取特定属性的值或筛选符合特定条件的元素。</li>
-<li><strong>查询构建</strong>：创建灵活的查询来搜索和筛选 JSON 数据中的信息。</li>
-<li><strong>数据处理</strong>：简化对复杂 JSON 结构的遍历和分析，无需编写复杂的代码。</li>
-<li><strong>API 交互</strong>：常用于与 RESTful API 交互时解析和处理返回的 JSON 数据。</li>
+<li><code>range(stop)</code>: 生成从 0 开始到 stop-1 的整数序列。</li>
+<li><code>range(start，stop)</code>: 生成从 start 开始到 stop-1 的整数序列。</li>
+<li><code>range(start，stop，step)</code>: 生成从 start 开始到 stop-1 的整数序列，步长为 step。</li>
 </ol>
-<p>JSON Path 通过提供一种简洁的语法来实现这些功能，使得从复杂的 JSON 结构中检索信息变得更加简单和直接。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jsonpath  <span class="comment"># pip install jsonpath</span></span><br><span class="line"></span><br><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;resultCode&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;resultMsg&quot;</span>: <span class="string">&quot;success&quot;</span>,</span><br><span class="line">    <span class="string">&quot;reqId&quot;</span>: <span class="string">&quot;52f9f3e1-1d76-47b4-b2ae-226633b61476&quot;</span>,</span><br><span class="line">    <span class="string">&quot;systemTime&quot;</span>: <span class="string">&quot;1681991278593&quot;</span>,</span><br><span class="line">    <span class="string">&quot;videoInfo&quot;</span>: &#123;  <span class="comment"># 父亲</span></span><br><span class="line">        <span class="string">&quot;playSta&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">        <span class="string">&quot;video_image&quot;</span>: <span class="string">&quot;https://image.pearvideo.com/cont/20170714/cont-1110173-10436784.png&quot;</span>,</span><br><span class="line">        <span class="string">&quot;srcUrl&quot;</span>: <span class="string">&quot;https://video.pearvideo.com/mp4/short/20170714/1681991278593-10632788-hd.mp4&quot;</span>,</span><br><span class="line">        <span class="string">&quot;videos&quot;</span>: &#123;  <span class="comment"># 儿子</span></span><br><span class="line">            <span class="string">&quot;hdUrl&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;hdflvUrl&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;sdUrl&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;sdflvUrl&quot;</span>: <span class="string">&quot;&quot;</span>,  <span class="comment"># 孙子</span></span><br><span class="line">            <span class="string">&quot;srcUrl&quot;</span>: <span class="string">&quot;https://video.pearvideo.com/mp4/short/20170714/1681991278593-10632788-hd.mp4&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># jsonpath(数据,&#x27;语法&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># dic.get(&quot;videoInfo&quot;).get(&quot;videos&quot;).get(&quot;srcUrl&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(jsonpath.jsonpath(dic, &#x27;$..srcUrl&#x27;))</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># print(jsonpath.jsonpath(dic, &#x27;$..video_image&#x27;))</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(jsonpath.jsonpath(dic, <span class="string">&#x27;$..videos.srcUrl&#x27;</span>)) </span><br><span class="line"><span class="comment">#[&#x27;https://video.pearvideo.com/mp4/short/20170714/1681991278593-10632788-hd.mp4&#x27;]</span></span><br></pre></td></tr></table></figure></div>
+<h6 id="range案例"><a href="#range案例" class="headerlink" title="range案例"></a>range案例</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    <span class="comment"># item:次数</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;range让我循环<span class="subst">&#123;item&#125;</span>次&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># range让我循环0次</span></span><br><span class="line"><span class="comment"># range让我循环1次</span></span><br><span class="line"><span class="comment"># range让我循环2次</span></span><br><span class="line"><span class="comment"># range让我循环3次</span></span><br><span class="line"><span class="comment"># range让我循环4次</span></span><br><span class="line"><span class="comment"># range让我循环5次</span></span><br><span class="line"><span class="comment"># range让我循环6次</span></span><br><span class="line"><span class="comment"># range让我循环7次</span></span><br><span class="line"><span class="comment"># range让我循环8次</span></span><br><span class="line"><span class="comment"># range让我循环9次</span></span><br></pre></td></tr></table></figure></div>
 
-<h2 id="Xpath"><a href="#Xpath" class="headerlink" title="Xpath"></a>Xpath</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>XPath 是一门在 XML 文档中查找信息的语言。XPath 可用来在 XML 文档中对元素和属性进行遍历。<br>相比于BeautifulSoup，Xpath在提取数据时会更有效率。</p>
-<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p><code>pip install lxml</code></p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>XPath 使用路径表达式在 XML&#x2F;HTML 文档中选取节点。节点是通过沿着路径或者 step 来选取的。</p>
-<p>下面列出了最有用的路径表达式：</p>
-<img  
+<h5 id="列表、元组、集合、字典、字符串的for循环的使用案例"><a href="#列表、元组、集合、字典、字符串的for循环的使用案例" class="headerlink" title="列表、元组、集合、字典、字符串的for循环的使用案例"></a>列表、元组、集合、字典、字符串的for循环的使用案例</h5>
+  <div class="note p-4 mb-4 rounded-small primary icon-padding">
+    <i class="note-icon fa-solid fa-square-arrow-up-right"></i><p>列表、元组、集合、字典、字符串皆为<a class="button " href='https://www.yiuhangblog.com/2018/07/23/20180723%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/' title='数值类型'><i class='fa-solid fa-play-circle'></i> 数值类型</a>，详细内容与调用方法跳转查阅</p>
+
+  </div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列表</span></span><br><span class="line">List_test = [<span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> List_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># 香蕉</span></span><br><span class="line"><span class="comment"># 苹果</span></span><br><span class="line"><span class="comment"># 梨子</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment"># 元组</span></span><br><span class="line">tuple_test = (<span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> tuple_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># 香蕉</span></span><br><span class="line"><span class="comment"># 苹果</span></span><br><span class="line"><span class="comment"># 梨子</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 集合</span></span><br><span class="line">set_test = &#123;<span class="string">&#x27;香蕉&#x27;</span>, <span class="string">&#x27;苹果&#x27;</span>, <span class="string">&#x27;梨子&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> set_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># 香蕉</span></span><br><span class="line"><span class="comment"># 苹果</span></span><br><span class="line"><span class="comment"># 梨子</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字典</span></span><br><span class="line">dict_test = &#123;</span><br><span class="line">    <span class="string">&quot;username&quot;</span>: <span class="string">&#x27;user&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;age&#x27;</span>: <span class="number">25</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> dict_test:</span><br><span class="line">    <span class="comment"># 在字典中 item:key</span></span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line">    <span class="comment"># 如果想拿到vaLue的值 : List[item] </span></span><br><span class="line">    <span class="built_in">print</span>(item, dict_test[item])</span><br><span class="line"><span class="comment"># username</span></span><br><span class="line"><span class="comment"># username user</span></span><br><span class="line"><span class="comment"># age</span></span><br><span class="line"><span class="comment"># age 25</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">#字符串</span></span><br><span class="line">str_test = <span class="string">&#x27;hello word&#x27;</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> str_test:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"><span class="comment"># h</span></span><br><span class="line"><span class="comment"># e</span></span><br><span class="line"><span class="comment"># l</span></span><br><span class="line"><span class="comment"># l</span></span><br><span class="line"><span class="comment"># o</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># w</span></span><br><span class="line"><span class="comment"># o</span></span><br><span class="line"><span class="comment"># r</span></span><br><span class="line"><span class="comment"># d</span></span><br></pre></td></tr></table></figure></div>
+
+<h5 id="双层for循环"><a href="#双层for循环" class="headerlink" title="双层for循环"></a>双层for循环</h5><p>也可以用于遍历嵌套的数据结构</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列表里面包字典，这是开发最常见的一种数据方式，我们需要把里面的数据给拿出来</span></span><br><span class="line">list_dic = [&#123;</span><br><span class="line">    <span class="string">&#x27;username&#x27;</span>: <span class="string">&#x27;users1&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;age&#x27;</span>: <span class="number">18</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">    <span class="string">&#x27;username&#x27;</span>: <span class="string">&#x27;users2&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;age&#x27;</span>: <span class="number">20</span></span><br><span class="line">&#125;]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一层for循环遍历出两个字典</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> list_dic:</span><br><span class="line">    <span class="comment"># 第二层for循环遍历出字典里面的值</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> item: <span class="comment"># 通过i形参就是传递出字典里的值</span></span><br><span class="line">        <span class="comment"># item就是字典本身，通过遍历item获取value</span></span><br><span class="line">        <span class="built_in">print</span>(i, item[i]) <span class="comment"># items 就是拿到了，item字典里面的key</span></span><br><span class="line">        </span><br><span class="line"><span class="comment"># username users1</span></span><br><span class="line"><span class="comment"># age 18</span></span><br><span class="line"><span class="comment"># username users2</span></span><br><span class="line"><span class="comment"># age 20</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-while循环"><a href="#3-while循环" class="headerlink" title="3. while循环"></a>3. while循环</h4><p>常见的循环结构，它可以在条件满足的情况下重复执行一段代码块，直到条件不再满足为止。</p>
+<h5 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> 判断条件: </span><br><span class="line">	输出内容</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">11</span></span><br><span class="line"><span class="keyword">while</span> a &gt; <span class="number">10</span>:</span><br><span class="line">    <span class="comment"># 这样会陷入无尽的循环 因为a会一直大于 10 这个时候</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;a大于10 这行代码就会一直运行&#x27;</span>)</span><br><span class="line">    <span class="keyword">break</span> <span class="comment">#我们可以用break来终止</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># a大于10 这行代码就会一直运行</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">8</span></span><br><span class="line"><span class="keyword">while</span> a &lt; <span class="number">10</span>:</span><br><span class="line">    <span class="comment"># 可以在循环里面加改变条件的运算 让循环变成 有限循环 而不是无限循环</span></span><br><span class="line">    a += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;aaaaaaa&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># aaaaaaa</span></span><br><span class="line"><span class="comment"># aaaaaaa</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>基础</tag>
+        <tag>理论</tag>
+        <tag>嵌套</tag>
+        <tag>控制流程</tag>
+        <tag>条件判断</tag>
+        <tag>循环语句</tag>
+        <tag>三目运算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Scrapy</title>
+    <url>/2021/10/28/20211128scrapy/</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Scrapy是一个用Python编写的高效且结构化的网页抓取框架，广泛应用于数据挖掘、网站监测和自动化测试。它的设计初衷是为了方便用户爬取网站数据和提取结构化数据，但它的用途不仅限于网页抓取，还包括处理API返回的数据（如Amazon Associates Web Services）或进行更广泛的网络爬取任务。</p>
+<p>Scrapy的一个关键特性是它使用了Twisted异步网络库来处理网络通信。</p>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <ol>
+<li><strong>异步编程</strong>:<ul>
+<li>在传统的同步编程模型中，任务按顺序一个接一个地执行。如果一个任务需要等待（例如，等待网络响应），程序将在此期间停止执行后续任务。</li>
+<li>异步编程允许程序在等待一个任务完成的同时继续执行其他任务。这种方式非常适合处理I&#x2F;O密集型任务，比如网络请求，因为程序不需要在每个请求完成时都暂停执行。</li>
+</ul>
+</li>
+<li><strong>Twisted异步网络库</strong>:<ul>
+<li>Twisted是一个事件驱动的网络编程框架，专为Python设计。它支持多种协议，可以用于创建高性能的网络服务器和客户端。</li>
+<li>在Scrapy中，Twisted用于处理网络请求。当Scrapy发出一个请求并等待服务器响应时，它不会阻塞整个爬虫的进程。相反，Scrapy可以利用这段时间执行其他任务，如处理已经收到的数据或发出更多的网络请求。</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+  </div>
+
+<p><strong>Scrapy中的应用</strong>:</p>
+<ul>
+<li>Scrapy利用Twisted的异步特性来提高爬虫的效率。它能够同时处理多个网络请求，而不会因为单个请求的延迟而阻塞整个爬虫。</li>
+<li>这使得Scrapy非常适合执行大规模的网络抓取任务，因为它可以有效地利用网络资源和处理能力，同时维持高效率的数据收集。</li>
+</ul>
+<p><strong>使用原因：</strong></p>
+<p>1.为了更利于我们将精力集中在请求与解析上<br>2.企业级的要求</p>
+<pre class="mermaid">flowchart TD
+    A(找到目标数据) --> B(分析请求流程)
+    B --> C(构造http请求)
+    C --> D(提取数据)
+    D --> E(数据持久化)</pre>
+
+<h2 id="运行流程"><a href="#运行流程" class="headerlink" title="运行流程"></a>运行流程</h2><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/de2ffe23-49cf-4fe4-345d-94013c995300/public"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f796f07e-1ef6-45ba-7001-bcfe018f7300/public"
                       width = "500"
                 >
 
-<h3 id="谓语"><a href="#谓语" class="headerlink" title="谓语"></a>谓语</h3><p>谓语用来查找某个或某些特定的节点或者包含某个指定值的节点<br>谓语被嵌在方括号中。在下面的表格中，我们列出了带有谓语的一些路径表达式，以及表达式的结果。实例:</p>
 <img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7e787bdf-efd4-48ce-f495-dd8785421c00/public"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6abf6e1a-af6c-433d-6c3b-2d28dd132700/public"
                       width = "500"
                 >
 
-<h3 id="选取未知节点"><a href="#选取未知节点" class="headerlink" title="选取未知节点"></a>选取未知节点</h3><p>XPath通配符可用来选取未知节点</p>
-<table>
-<thead>
-<tr>
-<th>通配符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>*</td>
-<td>匹配任何元素节点。</td>
-</tr>
-<tr>
-<td>@*</td>
-<td>匹配任何属性节点。</td>
-</tr>
-<tr>
-<td>node()</td>
-<td>匹配任何类型的节点。</td>
-</tr>
-</tbody></table>
-<h3 id="选取多个路径"><a href="#选取多个路径" class="headerlink" title="选取多个路径"></a>选取多个路径</h3><p>通过在路径表达式中使用”|”运算符，您可以选取若干个路径。在下面的表格中，列出了一些路径表达式，以及这些表达式的结果：</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/%E9%80%89%E5%8F%96%E5%A4%9A%E4%B8%AA%E8%B7%AF%E5%BE%84.png"
-                      width = "500"
-                >
-
-<h3 id="获取节点下文本"><a href="#获取节点下文本" class="headerlink" title="获取节点下文本"></a>获取节点下文本</h3><p>用text()获取某个节点下的文本，用string()获取某个节点下所有的文本。</p>
-<h2 id="解析工具应用案例"><a href="#解析工具应用案例" class="headerlink" title="解析工具应用案例"></a>解析工具应用案例</h2><h3 id="1-明确目标："><a href="#1-明确目标：" class="headerlink" title="1. 明确目标："></a>1. 明确目标：</h3><p>以豆瓣电影排行榜为案例，抓取豆瓣电影的排行榜: <a class="link"   href="https://movie.douban.com/chart" >https://movie.douban.com/chart <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>需要提取的数据：</p>
-<pre><code>1. movie_name	2. movie_actor	3. movie_score
-</code></pre>
-<h3 id="2-进行伪装与请求："><a href="#2-进行伪装与请求：" class="headerlink" title="2. 进行伪装与请求："></a>2. 进行伪装与请求：</h3><p>进行伪装与请求：</p>
+<h3 id="Scrapy框架的体系结构"><a href="#Scrapy框架的体系结构" class="headerlink" title="Scrapy框架的体系结构"></a>Scrapy框架的体系结构</h3><p>Scrapy框架的体系结构由几个重要组件组成，这些组件协同工作，实现了从发送请求到提取数据再到存储数据的整个流程：</p>
 <ol>
-<li>requests</li>
+<li><strong>引擎（Engine）</strong>: Scrapy引擎是框架的核心，负责控制数据流在各组件之间的流动，触发事件。</li>
+<li><strong>调度器（Scheduler）</strong>: 负责接收引擎发送的请求，并将它们加入队列中。在引擎请求新请求时，调度器发送下一个要抓取的请求给引擎。</li>
+<li><strong>下载器（Downloader）</strong>: 负责从Internet上下载网页内容，并将其封装为响应对象，然后返回给引擎。</li>
+<li><strong>蜘蛛（Spiders）</strong>: 是用户编写用来解析响应并从中提取数据（提取的项目）或额外的跟进URL的类。</li>
+<li><strong>项目管道（Item Pipeline）</strong>: 负责处理由蜘蛛提取出来的项目，通常包括清洗、验证和存储等。</li>
+<li><strong>下载器中间件（Downloader Middlewares）</strong>: 位于引擎和下载器之间，处理引擎和下载器之间的请求和响应。</li>
+<li><strong>蜘蛛中间件（Spider Middlewares）</strong>: 位于引擎和蜘蛛之间，处理蜘蛛的输入（响应）和输出（项目和新的请求）。</li>
 </ol>
-<h3 id="3-交互响应中去提取我们需要的信息："><a href="#3-交互响应中去提取我们需要的信息：" class="headerlink" title="3. 交互响应中去提取我们需要的信息："></a>3. 交互响应中去提取我们需要的信息：</h3><ol>
-<li>正则  	2. bs4 	3.  json() 	 4. xpath（可平替bs4）</li>
-</ol>
-<h3 id="4-保存结果"><a href="#4-保存结果" class="headerlink" title="4. 保存结果"></a>4. 保存结果</h3><ol>
-<li>文件</li>
-</ol>
-<h3 id="5-代码示例"><a href="#5-代码示例" class="headerlink" title="5. 代码示例"></a>5. 代码示例</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://movie.douban.com/chart&#x27;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">     <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36&#x27;</span>,</span><br><span class="line"> &#125;</span><br><span class="line">res = requests.get(url, headers=headers)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;douban.html&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="keyword">as</span> f: <span class="comment"># encoding=&#x27;utf8&#x27; 避免乱码</span></span><br><span class="line">     f.write(res.text)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># 读取已保存的文件 douban.html</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;douban.html&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过etree读取改文件，建立对象page</span></span><br><span class="line">page = etree.HTML(data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例操作，一层一层往下探究对象</span></span><br><span class="line">test = page.xpath(<span class="string">&#x27;//div[@class=&quot;pl2&quot;]/a/text()&#x27;</span>) <span class="comment"># xpath(xpath语法字符串)</span></span><br><span class="line"><span class="built_in">print</span>(test)</span><br><span class="line"> li = []</span><br><span class="line"> <span class="keyword">for</span> i <span class="keyword">in</span> test:</span><br><span class="line">     movie_name = i.replace(<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27;\n&#x27;</span>, <span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">     <span class="keyword">if</span> <span class="keyword">not</span> movie_name:</span><br><span class="line">         <span class="keyword">continue</span></span><br><span class="line">     li.append(movie_name)</span><br><span class="line"></span><br><span class="line"> <span class="built_in">print</span>(li) <span class="comment"># 获取处理后的列表，分析拿到片名，但是因为还有其它值，不可能多个循环，所以实际应用不能这么操作</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 实际操作</span></span><br><span class="line">test2 = page.xpath(<span class="string">&#x27;//tr[@class=&quot;item&quot;]&#x27;</span>)</span><br><span class="line"></span><br><span class="line">movie = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> yao:</span><br><span class="line">    <span class="comment"># 电影的名字</span></span><br><span class="line">    movie_name = i.xpath(<span class="string">&#x27;./td/a[@class=&quot;nbg&quot;]/@title&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    my_key = md5(movie_name.encode()).hexdigest()</span><br><span class="line">    <span class="comment"># print(movie_name)</span></span><br><span class="line">    <span class="comment"># 电影的演员表</span></span><br><span class="line">    movie_actor = i.xpath(<span class="string">&#x27;./td/div/p[@class=&quot;pl&quot;]/text()&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># print(movie_actor)</span></span><br><span class="line">    <span class="comment"># 电影的评分</span></span><br><span class="line">    <span class="comment"># movie_score = i.xpath(&#x27;//span[@class=&quot;rating_nums&quot;]/text()&#x27;)</span></span><br><span class="line">    <span class="comment"># movie_score = i.xpath(&#x27;./td/div/div/span[@class=&quot;rating_nums&quot;]/text()&#x27;)[0]</span></span><br><span class="line">    movie_score = i.xpath(<span class="string">&#x27;./td//span[@class=&quot;rating_nums&quot;]/text()&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># print(movie_score)</span></span><br><span class="line">    movie.update(&#123;my_key: [&#123;<span class="string">&#x27;片名&#x27;</span>:movie_name,<span class="string">&#x27;演员&#x27;</span>: movie_actor, <span class="string">&#x27;评分&#x27;</span>: movie_score&#125;]&#125;)</span><br><span class="line"><span class="built_in">print</span>(movie)</span><br></pre></td></tr></table></figure></div>
 
-<h3 id="6-租客网代码示例"><a href="#6-租客网代码示例" class="headerlink" title="6. 租客网代码示例"></a>6. 租客网代码示例</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://cs.zu.anjuke.com/?from=HomePage_TopBar&#x27;</span></span><br><span class="line"></span><br><span class="line">res = requests.get(url)</span><br><span class="line"></span><br><span class="line">tree = etree.HTML(res.text)</span><br><span class="line"></span><br><span class="line">div = tree.xpath(<span class="string">&#x27;//div[@class=&quot;zu-itemmod clearfix&quot;]&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> div:</span><br><span class="line">    <span class="comment"># 标题</span></span><br><span class="line">    title = i.xpath(<span class="string">&#x27;./div/h3/a/b[@class=&quot;strongbox&quot;]/text()&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 价格</span></span><br><span class="line">    price = i.xpath(<span class="string">&#x27;./div//strong[@class=&quot;price&quot;]/text()&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 地址</span></span><br><span class="line">    address = i.xpath(<span class="string">&#x27;./div//address[@class=&quot;details-item tag&quot;]/text()&#x27;</span>)</span><br><span class="line">    <span class="comment"># [&#x27;\n                            &#x27;, &#x27;\xa0\xa0\n                            芙蓉&#x27;, &#x27;五一广场 &#x27;, &#x27;韭菜园路101号                        &#x27;]</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    1.使用join 把列表转换成字符串了</span></span><br><span class="line"><span class="string">    2.字符串使用replace进行替换</span></span><br><span class="line"><span class="string">    总结： 先拼接再替换</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    address = <span class="string">&#x27;&#x27;</span>.join(address).replace(<span class="string">&#x27;\n&#x27;</span>, <span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(address)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 保存进文件中</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;租房信息.txt&#x27;</span>,<span class="string">&#x27;a&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(<span class="string">&quot;标题：&quot;</span>+ title + <span class="string">&quot;\t&quot;</span> + <span class="string">&quot;价格：&quot;</span> + price + <span class="string">&quot;\t&quot;</span>+ <span class="string">&quot;地址：&quot;</span> + address + <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
 
+    </div>
+    <div class="notel-content">
+      <p><strong>Downloader Middleware（下载中间件）</strong></p>
+<p>这些钩子允许处理、修改和自定义发往下载器的请求以及从下载器返回的响应。下载中间件在Scrapy的请求&#x2F;响应处理流程中提供了几个关键的扩展点。例如，可以使用它来添加HTTP头部到请求中，或者处理从网站返回的HTTP响应。这些中间件的用途包括：</p>
+<ul>
+<li>在请求发送到下载器之前修改或过滤请求。</li>
+<li>在响应发送到爬虫之前处理或修改响应。</li>
+<li>直接生成新的请求，而不是处理当前的响应。</li>
+<li>选择性地放弃某些请求</li>
+</ul>
+<p><strong>Spider Middleware（爬虫中间件）</strong></p>
+<p>爬虫中间件则是处理传入响应、传出项目（item）和请求的钩子。这些中间件在Scrapy的数据处理流程中处于核心位置，允许用户对爬虫的输入和输出进行细致的控制。使用爬虫中间件，可以：</p>
+<ul>
+<li>在爬虫处理回调之后处理请求或项目。</li>
+<li>修改或过滤开始请求（由 <code>start_requests</code> 方法生成的请求）。</li>
+<li>处理由于响应内容引发的异常，根据响应内容调用错误回调（errback）。</li>
+</ul>
+
+    </div>
+  </div>
+
+<h3 id="数据流过程"><a href="#数据流过程" class="headerlink" title="数据流过程"></a>数据流过程</h3><ol>
+<li><strong>启动过程</strong>:<ul>
+<li>Scrapy开始运行，初始化了调度器、下载器以及蜘蛛。</li>
+</ul>
+</li>
+<li><strong>爬取过程</strong>:<ul>
+<li>引擎向蜘蛛请求第一个要爬取的URL。</li>
+<li>蜘蛛返回第一个要爬取的请求给引擎。</li>
+<li>引擎将请求发送到调度器，并请求下一个URL。</li>
+<li>调度器返回下一个要爬取的请求给引擎。</li>
+</ul>
+</li>
+<li><strong>下载过程</strong>:<ul>
+<li>引擎从调度器中取出请求，通过下载器中间件发送到下载器。</li>
+<li>下载器处理请求，返回响应给引擎。</li>
+<li>引擎收到响应后，通过蜘蛛中间件发送给相应的蜘蛛处理。</li>
+</ul>
+</li>
+<li><strong>解析和提取数据</strong>:<ul>
+<li>蜘蛛处理响应，提取数据并生成新的请求，返回给引擎。</li>
+<li>引擎将提取的数据发送到项目管道，并将新的请求发送到调度器。</li>
+<li>项目管道处理提取出的数据。</li>
+</ul>
+</li>
+<li><strong>循环处理</strong>:<ul>
+<li>以上过程在整个爬取过程中不断重复，直到调度器中没有更多的请求。</li>
+</ul>
+</li>
+<li><strong>关闭过程</strong>:<ul>
+<li>当所有预定的URL都被爬取，且调度器中没有更多的请求时，Scrapy关闭，爬取过程结束。</li>
+</ul>
+</li>
+</ol>
+<h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><h4 id="一-项目命令"><a href="#一-项目命令" class="headerlink" title="一.项目命令"></a>一.项目命令</h4><ol>
+<li><strong>创建项目</strong>:<ul>
+<li>使用命令 <code>scrapy startproject &lt;project_name&gt; [project_dir]</code> 创建新项目。其中 <code>&lt;project_name&gt;</code> 是必填项，表示项目名称；<code>[project_dir]</code> 是可选项，表示项目目录。</li>
+<li>例如：<code>scrapy startproject db</code> 会创建一个名为 ‘db’ 的Scrapy项目。</li>
+</ul>
+</li>
+<li><strong>创建第一个爬虫</strong>:<ul>
+<li>首先，需要进入到你的项目目录中，使用 <code>cd &lt;project_name&gt;</code> 命令。</li>
+<li>然后，使用 <code>scrapy genspider &lt;name&gt; &lt;domain&gt;</code> 创建一个新的爬虫。这里 <code>&lt;name&gt;</code> 是爬虫的名称，而 <code>&lt;domain&gt;</code> 是爬虫将要爬取的域名。</li>
+<li>例如：<code>scrapy genspider example example.com</code> 会在你的项目的 <code>spiders</code> 目录下创建一个名为 ‘example’ 的爬虫，它针对的是 ‘example.com’ 网站。</li>
+</ul>
+</li>
+<li><strong>运行项目</strong>:<ul>
+<li>使用命令 <code>scrapy crawl &lt;spider_name&gt;</code> 来运行你的爬虫。这里 <code>&lt;spider_name&gt;</code> 是你在创建爬虫时指定的名称。</li>
+<li>例如：<code>scrapy crawl example</code> 会运行名为 ‘example’ 的爬虫。</li>
+</ul>
+</li>
+<li><strong>设置配置文件</strong>:<ul>
+<li>在 <code>settings.py</code> 文件中，你可以配置各种参数，比如 <code>ROBOTSTXT_OBEY</code>（是否遵守网站的robots.txt规则）和 <code>DEFAULT_REQUEST_HEADERS</code>（默认的HTTP头部）。</li>
+</ul>
+</li>
+</ol>
+
+  <div class="note-large red">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-bug"></i><p>警告</p>
+
+    </div>
+    <div class="notel-content">
+      <ol>
+<li><p>由于可以设置多个爬虫，且通过<code>name</code>进行管理，因此<code>scrapy genspider &lt;name&gt; &lt;domain&gt;</code>创建新爬虫的时候的时候<code>name</code>是不能重复的，会报错</p>
+</li>
+<li><p>无数据可以查看是否限制了域名</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Test1Spider</span>(scrapy.Spider):</span><br><span class="line">    name = <span class="string">&quot;test1&quot;</span> <span class="comment">#爬虫名</span></span><br><span class="line">    allowed_domains = [<span class="string">&quot;movie.douban.com&quot;</span>] <span class="comment">#限制域名，可以添加多个域名（列表）</span></span><br><span class="line">    start_urls = [<span class="string">&quot;https://movie.douban.com/top250&quot;</span>] <span class="comment">#初始页面，第一个抓取的页面，放在产生请求的地方也就是在爬虫部件</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">parse</span>(<span class="params">self, response</span>): <span class="comment">#response就是上面start_urls的响应</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure></div></li>
+</ol>
+
+    </div>
+  </div>
+
+<h5 id="项目文件介绍"><a href="#项目文件介绍" class="headerlink" title="项目文件介绍"></a>项目文件介绍</h5><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/5d754191-0f99-42c0-e839-335887c57b00/public"
+                      width = "500"
+                >
+
+<h4 id="二-shell-交互式平台"><a href="#二-shell-交互式平台" class="headerlink" title="二.shell  交互式平台"></a>二.shell  交互式平台</h4><p>Scrapy shell 是一个强大的交互式环境，用于测试和调试 Scrapy 爬虫。它允许在不运行整个爬虫的情况下，与指定的 URL 进行交互，非常适合测试数据提取逻辑，例如 XPath 或 CSS 表达式。</p>
+<h5 id="使用-Scrapy-Shell"><a href="#使用-Scrapy-Shell" class="headerlink" title="使用 Scrapy Shell"></a>使用 Scrapy Shell</h5><ol>
+<li><p><strong>启动 Scrapy Shell</strong>： 使用 <code>scrapy shell</code> 命令和目标 URL 可以启动交互式 shell。例如，要与 <code>http://example.com</code> 进行交互，可以使用以下命令：</p>
+<p><code>scrapy shell &#39;http://example.com&#39;</code></p>
+<p>这会加载指定 URL 的响应并使其在 shell 中可用</p>
+</li>
+<li><p><strong>测试 XPath 或 CSS 选择器</strong>： </p>
+<p>在 shell 中，你可以使用响应对象 <code>response</code> 来测试 XPath 或 CSS 选择器。例如：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">response.xpath(<span class="string">&#x27;//title/text()&#x27;</span>).get()  <span class="comment"># 获取网页标题</span></span><br><span class="line">response.css(<span class="string">&#x27;h1::text&#x27;</span>).get()         <span class="comment"># 获取 &lt;h1&gt; 标签的文本</span></span><br></pre></td></tr></table></figure></div>
+
+<p>这些命令允许快速测试和调整选择器，而无需运行整个爬虫</p>
+</li>
+<li><p><strong>查看和分析响应内容</strong>： 可以使用 <code>response.body</code> 来查看网页的原始 HTML 源码，或者使用 <code>response.text</code> 查看解码后的内容。这对于调试和理解网页结构非常有帮助。</p>
+</li>
+<li><p><strong>模拟请求和表单提交</strong>： Scrapy shell 也允许模拟 POST 请求或表单提交，这在处理动态网站或需要交互的网站时非常有用。</p>
+</li>
+</ol>
+<h2 id="爬取豆瓣电影"><a href="#爬取豆瓣电影" class="headerlink" title="爬取豆瓣电影"></a>爬取豆瓣电影</h2><h3 id="项目目的和要求"><a href="#项目目的和要求" class="headerlink" title="项目目的和要求"></a>项目目的和要求</h3><p>目标是创建一个 Scrapy 爬虫来爬取豆瓣电影的前 250 个电影信息。这些信息包括：</p>
+<ol>
+<li>电影名称</li>
+<li>导演和演员信息</li>
+<li>电影评分</li>
+</ol>
+<p>需要将这些信息保存到本地，同时通过 Scrapy 的管道（Pipelines）机制进行持久化。</p>
+<h3 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a>项目搭建</h3><h4 id="创建-Spider-类"><a href="#创建-Spider-类" class="headerlink" title="创建 Spider 类"></a>创建 Spider 类</h4><p>首先需要创建一个名为 <code>Test1Spider</code> 的类，该类继承自 <code>scrapy.Spider</code>。在这个类中，定义以下属性和方法：</p>
+<ul>
+<li><code>name</code>: 爬虫的唯一标识名</li>
+<li><code>start_urls</code>: 包含开始爬取的 URL 列表</li>
+<li><code>parse(self, response)</code>: 是爬虫的核心方法，用于处理响应并返回提取的数据或新的请求。</li>
+</ul>
+<p>创建命令示例：</p>
+<p><code>scrapy genspider dbtest1 movie.douban.com</code></p>
+<p>这将在 <code>spiders</code> 目录下生成 <code>dbtest1.py</code> 文件。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/70cfa294-f9bd-4895-16f8-e46a7c5b6f00/public"
+                      width = "500"
+                >
+
+<h4 id="解析响应（Parsing-Response）"><a href="#解析响应（Parsing-Response）" class="headerlink" title="解析响应（Parsing Response）"></a>解析响应（Parsing Response）</h4><p> 在 <code>parse</code> 方法中，使用 <code>response</code> 对象进行页面内容的解析。可以利用 <code>xpath</code> 或 <code>css</code> 选择器提取所需的数据。</p>
+<ol>
+<li><p>首先分析该页面结构：</p>
+<p>假设要获取标题，导演和分数等信息，通过分析可以发现<code>class=&quot;info&quot;</code>即可包含所有得信息</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/5d53dadd-b77e-4703-3fd4-2d1d423b3c00/public"
+                      width = "500"
+                >
+
+<p>因此修改<code>response</code>直接使用<code>xpath</code>语法</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Dbtest1Spider</span>(scrapy.Spider):</span><br><span class="line">    name = <span class="string">&quot;dbtest1&quot;</span></span><br><span class="line">    allowed_domains = [<span class="string">&quot;movie.douban.com&quot;</span>]</span><br><span class="line">    start_urls = [<span class="string">&quot;https://movie.douban.com/top250&quot;</span>] <span class="comment">#修改为开始爬取的页面</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># parse 里面我们只需要关注 怎么解析就行， 因为scrapy会自动帮我们去请求指定的网址</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">parse</span>(<span class="params">self, response</span>):</span><br><span class="line">        <span class="comment"># 这个地方可以直接使用response 就可以了，response对象里面就已经绑定了lxml的一些方法</span></span><br><span class="line">        node_list = response.xpath(<span class="string">&#x27;//div[@class=&quot;info&quot;]&#x27;</span>)</span><br></pre></td></tr></table></figure></div></li>
+</ol>
+<h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><p>可以在同目录下添加调试文件<code>db_debug.py</code>，方便对爬虫文件进行断点调试</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> scrapy.cmdline <span class="keyword">import</span> execute</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">execute([<span class="string">&#x27;scrapy&#x27;</span>, <span class="string">&#x27;crawl&#x27;</span>, <span class="string">&#x27;dbtest1&#x27;</span>]) <span class="comment">#执行命令</span></span><br></pre></td></tr></table></figure></div>
+
+<p>通过调试可以发现传输了25行数据</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ddee2469-c831-46e8-fda1-e27ac9400d00/public"
+                      width = "500"
+                >
+
+<h4 id="清洗数据"><a href="#清洗数据" class="headerlink" title="清洗数据"></a>清洗数据</h4><p>对拿到的<code>info</code>标签进行解析，利用循环进行即可</p>
+<p>首先查看标题标签</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7c434622-9bb1-4125-9746-56a18b039a00/public"
+                      width = "500"
+                >
+
+<p>然后通过其结构利用xpath锁定其位置</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dbtest1Spider</span>(scrapy.Spider):</span><br><span class="line">    name = <span class="string">&quot;dbtest1&quot;</span></span><br><span class="line">    allowed_domains = [<span class="string">&quot;movie.douban.com&quot;</span>]</span><br><span class="line">    start_urls = [<span class="string">&quot;https://movie.douban.com/top250&quot;</span>] <span class="comment">#修改为开始爬取的页面</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># parse 里面我们只需要关注 怎么解析就行， 因为scrapy会自动帮我们去请求指定的网址</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">parse</span>(<span class="params">self, response</span>):</span><br><span class="line">        <span class="comment"># 这个地方可以直接使用response 就可以了，response对象里面就已经绑定了lxml的一些方法</span></span><br><span class="line">        node_list = response.xpath(<span class="string">&#x27;//div[@class=&quot;info&quot;]&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> node_list: <span class="comment">#万一没有数据那么就不执行避免报错</span></span><br><span class="line">            <span class="keyword">for</span> node <span class="keyword">in</span> node_list:</span><br><span class="line">                <span class="comment"># 标题</span></span><br><span class="line">                move_title = node.xpath(<span class="string">&#x27;./div/a/span/text()&#x27;</span>).get()</span><br><span class="line">                <span class="comment"># 工作人员</span></span><br><span class="line">                employee = node.xpath(<span class="string">&#x27;./div/p/text()&#x27;</span>).get()</span><br><span class="line">                <span class="comment"># 评分</span></span><br><span class="line">                score = node.xpath(<span class="string">&#x27;./span[@class=&quot;rating_num&quot;]/text()&#x27;</span>).get()</span><br></pre></td></tr></table></figure></div>
+
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <p>在XPath中，<code>./</code>和<code>//</code>是两种不同的路径选择符，它们用于指定当前节点的相对路径。理解它们之间的差异对于正确地从HTML文档中提取数据是很重要的。</p>
+<ol>
+<li><strong><code>./</code> - 当前节点下的直接子节点</strong>:<ul>
+<li><code>./</code>用于选择当前节点的直接子节点。</li>
+<li>当使用<code>./</code>时，它会限制搜索范围到直接下级的元素。</li>
+<li>在例子中，<code>./div</code>意味着选择当前节点（在这里是每个<code>div[@class=&quot;info&quot;]</code>）的直接子<code>div</code>元素。</li>
+</ul>
+</li>
+<li><strong><code>//</code> - 文档中任何位置的节点</strong>:<ul>
+<li><code>//</code>用于选择文档中任何位置的节点，而不考虑它们在文档中的位置。</li>
+<li>使用<code>//</code>时，它会从整个文档中搜索符合条件的节点，而不仅限于当前节点的子节点。</li>
+<li>在例子中，如果您使用<code>//div</code>，它将会查找整个文档中所有的<code>div</code>元素，而不仅仅是<code>div[@class=&quot;info&quot;]</code>下的<code>div</code>元素。</li>
+</ul>
+</li>
+</ol>
+<p>使用了<code>./div</code>，这意味着想要选择每个<code>div[@class=&quot;info&quot;]</code>元素的直接子<code>div</code>元素。这是一种更精确的选择方式，确保只选取特定父元素下的子元素，避免从整个文档中获取不相关的<code>div</code>。</p>
+
+    </div>
+  </div>
+
+<h4 id="定义-Item"><a href="#定义-Item" class="headerlink" title="定义 Item"></a>定义 Item</h4><ol>
+<li>Scrapy使用Item类来定义数据结构。当从非结构化数据源（如网页）提取数据时，使用Item对象可以确保数据结构化和一致性。</li>
+<li>Item对象类似于Python字典，但提供了额外的结构化和错误检测功能。这在大型项目中尤其重要，因为它减少了字段名错误和数据不一致的风险。</li>
+<li>在Scrapy项目中，通常需要在<code>items.py</code>文件中定义Item类，然后在爬虫代码中导入和使用这些类。</li>
+</ol>
+<p>Scrapy 使用 <code>Item</code> 类来定义结构化数据字段，它类似于 Python 的字典但提供额外的保护和便利。在 <code>items.py</code> 文件中定义你的数据结构。</p>
+<p>示例：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DoubanMovieItem</span>(scrapy.Item):</span><br><span class="line">    <span class="comment"># define the fields for your item here</span></span><br><span class="line">    name = scrapy.Field()</span><br><span class="line">    director = scrapy.Field()</span><br><span class="line">    rating = scrapy.Field()</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="追踪链接（Following-Links）"><a href="#追踪链接（Following-Links）" class="headerlink" title="追踪链接（Following Links）"></a>追踪链接（Following Links）</h4><ol>
+<li>为了实现多页爬取，需要在爬虫中实现链接追踪。这通常涉及从当前页面提取下一页的链接或根据一定的规则构建新的URL。</li>
+<li>可以在爬虫中使用类变量来追踪当前页码，并在解析函数中构造下一页的URL。如果没有更多的页面可以爬取，爬虫将停止。</li>
+</ol>
+<p>要爬取所有250部电影的信息，需要从初始页面提取到其他页面的链接，并对其进行跟踪。这可以通过构造新的 <code>scrapy.Request</code> 对象并从 <code>parse</code> 方法返回实现</p>
+<h4 id="定义和使用管道（Pipelines）"><a href="#定义和使用管道（Pipelines）" class="headerlink" title="定义和使用管道（Pipelines）"></a>定义和使用管道（Pipelines）</h4><ol>
+<li>Item管道是Scrapy中用于处理爬虫返回的Item对象的组件。它们可以执行多种操作，如清理HTML数据、验证数据完整性、检查重复项和进行数据持久化。</li>
+<li>创建管道组件通常涉及编写一个Python类，并在该类中实现特定的方法来处理Item对象。</li>
+<li>为了激活特定的管道组件，需要在Scrapy的<code>settings.py</code>文件中的<code>ITEM_PIPELINES</code>设置中添加并配置它们。</li>
+</ol>
+<p>管道用于处理 <code>Spider</code> 从网页中提取的 Item。常见的用途包括清洗数据、去重、存储数据到文件或数据库中。</p>
+<ul>
+<li>在 <code>pipelines.py</code> 中定义一个管道类，用于处理 <code>Item</code> 对象。</li>
+<li>在 <code>settings.py</code> 中启用管道（<code>ITEM_PIPELINES</code> 设置）。</li>
+</ul>
+<h4 id="存储数据"><a href="#存储数据" class="headerlink" title="存储数据"></a>存储数据</h4><ol>
+<li>可以编写管道类来实现特定的数据处理需求，例如将爬取的数据保存到文件中。</li>
+<li>管道的执行顺序是根据在<code>settings.py</code>中分配给它们的整数值确定的。</li>
+</ol>
+<p>修改 <code>pipelines.py</code> 文件以添加数据存储逻辑。例如，将数据写入到本地的 <code>film.txt</code> 文件中。</p>
+<h4 id="运行爬虫"><a href="#运行爬虫" class="headerlink" title="运行爬虫"></a>运行爬虫</h4><p>进入项目根目录，运行以下命令以启动爬虫：</p>
+<p><code>scrapy crawl db</code></p>
+
+  <div class="note-large orange">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-exclamation"></i><p>注意</p>
+
+    </div>
+    <div class="notel-content">
+      <ol>
+<li><p>Robots.txt 协议： 默认情况下，Scrapy 会遵守 Robots.txt 协议。如果需要爬取被此协议禁止的内容，需在 <code>settings.py</code> 中将 <code>ROBOTSTXT_OBEY</code> 设置为 <code>False</code>。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b8f56e7a-3972-4b36-18e6-e6e57ee27600/public"
+                      width = "500"
+                >
+</li>
+<li><p>表头设置（伪装）： 有些网站会根据请求的 User-Agent 进行内容过滤。如果需要，可在 <code>settings.py</code> 中设置自定义的表头。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/94269f46-9430-4c2e-c2f9-9f553db3a100/public"
+                      width = "500"
+                >
+</li>
+<li><p>管道激活<strong>： 需要在 <code>settings.py</code> 中激活管道，以便将提取的数据传递到 <code>pipelines.py</code>。</strong></p>
+</li>
+<li><p>Item 字段定义： 在 <code>items.py</code> 中定义字段，这些字段决定了可以从爬取的页面中提取哪些数据。</p>
+</li>
+</ol>
+
+    </div>
+  </div>
 ]]></content>
       <categories>
         <category>数据抓取</category>
@@ -3488,11 +3618,8 @@ chrome.find_element_by_css_selector(&quot;submit button&quot;).click()
         <tag>基础</tag>
         <tag>理论</tag>
         <tag>爬虫</tag>
-        <tag>Requests</tag>
-        <tag>页面解析</tag>
-        <tag>BS4</tag>
-        <tag>beautifulsoup4</tag>
-        <tag>Xpath</tag>
+        <tag>Scrapy</tag>
+        <tag>网页抓取</tag>
       </tags>
   </entry>
 </search>
