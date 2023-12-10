@@ -68,11 +68,11 @@
     
     <category term="爬虫" scheme="https://www.yiuhangblog.com/tags/%E7%88%AC%E8%99%AB/"/>
     
+    <category term="自动化工具" scheme="https://www.yiuhangblog.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+    
     <category term="算法" scheme="https://www.yiuhangblog.com/tags/%E7%AE%97%E6%B3%95/"/>
     
     <category term="图像识别" scheme="https://www.yiuhangblog.com/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/"/>
-    
-    <category term="自动化工具" scheme="https://www.yiuhangblog.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
     <category term="滑块验证" scheme="https://www.yiuhangblog.com/tags/%E6%BB%91%E5%9D%97%E9%AA%8C%E8%AF%81/"/>
     
@@ -105,9 +105,9 @@
     
     <category term="爬虫" scheme="https://www.yiuhangblog.com/tags/%E7%88%AC%E8%99%AB/"/>
     
-    <category term="自动化工具" scheme="https://www.yiuhangblog.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
-    
     <category term="Selenium" scheme="https://www.yiuhangblog.com/tags/Selenium/"/>
+    
+    <category term="自动化工具" scheme="https://www.yiuhangblog.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -291,8 +291,6 @@
     
     <category term="理论" scheme="https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/"/>
     
-    <category term="嵌套" scheme="https://www.yiuhangblog.com/tags/%E5%B5%8C%E5%A5%97/"/>
-    
     <category term="基本语法" scheme="https://www.yiuhangblog.com/tags/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
     
     <category term="内置函数" scheme="https://www.yiuhangblog.com/tags/%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/"/>
@@ -302,6 +300,8 @@
     <category term="实参" scheme="https://www.yiuhangblog.com/tags/%E5%AE%9E%E5%8F%82/"/>
     
     <category term="说明文档" scheme="https://www.yiuhangblog.com/tags/%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3/"/>
+    
+    <category term="嵌套" scheme="https://www.yiuhangblog.com/tags/%E5%B5%8C%E5%A5%97/"/>
     
     <category term="作用域" scheme="https://www.yiuhangblog.com/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
     
@@ -334,13 +334,13 @@
     
     <category term="理论" scheme="https://www.yiuhangblog.com/tags/%E7%90%86%E8%AE%BA/"/>
     
+    <category term="嵌套" scheme="https://www.yiuhangblog.com/tags/%E5%B5%8C%E5%A5%97/"/>
+    
     <category term="控制流程" scheme="https://www.yiuhangblog.com/tags/%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B/"/>
     
     <category term="条件判断" scheme="https://www.yiuhangblog.com/tags/%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/"/>
     
     <category term="循环语句" scheme="https://www.yiuhangblog.com/tags/%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5/"/>
-    
-    <category term="嵌套" scheme="https://www.yiuhangblog.com/tags/%E5%B5%8C%E5%A5%97/"/>
     
     <category term="三目运算" scheme="https://www.yiuhangblog.com/tags/%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97/"/>
     
