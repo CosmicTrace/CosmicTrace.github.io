@@ -45,7 +45,7 @@
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2f87abc1-95ca-4c9a-381d-215cc6863100/public">
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/bc76cc19-8c16-4849-e146-10e8e01f6600/public">
 <meta property="article:published_time" content="2021-10-28T05:12:54.000Z">
-<meta property="article:modified_time" content="2023-12-10T16:05:32.867Z">
+<meta property="article:modified_time" content="2023-12-10T19:11:19.600Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="理论">
@@ -79,6 +79,162 @@
         
         数据工具箱
     </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        数据工具箱
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
     
 <link rel="stylesheet" href="/css/style.css">
 
@@ -95,9 +251,6 @@
     
 <link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
 
-    
-<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
-
     <!--- Font Part-->
     
     
@@ -108,7 +261,7 @@
     
     <script id="hexo-configurations">
     window.config = {"hostname":"www.yiuhangblog.com","root":"/","language":["zh-CN","en","zh-TW","default"],"path":"search.xml"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left"},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":6,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"open_graph":true,"google_analytics":{"enable":true,"id":"G-MQ43G0NKCT"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e63fc400-dd0e-4395-bd1b-9ee1ac3bfb00/public","dark":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a34140d6-7960-45dd-b8b5-c3ddd14d1f00/public"},"title":"数据工具箱","subtitle":{"text":["全栈也不是不行"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://github.com/CosmicTrace","instagram":null,"zhihu":null,"twitter":null,"email":"kenchansk0@gmail.com"},"qrs":null}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.5.6","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"娱乐":{"icon":"fa-solid fa-gamepad","submenus":{"王者荣耀":"/hok","守望先锋":"/ow","使命召唤":"/cod"}},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/EvanNotFound/hexo-theme-redefine"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"谦逊","links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":8}},"footerStart":"2018/7/17 11:45:14"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left"},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":6,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":true,"id":"G-MQ43G0NKCT"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e63fc400-dd0e-4395-bd1b-9ee1ac3bfb00/public","dark":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a34140d6-7960-45dd-b8b5-c3ddd14d1f00/public"},"title":"数据工具箱","subtitle":{"text":["全栈也不是不行"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://github.com/CosmicTrace","instagram":null,"zhihu":null,"twitter":null,"email":"kenchansk0@gmail.com"},"qrs":null}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"娱乐":{"icon":"fa-solid fa-gamepad","submenus":{"王者荣耀":"/hok","守望先锋":"/ow","使命召唤":"/cod"}},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/EvanNotFound/hexo-theme-redefine"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"谦逊","links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":8}},"footerStart":"2018/7/17 11:45:14"};
     window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     window.data = {"masonry":false};
   </script>
@@ -146,9 +299,9 @@
 
     
         <span class="pjax-progress-bar"></span>
-        <span class="swup-progress-icon">
-            <i class="fa-solid fa-circle-notch fa-spin"></i>
-        </span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
     
 </div>
 
@@ -162,7 +315,7 @@
 
         <div class="main-content-header">
             <header class="navbar-container">
-    
+
     <div class="navbar-content">
         <div class="left">
             
@@ -183,130 +336,141 @@
                 <ul class="navbar-list">
                     
                         
+                            
+
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="" 
-                                    href="/"  >
-                                    
-                                        
-                                            <i class="fa-regular fa-house"></i>
-                                        
-                                        首页
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
                                     
                                 </a>
+
                                 <!-- Submenu -->
                                 
                             </li>
                     
                         
+                            
+
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="" 
-                                    href="/tags/"  >
-                                    
-                                        
-                                            <i class="fa-solid fa-tags"></i>
-                                        
-                                        标签
+                                <a class=""
+                                   href="/tags/"
+                                        >
+                                    <i class="fa-solid fa-tags fa-fw"></i>
+                                    标签
                                     
                                 </a>
+
                                 <!-- Submenu -->
                                 
                             </li>
                     
                         
+                            
+
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="" 
-                                    href="/categories/"  >
-                                    
-                                        
-                                            <i class="fa-solid fa-folder"></i>
-                                        
-                                        分类
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-solid fa-folder fa-fw"></i>
+                                    分类
                                     
                                 </a>
+
                                 <!-- Submenu -->
                                 
                             </li>
                     
                         
+                            
+
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="" 
-                                    href="/archives"  >
-                                    
-                                        
-                                            <i class="fa-regular fa-archive"></i>
-                                        
-                                        归档
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
                                     
                                 </a>
+
                                 <!-- Submenu -->
                                 
                             </li>
                     
                         
+                            
+
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="has-dropdown" 
-                                    href="#" onClick="return false;">
-                                    
-                                        
-                                            <i class="fa-solid fa-gamepad"></i>
-                                        
-                                        娱乐&nbsp;<i class="fa-solid fa-chevron-down"></i>
-                                    
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-solid fa-gamepad fa-fw"></i>
+                                    娱乐
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
                                 </a>
+
                                 <!-- Submenu -->
                                 
                                     <ul class="sub-menu">
-                                    
-                                        <li>
-                                        <a href="/hok">王者荣耀
-                                        </a>
-                                        </li>
-                                    
-                                        <li>
-                                        <a href="/ow">守望先锋
-                                        </a>
-                                        </li>
-                                    
-                                        <li>
-                                        <a href="/cod">使命召唤
-                                        </a>
-                                        </li>
-                                    
+                                        
+                                            <li>
+                                                <a href="/hok">
+                                                    王者荣耀
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/ow">
+                                                    守望先锋
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/cod">
+                                                    使命召唤
+                                                </a>
+                                            </li>
+                                        
                                     </ul>
                                 
                             </li>
                     
                         
+                            
+
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="has-dropdown" 
-                                    href="#" onClick="return false;">
-                                    
-                                        
-                                            <i class="fa-regular fa-user"></i>
-                                        
-                                        关于&nbsp;<i class="fa-solid fa-chevron-down"></i>
-                                    
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
                                 </a>
+
                                 <!-- Submenu -->
                                 
                                     <ul class="sub-menu">
-                                    
-                                        <li>
-                                        <a href="/about">ME
-                                        </a>
-                                        </li>
-                                    
-                                        <li>
-                                        <a target="_blank" rel="noopener" href="https://github.com/EvanNotFound/hexo-theme-redefine">GITHUB
-                                        </a>
-                                        </li>
-                                    
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/EvanNotFound/hexo-theme-redefine">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
                                     </ul>
                                 
                             </li>
@@ -321,7 +485,8 @@
             <!-- Mobile -->
             <div class="mobile">
                 
-                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
                 
                 <div class="icon-item navbar-bar">
                     <div class="navbar-bar-middle"></div>
@@ -331,125 +496,178 @@
     </div>
 
     <!-- Mobile drawer -->
-    <div class="navbar-drawer w-full absolute top-0 left-0 bg-background-color">
-        <ul class="drawer-navbar-list flex flex-col justify-start items-center">
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
             
                 
-                    <li class="drawer-navbar-item text-base my-1.5 flex justify-center items-center">
-                        <a class="rounded-3xl py-1.5 px-5 hover:border hover:!text-primary active:!text-primary group " 
-                        href="/"  >
-                             
-                                
-                                    <i class="fa-regular fa-house"></i>
-                                
-                                首页
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
                     
-            
-                
-                    <li class="drawer-navbar-item text-base my-1.5 flex justify-center items-center">
-                        <a class="rounded-3xl py-1.5 px-5 hover:border hover:!text-primary active:!text-primary group " 
-                        href="/tags/"  >
-                             
-                                
-                                    <i class="fa-solid fa-tags"></i>
-                                
-                                标签
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
-                
-                    <li class="drawer-navbar-item text-base my-1.5 flex justify-center items-center">
-                        <a class="rounded-3xl py-1.5 px-5 hover:border hover:!text-primary active:!text-primary group " 
-                        href="/categories/"  >
-                             
-                                
-                                    <i class="fa-solid fa-folder"></i>
-                                
-                                分类
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
-                
-                    <li class="drawer-navbar-item text-base my-1.5 flex justify-center items-center">
-                        <a class="rounded-3xl py-1.5 px-5 hover:border hover:!text-primary active:!text-primary group " 
-                        href="/archives"  >
-                             
-                                
-                                    <i class="fa-regular fa-archive"></i>
-                                
-                                归档
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
-                
-                    <li class="drawer-navbar-item text-base my-1.5 flex justify-center items-center">
-                        <a class="rounded-3xl py-1.5 px-5 hover:border hover:!text-primary active:!text-primary group has-dropdown" 
-                        href="#" onClick="return false;">
-                            
-                                
-                                    <i class="fa-solid fa-gamepad"></i>
-                                
-                                娱乐&nbsp;<i class="group-hover:rotate-180 transition-transform fa-solid fa-chevron-down"></i>
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                              
-                        
-                            <li class="drawer-navbar-item text-base flex justify-center items-center hover:underline active:underline hover:underline-offset-1 rounded-3xl">
-                                <a class="py-0.5" href="/hok">王者荣耀</a>
-                            </li>
-                        
-                            <li class="drawer-navbar-item text-base flex justify-center items-center hover:underline active:underline hover:underline-offset-1 rounded-3xl">
-                                <a class="py-0.5" href="/ow">守望先锋</a>
-                            </li>
-                        
-                            <li class="drawer-navbar-item text-base flex justify-center items-center hover:underline active:underline hover:underline-offset-1 rounded-3xl">
-                                <a class="py-0.5" href="/cod">使命召唤</a>
-                            </li>
-                        
-                    
-            
-                
-                    <li class="drawer-navbar-item text-base my-1.5 flex justify-center items-center">
-                        <a class="rounded-3xl py-1.5 px-5 hover:border hover:!text-primary active:!text-primary group has-dropdown" 
-                        href="#" onClick="return false;">
-                            
-                                
-                                    <i class="fa-regular fa-user"></i>
-                                
-                                关于&nbsp;<i class="group-hover:rotate-180 transition-transform fa-solid fa-chevron-down"></i>
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                              
-                        
-                            <li class="drawer-navbar-item text-base flex justify-center items-center hover:underline active:underline hover:underline-offset-1 rounded-3xl">
-                                <a class="py-0.5" href="/about">ME</a>
-                            </li>
-                        
-                            <li class="drawer-navbar-item text-base flex justify-center items-center hover:underline active:underline hover:underline-offset-1 rounded-3xl">
-                                <a class="py-0.5" target="_blank" rel="noopener" href="https://github.com/EvanNotFound/hexo-theme-redefine">GITHUB</a>
-                            </li>
-                        
-                    
-            
 
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-solid fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-solid fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-娱乐"
+                        >
+                            <span>
+                                娱乐
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-娱乐">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/hok">王者荣耀</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/ow">守望先锋</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/cod">使命召唤</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/EvanNotFound/hexo-theme-redefine">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
         </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">45</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">11</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
     </div>
 
     <div class="window-mask"></div>
@@ -466,7 +684,7 @@
             <div class="main-content">
 
                 
-                    <div class="post-page-container">
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
     <div class="article-content-container">
 
         <div class="article-title relative w-full">
@@ -502,8 +720,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-12-11 00:05:32</span>
-            <span class="mobile">2023-12-11 00:05:32</span>
+            <span class="desktop">2023-12-11 03:11:19</span>
+            <span class="mobile">2023-12-11 03:11:19</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -557,12 +775,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>18.3k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>18.5k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>72 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>73 分钟</span>
         </span>
     
     
@@ -1546,9 +1764,12 @@
 <h6 id="5-请求电影详情页"><a href="#5-请求电影详情页" class="headerlink" title="5. 请求电影详情页"></a>5. 请求电影详情页</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">detail_url = node.xpath(<span class="string">&#x27;./div/a/@href&#x27;</span>).get()</span><br><span class="line"><span class="keyword">yield</span> scrapy.Request(detail_url, callback=self.get_detail, meta=&#123;<span class="string">&quot;info&quot;</span>:item&#125;)</span><br></pre></td></tr></table></figure></div>
 
 <ul>
-<li>提取电影详情页的 URL。</li>
-<li>使用 <code>scrapy.Request</code> 发送对详情页的请求。在请求中指定 <code>callback</code> 为 <code>get_detail</code> 方法，用于处理详情页的响应。</li>
-<li>通过 <code>meta</code> 参数传递包含电影基本信息的 <code>item</code>，以便在处理详情页时使用。</li>
+<li><code>detail_url</code> 是一个变量，用于存储从当前节点（<code>node</code>）提取的详情页 URL。</li>
+<li><code>node.xpath(&#39;./div/a/@href&#39;).get()</code>：使用 XPath 表达式在当前节点（代表一个电影条目）中查找 <code>&lt;div&gt;</code> 子元素下的 <code>&lt;a&gt;</code> 元素的 <code>href</code> 属性。这个 <code>href</code> 属性通常包含了指向电影详情页的链接。</li>
+<li><code>.get()</code> 用于获取 XPath 查询的第一个匹配结果。如果查询没有结果，它会返回 <code>None</code>。</li>
+<li><code>yield scrapy.Request(detail_url, ...)</code>：使用 Scrapy 的 <code>Request</code> 对象来发起对详情页的 HTTP 请求。<code>yield</code> 关键字在这里使得请求可以被 Scrapy 的调度器处理。</li>
+<li><code>callback=self.get_detail</code>：指定当请求得到响应后，响应应该被传递给 <code>get_detail</code> 方法进行处理。<code>get_detail</code> 是定义在同一个爬虫中的另一个方法，用于解析和处理详情页的内容。</li>
+<li><code>meta=&#123;&quot;info&quot;:item&#125;</code>：<code>meta</code> 是一个字典，用于在不同请求之间传递额外的数据。在这里，它被用来传递从列表页提取的电影信息（存储在 <code>item</code> 中）到详情页的处理方法。这样做可以保持从列表页到详情页的数据一致性和关联。</li>
 </ul>
 <h6 id="6-分页处理"><a href="#6-分页处理" class="headerlink" title="6. 分页处理"></a>6. 分页处理</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.page_num += <span class="number">1</span></span><br><span class="line">page_url = <span class="string">&#x27;https://movie.douban.com/top250?start=&#123;&#125;&amp;filter=&#x27;</span>.<span class="built_in">format</span>(self.page_num*<span class="number">25</span>)</span><br><span class="line"><span class="keyword">yield</span> scrapy.Request(page_url, callback=self.parse)</span><br></pre></td></tr></table></figure></div>
 
@@ -1571,20 +1792,20 @@
 <li>这是一个在 Scrapy 爬虫中定义的 <code>get_detail</code> 方法，它是一个回调函数，用于处理电影详情页的响应。</li>
 <li><code>response</code> 参数是 Scrapy 传递给这个方法的响应对象，包含了详情页的数据。</li>
 </ul>
-<h6 id="初始化和更新-Item"><a href="#初始化和更新-Item" class="headerlink" title="初始化和更新 Item"></a>初始化和更新 Item</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">item = DbItem()</span><br><span class="line">info = response.meta.get(<span class="string">&quot;info&quot;</span>)</span><br><span class="line">item.update(info)</span><br></pre></td></tr></table></figure></div>
+<h6 id="1-初始化和更新-Item"><a href="#1-初始化和更新-Item" class="headerlink" title="1. 初始化和更新 Item"></a>1. 初始化和更新 Item</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">item = DbItem()</span><br><span class="line">info = response.meta.get(<span class="string">&quot;info&quot;</span>)</span><br><span class="line">item.update(info)</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li><code>item = DbItem()</code>：创建一个 <code>DbItem</code> 对象。<code>DbItem</code> 通常是一个在 Scrapy 项目中定义的 Item 类，用于结构化存储提取的数据。</li>
 <li><code>info = response.meta.get(&quot;info&quot;)</code>：从响应的 <code>meta</code> 属性中获取传递过来的电影基本信息。这些信息之前在处理列表页时已经被提取并通过 <code>meta</code> 参数传递到这个方法。</li>
 <li><code>item.update(info)</code>：将获取到的电影基本信息更新到 <code>item</code> 对象中。</li>
 </ul>
-<h6 id="提取电影描述信息"><a href="#提取电影描述信息" class="headerlink" title="提取电影描述信息"></a>提取电影描述信息</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">description_list = response.xpath(<span class="string">&#x27;//div[@id=&quot;link-report&quot;]/span[@class=&quot;all hidden&quot;]/text()|//div[@id=&quot;link-report&quot;]/span[@property=&quot;v:summary&quot;]/text()&#x27;</span>).getall()</span><br><span class="line">description = <span class="string">&#x27;&#x27;</span>.join([des.strip() <span class="keyword">for</span> des <span class="keyword">in</span> description_list])</span><br></pre></td></tr></table></figure></div>
+<h6 id="2-提取电影描述信息"><a href="#2-提取电影描述信息" class="headerlink" title="2. 提取电影描述信息"></a>2. 提取电影描述信息</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">description_list = response.xpath(<span class="string">&#x27;//div[@id=&quot;link-report&quot;]/span[@class=&quot;all hidden&quot;]/text()|//div[@id=&quot;link-report&quot;]/span[@property=&quot;v:summary&quot;]/text()&#x27;</span>).getall()</span><br><span class="line">description = <span class="string">&#x27;&#x27;</span>.join([des.strip() <span class="keyword">for</span> des <span class="keyword">in</span> description_list])</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>使用 XPath 查询从详情页提取电影的详细描述。这里考虑了两种可能的 HTML 结构：完整描述（<code>class=&quot;all hidden&quot;</code>）和部分描述（<code>property=&quot;v:summary&quot;</code>），并使用联合操作符 <code>|</code> 结合两种可能的查询。</li>
 <li>将提取的描述列表 (<code>description_list</code>) 合并为一个字符串，其中使用 <code>.strip()</code> 方法移除每段描述前后的空白字符。</li>
 </ul>
-<h6 id="设置描述并返回-Item"><a href="#设置描述并返回-Item" class="headerlink" title="设置描述并返回 Item"></a>设置描述并返回 Item</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">item[<span class="string">&quot;description&quot;</span>] = description</span><br><span class="line"><span class="keyword">yield</span> item</span><br></pre></td></tr></table></figure></div>
+<h6 id="3-设置描述并返回-Item"><a href="#3-设置描述并返回-Item" class="headerlink" title="3. 设置描述并返回 Item"></a>3. 设置描述并返回 Item</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">item[<span class="string">&quot;description&quot;</span>] = description</span><br><span class="line"><span class="keyword">yield</span> item</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>将合并后的描述设置到 <code>item</code> 的 <code>&quot;description&quot;</code> 字段。</li>
@@ -1653,7 +1874,7 @@
         </div>
 
         
-            <div class="post-copyright-info my-8 px-2 sm:px-6 md:px-8">
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
         <li><strong>标题:</strong> Scrapy</li>
@@ -1663,7 +1884,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-12-11 00:05:32
+                    :</strong> 2023-12-11 03:11:19
             </li>
         
         <li>
@@ -1686,25 +1907,25 @@
         
 
         
-            <ul class="post-tags-box">
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
                 
-                    <li class="tag-item">
+                    <li class="tag-item mx-0.5">
                         <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
                     </li>
                 
-                    <li class="tag-item">
+                    <li class="tag-item mx-0.5">
                         <a href="/tags/%E7%90%86%E8%AE%BA/">#理论</a>&nbsp;
                     </li>
                 
-                    <li class="tag-item">
+                    <li class="tag-item mx-0.5">
                         <a href="/tags/%E7%88%AC%E8%99%AB/">#爬虫</a>&nbsp;
                     </li>
                 
-                    <li class="tag-item">
+                    <li class="tag-item mx-0.5">
                         <a href="/tags/Scrapy/">#Scrapy</a>&nbsp;
                     </li>
                 
-                    <li class="tag-item">
+                    <li class="tag-item mx-0.5">
                         <a href="/tags/%E7%BD%91%E9%A1%B5%E6%8A%93%E5%8F%96/">#网页抓取</a>&nbsp;
                     </li>
                 
@@ -1738,10 +1959,10 @@
 
         
             <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
-                <div class="comments-container pjax">
-    <div id="comment-anchor"></div>
-    <div class="comment-area-title">
-        <i class="fa-solid fa-comments"></i>&nbsp;评论
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
     </div>
     
 
@@ -1757,7 +1978,10 @@
           serverURL: 'https://comment.yiuhangblog.com',
           lang: 'zh-CN',
           dark: 'body[class~="dark-mode"]',
-          requiredMeta: ['nick', 'mail']
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
         });
       }
 
@@ -1784,7 +2008,7 @@
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
         <div class="page-title">Scrapy</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-text">运行流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrapy%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-text">Scrapy框架的体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%87%E7%A8%8B"><span class="nav-text">数据流过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="nav-text">简单使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%91%BD%E4%BB%A4"><span class="nav-text">项目命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="nav-text">项目文件介绍</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1"><span class="nav-text">爬取豆瓣电影</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E7%9A%84%E5%92%8C%E8%A6%81%E6%B1%82"><span class="nav-text">项目目的和要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA"><span class="nav-text">项目搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-Spider-%E7%B1%BB"><span class="nav-text">创建 Spider 类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%93%8D%E5%BA%94%EF%BC%88Parsing-Response%EF%BC%89"><span class="nav-text">解析响应（Parsing Response）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E5%89%8D%E7%BD%AE"><span class="nav-text">调试前置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%85%E6%B4%97%E6%95%B0%E6%8D%AE"><span class="nav-text">清洗数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E8%AF%951"><span class="nav-text">调试1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E8%AF%952"><span class="nav-text">调试2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E8%AF%953"><span class="nav-text">调试3</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-Item"><span class="nav-text">定义 Item</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%BD%E8%B8%AA%E9%93%BE%E6%8E%A5%EF%BC%88Following-Links%EF%BC%89"><span class="nav-text">追踪链接（Following Links）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AE%A1%E9%81%93%EF%BC%88Pipelines%EF%BC%89"><span class="nav-text">定义和使用管道（Pipelines）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE"><span class="nav-text">存储数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E7%88%AC%E8%99%AB"><span class="nav-text">运行爬虫</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-shell"><span class="nav-text">Scrapy shell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E6%96%B9%E6%B3%95"><span class="nav-text">快捷方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrapy-%E5%AF%B9%E8%B1%A1"><span class="nav-text">Scrapy 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-Selector-%E7%B1%BB"><span class="nav-text">Scrapy Selector 类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Selector-%E7%B1%BB%E7%9A%84%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95"><span class="nav-text">Selector 类的基础用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%9A%E8%BF%87%E6%96%87%E6%9C%AC%E6%9E%84%E9%80%A0-Selector-%E5%AE%9E%E4%BE%8B"><span class="nav-text">1. 通过文本构造 Selector 实例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E7%94%B5%E5%BD%B1%E5%90%8D%E7%A7%B0"><span class="nav-text">提取电影名称</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E6%89%80%E6%9C%89%E5%8C%B9%E9%85%8D%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%88%97%E8%A1%A8"><span class="nav-text">提取所有匹配元素的文本列表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-extract-first-%E6%8F%90%E5%8F%96%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8C%B9%E9%85%8D%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC"><span class="nav-text">使用 extract_first() 提取第一个匹配元素的文本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-extract-%E6%8F%90%E5%8F%96%E6%89%80%E6%9C%89%E5%8C%B9%E9%85%8D%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%88%97%E8%A1%A8"><span class="nav-text">使用 extract() 提取所有匹配元素的文本列表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E7%89%B9%E5%AE%9A%E5%AD%90%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC"><span class="nav-text">提取特定子元素的文本</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%80%9A%E8%BF%87-response-%E6%9E%84%E9%80%A0-Selector-%E5%AE%9E%E4%BE%8B"><span class="nav-text">2. 通过 response 构造 Selector 实例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Selector-%E5%AE%9E%E4%BE%8B%E5%92%8C-response-%E7%9A%84-selector-%E5%B1%9E%E6%80%A7%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-text">使用 Selector 实例和 response 的 selector 属性提取数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E5%90%88-CSS-%E5%92%8C-XPath-%E9%80%89%E6%8B%A9%E5%99%A8%E5%8F%8A%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-text">结合 CSS 和 XPath 选择器及正则表达式提取数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-Spider-%E7%B1%BB"><span class="nav-text">Scrapy Spider 类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spider-%E7%B1%BB%E7%9A%84%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84"><span class="nav-text">Spider 类的基础结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F-Logger"><span class="nav-text">日志系统 Logger</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logger-%E5%B1%9E%E6%80%A7"><span class="nav-text">Logger 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Log-%E6%96%B9%E6%B3%95"><span class="nav-text">Log 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="nav-text">使用示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from-crawler-%E5%92%8C-set-crawler-%E6%96%B9%E6%B3%95"><span class="nav-text">from_crawler 和 _set_crawler 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#start-requests-%E6%96%B9%E6%B3%95"><span class="nav-text">start_requests 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parse-%E6%96%B9%E6%B3%95"><span class="nav-text">parse 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#close-%E6%96%B9%E6%B3%95"><span class="nav-text">close 方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A1%E7%BA%A7%E9%A1%B5%E9%9D%A2%E6%8A%93%E5%8F%96%E5%8F%8A%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92%E6%8B%BC%E6%8E%A5"><span class="nav-text">次级页面抓取及数据传递拼接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A1%E7%BA%A7%E9%A1%B5%E9%9D%A2%E6%8A%93%E5%8F%96"><span class="nav-text">次级页面抓取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A6%E6%83%85%E9%A1%B5%E6%8A%93%E5%8F%96"><span class="nav-text">详情页抓取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96%E7%A4%BA%E4%BE%8B"><span class="nav-text">数据提取示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%9A%84%E4%BC%A0%E9%80%92%E6%8B%BC%E6%8E%A5"><span class="nav-text">参数的传递拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B1%86%E7%93%A3%E4%B8%BA%E4%BE%8B%E5%AD%90"><span class="nav-text">豆瓣为例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spider-%E6%96%87%E4%BB%B6"><span class="nav-text">Spider 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E5%AE%9A%E4%B9%89"><span class="nav-text">爬虫定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E9%A1%B5%E8%A7%A3%E6%9E%90%E6%96%B9%E6%B3%95-parse"><span class="nav-text">主页解析方法 parse</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#0-%E6%96%B9%E6%B3%95%E5%AE%9A%E4%B9%89"><span class="nav-text">0. 方法定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E8%A7%A3%E6%9E%90%E8%8A%82%E7%82%B9%E5%88%97%E8%A1%A8"><span class="nav-text">1. 解析节点列表</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E5%88%A4%E6%96%AD%E5%B9%B6%E9%81%8D%E5%8E%86%E8%8A%82%E7%82%B9"><span class="nav-text">2. 判断并遍历节点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-%E6%8F%90%E5%8F%96%E7%94%B5%E5%BD%B1%E4%BF%A1%E6%81%AF"><span class="nav-text">3. 提取电影信息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-%E5%88%9B%E5%BB%BA%E5%B9%B6%E5%A1%AB%E5%85%85-Scrapy-Item"><span class="nav-text">4. 创建并填充 Scrapy Item</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-%E8%AF%B7%E6%B1%82%E7%94%B5%E5%BD%B1%E8%AF%A6%E6%83%85%E9%A1%B5"><span class="nav-text">5. 请求电影详情页</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-%E5%88%86%E9%A1%B5%E5%A4%84%E7%90%86"><span class="nav-text">6. 分页处理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-%E5%A4%84%E7%90%86%E7%BB%93%E6%9D%9F"><span class="nav-text">7. 处理结束</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%A6%E6%83%85%E9%A1%B5%E8%A7%A3%E6%9E%90%E6%96%B9%E6%B3%95-get-detail"><span class="nav-text">详情页解析方法 get_detail</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#0-%E6%96%B9%E6%B3%95%E5%AE%9A%E4%B9%89-1"><span class="nav-text">0. 方法定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E6%9B%B4%E6%96%B0-Item"><span class="nav-text">初始化和更新 Item</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E7%94%B5%E5%BD%B1%E6%8F%8F%E8%BF%B0%E4%BF%A1%E6%81%AF"><span class="nav-text">提取电影描述信息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E6%8F%8F%E8%BF%B0%E5%B9%B6%E8%BF%94%E5%9B%9E-Item"><span class="nav-text">设置描述并返回 Item</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Items-%E6%96%87%E4%BB%B6"><span class="nav-text">Items 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pipelines-%E6%96%87%E4%BB%B6"><span class="nav-text">Pipelines 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8F%8A%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6"><span class="nav-text">1. 初始化及打开文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%A4%84%E7%90%86%E5%B9%B6%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE"><span class="nav-text">2. 处理并存储数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E5%85%B3%E9%97%AD%E6%96%87%E4%BB%B6"><span class="nav-text">3. 关闭文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Settings-%E6%96%87%E4%BB%B6"><span class="nav-text">Settings 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE"><span class="nav-text">基本设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE"><span class="nav-text">用户代理设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Item-Pipeline-%E8%AE%BE%E7%BD%AE"><span class="nav-text">Item Pipeline 设置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%9B%AE%E6%A0%87%E5%92%8C%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B%E6%80%BB%E7%BB%93"><span class="nav-text">爬虫项目的目标和请求流程总结</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E6%95%B0%E6%8D%AE"><span class="nav-text">目标数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B"><span class="nav-text">请求流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%92%8C%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-text">数据存储和一致性</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-text">运行流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrapy%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-text">Scrapy框架的体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%87%E7%A8%8B"><span class="nav-text">数据流过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="nav-text">简单使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%91%BD%E4%BB%A4"><span class="nav-text">项目命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="nav-text">项目文件介绍</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1"><span class="nav-text">爬取豆瓣电影</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E7%9A%84%E5%92%8C%E8%A6%81%E6%B1%82"><span class="nav-text">项目目的和要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA"><span class="nav-text">项目搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-Spider-%E7%B1%BB"><span class="nav-text">创建 Spider 类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%93%8D%E5%BA%94%EF%BC%88Parsing-Response%EF%BC%89"><span class="nav-text">解析响应（Parsing Response）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E5%89%8D%E7%BD%AE"><span class="nav-text">调试前置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%85%E6%B4%97%E6%95%B0%E6%8D%AE"><span class="nav-text">清洗数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E8%AF%951"><span class="nav-text">调试1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E8%AF%952"><span class="nav-text">调试2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E8%AF%953"><span class="nav-text">调试3</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-Item"><span class="nav-text">定义 Item</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%BD%E8%B8%AA%E9%93%BE%E6%8E%A5%EF%BC%88Following-Links%EF%BC%89"><span class="nav-text">追踪链接（Following Links）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AE%A1%E9%81%93%EF%BC%88Pipelines%EF%BC%89"><span class="nav-text">定义和使用管道（Pipelines）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE"><span class="nav-text">存储数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E7%88%AC%E8%99%AB"><span class="nav-text">运行爬虫</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-shell"><span class="nav-text">Scrapy shell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E6%96%B9%E6%B3%95"><span class="nav-text">快捷方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrapy-%E5%AF%B9%E8%B1%A1"><span class="nav-text">Scrapy 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-Selector-%E7%B1%BB"><span class="nav-text">Scrapy Selector 类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Selector-%E7%B1%BB%E7%9A%84%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95"><span class="nav-text">Selector 类的基础用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%9A%E8%BF%87%E6%96%87%E6%9C%AC%E6%9E%84%E9%80%A0-Selector-%E5%AE%9E%E4%BE%8B"><span class="nav-text">1. 通过文本构造 Selector 实例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E7%94%B5%E5%BD%B1%E5%90%8D%E7%A7%B0"><span class="nav-text">提取电影名称</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E6%89%80%E6%9C%89%E5%8C%B9%E9%85%8D%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%88%97%E8%A1%A8"><span class="nav-text">提取所有匹配元素的文本列表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-extract-first-%E6%8F%90%E5%8F%96%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8C%B9%E9%85%8D%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC"><span class="nav-text">使用 extract_first() 提取第一个匹配元素的文本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-extract-%E6%8F%90%E5%8F%96%E6%89%80%E6%9C%89%E5%8C%B9%E9%85%8D%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%88%97%E8%A1%A8"><span class="nav-text">使用 extract() 提取所有匹配元素的文本列表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E7%89%B9%E5%AE%9A%E5%AD%90%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC"><span class="nav-text">提取特定子元素的文本</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%80%9A%E8%BF%87-response-%E6%9E%84%E9%80%A0-Selector-%E5%AE%9E%E4%BE%8B"><span class="nav-text">2. 通过 response 构造 Selector 实例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Selector-%E5%AE%9E%E4%BE%8B%E5%92%8C-response-%E7%9A%84-selector-%E5%B1%9E%E6%80%A7%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-text">使用 Selector 实例和 response 的 selector 属性提取数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E5%90%88-CSS-%E5%92%8C-XPath-%E9%80%89%E6%8B%A9%E5%99%A8%E5%8F%8A%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-text">结合 CSS 和 XPath 选择器及正则表达式提取数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-Spider-%E7%B1%BB"><span class="nav-text">Scrapy Spider 类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spider-%E7%B1%BB%E7%9A%84%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84"><span class="nav-text">Spider 类的基础结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F-Logger"><span class="nav-text">日志系统 Logger</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logger-%E5%B1%9E%E6%80%A7"><span class="nav-text">Logger 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Log-%E6%96%B9%E6%B3%95"><span class="nav-text">Log 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="nav-text">使用示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from-crawler-%E5%92%8C-set-crawler-%E6%96%B9%E6%B3%95"><span class="nav-text">from_crawler 和 _set_crawler 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#start-requests-%E6%96%B9%E6%B3%95"><span class="nav-text">start_requests 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parse-%E6%96%B9%E6%B3%95"><span class="nav-text">parse 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#close-%E6%96%B9%E6%B3%95"><span class="nav-text">close 方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A1%E7%BA%A7%E9%A1%B5%E9%9D%A2%E6%8A%93%E5%8F%96%E5%8F%8A%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92%E6%8B%BC%E6%8E%A5"><span class="nav-text">次级页面抓取及数据传递拼接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A1%E7%BA%A7%E9%A1%B5%E9%9D%A2%E6%8A%93%E5%8F%96"><span class="nav-text">次级页面抓取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A6%E6%83%85%E9%A1%B5%E6%8A%93%E5%8F%96"><span class="nav-text">详情页抓取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96%E7%A4%BA%E4%BE%8B"><span class="nav-text">数据提取示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%9A%84%E4%BC%A0%E9%80%92%E6%8B%BC%E6%8E%A5"><span class="nav-text">参数的传递拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B1%86%E7%93%A3%E4%B8%BA%E4%BE%8B%E5%AD%90"><span class="nav-text">豆瓣为例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spider-%E6%96%87%E4%BB%B6"><span class="nav-text">Spider 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E5%AE%9A%E4%B9%89"><span class="nav-text">爬虫定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E9%A1%B5%E8%A7%A3%E6%9E%90%E6%96%B9%E6%B3%95-parse"><span class="nav-text">主页解析方法 parse</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#0-%E6%96%B9%E6%B3%95%E5%AE%9A%E4%B9%89"><span class="nav-text">0. 方法定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E8%A7%A3%E6%9E%90%E8%8A%82%E7%82%B9%E5%88%97%E8%A1%A8"><span class="nav-text">1. 解析节点列表</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E5%88%A4%E6%96%AD%E5%B9%B6%E9%81%8D%E5%8E%86%E8%8A%82%E7%82%B9"><span class="nav-text">2. 判断并遍历节点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-%E6%8F%90%E5%8F%96%E7%94%B5%E5%BD%B1%E4%BF%A1%E6%81%AF"><span class="nav-text">3. 提取电影信息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-%E5%88%9B%E5%BB%BA%E5%B9%B6%E5%A1%AB%E5%85%85-Scrapy-Item"><span class="nav-text">4. 创建并填充 Scrapy Item</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-%E8%AF%B7%E6%B1%82%E7%94%B5%E5%BD%B1%E8%AF%A6%E6%83%85%E9%A1%B5"><span class="nav-text">5. 请求电影详情页</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-%E5%88%86%E9%A1%B5%E5%A4%84%E7%90%86"><span class="nav-text">6. 分页处理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-%E5%A4%84%E7%90%86%E7%BB%93%E6%9D%9F"><span class="nav-text">7. 处理结束</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%A6%E6%83%85%E9%A1%B5%E8%A7%A3%E6%9E%90%E6%96%B9%E6%B3%95-get-detail"><span class="nav-text">详情页解析方法 get_detail</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#0-%E6%96%B9%E6%B3%95%E5%AE%9A%E4%B9%89-1"><span class="nav-text">0. 方法定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E6%9B%B4%E6%96%B0-Item"><span class="nav-text">1. 初始化和更新 Item</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E6%8F%90%E5%8F%96%E7%94%B5%E5%BD%B1%E6%8F%8F%E8%BF%B0%E4%BF%A1%E6%81%AF"><span class="nav-text">2. 提取电影描述信息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-%E8%AE%BE%E7%BD%AE%E6%8F%8F%E8%BF%B0%E5%B9%B6%E8%BF%94%E5%9B%9E-Item"><span class="nav-text">3. 设置描述并返回 Item</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Items-%E6%96%87%E4%BB%B6"><span class="nav-text">Items 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pipelines-%E6%96%87%E4%BB%B6"><span class="nav-text">Pipelines 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8F%8A%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6"><span class="nav-text">1. 初始化及打开文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%A4%84%E7%90%86%E5%B9%B6%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE"><span class="nav-text">2. 处理并存储数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E5%85%B3%E9%97%AD%E6%96%87%E4%BB%B6"><span class="nav-text">3. 关闭文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Settings-%E6%96%87%E4%BB%B6"><span class="nav-text">Settings 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE"><span class="nav-text">基本设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE"><span class="nav-text">用户代理设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Item-Pipeline-%E8%AE%BE%E7%BD%AE"><span class="nav-text">Item Pipeline 设置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%9B%AE%E6%A0%87%E5%92%8C%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B%E6%80%BB%E7%BB%93"><span class="nav-text">爬虫项目的目标和请求流程总结</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E6%95%B0%E6%8D%AE"><span class="nav-text">目标数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B"><span class="nav-text">请求流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%92%8C%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-text">数据存储和一致性</span></a></li></ol></li></ol></li></ol></li></ol>
 
     </div>
 </div>
@@ -1833,7 +2057,7 @@
         
         <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
             <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
-            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.5.6</a></span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.0</a></span>
         </div>
         
         
@@ -2080,11 +2304,10 @@
 
 
 
+
+
 <div class="post-scripts" data-swup-reload-script>
     
-        
-<script src="/js/libs/anime.min.js"></script>
-
         
 <script src="/js/tools/tocToggle.js" type="module"></script>
 
