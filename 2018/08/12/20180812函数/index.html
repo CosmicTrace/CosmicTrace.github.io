@@ -32,8 +32,8 @@
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="理论">
-<meta property="article:tag" content="基本语法">
 <meta property="article:tag" content="嵌套">
+<meta property="article:tag" content="基本语法">
 <meta property="article:tag" content="内置函数">
 <meta property="article:tag" content="形参">
 <meta property="article:tag" content="实参">
@@ -746,11 +746,11 @@
                     </li>
                 
                     <li>
-                        | <a href="/tags/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">基本语法</a>&nbsp;
+                        | <a href="/tags/%E5%B5%8C%E5%A5%97/">嵌套</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/%E5%B5%8C%E5%A5%97/">嵌套</a>&nbsp;
+                        | <a href="/tags/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">基本语法</a>&nbsp;
                     </li>
                 
                     <li>
@@ -993,11 +993,11 @@
                     </li>
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">#基本语法</a>&nbsp;
+                        <a href="/tags/%E5%B5%8C%E5%A5%97/">#嵌套</a>&nbsp;
                     </li>
                 
                     <li class="tag-item mx-0.5">
-                        <a href="/tags/%E5%B5%8C%E5%A5%97/">#嵌套</a>&nbsp;
+                        <a href="/tags/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">#基本语法</a>&nbsp;
                     </li>
                 
                     <li class="tag-item mx-0.5">
@@ -1175,6 +1175,26 @@
         </div>
         
         
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
         
         
         
@@ -1365,6 +1385,16 @@
 <script src="/js/layouts/lazyload.js" type="module"></script>
 
 
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
 
 
 
