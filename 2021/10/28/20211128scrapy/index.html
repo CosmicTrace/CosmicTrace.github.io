@@ -44,8 +44,16 @@
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/31526e35-d310-4fb0-15ff-a1b91744ba00/public">
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2f87abc1-95ca-4c9a-381d-215cc6863100/public">
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/bc76cc19-8c16-4849-e146-10e8e01f6600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4d3dc2ee-996e-4b93-1c43-5d9e56066700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/88ae35cb-20eb-4b88-88aa-47a6b950b400/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ae0ddfae-1c39-488e-b671-cf052174e300/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b8e2bf40-9dbd-46e4-417b-39dda1d11900/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/dc9f98ec-a482-43d8-c3d9-58ce71096b00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/72d94aa2-a334-4558-2a96-f36c2d1cf500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f9d7d000-374c-429b-3e8b-d998e8e61000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/980e1a03-5250-421d-819a-35e0effab800/public">
 <meta property="article:published_time" content="2021-10-28T05:12:54.000Z">
-<meta property="article:modified_time" content="2023-12-10T19:11:19.600Z">
+<meta property="article:modified_time" content="2023-12-11T12:29:48.815Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="理论">
@@ -716,8 +724,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-12-11 03:11:19</span>
-            <span class="mobile">2023-12-11 03:11:19</span>
+            <span class="desktop">2023-12-11 20:29:48</span>
+            <span class="mobile">2023-12-11 20:29:48</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -771,12 +779,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>18.5k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>26.1k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>73 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>103 分钟</span>
         </span>
     
     
@@ -1718,31 +1726,84 @@
 <h5 id="爬虫定义"><a href="#爬虫定义" class="headerlink" title="爬虫定义"></a>爬虫定义</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Db250Spider</span>(scrapy.Spider):</span><br><span class="line">    name = <span class="string">&#x27;db250&#x27;</span></span><br><span class="line">    allowed_domains = [<span class="string">&#x27;movie.douban.com&#x27;</span>]</span><br><span class="line">    start_urls = [<span class="string">&#x27;https://movie.douban.com/top250&#x27;</span>]</span><br><span class="line">    page_num = <span class="number">0</span></span><br></pre></td></tr></table></figure></div>
 
 <ul>
-<li><code>Db250Spider</code> 继承自 <code>scrapy.Spider</code>，是一个自定义的 Scrapy 爬虫类。</li>
-<li><code>name</code>: 爬虫的名称。</li>
-<li><code>allowed_domains</code>: 限制爬虫只能爬取在此列表内的域名。</li>
-<li><code>start_urls</code>: 爬虫启动时爬取的 URL 列表。</li>
-<li><code>page_num</code>: 用于记录和控制爬取的分页数。</li>
+<li>这个类继承自<code>scrapy.Spider</code>，是Scrapy框架中用于创建爬虫的基础类。</li>
+<li><code>class Db250Spider(scrapy.Spider):</code> 这行定义了一个名为<code>Db250Spider</code>的新类，它继承自<code>scrapy.Spider</code>。这意味着<code>Db250Spider</code>是一个Scrapy爬虫，可以继承并使用Scrapy框架提供的所有功能和属性。</li>
+<li><code>name = &#39;db250&#39;</code> 这里设置了爬虫的名字为<code>db250</code>。这个名称是Scrapy项目中唯一的标识符，用于在命令行中指定和运行特定的爬虫。</li>
+<li><code>allowed_domains = [&#39;movie.douban.com&#39;]</code> <code>allowed_domains</code>是一个列表，包含了爬虫允许爬取的域名。这有助于确保爬虫不会跨域爬取。在这个例子中，爬虫只会爬取<code>movie.douban.com</code>域下的页面。</li>
+<li><code>start_urls = [&#39;https://movie.douban.com/top250&#39;]</code> <code>start_urls</code>是一个包含起始URL的列表。当爬虫启动时，Scrapy会自动开始从这些URL发起请求。在这个例子中，爬虫将从豆瓣电影Top 250的主页开始爬取。</li>
+<li><code>page_num = 0</code> <code>page_num</code>是一个类属性，用于跟踪当前爬取的页码。这在处理分页或需要在多个页面之间导航时非常有用。在这个例子中，它被初始化为0。</li>
+<li>接下来在这个爬虫类中定义如<code>parse</code>等方法，以指定如何解析和处理每个请求的响应，以及如何从中提取数据或者进一步生成新的请求。例如，解析豆瓣电影Top 250页面的响应，提取电影信息，然后爬取每个电影的详细页面等。</li>
 </ul>
 <h5 id="主页解析方法-parse"><a href="#主页解析方法-parse" class="headerlink" title="主页解析方法 parse"></a>主页解析方法 parse</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">parse</span>(<span class="params">self, response</span>):</span><br><span class="line">    node_list = response.xpath(<span class="string">&#x27;//div[@class=&quot;info&quot;]&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> node_list:</span><br><span class="line">        <span class="keyword">for</span> node <span class="keyword">in</span> node_list:</span><br><span class="line">            movie_name = node.xpath(<span class="string">&#x27;./div/a/span/text()&#x27;</span>).get()</span><br><span class="line">            director = node.xpath(<span class="string">&#x27;./div/p/text()&#x27;</span>).get().strip()</span><br><span class="line">            score = node.xpath(<span class="string">&#x27;.//span[@class=&quot;rating_num&quot;]/text()&#x27;</span>).get()</span><br><span class="line"></span><br><span class="line">            item = DbItem()</span><br><span class="line">            item[<span class="string">&quot;movie_name&quot;</span>] = movie_name</span><br><span class="line">            item[<span class="string">&quot;director&quot;</span>] = director</span><br><span class="line">            item[<span class="string">&quot;score&quot;</span>] = score</span><br><span class="line"></span><br><span class="line">            detail_url = node.xpath(<span class="string">&#x27;./div/a/@href&#x27;</span>).get()</span><br><span class="line">            <span class="keyword">yield</span> scrapy.Request(detail_url, callback=self.get_detail, meta=&#123;<span class="string">&quot;info&quot;</span>:item&#125;)</span><br><span class="line"></span><br><span class="line">        self.page_num += <span class="number">1</span></span><br><span class="line">        page_url = <span class="string">&#x27;https://movie.douban.com/top250?start=&#123;&#125;&amp;filter=&#x27;</span>.<span class="built_in">format</span>(self.page_num*<span class="number">25</span>)</span><br><span class="line">        <span class="keyword">yield</span> scrapy.Request(page_url, callback=self.parse)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br></pre></td></tr></table></figure></div>
 
 <h6 id="0-方法定义"><a href="#0-方法定义" class="headerlink" title="0. 方法定义"></a>0. 方法定义</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">parse</span>(<span class="params">self, response</span>):</span><br></pre></td></tr></table></figure></div>
 
 <ul>
-<li><code>parse</code> 是 Scrapy 框架中默认的回调方法，用于处理 HTTP 请求的响应。</li>
-<li><code>response</code> 是 Scrapy 传递给 <code>parse</code> 方法的响应对象，包含了爬取的页面数据。</li>
+<li><code>self</code> 是对当前对象实例（即Spider对象）的引用。</li>
+<li><code>response</code> 是一个包含了HTTP响应数据的对象。它包括响应内容（通常是HTML）、URL、HTTP头等信息。</li>
+<li><code>parse</code>方法的主要功能是处理<code>response</code>，提取有用信息，或者进一步生成需要跟进的URL请求。</li>
+<li>在这个方法中，通常会使用XPath或CSS选择器来解析响应内容（如提取数据）。</li>
+<li>数据提取：可以使用<code>response.xpath()</code>或<code>response.css()</code>方法来选择HTML元素，然后提取所需数据。</li>
+<li>生成跟进请求：如果页面中有链接到其他页面，且想爬取那些页面的数据，可以通过<code>scrapy.Request</code>生成新的请求。</li>
+<li><code>parse</code>方法可以返回以下类型的对象：<ul>
+<li>字典（在Python中通常是通过yield语句生成）。</li>
+<li><code>scrapy.Item</code>对象，这是一个更结构化的方式来管理数据。</li>
+<li><code>Request</code>对象，用于生成新的爬取请求。</li>
+<li>或者它们的组合。</li>
+</ul>
+</li>
+<li><code>parse</code>方法是Scrapy爬虫的核心，用于处理响应并从中提取信息，或者根据页面中的链接生成新的请求。</li>
 </ul>
 <h6 id="1-解析节点列表"><a href="#1-解析节点列表" class="headerlink" title="1. 解析节点列表"></a>1. 解析节点列表</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node_list = response.xpath(<span class="string">&#x27;//div[@class=&quot;info&quot;]&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>这行代码使用 XPath 查询从响应中提取所有类属性为 <code>&quot;info&quot;</code> 的 <code>&lt;div&gt;</code> 元素。</li>
 <li>这些 <code>&lt;div&gt;</code> 元素包含了电影的主要信息，并存储在 <code>node_list</code> 中。</li>
+<li><code>response</code>:<ul>
+<li>这通常是一个由Scrapy框架（或类似的库）提供的响应对象。</li>
+<li>它代表了一个从网页请求中获得的HTTP响应。</li>
+<li>这个对象包含了完整的网页数据，通常是HTML格式。</li>
+</ul>
+</li>
+<li><code>.xpath()</code>:<ul>
+<li>这是一个方法，用于对<code>response</code>对象中的HTML内容执行XPath查询。</li>
+<li>XPath是一种在XML和HTML文档中查找信息的语言。</li>
+<li>通过XPath，可以导航文档的结构，并选择需要的元素、属性等。</li>
+</ul>
+</li>
+<li><code>&#39;//div[@class=&quot;info&quot;]&#39;</code>:<ul>
+<li>这是传递给<code>.xpath()</code>方法的XPath查询表达式。</li>
+<li>让我们分解这个表达式：<ul>
+<li><code>//</code>: 这个符号表示选择文档中的所有匹配元素，而不仅仅是直接子元素。它在整个文档中进行搜索。</li>
+<li><code>div</code>: 这指定了想要选择的元素类型。在这种情况下，它是<code>&lt;div&gt;</code>元素。</li>
+<li><code>[@class=&quot;info&quot;]</code>: 这是一个条件（谓语），用来进一步细化选择。它指定只选择那些具有<code>class=&quot;info&quot;</code>属性的<code>&lt;div&gt;</code>元素。<ul>
+<li><code>@class</code>: 表示选择元素的<code>class</code>属性。</li>
+<li><code>&quot;info&quot;</code>: 表示属性值必须精确匹配<code>info</code>字符串。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在网页的响应内容中选择所有<code>class</code>属性值为<code>info</code>的<code>&lt;div&gt;</code>元素，并将这些元素存储在<code>node_list</code>变量中。这个列表可以被进一步用于抽取数据、分析或其他处理。在网页抓取和数据提取的过程中，这是一种非常常见的做法。</li>
 </ul>
 <h6 id="2-判断并遍历节点"><a href="#2-判断并遍历节点" class="headerlink" title="2. 判断并遍历节点"></a>2. 判断并遍历节点</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> node_list:</span><br><span class="line">    <span class="keyword">for</span> node <span class="keyword">in</span> node_list:</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>首先检查 <code>node_list</code> 是否非空，确保有要处理的节点。</li>
 <li>然后遍历这些节点，每个节点 (<code>node</code>) 代表一个电影条目。</li>
+<li><code>if node_list:</code><ul>
+<li>这是一个条件语句，检查<code>node_list</code>是否非空。在Python中，空列表（<code>[]</code>）被认为是<code>False</code>，而非空列表被认为是<code>True</code>。</li>
+<li>这个条件确保仅当<code>node_list</code>中有元素时，即列表不为空时，才会执行下面的代码块。这是一个良好的编程实践，可以避免在空列表上执行操作时出现错误。</li>
+</ul>
+</li>
+<li><code>for node in node_list:</code><ul>
+<li>这是一个<code>for</code>循环，用于遍历<code>node_list</code>中的每个元素。</li>
+<li>在每次迭代中，<code>node</code>变量会被赋予<code>node_list</code>中的当前元素。</li>
+<li>如果<code>node_list</code>是由之前提到的<code>response.xpath(&#39;//div[@class=&quot;info&quot;]&#39;)</code>表达式返回的，那么每个<code>node</code>很可能是一个表示HTML <code>&lt;div&gt;</code>元素的对象。这种对象通常提供了进一步提取数据（如文本内容、属性等）的方法。</li>
+</ul>
+</li>
+<li>如果<code>node_list</code>不为空，即至少包含一个元素，那么对于列表中的每个元素（每个<code>&lt;div class=&quot;info&quot;&gt;</code>），执行循环体中的代码。循环体的具体内容没有提供，但通常它会包含进一步处理每个<code>node</code>的代码，例如提取信息、打印数据、存储结果等。</li>
 </ul>
 <h6 id="3-提取电影信息"><a href="#3-提取电影信息" class="headerlink" title="3. 提取电影信息"></a>3. 提取电影信息</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">movie_name = node.xpath(<span class="string">&#x27;./div/a/span/text()&#x27;</span>).get()</span><br><span class="line">director = node.xpath(<span class="string">&#x27;./div/p/text()&#x27;</span>).get().strip()</span><br><span class="line">score = node.xpath(<span class="string">&#x27;.//span[@class=&quot;rating_num&quot;]/text()&#x27;</span>).get()</span><br></pre></td></tr></table></figure></div>
 
@@ -1750,34 +1811,142 @@
 <li>提取电影名称：使用 XPath 查询从当前节点 (<code>node</code>) 中提取电影名称。</li>
 <li>提取导演信息：获取导演信息，这里使用 <code>.strip()</code> 来移除字符串开头和结尾的空白字符。</li>
 <li>提取电影评分：获取电影评分，这里使用 <code>.//</code> 从当前节点的所有子孙节点中查找符合条件的节点。</li>
+<li><code>movie_name = node.xpath(&#39;./div/a/span/text()&#39;).get()</code><ul>
+<li>这行代码从当前的<code>node</code>中提取电影名称。</li>
+<li><code>./div/a/span/text()</code>: XPath查询语句。<ul>
+<li><code>./</code> 表示从当前节点开始。</li>
+<li><code>div/a/span</code> 定位到一个<code>&lt;span&gt;</code>元素，这个元素是一个<code>&lt;a&gt;</code>元素的子元素，而<code>&lt;a&gt;</code>元素又是一个<code>&lt;div&gt;</code>元素的子元素。</li>
+<li><code>/text()</code> 选择这个<code>&lt;span&gt;</code>元素的文本内容。</li>
+</ul>
+</li>
+<li><code>.get()</code> 是一个方法，用来获取XPath查询结果的第一个匹配项。</li>
+</ul>
+</li>
+<li><code>director = node.xpath(&#39;./div/p/text()&#39;).get().strip()</code><ul>
+<li>这行代码用来提取导演的名称。</li>
+<li><code>./div/p/text()</code>: XPath查询语句。<ul>
+<li>类似于前面的查询，但这次是选择一个<code>&lt;p&gt;</code>元素的文本内容。</li>
+</ul>
+</li>
+<li><code>.get()</code> 同样获取第一个匹配项的文本。</li>
+<li><code>.strip()</code> 是一个字符串方法，用来移除字符串首尾的空白字符（如空格、换行符等）。</li>
+</ul>
+</li>
+<li><code>score = node.xpath(&#39;.//span[@class=&quot;rating_num&quot;]/text()&#39;).get()</code><ul>
+<li>这行代码用于提取电影评分。</li>
+<li><code>.//span[@class=&quot;rating_num&quot;]/text()</code>: XPath查询语句。<ul>
+<li><code>.//</code> 表示在当前节点及其子节点中查找。</li>
+<li><code>span[@class=&quot;rating_num&quot;]</code> 选择所有<code>class</code>属性为<code>rating_num</code>的<code>&lt;span&gt;</code>元素。</li>
+<li><code>/text()</code> 同样选择这些<code>&lt;span&gt;</code>元素的文本内容。</li>
+</ul>
+</li>
+<li><code>.get()</code> 获取第一个匹配结果。</li>
+</ul>
+</li>
+<li>这三行代码是在遍历一个包含多个节点（每个节点代表一个电影信息）的列表时，用来从每个节点中提取特定信息的标准操作。这种方式在爬虫和数据提取的过程中非常常见，特别是当处理诸如电影列表页面这样的结构化数据时。</li>
 </ul>
 <h6 id="4-创建并填充-Scrapy-Item"><a href="#4-创建并填充-Scrapy-Item" class="headerlink" title="4. 创建并填充 Scrapy Item"></a>4. 创建并填充 Scrapy Item</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">item = DbItem()</span><br><span class="line">item[<span class="string">&quot;movie_name&quot;</span>] = movie_name</span><br><span class="line">item[<span class="string">&quot;director&quot;</span>] = director</span><br><span class="line">item[<span class="string">&quot;score&quot;</span>] = score</span><br></pre></td></tr></table></figure></div>
 
 <ul>
-<li>创建一个 <code>DbItem</code> 实例。<code>DbItem</code> 是定义在 Scrapy 项目中的一个 Item 类，用于结构化存储提取的数据。</li>
-<li>将提取的电影名称、导演和评分分别赋值给 <code>item</code> 的相应字段。</li>
+<li><code>item = DbItem()</code><ul>
+<li>这行代码创建了一个<code>DbItem</code>的实例。通常在Scrapy项目中定义，用于表示提取的数据结构。</li>
+<li>在Scrapy中，<code>Item</code>对象用于定义存储爬取数据的结构。它们类似于Python中的字典，但提供额外的保护和便利，如字段定义和类型检查。</li>
+</ul>
+</li>
+<li><code>item[&quot;movie_name&quot;] = movie_name</code><ul>
+<li>这行代码将之前提取的<code>movie_name</code>（电影名称）赋值给<code>item</code>的<code>&quot;movie_name&quot;</code>键。</li>
+<li>这意味着<code>DbItem</code>类中定义了一个字段<code>movie_name</code>，用于存储电影名称。</li>
+</ul>
+</li>
+<li><code>item[&quot;director&quot;] = director</code><ul>
+<li>类似地，这行代码将提取的<code>director</code>（导演名称）赋值给<code>item</code>的<code>&quot;director&quot;</code>键。</li>
+</ul>
+</li>
+<li><code>item[&quot;score&quot;] = score</code><ul>
+<li>同样地，这行代码将提取的<code>score</code>（电影评分）赋值给<code>item</code>的<code>&quot;score&quot;</code>键。</li>
+</ul>
+</li>
+<li>创建了一个<code>DbItem</code>实例，并填充了从网页中提取的数据：电影名称、导演和评分。在Scrapy中，这样的<code>item</code>对象通常会被进一步传递到管道（pipelines），在那里可以进行如存储到数据库、进行数据清洗或其他处理的操作。使用<code>Item</code>对象的好处在于它提供了结构化的数据存储方式，有助于维护代码的清晰度和可维护性。</li>
 </ul>
 <h6 id="5-请求电影详情页"><a href="#5-请求电影详情页" class="headerlink" title="5. 请求电影详情页"></a>5. 请求电影详情页</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">detail_url = node.xpath(<span class="string">&#x27;./div/a/@href&#x27;</span>).get()</span><br><span class="line"><span class="keyword">yield</span> scrapy.Request(detail_url, callback=self.get_detail, meta=&#123;<span class="string">&quot;info&quot;</span>:item&#125;)</span><br></pre></td></tr></table></figure></div>
 
 <ul>
-<li><code>detail_url</code> 是一个变量，用于存储从当前节点（<code>node</code>）提取的详情页 URL。</li>
-<li><code>node.xpath(&#39;./div/a/@href&#39;).get()</code>：使用 XPath 表达式在当前节点（代表一个电影条目）中查找 <code>&lt;div&gt;</code> 子元素下的 <code>&lt;a&gt;</code> 元素的 <code>href</code> 属性。这个 <code>href</code> 属性通常包含了指向电影详情页的链接。</li>
-<li><code>.get()</code> 用于获取 XPath 查询的第一个匹配结果。如果查询没有结果，它会返回 <code>None</code>。</li>
-<li><code>yield scrapy.Request(detail_url, ...)</code>：使用 Scrapy 的 <code>Request</code> 对象来发起对详情页的 HTTP 请求。<code>yield</code> 关键字在这里使得请求可以被 Scrapy 的调度器处理。</li>
-<li><code>callback=self.get_detail</code>：指定当请求得到响应后，响应应该被传递给 <code>get_detail</code> 方法进行处理。<code>get_detail</code> 是定义在同一个爬虫中的另一个方法，用于解析和处理详情页的内容。</li>
-<li><code>meta=&#123;&quot;info&quot;:item&#125;</code>：<code>meta</code> 是一个字典，用于在不同请求之间传递额外的数据。在这里，它被用来传递从列表页提取的电影信息（存储在 <code>item</code> 中）到详情页的处理方法。这样做可以保持从列表页到详情页的数据一致性和关联。</li>
+<li><code>detail_url = node.xpath(&#39;./div/a/@href&#39;).get()</code><ul>
+<li>这行代码使用XPath选择器从当前处理的节点（<code>node</code>）中提取详情页面的链接。</li>
+<li><code>./div/a/@href</code>: XPath查询语句。<ul>
+<li><code>./</code> 表示从当前节点开始。</li>
+<li><code>div/a</code> 定位到当前节点下的<code>&lt;div&gt;</code>元素中的<code>&lt;a&gt;</code>元素。</li>
+<li><code>@href</code> 获取这个<code>&lt;a&gt;</code>元素的<code>href</code>属性，即链接地址。</li>
 </ul>
+</li>
+<li><code>.get()</code> 方法从XPath选择器返回的结果中获取第一个匹配项，也就是详情页面的URL。</li>
+</ul>
+</li>
+<li><code>yield scrapy.Request(detail_url, callback=self.get_detail, meta=&#123;&quot;info&quot;:item&#125;)</code><ul>
+<li>这行代码创建一个新的Scrapy请求（<code>Request</code>），用于爬取在<code>detail_url</code>中找到的URL。</li>
+<li><code>scrapy.Request(detail_url, ...)</code> 创建一个新的请求对象，其目标是<code>detail_url</code>。</li>
+<li><code>callback=self.get_detail</code> 设置当请求得到响应时应调用的回调方法为<code>get_detail</code>。这意味着，当Scrapy成功访问<code>detail_url</code>并获得响应时，它将自动调用<code>get_detail</code>方法来处理响应。</li>
+<li><code>meta=&#123;&quot;info&quot;:item&#125;</code> 将一个额外的信息字典<code>&#123;&quot;info&quot;: item&#125;</code>传递给回调方法。这通常用于在不同请求之间传递数据。在这里，<code>item</code>对象（可能包含已经提取的某些数据，如电影名、导演、评分等）被传递到详情页面的处理方法中。</li>
+</ul>
+</li>
+<li>在Scrapy中，<code>yield</code>关键字被用于生成请求而不是直接返回它们。这允许Scrapy处理请求队列，并根据可用的资源和设置来调度这些请求。这种方法使得爬虫能够有效地管理大量的并行请求，同时避免过载目标服务器或被封禁。</li>
+</ul>
+
+  <div class="note-large orange">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <p>在编程中，特别是在异步编程和事件驱动编程中，”callback”（回调函数）是一个非常重要的概念。回调函数是传递给另一个函数或方法的函数，它在那个函数或方法执行完某些操作之后被调用。在不同的编程语言和框架中，回调函数的具体实现和使用方式可能有所不同，但其基本概念是相似的。</p>
+<p><strong>回调函数的基本原理</strong></p>
+<ol>
+<li><strong>定义回调函数</strong>: 回调函数是定义的一个函数，它将在未来的某个时间点被调用。这个函数通常定义了在某些操作完成后应该执行的操作。</li>
+<li><strong>将回调函数作为参数传递</strong>: 将这个回调函数作为参数传递给另一个函数或方法。这通常发生在希望在那个函数完成其主要操作后执行一些额外操作的情况下。</li>
+<li><strong>异步操作或事件处理</strong>: 在进行异步操作（如网络请求、文件读写等）或处理事件（如用户输入、定时器触发等）时，回调函数特别有用。在这些情况下，不能立即得到结果，回调函数提供了一种在操作完成时得到通知并执行相关代码的方式。</li>
+</ol>
+<p><strong>回调函数的例子</strong></p>
+<p>在Python中，回调函数的一个常见例子是在多线程或网络请求中使用：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pythonCopy codeimport requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">on_success</span>(<span class="params">response</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Success:&quot;</span>, response.text)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">on_error</span>(<span class="params">error</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Error:&quot;</span>, error)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送异步HTTP请求</span></span><br><span class="line">requests.get(<span class="string">&quot;https://www.example.com&quot;</span>, success=on_success, error=on_error)</span><br></pre></td></tr></table></figure></div>
+
+<p>在这个例子中，<code>on_success</code>和<code>on_error</code>是回调函数。它们分别在HTTP请求成功时和出错时被调用。</p>
+<p><strong>在Scrapy中的回调函数</strong></p>
+<p>在Scrapy这类网络爬虫框架中，回调函数用于处理从网页请求中返回的响应。例如：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pythonCopy codeimport scrapy</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MySpider</span>(scrapy.Spider):</span><br><span class="line">    name = <span class="string">&#x27;example_spider&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start_requests</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">yield</span> scrapy.Request(url=<span class="string">&quot;https://www.example.com&quot;</span>, callback=self.parse)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">parse</span>(<span class="params">self, response</span>):</span><br><span class="line">        <span class="comment"># 处理响应的代码</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure></div>
+
+<p>在这里，<code>parse</code>方法是一个回调函数，当Scrapy框架从指定的URL接收到响应时调用。</p>
+<p>总的来说，回调函数是一种在某个操作完成后（通常是异步操作）再执行的函数。它们在事件驱动的程序设计中尤为重要，允许程序在等待一个操作完成时继续执行其他任务，并在适当的时候处理操作结果。</p>
+
+    </div>
+  </div>
+
 <h6 id="6-分页处理"><a href="#6-分页处理" class="headerlink" title="6. 分页处理"></a>6. 分页处理</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.page_num += <span class="number">1</span></span><br><span class="line">page_url = <span class="string">&#x27;https://movie.douban.com/top250?start=&#123;&#125;&amp;filter=&#x27;</span>.<span class="built_in">format</span>(self.page_num*<span class="number">25</span>)</span><br><span class="line"><span class="keyword">yield</span> scrapy.Request(page_url, callback=self.parse)</span><br></pre></td></tr></table></figure></div>
 
 <ul>
-<li>递增页码 <code>page_num</code>。</li>
-<li>构造下一页的 URL，其中 <code>start</code> 参数用于控制分页。</li>
-<li>发起对下一页的请求，回调方法仍为 <code>parse</code>，以继续相同的处理流程。</li>
+<li><code>self.page_num += 1</code><ul>
+<li>这行代码将类属性<code>page_num</code>的值增加1。这个属性用于追踪当前爬取的页数。在每次处理完一个页面后，递增<code>page_num</code>以移至下一个页面。</li>
+</ul>
+</li>
+<li><code>page_url = &#39;https://movie.douban.com/top250?start=&#123;&#125;&amp;filter=&#39;.format(self.page_num*25)</code><ul>
+<li>这里构造了下一个页面的URL。</li>
+<li><code>&#39;https://movie.douban.com/top250?start=&#123;&#125;&amp;filter=&#39;</code>是基本的URL格式。豆瓣电影Top 250页面的分页通过URL参数<code>start</code>实现，其中<code>start</code>表示列表的起始位置。</li>
+<li><code>.format(self.page_num*25)</code>用于插入计算后的起始位置。由于每页显示25部电影，那么每递增一页，<code>start</code>的值应增加25。例如，第一页是从0开始（<code>0*25</code>），第二页是从25开始（<code>1*25</code>），依此类推。</li>
+</ul>
+</li>
+<li><code>yield scrapy.Request(page_url, callback=self.parse)</code><ul>
+<li>这行代码生成了一个新的Scrapy请求，用于爬取下一个页面。</li>
+<li><code>scrapy.Request(page_url, callback=self.parse)</code>创建一个新的请求对象，其目标是<code>page_url</code>。</li>
+<li><code>callback=self.parse</code>指定当请求得到响应时，应该调用<code>parse</code>方法来处理该响应。<code>parse</code>是Scrapy爬虫中的标准方法，用于处理和解析响应内容。</li>
+<li>使用<code>yield</code>关键字来生成请求对象，允许Scrapy根据需要来调度和处理这些请求。</li>
+</ul>
+</li>
+<li>在Scrapy中，适当地管理分页是提取多页数据的关键。代码正确地实现了递增页码并构建新页面URL的逻辑。通过在<code>parse</code>方法中重复这个过程，爬虫可以遍历并爬取整个列表的所有页面。</li>
 </ul>
 <h6 id="7-处理结束"><a href="#7-处理结束" class="headerlink" title="7. 处理结束"></a>7. 处理结束</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">return</span></span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>如果 <code>node_list</code> 为空，说明没有更多的电影信息可以处理，函数返回并结束。</li>
+<li>如果条件不满足（<code>else</code>部分），<code>return</code>语句会被执行。在Python中，<code>return</code>语句用于从函数返回。如果<code>return</code>后没有任何值或表达式，它默认返回<code>None</code>。在这个上下文中，它表示不再继续生成新的请求，爬虫的这个部分将停止执行。</li>
 </ul>
 <p>这个 <code>parse</code> 方法展示了如何在 Scrapy 中处理分页和详情页的链接提取、数据抓取和传递。它有效地结合了 XPath 选择器、Scrapy Item 的使用，以及 Scrapy 的请求和响应机制。</p>
 <h5 id="详情页解析方法-get-detail"><a href="#详情页解析方法-get-detail" class="headerlink" title="详情页解析方法 get_detail"></a>详情页解析方法 get_detail</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_detail</span>(<span class="params">self, response</span>):</span><br><span class="line">    item = DbItem()</span><br><span class="line">    info = response.meta.get(<span class="string">&quot;info&quot;</span>)</span><br><span class="line">    item.update(info)</span><br><span class="line">    description_list = response.xpath(<span class="string">&#x27;//div[@id=&quot;link-report&quot;]/span[@class=&quot;all hidden&quot;]/text()|//div[@id=&quot;link-report&quot;]/span[@property=&quot;v:summary&quot;]/text()&#x27;</span>).getall()</span><br><span class="line">    description = <span class="string">&#x27;&#x27;</span>.join([des.strip() <span class="keyword">for</span> des <span class="keyword">in</span> description_list])</span><br><span class="line"></span><br><span class="line">    item[<span class="string">&quot;description&quot;</span>] = description</span><br><span class="line">    <span class="keyword">yield</span> item</span><br></pre></td></tr></table></figure></div>
@@ -1787,27 +1956,54 @@
 <ul>
 <li>这是一个在 Scrapy 爬虫中定义的 <code>get_detail</code> 方法，它是一个回调函数，用于处理电影详情页的响应。</li>
 <li><code>response</code> 参数是 Scrapy 传递给这个方法的响应对象，包含了详情页的数据。</li>
+<li>这个方法定义表明<code>get_detail</code>是一个实例方法，用于处理从一个特定的请求返回的响应。这个方法接收一个参数<code>response</code>，它包含了对应请求的HTTP响应。</li>
 </ul>
 <h6 id="1-初始化和更新-Item"><a href="#1-初始化和更新-Item" class="headerlink" title="1. 初始化和更新 Item"></a>1. 初始化和更新 Item</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">item = DbItem()</span><br><span class="line">info = response.meta.get(<span class="string">&quot;info&quot;</span>)</span><br><span class="line">item.update(info)</span><br></pre></td></tr></table></figure></div>
 
 <ul>
-<li><code>item = DbItem()</code>：创建一个 <code>DbItem</code> 对象。<code>DbItem</code> 通常是一个在 Scrapy 项目中定义的 Item 类，用于结构化存储提取的数据。</li>
-<li><code>info = response.meta.get(&quot;info&quot;)</code>：从响应的 <code>meta</code> 属性中获取传递过来的电影基本信息。这些信息之前在处理列表页时已经被提取并通过 <code>meta</code> 参数传递到这个方法。</li>
-<li><code>item.update(info)</code>：将获取到的电影基本信息更新到 <code>item</code> 对象中。</li>
+<li><code>item = DbItem()</code>：创建一个 <code>DbItem</code> 对象。<code>DbItem</code> 通常是一个在 Scrapy 项目中定义的 Item 类，用于结构化存储提取的数据。继承自<code>scrapy.Item</code>，用于指定希望收集的数据字段。</li>
+<li><code>info = response.meta.get(&quot;info&quot;)</code>：从响应的 <code>meta</code> 属性中获取传递过来的电影基本信息。这些信息之前在处理列表页时已经被提取并通过 <code>meta</code> 参数传递到这个方法。这里从<code>response.meta</code>中提取了之前传递的元数据。<code>response.meta</code>是一个字典，用于在Scrapy的不同请求之间传递数据。在这个例子中，它被用来传递之前页面上已经抓取的数据。</li>
+<li><code>item.update(info)</code>：将获取到的电影基本信息更新到 <code>item</code> 对象中。这行代码将从上一个页面提取的数据（存储在<code>info</code>字典中）合并到新创建的<code>item</code>对象中。</li>
 </ul>
 <h6 id="2-提取电影描述信息"><a href="#2-提取电影描述信息" class="headerlink" title="2. 提取电影描述信息"></a>2. 提取电影描述信息</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">description_list = response.xpath(<span class="string">&#x27;//div[@id=&quot;link-report&quot;]/span[@class=&quot;all hidden&quot;]/text()|//div[@id=&quot;link-report&quot;]/span[@property=&quot;v:summary&quot;]/text()&#x27;</span>).getall()</span><br><span class="line">description = <span class="string">&#x27;&#x27;</span>.join([des.strip() <span class="keyword">for</span> des <span class="keyword">in</span> description_list])</span><br></pre></td></tr></table></figure></div>
 
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4d3dc2ee-996e-4b93-1c43-5d9e56066700/public"
+                      width = "500"
+                >
+
 <ul>
-<li>使用 XPath 查询从详情页提取电影的详细描述。这里考虑了两种可能的 HTML 结构：完整描述（<code>class=&quot;all hidden&quot;</code>）和部分描述（<code>property=&quot;v:summary&quot;</code>），并使用联合操作符 <code>|</code> 结合两种可能的查询。</li>
-<li>将提取的描述列表 (<code>description_list</code>) 合并为一个字符串，其中使用 <code>.strip()</code> 方法移除每段描述前后的空白字符。</li>
+<li><code>response.xpath()</code> 方法用于执行XPath查询。它从响应的HTML中选择指定的元素。</li>
+<li>XPath查询字符串有两部分，通过（并集运算符）连接：<ul>
+<li><code>//div[@id=&quot;link-report&quot;]/span[@class=&quot;all hidden&quot;]/text()</code>: 选取所有<code>id</code>为<code>&quot;link-report&quot;</code>的<code>&lt;div&gt;</code>元素中，类名为<code>&quot;all hidden&quot;</code>的<code>&lt;span&gt;</code>子元素的文本内容。</li>
+<li><code>//div[@id=&quot;link-report&quot;]/span[@property=&quot;v:summary&quot;]/text()</code>: 选取所有<code>id</code>为<code>&quot;link-report&quot;</code>的<code>&lt;div&gt;</code>元素中，<code>property</code>属性为<code>&quot;v:summary&quot;</code>的<code>&lt;span&gt;</code>子元素的文本内容。</li>
+</ul>
+</li>
+<li><code>.getall()</code> 方法获取所有匹配的元素的文本内容，返回一个字符串列表</li>
+<li>将<code>description_list</code>中的所有文本片段合并成一个单一的字符串。</li>
+<li><code>[des.strip() for des in description_list]</code> 是一个列表推导式，用于遍历<code>description_list</code>中的每个元素（<code>des</code>），并对每个元素应用<code>.strip()</code>方法。<code>.strip()</code>方法移除字符串两端的空白字符（包括空格、换行符等）。</li>
+<li><code>&#39;&#39;.join([...])</code> 方法将经过清洁的字符串列表连接成一个单一的字符串。空字符串<code>&#39;&#39;</code>作为连接符，意味着直接将文本片段连在一起，没有额外的字符插入。</li>
+<li>这段代码的作用是从HTML响应中提取电影描述，可能包括多个文本片段，并将它们清洁和合并为一个完整的描述字符串。这种方法在处理包含多个文本块或可选文本块（例如有些电影可能只有一种描述格式）的HTML页面时非常有用。</li>
 </ul>
 <h6 id="3-设置描述并返回-Item"><a href="#3-设置描述并返回-Item" class="headerlink" title="3. 设置描述并返回 Item"></a>3. 设置描述并返回 Item</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">item[<span class="string">&quot;description&quot;</span>] = description</span><br><span class="line"><span class="keyword">yield</span> item</span><br></pre></td></tr></table></figure></div>
 
 <ul>
-<li>将合并后的描述设置到 <code>item</code> 的 <code>&quot;description&quot;</code> 字段。</li>
-<li>使用 <code>yield</code> 关键字返回 <code>item</code> 对象。在 Scrapy 中，<code>yield</code> 的使用意味着将 <code>item</code> 传递给 Item Pipeline 进行进一步的处理（例如清洗、存储等）。</li>
+<li><code>item[&quot;description&quot;] = description</code><ul>
+<li>这行代码将之前提取并合并的描述文本（<code>description</code>）赋值给<code>item</code>对象的<code>&quot;description&quot;</code>字段。</li>
+<li><code>item</code>是一个类似于字典的对象，用于存储提取的数据。在Scrapy中，这通常是一个继承自<code>scrapy.Item</code>的类的实例，用来定义和存储爬取的数据结构。</li>
+<li>这里，<code>&quot;description&quot;</code>字段是之前定义在<code>DbItem</code>（或类似的Item类）中的一个字段，用于保存电影的描述文本。</li>
 </ul>
-<p>这个 <code>get_detail</code> 方法在 Scrapy 爬虫中用于处理从电影详情页提取的信息。它接收传递的基本电影信息，提取详情页的详细描述，然后将这些信息结构化存储在 <code>DbItem</code> 对象中并返回。这种方法体现了 Scrapy 爬虫处理多页面和数据传递的典型方式。</p>
+</li>
+<li><code>yield item</code><ul>
+<li>使用<code>yield</code>关键字来产生<code>item</code>对象，将其传递给Scrapy的管道系统（Pipelines）。</li>
+<li>在Scrapy中，<code>yield</code>的使用允许框架接管并异步处理这些item对象。这些item随后会通过定义好的管道进行处理，例如进行数据清洗、验证、存储到数据库等操作。</li>
+<li>这种基于生成器的方法使得Scrapy能够有效地处理大量数据，并允许多个item同时在管道中进行处理，从而提高整个爬取和数据处理的效率。</li>
+</ul>
+</li>
+</ul>
+<p>这两行代码的作用是将提取的描述文本保存到一个item对象中，并将这个对象传递给Scrapy的后续处理流程，如管道处理。这是Scrapy爬虫中处理和传递数据的常见模式。</p>
 <h4 id="Items-文件"><a href="#Items-文件" class="headerlink" title="Items 文件"></a>Items 文件</h4><p>定义了一个 Scrapy Item 类，名为 <code>DbItem</code>，用于在 Scrapy 爬虫中存储和组织爬取的数据。</p>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DbItem</span>(scrapy.Item):</span><br><span class="line">    <span class="comment"># define the fields for your item here like:</span></span><br><span class="line">    <span class="comment"># name = scrapy.Field()</span></span><br><span class="line">    movie_name = scrapy.Field()</span><br><span class="line">    director = scrapy.Field()</span><br><span class="line">    score = scrapy.Field()</span><br><span class="line">    description = scrapy.Field()</span><br></pre></td></tr></table></figure></div>
 
@@ -1824,19 +2020,31 @@
 <h4 id="Pipelines-文件"><a href="#Pipelines-文件" class="headerlink" title="Pipelines 文件"></a>Pipelines 文件</h4><p>定义了一个 Scrapy 的 <code>Pipeline</code> 类，名为 <code>DbPipeline</code>，用于处理由爬虫提取的数据。在 Scrapy 中，<code>Pipeline</code> 用于数据的清洗、验证和存储。</p>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DbPipeline</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">open_spider</span>(<span class="params">self, spider</span>):</span><br><span class="line">        self.f = <span class="built_in">open</span>(<span class="string">&#x27;film.txt&#x27;</span>,<span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">process_item</span>(<span class="params">self, item, spider</span>):</span><br><span class="line">        json_str = json.dumps(<span class="built_in">dict</span>(item), ensure_ascii=<span class="literal">False</span>) + <span class="string">&#x27;\n&#x27;</span></span><br><span class="line">        self.f.write(json_str)</span><br><span class="line">        <span class="keyword">return</span> item</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">close_spider</span>(<span class="params">self, spider</span>):</span><br><span class="line">        self.f.close()</span><br></pre></td></tr></table></figure></div>
 
-<h5 id="1-初始化及打开文件"><a href="#1-初始化及打开文件" class="headerlink" title="1. 初始化及打开文件"></a>1. 初始化及打开文件</h5><ul>
-<li><code>def open_spider(self, spider)</code>: 这个方法在爬虫开始时被调用。用于进行一些初始化工作。</li>
-<li><code>self.f = open(&#39;film.txt&#39;,&#39;w&#39;, encoding=&#39;utf-8&#39;)</code>: 在这里，它打开一个名为 <code>film.txt</code> 的文件用于写入，以 <code>utf-8</code> 编码方式打开，确保可以正确处理非 ASCII 字符。</li>
+<h5 id="1-初始化及打开文件"><a href="#1-初始化及打开文件" class="headerlink" title="1. 初始化及打开文件"></a>1. 初始化及打开文件</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">open_spider</span>(<span class="params">self, spider</span>):</span><br><span class="line">    self.f = <span class="built_in">open</span>(<span class="string">&#x27;film.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><p><code>class DbPipeline:</code> 定义了一个名为<code>DbPipeline</code>的新类。</p>
+</li>
+<li><p><code>def open_spider(self, spider)</code>: 这个<code>open_spider</code>方法在爬虫开始时被调用。用于进行一些初始化工作。</p>
+</li>
+<li><p><code>self.f = open(&#39;film.txt&#39;,&#39;w&#39;, encoding=&#39;utf-8&#39;)</code>: 这个方法打开一个名为<code>film.txt</code>的文件用于写入（’w’模式），并且指定编码为UTF-8。这是为了确保可以正确写入包含非ASCII字符（如中文）的文本。</p>
+</li>
+<li><p>文件对象被赋值给<code>self.f</code>，这样在这个类的其他方法中也能使用这个文件对象。</p>
+</li>
 </ul>
-<h5 id="2-处理并存储数据"><a href="#2-处理并存储数据" class="headerlink" title="2. 处理并存储数据"></a>2. 处理并存储数据</h5><ul>
-<li><code>def process_item(self, item, spider)</code>: 这个方法会被 Scrapy 框架自动调用，每次爬虫提取出一个 <code>item</code> 时都会执行。</li>
+<h5 id="2-处理并存储数据"><a href="#2-处理并存储数据" class="headerlink" title="2. 处理并存储数据"></a>2. 处理并存储数据</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">process_item</span>(<span class="params">self, item, spider</span>):</span><br><span class="line">    json_str = json.dumps(<span class="built_in">dict</span>(item), ensure_ascii=<span class="literal">False</span>) + <span class="string">&#x27;\n&#x27;</span></span><br><span class="line">    self.f.write(json_str)</span><br><span class="line">    <span class="keyword">return</span> item</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><code>def process_item(self, item, spider)</code>: 这个方法会被 Scrapy 框架自动调用，每次爬虫提取出一个 <code>item</code> 时都会执行。<code>process_item</code>方法是管道处理每个item的核心方法。</li>
 <li><code>json_str = json.dumps(dict(item), ensure_ascii=False) + &#39;\n&#39;</code>: 将 <code>item</code> 对象转换成 JSON 字符串。<code>ensure_ascii=False</code> 参数确保非 ASCII 字符（如中文）被正确处理。</li>
-<li><code>self.f.write(json_str)</code>: 将 JSON 字符串写入之前打开的文件。</li>
+<li><code>self.f.write(json_str)</code>: 将 JSON 字符串写入之前打开的文件。然后，这个JSON字符串（<code>json_str</code>）被写入到前面打开的文件中。每个item占一行，因为在字符串末尾添加了换行符<code>\n</code>。</li>
 <li><code>return item</code>: 返回 <code>item</code>，以便它能够传递到其他可能存在的 pipeline 或最终输出。</li>
 </ul>
-<h5 id="3-关闭文件"><a href="#3-关闭文件" class="headerlink" title="3. 关闭文件"></a>3. 关闭文件</h5><ul>
-<li><code>def close_spider(self, spider)</code>: 在爬虫结束时被调用。</li>
-<li><code>self.f.close()</code>: 关闭打开的文件。这是一个重要的步骤，确保数据被完整写入并且文件正常关闭。</li>
+<h5 id="3-关闭文件"><a href="#3-关闭文件" class="headerlink" title="3. 关闭文件"></a>3. 关闭文件</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">close_spider</span>(<span class="params">self, spider</span>):</span><br><span class="line">    self.f.close()</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><code>def close_spider(self, spider)</code>: 在爬虫结束时被调用。当爬虫关闭时，Scrapy框架会调用<code>close_spider</code>方法。</li>
+<li><code>self.f.close()</code>: 关闭打开的文件。这是一个重要的步骤，确保数据被完整写入并且文件正常关闭。这个方法关闭了文件对象<code>self.f</code>。这是一个良好的实践，可以确保所有数据都被写入到文件中，并且文件正确地关闭。</li>
 </ul>
 <p>在 Scrapy 项目中，<code>Pipeline</code> 类用于处理从爬虫传递过来的数据。在这个例子中，<code>DbPipeline</code> 负责将每个电影的信息以 JSON 格式保存到一个文本文件中。这样的处理方式适合于数据的持久化存储，例如保存到文件、数据库等。</p>
 <p><code>DbPipeline</code> 类演示了 Scrapy 爬虫中如何使用 pipeline 对提取的数据进行进一步的处理和存储。通过在爬虫启动和关闭时执行相关操作，并在提取数据时进行处理，pipeline 为数据的后续使用提供了一个有效的方式。</p>
@@ -1866,6 +2074,209 @@
 <h5 id="数据存储和一致性"><a href="#数据存储和一致性" class="headerlink" title="数据存储和一致性"></a>数据存储和一致性</h5><ul>
 <li>由于 Scrapy 是异步的，页面响应的顺序可能与请求发送的顺序不同。因此，使用 <code>meta</code> 参数在请求间传递数据，保证了数据（如电影的基本信息和详细简介）之间的一致性和关联。</li>
 </ul>
+<h2 id="项目案例"><a href="#项目案例" class="headerlink" title="项目案例"></a>项目案例</h2><h3 id="分析需求"><a href="#分析需求" class="headerlink" title="分析需求"></a>分析需求</h3><ol>
+<li><p>获取腾讯社会招聘的岗位信息</p>
+</li>
+<li><p>要获取信息的URL并不会显示存在页面中因此要通过开发者模式查看，能发现其有众多异步请求且要获取的信息就在其中</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/88ae35cb-20eb-4b88-88aa-47a6b950b400/public"
+                      width = "500"
+                >
+</li>
+<li><p>分析排前的请求，在<code>Fetch/XHR</code>下的<code>Preview</code>可以发现图示请求的数据结构与页面内容近似，因此该页面的URL就应该在这个请求的标头中</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ae0ddfae-1c39-488e-b671-cf052174e300/public"
+                      width = "500"
+                >
+</li>
+<li><p>通过标头构造页面即可开始实施抓取数据，这个URL可以发现拼接了很多参数</p>
+</li>
+</ol>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b8e2bf40-9dbd-46e4-417b-39dda1d11900/public"
+                      width = "500"
+                >
+
+<h3 id="分析规律"><a href="#分析规律" class="headerlink" title="分析规律"></a>分析规律</h3><ol>
+<li>通过分析每页的URL，发现切换页面的规律</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URL_1 = <span class="string">&#x27;https://careers.tencent.com/tencentcareer/api/post/Query?timestamp=1702285787290&amp;countryId=&amp;cityId=&amp;bgIds=&amp;productId=&amp;categoryId=&amp;parentCategoryId=&amp;attrId=&amp;keyword=&amp;pageIndex=1&amp;pageSize=10&amp;language=zh-cn&amp;area=au&#x27;</span></span><br><span class="line">URL_2 = <span class="string">&#x27;https://careers.tencent.com/tencentcareer/api/post/Query?timestamp=1702289736331&amp;countryId=&amp;cityId=&amp;bgIds=&amp;productId=&amp;categoryId=&amp;parentCategoryId=&amp;attrId=&amp;keyword=&amp;pageIndex=2&amp;pageSize=10&amp;language=zh-cn&amp;area=au&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>可以发现<code>pageIndex</code>是不一样的，一个为1一个为2，那么后续只要利用花括号<code>pageSize=&#123;&#125;</code>传值即可实现页面跳转</p>
+<p>同时可以发现URL都存在<code>api</code>因此其都是为接口数据</p>
+<h3 id="爬取思路"><a href="#爬取思路" class="headerlink" title="爬取思路"></a>爬取思路</h3><ol>
+<li>找到列表页的数据的url</li>
+<li>使用scrapy.Request 方法进行请求</li>
+<li>解析第二步的响应，提取里面的内容</li>
+</ol>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><h4 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1. 创建项目"></a>1. 创建项目</h4><p>首先在终端输入 <code>scrapy startproject tx</code> 其中<code>tx</code>代表项目名称为腾讯缩写</p>
+<h4 id="2-创建爬虫"><a href="#2-创建爬虫" class="headerlink" title="2. 创建爬虫"></a>2. 创建爬虫</h4><p>然后输入<code>scrapy genspider tencent_data careers.tencent.com</code> 创建爬虫<code>tencent_data</code> 其爬取域名为<code>careers.tencent.com</code></p>
+<h4 id="3-编辑爬虫"><a href="#3-编辑爬虫" class="headerlink" title="3. 编辑爬虫"></a>3. 编辑爬虫</h4><p>在生成<code>tencent_data.py</code>的爬虫文件下继承自<code>scrapy.Spider</code>命名为<code>TencentDataSpider</code>的类中编辑需要构造的URL，在原本的URL内修改参数<code>pageIndex=1</code>为<code>pageIndex=&#123;&#125;</code>以便分页（页面跳转），将<code>url_data</code>格式化字符串中的<code>pageIndex</code>参数设为1，生成第一页的URL，作为爬虫开始爬取的起始点。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TencentDataSpider</span>(scrapy.Spider):</span><br><span class="line">    name = <span class="string">&quot;tencent_data&quot;</span></span><br><span class="line">    allowed_domains = [<span class="string">&quot;careers.tencent.com&quot;</span>]</span><br><span class="line"></span><br><span class="line">    url_data = <span class="string">&#x27;https://careers.tencent.com/tencentcareer/api/post/Query?timestamp=1702285787290&amp;countryId=&amp;cityId=&amp;bgIds=&amp;productId=&amp;categoryId=&amp;parentCategoryId=&amp;attrId=&amp;keyword=&amp;pageIndex=&#123;&#125;&amp;pageSize=10&amp;language=zh-cn&amp;area=au&#x27;</span></span><br><span class="line"></span><br><span class="line">    start_urls = [url_data.<span class="built_in">format</span>(<span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">parse</span>(<span class="params">self, response</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="4-处理列表列"><a href="#4-处理列表列" class="headerlink" title="4. 处理列表列"></a>4. 处理列表列</h4><p>在<code>parse</code>方法中添加一个循环以确定要爬取的页面数量，可以通过循环<code>for</code>来进行。<code>parse</code> 是Scrapy爬虫中默认的回调方法，用于处理响应。该方法通过循环生成接下来四页的URL（从第1页到第4页）。对于每一页，它创建并产生一个新的Scrapy请求 (<code>scrapy.Request</code>)，并指定回调函数为<code>self.parse_data</code>。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TencentDataSpider</span>(scrapy.Spider):</span><br><span class="line">    name = <span class="string">&quot;tencent_data&quot;</span></span><br><span class="line">    allowed_domains = [<span class="string">&quot;careers.tencent.com&quot;</span>]</span><br><span class="line"></span><br><span class="line">    url_data = <span class="string">&#x27;https://careers.tencent.com/tencentcareer/api/post/Query?timestamp=1702285787290&amp;countryId=&amp;cityId=&amp;bgIds=&amp;productId=&amp;categoryId=&amp;parentCategoryId=&amp;attrId=&amp;keyword=&amp;pageIndex=&#123;&#125;&amp;pageSize=10&amp;language=zh-cn&amp;area=au&#x27;</span></span><br><span class="line"></span><br><span class="line">    start_urls = [url_data.<span class="built_in">format</span>(<span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">parse</span>(<span class="params">self, response</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">            next_page_url = self.url_data.<span class="built_in">format</span>(i)</span><br><span class="line">            <span class="keyword">yield</span> scrapy.Request(next_page_url, callback=self.parse_data)</span><br></pre></td></tr></table></figure></div>
+
+
+  <div class="note-large orange">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-exclamation"></i><p>注意</p>
+
+    </div>
+    <div class="notel-content">
+      <p>在提供的<code>parse</code>方法中，<code>response</code>参数实际上没有被使用。这是因为该方法的主要目的是生成后续页面的URL，并对每个URL发起新的请求，而不是处理<code>response</code>中的数据。</p>
+<p>在常规的Scrapy爬虫中，<code>parse</code>方法通常用于处理响应，从中提取数据或发现新的URL来跟进。但在这个特定的例子中，<code>parse</code>方法仅用于根据初始响应生成一系列后续页面的请求。实际处理这些页面的响应内容的任务被委托给了另一个方法<code>parse_data</code>（在后续定义）。这意味着在这个特定的<code>parse</code>实现中，初始的<code>response</code>对象不包含需要立即处理的相关数据，其主要作用是触发爬虫开始执行后续页面的请求。</p>
+
+    </div>
+  </div>
+
+<p>显然请求的文件是JSON文件，因此需要编辑方法处理从网页请求中返回的JSON格式的响应。这个方法特别适用于处理返回JSON数据的API响应。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TencentDataSpider</span>(scrapy.Spider):</span><br><span class="line">    name = <span class="string">&quot;tencent_data&quot;</span></span><br><span class="line">    allowed_domains = [<span class="string">&quot;careers.tencent.com&quot;</span>]</span><br><span class="line"></span><br><span class="line">    url_data = <span class="string">&#x27;https://careers.tencent.com/tencentcareer/api/post/Query?timestamp=1702285787290&amp;countryId=&amp;cityId=&amp;bgIds=&amp;productId=&amp;categoryId=&amp;parentCategoryId=&amp;attrId=&amp;keyword=&amp;pageIndex=&#123;&#125;&amp;pageSize=10&amp;language=zh-cn&amp;area=au&#x27;</span></span><br><span class="line"></span><br><span class="line">    start_urls = [url_data.<span class="built_in">format</span>(<span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">parse</span>(<span class="params">self, response</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">            next_page_url = self.url_data.<span class="built_in">format</span>(i)</span><br><span class="line">            <span class="keyword">yield</span> scrapy.Request(next_page_url, callback=self.parse_data)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">parse_data</span>(<span class="params">self, response</span>):</span><br><span class="line">        dict_data = response.json() <span class="comment"># json.loads(response.text)</span></span><br><span class="line">        <span class="built_in">print</span>(dict_data)</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><code>parse_data</code>是一个实例方法，与<code>parse</code>方法类似，它是Scrapy框架用于处理响应的回调函数。不同的是，这个方法专门用于处理JSON响应。</li>
+<li><code>response</code>参数是一个包含HTTP响应数据的对象。在Scrapy中，这个对象通常包括响应的内容和其他元数据。</li>
+<li><code>dict_data = response.json()</code>这一行是核心功能。<code>response.json()</code>方法将响应的内容（假定是JSON格式）解析成Python字典。这允许您以Python原生的方式访问JSON响应中的数据。</li>
+<li>在将JSON响应解析为字典后，可以进一步处理这些数据。例如从字典中提取特定的字段，并将它们存储在Scrapy的Item对象中，或者直接进行数据清洗、转换等操作。</li>
+</ul>
+<p>在修改<code>settings.py</code>配置文件的参数为正确后进行调试，发现其<code>response</code>依旧能返回<code>200</code>，然而实际输入的URL和抓取时间戳<code>timestamp</code>并不一样，这说明其对时间戳并不敏感。</p>
+<p>如果敏感且失败则需要构造时间戳<code>int(time.time() * 1000)</code></p>
+<p>进行分析调试结果<code>response.json()</code> 返回的数据结构是一个字典且具有数据</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/dc9f98ec-a482-43d8-c3d9-58ce71096b00/public"
+                      width = "500"
+                >
+
+<p>但是由于这样数据有太多且杂乱无章，因此在获取数据的时候就进行部分的过滤，只获取<code>Data</code>下的<code>Posts</code>里的部分数据即可，例如名称，地址，时间，详情URL等</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/72d94aa2-a334-4558-2a96-f36c2d1cf500/public"
+                      width = "500"
+                >
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TencentDataSpider</span>(scrapy.Spider):</span><br><span class="line">    name = <span class="string">&quot;tencent_data&quot;</span></span><br><span class="line">    allowed_domains = [<span class="string">&quot;careers.tencent.com&quot;</span>]</span><br><span class="line"></span><br><span class="line">    url_data = <span class="string">&#x27;https://careers.tencent.com/tencentcareer/api/post/Query?timestamp=1702285787290&amp;countryId=&amp;cityId=&amp;bgIds=&amp;productId=&amp;categoryId=&amp;parentCategoryId=&amp;attrId=&amp;keyword=&amp;pageIndex=&#123;&#125;&amp;pageSize=10&amp;language=zh-cn&amp;area=au&#x27;</span></span><br><span class="line"></span><br><span class="line">    PostURL = <span class="string">&#x27;https://careers.tencent.com/tencentcareer/api/post/ByPostId?timestamp=1701864924030&amp;postId=&#123;&#125;&amp;language=zh-cn&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    start_urls = [url_data.<span class="built_in">format</span>(<span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">parse</span>(<span class="params">self, response</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">            next_page_url = self.url_data.<span class="built_in">format</span>(i)</span><br><span class="line">            <span class="keyword">yield</span> scrapy.Request(next_page_url, callback=self.parse_data)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">parse_data</span>(<span class="params">self, response</span>):</span><br><span class="line">        dict_data = response.json().get(<span class="string">&quot;Data&quot;</span>).get(<span class="string">&quot;Posts&quot;</span>) <span class="comment"># json.loads(response.text)</span></span><br><span class="line">        <span class="keyword">for</span> data <span class="keyword">in</span> dict_data:</span><br><span class="line">            item = &#123;&#125;</span><br><span class="line">            item[<span class="string">&#x27;RecruitPostName&#x27;</span>] = data.get(<span class="string">&#x27;RecruitPostName&#x27;</span>)</span><br><span class="line">            item[<span class="string">&#x27;LocationName&#x27;</span>] = data.get(<span class="string">&#x27;LocationName&#x27;</span>)</span><br><span class="line">            item[<span class="string">&#x27;LastUpdateTime&#x27;</span>] = data.get(<span class="string">&#x27;LastUpdateTime&#x27;</span>)</span><br><span class="line">            item[<span class="string">&#x27;CategoryName&#x27;</span>] = data.get(<span class="string">&#x27;CategoryName&#x27;</span>)</span><br><span class="line">            PostId = data.get(<span class="string">&#x27;PostId&#x27;</span>)</span><br><span class="line">			detail_url = self.PostURL.<span class="built_in">format</span>(PostId)</span><br><span class="line">			<span class="keyword">yield</span> scrapy.Request(detail_url, callback=self.parse_post_detail, meta=&#123;<span class="string">&#x27;info&#x27;</span>: item&#125;)</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><code>response.json()</code>将返回的JSON数据转换为Python字典。</li>
+<li><code>.get(&quot;Data&quot;).get(&quot;Posts&quot;)</code>从这个字典中获取<code>Data</code>键对应的值，然后从<code>Data</code>中获取<code>Posts</code>键对应的值。JSON结构是<code>&#123;&quot;Data&quot;: &#123;&quot;Posts&quot;: [...]&#125;&#125;</code>，这将得到包含职位信息的列表。</li>
+<li>遍历<code>dict_data</code>列表中的每个元素（每个元素代表一个职位）。</li>
+<li>对于每个职位，创建一个新的字典<code>item</code>，并从<code>data</code>中提取相关字段。</li>
+<li>使用<code>PostId</code>来格式化<code>self.PostURL</code>字符串，以创建指向每个职位详情页的URL。</li>
+<li><code>item = &#123;&#125;</code>: 这行代码创建了一个空字典<code>item</code>，用于存储从每个职位信息中提取的数据。这是一种常见的在爬虫中收集数据的方法。</li>
+<li><code>self.PostURL</code>是在访问当前类实例（在这种情况下是<code>TencentDataSpider</code>的实例）的<code>PostURL</code>属性。这意味着<code>PostURL</code>是这个类的实例属性，而非一个局部变量或一个类变量（类变量将会使用类名来访问，比如<code>TencentDataSpider.PostURL</code>）。</li>
+<li>从<code>data</code>字典中获取<code>PostId</code>值，然后使用这个<code>PostId</code>来格式化<code>self.PostURL</code>字符串。</li>
+<li><code>PostURL</code>  为 <code>self.PostURL.format(PostId)</code>使用了<code>format</code>方法来插入<code>PostId</code>进行构造</li>
+<li>格式化后的URL被存储在<code>detail_url</code>变量中。然后，这个URL被用来生成一个新的请求，该请求被发送到<code>parse_post_detail</code>方法（这是一个假定的方法，用于处理每个职位详情页面的响应）<ul>
+<li><strong><code>scrapy.Request</code></strong>:<ul>
+<li>这是Scrapy用来创建新HTTP请求的类。</li>
+<li><code>detail_url</code>是这个新请求的目标URL。这个URL通常是从当前页面提取的，指向一个需要进一步爬取的页面。</li>
+</ul>
+</li>
+<li><strong><code>callback=self.parse_post_detail</code></strong>:<ul>
+<li><code>callback</code>参数指定了Scrapy在收到此请求的响应后应该调用的方法。</li>
+<li><code>self.parse_post_detail</code>是定义的爬虫类中的一个方法。当Scrapy处理<code>detail_url</code>的响应时，它会将响应数据传递给<code>parse_post_detail</code>方法。</li>
+</ul>
+</li>
+<li><strong><code>meta=&#123;&#39;info&#39;: item&#125;</code></strong>:<ul>
+<li><code>meta</code>是一个字典，用于在Scrapy的不同请求之间传递额外的数据。</li>
+<li>在这个例子中，<code>meta</code>字典包含一个键<code>&#39;info&#39;</code>，其值为<code>item</code>。这意味着可以在<code>parse_post_detail</code>方法中通过<code>response.meta[&#39;info&#39;]</code>来访问这个<code>item</code>对象。</li>
+<li>这种方式在请求链中保持状态或传递数据时非常有用。</li>
+</ul>
+</li>
+<li><strong><code>yield</code></strong>:<ul>
+<li>使用<code>yield</code>关键字来生成请求对象。在Scrapy中，<code>yield</code>的使用使得框架可以接管并异步处理这些请求。</li>
+<li>这允许Scrapy根据需要进行请求的调度，而不是立即发出请求，从而更有效地管理网络资源和避免对目标网站造成过大压力。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-处理详情页和Items-文件"><a href="#5-处理详情页和Items-文件" class="headerlink" title="5. 处理详情页和Items 文件"></a>5. 处理详情页和Items 文件</h4><p>随后定义<code>parse_post_detail</code>方法和构造<code>items.py</code>文件下的类属性</p>
+<p><code>tencent_data.py</code>:</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">parse_post_detail</span>(<span class="params">self, response</span>):</span><br><span class="line">    item = TxItem()</span><br><span class="line">    info = response.meta.get(<span class="string">&#x27;info&#x27;</span>)</span><br><span class="line">    item.update(info)</span><br><span class="line">    dict_data = response.json()</span><br><span class="line">    item[<span class="string">&#x27;Requirement&#x27;</span>] = dict_data.get(<span class="string">&quot;Data&quot;</span>).get(<span class="string">&#x27;Requirement&#x27;</span>).replace(<span class="string">&#x27;\r\n&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    item[<span class="string">&#x27;Responsibility&#x27;</span>] = dict_data.get(<span class="string">&quot;Data&quot;</span>).get(<span class="string">&#x27;Responsibility&#x27;</span>).replace(<span class="string">&#x27;\r\n&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">yield</span> item</span><br></pre></td></tr></table></figure></div>
+
+<p><code>items.py</code>:</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Define here the models for your scraped items</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># See documentation in:</span></span><br><span class="line"><span class="comment"># https://docs.scrapy.org/en/latest/topics/items.html</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TxItem</span>(scrapy.Item):</span><br><span class="line">    <span class="comment"># define the fields for your item here like:</span></span><br><span class="line">    <span class="comment"># name = scrapy.Field()</span></span><br><span class="line">    RecruitPostName = scrapy.Field()</span><br><span class="line">    LocationName = scrapy.Field()</span><br><span class="line">    LastUpdateTime = scrapy.Field()</span><br><span class="line">    CategoryName = scrapy.Field()</span><br><span class="line">    Requirement = scrapy.Field()</span><br><span class="line">    Responsibility = scrapy.Field()</span><br></pre></td></tr></table></figure></div>
+
+<p>然后调试检查查看传值是否成功</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f9d7d000-374c-429b-3e8b-d998e8e61000/public"
+                      width = "500"
+                >
+
+
+  <div class="note p-4 mb-4 rounded-small orange fa-circle-exclamation 注意">
+    <p>调试处理详情页相关方法前需要同时配置Items 文件，不然无法传值</p>
+
+  </div>
+
+
+
+<h4 id="6-编辑Pipelines"><a href="#6-编辑Pipelines" class="headerlink" title="6. 编辑Pipelines"></a>6. 编辑Pipelines</h4><p>在<code>Settings.py</code>文件激活Pipelines后，配置Pipelines文件</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Define your item pipelines here</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Don&#x27;t forget to add your pipeline to the ITEM_PIPELINES setting</span></span><br><span class="line"><span class="comment"># See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># useful for handling different item types with a single interface</span></span><br><span class="line"><span class="keyword">from</span> itemadapter <span class="keyword">import</span> ItemAdapter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TxPipeline</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">process_item</span>(<span class="params">self, item, spider</span>):</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;tencent.txt&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(<span class="built_in">str</span>(item))</span><br><span class="line">        <span class="keyword">return</span> item</span><br></pre></td></tr></table></figure></div>
+
+<p>在Scrapy的管道（Pipeline）中，可以选择用不同的方式来处理文件的打开和关闭。</p>
+<ol>
+<li><strong>类定义</strong>:<ul>
+<li><code>class TxPipeline:</code> 定义了一个名为<code>TxPipeline</code>的新类。</li>
+<li>这个类是Scrapy的一个管道，它必须实现<code>process_item</code>方法。</li>
+</ul>
+</li>
+<li><strong><code>process_item</code>方法</strong>:<ul>
+<li><code>def process_item(self, item, spider):</code> 是管道处理每个爬取的项目（item）的方法。</li>
+<li>每当爬虫提取出数据并生成<code>item</code>对象时，Scrapy框架会自动调用这个方法，并将<code>item</code>对象和<code>spider</code>对象作为参数传递给它。</li>
+</ul>
+</li>
+<li><strong>文件写入操作</strong>:<ul>
+<li><code>with open(&#39;tencent.txt&#39;, &#39;a&#39;, encoding=&#39;utf-8&#39;) as f:</code> 使用<code>with</code>语句打开文件<code>tencent.txt</code>。如果文件不存在，将会创建它。文件以追加模式（<code>&#39;a&#39;</code>）打开，意味着新写入的内容会被添加到文件的末尾，而不是覆盖原有内容。文件以<code>utf-8</code>编码打开，这对于写入非ASCII字符（例如中文）很重要。</li>
+<li><code>f.write(str(item))</code> 将<code>item</code>对象转换为字符串，并写入文件。这里需要注意的是，<code>str(item)</code>可能不会以最优雅的格式输出，特别是如果<code>item</code>包含多个字段或嵌套结构时。在实际应用中，可能需要更精细的格式化方法，比如使用<code>json.dumps</code>来生成更可读的JSON格式。</li>
+</ul>
+</li>
+<li><strong>返回项目</strong>:<ul>
+<li><code>return item</code>：在处理完项目后，管道返回<code>item</code>对象。这允许同一个<code>item</code>被多个管道依次处理。在Scrapy中，项目（items）可以通过多个管道传递，每个管道都可以执行一些操作（如清洗数据、去重、写入数据库等）。</li>
+</ul>
+</li>
+</ol>
+<p><strong>使用<code>with</code>语句:</strong></p>
+<p>在<code>TxPipeline</code>类中，<code>process_item</code>方法使用了<code>with</code>语句来打开文件：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;tencent.txt&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="built_in">str</span>(item))</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><strong><code>with</code>语句</strong>：Python中的<code>with</code>语句用于包裹执行需要资源管理的代码块，比如文件操作。<code>with</code>语句可以确保文件在使用完毕后被正确关闭，即使在处理文件过程中发生错误也是如此。</li>
+<li><strong>优点</strong>：使用<code>with</code>语句的主要优点是它会自动处理文件的关闭。这种方式在每次<code>process_item</code>被调用时打开文件，写入数据，然后立即关闭文件，非常适合写入少量数据。</li>
+<li><strong>缺点</strong>：如果<code>process_item</code>被频繁调用，这种方式可能会导致性能问题，因为每次调用都会打开和关闭文件。</li>
+</ul>
+<p><strong>使用<code>open_spider</code>和<code>close_spider</code>方法：</strong></p>
+<p>在之前的案例<code>DbPipeline</code>类中，文件的打开和关闭是在<code>open_spider</code>和<code>close_spider</code>方法中处理的：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">open_spider</span>(<span class="params">self, spider</span>):</span><br><span class="line">    self.f = <span class="built_in">open</span>(<span class="string">&#x27;dbtest1result.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">close_spider</span>(<span class="params">self, spider</span>):</span><br><span class="line">    self.f.close()</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><strong><code>open_spider</code>和<code>close_spider</code>方法</strong>：这两个方法分别在爬虫开始时和结束时被调用。在这里，文件在爬虫启动时被打开，并在爬虫关闭时被关闭。</li>
+<li><strong>优点</strong>：这种方式对于处理大量数据更有效，因为它在整个爬虫过程中只打开和关闭文件一次。这减少了文件操作的开销，提高了性能。</li>
+<li><strong>缺点</strong>：如果爬虫在执行过程中出现异常并意外终止，可能导致文件没有正确关闭。这可能会导致数据丢失或文件损坏。</li>
+<li>如果爬虫产生的数据量不大，或者更关心代码的简洁性，使用<code>with</code>语句是一个很好的选择。</li>
+<li>如果爬虫产生大量数据，或者希望减少文件操作的开销，使用<code>open_spider</code>和<code>close_spider</code>方法可能更合适。</li>
+</ul>
+<h3 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h3><p>最后运行，产出文件<code>tencent.txt</code>且具有相应的值则成功</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/980e1a03-5250-421d-819a-35e0effab800/public"
+                      width = "500"
+                >
 
         </div>
 
@@ -1880,7 +2291,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-12-11 03:11:19
+                    :</strong> 2023-12-11 20:29:48
             </li>
         
         <li>
@@ -2004,7 +2415,7 @@
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
         <div class="page-title">Scrapy</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-text">运行流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrapy%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-text">Scrapy框架的体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%87%E7%A8%8B"><span class="nav-text">数据流过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="nav-text">简单使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%91%BD%E4%BB%A4"><span class="nav-text">项目命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="nav-text">项目文件介绍</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1"><span class="nav-text">爬取豆瓣电影</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E7%9A%84%E5%92%8C%E8%A6%81%E6%B1%82"><span class="nav-text">项目目的和要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA"><span class="nav-text">项目搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-Spider-%E7%B1%BB"><span class="nav-text">创建 Spider 类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%93%8D%E5%BA%94%EF%BC%88Parsing-Response%EF%BC%89"><span class="nav-text">解析响应（Parsing Response）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E5%89%8D%E7%BD%AE"><span class="nav-text">调试前置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%85%E6%B4%97%E6%95%B0%E6%8D%AE"><span class="nav-text">清洗数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E8%AF%951"><span class="nav-text">调试1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E8%AF%952"><span class="nav-text">调试2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E8%AF%953"><span class="nav-text">调试3</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-Item"><span class="nav-text">定义 Item</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%BD%E8%B8%AA%E9%93%BE%E6%8E%A5%EF%BC%88Following-Links%EF%BC%89"><span class="nav-text">追踪链接（Following Links）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AE%A1%E9%81%93%EF%BC%88Pipelines%EF%BC%89"><span class="nav-text">定义和使用管道（Pipelines）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE"><span class="nav-text">存储数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E7%88%AC%E8%99%AB"><span class="nav-text">运行爬虫</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-shell"><span class="nav-text">Scrapy shell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E6%96%B9%E6%B3%95"><span class="nav-text">快捷方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrapy-%E5%AF%B9%E8%B1%A1"><span class="nav-text">Scrapy 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-Selector-%E7%B1%BB"><span class="nav-text">Scrapy Selector 类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Selector-%E7%B1%BB%E7%9A%84%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95"><span class="nav-text">Selector 类的基础用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%9A%E8%BF%87%E6%96%87%E6%9C%AC%E6%9E%84%E9%80%A0-Selector-%E5%AE%9E%E4%BE%8B"><span class="nav-text">1. 通过文本构造 Selector 实例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E7%94%B5%E5%BD%B1%E5%90%8D%E7%A7%B0"><span class="nav-text">提取电影名称</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E6%89%80%E6%9C%89%E5%8C%B9%E9%85%8D%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%88%97%E8%A1%A8"><span class="nav-text">提取所有匹配元素的文本列表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-extract-first-%E6%8F%90%E5%8F%96%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8C%B9%E9%85%8D%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC"><span class="nav-text">使用 extract_first() 提取第一个匹配元素的文本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-extract-%E6%8F%90%E5%8F%96%E6%89%80%E6%9C%89%E5%8C%B9%E9%85%8D%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%88%97%E8%A1%A8"><span class="nav-text">使用 extract() 提取所有匹配元素的文本列表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E7%89%B9%E5%AE%9A%E5%AD%90%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC"><span class="nav-text">提取特定子元素的文本</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%80%9A%E8%BF%87-response-%E6%9E%84%E9%80%A0-Selector-%E5%AE%9E%E4%BE%8B"><span class="nav-text">2. 通过 response 构造 Selector 实例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Selector-%E5%AE%9E%E4%BE%8B%E5%92%8C-response-%E7%9A%84-selector-%E5%B1%9E%E6%80%A7%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-text">使用 Selector 实例和 response 的 selector 属性提取数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E5%90%88-CSS-%E5%92%8C-XPath-%E9%80%89%E6%8B%A9%E5%99%A8%E5%8F%8A%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-text">结合 CSS 和 XPath 选择器及正则表达式提取数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-Spider-%E7%B1%BB"><span class="nav-text">Scrapy Spider 类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spider-%E7%B1%BB%E7%9A%84%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84"><span class="nav-text">Spider 类的基础结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F-Logger"><span class="nav-text">日志系统 Logger</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logger-%E5%B1%9E%E6%80%A7"><span class="nav-text">Logger 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Log-%E6%96%B9%E6%B3%95"><span class="nav-text">Log 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="nav-text">使用示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from-crawler-%E5%92%8C-set-crawler-%E6%96%B9%E6%B3%95"><span class="nav-text">from_crawler 和 _set_crawler 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#start-requests-%E6%96%B9%E6%B3%95"><span class="nav-text">start_requests 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parse-%E6%96%B9%E6%B3%95"><span class="nav-text">parse 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#close-%E6%96%B9%E6%B3%95"><span class="nav-text">close 方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A1%E7%BA%A7%E9%A1%B5%E9%9D%A2%E6%8A%93%E5%8F%96%E5%8F%8A%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92%E6%8B%BC%E6%8E%A5"><span class="nav-text">次级页面抓取及数据传递拼接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A1%E7%BA%A7%E9%A1%B5%E9%9D%A2%E6%8A%93%E5%8F%96"><span class="nav-text">次级页面抓取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A6%E6%83%85%E9%A1%B5%E6%8A%93%E5%8F%96"><span class="nav-text">详情页抓取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96%E7%A4%BA%E4%BE%8B"><span class="nav-text">数据提取示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%9A%84%E4%BC%A0%E9%80%92%E6%8B%BC%E6%8E%A5"><span class="nav-text">参数的传递拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B1%86%E7%93%A3%E4%B8%BA%E4%BE%8B%E5%AD%90"><span class="nav-text">豆瓣为例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spider-%E6%96%87%E4%BB%B6"><span class="nav-text">Spider 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E5%AE%9A%E4%B9%89"><span class="nav-text">爬虫定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E9%A1%B5%E8%A7%A3%E6%9E%90%E6%96%B9%E6%B3%95-parse"><span class="nav-text">主页解析方法 parse</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#0-%E6%96%B9%E6%B3%95%E5%AE%9A%E4%B9%89"><span class="nav-text">0. 方法定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E8%A7%A3%E6%9E%90%E8%8A%82%E7%82%B9%E5%88%97%E8%A1%A8"><span class="nav-text">1. 解析节点列表</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E5%88%A4%E6%96%AD%E5%B9%B6%E9%81%8D%E5%8E%86%E8%8A%82%E7%82%B9"><span class="nav-text">2. 判断并遍历节点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-%E6%8F%90%E5%8F%96%E7%94%B5%E5%BD%B1%E4%BF%A1%E6%81%AF"><span class="nav-text">3. 提取电影信息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-%E5%88%9B%E5%BB%BA%E5%B9%B6%E5%A1%AB%E5%85%85-Scrapy-Item"><span class="nav-text">4. 创建并填充 Scrapy Item</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-%E8%AF%B7%E6%B1%82%E7%94%B5%E5%BD%B1%E8%AF%A6%E6%83%85%E9%A1%B5"><span class="nav-text">5. 请求电影详情页</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-%E5%88%86%E9%A1%B5%E5%A4%84%E7%90%86"><span class="nav-text">6. 分页处理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-%E5%A4%84%E7%90%86%E7%BB%93%E6%9D%9F"><span class="nav-text">7. 处理结束</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%A6%E6%83%85%E9%A1%B5%E8%A7%A3%E6%9E%90%E6%96%B9%E6%B3%95-get-detail"><span class="nav-text">详情页解析方法 get_detail</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#0-%E6%96%B9%E6%B3%95%E5%AE%9A%E4%B9%89-1"><span class="nav-text">0. 方法定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E6%9B%B4%E6%96%B0-Item"><span class="nav-text">1. 初始化和更新 Item</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E6%8F%90%E5%8F%96%E7%94%B5%E5%BD%B1%E6%8F%8F%E8%BF%B0%E4%BF%A1%E6%81%AF"><span class="nav-text">2. 提取电影描述信息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-%E8%AE%BE%E7%BD%AE%E6%8F%8F%E8%BF%B0%E5%B9%B6%E8%BF%94%E5%9B%9E-Item"><span class="nav-text">3. 设置描述并返回 Item</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Items-%E6%96%87%E4%BB%B6"><span class="nav-text">Items 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pipelines-%E6%96%87%E4%BB%B6"><span class="nav-text">Pipelines 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8F%8A%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6"><span class="nav-text">1. 初始化及打开文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%A4%84%E7%90%86%E5%B9%B6%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE"><span class="nav-text">2. 处理并存储数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E5%85%B3%E9%97%AD%E6%96%87%E4%BB%B6"><span class="nav-text">3. 关闭文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Settings-%E6%96%87%E4%BB%B6"><span class="nav-text">Settings 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE"><span class="nav-text">基本设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE"><span class="nav-text">用户代理设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Item-Pipeline-%E8%AE%BE%E7%BD%AE"><span class="nav-text">Item Pipeline 设置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%9B%AE%E6%A0%87%E5%92%8C%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B%E6%80%BB%E7%BB%93"><span class="nav-text">爬虫项目的目标和请求流程总结</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E6%95%B0%E6%8D%AE"><span class="nav-text">目标数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B"><span class="nav-text">请求流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%92%8C%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-text">数据存储和一致性</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-text">运行流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrapy%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-text">Scrapy框架的体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%87%E7%A8%8B"><span class="nav-text">数据流过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="nav-text">简单使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%91%BD%E4%BB%A4"><span class="nav-text">项目命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="nav-text">项目文件介绍</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1"><span class="nav-text">爬取豆瓣电影</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E7%9A%84%E5%92%8C%E8%A6%81%E6%B1%82"><span class="nav-text">项目目的和要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA"><span class="nav-text">项目搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-Spider-%E7%B1%BB"><span class="nav-text">创建 Spider 类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%93%8D%E5%BA%94%EF%BC%88Parsing-Response%EF%BC%89"><span class="nav-text">解析响应（Parsing Response）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E5%89%8D%E7%BD%AE"><span class="nav-text">调试前置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%85%E6%B4%97%E6%95%B0%E6%8D%AE"><span class="nav-text">清洗数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E8%AF%951"><span class="nav-text">调试1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E8%AF%952"><span class="nav-text">调试2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E8%AF%953"><span class="nav-text">调试3</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-Item"><span class="nav-text">定义 Item</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%BD%E8%B8%AA%E9%93%BE%E6%8E%A5%EF%BC%88Following-Links%EF%BC%89"><span class="nav-text">追踪链接（Following Links）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AE%A1%E9%81%93%EF%BC%88Pipelines%EF%BC%89"><span class="nav-text">定义和使用管道（Pipelines）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE"><span class="nav-text">存储数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E7%88%AC%E8%99%AB"><span class="nav-text">运行爬虫</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-shell"><span class="nav-text">Scrapy shell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E6%96%B9%E6%B3%95"><span class="nav-text">快捷方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrapy-%E5%AF%B9%E8%B1%A1"><span class="nav-text">Scrapy 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-Selector-%E7%B1%BB"><span class="nav-text">Scrapy Selector 类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Selector-%E7%B1%BB%E7%9A%84%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95"><span class="nav-text">Selector 类的基础用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%9A%E8%BF%87%E6%96%87%E6%9C%AC%E6%9E%84%E9%80%A0-Selector-%E5%AE%9E%E4%BE%8B"><span class="nav-text">1. 通过文本构造 Selector 实例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E7%94%B5%E5%BD%B1%E5%90%8D%E7%A7%B0"><span class="nav-text">提取电影名称</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E6%89%80%E6%9C%89%E5%8C%B9%E9%85%8D%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%88%97%E8%A1%A8"><span class="nav-text">提取所有匹配元素的文本列表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-extract-first-%E6%8F%90%E5%8F%96%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8C%B9%E9%85%8D%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC"><span class="nav-text">使用 extract_first() 提取第一个匹配元素的文本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-extract-%E6%8F%90%E5%8F%96%E6%89%80%E6%9C%89%E5%8C%B9%E9%85%8D%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%88%97%E8%A1%A8"><span class="nav-text">使用 extract() 提取所有匹配元素的文本列表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E7%89%B9%E5%AE%9A%E5%AD%90%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC"><span class="nav-text">提取特定子元素的文本</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%80%9A%E8%BF%87-response-%E6%9E%84%E9%80%A0-Selector-%E5%AE%9E%E4%BE%8B"><span class="nav-text">2. 通过 response 构造 Selector 实例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Selector-%E5%AE%9E%E4%BE%8B%E5%92%8C-response-%E7%9A%84-selector-%E5%B1%9E%E6%80%A7%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-text">使用 Selector 实例和 response 的 selector 属性提取数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E5%90%88-CSS-%E5%92%8C-XPath-%E9%80%89%E6%8B%A9%E5%99%A8%E5%8F%8A%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-text">结合 CSS 和 XPath 选择器及正则表达式提取数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-Spider-%E7%B1%BB"><span class="nav-text">Scrapy Spider 类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spider-%E7%B1%BB%E7%9A%84%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84"><span class="nav-text">Spider 类的基础结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F-Logger"><span class="nav-text">日志系统 Logger</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logger-%E5%B1%9E%E6%80%A7"><span class="nav-text">Logger 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Log-%E6%96%B9%E6%B3%95"><span class="nav-text">Log 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="nav-text">使用示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from-crawler-%E5%92%8C-set-crawler-%E6%96%B9%E6%B3%95"><span class="nav-text">from_crawler 和 _set_crawler 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#start-requests-%E6%96%B9%E6%B3%95"><span class="nav-text">start_requests 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parse-%E6%96%B9%E6%B3%95"><span class="nav-text">parse 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#close-%E6%96%B9%E6%B3%95"><span class="nav-text">close 方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A1%E7%BA%A7%E9%A1%B5%E9%9D%A2%E6%8A%93%E5%8F%96%E5%8F%8A%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92%E6%8B%BC%E6%8E%A5"><span class="nav-text">次级页面抓取及数据传递拼接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A1%E7%BA%A7%E9%A1%B5%E9%9D%A2%E6%8A%93%E5%8F%96"><span class="nav-text">次级页面抓取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A6%E6%83%85%E9%A1%B5%E6%8A%93%E5%8F%96"><span class="nav-text">详情页抓取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96%E7%A4%BA%E4%BE%8B"><span class="nav-text">数据提取示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%9A%84%E4%BC%A0%E9%80%92%E6%8B%BC%E6%8E%A5"><span class="nav-text">参数的传递拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B1%86%E7%93%A3%E4%B8%BA%E4%BE%8B%E5%AD%90"><span class="nav-text">豆瓣为例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spider-%E6%96%87%E4%BB%B6"><span class="nav-text">Spider 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E5%AE%9A%E4%B9%89"><span class="nav-text">爬虫定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E9%A1%B5%E8%A7%A3%E6%9E%90%E6%96%B9%E6%B3%95-parse"><span class="nav-text">主页解析方法 parse</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#0-%E6%96%B9%E6%B3%95%E5%AE%9A%E4%B9%89"><span class="nav-text">0. 方法定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E8%A7%A3%E6%9E%90%E8%8A%82%E7%82%B9%E5%88%97%E8%A1%A8"><span class="nav-text">1. 解析节点列表</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E5%88%A4%E6%96%AD%E5%B9%B6%E9%81%8D%E5%8E%86%E8%8A%82%E7%82%B9"><span class="nav-text">2. 判断并遍历节点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-%E6%8F%90%E5%8F%96%E7%94%B5%E5%BD%B1%E4%BF%A1%E6%81%AF"><span class="nav-text">3. 提取电影信息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-%E5%88%9B%E5%BB%BA%E5%B9%B6%E5%A1%AB%E5%85%85-Scrapy-Item"><span class="nav-text">4. 创建并填充 Scrapy Item</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-%E8%AF%B7%E6%B1%82%E7%94%B5%E5%BD%B1%E8%AF%A6%E6%83%85%E9%A1%B5"><span class="nav-text">5. 请求电影详情页</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-%E5%88%86%E9%A1%B5%E5%A4%84%E7%90%86"><span class="nav-text">6. 分页处理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-%E5%A4%84%E7%90%86%E7%BB%93%E6%9D%9F"><span class="nav-text">7. 处理结束</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%A6%E6%83%85%E9%A1%B5%E8%A7%A3%E6%9E%90%E6%96%B9%E6%B3%95-get-detail"><span class="nav-text">详情页解析方法 get_detail</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#0-%E6%96%B9%E6%B3%95%E5%AE%9A%E4%B9%89-1"><span class="nav-text">0. 方法定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E6%9B%B4%E6%96%B0-Item"><span class="nav-text">1. 初始化和更新 Item</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E6%8F%90%E5%8F%96%E7%94%B5%E5%BD%B1%E6%8F%8F%E8%BF%B0%E4%BF%A1%E6%81%AF"><span class="nav-text">2. 提取电影描述信息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-%E8%AE%BE%E7%BD%AE%E6%8F%8F%E8%BF%B0%E5%B9%B6%E8%BF%94%E5%9B%9E-Item"><span class="nav-text">3. 设置描述并返回 Item</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Items-%E6%96%87%E4%BB%B6"><span class="nav-text">Items 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pipelines-%E6%96%87%E4%BB%B6"><span class="nav-text">Pipelines 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8F%8A%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6"><span class="nav-text">1. 初始化及打开文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%A4%84%E7%90%86%E5%B9%B6%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE"><span class="nav-text">2. 处理并存储数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E5%85%B3%E9%97%AD%E6%96%87%E4%BB%B6"><span class="nav-text">3. 关闭文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Settings-%E6%96%87%E4%BB%B6"><span class="nav-text">Settings 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE"><span class="nav-text">基本设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE"><span class="nav-text">用户代理设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Item-Pipeline-%E8%AE%BE%E7%BD%AE"><span class="nav-text">Item Pipeline 设置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%9B%AE%E6%A0%87%E5%92%8C%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B%E6%80%BB%E7%BB%93"><span class="nav-text">爬虫项目的目标和请求流程总结</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E6%95%B0%E6%8D%AE"><span class="nav-text">目标数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B"><span class="nav-text">请求流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%92%8C%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-text">数据存储和一致性</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%A1%88%E4%BE%8B"><span class="nav-text">项目案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E9%9C%80%E6%B1%82"><span class="nav-text">分析需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E8%A7%84%E5%BE%8B"><span class="nav-text">分析规律</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%AC%E5%8F%96%E6%80%9D%E8%B7%AF"><span class="nav-text">爬取思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-text">1. 创建项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E7%88%AC%E8%99%AB"><span class="nav-text">2. 创建爬虫</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E7%BC%96%E8%BE%91%E7%88%AC%E8%99%AB"><span class="nav-text">3. 编辑爬虫</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%A4%84%E7%90%86%E5%88%97%E8%A1%A8%E5%88%97"><span class="nav-text">4. 处理列表列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%A4%84%E7%90%86%E8%AF%A6%E6%83%85%E9%A1%B5%E5%92%8CItems-%E6%96%87%E4%BB%B6"><span class="nav-text">5. 处理详情页和Items 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E7%BC%96%E8%BE%91Pipelines"><span class="nav-text">6. 编辑Pipelines</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5"><span class="nav-text">检查</span></a></li></ol></li></ol>
 
     </div>
 </div>
