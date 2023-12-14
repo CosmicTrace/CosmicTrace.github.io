@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6fb98545-be0f-498f-8181-9d0c06acc200/public">
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/59675270-9f1f-4e1a-8047-e711ab21b700/public">
 <meta property="article:published_time" content="2021-02-22T10:12:32.000Z">
-<meta property="article:modified_time" content="2023-12-09T10:52:12.144Z">
+<meta property="article:modified_time" content="2023-12-14T12:23:02.378Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="理论">
@@ -647,7 +647,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">45</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">53</div>
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -655,7 +655,7 @@
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">11</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">12</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -711,8 +711,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-12-09 18:52:12</span>
-            <span class="mobile">2023-12-09 18:52:12</span>
+            <span class="desktop">2023-12-14 20:23:02</span>
+            <span class="mobile">2023-12-14 20:23:02</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -938,10 +938,10 @@
 <p>接着根据分析的要素，构造请求，向服务器提交数据即可</p>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url=<span class="string">&#x27;https://passport.17k.com/ck/user/login&#x27;</span></span><br><span class="line"></span><br><span class="line">form_data = &#123;</span><br><span class="line">    <span class="string">&#x27;loginName&#x27;</span>:  <span class="string">&#x27;123&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">headers = &#123;</span><br><span class="line"><span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">resp = requests.post(url, data=form_data, headers=headers)</span><br><span class="line"><span class="built_in">print</span>(resp.text)</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h2><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a><strong>属性</strong></h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">print(res.text)#直接转换成字符串 非字节码</span><br><span class="line">print(res.content)#图片数据 使用此参数</span><br><span class="line">print(res.status_code)#状态码</span><br><span class="line">print(res.json()[&quot;headers&quot;][&quot;User-Agent&quot;])#自动转换成 字典格式</span><br><span class="line"># 一定要确保你使用的格式是json格式的数据</span><br><span class="line">print(res.headers)#响应头</span><br><span class="line">print(res.cookies)#响应cookie</span><br><span class="line">print(res.url)#请求的url</span><br><span class="line">print(res.request.url)#请求的url</span><br><span class="line">print(res.request.headers)#请求头</span><br></pre></td></tr></table></figure></div>
+<h2 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h2><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a><strong>属性</strong></h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">print(res.text)#直接转换成字符串 非字节码</span><br><span class="line">print(res.content)#图片数据 使用此参数</span><br><span class="line">print(res.status_code)#状态码</span><br><span class="line">print(res.json()[&quot;headers&quot;][&quot;User-Agent&quot;])#自动转换成 字典格式</span><br><span class="line"># 一定要确保使用的格式是json格式的数据</span><br><span class="line">print(res.headers)#响应头</span><br><span class="line">print(res.cookies)#响应cookie</span><br><span class="line">print(res.url)#请求的url</span><br><span class="line">print(res.request.url)#请求的url</span><br><span class="line">print(res.request.headers)#请求头</span><br></pre></td></tr></table></figure></div>
 
 <h3 id="响应内容"><a href="#响应内容" class="headerlink" title="响应内容"></a>响应内容</h3><p>通过Requests发起请求获取到的，是一个requests.models.Response对象。通过这个对象我们可以很方便的获取响应的内容。<br>之前通过urllib获取的响应，读取的内容都是bytes的二进制格式，需要我们自己去将结果decode()一次转换成字符串数据。<br>而Requests通过text属性，就可以获得字符串格式的响应内容。</p>
-<h3 id="字符编码和二进制数据"><a href="#字符编码和二进制数据" class="headerlink" title="字符编码和二进制数据"></a>字符编码和二进制数据</h3><p>Requests会自动的根据响应的报头来猜测网页的编码是什么，然后根据猜测的编码来解码网页内容，基本上大部分的网页都能够正确的被解码。而如果发现text解码不正确的时候，就需要我们自己手动的去指定解码的编码格式。而如果你需要获得原始的二进制数据，那么使用content属性即可。</p>
+<h3 id="字符编码和二进制数据"><a href="#字符编码和二进制数据" class="headerlink" title="字符编码和二进制数据"></a>字符编码和二进制数据</h3><p>Requests会自动的根据响应的报头来猜测网页的编码是什么，然后根据猜测的编码来解码网页内容，基本上大部分的网页都能够正确的被解码。而如果发现text解码不正确的时候，就需要我们自己手动的去指定解码的编码格式。而如果需要获得原始的二进制数据，那么使用content属性即可。</p>
 <img  
                      lazyload
                      src="/images/loading.svg"
@@ -1003,7 +1003,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-12-09 18:52:12
+                    :</strong> 2023-12-14 20:23:02
             </li>
         
         <li>

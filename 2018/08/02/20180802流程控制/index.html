@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3676eea8-7f15-4bb8-d94a-c6cf8f1db600/public">
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/73f965d3-ea54-4b85-a67c-76ef7f266e00/public">
 <meta property="article:published_time" content="2018-08-02T03:13:45.000Z">
-<meta property="article:modified_time" content="2023-12-09T09:54:07.904Z">
+<meta property="article:modified_time" content="2023-12-14T12:23:02.381Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="基础">
@@ -640,7 +640,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">45</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">53</div>
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -648,7 +648,7 @@
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">11</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">12</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -704,8 +704,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-12-09 17:54:07</span>
-            <span class="mobile">2023-12-09 17:54:07</span>
+            <span class="desktop">2023-12-14 20:23:02</span>
+            <span class="mobile">2023-12-14 20:23:02</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -798,10 +798,10 @@
             <h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><h3 id="前置知识：Input方法"><a href="#前置知识：Input方法" class="headerlink" title="前置知识：Input方法"></a>前置知识：Input方法</h3><p>在 Python 中，<code>input()</code>是一个内置函数，用于从标准输入中获取用户输入的数据</p>
 <h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ol>
 <li>输入的值是字符串类型</li>
-<li>如果你想输入是整数 那就需要进行类型转换</li>
+<li>如果想输入是整数 那就需要进行类型转换</li>
 </ol>
-<p><code>a = int(input(&quot;请输入你想输入的内容&#39;))</code></p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 变量a 就存储着用户输入的数据</span></span><br><span class="line">a = <span class="built_in">input</span>(<span class="string">&#x27;请输入你想输入的内容 )</span></span><br><span class="line"><span class="string"># 当我们输入完后可以通过print将你输入的内容打印出来</span></span><br><span class="line"><span class="string">print(a)</span></span><br></pre></td></tr></table></figure></div>
+<p><code>a = int(input(&quot;请输入想输入的内容&#39;))</code></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 变量a 就存储着用户输入的数据</span></span><br><span class="line">a = <span class="built_in">input</span>(<span class="string">&#x27;请输入想输入的内容 )</span></span><br><span class="line"><span class="string"># 当我们输入完后可以通过print将输入的内容打印出来</span></span><br><span class="line"><span class="string">print(a)</span></span><br></pre></td></tr></table></figure></div>
 
 <img  
                      lazyload
@@ -845,7 +845,7 @@
 <p>这时候需要用到 if 语句多个判断条件</p>
 <h4 id="2-语法"><a href="#2-语法" class="headerlink" title="2. 语法"></a>2. 语法</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 判断条件<span class="number">1</span>:</span><br><span class="line">	<span class="comment"># 执行语句1.....</span></span><br><span class="line"><span class="keyword">elif</span> 判断条件<span class="number">2</span>:</span><br><span class="line">	<span class="comment"># 执行语句2.....</span></span><br><span class="line"><span class="keyword">elif</span> 判断条件<span class="number">3</span>:</span><br><span class="line">	<span class="comment"># 执行语句3.....</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="comment"># 执行语句4.....</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># if：如果</span></span><br><span class="line"><span class="comment"># elif:或者</span></span><br><span class="line"><span class="comment"># else 否则</span></span><br></pre></td></tr></table></figure></div>
 
-<h4 id="3-案例-1"><a href="#3-案例-1" class="headerlink" title="3. 案例 1"></a>3. 案例 1</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入你的分数&#x27;</span>))</span><br><span class="line"><span class="keyword">if</span> a &gt;= <span class="number">90</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;优秀&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt;= <span class="number">80</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;良好&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt;= <span class="number">60</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;及格&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;恭喜你 没有及格 )</span></span><br></pre></td></tr></table></figure></div>
+<h4 id="3-案例-1"><a href="#3-案例-1" class="headerlink" title="3. 案例 1"></a>3. 案例 1</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入分数&#x27;</span>))</span><br><span class="line"><span class="keyword">if</span> a &gt;= <span class="number">90</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;优秀&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt;= <span class="number">80</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;良好&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt;= <span class="number">60</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;及格&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;恭喜 没有及格 )</span></span><br></pre></td></tr></table></figure></div>
 
 <h4 id="4-案例-2"><a href="#4-案例-2" class="headerlink" title="4. 案例 2"></a>4. 案例 2</h4><p>有时候我们会遇到多个条件的时候该怎么操作呢？</p>
 <p>比如说：学校举行一场考试，要求小明的python和java两门语言 都达到80分才算优秀。</p>
@@ -895,7 +895,7 @@
 <li>值：对象表示的数据。</li>
 </ul>
 <p><strong>形参（Formal Parameters）</strong>：</p>
-<p>当你定义一个函数时，你可以在函数定义中指定一些参数。这些参数被称为形式参数（形参），它们是函数内部的局部变量。当函数被调用时，形参会接收传递给函数的实际值。这些值被称为实参（实际参数）。</p>
+<p>当定义一个函数时，可以在函数定义中指定一些参数。这些参数被称为形式参数（形参），它们是函数内部的局部变量。当函数被调用时，形参会接收传递给函数的实际值。这些值被称为实参（实际参数）。</p>
 <p>例如：</p>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):  <span class="comment"># a 和 b 是形参</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br></pre></td></tr></table></figure></div>
 
@@ -948,7 +948,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-12-09 17:54:07
+                    :</strong> 2023-12-14 20:23:02
             </li>
         
         <li>
