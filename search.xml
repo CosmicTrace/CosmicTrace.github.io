@@ -463,6 +463,557 @@
       </tags>
   </entry>
   <entry>
+    <title>函数</title>
+    <url>/2018/08/12/20180812%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h2 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h2><p>函数是一段可重复使用的代码块，用于执行特定的任务</p>
+<h3 id="函数的作用"><a href="#函数的作用" class="headerlink" title="函数的作用"></a>函数的作用</h3><ol>
+<li>提高代码的可重用性: 使用函数可以将代码块组织成更小的可重用模块，减少代码的冗余。</li>
+<li>提高代码的可读性: 使用函数可以使代码更加简洁和易于理解，也更容易进行调试和维护。</li>
+<li>提高代码的模块化: 使用函数可以将程序分解成更小的模块，每个模块都可以处理特定的任务，这样程序的组织结构更加清晰。</li>
+<li>提高代码的可扩展性: 使用函数可以使程序更易于扩展和修改，因为函数可以独立地编写和测试，而不会影响程序的其他部分。</li>
+</ol>
+
+  <div class="note p-4 mb-4 rounded-small info icon-padding">
+    <i class="note-icon fa-solid fa-circle-info"></i><p>函数就是设计一个技能需要时自己调用，调用的方法本质上是个函数 。两者的区别是使用的方式不一样。</p>
+
+  </div>
+
+<h3 id="函数写法"><a href="#函数写法" class="headerlink" title="函数写法"></a>函数写法</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用def定义一个函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">User</span>():</span><br><span class="line">    内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数 必须顶格</span></span><br><span class="line">User()</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="函数的形参和实参"><a href="#函数的形参和实参" class="headerlink" title="函数的形参和实参"></a>函数的形参和实参</h2><ol>
+<li>不传值给函数可以不带形参和实参</li>
+<li>形参名字可以随意定义</li>
+<li>形参和实参数量必须一致</li>
+<li>实参对应形参</li>
+<li>形参可以赋默认参数 没有传就以默认参数 传了就以实参</li>
+<li>实参也可以指定形参</li>
+<li>通过*形参名可以获取所有实参，通过索引获取对应实参</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用def定义一个函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">User</span>(<span class="params">形参</span>):</span><br><span class="line">    内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数 必须顶格</span></span><br><span class="line">User(实参)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 形参的默认参数</span></span><br><span class="line"><span class="comment"># 如果没有传就以默认参数 传了就以实参</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line">    <span class="built_in">print</span>(y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">user(<span class="number">13</span>, <span class="number">14</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 13</span></span><br><span class="line"><span class="comment"># 14</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 通过*形参名可以获取所有实参</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user</span>(<span class="params">*item</span>):</span><br><span class="line">    <span class="comment"># 通过形参名索引获取对应实参</span></span><br><span class="line">    <span class="built_in">print</span>(item[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">user(<span class="number">13</span>, <span class="number">14</span>, <span class="number">16</span>, <span class="number">17</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 13</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h2><p>Python自带的一些函数，我们可以直接拿来使用</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打印</span></span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"><span class="comment"># 类型判断</span></span><br><span class="line"><span class="built_in">type</span>()</span><br><span class="line"><span class="comment"># 字符串、列表、元组、集合 的增删改查的方法</span></span><br></pre></td></tr></table></figure></div>
+
+
+  <div class="note p-4 mb-4 rounded-small primary icon-padding">
+    <i class="note-icon fa-solid fa-square-arrow-up-right"></i><p>字符串、列表、元组、集合 的增删改查的方法<a class="button " href='https://www.yiuhangblog.com/2018/07/23/20180723%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/' title='数值类型'><i class='fa-solid fa-play-circle'></i> 数值类型</a>，详细内容与调用方法跳转查阅</p>
+
+  </div>
+
+<h2 id="函数的说明文档"><a href="#函数的说明文档" class="headerlink" title="函数的说明文档"></a>函数的说明文档</h2><ol>
+<li>给函数中的代码做解释说明</li>
+<li>让其他程序员知道函数的作用</li>
+<li>函数里的注释</li>
+</ol>
+<h3 id="如何写说明文档"><a href="#如何写说明文档" class="headerlink" title="如何写说明文档"></a>如何写说明文档</h3><ul>
+<li>三引号包裹</li>
+</ul>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):</span><br><span class="line">	<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">	内容</span></span><br><span class="line"><span class="string">	&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    这个函数用于计算两个数的和。</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    :param a: 第一个加数</span></span><br><span class="line"><span class="string">    :param b: 第二个加数</span></span><br><span class="line"><span class="string">    :return: 两个数的和</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="函数的嵌套"><a href="#函数的嵌套" class="headerlink" title="函数的嵌套"></a>函数的嵌套</h2><p>在函数内部调用其它函数</p>
+<p>尽量不要嵌套太多层，不然就是屎山了</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1.定义一个函数a</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">a</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;我是函数a&#x27;</span>)</span><br><span class="line">    <span class="comment"># 3.在函数a内部调用函数b</span></span><br><span class="line">    b()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.定义一个函数b</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">b</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;我是函数b&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.调用函数a</span></span><br><span class="line">a() </span><br><span class="line"></span><br><span class="line"><span class="comment"># 我是函数a</span></span><br><span class="line"><span class="comment"># 我是函数b</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="函数的作用域"><a href="#函数的作用域" class="headerlink" title="函数的作用域"></a>函数的作用域</h2><p>Python 中的函数作用域分为两种: 全局作用域和局部作用域</p>
+<ol>
+<li>全局作用域指的是在模块(文件)中定义的变量和函数，可以在模块的任何地方被访问和使用</li>
+<li>局部作用域指的是在函数内部定义的变量和函数，只能在该函数内部被访问和使用</li>
+</ol>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a728cb1a-a479-43ab-1aa5-318e65e52f00/public"
+                      width="200"
+                >
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 变量a 全局作用域</span></span><br><span class="line">a = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个 函数textA</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">textA</span>():</span><br><span class="line">    <span class="comment"># 变量b 局部作用域</span></span><br><span class="line">    b = <span class="number">20</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为变量a在全局作用域 所以可以访问到</span></span><br><span class="line"><span class="built_in">print</span>(a)	<span class="comment"># 100</span></span><br><span class="line"><span class="comment"># 因为变量b 在局部作用域 变量b 访问不到 所以会报错</span></span><br><span class="line"><span class="built_in">print</span>(b)	<span class="comment"># NameError: name &#x27;b&#x27; is not defined</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="global-关键字"><a href="#global-关键字" class="headerlink" title="global 关键字"></a>global 关键字</h3><p>使用 <code>global</code> 关键字 可以在函数内部声明变量为全局变量</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义两个变量 textA textB</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">textA</span>():</span><br><span class="line">    <span class="comment"># gLobal 声明 money 为全局变量</span></span><br><span class="line">    <span class="keyword">global</span> money</span><br><span class="line">    money = <span class="number">100</span></span><br><span class="line">    <span class="built_in">print</span>(money)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">textB</span>():</span><br><span class="line">    <span class="built_in">print</span>(money)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">textA() <span class="comment"># 100</span></span><br><span class="line">textB() <span class="comment"># 100</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="闭包-Closure"><a href="#闭包-Closure" class="headerlink" title="闭包 Closure"></a>闭包 Closure</h2><p>内部函数使用了外部函数的变量 </p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>(): <span class="comment"># 外部函数</span></span><br><span class="line">    <span class="comment"># 1. 变量a 是func函数的局部变量</span></span><br><span class="line">    a = <span class="number">10</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;函数func调用&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">func1</span>(): <span class="comment"># 内部函数</span></span><br><span class="line">        <span class="comment"># 2. 我们在func1这个内部函数里面 使用了 外部函数的变量a 这种现象就叫闭包，没有用到 变量 就不叫闭包</span></span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> func1  <span class="comment"># 3. 我们需要返回func1函数的本身给外部函数 才能看到闭包的效果 闭包不需要调用只需要返回</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">demo = func() <span class="comment"># 函数func调用</span></span><br><span class="line">demo() <span class="comment"># 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者func()()</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h3><p>好处: 保存局部变量的状态 我们可以将相关的功能和数据绑定在一起，而不用担心数据被其他代码修改。</p>
+<p>应用：想保存数据状态和不被污染 我们就可以使用闭包。很多框架底层 保存数据都是用的闭包</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():</span><br><span class="line">    a = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">func1</span>():</span><br><span class="line">        <span class="keyword">nonlocal</span> a  <span class="comment"># nonlocal 指向外部函数func的a 不会指向全局作用域 如果外部func没有a就会报错</span></span><br><span class="line">        a += <span class="number">1</span>  <span class="comment"># 累加，主要做逻辑处理，每次调用func1就会累加1</span></span><br><span class="line">        <span class="keyword">return</span> a  <span class="comment"># 将累加的结果返回出来给func1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> func1  <span class="comment"># 返func1本身传递给func 覆盖原始a=0 我们才能看到闭包的效果</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 目的调用func1 让a累加一次</span></span><br><span class="line"><span class="comment"># 需要调用看结果</span></span><br><span class="line">demo = func()</span><br><span class="line"><span class="comment"># 通过demo来调用里面的func1</span></span><br><span class="line"><span class="built_in">print</span>(demo())</span><br><span class="line"><span class="comment"># 输出 1</span></span><br><span class="line"><span class="built_in">print</span>(demo())</span><br><span class="line"><span class="comment"># 输出 2</span></span><br><span class="line"><span class="built_in">print</span>(demo())</span><br><span class="line"><span class="comment"># 输出 3</span></span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>因此可以发现通过闭包，可以使得数据状态得到存储，例如存储累加的结果</li>
+<li>且闭包的数据无法通过全局变量进行修改，保证数据完整性，因为是由子函数进行累加的</li>
+<li>需要保存数据状态的时候就需要使用闭包</li>
+<li>使用场景例如 第三方库 能够保存数据状态</li>
+</ol>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">&quot;Global&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fun_out</span>():</span><br><span class="line">    a = <span class="string">&quot;external_function&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">fun_in</span>():</span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fun_in</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">demo = fun_out()</span><br><span class="line">demo() <span class="comment"># external_function</span></span><br></pre></td></tr></table></figure></div>
+
+<p>在 Python 中，变量的使用和修改遵循不同的规则，特别是在涉及嵌套函数时。这是因为 Python 对变量的查找（读取）和赋值（修改）有不同的作用域规则。</p>
+<ol>
+<li><strong>读取变量</strong>：当代码尝试读取一个变量的值时（如在 <code>print(a)</code> 中），Python 会遵循作用域查找规则。这意味着它会首先在当前函数的局部作用域查找该变量。如果在当前作用域找不到，它会在外围作用域中查找，一直查找到全局作用域，最后是内置作用域。这就是为什么在上面的例子中，即使没有使用 <code>nonlocal</code> 关键字，<code>fun_in</code> 也能访问 <code>fun_out</code> 中定义的 <code>a</code> 变量。</li>
+<li><strong>修改变量</strong>：当尝试修改一个变量的值时，Python 的默认行为是在当前作用域创建或更新该变量。如果在一个嵌套的函数中不加声明地修改一个变量，Python 会认为这是一个新的局部变量，而不是一个外围作用域中的变量。<ul>
+<li><strong>使用 <code>nonlocal</code> 关键字</strong>：当想在一个嵌套函数中修改外围函数的局部变量时，需要使用 <code>nonlocal</code> 关键字。这样做可以告诉 Python 想修改的是外围作用域中的变量，而不是创建一个新的局部变量。</li>
+<li><strong>全局变量</strong>：如果想在一个函数中修改全局变量，而不是创建同名的局部变量，需要使用 <code>global</code> 关键字。</li>
+</ul>
+</li>
+</ol>
+<p>这种区分是为了避免意外修改外围作用域中的变量，这可能会导致难以追踪的错误。通过要求显式声明 <code>nonlocal</code> 或 <code>global</code>，Python 增强了代码的可读性和可维护性。</p>
+
+    </div>
+  </div>
+
+<h3 id="闭包（Closure）和嵌套函数（Nested-Functions）的区别"><a href="#闭包（Closure）和嵌套函数（Nested-Functions）的区别" class="headerlink" title="闭包（Closure）和嵌套函数（Nested Functions）的区别"></a>闭包（Closure）和嵌套函数（Nested Functions）的区别</h3><p><strong>闭包（Closure）</strong></p>
+<p>在编程中，闭包是指那些能够访问自己外部作用域中变量的函数。一个闭包至少由两部分组成：一个函数以及该函数引用的外部变量。Python 中闭包的一个关键特征是它保持了对其外部变量的引用，即使在外部函数已经结束执行之后。</p>
+<p>在代码中，<code>fun_in</code> 是一个闭包，因为它是在 <code>fun_out</code> 内部定义的，并且引用了 <code>fun_out</code> 作用域内的变量 <code>a</code>。当 <code>fun_out</code> 被调用并返回 <code>fun_in</code> 时，尽管 <code>fun_out</code> 的执行已经结束，<code>fun_in</code> 依然保留了对变量 <code>a</code> 的引用。这样，即使是在 <code>fun_out</code> 执行完毕之后，<code>fun_in</code> 仍然可以访问并打印变量 <code>a</code> 的值。</p>
+<p><strong>嵌套函数（Nested Functions）</strong></p>
+<p>嵌套函数是在另一个函数内部定义的函数。虽然所有闭包都是嵌套函数，但并非所有嵌套函数都是闭包。一个嵌套函数只有在引用了其外部函数的变量时，它才构成一个闭包。</p>
+<p><strong>总结</strong></p>
+<p><code>fun_in</code> 作为一个闭包，即使在其外部函数 <code>fun_out</code> 执行完毕后，仍然可以访问并使用 <code>fun_out</code> 作用域中的变量 <code>a</code>。</p>
+<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>匿名函数，通常在 Python 中通过 <code>lambda</code> 关键字来定义，是一种没有显式函数名的简短函数。它们在语法上是简洁的，通常用于编写小的、一次性的、不需要单独定义函数名的函数。</p>
+<p>匿名函数是一个可以定义并立即使用的简洁函数形式。在 Python 中，匿名函数使用 <code>lambda</code> 关键字创建，其基本语法是：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">lambda</span> 参数列表: 表达式</span><br></pre></td></tr></table></figure></div>
+
+<p>这种函数通常用于简单的操作，比如简单的数学运算、字符串操作等。由于它们只是单个表达式，所以不能像普通函数那样执行复杂的操作</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># lambda : 8 创建了一个匿名函数，这个函数没有参数，并且总是返回数字 8</span></span><br><span class="line"></span><br><span class="line">func = <span class="keyword">lambda</span> : <span class="number">8</span> <span class="comment"># lambda 关键字 代表匿名函数</span></span><br><span class="line"><span class="built_in">print</span>(func()) <span class="comment"># 输出: 8</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 匿名函数的一个限制是它只能包含一个表达式，不能包含多个独立的语句或复杂的逻辑。如果函数体较复杂，或者需要重复使用，那么定义一个普通函数会更合适。它与匿名函数执行相同的操作，但是更适合复杂逻辑或多次调用的情况。</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>() :</span><br><span class="line">	<span class="keyword">return</span> <span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(func())</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="匿名函数的作用"><a href="#匿名函数的作用" class="headerlink" title="匿名函数的作用"></a>匿名函数的作用</h3><p>匿名函数的主要作用是简化代码，尤其是在需要小的函数作为参数时，例如在排序操作、高阶函数（如 <code>map()</code>、<code>filter()</code>）或任何需要函数对象的地方。由于它们不需要定义传统的函数结构，因此可以在代码中快速定义和使用。</p>
+<h3 id="何时使用匿名函数"><a href="#何时使用匿名函数" class="headerlink" title="何时使用匿名函数"></a>何时使用匿名函数</h3><p>匿名函数通常在以下情况下使用：</p>
+<ol>
+<li><strong>简单的功能</strong>：当函数的功能非常简单，只需要一行代码就可以实现时，使用匿名函数是一个很好的选择。</li>
+<li><strong>一次性使用</strong>：当有一个不会在代码的其他地方复用的小函数时，使用匿名函数可以减少不必要的函数定义。</li>
+<li><strong>作为参数传递</strong>：当一个函数接受另一个函数作为参数时，如果这个参数函数非常简短，使用匿名函数可以使代码更加清晰。常见的例子包括 <code>map()</code>、<code>filter()</code> 和 <code>sorted()</code> 等函数。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>基础</tag>
+        <tag>理论</tag>
+        <tag>嵌套</tag>
+        <tag>基本语法</tag>
+        <tag>内置函数</tag>
+        <tag>形参</tag>
+        <tag>实参</tag>
+        <tag>说明文档</tag>
+        <tag>作用域</tag>
+        <tag>闭包</tag>
+        <tag>匿名函数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象</title>
+    <url>/2018/09/08/20180908%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><p>面向对象编程（Object-Oriented Programming, OOP）是一种编程范式，它使用“对象”来设计软件。这种方法不仅侧重于数据（即属性），还侧重于操作这些数据的代码（即方法）。面向对象编程基于几个核心概念，包括类、对象、继承、多态和封装。</p>
+<ol>
+<li><strong>类（Class）</strong>：类是创建对象的蓝图或模板。它定义了对象的属性和方法。属性是类中的变量，方法是类中的函数。类本身不占用内存空间，它只是定义了对象的结构。</li>
+<li><strong>对象（Object）</strong>：对象是类的实例。当类被实例化时，会创建一个对象。对象具有类定义的属性和方法。每个对象都有自己的属性值，但共享相同的方法。</li>
+<li><strong>继承（Inheritance）</strong>：继承允许一个类继承另一个类的属性和方法。这有助于代码重用，并实现多层次的分类。在继承关系中，有基类（父类）和派生类（子类）。</li>
+<li><strong>多态（Polymorphism）</strong>：多态是指即使不同类的对象可能有不同的实现，但它们可以通过相同的接口进行交互。这意味着，可以用统一的方式来处理不同类的对象，即使它们具有不同的内部结构。</li>
+<li><strong>封装（Encapsulation）</strong>：封装是隐藏对象内部实现细节的过程，仅公开必要的接口。这有助于防止外部代码随意更改对象内部状态，从而保护对象的完整性并简化接口。</li>
+<li><strong>抽象（Abstraction）</strong>：抽象是将复杂的现实世界问题简化为模型的过程。在面向对象编程中，这通常意味着创建类，这些类代表了现实世界中的实体或概念，但只包括与当前问题相关的部分。</li>
+</ol>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/9a77d919-96a4-4946-8e20-2a0d6c3cb700/public"
+                      width="300"
+                >
+
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li><strong>模块化</strong>：OOP 促进了代码的模块化，使得不同模块可以独立开发和测试，提高了代码的可维护性和复用性。</li>
+<li><strong>可扩展性</strong>：通过继承和多态，可以在现有代码的基础上添加新功能，而不必大幅修改现有代码。</li>
+<li><strong>可维护性</strong>：封装提供了一种方式，使得代码更易于理解和维护。</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li><strong>性能</strong>：相较于面向过程的编程，面向对象的程序可能在性能上稍微逊色，因为它需要额外的内存和处理。</li>
+<li><strong>复杂性</strong>：面向对象的系统可能比简单的面向过程的系统更复杂。</li>
+</ul>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>面向对象编程在软件工程中广泛应用，从桌面和移动应用程序到大型企业级系统。众多流行的编程语言，如 Java、C#、Python、Ruby 和 C++，都支持面向对象的编程范式。</p>
+<h2 id="类-Class"><a href="#类-Class" class="headerlink" title="类 (Class)"></a>类 (Class)</h2><p>类（Class）是面向对象编程（OOP）中的一个核心概念。在很多现代编程语言中，类作为一种构造，提供了一种封装数据和行为（即代码）的方式。它们允许开发者创建复杂的数据结构</p>
+<h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><p>首先，我们定义一个名为<code>Car</code>的类：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="comment"># 这些是成员属性</span></span><br><span class="line">    brand = <span class="literal">None</span></span><br><span class="line">    color = <span class="literal">None</span></span><br><span class="line">    speed = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 这是一个成员方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车启动了。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">accelerate</span>(<span class="params">self, increase</span>):</span><br><span class="line">        self.speed += increase</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车加速到了<span class="subst">&#123;self.speed&#125;</span>公里/小时。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">brake</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车正在刹车。&quot;</span>)</span><br><span class="line">        self.speed = <span class="number">0</span></span><br></pre></td></tr></table></figure></div>
+
+<p>在这个<code>Car</code>类中：</p>
+<ul>
+<li><strong>成员属性</strong>：<code>brand</code>（品牌）、<code>color</code>（颜色）和<code>speed</code>（速度）是类的属性。它们用来描述这个类的状态。</li>
+<li><strong>成员方法</strong>：<code>start</code>、<code>accelerate</code> 和 <code>brake</code> 是类的方法。它们描述了<code>Car</code>可以执行的操作。</li>
+</ul>
+<h3 id="实例化类"><a href="#实例化类" class="headerlink" title="实例化类"></a>实例化类</h3><p>接下来，我们创建几个<code>Car</code>类的实例：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">first_car = Car()  <span class="comment"># 实例化第一辆车</span></span><br><span class="line">first_car.brand = <span class="string">&#x27;Toyota&#x27;</span></span><br><span class="line">first_car.color = <span class="string">&#x27;红色&#x27;</span></span><br><span class="line">first_car.start()</span><br><span class="line">first_car.accelerate(<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line">second_car = Car() <span class="comment"># 实例化第二辆车</span></span><br><span class="line">second_car.brand = <span class="string">&#x27;Ford&#x27;</span></span><br><span class="line">second_car.color = <span class="string">&#x27;蓝色&#x27;</span></span><br><span class="line">second_car.start()</span><br><span class="line">second_car.accelerate(<span class="number">40</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>每次调用<code>Car()</code>时，我们都创建了一个新的<code>Car</code>类的实例（即一个新的汽车对象）。通过为不同的实例分别设置属性（如<code>brand</code>和<code>color</code>），每辆车都有自己的特点。</p>
+<h3 id="成员方法中的self"><a href="#成员方法中的self" class="headerlink" title="成员方法中的self"></a>成员方法中的<code>self</code></h3><p>在<code>Car</code>类的成员方法中，<code>self</code>关键字是对当前对象实例的引用。它用于访问对象的属性和调用其他方法。例如，在<code>accelerate</code>方法中，<code>self.speed += increase</code>表示将当前车辆的速度增加<code>increase</code>单位。</p>
+<h3 id="init-初始化方法-魔术方法-构造器"><a href="#init-初始化方法-魔术方法-构造器" class="headerlink" title="_ _init_ _初始化方法(魔术方法&#x2F;构造器)"></a>_ _init_ _初始化方法(魔术方法&#x2F;构造器)</h3><p><code>__init__</code> 是一个在 Python 中特别重要的方法，它是类的一个特殊方法（有时被称为“魔术方法”或“构造器”）。当创建类的新实例时，<code>__init__</code> 方法被自动调用，用于为新创建的对象初始化其属性或执行其他必要的设置。以下是关于 <code>__init__</code> 方法的一些关键点：</p>
+<ol>
+<li><strong>构造器</strong>：<code>__init__</code> 方法可以看作是类的“构造器”。它在对象创建时立即执行，允许类接受参数并据此初始化对象的属性。</li>
+<li><strong>self 参数</strong>：<code>__init__</code> 方法的第一个参数总是 <code>self</code>，它是对类实例本身的引用。通过 <code>self</code>，可以在方法内部访问类的属性和其他方法。</li>
+<li><strong>初始化属性</strong>：可以在 <code>__init__</code> 方法中定义并初始化对象的属性。这样做的好处是，可以为不同的对象实例设置不同的初始状态。</li>
+<li><strong>接受参数</strong>：<code>__init__</code> 方法可以接受参数（除了自身 <code>self</code> 参数外），这些参数在创建类实例时传递给它，用于设置对象的属性或进行其他操作。</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="comment"># 使用 __init__ 方法初始化成员属性</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, brand, color</span>):</span><br><span class="line">        self.brand = brand</span><br><span class="line">        self.color = color</span><br><span class="line">        self.speed = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 成员方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车启动了。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">accelerate</span>(<span class="params">self, increase</span>):</span><br><span class="line">        self.speed += increase</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车加速到了<span class="subst">&#123;self.speed&#125;</span>公里/小时。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">brake</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车正在刹车。&quot;</span>)</span><br><span class="line">        self.speed = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 __init__ 方法实例化第一辆车</span></span><br><span class="line">first_car = Car(<span class="string">&#x27;Toyota&#x27;</span>, <span class="string">&#x27;红色&#x27;</span>)</span><br><span class="line">first_car.start()</span><br><span class="line">first_car.accelerate(<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 __init__ 方法实例化第二辆车</span></span><br><span class="line">second_car = Car(<span class="string">&#x27;Ford&#x27;</span>, <span class="string">&#x27;蓝色&#x27;</span>)</span><br><span class="line">second_car.start()</span><br><span class="line">second_car.accelerate(<span class="number">40</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>在这个例子中， <code>Car</code> 类中添加了 <code>__init__</code> 方法，它接受 <code>brand</code> 和 <code>color</code> 作为参数，并将它们分别赋值给实例的 <code>brand</code> 和 <code>color</code> 属性。现在，在创建 <code>Car</code> 类的实例时，我们需要提供品牌和颜色作为参数。这样一来，每个 <code>Car</code> 实例在创建时都会有自己的品牌和颜色属性。</p>
+
+  <div class="note-large green">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-question"></i><p>QA</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>问：</strong>为什么accelerate不在<code>car(brand, color)</code>里直接写？</p>
+<p><strong>答：</strong>将 <code>accelerate</code> 方法放在 <code>Car</code> 类的构造方法 (<code>__init__</code>) 中与放在类的外部作为一个独立的方法有不同的含义和用途。理解这一点，需要对面向对象编程中的一些基本概念有所了解：</p>
+<ol>
+<li><strong>构造方法 (<code>__init__</code>)</strong>: <code>__init__</code> 方法用于初始化新创建的对象的状态。它通常用于设置对象的初始属性值。构造方法在对象被创建时自动调用一次，用于设置对象的初始状态。</li>
+<li><strong>成员方法</strong>: 类中定义的其他方法（如 <code>accelerate</code>）用于描述对象的行为。这些方法可以在对象的整个生命周期内被多次调用，并且通常用于执行特定的操作，比如修改对象的状态或者与其他对象进行交互。</li>
+<li><strong>职责分离</strong>: 在面向对象设计中，通常推荐遵循单一职责原则。这意味着每个部分（如方法）应该只负责一项功能。将 <code>accelerate</code> 方法放在类的外部作为一个独立的方法，而不是在 <code>__init__</code> 中定义，可以使类的结构更加清晰，每个方法的职责更加明确。</li>
+<li><strong>灵活性与可重用性</strong>: 将 <code>accelerate</code> 作为独立的方法可以在任何时候调用以改变对象的速度属性。如果它被放在 <code>__init__</code> 中，它只能在对象创建时执行，这限制了方法的用途。</li>
+</ol>
+<p>总结来说，<code>accelerate</code> 不放在 <code>__init__</code> 中是为了保持代码的清晰性和组织性，确保每个方法只负责一项特定的功能，并允许在对象的生命周期中多次调用 <code>accelerate</code> 方法。这是一种更灵活、可维护和符合面向对象设计原则的做法。</p>
+<p><strong>问：</strong><code>self.speed = 0</code> 为什么在(<code>__init__</code>) 里？</p>
+<p><strong>答：</strong>将 <code>self.speed = 0</code> 放在 <code>__init__</code> 方法中是为了初始化 <code>Car</code> 类的每个实例的速度属性。这是一种常见的做法，用于设定对象的初始状态。以下是放置这个语句在 <code>__init__</code> 中的几个理由：</p>
+<ol>
+<li><strong>初始状态设定</strong>：在面向对象编程中，构造方法（如 Python 中的 <code>__init__</code>）用于设定对象的初始状态。对于汽车来说，初始速度设为 0 是合理的，因为当汽车被“创建”（或实例化）时，它通常是静止的。</li>
+<li><strong>统一属性管理</strong>：将所有属性的初始化集中在 <code>__init__</code> 方法中可以使代码更加清晰和易于维护。这样，可以在一个地方看到对象所有属性的初始值。</li>
+<li><strong>确保属性存在</strong>：在 <code>__init__</code> 方法中初始化 <code>speed</code> 确保了每个 <code>Car</code> 实例都具有 <code>speed</code> 属性，并且有一个明确的初始值。这避免了在其他方法（如 <code>accelerate</code> 或 <code>brake</code>）中使用 <code>speed</code> 属性之前需要检查其是否存在的情况。</li>
+<li><strong>避免未初始化的属性</strong>：如果不在 <code>__init__</code> 中初始化 <code>speed</code>，那么在调用 <code>accelerate</code> 方法之前，尝试访问 <code>speed</code> 属性可能会导致错误，因为 Python 不会自动创建这个属性。</li>
+</ol>
+<p>综上所述，将 <code>self.speed = 0</code> 放在 <code>__init__</code> 方法中是为了初始化对象的速度属性，保证对象的完整性，并为后续的操作（如加速或刹车）提供一个明确和稳定的起点。</p>
+
+    </div>
+  </div>
+
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><h5 id="类定义与初始化"><a href="#类定义与初始化" class="headerlink" title="类定义与初始化"></a>类定义与初始化</h5><p>首先，我们定义一个名为<code>Car</code>的类，并在其中使用<code>__init__</code>方法来初始化类的实例。<code>__init__</code>是一个特殊的方法，它在类的实例化时自动调用。我们可以通过它来设置初始的成员属性。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="comment"># 使用 __init__ 方法初始化成员属性</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, brand, color, weight</span>):</span><br><span class="line">        <span class="comment"># self.brand 创建了一个名为 brand 的属性</span></span><br><span class="line">        <span class="comment"># brand = None 的效果类似于此</span></span><br><span class="line">        <span class="comment"># self.brand = brand 用传入的参数 brand 初始化</span></span><br><span class="line">        self.brand = brand</span><br><span class="line">        <span class="comment"># 同理，为 color 和 weight 属性赋值</span></span><br><span class="line">        self.color = color</span><br><span class="line">        self.weight = weight</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义一个成员方法用于显示汽车的信息</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">display_info</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;这辆车是 <span class="subst">&#123;self.color&#125;</span>色的 <span class="subst">&#123;self.brand&#125;</span>，重 <span class="subst">&#123;self.weight&#125;</span>公斤。&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="实例化类-1"><a href="#实例化类-1" class="headerlink" title="实例化类"></a>实例化类</h5><p>当我们实例化这个类时，我们需要提供品牌、颜色和重量这三个参数。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 实例化 Car 类</span></span><br><span class="line">first_car = Car(<span class="string">&quot;Toyota&quot;</span>, <span class="string">&quot;红色&quot;</span>, <span class="number">1500</span>)</span><br><span class="line"><span class="comment"># 调用方法显示信息</span></span><br><span class="line">first_car.display_info()</span><br></pre></td></tr></table></figure></div>
+
+<p>这里，<code>first_car</code> 是 <code>Car</code> 类的一个实例，代表了一辆特定的汽车。我们给它赋予了“Toyota”品牌、“红色”颜色和1500公斤重量的属性，并通过<code>display_info</code>方法打印了这些信息。</p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>通过修改这个例子，我们可以看到如何在类中使用初始化方法（<code>__init__</code>）来设置对象的初始状态，并通过实例化这个类来创建具体的对象。每个对象都有自己的属性值，但它们共享相同的方法（如<code>display_info</code>）。</p>
+
+  <div class="note-large green">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-question"></i><p>QA</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>问：</strong>以女娲造人为例子</p>
+<ul>
+<li>什么是类？</li>
+<li>什么是实例化类？</li>
+<li>什么是面向对象？</li>
+</ul>
+<p><strong>答：</strong></p>
+<p><strong>什么是类？</strong></p>
+<p>在女娲造人的故事中，女娲的想法或设计可以被看作是一个“类”（Class）。这个类是一个抽象的概念，它定义了人类将拥有的特征（如眼睛、鼻子、嘴巴）和行为（如走路、说话）。类是面向对象编程中定义数据结构和行为的蓝图或模板。</p>
+<p><strong>什么是实例化类？</strong></p>
+<p>当女娲根据她的想法创造出一个具体的人时，这个过程就像是在面向对象编程中的“实例化”（Instantiation）。实例化类的过程就是根据类的定义创建一个具体的对象（在这个故事中就是一个具体的人）。每个人（对象）都有类定义的特征和行为，但每个人也有自己的个性（即对象的状态可以独立于其他对象）。</p>
+<p><strong>什么是面向对象？</strong></p>
+<p>面向对象编程（Object-Oriented Programming, OOP）是一种编程范式，它使用对象来模拟现实世界的实体。在女娲造人的故事中，整个造人过程（设计-创造-赋予行为）就类似于面向对象的过程。面向对象编程的核心是类和对象，以及它们之间的交互。</p>
+<p><strong>问：</strong>面向对象的好处是什么？我们以后开发代码需要怎么做？</p>
+<p><strong>答：</strong></p>
+<p><strong>好处</strong></p>
+<ol>
+<li><strong>封装</strong>：面向对象允许封装数据和方法，提高数据安全性。</li>
+<li><strong>继承</strong>：通过继承，新的类可以扩展现有类的功能。</li>
+<li><strong>多态</strong>：相同的接口可以用在不同的对象上，提高代码的灵活性和可重用性。</li>
+<li><strong>代码组织和可读性</strong>：OOP 提高了代码的组织性和可读性，使大型项目更易于管理。</li>
+</ol>
+<p><strong>开发时的做法</strong></p>
+<ul>
+<li>使用类和对象来模拟现实世界的实体和概念。</li>
+<li>封装相关的属性和方法，确保数据安全性和减少外部干扰。</li>
+<li>通过继承和多态性来重用代码和提高代码的灵活性。</li>
+<li>关注对象之间的交互，而不仅仅是代码的执行流程。</li>
+</ul>
+<p><strong>问：</strong> <code>self</code> 在初始化<code>__init__</code>的作用是什么？ 在普通方法中的作用是什么？</p>
+<p><strong>答：</strong></p>
+<p><strong>在 <code>__init__</code> 方法中</strong></p>
+<ul>
+<li><code>self</code> 在 <code>__init__</code> 方法中代表新创建的对象本身。</li>
+<li>它用于初始化对象的属性。</li>
+<li>通过 <code>self</code>，可以将对象的属性与局部变量区分开来。</li>
+</ul>
+<p><strong>在普通方法中</strong></p>
+<ul>
+<li><code>self</code> 在类的其他方法中也代表对象本身。</li>
+<li>它用于访问和修改对象的属性。</li>
+<li>同样，<code>self</code> 用于调用对象的其他方法。</li>
+</ul>
+<p>简而言之，<code>self</code> 是类方法中的一个参数，它提供了对类实例本身的引用。这允许类的方法在操作对象时访问和修改对象的属性，以及调用其他方法。</p>
+<p><strong>问：</strong>请根据闹钟 来写一个类 并创造三个闹钟</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> playsound <span class="keyword">import</span> playsound</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(current_time) 测试格式</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Alarm</span>:</span><br><span class="line">    <span class="comment"># 使用init方法初始化成员属性</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, time, music</span>):</span><br><span class="line">        self.time = time  <span class="comment"># time 是字符串格式 &#x27;HH:MM:SS&#x27;</span></span><br><span class="line">        self.music = music</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 成员方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sound</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 一些写音乐文件调用的逻辑</span></span><br><span class="line">        playsound(self.music)  <span class="comment"># 播放歌曲</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.music&#125;</span> has been played&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">clock</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 调用当前当前时间</span></span><br><span class="line">        current_time = datetime.now().strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> self.time == current_time:</span><br><span class="line">            Alarm.sound(self)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.time&#125;</span>, time to wake up !&quot;</span>)  <span class="comment"># 起床</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;Current time is <span class="subst">&#123;current_time&#125;</span>, wake up at <span class="subst">&#123;self.time&#125;</span>&quot;</span>)  <span class="comment"># 报时</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化</span></span><br><span class="line">first_alarm = Alarm(<span class="string">&#x27;15:46:25&#x27;</span>, <span class="string">&#x27;test1.mp3&#x27;</span>)</span><br><span class="line">second_alarm = Alarm(<span class="string">&#x27;22:06:50&#x27;</span>, <span class="string">&#x27;test2.mp3&#x27;</span>)</span><br><span class="line">third_alarm = Alarm(<span class="string">&#x27;05:10:33&#x27;</span>, <span class="string">&#x27;test3.mp3&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用 clock 方法</span></span><br><span class="line">first_alarm.clock()</span><br><span class="line">second_alarm.clock()</span><br><span class="line">third_alarm.clock()</span><br></pre></td></tr></table></figure></div>
+
+    </div>
+  </div>
+
+
+
+<h2 id="面向对象的特点"><a href="#面向对象的特点" class="headerlink" title="面向对象的特点"></a>面向对象的特点</h2><h3 id="封装-Encapsulation"><a href="#封装-Encapsulation" class="headerlink" title="封装 (Encapsulation)"></a>封装 (Encapsulation)</h3><p>封装是面向对象编程中的一个核心概念，它指的是将对象的数据（属性）和行为（方法）组合在一起，形成一个独立的单元。在封装过程中，可以对对象的成员进行访问限制。</p>
+<ul>
+<li><p>私有属性 (Private Attributes)</p>
+<p>属性名前加了两个下划线表示它是私有属性，只能在类的内部被访问。</p>
+<p>作用: <code>不能被外部直接访问</code></p>
+<ul>
+<li><code>self.__资金 = 0</code>   私有属性，代表车辆的资金</li>
+</ul>
+</li>
+<li><p>私有方法 (Private Methods)</p>
+<p>方法名前加了两个下划线表示它是私有方法，只能在类的内部被调用。</p>
+<p>作用: <code>不能被外部直接访问</code></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__start_engine</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;引擎启动，准备行驶&#x27;</span>)</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<p>以汽车为例：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="comment"># 初始化</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, brand, engine, seats</span>):</span><br><span class="line">        <span class="comment"># 公有属性</span></span><br><span class="line">        self.brand = brand</span><br><span class="line">        self.engine = engine</span><br><span class="line">        self.seats = seats</span><br><span class="line">        <span class="comment"># 私有属性</span></span><br><span class="line">        self.__资金 = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 公有方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">drive</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;self.brand&#125;</span> 正在行驶&#x27;</span>)</span><br><span class="line">        <span class="comment"># 在公有方法中使用私有方法</span></span><br><span class="line">        self.__start_engine()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 私有方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__start_engine</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;引擎启动，准备行驶&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化类</span></span><br><span class="line">my_car = Car(<span class="string">&#x27;宝马&#x27;</span>, <span class="string">&#x27;V6&#x27;</span>, <span class="number">5</span>)</span><br><span class="line">my_car.drive()</span><br></pre></td></tr></table></figure></div>
+
+<p>在类中，成员属性和成员方法可以通过在名称前加上两个下划线 <code>__</code> 来设为私有。这样做的好处是能够保证这些成员不会被外界直接访问，但它们仍然可以在类的内部通过 <code>self</code> 被访问。这种方式有助于隐藏数据和实现细节，提高了代码的安全性和健壮性。</p>
+
+  <div class="note-large green">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-question"></i><p>QA</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>问：</strong>为什么<code>class AdvancedCar(Car)</code>不用<code>super()</code></p>
+<p><strong>答：</strong><code>AdvancedCar</code> 类继承自 <code>Car</code> 类。在这个特定的情况下，<code>super()</code> 没有被使用，原因如下：</p>
+<ol>
+<li><strong>不需要覆盖父类的方法</strong>： 在 <code>AdvancedCar</code> 类中，我们添加了新的方法（<code>autopilot</code> 和 <code>advanced_navigation</code>），而没有修改或覆盖任何继承自 <code>Car</code> 类的方法。因此，没有必要使用 <code>super()</code> 来调用父类 <code>Car</code> 的任何方法。</li>
+<li><strong>构造函数未被重写</strong>： 如果子类不重写父类的构造函数（<code>__init__</code> 方法），则默认调用父类的构造函数。在例子中，<code>AdvancedCar</code> 没有定义自己的 <code>__init__</code> 方法，因此它会自动使用父类 <code>Car</code> 的构造函数来初始化对象。如果在子类中重写了构造函数并且想要执行父类的构造函数，那么在子类的构造函数中使用 <code>super().__init__()</code> 是必要的。</li>
+<li><strong>独立的新方法</strong>： <code>AdvancedCar</code> 类中新增的方法（<code>autopilot</code> 和 <code>advanced_navigation</code>）是独立的，它们不依赖于 <code>Car</code> 类中定义的任何方法，因此没有必要使用 <code>super()</code>。</li>
+</ol>
+<p>总结一下，<code>super()</code> 主要用于需要调用或扩展父类中定义的方法时。如果只是在子类中添加新的独立方法或属性，并且没有重写父类的构造函数，就不需要使用 <code>super()</code>。在例子中，由于这些条件都未满足，因此不使用 <code>super()</code> 是合理的。</p>
+
+    </div>
+  </div>
+
+<h3 id="继承-Inheritance"><a href="#继承-Inheritance" class="headerlink" title="继承 (Inheritance)"></a>继承 (Inheritance)</h3><p>在面向对象编程中，继承允许我们从一个已存在的类（称为父类）派生出一个新的类（称为子类）。子类会继承父类的所有属性和方法，并可以添加新的属性和方法或重写某些方法。</p>
+<p>以汽车为例，我们可以从一个基本的汽车类派生出一个具有更多功能的特殊汽车类。</p>
+<p>首先是父类，表示基本的汽车：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, brand, engine, seats</span>):</span><br><span class="line">        self.brand = brand</span><br><span class="line">        self.engine = engine</span><br><span class="line">        self.seats = seats</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start_engine</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;self.brand&#125;</span> 的引擎启动了&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">drive</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;self.brand&#125;</span> 正在行驶&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>然后是子类，这里我们假设有一个增强版的汽车，它除了有基本的汽车功能外，还增加了自动驾驶和先进的导航系统：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AdvancedCar</span>(<span class="title class_ inherited__">Car</span>):  <span class="comment"># 继承自 Car 类</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">autopilot</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;self.brand&#125;</span> 的自动驾驶系统已启动&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">advanced_navigation</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;self.brand&#125;</span> 正在使用先进的导航系统&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化一个增强版的汽车</span></span><br><span class="line">my_advanced_car = AdvancedCar(<span class="string">&#x27;特斯拉&#x27;</span>, <span class="string">&#x27;电动&#x27;</span>, <span class="number">5</span>)</span><br><span class="line">my_advanced_car.start_engine()  <span class="comment"># 继承自 Car 类的方法</span></span><br><span class="line">my_advanced_car.drive()         <span class="comment"># 继承自 Car 类的方法</span></span><br><span class="line">my_advanced_car.autopilot()     <span class="comment"># AdvancedCar 类的新增方法</span></span><br><span class="line">my_advanced_car.advanced_navigation()  <span class="comment"># AdvancedCar 类的新增方法</span></span><br></pre></td></tr></table></figure></div>
+
+<p>在这个例子中，<code>AdvancedCar</code> 类继承了 <code>Car</code> 类的所有属性和方法（如 <code>start_engine</code> 和 <code>drive</code>），并新增了 <code>autopilot</code> 和 <code>advanced_navigation</code> 方法。这表明 <code>AdvancedCar</code> 不仅保留了基本汽车的特性，还加入了新的功能，充分展示了继承的实用性和灵活性。</p>
+<h3 id="多态-Polymorphism"><a href="#多态-Polymorphism" class="headerlink" title="多态 (Polymorphism)"></a>多态 (Polymorphism)</h3><p>多态是面向对象编程中的一个重要概念，它允许不同类的对象对同一消息做出响应。即不同的对象可以通过相同的接口（方法或函数）执行不同的操作。这增加了程序的灵活性和可扩展性。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">speak</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;汪汪！&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">speak</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;喵喵！&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个函数，接受不同的动物对象</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">animal_sound</span>(<span class="params">animal</span>):</span><br><span class="line">    <span class="comment"># 无论传入的是什么动物，调用相同的speak方法</span></span><br><span class="line">    <span class="built_in">print</span>(animal.speak())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化Dog和Cat</span></span><br><span class="line">dog = Dog()</span><br><span class="line">cat = Cat()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用animal_sound函数，展示多态</span></span><br><span class="line">animal_sound(dog)  <span class="comment"># 输出: 汪汪！</span></span><br><span class="line">animal_sound(cat)  <span class="comment"># 输出: 喵喵！</span></span><br></pre></td></tr></table></figure></div>
+
+<p>在这个例子中，<code>Dog</code> 和 <code>Cat</code> 类都实现了同一个方法 <code>speak</code>，但它们以不同的方式响应（狗叫声和猫叫声）。函数 <code>animal_sound</code> 接受任何有 <code>speak</code> 方法的对象作为参数，然后调用这个方法。这就是多态的核心：通过同一接口，不同的对象可以执行各自不同的操作。</p>
+<p>总结来说，多态允许我们编写更通用和可重用的代码，因为我们可以设计函数或方法，它们可以与任何符合特定接口（即实现特定方法）的对象交互，而不关心对象的具体类型。这样可以提高代码的灵活性和可扩展性。</p>
+<h2 id="学生管理系统案例"><a href="#学生管理系统案例" class="headerlink" title="学生管理系统案例"></a>学生管理系统案例</h2><p>这个学员管理系统示例演示了面向对象编程的几个关键概念，如类的定义、初始化、封装、私有属性和方法的使用。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个名为StudentManagementSystem的类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StudentManagementSystem</span>:</span><br><span class="line">    <span class="comment"># 类的构造函数，用于初始化对象的属性</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, gender, age</span>):</span><br><span class="line">        <span class="comment"># 公有属性，可以被外部访问</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.gender = gender</span><br><span class="line">        self.age = age</span><br><span class="line">        <span class="comment"># 私有属性，前面有两个下划线，仅在类内部可访问</span></span><br><span class="line">        self.__balance = <span class="number">1000</span>  <span class="comment"># 设置初始余额为1000</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 私有方法，用于扣除费用，仅在类内部可调用</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__deduct_fee</span>(<span class="params">self, amount</span>):</span><br><span class="line">        <span class="comment"># 检查余额是否足够</span></span><br><span class="line">        <span class="keyword">if</span> self.__balance &gt;= amount:</span><br><span class="line">            self.__balance -= amount</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&#x27;扣除<span class="subst">&#123;amount&#125;</span>元成功。&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;余额不足，无法扣款。&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 公有方法，用于展示学员信息</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">show_info</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 打印学员信息，包括私有属性余额</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;姓名: <span class="subst">&#123;self.name&#125;</span>, 性别: <span class="subst">&#123;self.gender&#125;</span>, 年龄: <span class="subst">&#123;self.age&#125;</span>, 余额: <span class="subst">&#123;self.__balance&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 公有方法，用于购买课程</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">purchase_course</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="comment"># 输入价格，并尝试转换为整数</span></span><br><span class="line">            price = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入购买的价格:&#x27;</span>))</span><br><span class="line">            <span class="comment"># 调用私有方法扣款</span></span><br><span class="line">            self.__deduct_fee(price)</span><br><span class="line">        <span class="keyword">except</span> ValueError:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;请输入有效的价格。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 新增的公有方法，用于为学员账户充值</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">recharge</span>(<span class="params">self, amount</span>):</span><br><span class="line">        <span class="comment"># 增加学员余额</span></span><br><span class="line">        self.__balance += amount</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;已成功充值<span class="subst">&#123;amount&#125;</span>元。&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 新增的公有方法，用于学员对课程进行评价</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rate_course</span>(<span class="params">self, course, rating</span>):</span><br><span class="line">        <span class="comment"># 打印学员对课程的评分</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;学员<span class="subst">&#123;self.name&#125;</span>给课程<span class="subst">&#123;course&#125;</span>的评分是: <span class="subst">&#123;rating&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化一个StudentManagementSystem类的对象</span></span><br><span class="line">user = StudentManagementSystem(<span class="string">&#x27;用户&#x27;</span>, <span class="string">&#x27;男&#x27;</span>, <span class="string">&#x27;18&#x27;</span>)</span><br><span class="line">user.purchase_course()  <span class="comment"># 调用方法购买课程</span></span><br><span class="line">user.purchase_course()  <span class="comment"># 再次调用方法购买课程</span></span><br><span class="line">user.show_info()        <span class="comment"># 展示学员信息</span></span><br><span class="line">user.recharge(<span class="number">500</span>)      <span class="comment"># 调用方法充值500元</span></span><br><span class="line">user.rate_course(<span class="string">&quot;Python编程基础&quot;</span>, <span class="number">5</span>)  <span class="comment"># 对课程进行评分</span></span><br></pre></td></tr></table></figure></div>
+
+<p>为了在现有的 <code>StudentManagementSystem</code> 类中引入继承和多态的特点，我们可以创建一个基类来表示一般的用户，然后让 <code>StudentManagementSystem</code> 类成为这个基类的子类。此外，我们可以定义一个接口（一个具有共同方法但没有具体实现的基类），来展示多态。</p>
+<p>首先是基类和接口的定义：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基类 User，表示一般的用户</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, gender, age</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.gender = gender</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">show_info</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;姓名: <span class="subst">&#123;self.name&#125;</span>, 性别: <span class="subst">&#123;self.gender&#125;</span>, 年龄: <span class="subst">&#123;self.age&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接口类 CourseConsumer，定义了一个没有具体实现的方法 purchase_course</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CourseConsumer</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">purchase_course</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError(<span class="string">&quot;Subclass must implement this method&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>然后是修改后的 <code>StudentManagementSystem</code> 类，它继承自 <code>User</code> 并实现了 <code>CourseConsumer</code> 接口：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># StudentManagementSystem 类继承自 User 类并实现了 CourseConsumer 接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StudentManagementSystem</span>(User, CourseConsumer):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, gender, age</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__(name, gender, age)  <span class="comment"># 调用父类的构造函数</span></span><br><span class="line">        self.__balance = <span class="number">1000</span>  <span class="comment"># 私有属性</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__deduct_fee</span>(<span class="params">self, amount</span>):</span><br><span class="line">        <span class="keyword">if</span> self.__balance &gt;= amount:</span><br><span class="line">            self.__balance -= amount</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&#x27;扣除<span class="subst">&#123;amount&#125;</span>元成功。&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;余额不足，无法扣款。&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 重写父类的 show_info 方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">show_info</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().show_info()  <span class="comment"># 调用父类方法</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;余额: <span class="subst">&#123;self.__balance&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 实现接口中定义的方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">purchase_course</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            price = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入购买的价格:&#x27;</span>))</span><br><span class="line">            self.__deduct_fee(price)</span><br><span class="line">        <span class="keyword">except</span> ValueError:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;请输入有效的价格。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">recharge</span>(<span class="params">self, amount</span>):</span><br><span class="line">        self.__balance += amount</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;已成功充值<span class="subst">&#123;amount&#125;</span>元。&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rate_course</span>(<span class="params">self, course, rating</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;学员<span class="subst">&#123;self.name&#125;</span>给课程<span class="subst">&#123;course&#125;</span>的评分是: <span class="subst">&#123;rating&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>在这个修改后的版本中，<code>StudentManagementSystem</code> 类继承了 <code>User</code> 类，并且实现了 <code>CourseConsumer</code> 接口的 <code>purchase_course</code> 方法。这样的设计不仅引入了继承，还通过实现接口展示了多态。继承允许 <code>StudentManagementSystem</code> 类重用 <code>User</code> 类的代码，而多态则体现在 <code>StudentManagementSystem</code> 类能够以不同方式实现 <code>CourseConsumer</code> 接口中定义的方法。这样的设计使得代码更加灵活和可扩展。</p>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <p>在面向对象编程中，<code>super()</code> 函数的使用通常出现在继承体系中，尤其是在子类需要调用父类的方法或构造函数时。以下是一些使用 <code>super()</code> 的典型情况：</p>
+<ol>
+<li><strong>在子类的构造函数中调用父类的构造函数</strong>： 当创建一个子类时，可能需要在子类中初始化一些继承自父类的属性。使用 <code>super()</code> 调用父类的构造函数可以确保这些属性被适当地初始化。</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Parent</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Parent init&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Child</span>(<span class="title class_ inherited__">Parent</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()  <span class="comment"># 调用父类的 __init__ 方法</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Child init&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li><strong>在子类中覆盖父类的方法时调用父类的实现</strong>： 如果在子类中重写了父类的方法，并且还想保留父类方法的行为，可以在子类方法中使用 <code>super()</code> 调用父类的方法。</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Parent</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">say_hello</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Hello from Parent&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Child</span>(<span class="title class_ inherited__">Parent</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">say_hello</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().say_hello()  <span class="comment"># 调用父类的 say_hello 方法</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Hello from Child&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<ol start="3">
+<li><strong>多重继承中解决方法解析顺序（Method Resolution Order, MRO）问题</strong>： 在使用多重继承时，<code>super()</code> 被用来确保每个父类都被适当地初始化或调用相应的方法。它按照方法解析顺序遍历所有的基类。</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Base</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Base init&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>(<span class="title class_ inherited__">Base</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;A init&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>(<span class="title class_ inherited__">Base</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;B init&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Child</span>(A, B):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Child init&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>总之，<code>super()</code> 的使用有助于确保父类的适当初始化和方法调用，尤其是在有继承关系的类之间。这有助于减少代码重复，并确保继承体系中的逻辑一致性。</p>
+
+    </div>
+  </div>
+
+
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f05c1c2f-dd09-4bad-4b05-64b6268e2400/public"
+                     
+                >]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>基础</tag>
+        <tag>理论</tag>
+        <tag>基本语法</tag>
+        <tag>对象</tag>
+        <tag>面向对象编程</tag>
+        <tag>类</tag>
+        <tag>继承</tag>
+        <tag>多态</tag>
+        <tag>封装</tag>
+        <tag>抽象</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>New方法、单例模式、装饰器</title>
+    <url>/2018/09/15/20180915New%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E8%A3%85%E9%A5%B0%E5%99%A8/</url>
+    <content><![CDATA[<h2 id="类中的-new-魔术方法-构造器"><a href="#类中的-new-魔术方法-构造器" class="headerlink" title="类中的_ _new_ _(魔术方法&#x2F;构造器)"></a>类中的_ _new_ _(魔术方法&#x2F;构造器)</h2><p>在Python中，<code>__new__</code>方法确实是一个特别的方法，但它和<code>__init__</code>方法有着明显的区别。<code>__new__</code>是一个静态方法（虽然通常不明确地声明为静态方法），而<code>__init__</code>是一个实例方法。</p>
+<h3 id="new-方法的作用"><a href="#new-方法的作用" class="headerlink" title="_ _new_ _方法的作用"></a>_ _new_ _方法的作用</h3><p><code>__new__</code>方法主要用于创建一个新的实例对象。它是类的一个静态方法，即便不明确声明也是如此。<code>__new__</code>在<code>__init__</code>方法之前被调用，用于生成实例对象。通常情况下，我们不需要自己编写<code>__new__</code>方法，但在某些特殊情况下，修改<code>__new__</code>方法能够提供额外的灵活性。</p>
+<h3 id="new-方法的基本结构"><a href="#new-方法的基本结构" class="headerlink" title="_ _new_ _ 方法的基本结构"></a>_ _new_ _ 方法的基本结构</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="comment"># 创建对象的逻辑</span></span><br><span class="line">        instance = <span class="built_in">super</span>(MyClass, cls).__new__(cls, *args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> instance</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="类定义"><a href="#类定义" class="headerlink" title="类定义"></a>类定义</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>(<span class="title class_ inherited__">object</span>):</span><br></pre></td></tr></table></figure></div>
+
+<p>这行代码定义了一个名为<code>MyClass</code>的新类，它继承自Python内置的<code>object</code>类。在Python 3中，所有的类默认继承自<code>object</code>，所以即使不显式地继承，它仍然会继承自<code>object</code>。</p>
+<h4 id="new-方法"><a href="#new-方法" class="headerlink" title="_ _new_ _ 方法"></a>_ _new_ _ 方法</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span><br></pre></td></tr></table></figure></div>
+
+<p>这是<code>__new__</code>方法的定义。<code>__new__</code>是一个特殊方法，用于在一个对象实例化时创建并返回这个对象。</p>
+<ul>
+<li><code>cls</code>：这个参数是对当前类<code>MyClass</code>的引用，这与实例方法中的<code>self</code>参数类似，但<code>cls</code>是在对象创建之前使用的。</li>
+<li><code>*args</code>和<code>**kwargs</code>：这两个参数允许传递任意数量的位置参数和关键字参数。这些参数将会被传递给<code>__init__</code>方法。</li>
+</ul>
+<h4 id="创建实例的逻辑"><a href="#创建实例的逻辑" class="headerlink" title="创建实例的逻辑"></a>创建实例的逻辑</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">instance = <span class="built_in">super</span>(MyClass, cls).__new__(cls, *args, **kwargs)</span><br></pre></td></tr></table></figure></div>
+
+<p>这行代码是创建类实例的核心。</p>
+<ul>
+<li><code>super(MyClass, cls)</code>：这部分调用了<code>MyClass</code>的父类的方法。在这个例子中，父类是<code>object</code>。<code>super</code>函数是用来获取父类定义，以便调用其方法的一种方式。</li>
+<li><code>.__new__(cls, *args, **kwargs)</code>：这部分实际上调用了父类<code>object</code>的<code>__new__</code>方法，并传递了必要的参数。这个调用负责创建一个新的实例。</li>
+<li><code>instance</code>：<code>__new__</code>方法返回的是一个实例对象，这里我们将其赋值给变量<code>instance</code>。</li>
+</ul>
+<h4 id="返回实例"><a href="#返回实例" class="headerlink" title="返回实例"></a>返回实例</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> instance</span><br></pre></td></tr></table></figure></div>
+
+<p>最后，<code>__new__</code>方法返回了新创建的实例<code>instance</code>。这个实例接下来将被用来调用<code>__init__</code>方法，以便进行进一步的初始化。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>这个<code>MyClass</code>类示例展示了如何在Python中自定义<code>__new__</code>方法。通常，不需要重写<code>__new__</code>，除非有改变实例创建方式的特殊需求，比如实现单例模式、返回一个不同的类的实例或者在创建实例之前做一些额外的操作。在大多数情况下，只需要关注<code>__init__</code>方法来初始化实例。</p>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><p><code>__new__</code>方法通常在下面的情况下使用：</p>
+<ol>
+<li><strong>单例模式</strong>：确保一个类只有一个实例。</li>
+<li><strong>不可变类型的子类</strong>：例如扩展某些内置不可变类型，如<code>tuple</code>或<code>str</code>。</li>
+<li><strong>控制实例的创建</strong>：在某些复杂的情况下，可能需要在对象创建时进行额外的处理。</li>
+</ol>
+<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>单例模式是一种常见的软件设计模式，其核心思想是确保一个类在应用程序中只有一个实例，并提供一个全局访问点来获取这个实例。这种模式在需要控制资源的访问或管理共享资源时特别有用，如数据库连接或文件系统的操作。</p>
+<h3 id="单例模式的特点"><a href="#单例模式的特点" class="headerlink" title="单例模式的特点"></a>单例模式的特点</h3><ol>
+<li><strong>唯一实例</strong>：单例类只允许创建一个实例。</li>
+<li><strong>全局访问点</strong>：单例类提供一个全局访问的方法，全局的代码都可以通过这个方法访问到这个唯一实例。</li>
+<li><strong>自我管理</strong>：单例类负责创建、初始化和管理自己的唯一实例。</li>
+</ol>
+<h3 id="Python中实现单例模式"><a href="#Python中实现单例模式" class="headerlink" title="Python中实现单例模式"></a>Python中实现单例模式</h3><p>在Python中，单例模式可以通过多种方法实现，如使用模块级别的变量、装饰器、元类或重写<code>__new__</code>方法等。以下是通过重写<code>__new__</code>方法实现单例模式的一个示例：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>:</span><br><span class="line">    _instance = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls</span>):</span><br><span class="line">        <span class="keyword">if</span> cls._instance <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            cls._instance = <span class="built_in">super</span>(Singleton, cls).__new__(cls)</span><br><span class="line">        <span class="keyword">return</span> cls._instance</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>类变量<code>_instance</code>用于存储类的唯一实例。</li>
+<li>在<code>__new__</code>方法中，首先检查<code>_instance</code>是否已经被创建。如果没有，则创建一个新实例并将其赋值给<code>_instance</code>。</li>
+<li>之后的所有实例化操作都将返回这个已创建的实例。</li>
+</ul>
+<h3 id="单例模式的使用场景"><a href="#单例模式的使用场景" class="headerlink" title="单例模式的使用场景"></a>单例模式的使用场景</h3><p>单例模式通常用于以下场景：</p>
+<ul>
+<li>管理共享资源，如数据库连接、日志记录、配置信息等。</li>
+<li>控制资源的访问，确保资源的一致性和状态的同步。</li>
+<li>减少资源的重复创建和销毁，提高效率。</li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>单例模式在多线程环境下可能需要特别的处理来保证线程安全。</li>
+<li>过度使用单例模式可能导致代码间的耦合度过高，应当谨慎使用。</li>
+<li>在分布式系统中，单例模式的使用需要考虑到进程间的通信和资源共享的问题。</li>
+</ul>
+<p>单例模式是一种简单但强大的设计模式，能够有效地管理共享资源和全局状态，但也需要注意其带来的限制和潜在问题。</p>
+<h2 id="私有属性"><a href="#私有属性" class="headerlink" title="私有属性"></a>私有属性</h2><p>在Python中，私有属性（Private Attributes）是指仅能在其所属的类内部访问的属性，而无法从类外部直接访问。这是面向对象编程中封装的一个重要概念，用于隐藏类的内部实现细节，并保护类的状态免受外部干扰。</p>
+<h3 id="如何定义私有属性"><a href="#如何定义私有属性" class="headerlink" title="如何定义私有属性"></a>如何定义私有属性</h3><p>在Python中，私有属性通常是通过在属性名前加上双下划线（<code>__</code>）来定义的。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.__private_attribute = <span class="number">42</span></span><br></pre></td></tr></table></figure></div>
+
+<p>在这个例子中，<code>__private_attribute</code>就是一个私有属性。由于它的名字以双下划线开头，它只能在<code>MyClass</code>内部访问。</p>
+<h3 id="访问和修改私有属性"><a href="#访问和修改私有属性" class="headerlink" title="访问和修改私有属性"></a>访问和修改私有属性</h3><p>私有属性只能在定义它们的类的内部访问和修改。如果你试图从类外部访问或修改这些属性，将会导致<code>AttributeError</code>。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">obj = MyClass()</span><br><span class="line"><span class="built_in">print</span>(obj.__private_attribute)  <span class="comment"># 将引发错误</span></span><br></pre></td></tr></table></figure></div>
+
+<p>要在类外部访问或修改私有属性的值，你需要在类内部提供公共的方法（例如getter和setter方法）。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.__private_attribute = <span class="number">42</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_private_attribute</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.__private_attribute</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_private_attribute</span>(<span class="params">self, value</span>):</span><br><span class="line">        self.__private_attribute = value</span><br><span class="line"></span><br><span class="line">obj = MyClass()</span><br><span class="line"><span class="built_in">print</span>(obj.get_private_attribute())  <span class="comment"># 正确</span></span><br><span class="line">obj.set_private_attribute(<span class="number">100</span>)      <span class="comment"># 正确</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="名称改写（Name-Mangling）"><a href="#名称改写（Name-Mangling）" class="headerlink" title="名称改写（Name Mangling）"></a>名称改写（Name Mangling）</h3><p>在Python中，私有属性的名称实际上会被改写，这个过程称为名称改写（Name Mangling）。Python解释器自动地把属性名<code>__private_attribute</code>转换为<code>_MyClass__private_attribute</code>。这意味着理论上你可以通过改写过的名称来访问私有属性，但这并不是一个好的做法，因为它违反了封装的原则。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(obj._MyClass__private_attribute)  <span class="comment"># 可行，但不推荐</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="为什么使用私有属性"><a href="#为什么使用私有属性" class="headerlink" title="为什么使用私有属性"></a>为什么使用私有属性</h3><p>使用私有属性的主要理由是封装和抽象。通过限制对类内部状态的直接访问，你可以防止外部代码无意中破坏类的内部状态，从而保持对象的完整性和一致性。</p>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>私有属性是面向对象编程中的一个重要概念，它有助于实现封装和数据隐藏。在Python中，私有属性通过在属性名前加双下划线来定义，并且只能通过类内部定义的方法进行访问和修改。尽管技术上可以通过名称改写访问私有属性，但这并不符合封装的原则，应当避免这样做</p>
+<h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><p>装饰器（Decorators）是Python中一个非常强大且有用的功能，它们允许程序员修改或增强函数和方法的行为，而不需要改变其本身的代码。装饰器在很多高级Python应用中都有广泛的使用，如Web框架、事件监听、日志处理等。</p>
+<h3 id="装饰器的基本原理"><a href="#装饰器的基本原理" class="headerlink" title="装饰器的基本原理"></a>装饰器的基本原理</h3><p>在Python中，装饰器本质上是一个Python函数，它可以接收一个函数作为参数并返回一个新的函数。使用装饰器可以在不修改原函数的情况下，增加额外的功能。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">my_decorator</span>(<span class="params">func</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Something is happening before the function is called.&quot;</span>)</span><br><span class="line">        func()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Something is happening after the function is called.&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_hello</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Hello!&quot;</span>)</span><br><span class="line"></span><br><span class="line">say_hello = my_decorator(say_hello)</span><br></pre></td></tr></table></figure></div>
+
+<p>在上面的例子中，<code>my_decorator</code>是一个装饰器，它在<code>say_hello</code>函数前后添加了额外的打印操作。</p>
+<h3 id="使用-语法糖"><a href="#使用-语法糖" class="headerlink" title="使用@语法糖"></a>使用<code>@</code>语法糖</h3><p>Python提供了一个简单的方式来应用装饰器，即使用<code>@</code>符号，这也被称为语法糖。这让代码更加简洁易读。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@my_decorator</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">say_hello</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Hello!&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>使用<code>@my_decorator</code>语法，上面的代码与之前例子中的功能完全相同。</p>
+<h3 id="带参数的装饰器"><a href="#带参数的装饰器" class="headerlink" title="带参数的装饰器"></a>带参数的装饰器</h3><p>装饰器也可以带参数，这需要在其外层再加一层函数。这种装饰器也称为装饰器工厂。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">repeat</span>(<span class="params">number=<span class="number">3</span></span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">decorator_repeat</span>(<span class="params">func</span>):</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">wrapper</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">            <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(number):</span><br><span class="line">                value = func(*args, **kwargs)</span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line">    <span class="keyword">return</span> decorator_repeat</span><br><span class="line"></span><br><span class="line"><span class="meta">@repeat(<span class="params">number=<span class="number">4</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">greet</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Hello <span class="subst">&#123;name&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>在这个例子中，<code>repeat</code>是一个带参数的装饰器，它接受一个参数<code>number</code>，指定了函数执行的次数。</p>
+<h3 id="装饰器的用途"><a href="#装饰器的用途" class="headerlink" title="装饰器的用途"></a>装饰器的用途</h3><ul>
+<li><strong>日志记录</strong>：添加日志功能，以跟踪函数的调用细节。</li>
+<li><strong>性能测试</strong>：检测函数执行时间，用于性能优化。</li>
+<li><strong>权限验证</strong>：检查用户是否有权执行某个操作。</li>
+<li><strong>缓存</strong>：缓存函数的返回结果，提高程序性能。</li>
+</ul>
+<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><p>装饰器是Python中非常有用的工具，可以在不修改原有函数代码的情况下，给函数增加新的功能。它通过语法简单但功能强大的方式，提高了代码的可读性和可维护性。在Python的日常使用中，熟练运用装饰器是一个非常有价值的技能。</p>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <p>在Python中，装饰器的实现通常依赖于闭包的概念。</p>
+<p><strong>闭包（Closure）简介</strong></p>
+<p>闭包是一种在动态编程语言中常见的概念，它指的是一个函数记住了它的词法作用域，即使这个函数在自己的词法作用域之外执行。在Python中，闭包表现为一个内嵌函数记住了其外部函数的状态或环境。</p>
+<p><strong>装饰器中的闭包</strong></p>
+<p>在装饰器中使用闭包，是为了在装饰器函数内创建一个包装函数（wrapper），这个包装函数能够记住并访问其外部函数（即装饰器函数）的变量和参数。这使得装饰器能够在不修改被装饰函数的情况下增加额外的功能。</p>
+<ul>
+<li><code>my_decorator</code> 是一个装饰器函数。</li>
+<li><code>wrapper</code> 是一个内嵌函数，它是闭包的体现。<code>wrapper</code> 能够记住并访问<code>func</code>，即使在<code>my_decorator</code>函数的执行已经完成之后。</li>
+<li>当我们使用<code>@my_decorator</code>装饰<code>say_hello</code>函数时，实际上是将<code>say_hello</code>作为参数传递给了<code>my_decorator</code>，并将返回的<code>wrapper</code>函数赋值给了<code>say_hello</code>。</li>
+</ul>
+<p><strong>闭包的作用</strong></p>
+<p>闭包在装饰器中的主要作用是让我们能够延伸或修改函数的行为。闭包使得装饰器内部的包装函数能够访问到装饰器接收的原始函数，从而在不改变原始函数定义的前提下，对其进行包装，增加额外的操作和逻辑。</p>
+<p><strong>总结</strong></p>
+<p>简言之，装饰器中的闭包是Python中一种强大的函数式编程特性，它允许内嵌函数捕获并保持外部函数的状态，从而使得我们可以在不修改原函数的情况下，为其增加新的功能。这种特性在Python中广泛用于日志记录、性能测试、权限校验等场景。</p>
+<p>详见函数篇<a class="button " href='https://www.yiuhangblog.com/2018/08/12/20180812%E5%87%BD%E6%95%B0/#%E9%97%AD%E5%8C%85-Closure' title='闭包'><i class='fa-solid fa-play-circle'></i> 闭包</a></p>
+
+    </div>
+  </div>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>基础</tag>
+        <tag>理论</tag>
+        <tag>基本语法</tag>
+        <tag>装饰器</tag>
+        <tag>new方法</tag>
+        <tag>私有属性</tag>
+        <tag>单列模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据分析基础 (FineBI)</title>
     <url>/2020/05/11/20200511%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h2 id="一-概念"><a href="#一-概念" class="headerlink" title="一  概念"></a>一  概念</h2><ul>
@@ -733,233 +1284,6 @@
         <tag>商务智能</tag>
         <tag>模型</tag>
         <tag>FineBI</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>New方法、单例模式、装饰器</title>
-    <url>/2018/09/15/20180915New%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E8%A3%85%E9%A5%B0%E5%99%A8/</url>
-    <content><![CDATA[<h2 id="类中的-new-魔术方法-构造器"><a href="#类中的-new-魔术方法-构造器" class="headerlink" title="类中的_ _new_ _(魔术方法&#x2F;构造器)"></a>类中的_ _new_ _(魔术方法&#x2F;构造器)</h2><p>在Python中，<code>__new__</code>方法确实是一个特别的方法，但它和<code>__init__</code>方法有着明显的区别。<code>__new__</code>是一个静态方法（虽然通常不明确地声明为静态方法），而<code>__init__</code>是一个实例方法。</p>
-<h3 id="new-方法的作用"><a href="#new-方法的作用" class="headerlink" title="_ _new_ _方法的作用"></a>_ _new_ _方法的作用</h3><p><code>__new__</code>方法主要用于创建一个新的实例对象。它是类的一个静态方法，即便不明确声明也是如此。<code>__new__</code>在<code>__init__</code>方法之前被调用，用于生成实例对象。通常情况下，我们不需要自己编写<code>__new__</code>方法，但在某些特殊情况下，修改<code>__new__</code>方法能够提供额外的灵活性。</p>
-<h3 id="new-方法的基本结构"><a href="#new-方法的基本结构" class="headerlink" title="_ _new_ _ 方法的基本结构"></a>_ _new_ _ 方法的基本结构</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="comment"># 创建对象的逻辑</span></span><br><span class="line">        instance = <span class="built_in">super</span>(MyClass, cls).__new__(cls, *args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> instance</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="类定义"><a href="#类定义" class="headerlink" title="类定义"></a>类定义</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>(<span class="title class_ inherited__">object</span>):</span><br></pre></td></tr></table></figure></div>
-
-<p>这行代码定义了一个名为<code>MyClass</code>的新类，它继承自Python内置的<code>object</code>类。在Python 3中，所有的类默认继承自<code>object</code>，所以即使不显式地继承，它仍然会继承自<code>object</code>。</p>
-<h4 id="new-方法"><a href="#new-方法" class="headerlink" title="_ _new_ _ 方法"></a>_ _new_ _ 方法</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span><br></pre></td></tr></table></figure></div>
-
-<p>这是<code>__new__</code>方法的定义。<code>__new__</code>是一个特殊方法，用于在一个对象实例化时创建并返回这个对象。</p>
-<ul>
-<li><code>cls</code>：这个参数是对当前类<code>MyClass</code>的引用，这与实例方法中的<code>self</code>参数类似，但<code>cls</code>是在对象创建之前使用的。</li>
-<li><code>*args</code>和<code>**kwargs</code>：这两个参数允许传递任意数量的位置参数和关键字参数。这些参数将会被传递给<code>__init__</code>方法。</li>
-</ul>
-<h4 id="创建实例的逻辑"><a href="#创建实例的逻辑" class="headerlink" title="创建实例的逻辑"></a>创建实例的逻辑</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">instance = <span class="built_in">super</span>(MyClass, cls).__new__(cls, *args, **kwargs)</span><br></pre></td></tr></table></figure></div>
-
-<p>这行代码是创建类实例的核心。</p>
-<ul>
-<li><code>super(MyClass, cls)</code>：这部分调用了<code>MyClass</code>的父类的方法。在这个例子中，父类是<code>object</code>。<code>super</code>函数是用来获取父类定义，以便调用其方法的一种方式。</li>
-<li><code>.__new__(cls, *args, **kwargs)</code>：这部分实际上调用了父类<code>object</code>的<code>__new__</code>方法，并传递了必要的参数。这个调用负责创建一个新的实例。</li>
-<li><code>instance</code>：<code>__new__</code>方法返回的是一个实例对象，这里我们将其赋值给变量<code>instance</code>。</li>
-</ul>
-<h4 id="返回实例"><a href="#返回实例" class="headerlink" title="返回实例"></a>返回实例</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> instance</span><br></pre></td></tr></table></figure></div>
-
-<p>最后，<code>__new__</code>方法返回了新创建的实例<code>instance</code>。这个实例接下来将被用来调用<code>__init__</code>方法，以便进行进一步的初始化。</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>这个<code>MyClass</code>类示例展示了如何在Python中自定义<code>__new__</code>方法。通常，不需要重写<code>__new__</code>，除非有改变实例创建方式的特殊需求，比如实现单例模式、返回一个不同的类的实例或者在创建实例之前做一些额外的操作。在大多数情况下，只需要关注<code>__init__</code>方法来初始化实例。</p>
-<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><p><code>__new__</code>方法通常在下面的情况下使用：</p>
-<ol>
-<li><strong>单例模式</strong>：确保一个类只有一个实例。</li>
-<li><strong>不可变类型的子类</strong>：例如扩展某些内置不可变类型，如<code>tuple</code>或<code>str</code>。</li>
-<li><strong>控制实例的创建</strong>：在某些复杂的情况下，可能需要在对象创建时进行额外的处理。</li>
-</ol>
-<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>单例模式是一种常见的软件设计模式，其核心思想是确保一个类在应用程序中只有一个实例，并提供一个全局访问点来获取这个实例。这种模式在需要控制资源的访问或管理共享资源时特别有用，如数据库连接或文件系统的操作。</p>
-<h3 id="单例模式的特点"><a href="#单例模式的特点" class="headerlink" title="单例模式的特点"></a>单例模式的特点</h3><ol>
-<li><strong>唯一实例</strong>：单例类只允许创建一个实例。</li>
-<li><strong>全局访问点</strong>：单例类提供一个全局访问的方法，全局的代码都可以通过这个方法访问到这个唯一实例。</li>
-<li><strong>自我管理</strong>：单例类负责创建、初始化和管理自己的唯一实例。</li>
-</ol>
-<h3 id="Python中实现单例模式"><a href="#Python中实现单例模式" class="headerlink" title="Python中实现单例模式"></a>Python中实现单例模式</h3><p>在Python中，单例模式可以通过多种方法实现，如使用模块级别的变量、装饰器、元类或重写<code>__new__</code>方法等。以下是通过重写<code>__new__</code>方法实现单例模式的一个示例：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>:</span><br><span class="line">    _instance = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls</span>):</span><br><span class="line">        <span class="keyword">if</span> cls._instance <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            cls._instance = <span class="built_in">super</span>(Singleton, cls).__new__(cls)</span><br><span class="line">        <span class="keyword">return</span> cls._instance</span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li>类变量<code>_instance</code>用于存储类的唯一实例。</li>
-<li>在<code>__new__</code>方法中，首先检查<code>_instance</code>是否已经被创建。如果没有，则创建一个新实例并将其赋值给<code>_instance</code>。</li>
-<li>之后的所有实例化操作都将返回这个已创建的实例。</li>
-</ul>
-<h3 id="单例模式的使用场景"><a href="#单例模式的使用场景" class="headerlink" title="单例模式的使用场景"></a>单例模式的使用场景</h3><p>单例模式通常用于以下场景：</p>
-<ul>
-<li>管理共享资源，如数据库连接、日志记录、配置信息等。</li>
-<li>控制资源的访问，确保资源的一致性和状态的同步。</li>
-<li>减少资源的重复创建和销毁，提高效率。</li>
-</ul>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li>单例模式在多线程环境下可能需要特别的处理来保证线程安全。</li>
-<li>过度使用单例模式可能导致代码间的耦合度过高，应当谨慎使用。</li>
-<li>在分布式系统中，单例模式的使用需要考虑到进程间的通信和资源共享的问题。</li>
-</ul>
-<p>单例模式是一种简单但强大的设计模式，能够有效地管理共享资源和全局状态，但也需要注意其带来的限制和潜在问题。</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>基础</tag>
-        <tag>理论</tag>
-        <tag>基本语法</tag>
-        <tag>装饰器</tag>
-        <tag>new方法</tag>
-        <tag>私有属性</tag>
-        <tag>单列模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>函数</title>
-    <url>/2018/08/12/20180812%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h2 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h2><p>函数是一段可重复使用的代码块，用于执行特定的任务</p>
-<h3 id="函数的作用"><a href="#函数的作用" class="headerlink" title="函数的作用"></a>函数的作用</h3><ol>
-<li>提高代码的可重用性: 使用函数可以将代码块组织成更小的可重用模块，减少代码的冗余。</li>
-<li>提高代码的可读性: 使用函数可以使代码更加简洁和易于理解，也更容易进行调试和维护。</li>
-<li>提高代码的模块化: 使用函数可以将程序分解成更小的模块，每个模块都可以处理特定的任务，这样程序的组织结构更加清晰。</li>
-<li>提高代码的可扩展性: 使用函数可以使程序更易于扩展和修改，因为函数可以独立地编写和测试，而不会影响程序的其他部分。</li>
-</ol>
-
-  <div class="note p-4 mb-4 rounded-small info icon-padding">
-    <i class="note-icon fa-solid fa-circle-info"></i><p>函数就是设计一个技能需要时自己调用，调用的方法本质上是个函数 。两者的区别是使用的方式不一样。</p>
-
-  </div>
-
-<h3 id="函数写法"><a href="#函数写法" class="headerlink" title="函数写法"></a>函数写法</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用def定义一个函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">User</span>():</span><br><span class="line">    内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数 必须顶格</span></span><br><span class="line">User()</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="函数的形参和实参"><a href="#函数的形参和实参" class="headerlink" title="函数的形参和实参"></a>函数的形参和实参</h2><ol>
-<li>不传值给函数可以不带形参和实参</li>
-<li>形参名字可以随意定义</li>
-<li>形参和实参数量必须一致</li>
-<li>实参对应形参</li>
-<li>形参可以赋默认参数 没有传就以默认参数 传了就以实参</li>
-<li>实参也可以指定形参</li>
-<li>通过*形参名可以获取所有实参，通过索引获取对应实参</li>
-</ol>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用def定义一个函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">User</span>(<span class="params">形参</span>):</span><br><span class="line">    内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数 必须顶格</span></span><br><span class="line">User(实参)</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 形参的默认参数</span></span><br><span class="line"><span class="comment"># 如果没有传就以默认参数 传了就以实参</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line">    <span class="built_in">print</span>(y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">user(<span class="number">13</span>, <span class="number">14</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 13</span></span><br><span class="line"><span class="comment"># 14</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 通过*形参名可以获取所有实参</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user</span>(<span class="params">*item</span>):</span><br><span class="line">    <span class="comment"># 通过形参名索引获取对应实参</span></span><br><span class="line">    <span class="built_in">print</span>(item[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">user(<span class="number">13</span>, <span class="number">14</span>, <span class="number">16</span>, <span class="number">17</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 13</span></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h2><p>Python自带的一些函数，我们可以直接拿来使用</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打印</span></span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"><span class="comment"># 类型判断</span></span><br><span class="line"><span class="built_in">type</span>()</span><br><span class="line"><span class="comment"># 字符串、列表、元组、集合 的增删改查的方法</span></span><br></pre></td></tr></table></figure></div>
-
-
-  <div class="note p-4 mb-4 rounded-small primary icon-padding">
-    <i class="note-icon fa-solid fa-square-arrow-up-right"></i><p>字符串、列表、元组、集合 的增删改查的方法<a class="button " href='https://www.yiuhangblog.com/2018/07/23/20180723%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BA%8F%E5%88%97%E7%B1%BB%E5%9E%8B/' title='数值类型'><i class='fa-solid fa-play-circle'></i> 数值类型</a>，详细内容与调用方法跳转查阅</p>
-
-  </div>
-
-<h2 id="函数的说明文档"><a href="#函数的说明文档" class="headerlink" title="函数的说明文档"></a>函数的说明文档</h2><ol>
-<li>给函数中的代码做解释说明</li>
-<li>让其他程序员知道函数的作用</li>
-<li>函数里的注释</li>
-</ol>
-<h3 id="如何写说明文档"><a href="#如何写说明文档" class="headerlink" title="如何写说明文档"></a>如何写说明文档</h3><ul>
-<li>三引号包裹</li>
-</ul>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):</span><br><span class="line">	<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">	内容</span></span><br><span class="line"><span class="string">	&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    这个函数用于计算两个数的和。</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    :param a: 第一个加数</span></span><br><span class="line"><span class="string">    :param b: 第二个加数</span></span><br><span class="line"><span class="string">    :return: 两个数的和</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="函数的嵌套"><a href="#函数的嵌套" class="headerlink" title="函数的嵌套"></a>函数的嵌套</h2><p>在函数内部调用其它函数</p>
-<p>尽量不要嵌套太多层，不然就是屎山了</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1.定义一个函数a</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">a</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;我是函数a&#x27;</span>)</span><br><span class="line">    <span class="comment"># 3.在函数a内部调用函数b</span></span><br><span class="line">    b()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.定义一个函数b</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">b</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;我是函数b&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.调用函数a</span></span><br><span class="line">a() </span><br><span class="line"></span><br><span class="line"><span class="comment"># 我是函数a</span></span><br><span class="line"><span class="comment"># 我是函数b</span></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="函数的作用域"><a href="#函数的作用域" class="headerlink" title="函数的作用域"></a>函数的作用域</h2><p>Python 中的函数作用域分为两种: 全局作用域和局部作用域</p>
-<ol>
-<li>全局作用域指的是在模块(文件)中定义的变量和函数，可以在模块的任何地方被访问和使用</li>
-<li>局部作用域指的是在函数内部定义的变量和函数，只能在该函数内部被访问和使用</li>
-</ol>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a728cb1a-a479-43ab-1aa5-318e65e52f00/public"
-                      width="200"
-                >
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 变量a 全局作用域</span></span><br><span class="line">a = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个 函数textA</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">textA</span>():</span><br><span class="line">    <span class="comment"># 变量b 局部作用域</span></span><br><span class="line">    b = <span class="number">20</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为变量a在全局作用域 所以可以访问到</span></span><br><span class="line"><span class="built_in">print</span>(a)	<span class="comment"># 100</span></span><br><span class="line"><span class="comment"># 因为变量b 在局部作用域 变量b 访问不到 所以会报错</span></span><br><span class="line"><span class="built_in">print</span>(b)	<span class="comment"># NameError: name &#x27;b&#x27; is not defined</span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="global-关键字"><a href="#global-关键字" class="headerlink" title="global 关键字"></a>global 关键字</h3><p>使用 <code>global</code> 关键字 可以在函数内部声明变量为全局变量</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义两个变量 textA textB</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">textA</span>():</span><br><span class="line">    <span class="comment"># gLobal 声明 money 为全局变量</span></span><br><span class="line">    <span class="keyword">global</span> money</span><br><span class="line">    money = <span class="number">100</span></span><br><span class="line">    <span class="built_in">print</span>(money)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">textB</span>():</span><br><span class="line">    <span class="built_in">print</span>(money)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">textA() <span class="comment"># 100</span></span><br><span class="line">textB() <span class="comment"># 100</span></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="闭包-Closure"><a href="#闭包-Closure" class="headerlink" title="闭包 Closure"></a>闭包 Closure</h2><p>内部函数使用了外部函数的变量 </p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>(): <span class="comment"># 外部函数</span></span><br><span class="line">    <span class="comment"># 1. 变量a 是func函数的局部变量</span></span><br><span class="line">    a = <span class="number">10</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;函数func调用&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">func1</span>(): <span class="comment"># 内部函数</span></span><br><span class="line">        <span class="comment"># 2. 我们在func1这个内部函数里面 使用了 外部函数的变量a 这种现象就叫闭包，没有用到 变量 就不叫闭包</span></span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> func1  <span class="comment"># 3. 我们需要返回func1函数的本身给外部函数 才能看到闭包的效果 闭包不需要调用只需要返回</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">demo = func() <span class="comment"># 函数func调用</span></span><br><span class="line">demo() <span class="comment"># 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者func()()</span></span><br></pre></td></tr></table></figure></div>
-
-<h3 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h3><p>好处: 保存局部变量的状态 我们可以将相关的功能和数据绑定在一起，而不用担心数据被其他代码修改。</p>
-<p>应用：想保存数据状态和不被污染 我们就可以使用闭包。很多框架底层 保存数据都是用的闭包</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():</span><br><span class="line">    a = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">func1</span>():</span><br><span class="line">        <span class="keyword">nonlocal</span> a  <span class="comment"># nonlocal 指向外部函数func的a 不会指向全局作用域 如果外部func没有a就会报错</span></span><br><span class="line">        a += <span class="number">1</span>  <span class="comment"># 累加，主要做逻辑处理，每次调用func1就会累加1</span></span><br><span class="line">        <span class="keyword">return</span> a  <span class="comment"># 将累加的结果返回出来给func1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> func1  <span class="comment"># 返func1本身传递给func 覆盖原始a=0 我们才能看到闭包的效果</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 目的调用func1 让a累加一次</span></span><br><span class="line"><span class="comment"># 需要调用看结果</span></span><br><span class="line">demo = func()</span><br><span class="line"><span class="comment"># 通过demo来调用里面的func1</span></span><br><span class="line"><span class="built_in">print</span>(demo())</span><br><span class="line"><span class="comment"># 输出 1</span></span><br><span class="line"><span class="built_in">print</span>(demo())</span><br><span class="line"><span class="comment"># 输出 2</span></span><br><span class="line"><span class="built_in">print</span>(demo())</span><br><span class="line"><span class="comment"># 输出 3</span></span><br></pre></td></tr></table></figure></div>
-
-<ol>
-<li>因此可以发现通过闭包，可以使得数据状态得到存储，例如存储累加的结果</li>
-<li>且闭包的数据无法通过全局变量进行修改，保证数据完整性，因为是由子函数进行累加的</li>
-<li>需要保存数据状态的时候就需要使用闭包</li>
-<li>使用场景例如 第三方库 能够保存数据状态</li>
-</ol>
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
-
-    </div>
-    <div class="notel-content">
-      <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">&quot;Global&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fun_out</span>():</span><br><span class="line">    a = <span class="string">&quot;external_function&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">fun_in</span>():</span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fun_in</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">demo = fun_out()</span><br><span class="line">demo() <span class="comment"># external_function</span></span><br></pre></td></tr></table></figure></div>
-
-<p>在 Python 中，变量的使用和修改遵循不同的规则，特别是在涉及嵌套函数时。这是因为 Python 对变量的查找（读取）和赋值（修改）有不同的作用域规则。</p>
-<ol>
-<li><strong>读取变量</strong>：当代码尝试读取一个变量的值时（如在 <code>print(a)</code> 中），Python 会遵循作用域查找规则。这意味着它会首先在当前函数的局部作用域查找该变量。如果在当前作用域找不到，它会在外围作用域中查找，一直查找到全局作用域，最后是内置作用域。这就是为什么在上面的例子中，即使没有使用 <code>nonlocal</code> 关键字，<code>fun_in</code> 也能访问 <code>fun_out</code> 中定义的 <code>a</code> 变量。</li>
-<li><strong>修改变量</strong>：当尝试修改一个变量的值时，Python 的默认行为是在当前作用域创建或更新该变量。如果在一个嵌套的函数中不加声明地修改一个变量，Python 会认为这是一个新的局部变量，而不是一个外围作用域中的变量。<ul>
-<li><strong>使用 <code>nonlocal</code> 关键字</strong>：当想在一个嵌套函数中修改外围函数的局部变量时，需要使用 <code>nonlocal</code> 关键字。这样做可以告诉 Python 想修改的是外围作用域中的变量，而不是创建一个新的局部变量。</li>
-<li><strong>全局变量</strong>：如果想在一个函数中修改全局变量，而不是创建同名的局部变量，需要使用 <code>global</code> 关键字。</li>
-</ul>
-</li>
-</ol>
-<p>这种区分是为了避免意外修改外围作用域中的变量，这可能会导致难以追踪的错误。通过要求显式声明 <code>nonlocal</code> 或 <code>global</code>，Python 增强了代码的可读性和可维护性。</p>
-
-    </div>
-  </div>
-
-<h3 id="闭包（Closure）和嵌套函数（Nested-Functions）的区别"><a href="#闭包（Closure）和嵌套函数（Nested-Functions）的区别" class="headerlink" title="闭包（Closure）和嵌套函数（Nested Functions）的区别"></a>闭包（Closure）和嵌套函数（Nested Functions）的区别</h3><p><strong>闭包（Closure）</strong></p>
-<p>在编程中，闭包是指那些能够访问自己外部作用域中变量的函数。一个闭包至少由两部分组成：一个函数以及该函数引用的外部变量。Python 中闭包的一个关键特征是它保持了对其外部变量的引用，即使在外部函数已经结束执行之后。</p>
-<p>在代码中，<code>fun_in</code> 是一个闭包，因为它是在 <code>fun_out</code> 内部定义的，并且引用了 <code>fun_out</code> 作用域内的变量 <code>a</code>。当 <code>fun_out</code> 被调用并返回 <code>fun_in</code> 时，尽管 <code>fun_out</code> 的执行已经结束，<code>fun_in</code> 依然保留了对变量 <code>a</code> 的引用。这样，即使是在 <code>fun_out</code> 执行完毕之后，<code>fun_in</code> 仍然可以访问并打印变量 <code>a</code> 的值。</p>
-<p><strong>嵌套函数（Nested Functions）</strong></p>
-<p>嵌套函数是在另一个函数内部定义的函数。虽然所有闭包都是嵌套函数，但并非所有嵌套函数都是闭包。一个嵌套函数只有在引用了其外部函数的变量时，它才构成一个闭包。</p>
-<p><strong>总结</strong></p>
-<p><code>fun_in</code> 作为一个闭包，即使在其外部函数 <code>fun_out</code> 执行完毕后，仍然可以访问并使用 <code>fun_out</code> 作用域中的变量 <code>a</code>。</p>
-<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>匿名函数，通常在 Python 中通过 <code>lambda</code> 关键字来定义，是一种没有显式函数名的简短函数。它们在语法上是简洁的，通常用于编写小的、一次性的、不需要单独定义函数名的函数。</p>
-<p>匿名函数是一个可以定义并立即使用的简洁函数形式。在 Python 中，匿名函数使用 <code>lambda</code> 关键字创建，其基本语法是：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">lambda</span> 参数列表: 表达式</span><br></pre></td></tr></table></figure></div>
-
-<p>这种函数通常用于简单的操作，比如简单的数学运算、字符串操作等。由于它们只是单个表达式，所以不能像普通函数那样执行复杂的操作</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># lambda : 8 创建了一个匿名函数，这个函数没有参数，并且总是返回数字 8</span></span><br><span class="line"></span><br><span class="line">func = <span class="keyword">lambda</span> : <span class="number">8</span> <span class="comment"># lambda 关键字 代表匿名函数</span></span><br><span class="line"><span class="built_in">print</span>(func()) <span class="comment"># 输出: 8</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 匿名函数的一个限制是它只能包含一个表达式，不能包含多个独立的语句或复杂的逻辑。如果函数体较复杂，或者需要重复使用，那么定义一个普通函数会更合适。它与匿名函数执行相同的操作，但是更适合复杂逻辑或多次调用的情况。</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>() :</span><br><span class="line">	<span class="keyword">return</span> <span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(func())</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="匿名函数的作用"><a href="#匿名函数的作用" class="headerlink" title="匿名函数的作用"></a>匿名函数的作用</h3><p>匿名函数的主要作用是简化代码，尤其是在需要小的函数作为参数时，例如在排序操作、高阶函数（如 <code>map()</code>、<code>filter()</code>）或任何需要函数对象的地方。由于它们不需要定义传统的函数结构，因此可以在代码中快速定义和使用。</p>
-<h3 id="何时使用匿名函数"><a href="#何时使用匿名函数" class="headerlink" title="何时使用匿名函数"></a>何时使用匿名函数</h3><p>匿名函数通常在以下情况下使用：</p>
-<ol>
-<li><strong>简单的功能</strong>：当函数的功能非常简单，只需要一行代码就可以实现时，使用匿名函数是一个很好的选择。</li>
-<li><strong>一次性使用</strong>：当有一个不会在代码的其他地方复用的小函数时，使用匿名函数可以减少不必要的函数定义。</li>
-<li><strong>作为参数传递</strong>：当一个函数接受另一个函数作为参数时，如果这个参数函数非常简短，使用匿名函数可以使代码更加清晰。常见的例子包括 <code>map()</code>、<code>filter()</code> 和 <code>sorted()</code> 等函数。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>基础</tag>
-        <tag>理论</tag>
-        <tag>嵌套</tag>
-        <tag>基本语法</tag>
-        <tag>内置函数</tag>
-        <tag>形参</tag>
-        <tag>实参</tag>
-        <tag>说明文档</tag>
-        <tag>作用域</tag>
-        <tag>闭包</tag>
-        <tag>匿名函数</tag>
       </tags>
   </entry>
   <entry>
@@ -2113,270 +2437,6 @@
         <tag>理论</tag>
         <tag>爬虫</tag>
         <tag>Requests</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面向对象</title>
-    <url>/2018/09/08/20180908%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
-    <content><![CDATA[<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><p>面向对象编程（Object-Oriented Programming, OOP）是一种编程范式，它使用“对象”来设计软件。这种方法不仅侧重于数据（即属性），还侧重于操作这些数据的代码（即方法）。面向对象编程基于几个核心概念，包括类、对象、继承、多态和封装。</p>
-<ol>
-<li><strong>类（Class）</strong>：类是创建对象的蓝图或模板。它定义了对象的属性和方法。属性是类中的变量，方法是类中的函数。类本身不占用内存空间，它只是定义了对象的结构。</li>
-<li><strong>对象（Object）</strong>：对象是类的实例。当类被实例化时，会创建一个对象。对象具有类定义的属性和方法。每个对象都有自己的属性值，但共享相同的方法。</li>
-<li><strong>继承（Inheritance）</strong>：继承允许一个类继承另一个类的属性和方法。这有助于代码重用，并实现多层次的分类。在继承关系中，有基类（父类）和派生类（子类）。</li>
-<li><strong>多态（Polymorphism）</strong>：多态是指即使不同类的对象可能有不同的实现，但它们可以通过相同的接口进行交互。这意味着，可以用统一的方式来处理不同类的对象，即使它们具有不同的内部结构。</li>
-<li><strong>封装（Encapsulation）</strong>：封装是隐藏对象内部实现细节的过程，仅公开必要的接口。这有助于防止外部代码随意更改对象内部状态，从而保护对象的完整性并简化接口。</li>
-<li><strong>抽象（Abstraction）</strong>：抽象是将复杂的现实世界问题简化为模型的过程。在面向对象编程中，这通常意味着创建类，这些类代表了现实世界中的实体或概念，但只包括与当前问题相关的部分。</li>
-</ol>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/9a77d919-96a4-4946-8e20-2a0d6c3cb700/public"
-                      width="300"
-                >
-
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
-<li><strong>模块化</strong>：OOP 促进了代码的模块化，使得不同模块可以独立开发和测试，提高了代码的可维护性和复用性。</li>
-<li><strong>可扩展性</strong>：通过继承和多态，可以在现有代码的基础上添加新功能，而不必大幅修改现有代码。</li>
-<li><strong>可维护性</strong>：封装提供了一种方式，使得代码更易于理解和维护。</li>
-</ul>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li><strong>性能</strong>：相较于面向过程的编程，面向对象的程序可能在性能上稍微逊色，因为它需要额外的内存和处理。</li>
-<li><strong>复杂性</strong>：面向对象的系统可能比简单的面向过程的系统更复杂。</li>
-</ul>
-<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>面向对象编程在软件工程中广泛应用，从桌面和移动应用程序到大型企业级系统。众多流行的编程语言，如 Java、C#、Python、Ruby 和 C++，都支持面向对象的编程范式。</p>
-<h2 id="类-Class"><a href="#类-Class" class="headerlink" title="类 (Class)"></a>类 (Class)</h2><p>类（Class）是面向对象编程（OOP）中的一个核心概念。在很多现代编程语言中，类作为一种构造，提供了一种封装数据和行为（即代码）的方式。它们允许开发者创建复杂的数据结构</p>
-<h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><p>首先，我们定义一个名为<code>Car</code>的类：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="comment"># 这些是成员属性</span></span><br><span class="line">    brand = <span class="literal">None</span></span><br><span class="line">    color = <span class="literal">None</span></span><br><span class="line">    speed = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 这是一个成员方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车启动了。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">accelerate</span>(<span class="params">self, increase</span>):</span><br><span class="line">        self.speed += increase</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车加速到了<span class="subst">&#123;self.speed&#125;</span>公里/小时。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">brake</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车正在刹车。&quot;</span>)</span><br><span class="line">        self.speed = <span class="number">0</span></span><br></pre></td></tr></table></figure></div>
-
-<p>在这个<code>Car</code>类中：</p>
-<ul>
-<li><strong>成员属性</strong>：<code>brand</code>（品牌）、<code>color</code>（颜色）和<code>speed</code>（速度）是类的属性。它们用来描述这个类的状态。</li>
-<li><strong>成员方法</strong>：<code>start</code>、<code>accelerate</code> 和 <code>brake</code> 是类的方法。它们描述了<code>Car</code>可以执行的操作。</li>
-</ul>
-<h3 id="实例化类"><a href="#实例化类" class="headerlink" title="实例化类"></a>实例化类</h3><p>接下来，我们创建几个<code>Car</code>类的实例：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">first_car = Car()  <span class="comment"># 实例化第一辆车</span></span><br><span class="line">first_car.brand = <span class="string">&#x27;Toyota&#x27;</span></span><br><span class="line">first_car.color = <span class="string">&#x27;红色&#x27;</span></span><br><span class="line">first_car.start()</span><br><span class="line">first_car.accelerate(<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line">second_car = Car() <span class="comment"># 实例化第二辆车</span></span><br><span class="line">second_car.brand = <span class="string">&#x27;Ford&#x27;</span></span><br><span class="line">second_car.color = <span class="string">&#x27;蓝色&#x27;</span></span><br><span class="line">second_car.start()</span><br><span class="line">second_car.accelerate(<span class="number">40</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>每次调用<code>Car()</code>时，我们都创建了一个新的<code>Car</code>类的实例（即一个新的汽车对象）。通过为不同的实例分别设置属性（如<code>brand</code>和<code>color</code>），每辆车都有自己的特点。</p>
-<h3 id="成员方法中的self"><a href="#成员方法中的self" class="headerlink" title="成员方法中的self"></a>成员方法中的<code>self</code></h3><p>在<code>Car</code>类的成员方法中，<code>self</code>关键字是对当前对象实例的引用。它用于访问对象的属性和调用其他方法。例如，在<code>accelerate</code>方法中，<code>self.speed += increase</code>表示将当前车辆的速度增加<code>increase</code>单位。</p>
-<h3 id="init-初始化方法-魔术方法-构造器"><a href="#init-初始化方法-魔术方法-构造器" class="headerlink" title="_ _init_ _初始化方法(魔术方法&#x2F;构造器)"></a>_ _init_ _初始化方法(魔术方法&#x2F;构造器)</h3><p><code>__init__</code> 是一个在 Python 中特别重要的方法，它是类的一个特殊方法（有时被称为“魔术方法”或“构造器”）。当创建类的新实例时，<code>__init__</code> 方法被自动调用，用于为新创建的对象初始化其属性或执行其他必要的设置。以下是关于 <code>__init__</code> 方法的一些关键点：</p>
-<ol>
-<li><strong>构造器</strong>：<code>__init__</code> 方法可以看作是类的“构造器”。它在对象创建时立即执行，允许类接受参数并据此初始化对象的属性。</li>
-<li><strong>self 参数</strong>：<code>__init__</code> 方法的第一个参数总是 <code>self</code>，它是对类实例本身的引用。通过 <code>self</code>，可以在方法内部访问类的属性和其他方法。</li>
-<li><strong>初始化属性</strong>：可以在 <code>__init__</code> 方法中定义并初始化对象的属性。这样做的好处是，可以为不同的对象实例设置不同的初始状态。</li>
-<li><strong>接受参数</strong>：<code>__init__</code> 方法可以接受参数（除了自身 <code>self</code> 参数外），这些参数在创建类实例时传递给它，用于设置对象的属性或进行其他操作。</li>
-</ol>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="comment"># 使用 __init__ 方法初始化成员属性</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, brand, color</span>):</span><br><span class="line">        self.brand = brand</span><br><span class="line">        self.color = color</span><br><span class="line">        self.speed = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 成员方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车启动了。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">accelerate</span>(<span class="params">self, increase</span>):</span><br><span class="line">        self.speed += increase</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车加速到了<span class="subst">&#123;self.speed&#125;</span>公里/小时。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">brake</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.brand&#125;</span>车正在刹车。&quot;</span>)</span><br><span class="line">        self.speed = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 __init__ 方法实例化第一辆车</span></span><br><span class="line">first_car = Car(<span class="string">&#x27;Toyota&#x27;</span>, <span class="string">&#x27;红色&#x27;</span>)</span><br><span class="line">first_car.start()</span><br><span class="line">first_car.accelerate(<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 __init__ 方法实例化第二辆车</span></span><br><span class="line">second_car = Car(<span class="string">&#x27;Ford&#x27;</span>, <span class="string">&#x27;蓝色&#x27;</span>)</span><br><span class="line">second_car.start()</span><br><span class="line">second_car.accelerate(<span class="number">40</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>在这个例子中， <code>Car</code> 类中添加了 <code>__init__</code> 方法，它接受 <code>brand</code> 和 <code>color</code> 作为参数，并将它们分别赋值给实例的 <code>brand</code> 和 <code>color</code> 属性。现在，在创建 <code>Car</code> 类的实例时，我们需要提供品牌和颜色作为参数。这样一来，每个 <code>Car</code> 实例在创建时都会有自己的品牌和颜色属性。</p>
-
-  <div class="note-large green">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-circle-question"></i><p>QA</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>问：</strong>为什么accelerate不在<code>car(brand, color)</code>里直接写？</p>
-<p><strong>答：</strong>将 <code>accelerate</code> 方法放在 <code>Car</code> 类的构造方法 (<code>__init__</code>) 中与放在类的外部作为一个独立的方法有不同的含义和用途。理解这一点，需要对面向对象编程中的一些基本概念有所了解：</p>
-<ol>
-<li><strong>构造方法 (<code>__init__</code>)</strong>: <code>__init__</code> 方法用于初始化新创建的对象的状态。它通常用于设置对象的初始属性值。构造方法在对象被创建时自动调用一次，用于设置对象的初始状态。</li>
-<li><strong>成员方法</strong>: 类中定义的其他方法（如 <code>accelerate</code>）用于描述对象的行为。这些方法可以在对象的整个生命周期内被多次调用，并且通常用于执行特定的操作，比如修改对象的状态或者与其他对象进行交互。</li>
-<li><strong>职责分离</strong>: 在面向对象设计中，通常推荐遵循单一职责原则。这意味着每个部分（如方法）应该只负责一项功能。将 <code>accelerate</code> 方法放在类的外部作为一个独立的方法，而不是在 <code>__init__</code> 中定义，可以使类的结构更加清晰，每个方法的职责更加明确。</li>
-<li><strong>灵活性与可重用性</strong>: 将 <code>accelerate</code> 作为独立的方法可以在任何时候调用以改变对象的速度属性。如果它被放在 <code>__init__</code> 中，它只能在对象创建时执行，这限制了方法的用途。</li>
-</ol>
-<p>总结来说，<code>accelerate</code> 不放在 <code>__init__</code> 中是为了保持代码的清晰性和组织性，确保每个方法只负责一项特定的功能，并允许在对象的生命周期中多次调用 <code>accelerate</code> 方法。这是一种更灵活、可维护和符合面向对象设计原则的做法。</p>
-<p><strong>问：</strong><code>self.speed = 0</code> 为什么在(<code>__init__</code>) 里？</p>
-<p><strong>答：</strong>将 <code>self.speed = 0</code> 放在 <code>__init__</code> 方法中是为了初始化 <code>Car</code> 类的每个实例的速度属性。这是一种常见的做法，用于设定对象的初始状态。以下是放置这个语句在 <code>__init__</code> 中的几个理由：</p>
-<ol>
-<li><strong>初始状态设定</strong>：在面向对象编程中，构造方法（如 Python 中的 <code>__init__</code>）用于设定对象的初始状态。对于汽车来说，初始速度设为 0 是合理的，因为当汽车被“创建”（或实例化）时，它通常是静止的。</li>
-<li><strong>统一属性管理</strong>：将所有属性的初始化集中在 <code>__init__</code> 方法中可以使代码更加清晰和易于维护。这样，可以在一个地方看到对象所有属性的初始值。</li>
-<li><strong>确保属性存在</strong>：在 <code>__init__</code> 方法中初始化 <code>speed</code> 确保了每个 <code>Car</code> 实例都具有 <code>speed</code> 属性，并且有一个明确的初始值。这避免了在其他方法（如 <code>accelerate</code> 或 <code>brake</code>）中使用 <code>speed</code> 属性之前需要检查其是否存在的情况。</li>
-<li><strong>避免未初始化的属性</strong>：如果不在 <code>__init__</code> 中初始化 <code>speed</code>，那么在调用 <code>accelerate</code> 方法之前，尝试访问 <code>speed</code> 属性可能会导致错误，因为 Python 不会自动创建这个属性。</li>
-</ol>
-<p>综上所述，将 <code>self.speed = 0</code> 放在 <code>__init__</code> 方法中是为了初始化对象的速度属性，保证对象的完整性，并为后续的操作（如加速或刹车）提供一个明确和稳定的起点。</p>
-
-    </div>
-  </div>
-
-<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><h5 id="类定义与初始化"><a href="#类定义与初始化" class="headerlink" title="类定义与初始化"></a>类定义与初始化</h5><p>首先，我们定义一个名为<code>Car</code>的类，并在其中使用<code>__init__</code>方法来初始化类的实例。<code>__init__</code>是一个特殊的方法，它在类的实例化时自动调用。我们可以通过它来设置初始的成员属性。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="comment"># 使用 __init__ 方法初始化成员属性</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, brand, color, weight</span>):</span><br><span class="line">        <span class="comment"># self.brand 创建了一个名为 brand 的属性</span></span><br><span class="line">        <span class="comment"># brand = None 的效果类似于此</span></span><br><span class="line">        <span class="comment"># self.brand = brand 用传入的参数 brand 初始化</span></span><br><span class="line">        self.brand = brand</span><br><span class="line">        <span class="comment"># 同理，为 color 和 weight 属性赋值</span></span><br><span class="line">        self.color = color</span><br><span class="line">        self.weight = weight</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义一个成员方法用于显示汽车的信息</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">display_info</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;这辆车是 <span class="subst">&#123;self.color&#125;</span>色的 <span class="subst">&#123;self.brand&#125;</span>，重 <span class="subst">&#123;self.weight&#125;</span>公斤。&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<h5 id="实例化类-1"><a href="#实例化类-1" class="headerlink" title="实例化类"></a>实例化类</h5><p>当我们实例化这个类时，我们需要提供品牌、颜色和重量这三个参数。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 实例化 Car 类</span></span><br><span class="line">first_car = Car(<span class="string">&quot;Toyota&quot;</span>, <span class="string">&quot;红色&quot;</span>, <span class="number">1500</span>)</span><br><span class="line"><span class="comment"># 调用方法显示信息</span></span><br><span class="line">first_car.display_info()</span><br></pre></td></tr></table></figure></div>
-
-<p>这里，<code>first_car</code> 是 <code>Car</code> 类的一个实例，代表了一辆特定的汽车。我们给它赋予了“Toyota”品牌、“红色”颜色和1500公斤重量的属性，并通过<code>display_info</code>方法打印了这些信息。</p>
-<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>通过修改这个例子，我们可以看到如何在类中使用初始化方法（<code>__init__</code>）来设置对象的初始状态，并通过实例化这个类来创建具体的对象。每个对象都有自己的属性值，但它们共享相同的方法（如<code>display_info</code>）。</p>
-
-  <div class="note-large green">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-circle-question"></i><p>QA</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>问：</strong>以女娲造人为例子</p>
-<ul>
-<li>什么是类？</li>
-<li>什么是实例化类？</li>
-<li>什么是面向对象？</li>
-</ul>
-<p><strong>答：</strong></p>
-<p><strong>什么是类？</strong></p>
-<p>在女娲造人的故事中，女娲的想法或设计可以被看作是一个“类”（Class）。这个类是一个抽象的概念，它定义了人类将拥有的特征（如眼睛、鼻子、嘴巴）和行为（如走路、说话）。类是面向对象编程中定义数据结构和行为的蓝图或模板。</p>
-<p><strong>什么是实例化类？</strong></p>
-<p>当女娲根据她的想法创造出一个具体的人时，这个过程就像是在面向对象编程中的“实例化”（Instantiation）。实例化类的过程就是根据类的定义创建一个具体的对象（在这个故事中就是一个具体的人）。每个人（对象）都有类定义的特征和行为，但每个人也有自己的个性（即对象的状态可以独立于其他对象）。</p>
-<p><strong>什么是面向对象？</strong></p>
-<p>面向对象编程（Object-Oriented Programming, OOP）是一种编程范式，它使用对象来模拟现实世界的实体。在女娲造人的故事中，整个造人过程（设计-创造-赋予行为）就类似于面向对象的过程。面向对象编程的核心是类和对象，以及它们之间的交互。</p>
-<p><strong>问：</strong>面向对象的好处是什么？我们以后开发代码需要怎么做？</p>
-<p><strong>答：</strong></p>
-<p><strong>好处</strong></p>
-<ol>
-<li><strong>封装</strong>：面向对象允许封装数据和方法，提高数据安全性。</li>
-<li><strong>继承</strong>：通过继承，新的类可以扩展现有类的功能。</li>
-<li><strong>多态</strong>：相同的接口可以用在不同的对象上，提高代码的灵活性和可重用性。</li>
-<li><strong>代码组织和可读性</strong>：OOP 提高了代码的组织性和可读性，使大型项目更易于管理。</li>
-</ol>
-<p><strong>开发时的做法</strong></p>
-<ul>
-<li>使用类和对象来模拟现实世界的实体和概念。</li>
-<li>封装相关的属性和方法，确保数据安全性和减少外部干扰。</li>
-<li>通过继承和多态性来重用代码和提高代码的灵活性。</li>
-<li>关注对象之间的交互，而不仅仅是代码的执行流程。</li>
-</ul>
-<p><strong>问：</strong> <code>self</code> 在初始化<code>__init__</code>的作用是什么？ 在普通方法中的作用是什么？</p>
-<p><strong>答：</strong></p>
-<p><strong>在 <code>__init__</code> 方法中</strong></p>
-<ul>
-<li><code>self</code> 在 <code>__init__</code> 方法中代表新创建的对象本身。</li>
-<li>它用于初始化对象的属性。</li>
-<li>通过 <code>self</code>，可以将对象的属性与局部变量区分开来。</li>
-</ul>
-<p><strong>在普通方法中</strong></p>
-<ul>
-<li><code>self</code> 在类的其他方法中也代表对象本身。</li>
-<li>它用于访问和修改对象的属性。</li>
-<li>同样，<code>self</code> 用于调用对象的其他方法。</li>
-</ul>
-<p>简而言之，<code>self</code> 是类方法中的一个参数，它提供了对类实例本身的引用。这允许类的方法在操作对象时访问和修改对象的属性，以及调用其他方法。</p>
-<p><strong>问：</strong>请根据闹钟 来写一个类 并创造三个闹钟</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> playsound <span class="keyword">import</span> playsound</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(current_time) 测试格式</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Alarm</span>:</span><br><span class="line">    <span class="comment"># 使用init方法初始化成员属性</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, time, music</span>):</span><br><span class="line">        self.time = time  <span class="comment"># time 是字符串格式 &#x27;HH:MM:SS&#x27;</span></span><br><span class="line">        self.music = music</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 成员方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sound</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 一些写音乐文件调用的逻辑</span></span><br><span class="line">        playsound(self.music)  <span class="comment"># 播放歌曲</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.music&#125;</span> has been played&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">clock</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 调用当前当前时间</span></span><br><span class="line">        current_time = datetime.now().strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> self.time == current_time:</span><br><span class="line">            Alarm.sound(self)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.time&#125;</span>, time to wake up !&quot;</span>)  <span class="comment"># 起床</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;Current time is <span class="subst">&#123;current_time&#125;</span>, wake up at <span class="subst">&#123;self.time&#125;</span>&quot;</span>)  <span class="comment"># 报时</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化</span></span><br><span class="line">first_alarm = Alarm(<span class="string">&#x27;15:46:25&#x27;</span>, <span class="string">&#x27;test1.mp3&#x27;</span>)</span><br><span class="line">second_alarm = Alarm(<span class="string">&#x27;22:06:50&#x27;</span>, <span class="string">&#x27;test2.mp3&#x27;</span>)</span><br><span class="line">third_alarm = Alarm(<span class="string">&#x27;05:10:33&#x27;</span>, <span class="string">&#x27;test3.mp3&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用 clock 方法</span></span><br><span class="line">first_alarm.clock()</span><br><span class="line">second_alarm.clock()</span><br><span class="line">third_alarm.clock()</span><br></pre></td></tr></table></figure></div>
-
-    </div>
-  </div>
-
-
-
-<h2 id="面向对象的特点"><a href="#面向对象的特点" class="headerlink" title="面向对象的特点"></a>面向对象的特点</h2><h3 id="封装-Encapsulation"><a href="#封装-Encapsulation" class="headerlink" title="封装 (Encapsulation)"></a>封装 (Encapsulation)</h3><p>封装是面向对象编程中的一个核心概念，它指的是将对象的数据（属性）和行为（方法）组合在一起，形成一个独立的单元。在封装过程中，可以对对象的成员进行访问限制。</p>
-<ul>
-<li><p>私有属性 (Private Attributes)</p>
-<p>属性名前加了两个下划线表示它是私有属性，只能在类的内部被访问。</p>
-<p>作用: <code>不能被外部直接访问</code></p>
-<ul>
-<li><code>self.__资金 = 0</code>   私有属性，代表车辆的资金</li>
-</ul>
-</li>
-<li><p>私有方法 (Private Methods)</p>
-<p>方法名前加了两个下划线表示它是私有方法，只能在类的内部被调用。</p>
-<p>作用: <code>不能被外部直接访问</code></p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__start_engine</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;引擎启动，准备行驶&#x27;</span>)</span><br></pre></td></tr></table></figure></div></li>
-</ul>
-<p>以汽车为例：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="comment"># 初始化</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, brand, engine, seats</span>):</span><br><span class="line">        <span class="comment"># 公有属性</span></span><br><span class="line">        self.brand = brand</span><br><span class="line">        self.engine = engine</span><br><span class="line">        self.seats = seats</span><br><span class="line">        <span class="comment"># 私有属性</span></span><br><span class="line">        self.__资金 = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 公有方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">drive</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;self.brand&#125;</span> 正在行驶&#x27;</span>)</span><br><span class="line">        <span class="comment"># 在公有方法中使用私有方法</span></span><br><span class="line">        self.__start_engine()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 私有方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__start_engine</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;引擎启动，准备行驶&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化类</span></span><br><span class="line">my_car = Car(<span class="string">&#x27;宝马&#x27;</span>, <span class="string">&#x27;V6&#x27;</span>, <span class="number">5</span>)</span><br><span class="line">my_car.drive()</span><br></pre></td></tr></table></figure></div>
-
-<p>在类中，成员属性和成员方法可以通过在名称前加上两个下划线 <code>__</code> 来设为私有。这样做的好处是能够保证这些成员不会被外界直接访问，但它们仍然可以在类的内部通过 <code>self</code> 被访问。这种方式有助于隐藏数据和实现细节，提高了代码的安全性和健壮性。</p>
-
-  <div class="note-large green">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-circle-question"></i><p>QA</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>问：</strong>为什么<code>class AdvancedCar(Car)</code>不用<code>super()</code></p>
-<p><strong>答：</strong><code>AdvancedCar</code> 类继承自 <code>Car</code> 类。在这个特定的情况下，<code>super()</code> 没有被使用，原因如下：</p>
-<ol>
-<li><strong>不需要覆盖父类的方法</strong>： 在 <code>AdvancedCar</code> 类中，我们添加了新的方法（<code>autopilot</code> 和 <code>advanced_navigation</code>），而没有修改或覆盖任何继承自 <code>Car</code> 类的方法。因此，没有必要使用 <code>super()</code> 来调用父类 <code>Car</code> 的任何方法。</li>
-<li><strong>构造函数未被重写</strong>： 如果子类不重写父类的构造函数（<code>__init__</code> 方法），则默认调用父类的构造函数。在例子中，<code>AdvancedCar</code> 没有定义自己的 <code>__init__</code> 方法，因此它会自动使用父类 <code>Car</code> 的构造函数来初始化对象。如果在子类中重写了构造函数并且想要执行父类的构造函数，那么在子类的构造函数中使用 <code>super().__init__()</code> 是必要的。</li>
-<li><strong>独立的新方法</strong>： <code>AdvancedCar</code> 类中新增的方法（<code>autopilot</code> 和 <code>advanced_navigation</code>）是独立的，它们不依赖于 <code>Car</code> 类中定义的任何方法，因此没有必要使用 <code>super()</code>。</li>
-</ol>
-<p>总结一下，<code>super()</code> 主要用于需要调用或扩展父类中定义的方法时。如果只是在子类中添加新的独立方法或属性，并且没有重写父类的构造函数，就不需要使用 <code>super()</code>。在例子中，由于这些条件都未满足，因此不使用 <code>super()</code> 是合理的。</p>
-
-    </div>
-  </div>
-
-<h3 id="继承-Inheritance"><a href="#继承-Inheritance" class="headerlink" title="继承 (Inheritance)"></a>继承 (Inheritance)</h3><p>在面向对象编程中，继承允许我们从一个已存在的类（称为父类）派生出一个新的类（称为子类）。子类会继承父类的所有属性和方法，并可以添加新的属性和方法或重写某些方法。</p>
-<p>以汽车为例，我们可以从一个基本的汽车类派生出一个具有更多功能的特殊汽车类。</p>
-<p>首先是父类，表示基本的汽车：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, brand, engine, seats</span>):</span><br><span class="line">        self.brand = brand</span><br><span class="line">        self.engine = engine</span><br><span class="line">        self.seats = seats</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start_engine</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;self.brand&#125;</span> 的引擎启动了&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">drive</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;self.brand&#125;</span> 正在行驶&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>然后是子类，这里我们假设有一个增强版的汽车，它除了有基本的汽车功能外，还增加了自动驾驶和先进的导航系统：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AdvancedCar</span>(<span class="title class_ inherited__">Car</span>):  <span class="comment"># 继承自 Car 类</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">autopilot</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;self.brand&#125;</span> 的自动驾驶系统已启动&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">advanced_navigation</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;self.brand&#125;</span> 正在使用先进的导航系统&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化一个增强版的汽车</span></span><br><span class="line">my_advanced_car = AdvancedCar(<span class="string">&#x27;特斯拉&#x27;</span>, <span class="string">&#x27;电动&#x27;</span>, <span class="number">5</span>)</span><br><span class="line">my_advanced_car.start_engine()  <span class="comment"># 继承自 Car 类的方法</span></span><br><span class="line">my_advanced_car.drive()         <span class="comment"># 继承自 Car 类的方法</span></span><br><span class="line">my_advanced_car.autopilot()     <span class="comment"># AdvancedCar 类的新增方法</span></span><br><span class="line">my_advanced_car.advanced_navigation()  <span class="comment"># AdvancedCar 类的新增方法</span></span><br></pre></td></tr></table></figure></div>
-
-<p>在这个例子中，<code>AdvancedCar</code> 类继承了 <code>Car</code> 类的所有属性和方法（如 <code>start_engine</code> 和 <code>drive</code>），并新增了 <code>autopilot</code> 和 <code>advanced_navigation</code> 方法。这表明 <code>AdvancedCar</code> 不仅保留了基本汽车的特性，还加入了新的功能，充分展示了继承的实用性和灵活性。</p>
-<h3 id="多态-Polymorphism"><a href="#多态-Polymorphism" class="headerlink" title="多态 (Polymorphism)"></a>多态 (Polymorphism)</h3><p>多态是面向对象编程中的一个重要概念，它允许不同类的对象对同一消息做出响应。即不同的对象可以通过相同的接口（方法或函数）执行不同的操作。这增加了程序的灵活性和可扩展性。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">speak</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;汪汪！&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">speak</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;喵喵！&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个函数，接受不同的动物对象</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">animal_sound</span>(<span class="params">animal</span>):</span><br><span class="line">    <span class="comment"># 无论传入的是什么动物，调用相同的speak方法</span></span><br><span class="line">    <span class="built_in">print</span>(animal.speak())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化Dog和Cat</span></span><br><span class="line">dog = Dog()</span><br><span class="line">cat = Cat()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用animal_sound函数，展示多态</span></span><br><span class="line">animal_sound(dog)  <span class="comment"># 输出: 汪汪！</span></span><br><span class="line">animal_sound(cat)  <span class="comment"># 输出: 喵喵！</span></span><br></pre></td></tr></table></figure></div>
-
-<p>在这个例子中，<code>Dog</code> 和 <code>Cat</code> 类都实现了同一个方法 <code>speak</code>，但它们以不同的方式响应（狗叫声和猫叫声）。函数 <code>animal_sound</code> 接受任何有 <code>speak</code> 方法的对象作为参数，然后调用这个方法。这就是多态的核心：通过同一接口，不同的对象可以执行各自不同的操作。</p>
-<p>总结来说，多态允许我们编写更通用和可重用的代码，因为我们可以设计函数或方法，它们可以与任何符合特定接口（即实现特定方法）的对象交互，而不关心对象的具体类型。这样可以提高代码的灵活性和可扩展性。</p>
-<h2 id="学生管理系统案例"><a href="#学生管理系统案例" class="headerlink" title="学生管理系统案例"></a>学生管理系统案例</h2><p>这个学员管理系统示例演示了面向对象编程的几个关键概念，如类的定义、初始化、封装、私有属性和方法的使用。</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个名为StudentManagementSystem的类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StudentManagementSystem</span>:</span><br><span class="line">    <span class="comment"># 类的构造函数，用于初始化对象的属性</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, gender, age</span>):</span><br><span class="line">        <span class="comment"># 公有属性，可以被外部访问</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.gender = gender</span><br><span class="line">        self.age = age</span><br><span class="line">        <span class="comment"># 私有属性，前面有两个下划线，仅在类内部可访问</span></span><br><span class="line">        self.__balance = <span class="number">1000</span>  <span class="comment"># 设置初始余额为1000</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 私有方法，用于扣除费用，仅在类内部可调用</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__deduct_fee</span>(<span class="params">self, amount</span>):</span><br><span class="line">        <span class="comment"># 检查余额是否足够</span></span><br><span class="line">        <span class="keyword">if</span> self.__balance &gt;= amount:</span><br><span class="line">            self.__balance -= amount</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&#x27;扣除<span class="subst">&#123;amount&#125;</span>元成功。&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;余额不足，无法扣款。&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 公有方法，用于展示学员信息</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">show_info</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 打印学员信息，包括私有属性余额</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;姓名: <span class="subst">&#123;self.name&#125;</span>, 性别: <span class="subst">&#123;self.gender&#125;</span>, 年龄: <span class="subst">&#123;self.age&#125;</span>, 余额: <span class="subst">&#123;self.__balance&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 公有方法，用于购买课程</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">purchase_course</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="comment"># 输入价格，并尝试转换为整数</span></span><br><span class="line">            price = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入购买的价格:&#x27;</span>))</span><br><span class="line">            <span class="comment"># 调用私有方法扣款</span></span><br><span class="line">            self.__deduct_fee(price)</span><br><span class="line">        <span class="keyword">except</span> ValueError:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;请输入有效的价格。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 新增的公有方法，用于为学员账户充值</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">recharge</span>(<span class="params">self, amount</span>):</span><br><span class="line">        <span class="comment"># 增加学员余额</span></span><br><span class="line">        self.__balance += amount</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;已成功充值<span class="subst">&#123;amount&#125;</span>元。&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 新增的公有方法，用于学员对课程进行评价</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rate_course</span>(<span class="params">self, course, rating</span>):</span><br><span class="line">        <span class="comment"># 打印学员对课程的评分</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;学员<span class="subst">&#123;self.name&#125;</span>给课程<span class="subst">&#123;course&#125;</span>的评分是: <span class="subst">&#123;rating&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化一个StudentManagementSystem类的对象</span></span><br><span class="line">user = StudentManagementSystem(<span class="string">&#x27;用户&#x27;</span>, <span class="string">&#x27;男&#x27;</span>, <span class="string">&#x27;18&#x27;</span>)</span><br><span class="line">user.purchase_course()  <span class="comment"># 调用方法购买课程</span></span><br><span class="line">user.purchase_course()  <span class="comment"># 再次调用方法购买课程</span></span><br><span class="line">user.show_info()        <span class="comment"># 展示学员信息</span></span><br><span class="line">user.recharge(<span class="number">500</span>)      <span class="comment"># 调用方法充值500元</span></span><br><span class="line">user.rate_course(<span class="string">&quot;Python编程基础&quot;</span>, <span class="number">5</span>)  <span class="comment"># 对课程进行评分</span></span><br></pre></td></tr></table></figure></div>
-
-<p>为了在现有的 <code>StudentManagementSystem</code> 类中引入继承和多态的特点，我们可以创建一个基类来表示一般的用户，然后让 <code>StudentManagementSystem</code> 类成为这个基类的子类。此外，我们可以定义一个接口（一个具有共同方法但没有具体实现的基类），来展示多态。</p>
-<p>首先是基类和接口的定义：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基类 User，表示一般的用户</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, gender, age</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.gender = gender</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">show_info</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;姓名: <span class="subst">&#123;self.name&#125;</span>, 性别: <span class="subst">&#123;self.gender&#125;</span>, 年龄: <span class="subst">&#123;self.age&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接口类 CourseConsumer，定义了一个没有具体实现的方法 purchase_course</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CourseConsumer</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">purchase_course</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError(<span class="string">&quot;Subclass must implement this method&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>然后是修改后的 <code>StudentManagementSystem</code> 类，它继承自 <code>User</code> 并实现了 <code>CourseConsumer</code> 接口：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># StudentManagementSystem 类继承自 User 类并实现了 CourseConsumer 接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StudentManagementSystem</span>(User, CourseConsumer):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, gender, age</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__(name, gender, age)  <span class="comment"># 调用父类的构造函数</span></span><br><span class="line">        self.__balance = <span class="number">1000</span>  <span class="comment"># 私有属性</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__deduct_fee</span>(<span class="params">self, amount</span>):</span><br><span class="line">        <span class="keyword">if</span> self.__balance &gt;= amount:</span><br><span class="line">            self.__balance -= amount</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&#x27;扣除<span class="subst">&#123;amount&#125;</span>元成功。&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;余额不足，无法扣款。&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 重写父类的 show_info 方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">show_info</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().show_info()  <span class="comment"># 调用父类方法</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;余额: <span class="subst">&#123;self.__balance&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 实现接口中定义的方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">purchase_course</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            price = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入购买的价格:&#x27;</span>))</span><br><span class="line">            self.__deduct_fee(price)</span><br><span class="line">        <span class="keyword">except</span> ValueError:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;请输入有效的价格。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">recharge</span>(<span class="params">self, amount</span>):</span><br><span class="line">        self.__balance += amount</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;已成功充值<span class="subst">&#123;amount&#125;</span>元。&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rate_course</span>(<span class="params">self, course, rating</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;学员<span class="subst">&#123;self.name&#125;</span>给课程<span class="subst">&#123;course&#125;</span>的评分是: <span class="subst">&#123;rating&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>在这个修改后的版本中，<code>StudentManagementSystem</code> 类继承了 <code>User</code> 类，并且实现了 <code>CourseConsumer</code> 接口的 <code>purchase_course</code> 方法。这样的设计不仅引入了继承，还通过实现接口展示了多态。继承允许 <code>StudentManagementSystem</code> 类重用 <code>User</code> 类的代码，而多态则体现在 <code>StudentManagementSystem</code> 类能够以不同方式实现 <code>CourseConsumer</code> 接口中定义的方法。这样的设计使得代码更加灵活和可扩展。</p>
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
-
-    </div>
-    <div class="notel-content">
-      <p>在面向对象编程中，<code>super()</code> 函数的使用通常出现在继承体系中，尤其是在子类需要调用父类的方法或构造函数时。以下是一些使用 <code>super()</code> 的典型情况：</p>
-<ol>
-<li><strong>在子类的构造函数中调用父类的构造函数</strong>： 当创建一个子类时，可能需要在子类中初始化一些继承自父类的属性。使用 <code>super()</code> 调用父类的构造函数可以确保这些属性被适当地初始化。</li>
-</ol>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Parent</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Parent init&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Child</span>(<span class="title class_ inherited__">Parent</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()  <span class="comment"># 调用父类的 __init__ 方法</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Child init&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<ol start="2">
-<li><strong>在子类中覆盖父类的方法时调用父类的实现</strong>： 如果在子类中重写了父类的方法，并且还想保留父类方法的行为，可以在子类方法中使用 <code>super()</code> 调用父类的方法。</li>
-</ol>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Parent</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">say_hello</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Hello from Parent&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Child</span>(<span class="title class_ inherited__">Parent</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">say_hello</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().say_hello()  <span class="comment"># 调用父类的 say_hello 方法</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Hello from Child&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<ol start="3">
-<li><strong>多重继承中解决方法解析顺序（Method Resolution Order, MRO）问题</strong>： 在使用多重继承时，<code>super()</code> 被用来确保每个父类都被适当地初始化或调用相应的方法。它按照方法解析顺序遍历所有的基类。</li>
-</ol>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Base</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Base init&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>(<span class="title class_ inherited__">Base</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;A init&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>(<span class="title class_ inherited__">Base</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;B init&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Child</span>(A, B):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Child init&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>总之，<code>super()</code> 的使用有助于确保父类的适当初始化和方法调用，尤其是在有继承关系的类之间。这有助于减少代码重复，并确保继承体系中的逻辑一致性。</p>
-
-    </div>
-  </div>
-
-
-
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f05c1c2f-dd09-4bad-4b05-64b6268e2400/public"
-                     
-                >]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>基础</tag>
-        <tag>理论</tag>
-        <tag>基本语法</tag>
-        <tag>对象</tag>
-        <tag>面向对象编程</tag>
-        <tag>类</tag>
-        <tag>继承</tag>
-        <tag>多态</tag>
-        <tag>封装</tag>
-        <tag>抽象</tag>
       </tags>
   </entry>
   <entry>
