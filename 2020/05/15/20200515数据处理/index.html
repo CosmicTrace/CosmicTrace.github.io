@@ -38,11 +38,12 @@
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/1a91a27b-3104-49fc-cf59-df1f5180d900/public">
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/0a45f98b-cce5-4d0d-9109-3fafdf843000/public">
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/0513846a-1f5b-444e-c3d9-8b1c4bca5f00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/28a309c7-77ce-47d1-0b31-424a00a98f00/public">
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/09047ac9-6fed-4df1-de97-401529853400/public">
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3436e139-ca2a-4861-e7e2-1da564e6fd00/public">
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f71de480-b693-4aa6-6b9a-3ee0c51adb00/public">
 <meta property="article:published_time" content="2020-05-14T23:55:42.000Z">
-<meta property="article:modified_time" content="2023-12-16T12:39:55.024Z">
+<meta property="article:modified_time" content="2023-12-16T13:05:32.938Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="理论">
@@ -715,8 +716,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-12-16 20:39:55</span>
-            <span class="mobile">2023-12-16 20:39:55</span>
+            <span class="desktop">2023-12-16 21:05:32</span>
+            <span class="mobile">2023-12-16 21:05:32</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -778,12 +779,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.7k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.9k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>5 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>6 分钟</span>
         </span>
     
     
@@ -829,6 +830,45 @@
 <h2 id="常见数据处理顺序"><a href="#常见数据处理顺序" class="headerlink" title="常见数据处理顺序"></a>常见数据处理顺序</h2><p>很多数据由于未经过处理，不方便用来直接制作图表。</p>
 <p>我们可以将数据添加到主题后，在主题中先对数据进行分析，然后用分析后的数据再制作图表会比使用原数据表更方便。</p>
 <p>以数据成绩表 1 为例</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>考试结果</th>
+<th>录入时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>滑玛</td>
+<td>语文90 数学80 英语80</td>
+<td>2&#x2F;12&#x2F;2020 16:30</td>
+</tr>
+<tr>
+<td>阿里和卓</td>
+<td>语文91 数学 英语85</td>
+<td>2&#x2F;12&#x2F;2020 16:31</td>
+</tr>
+<tr>
+<td>福伦</td>
+<td>语文54 数学78 英语66</td>
+<td>2&#x2F;12&#x2F;2020 16:32</td>
+</tr>
+<tr>
+<td>令妃</td>
+<td>语文78 数学63 英语95</td>
+<td>2&#x2F;12&#x2F;2020 16:43</td>
+</tr>
+<tr>
+<td></td>
+<td>语文73 数学75 英语88</td>
+<td>2&#x2F;12&#x2F;2020 17:57</td>
+</tr>
+<tr>
+<td>滑玛</td>
+<td>语文90 数学88 英语80</td>
+<td>2&#x2F;12&#x2F;2020 17:30</td>
+</tr>
+</tbody></table>
 <ol>
 <li>首先进入我的分析</li>
 <li>创建新的文件夹<code>数据处理_测试</code></li>
@@ -972,8 +1012,49 @@
 <p>在完成数据处理后，老师觉得只分析自己班游局限性，又要来了同年级另外两个班的数据…..</p>
 <p>年级主任还补充,近几年鼓励学生全面发展,现在把体育,美术,课外实践也归纳成一门综合素质评定.</p>
 <p>1）多个表格上下扩展，分析指标不变，只是行数增加，就用【上下合并】</p>
-<p>2）多个表格左右扩展，分析指标变多，只是列数增加，先考虑【其他表添加列】</p>
-<p>​	也可以使用【左右合并】</p>
+<p>2）多个表格左右扩展，分析指标变多，只是列数增加，先考虑【其他表添加列】也可以使用【左右合并】</p>
+<p>以合并 成绩表 2 数据为例：</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>考试结果</th>
+<th>录入时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>夏紫薇</td>
+<td>语文90 数学80 英语80</td>
+<td>2&#x2F;12&#x2F;2020 18:30</td>
+</tr>
+<tr>
+<td>福尔康</td>
+<td>语文91 数学 英语85</td>
+<td>2&#x2F;12&#x2F;2020 18:31</td>
+</tr>
+<tr>
+<td>永琪</td>
+<td>语文54 数学78 英语66</td>
+<td>2&#x2F;12&#x2F;2020 18:32</td>
+</tr>
+<tr>
+<td>小燕子</td>
+<td>语文78 数学63 英语95</td>
+<td>2&#x2F;12&#x2F;2020 18:43</td>
+</tr>
+</tbody></table>
+<h4 id="示例-1-上下合并多个表"><a href="#示例-1-上下合并多个表" class="headerlink" title="示例 1 上下合并多个表"></a>示例 1 上下合并多个表</h4><ol>
+<li>在导入成绩表 2 后数据来源选中数据表 1 回溯操作到第一步</li>
+<li>然后选中上下合并</li>
+<li>选中数据来源最后的操作即可把合并后的数据按照原先的操作自动再操作一遍</li>
+</ol>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/28a309c7-77ce-47d1-0b31-424a00a98f00/public"
+                      width = "600"
+                >
+
 <h3 id="新增分析指标"><a href="#新增分析指标" class="headerlink" title="新增分析指标"></a>新增分析指标</h3><p>场景三:</p>
 <p>经过各种处理,我们已经可以基于现有的数据做分析了,但现有的指标还是比较单调的,如果我们希望有更多的指标呢?</p>
 <p>比如各年级的,各班的三科总分时多少,各科平均分是多少,多少学生在平均分之上…</p>
@@ -1042,7 +1123,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-12-16 20:39:55
+                    :</strong> 2023-12-16 21:05:32
             </li>
         
         <li>
@@ -1189,7 +1270,7 @@
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
         <div class="page-title">数据处理 (FineBI)</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E6%AE%B5%E5%9B%BE%E8%A1%A8%E5%90%AB%E4%B9%89"><span class="nav-text">字段图表含义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%A1%BA%E5%BA%8F"><span class="nav-text">常见数据处理顺序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%A4%8D%E8%A1%8C%E6%93%8D%E4%BD%9C"><span class="nav-text">重复行操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4null%E5%80%BC"><span class="nav-text">删除null值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1-%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6%E6%A0%87%E7%AD%BE%E5%88%97"><span class="nav-text">示例 1 使用条件标签列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-2-%E5%BF%AB%E6%8D%B7%E8%BF%87%E6%BB%A4"><span class="nav-text">示例 2 快捷过滤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1-%E6%8B%86%E5%88%86%E8%80%83%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="nav-text">示例 1 拆分考试结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%A1%A8%E5%90%88%E5%B9%B6%E5%88%86%E6%9E%90"><span class="nav-text">多表合并分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E5%88%86%E6%9E%90%E6%8C%87%E6%A0%87"><span class="nav-text">新增分析指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E5%AD%97%E6%AE%B5"><span class="nav-text">调整字段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="nav-text">切换数据源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C"><span class="nav-text">数据校验</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E6%AE%B5%E5%9B%BE%E8%A1%A8%E5%90%AB%E4%B9%89"><span class="nav-text">字段图表含义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%A1%BA%E5%BA%8F"><span class="nav-text">常见数据处理顺序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%A4%8D%E8%A1%8C%E6%93%8D%E4%BD%9C"><span class="nav-text">重复行操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4null%E5%80%BC"><span class="nav-text">删除null值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1-%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6%E6%A0%87%E7%AD%BE%E5%88%97"><span class="nav-text">示例 1 使用条件标签列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-2-%E5%BF%AB%E6%8D%B7%E8%BF%87%E6%BB%A4"><span class="nav-text">示例 2 快捷过滤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1-%E6%8B%86%E5%88%86%E8%80%83%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="nav-text">示例 1 拆分考试结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%A1%A8%E5%90%88%E5%B9%B6%E5%88%86%E6%9E%90"><span class="nav-text">多表合并分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1-%E4%B8%8A%E4%B8%8B%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AA%E8%A1%A8"><span class="nav-text">示例 1 上下合并多个表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E5%88%86%E6%9E%90%E6%8C%87%E6%A0%87"><span class="nav-text">新增分析指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E5%AD%97%E6%AE%B5"><span class="nav-text">调整字段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="nav-text">切换数据源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C"><span class="nav-text">数据校验</span></a></li></ol>
 
     </div>
 </div>
