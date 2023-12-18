@@ -28,11 +28,10 @@
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4f801991-b0f0-4223-f71e-fd8073765b00/public">
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a5e079af-0364-48df-8280-b76738c85f00/public">
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/88d9fd19-9e75-4d38-bbdd-79a53f9db500/public">
-<meta property="og:image" content="e:\OneDrive\Project\Python\haokeyouxuan\Text_Materials\23%E7%88%AC%E8%99%AB\%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80\16.scrapy-redis-1\scrapy%E5%88%86%E5%B8%83%E5%BC%8F\11.Scrapy-redis(%E4%B8%80)\%E5%88%86%E5%B8%83%E5%BC%8F%E9%80%BB%E8%BE%91.png">
-<meta property="og:image" content="e:\OneDrive\Project\Python\haokeyouxuan\Text_Materials\23%E7%88%AC%E8%99%AB\%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80\16.scrapy-redis-1\scrapy%E5%88%86%E5%B8%83%E5%BC%8F\11.Scrapy-redis(%E4%B8%80)\%E4%BB%A3%E7%A0%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
-<meta property="og:image" content="e:\OneDrive\Project\Python\haokeyouxuan\Text_Materials\23%E7%88%AC%E8%99%AB\%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80\16.scrapy-redis-1\scrapy%E5%88%86%E5%B8%83%E5%BC%8F\11.Scrapy-redis(%E4%B8%80)\scrapy-redis%E6%BA%90%E7%A0%81.png">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3d744628-c6fd-402a-f2b1-1ffddfabf700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/69279092-6791-4444-d67e-f5f568bc8100/public">
 <meta property="article:published_time" content="2021-12-18T00:24:32.000Z">
-<meta property="article:modified_time" content="2023-12-18T15:35:39.707Z">
+<meta property="article:modified_time" content="2023-12-18T16:05:36.377Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="理论">
@@ -705,8 +704,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-12-18 23:35:39</span>
-            <span class="mobile">2023-12-18 23:35:39</span>
+            <span class="desktop">2023-12-19 00:05:36</span>
+            <span class="mobile">2023-12-19 00:05:36</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -768,12 +767,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>5.4k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>8k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>21 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>30 分钟</span>
         </span>
     
     
@@ -1044,31 +1043,293 @@
 </ul>
 </li>
 </ul>
-<h6 id="集合（Set）操作"><a href="#集合（Set）操作" class="headerlink" title="集合（Set）操作"></a>集合（Set）操作</h6><ul>
-<li><code>SADD key member</code>：向集合添加一个或多个成员。</li>
-<li><code>SMEMBERS key</code>：获取集合中的所有成员。</li>
-<li><code>SISMEMBER key member</code>：判断成员元素是否是集合的成员。</li>
-<li><code>SREM key member</code>：移除集合中一个或多个成员。</li>
+<h6 id="集合（Set）操作"><a href="#集合（Set）操作" class="headerlink" title="集合（Set）操作"></a>集合（Set）操作</h6><p>Redis 的集合（Set）是一种存储唯一元素且无序的字符串集合。集合非常适合用于存储不重复的数据，如标签、好友关系等。</p>
+<ul>
+<li><strong>添加元素</strong>:<ul>
+<li><code>SADD key member1 [member2 ...]</code>: 向集合添加一个或多个成员。</li>
 </ul>
-<h6 id="有序集合（Sorted-Set）操作"><a href="#有序集合（Sorted-Set）操作" class="headerlink" title="有序集合（Sorted Set）操作"></a>有序集合（Sorted Set）操作</h6><ul>
-<li><code>ZADD key score member</code>：向有序集合添加一个或多个成员，或更新已存在成员的分数。</li>
-<li><code>ZRANGE key start stop [WITHSCORES]</code>：按照索引范围返回有序集合指定区间内的成员。</li>
-<li><code>ZREVRANGE key start stop [WITHSCORES]</code>：返回有序集合在指定范围内的成员，按分数从高到低。</li>
+</li>
+<li><strong>移除元素</strong>:<ul>
+<li><code>SREM key member1 [member2 ...]</code>: 移除集合中一个或多个成员。</li>
 </ul>
-<h6 id="键（Key）管理"><a href="#键（Key）管理" class="headerlink" title="键（Key）管理"></a>键（Key）管理</h6><ul>
-<li><code>DEL key</code>：删除一个或多个键。</li>
-<li><code>EXISTS key</code>：检查键是否存在。</li>
-<li><code>EXPIRE key seconds</code>：设置键的过期时间。</li>
-<li><code>KEYS pattern</code>：查找所有符合给定模式的键。</li>
+</li>
+<li><strong>集合大小</strong>:<ul>
+<li><code>SCARD key</code>: 获取集合的成员数。</li>
 </ul>
-<h6 id="事务（Transaction）"><a href="#事务（Transaction）" class="headerlink" title="事务（Transaction）"></a>事务（Transaction）</h6><ul>
-<li><code>MULTI</code>：标记一个事务块的开始。</li>
-<li><code>EXEC</code>：执行所有事务块内的命令。</li>
-<li><code>DISCARD</code>：取消事务，放弃执行事务块内的所有命令。</li>
+</li>
+<li><strong>检查成员存在</strong>:<ul>
+<li><code>SISMEMBER key member</code>: 判断成员元素是否是集合的成员。</li>
 </ul>
-<h6 id="发布-订阅"><a href="#发布-订阅" class="headerlink" title="发布&#x2F;订阅"></a>发布&#x2F;订阅</h6><ul>
-<li><code>PUBLISH channel message</code>：向指定的频道发送消息。</li>
-<li><code>SUBSCRIBE channel</code>：订阅给定的一个或多个频道的信息。</li>
+</li>
+<li><strong>获取所有成员</strong>:<ul>
+<li><code>SMEMBERS key</code>: 获取集合中的所有成员。</li>
+</ul>
+</li>
+<li><strong>随机元素</strong>:<ul>
+<li><code>SRANDMEMBER key [count]</code>: 返回集合中一个或多个随机数。</li>
+<li><code>SPOP key [count]</code>: 移除并返回集合中的一个随机元素。</li>
+</ul>
+</li>
+<li><strong>集合运算</strong>:<ul>
+<li><code>SUNION key1 [key2 ...]</code>: 返回所有给定集合的并集。</li>
+<li><code>SINTER key1 [key2 ...]</code>: 返回所有给定集合的交集。</li>
+<li><code>SDIFF key1 [key2 ...]</code>: 返回第一个集合与其他集合之间的差集。</li>
+</ul>
+</li>
+<li><strong>集合运算并存储结果</strong>:<ul>
+<li><code>SUNIONSTORE destination key1 [key2 ...]</code>: 计算所有给定集合的并集，并存储在 destination 集合中。</li>
+<li><code>SINTERSTORE destination key1 [key2 ...]</code>: 计算所有给定集合的交集，并存储在 destination 集合中。</li>
+<li><code>SDIFFSTORE destination key1 [key2 ...]</code>: 计算第一个集合与其他集合的差集，并存储在 destination 集合中。</li>
+</ul>
+</li>
+<li><strong>集合的遍历</strong>:<ul>
+<li><code>SSCAN key cursor [MATCH pattern] [COUNT count]</code>: 迭代集合中的元素。</li>
+</ul>
+</li>
+<li><strong>移动成员到另一个集合</strong>:<ul>
+<li><code>SMOVE source destination member</code>: 将成员从一个集合移动到另一个集合。</li>
+</ul>
+</li>
+</ul>
+<h6 id="有序集合（Sorted-Set）操作"><a href="#有序集合（Sorted-Set）操作" class="headerlink" title="有序集合（Sorted Set）操作"></a>有序集合（Sorted Set）操作</h6><p>Redis 的有序集合（Sorted Set）是一种集合数据类型，它不仅存储成员（Member），还为每个成员关联了一个浮点数分数（Score）。这使得成员能够按照分数的大小排序，从而支持快速的插入、删除、查找和排名操作。</p>
+<ul>
+<li><strong>添加和更新成员</strong>:<ul>
+<li><code>ZADD key score1 member1 [score2 member2 ...]</code>: 向有序集合添加一个或多个成员，或更新已存在成员的分数。</li>
+</ul>
+</li>
+<li><strong>移除成员</strong>:<ul>
+<li><code>ZREM key member1 [member2 ...]</code>: 移除有序集合中的一个或多个成员。</li>
+</ul>
+</li>
+<li><strong>获取成员数量</strong>:<ul>
+<li><code>ZCARD key</code>: 获取有序集合的成员数量。</li>
+</ul>
+</li>
+<li><strong>获取成员分数</strong>:<ul>
+<li><code>ZSCORE key member</code>: 获取有序集合中成员的分数。</li>
+</ul>
+</li>
+<li><strong>增加成员分数</strong>:<ul>
+<li><code>ZINCRBY key increment member</code>: 增加有序集合中成员的分数。</li>
+</ul>
+</li>
+<li><strong>范围查询</strong>:<ul>
+<li><code>ZRANGE key start stop [WITHSCORES]</code>: 返回有序集合中指定区间内的成员。</li>
+<li><code>ZREVRANGE key start stop [WITHSCORES]</code>: 返回有序集合中指定区间内的成员，按分数从高到低排序。</li>
+<li><code>ZRANGEBYSCORE key min max [WITHSCORES]</code>: 根据分数值获取有序集合中的成员。</li>
+</ul>
+</li>
+<li><strong>移除指定排名或分数范围内的成员</strong>:<ul>
+<li><code>ZREMRANGEBYRANK key start stop</code>: 移除有序集合中指定排名（index）区间内的所有成员。</li>
+<li><code>ZREMRANGEBYSCORE key min max</code>: 移除有序集合中分数在给定区间内的成员。</li>
+</ul>
+</li>
+<li><strong>获取成员排名</strong>:<ul>
+<li><code>ZRANK key member</code>: 获取有序集合中成员的排名（按分数值递增）。</li>
+<li><code>ZREVRANK key member</code>: 获取有序集合中成员的排名（按分数值递减）。</li>
+</ul>
+</li>
+<li><strong>有序集合间的运算</strong>:<ul>
+<li><code>ZUNIONSTORE destination numkeys key1 [key2 ...] [WEIGHTS weight1 [weight2 ...]]</code>: 计算多个有序集合的并集，并存储在新的有序集合中。</li>
+<li><code>ZINTERSTORE destination numkeys key1 [key2 ...] [WEIGHTS weight1 [weight2 ...]]</code>: 计算多个有序集合的交集，并存储在新的有序集合中。</li>
+</ul>
+</li>
+<li><strong>遍历有序集合</strong>:<ul>
+<li><code>ZSCAN key cursor [MATCH pattern] [COUNT count]</code>: 迭代有序集合中的元素。</li>
+</ul>
+</li>
+</ul>
+<h6 id="键（Key）管理"><a href="#键（Key）管理" class="headerlink" title="键（Key）管理"></a>键（Key）管理</h6><p>Redis 提供了一系列命令用于管理和操作键（Key），这些命令允许你对存储在 Redis 中的数据进行各种操作，包括但不限于查询、移动、重命名和设置键的生命周期。</p>
+<ul>
+<li><strong>键存在性检查</strong>:<ul>
+<li><code>EXISTS key1 [key2 ...]</code>: 检查一个或多个键是否存在。</li>
+</ul>
+</li>
+<li><strong>删除键</strong>:<ul>
+<li><code>DEL key1 [key2 ...]</code>: 删除一个或多个键。</li>
+</ul>
+</li>
+<li><strong>设置键的过期时间</strong>:<ul>
+<li><code>EXPIRE key seconds</code>: 设置键的过期时间（秒）。</li>
+<li><code>PEXPIRE key milliseconds</code>: 设置键的过期时间（毫秒）。</li>
+<li><code>EXPIREAT key timestamp</code>: 设置键的过期时间为 UNIX 时间戳（秒）。</li>
+<li><code>PEXPIREAT key milliseconds-timestamp</code>: 设置键的过期时间为 UNIX 时间戳（毫秒）。</li>
+</ul>
+</li>
+<li><strong>查询键的剩余生存时间</strong>:<ul>
+<li><code>TTL key</code>: 查询键的剩余生存时间（秒）。</li>
+<li><code>PTTL key</code>: 查询键的剩余生存时间（毫秒）。</li>
+</ul>
+</li>
+<li><strong>移除键的过期时间</strong>:<ul>
+<li><code>PERSIST key</code>: 移除键的过期时间。</li>
+</ul>
+</li>
+<li><strong>查找符合给定模式的键</strong>:<ul>
+<li><code>KEYS pattern</code>: 查找所有符合给定模式的键。</li>
+<li><code>SCAN cursor [MATCH pattern] [COUNT count]</code>: 迭代数据库中的数据库键。</li>
+</ul>
+</li>
+<li><strong>重命名键</strong>:<ul>
+<li><code>RENAME key newkey</code>: 修改键名。</li>
+<li><code>RENAMENX key newkey</code>: 仅当 newkey 不存在时，将 key 改名为 newkey。</li>
+</ul>
+</li>
+<li><strong>随机返回一个键</strong>:<ul>
+<li><code>RANDOMKEY</code>: 从数据库中随机返回一个键。</li>
+</ul>
+</li>
+<li><strong>键类型查询</strong>:<ul>
+<li><code>TYPE key</code>: 返回键所储存的值的类型。</li>
+</ul>
+</li>
+<li><strong>移动键到另一个数据库</strong>:<ul>
+<li><code>MOVE key db</code>: 将当前数据库的键移动到指定的数据库 db 当中。</li>
+</ul>
+</li>
+<li><strong>键的字节串长度查询</strong>:<ul>
+<li><code>STRLEN key</code>: 获取指定键所储存的字符串值的长度。</li>
+</ul>
+</li>
+<li><strong>原子操作</strong>:<ul>
+<li><code>DUMP key</code>: 返回存储在指定键的值的序列化版本。</li>
+<li><code>RESTORE key ttl serialized-value [REPLACE]</code>: 通过序列化值创建一个键，ttl 为存活时间，REPLACE 表示是否替换已存在的键。</li>
+</ul>
+</li>
+</ul>
+<h6 id="事务（Transaction）"><a href="#事务（Transaction）" class="headerlink" title="事务（Transaction）"></a>事务（Transaction）</h6><p>在 Redis 中，事务提供了一种将多个命令打包然后一次性、按顺序执行的机制。它通过一系列命令来实现事务的开始、执行和管理。</p>
+<ul>
+<li><strong>开始事务</strong>:<ul>
+<li><code>MULTI</code>: 标记一个事务块的开始。后续的命令将会被队列化，而不是立即执行。</li>
+</ul>
+</li>
+<li><strong>命令入队</strong>:<ul>
+<li>在 <code>MULTI</code> 命令之后输入的命令不会立即被执行，而是会被放入一个队列中。当执行 <code>EXEC</code> 命令时，队列中的所有命令会被连续执行。</li>
+</ul>
+</li>
+<li><strong>执行事务</strong>:<ul>
+<li><code>EXEC</code>: 执行所有在 <code>MULTI</code> 之后入队的命令。如果在执行 <code>EXEC</code> 之前连接被断开，那么事务中的所有命令都不会被执行。</li>
+</ul>
+</li>
+<li><strong>放弃事务</strong>:<ul>
+<li><code>DISCARD</code>: 取消事务，放弃执行事务块内的所有命令。</li>
+</ul>
+</li>
+<li><strong>监视键</strong>:<ul>
+<li><code>WATCH key1 [key2 ...]</code>: 在执行事务之前监视一个或多个键。如果在调用 <code>EXEC</code> 命令之前这些键被其他命令改变了，那么事务将被放弃。</li>
+</ul>
+</li>
+<li><strong>取消监视键</strong>:<ul>
+<li><code>UNWATCH</code>: 取消 WATCH 命令对所有键的监视。</li>
+</ul>
+</li>
+<li><strong>Redis 事务的特点：</strong><ul>
+<li><strong>原子性</strong>: Redis 的事务保证了事务内的命令要么全部执行，要么全部不执行。</li>
+<li><strong>没有隔离级别</strong>: Redis 不支持传统数据库意义上的事务隔离级别。如果事务执行期间，有其他客户端修改了被 <code>WATCH</code> 命令监视的键，那么该事务将被取消。</li>
+<li><strong>不支持回滚</strong>: 在 Redis 中，事务没有回滚的概念。如果事务中某个操作失败，其他操作仍会继续执行。</li>
+</ul>
+</li>
+</ul>
+<h6 id="发布-订阅"><a href="#发布-订阅" class="headerlink" title="发布&#x2F;订阅"></a>发布&#x2F;订阅</h6><p>Redis 的发布&#x2F;订阅（pub&#x2F;sub）是一种消息通信模式，它使得消息的发送者（发布者）不需要知道消息的接收者（订阅者），反之亦然。这种模式非常适合构建松耦合的应用程序和服务。</p>
+<ul>
+<li><strong>发布消息</strong>:<ul>
+<li><code>PUBLISH channel message</code>: 将消息发送到指定的频道。</li>
+</ul>
+</li>
+<li><strong>订阅频道</strong>:<ul>
+<li><code>SUBSCRIBE channel1 [channel2 ...]</code>: 订阅一个或多个频道。订阅后，客户端将接收这些频道上发布的所有消息。</li>
+</ul>
+</li>
+<li><strong>退订频道</strong>:<ul>
+<li><code>UNSUBSCRIBE [channel1 [channel2 ...]]</code>: 退订一个或多个频道。如果没有提供频道名，客户端将退订所有频道。</li>
+</ul>
+</li>
+<li><strong>按模式订阅频道</strong>:<ul>
+<li><code>PSUBSCRIBE pattern1 [pattern2 ...]</code>: 根据给定的模式订阅频道。模式可以包含通配符。</li>
+</ul>
+</li>
+<li><strong>按模式退订频道</strong>:<ul>
+<li><code>PUNSUBSCRIBE [pattern1 [pattern2 ...]]</code>: 根据给定的模式退订频道。如果没有提供模式，客户端将退订所有模式。</li>
+</ul>
+</li>
+<li><strong>列出当前活跃的频道</strong>:<ul>
+<li><code>PUBSUB CHANNELS [pattern]</code>: 列出当前的活跃频道。可选的模式参数可以用来过滤频道名。</li>
+</ul>
+</li>
+<li><strong>列出特定频道的订阅者数量</strong>:<ul>
+<li><code>PUBSUB NUMSUB [channel1 [channel2 ...]]</code>: 返回一个或多个频道的订阅者数量。</li>
+</ul>
+</li>
+<li><strong>列出按模式订阅的数量</strong>:<ul>
+<li><code>PUBSUB NUMPAT</code>: 返回按模式订阅的数量。</li>
+</ul>
+</li>
+</ul>
+<h6 id="地理位置"><a href="#地理位置" class="headerlink" title="地理位置"></a>地理位置</h6><p>Redis 从 3.2 版本开始引入了地理空间支持，允许使用一组命令来存储、查询和操作地理位置信息。这些功能基于 Redis 的有序集合实现，每个元素都是一个带有经纬度的地理空间信息。</p>
+<ul>
+<li><strong>添加地理位置信息</strong>:<ul>
+<li><code>GEOADD key longitude latitude member [longitude latitude member ...]</code>: 将指定的地理空间位置（经度、纬度、成员）添加到指定的 key 中。</li>
+</ul>
+</li>
+<li><strong>地理位置查询</strong>:<ul>
+<li><code>GEOPOS key member [member ...]</code>: 返回一个或多个成员位置的经纬度。</li>
+</ul>
+</li>
+<li><strong>计算两地距离</strong>:<ul>
+<li><code>GEODIST key member1 member2 [unit]</code>: 计算两个成员之间的距离。单位可以是 m（米）、km（千米）、mi（英里）或 ft（英尺）。</li>
+</ul>
+</li>
+<li><strong>按半径查询成员</strong>:<ul>
+<li><code>GEORADIUS key longitude latitude radius m|km|mi|ft [WITHCOORD] [WITHDIST] [WITHHASH] [COUNT count] [ASC|DESC] [STORE key] [STOREDIST key]</code>: 以指定的经纬度为中心，查找在指定半径内的元素。可选参数提供了多种查询功能，例如排序、限制返回数量等。</li>
+<li><code>GEORADIUSBYMEMBER key member radius m|km|mi|ft [WITHCOORD] [WITHDIST] [WITHHASH] [COUNT count] [ASC|DESC] [STORE key] [STOREDIST key]</code>: 以指定成员为中心，查找在指定半径内的元素。</li>
+</ul>
+</li>
+<li><strong>地理空间索引的哈希值</strong>:<ul>
+<li><code>GEOHASH key member [member ...]</code>: 返回一个或多个位置对象的 Geohash 字符串。</li>
+</ul>
+</li>
+</ul>
+<h6 id="基于概率的数据结构"><a href="#基于概率的数据结构" class="headerlink" title="基于概率的数据结构"></a>基于概率的数据结构</h6><p>Redis 支持几种基于概率的数据结构，允许在内存效率和准确性之间取得平衡。这些数据结构特别适用于处理大规模数据集，其中完全准确的结果要么不可行，要么成本过高。</p>
+<ul>
+<li><p><strong>HyperLogLog</strong></p>
+<p>用于高效的基数估计（即估计唯一元素的数量）。</p>
+<ul>
+<li><code>PFADD key element [element ...]</code>: 向 HyperLogLog 中添加元素。</li>
+<li><code>PFCOUNT key [key ...]</code>: 返回 HyperLogLog 的近似基数估计值。</li>
+<li><code>PFMERGE destkey sourcekey [sourcekey ...]</code>: 合并多个 HyperLogLog 到一个新的 HyperLogLog 中。</li>
+</ul>
+</li>
+<li><p><strong>布隆过滤器</strong>（通过 RedisBloom 模块）</p>
+<p>布隆过滤器是一种空间效率很高的数据结构，用于测试一个元素是否是集合的一部分。它可能返回假阳性，但不会返回假阴性。</p>
+<ul>
+<li><p><code>BF.ADD key element</code>: 将元素添加到布隆过滤器。</p>
+</li>
+<li><p><code>BF.MADD key element [element ...]</code>: 向布隆过滤器中添加多个元素。</p>
+</li>
+<li><p><code>BF.EXISTS key element</code>: 检查元素是否可能存在于布隆过滤器中。</p>
+</li>
+<li><p><code>BF.MEXISTS key element [element ...]</code>: 检查多个元素是否可能存在于布隆过滤器中。</p>
+</li>
+</ul>
+</li>
+<li><p>计数最小Sketch（通过 RedisBloom 模块）</p>
+<p>计数最小 Sketch 是一种用于频率估计的数据结构，它可以估计一个元素在数据流中出现的次数。</p>
+<ul>
+<li><code>CMS.INITBYDIM key width depth</code>: 通过指定宽度和深度初始化计数最小 Sketch。</li>
+<li><code>CMS.INITBYPROB key error probability</code>: 通过指定错误率和置信度初始化计数最小 Sketch。</li>
+<li><code>CMS.INCRBY key item count [item count ...]</code>: 增加一个或多个元素的计数值。</li>
+<li><code>CMS.QUERY key item [item ...]</code>: 查询一个或多个元素的计数值。</li>
+</ul>
+</li>
+<li><p>Top-K 结构（通过 RedisBloom 模块）</p>
+<p>Top-K 结构用于跟踪数据流中最常见的元素。</p>
+<ul>
+<li><code>TOPK.RESERVE key topk width depth decay</code>: 创建一个 Top-K 结构。</li>
+<li><code>TOPK.ADD key item [item ...]</code>: 向 Top-K 结构中添加一个或多个元素。</li>
+<li><code>TOPK.QUERY key item [item ...]</code>: 查询一个或多个元素是否在 Top-K 结构中。</li>
+<li><code>TOPK.LIST key</code>: 列出 Top-K 结构中的元素。</li>
+</ul>
+</li>
 </ul>
 <h6 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h6><ul>
 <li><code>PING</code>：检查服务是否运行。</li>
@@ -1183,20 +1444,24 @@
 <li>将分布式代码copy一份,一共两份</li>
 <li>两份代码,两处内容存放的位置,两处爬取的内容之和是整体内容</li>
 </ol>
-<p><img  
+<img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="E:\OneDrive\Project\Python\haokeyouxuan\Text_Materials\23爬虫\爬虫基础\16.scrapy-redis-1\scrapy分布式\11.Scrapy-redis(一)\分布式逻辑.png"
-                      alt="分布式逻辑"
-                ></p>
-<h3 id="项目配置及项目代码"><a href="#项目配置及项目代码" class="headerlink" title="项目配置及项目代码"></a>项目配置及项目代码</h3><p><img  
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3d744628-c6fd-402a-f2b1-1ffddfabf700/public"
+                      width = "500"
+                >
+
+
+
+<h3 id="项目配置及项目代码"><a href="#项目配置及项目代码" class="headerlink" title="项目配置及项目代码"></a>项目配置及项目代码</h3><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="E:\OneDrive\Project\Python\haokeyouxuan\Text_Materials\23爬虫\爬虫基础\16.scrapy-redis-1\scrapy分布式\11.Scrapy-redis(一)\代码目录结构.png"
-                      alt="代码目录结构"
-                ></p>
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/69279092-6791-4444-d67e-f5f568bc8100/public"
+                      width = "500"
+                >
+
 <p><strong>spider作了简单改动,更重要的是在settings里作一些设置</strong></p>
-<h4 id="spider文件"><a href="#spider文件" class="headerlink" title="spider文件"></a>spider文件</h4><p>代码作了简单改动</p>
+<h4 id="Spider文件"><a href="#Spider文件" class="headerlink" title="Spider文件"></a>Spider文件</h4><p>代码作了简单改动</p>
 <ol>
 <li><p>导出RedisSpider</p>
 </li>
@@ -1207,11 +1472,11 @@
 </ol>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> ..items  <span class="keyword">import</span>  DbItem   <span class="comment">#是一个安全的字典</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> scrapy_redis.spiders <span class="keyword">import</span> RedisSpider  <span class="comment">#1. 导出RedisSpider</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># class Db250Spider(scrapy.Spider):</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Db250Spider</span>(<span class="title class_ inherited__">RedisSpider</span>):<span class="comment">#2.继承redis_spider</span></span><br><span class="line">    name = <span class="string">&#x27;db250&#x27;</span></span><br><span class="line">    <span class="comment"># allowed_domains = [&#x27;movie.douban.com&#x27;]</span></span><br><span class="line">    <span class="comment"># start_urls = [&#x27;https://movie.douban.com/top250&#x27;]</span></span><br><span class="line">    redis_key = <span class="string">&quot;db:start_urls&quot;</span>  <span class="comment">#3.开启爬虫的key</span></span><br><span class="line">    page_num=<span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">parse</span>(<span class="params">self, response</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;项目1解析的response&quot;</span>,response.url)</span><br><span class="line">        node_list=response.xpath(<span class="string">&#x27;//div[@class=&quot;info&quot;]&#x27;</span>)</span><br><span class="line">        <span class="keyword">for</span> node  <span class="keyword">in</span>  node_list:</span><br><span class="line">            <span class="comment">#电影名字</span></span><br><span class="line">            film_name=node.xpath(<span class="string">&quot;./div/a/span/text()&quot;</span>).extract()[<span class="number">0</span>]</span><br><span class="line">            <span class="comment">#导演信息</span></span><br><span class="line">            director_name=node.xpath(<span class="string">&quot;./div/p/text()&quot;</span>).extract()[<span class="number">0</span>].strip()</span><br><span class="line">            <span class="comment">#评分</span></span><br><span class="line">            score=node.xpath(<span class="string">&#x27;./div/div/span[@property=&quot;v:average&quot;]/text()&#x27;</span>).extract()[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">            <span class="comment">#使用管道存储</span></span><br><span class="line">            item_pipe=DbItem()</span><br><span class="line">            item_pipe[<span class="string">&#x27;film_name&#x27;</span>]=film_name</span><br><span class="line">            item_pipe[<span class="string">&#x27;director_name&#x27;</span>]=director_name</span><br><span class="line">            item_pipe[<span class="string">&#x27;score&#x27;</span>]=score</span><br><span class="line">            <span class="comment"># yield item_pipe</span></span><br><span class="line">            <span class="comment"># print(&quot;电影信息&quot;,dict(item_pipe))</span></span><br><span class="line">            <span class="comment"># 电影简介</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;电影信息&quot;</span>,item_pipe[<span class="string">&quot;film_name&quot;</span>])</span><br><span class="line">            detail_url = node.xpath(<span class="string">&#x27;./div/a/@href&#x27;</span>).extract()[<span class="number">0</span>]</span><br><span class="line">            <span class="keyword">yield</span> scrapy.Request(detail_url,callback=self.get_detail,meta=&#123;<span class="string">&quot;info&quot;</span>:item_pipe&#125;)</span><br><span class="line"></span><br><span class="line">        <span class="comment">#发送新一页的请求</span></span><br><span class="line">        <span class="comment">#构造url</span></span><br><span class="line">        <span class="keyword">if</span> response.meta.get(<span class="string">&quot;num&quot;</span>):</span><br><span class="line">            self.page_num = response.meta[<span class="string">&quot;num&quot;</span>]</span><br><span class="line">        self.page_num += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> self.page_num==<span class="number">4</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        page_url=<span class="string">&quot;https://movie.douban.com/top250?start=&#123;&#125;&amp;filter=&quot;</span>.<span class="built_in">format</span>(self.page_num*<span class="number">25</span>)</span><br><span class="line">        <span class="keyword">yield</span> scrapy.Request(page_url,meta=&#123;<span class="string">&quot;num&quot;</span>:self.page_num&#125;)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span>  <span class="title function_">get_detail</span>(<span class="params">self,response</span>):</span><br><span class="line">        item=DbItem()</span><br><span class="line">        <span class="comment">#解析详情页的response</span></span><br><span class="line">        info = response.meta[<span class="string">&quot;info&quot;</span>]</span><br><span class="line">        item.update(info)</span><br><span class="line">        <span class="comment">#简介内容</span></span><br><span class="line">        description=response.xpath(<span class="string">&#x27;//div[@id=&quot;link-report&quot;]//span[@property=&quot;v:summary&quot;]/text()&#x27;</span>).extract()[<span class="number">0</span>].strip()</span><br><span class="line"></span><br><span class="line">        item[<span class="string">&quot;description&quot;</span>]=description</span><br><span class="line">        <span class="comment">#通过管道保存</span></span><br><span class="line">        <span class="keyword">yield</span>  item</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 
-<h4 id="items文件"><a href="#items文件" class="headerlink" title="items文件"></a>items文件</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DbItem</span>(scrapy.Item):</span><br><span class="line">    <span class="comment"># define the fields for your item here like:</span></span><br><span class="line">    <span class="comment"># name = scrapy.Field()</span></span><br><span class="line">    film_name=scrapy.Field()</span><br><span class="line">    director_name=scrapy.Field()</span><br><span class="line">    score=scrapy.Field()</span><br><span class="line">    description=scrapy.Field()</span><br></pre></td></tr></table></figure></div>
+<h4 id="Items文件"><a href="#Items文件" class="headerlink" title="Items文件"></a>Items文件</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DbItem</span>(scrapy.Item):</span><br><span class="line">    <span class="comment"># define the fields for your item here like:</span></span><br><span class="line">    <span class="comment"># name = scrapy.Field()</span></span><br><span class="line">    film_name=scrapy.Field()</span><br><span class="line">    director_name=scrapy.Field()</span><br><span class="line">    score=scrapy.Field()</span><br><span class="line">    description=scrapy.Field()</span><br></pre></td></tr></table></figure></div>
 
-<h4 id="pipelines文件"><a href="#pipelines文件" class="headerlink" title="pipelines文件"></a>pipelines文件</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DbPipeline</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span>  <span class="title function_">open_spider</span>(<span class="params">self,spider</span>):</span><br><span class="line">        <span class="comment">#爬虫文件开启,此方法执行</span></span><br><span class="line">        self.f=<span class="built_in">open</span>(<span class="string">&quot;film_pipe1.txt&quot;</span>,<span class="string">&quot;w&quot;</span>,encoding=<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">process_item</span>(<span class="params">self, item, spider</span>):</span><br><span class="line">        json_data=json.dumps(<span class="built_in">dict</span>(item),ensure_ascii=<span class="literal">False</span>)+<span class="string">&quot;\n&quot;</span></span><br><span class="line">        self.f.write(json_data)</span><br><span class="line">        <span class="keyword">return</span> item</span><br><span class="line">    <span class="keyword">def</span>  <span class="title function_">close_spider</span>(<span class="params">self,spider</span>):</span><br><span class="line">        <span class="comment"># 爬虫文件关闭,此方法执行</span></span><br><span class="line">        self.f.close() <span class="comment">#关闭文件</span></span><br></pre></td></tr></table></figure></div>
+<h4 id="Pipelines文件"><a href="#Pipelines文件" class="headerlink" title="Pipelines文件"></a>Pipelines文件</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DbPipeline</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span>  <span class="title function_">open_spider</span>(<span class="params">self,spider</span>):</span><br><span class="line">        <span class="comment">#爬虫文件开启,此方法执行</span></span><br><span class="line">        self.f=<span class="built_in">open</span>(<span class="string">&quot;film_pipe1.txt&quot;</span>,<span class="string">&quot;w&quot;</span>,encoding=<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">process_item</span>(<span class="params">self, item, spider</span>):</span><br><span class="line">        json_data=json.dumps(<span class="built_in">dict</span>(item),ensure_ascii=<span class="literal">False</span>)+<span class="string">&quot;\n&quot;</span></span><br><span class="line">        self.f.write(json_data)</span><br><span class="line">        <span class="keyword">return</span> item</span><br><span class="line">    <span class="keyword">def</span>  <span class="title function_">close_spider</span>(<span class="params">self,spider</span>):</span><br><span class="line">        <span class="comment"># 爬虫文件关闭,此方法执行</span></span><br><span class="line">        self.f.close() <span class="comment">#关闭文件</span></span><br></pre></td></tr></table></figure></div>
 
-<h4 id="settings文件"><a href="#settings文件" class="headerlink" title="settings文件"></a>settings文件</h4><p>settings文件需要配置</p>
+<h4 id="Settings文件"><a href="#Settings文件" class="headerlink" title="Settings文件"></a>Settings文件</h4><p>settings文件需要配置</p>
 <ul>
 <li><p>公共的调度器  SCHEDULER</p>
 </li>
@@ -1222,12 +1487,7 @@
 </ul>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">BOT_NAME = <span class="string">&#x27;db&#x27;</span></span><br><span class="line"></span><br><span class="line">SPIDER_MODULES = [<span class="string">&#x27;db.spiders&#x27;</span>]</span><br><span class="line">NEWSPIDER_MODULE = <span class="string">&#x27;db.spiders&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Obey robots.txt rules</span></span><br><span class="line">ROBOTSTXT_OBEY = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">DOWNLOAD_DELAY = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Override the default request headers:</span></span><br><span class="line">DEFAULT_REQUEST_HEADERS = &#123;</span><br><span class="line">  <span class="string">&#x27;Accept&#x27;</span>: <span class="string">&#x27;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;Accept-Language&#x27;</span>: <span class="string">&#x27;en&#x27;</span>,</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启用调度将请求存储进redis</span></span><br><span class="line"><span class="comment"># 必须</span></span><br><span class="line">SCHEDULER = <span class="string">&quot;scrapy_redis.scheduler.Scheduler&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 确保所有spider通过redis共享相同的重复过滤。</span></span><br><span class="line"><span class="comment"># 必须</span></span><br><span class="line">DUPEFILTER_CLASS = <span class="string">&quot;scrapy_redis.dupefilter.RFPDupeFilter&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#公共管道</span></span><br><span class="line">ITEM_PIPELINES  =  &#123;</span><br><span class="line">    <span class="string">&#x27;scrapy_redis.pipelines.RedisPipeline&#x27;</span>:<span class="number">300</span>,</span><br><span class="line">    <span class="string">&#x27;db.pipelines.DbPipeline&#x27;</span>: <span class="number">200</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 指定连接到Redis时要使用的主机和端口。</span></span><br><span class="line"><span class="comment"># 必须</span></span><br><span class="line">REDIS_HOST = <span class="string">&#x27;localhost&#x27;</span></span><br><span class="line">REDIS_PORT = <span class="number">6379</span></span><br><span class="line"><span class="comment"># 不清理redis队列，允许暂停/恢复抓取。</span></span><br><span class="line"><span class="comment"># 可选  允许暂停,redis数据不丢失</span></span><br><span class="line">SCHEDULER_PERSIST = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#日志文件配置</span></span><br><span class="line"><span class="comment"># LOG_FILE=&quot;db_redis.log&quot;</span></span><br><span class="line">LOG_ENABLED=<span class="literal">True</span></span><br><span class="line"></span><br><span class="line">LOG_FORMAT=<span class="string">&#x27;%(asctime)s  [%(name)s] %(levelname)s: %(message)s&#x27;</span></span><br><span class="line">LOG_DATEFORMAT=<span class="string">&#x27;%Y&#x27;</span></span><br><span class="line"></span><br><span class="line">LOG_ENCODING=<span class="string">&quot;utf-8&quot;</span></span><br><span class="line">LOG_LEVEL=<span class="string">&quot;INFO&quot;</span></span><br></pre></td></tr></table></figure></div>
 
-<h4 id="scrapy-redis-源码文件"><a href="#scrapy-redis-源码文件" class="headerlink" title="scrapy-redis  源码文件"></a>scrapy-redis  源码文件</h4><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="E:\OneDrive\Project\Python\haokeyouxuan\Text_Materials\23爬虫\爬虫基础\16.scrapy-redis-1\scrapy分布式\11.Scrapy-redis(一)\scrapy-redis源码.png"
-                      alt="scrapy-redis源码" style="zoom:200%;" 
-                >
+
         </div>
 
         
@@ -1241,7 +1501,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-12-18 23:35:39
+                    :</strong> 2023-12-19 00:05:36
             </li>
         
         <li>
@@ -1373,7 +1633,7 @@
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
         <div class="page-title">分布式爬取</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%A6%82%E5%BF%B5%E5%92%8C%E4%BD%9C%E7%94%A8"><span class="nav-text">分布式概念和作用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%EF%BC%88Distributed-Systems%EF%BC%89"><span class="nav-text">分布式系统（Distributed Systems）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E4%B8%8E%E7%89%B9%E7%82%B9"><span class="nav-text">作用与特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%9A%84%E7%BB%93%E5%90%88"><span class="nav-text">分布式系统与网络爬虫的结合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88Web-Crawler%EF%BC%89%E6%A6%82%E5%BF%B5"><span class="nav-text">网络爬虫（Web Crawler）概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E5%90%88%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-text">结合分布式系统的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="nav-text">应用实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0"><span class="nav-text">技术实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-Redis"><span class="nav-text">Scrapy-Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-1"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84"><span class="nav-text">应用架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="nav-text">Redis的安装与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8Ubuntu-Debian%E4%B8%8A%E5%AE%89%E8%A3%85Redis"><span class="nav-text">在Ubuntu&#x2F;Debian上安装Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6%EF%BC%88Prerequisites%EF%BC%89"><span class="nav-text">先决条件（Prerequisites）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E4%BB%93%E5%BA%93%EF%BC%88Repository%EF%BC%89"><span class="nav-text">添加仓库（Repository）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis-%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF%E5%92%8C%E6%93%8D%E4%BD%9C"><span class="nav-text">Redis 基本信息和操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="nav-text">基本信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="nav-text">配置信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88String%EF%BC%89%E6%93%8D%E4%BD%9C"><span class="nav-text">字符串（String）操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%EF%BC%88Hash%EF%BC%89%E6%93%8D%E4%BD%9C"><span class="nav-text">哈希表（Hash）操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%EF%BC%88List%EF%BC%89%E6%93%8D%E4%BD%9C"><span class="nav-text">列表（List）操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%9B%86%E5%90%88%EF%BC%88Set%EF%BC%89%E6%93%8D%E4%BD%9C"><span class="nav-text">集合（Set）操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88%EF%BC%88Sorted-Set%EF%BC%89%E6%93%8D%E4%BD%9C"><span class="nav-text">有序集合（Sorted Set）操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%94%AE%EF%BC%88Key%EF%BC%89%E7%AE%A1%E7%90%86"><span class="nav-text">键（Key）管理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%EF%BC%88Transaction%EF%BC%89"><span class="nav-text">事务（Transaction）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85"><span class="nav-text">发布&#x2F;订阅</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-text">数据持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#RDB%EF%BC%88Redis-Database%EF%BC%89"><span class="nav-text">RDB（Redis Database）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#AOF%EF%BC%88Append-Only-File%EF%BC%89"><span class="nav-text">AOF（Append Only File）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="nav-text">应用场景</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8Windows%E4%B8%8A%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84Redis"><span class="nav-text">在Windows上连接到Linux服务器上的Redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-Redis-%E4%B8%AD%E5%AD%98%E5%82%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%85%B6%E7%94%A8%E9%80%94"><span class="nav-text">Scrapy-Redis 中存储的数据类型及其用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E5%8F%8A%E5%85%B6%E8%AF%B4%E6%98%8E"><span class="nav-text">常用设置及其说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="nav-text">补充说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%A1%B9%E7%9B%AE%E6%BC%94%E7%A4%BA"><span class="nav-text">分布式项目演示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%94%E7%A4%BA%E9%80%BB%E8%BE%91"><span class="nav-text">演示逻辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E5%8F%8A%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81"><span class="nav-text">项目配置及项目代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#spider%E6%96%87%E4%BB%B6"><span class="nav-text">spider文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#items%E6%96%87%E4%BB%B6"><span class="nav-text">items文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pipelines%E6%96%87%E4%BB%B6"><span class="nav-text">pipelines文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#settings%E6%96%87%E4%BB%B6"><span class="nav-text">settings文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scrapy-redis-%E6%BA%90%E7%A0%81%E6%96%87%E4%BB%B6"><span class="nav-text">scrapy-redis  源码文件</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%A6%82%E5%BF%B5%E5%92%8C%E4%BD%9C%E7%94%A8"><span class="nav-text">分布式概念和作用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%EF%BC%88Distributed-Systems%EF%BC%89"><span class="nav-text">分布式系统（Distributed Systems）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E4%B8%8E%E7%89%B9%E7%82%B9"><span class="nav-text">作用与特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%9A%84%E7%BB%93%E5%90%88"><span class="nav-text">分布式系统与网络爬虫的结合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88Web-Crawler%EF%BC%89%E6%A6%82%E5%BF%B5"><span class="nav-text">网络爬虫（Web Crawler）概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E5%90%88%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-text">结合分布式系统的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="nav-text">应用实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0"><span class="nav-text">技术实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-Redis"><span class="nav-text">Scrapy-Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-1"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84"><span class="nav-text">应用架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="nav-text">Redis的安装与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8Ubuntu-Debian%E4%B8%8A%E5%AE%89%E8%A3%85Redis"><span class="nav-text">在Ubuntu&#x2F;Debian上安装Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6%EF%BC%88Prerequisites%EF%BC%89"><span class="nav-text">先决条件（Prerequisites）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E4%BB%93%E5%BA%93%EF%BC%88Repository%EF%BC%89"><span class="nav-text">添加仓库（Repository）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis-%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF%E5%92%8C%E6%93%8D%E4%BD%9C"><span class="nav-text">Redis 基本信息和操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="nav-text">基本信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="nav-text">配置信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88String%EF%BC%89%E6%93%8D%E4%BD%9C"><span class="nav-text">字符串（String）操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%EF%BC%88Hash%EF%BC%89%E6%93%8D%E4%BD%9C"><span class="nav-text">哈希表（Hash）操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%EF%BC%88List%EF%BC%89%E6%93%8D%E4%BD%9C"><span class="nav-text">列表（List）操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%9B%86%E5%90%88%EF%BC%88Set%EF%BC%89%E6%93%8D%E4%BD%9C"><span class="nav-text">集合（Set）操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88%EF%BC%88Sorted-Set%EF%BC%89%E6%93%8D%E4%BD%9C"><span class="nav-text">有序集合（Sorted Set）操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%94%AE%EF%BC%88Key%EF%BC%89%E7%AE%A1%E7%90%86"><span class="nav-text">键（Key）管理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%EF%BC%88Transaction%EF%BC%89"><span class="nav-text">事务（Transaction）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85"><span class="nav-text">发布&#x2F;订阅</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE"><span class="nav-text">地理位置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%A6%82%E7%8E%87%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-text">基于概率的数据结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-text">数据持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#RDB%EF%BC%88Redis-Database%EF%BC%89"><span class="nav-text">RDB（Redis Database）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#AOF%EF%BC%88Append-Only-File%EF%BC%89"><span class="nav-text">AOF（Append Only File）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="nav-text">应用场景</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8Windows%E4%B8%8A%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84Redis"><span class="nav-text">在Windows上连接到Linux服务器上的Redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-Redis-%E4%B8%AD%E5%AD%98%E5%82%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%85%B6%E7%94%A8%E9%80%94"><span class="nav-text">Scrapy-Redis 中存储的数据类型及其用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E5%8F%8A%E5%85%B6%E8%AF%B4%E6%98%8E"><span class="nav-text">常用设置及其说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="nav-text">补充说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%A1%B9%E7%9B%AE%E6%BC%94%E7%A4%BA"><span class="nav-text">分布式项目演示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%94%E7%A4%BA%E9%80%BB%E8%BE%91"><span class="nav-text">演示逻辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E5%8F%8A%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81"><span class="nav-text">项目配置及项目代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spider%E6%96%87%E4%BB%B6"><span class="nav-text">Spider文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Items%E6%96%87%E4%BB%B6"><span class="nav-text">Items文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pipelines%E6%96%87%E4%BB%B6"><span class="nav-text">Pipelines文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Settings%E6%96%87%E4%BB%B6"><span class="nav-text">Settings文件</span></a></li></ol></li></ol></li></ol>
 
     </div>
 </div>
