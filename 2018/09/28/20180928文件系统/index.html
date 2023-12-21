@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e3f44616-9e3e-42e0-34f7-e951ecfc7100/public">
 <meta property="article:published_time" content="2018-09-28T10:08:12.000Z">
-<meta property="article:modified_time" content="2023-12-21T05:31:05.858Z">
+<meta property="article:modified_time" content="2023-12-21T07:13:18.172Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="基础">
@@ -699,8 +699,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-12-21 13:31:05</span>
-            <span class="mobile">2023-12-21 13:31:05</span>
+            <span class="desktop">2023-12-21 15:13:18</span>
+            <span class="mobile">2023-12-21 15:13:18</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -758,12 +758,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.3k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.4k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>5 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>6 分钟</span>
         </span>
     
     
@@ -785,6 +785,19 @@
             <h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><h3 id="持久化存储"><a href="#持久化存储" class="headerlink" title="持久化存储"></a>持久化存储</h3><p>在Python中，持久化存储是指将数据保存到一个持久的存储介质（如硬盘）中，以便即使在程序结束后也能再次访问这些数据。Python提供了多种方式来实现数据的持久化存储，包括但不限于文件存储、使用数据库以及利用特定的数据序列化格式。以下是一些常见的Python数据持久化方法：</p>
 <h4 id="1-使用文件系统"><a href="#1-使用文件系统" class="headerlink" title="1. 使用文件系统"></a>1. 使用文件系统</h4><p>最基本的持久化存储方法是直接读写文件。Python提供了多种方式来处理文件，包括文本文件和二进制文件。</p>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写入文本文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;example.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    file.write(<span class="string">&#x27;Hello, world!&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取文本文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;example.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    content = file.read()</span><br></pre></td></tr></table></figure></div>
+
+
+  <div class="note-large red">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-bug"></i><p>警告</p>
+
+    </div>
+    <div class="notel-content">
+      <p>出现的 <code>UnicodeEncodeError</code> 错误通常与编码有关。当尝试将包含非ASCII字符的字符串写入文件时，在某些情况下，Python的默认编码（如cp1252）可能无法正确处理这些字符。要解决这个问题，可以在写入文件时明确指定一个能够处理这些字符的编码，如UTF-8。</p>
+<p>可以通过在 <code>open</code> 函数中添加 <code>encoding=&#39;utf-8&#39;</code> 参数来修改代码。这将确保使用UTF-8编码来写入文件，UTF-8编码可以处理大多数字符集。</p>
+
+    </div>
+  </div>
 
 <h4 id="2-数据序列化"><a href="#2-数据序列化" class="headerlink" title="2. 数据序列化"></a>2. 数据序列化</h4><p>Python提供了几种数据序列化（转换数据结构为可存储或传输的格式）的方法，例如JSON、Pickle等。</p>
 <p><strong>JSON</strong>：用于将数据结构转换为JSON格式。</p>
@@ -907,7 +920,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-12-21 13:31:05
+                    :</strong> 2023-12-21 15:13:18
             </li>
         
         <li>
