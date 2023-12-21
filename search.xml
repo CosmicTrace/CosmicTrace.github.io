@@ -7,7 +7,7 @@
 <ul>
 <li>数值类型</li>
 <li>序列类型</li>
-<li>散列类型</li>
+<li>散列（映射）类型</li>
 </ul>
 <h3 id="一-数值类型"><a href="#一-数值类型" class="headerlink" title="一   数值类型"></a>一   数值类型</h3><h4 id="1-整数类型-int"><a href="#1-整数类型-int" class="headerlink" title="1. 整数类型 int"></a>1. 整数类型 int</h4><p>什么是整数？</p>
 <ul>
@@ -26,6 +26,8 @@
 <li><p>布尔类型代表真假</p>
 </li>
 <li><p>只有两个值</p>
+</li>
+<li><p>在Python中，布尔类型实际上是整型（int）的子类，因此布尔值在某些情况下可以与数字进行操作，并被视为数字 <code>1</code>（True）和 <code>0</code>（False）。与其他数值类型一样，布尔类型也是不可变的，它有两个值：<code>True</code> 和 <code>False</code></p>
 <ul>
 <li><p>True 真</p>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="literal">True</span></span><br><span class="line">a = <span class="literal">True</span>	<span class="comment"># 1</span></span><br></pre></td></tr></table></figure></div></li>
@@ -34,7 +36,15 @@
 </ul>
 </li>
 </ul>
-<h4 id="4-算术运算符"><a href="#4-算术运算符" class="headerlink" title="4. 算术运算符"></a>4. 算术运算符</h4><ol>
+<h4 id="4-复数-complex"><a href="#4-复数-complex" class="headerlink" title="4. 复数 complex"></a>4. 复数 complex</h4><p>复数在Python中也是一种数值类型，用于表示具有实部和虚部的数。在数学中，复数通常写作 <code>a + bj</code>，其中 <code>a</code> 是实部，<code>b</code> 是虚部，而 <code>j</code>（在Python中用 <code>j</code> 或 <code>J</code> 表示）是虚数单位。</p>
+<ul>
+<li><strong>实部</strong>（Real Part）：这是复数中的常规数字部分，没有乘以虚数单位。</li>
+<li><strong>虚部</strong>（Imaginary Part）：这部分乘以虚数单位 <code>j</code>。在数学上，<code>j</code> 是一个特殊的值，其平方等于 <code>-1</code>。</li>
+</ul>
+<p>在Python中，可以使用 <code>complex(real, imag)</code> 函数或直接用 <code>real + imagj</code> 表式来创建复数。例如</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用 complex 函数</span></span><br><span class="line">c1 = <span class="built_in">complex</span>(<span class="number">2</span>, <span class="number">3</span>)  <span class="comment"># 创建复数 2 + 3j</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接定义</span></span><br><span class="line">c2 = <span class="number">2</span> + <span class="number">3j</span>  <span class="comment"># 同样创建复数 2 + 3j</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="5-算术运算符"><a href="#5-算术运算符" class="headerlink" title="5. 算术运算符"></a>5. 算术运算符</h4><ol>
 <li>加法运算符（+）：用于对两个数值或字符串进行相加操作。</li>
 <li>减法运算符（-）：用于对两个数值进行相减操作。</li>
 <li>乘法运算符（*）：用于对两个数值进行相乘操作。</li>
@@ -231,7 +241,7 @@
 
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 编码</span></span><br><span class="line">name = <span class="string">&quot;字符串&quot;</span>  <span class="comment"># 定义一个变量叫name 存储字符串</span></span><br><span class="line">encode_result = name.encode(<span class="string">&quot;UTF-8&quot;</span>)  <span class="comment"># 通过encode进行编码为UTF-8</span></span><br><span class="line"><span class="built_in">print</span>(encode_result)  <span class="comment"># 结果为b&#x27;\xe5\xad\x97\xe7\xac\xa6\xe4\xb8\xb2&#x27;</span></span><br><span class="line"><span class="comment"># &quot;意味着字符串&quot;在utf8中为\xe5\xad\x97\xe7\xac\xa6\xe4\xb8\xb2,其中b是二进制的意思</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 解码</span></span><br><span class="line">decode_result = encode_result.decode(<span class="string">&quot;UTF-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(decode_result) <span class="comment"># 字符串</span></span><br></pre></td></tr></table></figure></div>
 
-<h3 id="四-散列类型"><a href="#四-散列类型" class="headerlink" title="四 散列类型"></a>四 散列类型</h3><h4 id="集合和字典"><a href="#集合和字典" class="headerlink" title="集合和字典"></a>集合和字典</h4><h5 id="集合、字典方法"><a href="#集合、字典方法" class="headerlink" title="集合、字典方法"></a>集合、字典方法</h5><p>用来对里面的数据进行增删改查</p>
+<h3 id="四-散列（映射）类型"><a href="#四-散列（映射）类型" class="headerlink" title="四 散列（映射）类型"></a>四 散列（映射）类型</h3><h4 id="集合和字典"><a href="#集合和字典" class="headerlink" title="集合和字典"></a>集合和字典</h4><h5 id="集合、字典方法"><a href="#集合、字典方法" class="headerlink" title="集合、字典方法"></a>集合、字典方法</h5><p>用来对里面的数据进行增删改查</p>
 <ol>
 <li>我们可以把<strong>集合、字典</strong>、分别理解为<strong>二个英雄</strong></li>
 <li>它们都有<strong>对应的方法</strong>、方法也就是<strong>英雄的技能</strong>、</li>
@@ -278,6 +288,34 @@
 <li>集合 是一个一个存， 用逗号, 分割，无序不重复，不能取值</li>
 <li>字典 以键值对的方式存储，应用场景更多，可以取值</li>
 </ol>
+<h4 id="冻结集合"><a href="#冻结集合" class="headerlink" title="冻结集合"></a>冻结集合</h4><p>冻结集合（Frozen Set）是Python中的一个内置类型，它与普通集合（Set）类似，但有一个关键的区别：冻结集合是不可变的。这意味着一旦创建了冻结集合，就不能再添加或删除其中的元素。这种特性使得冻结集合成为一种特殊的、不可更改的集合类型。</p>
+<h5 id="特性和用途"><a href="#特性和用途" class="headerlink" title="特性和用途"></a>特性和用途</h5><ol>
+<li><strong>不可变性（Immutability）</strong>：<ul>
+<li>冻结集合一旦创建，其内容不能被更改。这包括不能添加新元素，也不能从集合中删除元素。</li>
+</ul>
+</li>
+<li><strong>可哈希性（Hashability）</strong>：<ul>
+<li>由于其不可变性，冻结集合是可哈希的（hashable），这意味着它们可以用作字典的键或另一个集合的元素。普通集合由于是可变的，不能被哈希，因此不能用在这些场景中。</li>
+</ul>
+</li>
+<li><strong>支持集合操作</strong>：<ul>
+<li>冻结集合支持普通集合的各种操作，如并集、交集、差集和对称差集等。</li>
+</ul>
+</li>
+</ol>
+<h5 id="创建冻结集合"><a href="#创建冻结集合" class="headerlink" title="创建冻结集合"></a>创建冻结集合</h5><p>冻结集合可以通过内置的 <code>frozenset()</code> 函数创建。例如：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建一个空的冻结集合</span></span><br><span class="line">f_set = <span class="built_in">frozenset</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从现有集合创建冻结集合</span></span><br><span class="line">normal_set = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">f_set_from_normal = <span class="built_in">frozenset</span>(normal_set)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从其他可迭代对象创建冻结集合</span></span><br><span class="line">f_set_from_list = <span class="built_in">frozenset</span>([<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h5><p>由于其不可变性和可哈希性，冻结集合特别适用于以下场景：</p>
+<ul>
+<li>作为字典的键。</li>
+<li>作为另一个集合的元素。</li>
+<li>在需要保证集合内容不被更改的情况下使用。</li>
+</ul>
+<h5 id="与普通集合的比较"><a href="#与普通集合的比较" class="headerlink" title="与普通集合的比较"></a>与普通集合的比较</h5><ul>
+<li><strong>普通集合</strong>：可变，支持添加和删除操作，不可哈希，不能用作字典的键或集合的元素。</li>
+<li><strong>冻结集合</strong>：不可变，不支持添加和删除操作，可哈希，可以用作字典的键或集合的元素。</li>
+</ul>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><img  
                      lazyload
                      src="/images/loading.svg"
