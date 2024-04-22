@@ -1,0 +1,2185 @@
+<!DOCTYPE html>
+<html lang="zh-CN,en,zh-TW,default">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Yiuhang Chan">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://www.yiuhangblog.com/2021/12/18/20211218分布式爬取/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="Scrapy结合Redis进行分布式爬取">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分布式爬取">
+<meta property="og:url" content="https://www.yiuhangblog.com/2021/12/18/20211218%E5%88%86%E5%B8%83%E5%BC%8F%E7%88%AC%E5%8F%96/index.html">
+<meta property="og:site_name" content="角灯随笔">
+<meta property="og:description" content="Scrapy结合Redis进行分布式爬取">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4f801991-b0f0-4223-f71e-fd8073765b00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a5e079af-0364-48df-8280-b76738c85f00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/88d9fd19-9e75-4d38-bbdd-79a53f9db500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3d744628-c6fd-402a-f2b1-1ffddfabf700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c93190e8-9dcf-4716-b691-64e7b98ffe00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f6ccb84b-d743-4808-d3d7-43f76e432300/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/06dd7665-94c0-40d4-5c1f-299482eacc00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/06de15f7-f417-4391-da20-53457d9cef00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3f8dbe81-e702-43c5-fbea-690e44e5b200/public">
+<meta property="article:published_time" content="2021-12-18T00:24:32.000Z">
+<meta property="article:modified_time" content="2024-02-28T10:50:38.000Z">
+<meta property="article:author" content="Yiuhang Chan">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="理论">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="Scrapy">
+<meta property="article:tag" content="Redis">
+<meta property="article:tag" content="分布式">
+<meta property="article:tag" content="网页抓取">
+<meta property="article:tag" content="Scrapyd">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4f801991-b0f0-4223-f71e-fd8073765b00/public">
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-MQ43G0NKCT"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MQ43G0NKCT');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <meta name="theme-color" content="#A1AFC9">
+    <link rel="shortcut icon" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <!--- Page Info-->
+    
+    <title>
+        
+            分布式爬取 -
+        
+        角灯随笔
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        角灯随笔
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"www.yiuhangblog.com","root":"/","language":["zh-CN","en","zh-TW","default"]};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":6,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":5,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A1AFC9","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":true,"id":"G-MQ43G0NKCT"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e63fc400-dd0e-4395-bd1b-9ee1ac3bfb00/public","dark":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a34140d6-7960-45dd-b8b5-c3ddd14d1f00/public"},"title":"角灯随笔","subtitle":{"text":["全栈也不是不行"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/CosmicTrace","instagram":null,"zhihu":null,"twitter":null,"email":"kenchansk0@gmail.com"},"qrs":null}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"娱乐":{"icon":"fa-solid fa-gamepad","submenus":{"王者荣耀":"/hok","守望先锋":"/ow","使命召唤":"/cod"}},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/CosmicTrace"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"谦逊","show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":8}},"footerStart":"2018/07/15 10:15:24"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="角灯随笔" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                角灯随笔
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/"
+                                        >
+                                    <i class="fa-solid fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-solid fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-solid fa-gamepad fa-fw"></i>
+                                    娱乐
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/hok">
+                                                    王者荣耀
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/ow">
+                                                    守望先锋
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/cod">
+                                                    使命召唤
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/CosmicTrace">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-solid fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-solid fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-娱乐"
+                        >
+                            <span>
+                                娱乐
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-娱乐">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/hok">王者荣耀</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/ow">守望先锋</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/cod">使命召唤</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/CosmicTrace">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">96</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">41</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a5e079af-0364-48df-8280-b76738c85f00/public" alt="分布式爬取" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">分布式爬取</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/26329e9f-d1fb-4280-a0a5-754547bf8500/public">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Yiuhang Chan</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2021-12-18 08:24:32</span>
+        <span class="mobile">2021-12-18 08:24:32</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-02-28 18:50:38</span>
+            <span class="mobile">2024-02-28 18:50:38</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/">数据抓取</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%90%86%E8%AE%BA/">理论</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Scrapy/">Scrapy</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Redis/">Redis</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%BD%91%E9%A1%B5%E6%8A%93%E5%8F%96/">网页抓取</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Scrapyd/">Scrapyd</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>11k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>42 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="分布式概念和作用"><a href="#分布式概念和作用" class="headerlink" title="分布式概念和作用"></a>分布式概念和作用</h2><h3 id="分布式系统（Distributed-Systems）"><a href="#分布式系统（Distributed-Systems）" class="headerlink" title="分布式系统（Distributed Systems）"></a>分布式系统（Distributed Systems）</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>分布式系统是由一组相互独立的计算机通过网络进行通信和协调工作的系统。每台计算机（通常称为“节点” Node）都有自己的内存和处理能力，它们共同协作以完成特定的任务或管理共享数据。</p>
+<h4 id="作用与特点"><a href="#作用与特点" class="headerlink" title="作用与特点"></a>作用与特点</h4><ol>
+<li><strong>可扩展性（Scalability）</strong>: 分布式系统可以通过增加更多的节点来提高性能和容量，而不是依赖单个更强大的机器。</li>
+<li><strong>容错性（Fault Tolerance）</strong>: 由于系统分布在多个节点上，即使部分节点失败，整个系统仍然可以继续运行。</li>
+<li><strong>资源共享（Resource Sharing）</strong>: 分布式系统允许不同地理位置的节点共享资源，如文件、数据或设备。</li>
+<li><strong>灵活性（Flexibility）</strong>: 可以根据需要在不同的节点上部署不同的服务和应用。</li>
+<li><strong>并行处理（Parallel Processing）</strong>: 多个节点可以同时处理任务，提高处理速度。</li>
+</ol>
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><ul>
+<li>云计算（Cloud Computing）</li>
+<li>大数据处理（Big Data Processing）</li>
+<li>在线事务处理（Online Transaction Processing, OLTP）</li>
+<li>分布式文件系统（Distributed File Systems）</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4f801991-b0f0-4223-f71e-fd8073765b00/public"
+                      width = "500"
+                >
+
+<h3 id="分布式系统与网络爬虫的结合"><a href="#分布式系统与网络爬虫的结合" class="headerlink" title="分布式系统与网络爬虫的结合"></a>分布式系统与网络爬虫的结合</h3><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a5e079af-0364-48df-8280-b76738c85f00/public"
+                      width = "500"
+                >
+
+<h4 id="网络爬虫（Web-Crawler）概念"><a href="#网络爬虫（Web-Crawler）概念" class="headerlink" title="网络爬虫（Web Crawler）概念"></a>网络爬虫（Web Crawler）概念</h4><p>网络爬虫，也称为网络蜘蛛（Web Spider）或网络机器人（Web Bot），是一种自动访问互联网并从网页中提取信息的程序。</p>
+<h4 id="结合分布式系统的优势"><a href="#结合分布式系统的优势" class="headerlink" title="结合分布式系统的优势"></a>结合分布式系统的优势</h4><ol>
+<li><strong>提高爬取效率</strong>: 通过多个节点并行爬取，可以显著提高数据收集的速度。</li>
+<li><strong>抗干扰能力强</strong>: 单点爬虫易被封禁，而分布式爬虫由于请求来自不同IP，更难被识别和封禁。</li>
+<li><strong>数据冗余与备份</strong>: 在多个节点上存储数据，增加数据安全性。</li>
+<li><strong>负载均衡（Load Balancing）</strong>: 自动分配任务到不同节点，避免单个节点过载。</li>
+</ol>
+<h4 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h4><ul>
+<li>搜索引擎（如Google, Bing）使用分布式爬虫来索引网页。</li>
+<li>数据挖掘和市场分析，通过分布式爬虫收集大量数据进行分析。</li>
+<li>社交媒体分析，如通过爬取Twitter或Facebook的公开数据进行情感分析或趋势预测。</li>
+</ul>
+<h4 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h4><ul>
+<li><strong>消息队列（Message Queue）</strong>: 如RabbitMQ、Kafka，用于在不同节点间分配任务。</li>
+<li><strong>分布式存储（Distributed Storage）</strong>: 如Hadoop HDFS，用于存储爬取的数据。</li>
+<li><strong>负载均衡器（Load Balancer）</strong>: 均衡请求分配。</li>
+<li><strong>分布式数据库（Distributed Database）</strong>: 如Cassandra或MongoDB，用于高效存储和检索数据。</li>
+</ul>
+<p>将分布式系统的概念应用于网络爬虫，可以极大地提高爬虫的效率和效能，同时降低被封禁的风险。这种结合在数据密集型应用，如搜索引擎和大数据分析中尤为重要。</p>
+<h2 id="Scrapy-Redis"><a href="#Scrapy-Redis" class="headerlink" title="Scrapy-Redis"></a>Scrapy-Redis</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>Scrapy-Redis是一个基于Redis的Scrapy扩展，用于支持Scrapy项目的分布式爬取和数据处理。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/88d9fd19-9e75-4d38-bbdd-79a53f9db500/public"
+                      width = "500"
+                >
+
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
+<li><strong>分布式爬取</strong>: 通过共享Redis中的请求队列，支持多个Scrapy爬虫实例的协作，适合多域名、大规模网页的爬取。</li>
+<li><strong>分布式数据处理</strong>: 爬取到的数据（Items）被推送至Redis中，允许部署多个数据处理节点。</li>
+<li><strong>兼容性强</strong>: 可以轻松集成至现有的Scrapy项目中，不需大量修改原有代码。</li>
+</ol>
+<h3 id="应用架构"><a href="#应用架构" class="headerlink" title="应用架构"></a>应用架构</h3><ul>
+<li><strong>Scrapy爬虫节点</strong>: 多个Scrapy实例并行工作，共享任务队列。</li>
+<li><strong>Redis服务器</strong>: 作为中心节点，管理请求队列和数据存储。</li>
+<li><strong>数据处理节点</strong>: 可以是Scrapy管道（Pipelines）或其他数据处理应用。</li>
+</ul>
+<h3 id="Redis的安装与使用"><a href="#Redis的安装与使用" class="headerlink" title="Redis的安装与使用"></a>Redis的安装与使用</h3><h4 id="在Ubuntu-Debian上安装Redis"><a href="#在Ubuntu-Debian上安装Redis" class="headerlink" title="在Ubuntu&#x2F;Debian上安装Redis"></a>在Ubuntu&#x2F;Debian上安装Redis</h4><p>在Linux系统上安装Redis的过程可以通过不同的方法进行，包括使用包管理器或Snapcraft。</p>
+<h5 id="先决条件（Prerequisites）"><a href="#先决条件（Prerequisites）" class="headerlink" title="先决条件（Prerequisites）"></a>先决条件（Prerequisites）</h5><p>对于运行极简发行版的系统（例如Docker容器），可能需要首先安装<code>lsb-release</code>、<code>curl</code>和<code>gpg</code>：</p>
+<p><code>sudo apt install lsb-release curl gpg</code></p>
+<h5 id="添加仓库（Repository）"><a href="#添加仓库（Repository）" class="headerlink" title="添加仓库（Repository）"></a>添加仓库（Repository）</h5><p>将Redis的官方APT仓库添加到系统的apt索引中，然后进行更新：</p>
+<ol>
+<li>导入GPG密钥（Import GPG Key）:</li>
+</ol>
+<p><code>curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg</code></p>
+<ol start="2">
+<li>添加Redis存储库（Add Redis Repository）:</li>
+</ol>
+<p><code>echo &quot;deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main&quot; | sudo tee /etc/apt/sources.list.d/redis.list</code></p>
+<ol start="3">
+<li>更新系统包列表（Update Package List）:</li>
+</ol>
+<p><code>sudo apt-get update</code></p>
+<ol start="4">
+<li>安装Redis（Install Redis）:</li>
+</ol>
+<p><code>sudo apt-get install redis</code></p>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <p>如果找不到Redis路径可以先查看redis进程号, 查看命令: <code>ps -ef | grep redis</code></p>
+<p>拿到上面进程号####然后查询<code>ll -l /proc/####/cwd</code>即可</p>
+
+    </div>
+  </div>
+
+<h4 id="Redis-基本信息和操作"><a href="#Redis-基本信息和操作" class="headerlink" title="Redis 基本信息和操作"></a>Redis 基本信息和操作</h4><h5 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h5><p>Redis（Remote Dictionary Server）是一个开源的、支持网络、基于内存且可选持久化的键值对存储数据库。它通常被用作数据库、缓存或消息传递系统。它提供了丰富的数据结构，如字符串（strings）、哈希表（hashes）、列表（lists）、集合（sets）、有序集合（sorted sets）以及位图（bitmaps）等。</p>
+<h5 id="配置信息"><a href="#配置信息" class="headerlink" title="配置信息"></a>配置信息</h5><ul>
+<li><strong>默认端口</strong>: 6379。</li>
+<li><strong>数据库数量</strong>: 默认支持16个，编号从0到15。</li>
+</ul>
+<h5 id="redis命令"><a href="#redis命令" class="headerlink" title="redis命令"></a>redis命令</h5><ul>
+<li>redis执行了make install后，redis的课执行文件都会自动复制到 &#x2F;usr&#x2F;local&#x2F;bin 目录<ul>
+<li><code>redis-server</code>    redis服务器</li>
+<li><code>redis-cli</code>    redis命令行客户端</li>
+<li><code>redis-benchmark</code>     redis性能测试工具</li>
+<li><code>redis-check-aof</code>     aof文件修复工具</li>
+<li><code>redis-check-dump</code>   rdb文件检查工具</li>
+<li><code>redis-cli shutdown</code>  停止 redis </li>
+<li><code>redis-server</code>   启动 redis-server</li>
+<li><code>redis-server /etc/redis/redis.conf</code>    带配置文件启动</li>
+</ul>
+</li>
+</ul>
+<h5 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h5><ol>
+<li><strong>字符串（String）</strong>：这是 Redis 最基本的数据类型，它可以存储任何形式的字符串，包括文本、数字甚至二进制数据。字符串类型常用于缓存用户信息、会话数据等。</li>
+<li><strong>哈希（Hash）</strong>：哈希是键值对的集合，类似于编程语言中的字典或哈希表。它适用于存储对象，每个对象可以包含多对字段和值。例如，可以用哈希存储用户的各种属性，如姓名、年龄、邮箱等。</li>
+<li><strong>列表（List）</strong>：列表是一系列有序的字符串，类似于数组。Redis 列表是双向链表，因此在列表的头部或尾部添加或删除元素非常快速。它适用于实现队列、栈或其他有序集合。</li>
+<li><strong>集合（Set）</strong>：集合是一组不重复的字符串元素。由于集合中的元素是无序的，可以快速执行添加、删除和检查元素是否存在等操作。集合适用于存储无序的唯一元素，例如标签、好友关系等。</li>
+<li><strong>有序集合（Sorted Set）</strong>：有序集合和普通集合类似，但每个元素都会关联一个浮点数分数，这使得元素能按分数有序排列。有序集合适用于需要按某种顺序访问元素的场景，如排行榜。</li>
+<li><strong>位图（Bitmap）</strong>：位图本质上是字符串类型的一种特殊用法，它允许对字符串的位进行操作。位图适用于处理大量的布尔值，如用户在线状态、特征标志等。</li>
+<li><strong>超级日志（HyperLogLog）</strong>：超级日志是一种用于高效统计唯一元素个数（如独立访客数）的概率数据结构。它可以使用极小的内存空间来处理大量数据。</li>
+</ol>
+<h5 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h5><h6 id="字符串（String）操作"><a href="#字符串（String）操作" class="headerlink" title="字符串（String）操作"></a>字符串（String）操作</h6><p>Redis 的字符串（String）是最基本的数据类型之一，它支持多种操作，涵盖了对单个或多个字符串值的处理。</p>
+<ul>
+<li><strong>设置值</strong>:<ul>
+<li><code>SET key value</code>: 设置指定键的值。</li>
+<li><code>SETEX key seconds value</code>: 设置键的值，并设置过期时间（以秒为单位）。</li>
+<li><code>SETNX key value</code>: 仅当键不存在时，设置键的值。</li>
+<li><code>MSET key1 value1 [key2 value2 ...]</code>: 同时设置一个或多个键值对。</li>
+</ul>
+</li>
+<li><strong>获取值</strong>:<ul>
+<li>GET key&#96;: 获取指定键的值。</li>
+<li><code>MGET key1 [key2 ...]</code>: 获取一个或多个键的值。</li>
+<li><code>GETSET key value</code>: 设置指定键的值，并返回键的旧值。</li>
+</ul>
+</li>
+<li><strong>操作数值</strong>:<ul>
+<li><code>INCR key</code>: 将键的整数值增加一。</li>
+<li><code>DECR key</code>: 将键的整数值减少一。</li>
+<li><code>INCRBY key increment</code>: 将键的整数值增加指定的量。</li>
+<li><code>DECRBY key decrement</code>: 将键的整数值减少指定的量。</li>
+<li><code>INCRBYFLOAT key increment</code>: 将键的浮点数值增加指定的量。</li>
+</ul>
+</li>
+<li><strong>处理子字符串</strong>:<ul>
+<li><code>GETRANGE key start end</code>: 获取键值的子串。</li>
+<li><code>SETRANGE key offset value</code>: 从指定的偏移量开始替换键的值。</li>
+</ul>
+</li>
+<li><strong>键值长度和追加</strong>:<ul>
+<li><code>STRLEN key</code>: 获取指定键值的长度。</li>
+<li><code>APPEND key value</code>: 将值追加到指定键的现有值的末尾。</li>
+</ul>
+</li>
+<li><strong>位操作</strong>:<ul>
+<li><code>SETBIT key offset value</code>: 对键值的二进制表示的指定偏移量的位进行设置。</li>
+<li><code>GETBIT key offset</code>: 获取键值的二进制表示中指定偏移量的位值。</li>
+<li><code>BITCOUNT key [start end]</code>: 计算字符串被设置为1的位数。</li>
+<li><code>BITOP operation destkey key1 [key2 ...]</code>: 对一个或多个键执行位操作，并将结果存储在目标键中。</li>
+</ul>
+</li>
+<li><strong>过期和持久化</strong>:<ul>
+<li><code>EXPIRE key seconds</code>: 设置键的过期时间（秒）。</li>
+<li><code>PERSIST key</code>: 移除键的过期时间，使其成为持久的键。</li>
+</ul>
+</li>
+</ul>
+<h6 id="哈希表（Hash）操作"><a href="#哈希表（Hash）操作" class="headerlink" title="哈希表（Hash）操作"></a>哈希表（Hash）操作</h6><p>Redis 的哈希（Hash）是一种键值对集合的数据类型，非常适合用来存储对象。哈希表中的每个字段都是唯一的，并且它们映射到特定的值。</p>
+<ul>
+<li><strong>添加和设置字段</strong>:<ul>
+<li><code>HSET key field value</code>: 设置哈希表字段的值。</li>
+<li><code>HMSET key field1 value1 [field2 value2 ...]</code>: 同时设置哈希表的多个字段。</li>
+<li><code>HSETNX key field value</code>: 仅当字段不存在时，设置哈希表字段的值。</li>
+</ul>
+</li>
+<li><strong>获取字段值</strong>:<ul>
+<li><code>HGET key field</code>: 获取存储在哈希表中的字段的值。</li>
+<li><code>HMGET key field1 [field2 ...]</code>: 获取所有给定字段的值。</li>
+<li><code>HGETALL key</code>: 获取在哈希表中指定键的所有字段和值。</li>
+<li><code>HVALS key</code>: 获取哈希表中所有字段的值。</li>
+</ul>
+</li>
+<li><strong>删除字段</strong>:<ul>
+<li><code>HDEL key field1 [field2 ...]</code>: 删除一个或多个哈希表字段。</li>
+</ul>
+</li>
+<li><strong>字段计数</strong>:<ul>
+<li><code>HLEN key</code>: 获取哈希表中字段的数量。</li>
+</ul>
+</li>
+<li><strong>检查字段存在</strong>:<ul>
+<li><code>HEXISTS key field</code>: 查看哈希表的指定字段是否存在。</li>
+</ul>
+</li>
+<li><strong>增减数值字段</strong>:<ul>
+<li><code>HINCRBY key field increment</code>: 为哈希表 key 中的指定字段的整数值加上增量 increment。</li>
+<li><code>HINCRBYFLOAT key field increment</code>: 为哈希表 key 中的指定字段的浮点数值加上增量 increment。</li>
+</ul>
+</li>
+<li><strong>获取所有字段名</strong>:<ul>
+<li><code>HKEYS key</code>: 获取哈希表中的所有字段。</li>
+</ul>
+</li>
+<li><strong>扫描哈希表</strong>:<ul>
+<li><code>HSCAN key cursor [MATCH pattern] [COUNT count]</code>: 迭代哈希表中的键值对。</li>
+</ul>
+</li>
+<li><strong>获取字段值的长度</strong>:<ul>
+<li><code>HSTRLEN key field</code>: 获取存储在哈希表中的字段值的长度。</li>
+</ul>
+</li>
+</ul>
+<h6 id="列表（List）操作"><a href="#列表（List）操作" class="headerlink" title="列表（List）操作"></a>列表（List）操作</h6><p>Redis 的列表（List）是一种线性数据结构，主要用于存储有序的字符串元素集合。Redis 列表是基于双向链表实现的，这意味着即使在很长的列表上，向列表的头部或尾部添加和移除元素仍然非常快速。</p>
+<ul>
+<li><strong>添加元素</strong>:<ul>
+<li><code>LPUSH key value1 [value2 ...]</code>: 将一个或多个值插入到列表头部。</li>
+<li><code>RPUSH key value1 [value2 ...]</code>: 将一个或多个值插入到列表尾部。</li>
+</ul>
+</li>
+<li><strong>移除元素</strong>:<ul>
+<li><code>LPOP key</code>: 移除并返回列表头部的元素。</li>
+<li><code>RPOP key</code>: 移除并返回列表尾部的元素。</li>
+<li><code>LREM key count value</code>: 根据参数 count 的值，移除列表中与参数 value 相等的元素。</li>
+</ul>
+</li>
+<li><strong>列表长度</strong>:<ul>
+<li><code>LLEN key</code>: 获取列表长度。</li>
+</ul>
+</li>
+<li><strong>获取列表元素</strong>:<ul>
+<li><code>LRANGE key start stop</code>: 获取列表指定范围内的元素。</li>
+<li><code>LINDEX key index</code>: 获取列表中指定索引的元素。</li>
+</ul>
+</li>
+<li><strong>修改列表元素</strong>:<ul>
+<li><code>LSET key index value</code>: 将列表中指定索引的元素的值设置为另一个值。</li>
+</ul>
+</li>
+<li><strong>插入元素</strong>:<ul>
+<li><code>LINSERT key BEFORE|AFTER pivot value</code>: 在列表的元素前或后插入元素。</li>
+</ul>
+</li>
+<li><strong>截取列表</strong>:<ul>
+<li><code>LTRIM key start stop</code>: 对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。</li>
+</ul>
+</li>
+<li><strong>阻塞操作</strong>:<ul>
+<li><code>BLPOP key1 [key2 ...] timeout</code>: 移除并获取列表的第一个元素，如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。</li>
+<li><code>BRPOP key1 [key2 ...] timeout</code>: 移除并获取列表的最后一个元素，如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。</li>
+<li><code>BRPOPLPUSH source destination timeout</code>: 从列表中弹出一个值，将它推入另一个列表并返回它；如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。</li>
+</ul>
+</li>
+<li><strong>转移元素</strong>:<ul>
+<li><code>RPOPLPUSH source destination</code>: 移除列表的最后一个元素，将该元素添加到另一个列表并返回。</li>
+</ul>
+</li>
+</ul>
+<h6 id="集合（Set）操作"><a href="#集合（Set）操作" class="headerlink" title="集合（Set）操作"></a>集合（Set）操作</h6><p>Redis 的集合（Set）是一种存储唯一元素且无序的字符串集合。集合非常适合用于存储不重复的数据，如标签、好友关系等。</p>
+<ul>
+<li><strong>添加元素</strong>:<ul>
+<li><code>SADD key member1 [member2 ...]</code>: 向集合添加一个或多个成员。</li>
+</ul>
+</li>
+<li><strong>移除元素</strong>:<ul>
+<li><code>SREM key member1 [member2 ...]</code>: 移除集合中一个或多个成员。</li>
+</ul>
+</li>
+<li><strong>集合大小</strong>:<ul>
+<li><code>SCARD key</code>: 获取集合的成员数。</li>
+</ul>
+</li>
+<li><strong>检查成员存在</strong>:<ul>
+<li><code>SISMEMBER key member</code>: 判断成员元素是否是集合的成员。</li>
+</ul>
+</li>
+<li><strong>获取所有成员</strong>:<ul>
+<li><code>SMEMBERS key</code>: 获取集合中的所有成员。</li>
+</ul>
+</li>
+<li><strong>随机元素</strong>:<ul>
+<li><code>SRANDMEMBER key [count]</code>: 返回集合中一个或多个随机数。</li>
+<li><code>SPOP key [count]</code>: 移除并返回集合中的一个随机元素。</li>
+</ul>
+</li>
+<li><strong>集合运算</strong>:<ul>
+<li><code>SUNION key1 [key2 ...]</code>: 返回所有给定集合的并集。</li>
+<li><code>SINTER key1 [key2 ...]</code>: 返回所有给定集合的交集。</li>
+<li><code>SDIFF key1 [key2 ...]</code>: 返回第一个集合与其他集合之间的差集。</li>
+</ul>
+</li>
+<li><strong>集合运算并存储结果</strong>:<ul>
+<li><code>SUNIONSTORE destination key1 [key2 ...]</code>: 计算所有给定集合的并集，并存储在 destination 集合中。</li>
+<li><code>SINTERSTORE destination key1 [key2 ...]</code>: 计算所有给定集合的交集，并存储在 destination 集合中。</li>
+<li><code>SDIFFSTORE destination key1 [key2 ...]</code>: 计算第一个集合与其他集合的差集，并存储在 destination 集合中。</li>
+</ul>
+</li>
+<li><strong>集合的遍历</strong>:<ul>
+<li><code>SSCAN key cursor [MATCH pattern] [COUNT count]</code>: 迭代集合中的元素。</li>
+</ul>
+</li>
+<li><strong>移动成员到另一个集合</strong>:<ul>
+<li><code>SMOVE source destination member</code>: 将成员从一个集合移动到另一个集合。</li>
+</ul>
+</li>
+</ul>
+<h6 id="有序集合（Sorted-Set）操作"><a href="#有序集合（Sorted-Set）操作" class="headerlink" title="有序集合（Sorted Set）操作"></a>有序集合（Sorted Set）操作</h6><p>Redis 的有序集合（Sorted Set）是一种集合数据类型，它不仅存储成员（Member），还为每个成员关联了一个浮点数分数（Score）。这使得成员能够按照分数的大小排序，从而支持快速的插入、删除、查找和排名操作。</p>
+<ul>
+<li><strong>添加和更新成员</strong>:<ul>
+<li><code>ZADD key score1 member1 [score2 member2 ...]</code>: 向有序集合添加一个或多个成员，或更新已存在成员的分数。</li>
+</ul>
+</li>
+<li><strong>移除成员</strong>:<ul>
+<li><code>ZREM key member1 [member2 ...]</code>: 移除有序集合中的一个或多个成员。</li>
+</ul>
+</li>
+<li><strong>获取成员数量</strong>:<ul>
+<li><code>ZCARD key</code>: 获取有序集合的成员数量。</li>
+</ul>
+</li>
+<li><strong>获取成员分数</strong>:<ul>
+<li><code>ZSCORE key member</code>: 获取有序集合中成员的分数。</li>
+</ul>
+</li>
+<li><strong>增加成员分数</strong>:<ul>
+<li><code>ZINCRBY key increment member</code>: 增加有序集合中成员的分数。</li>
+</ul>
+</li>
+<li><strong>范围查询</strong>:<ul>
+<li><code>ZRANGE key start stop [WITHSCORES]</code>: 返回有序集合中指定区间内的成员。</li>
+<li><code>ZREVRANGE key start stop [WITHSCORES]</code>: 返回有序集合中指定区间内的成员，按分数从高到低排序。</li>
+<li><code>ZRANGEBYSCORE key min max [WITHSCORES]</code>: 根据分数值获取有序集合中的成员。</li>
+</ul>
+</li>
+<li><strong>移除指定排名或分数范围内的成员</strong>:<ul>
+<li><code>ZREMRANGEBYRANK key start stop</code>: 移除有序集合中指定排名（index）区间内的所有成员。</li>
+<li><code>ZREMRANGEBYSCORE key min max</code>: 移除有序集合中分数在给定区间内的成员。</li>
+</ul>
+</li>
+<li><strong>获取成员排名</strong>:<ul>
+<li><code>ZRANK key member</code>: 获取有序集合中成员的排名（按分数值递增）。</li>
+<li><code>ZREVRANK key member</code>: 获取有序集合中成员的排名（按分数值递减）。</li>
+</ul>
+</li>
+<li><strong>有序集合间的运算</strong>:<ul>
+<li><code>ZUNIONSTORE destination numkeys key1 [key2 ...] [WEIGHTS weight1 [weight2 ...]]</code>: 计算多个有序集合的并集，并存储在新的有序集合中。</li>
+<li><code>ZINTERSTORE destination numkeys key1 [key2 ...] [WEIGHTS weight1 [weight2 ...]]</code>: 计算多个有序集合的交集，并存储在新的有序集合中。</li>
+</ul>
+</li>
+<li><strong>遍历有序集合</strong>:<ul>
+<li><code>ZSCAN key cursor [MATCH pattern] [COUNT count]</code>: 迭代有序集合中的元素。</li>
+</ul>
+</li>
+</ul>
+<h6 id="键（Key）管理"><a href="#键（Key）管理" class="headerlink" title="键（Key）管理"></a>键（Key）管理</h6><p>Redis 提供了一系列命令用于管理和操作键（Key），这些命令允许你对存储在 Redis 中的数据进行各种操作，包括但不限于查询、移动、重命名和设置键的生命周期。</p>
+<ul>
+<li><strong>键存在性检查</strong>:<ul>
+<li><code>EXISTS key1 [key2 ...]</code>: 检查一个或多个键是否存在。</li>
+</ul>
+</li>
+<li><strong>删除键</strong>:<ul>
+<li><code>DEL key1 [key2 ...]</code>: 删除一个或多个键。</li>
+</ul>
+</li>
+<li><strong>设置键的过期时间</strong>:<ul>
+<li><code>EXPIRE key seconds</code>: 设置键的过期时间（秒）。</li>
+<li><code>PEXPIRE key milliseconds</code>: 设置键的过期时间（毫秒）。</li>
+<li><code>EXPIREAT key timestamp</code>: 设置键的过期时间为 UNIX 时间戳（秒）。</li>
+<li><code>PEXPIREAT key milliseconds-timestamp</code>: 设置键的过期时间为 UNIX 时间戳（毫秒）。</li>
+</ul>
+</li>
+<li><strong>查询键的剩余生存时间</strong>:<ul>
+<li><code>TTL key</code>: 查询键的剩余生存时间（秒）。</li>
+<li><code>PTTL key</code>: 查询键的剩余生存时间（毫秒）。</li>
+</ul>
+</li>
+<li><strong>移除键的过期时间</strong>:<ul>
+<li><code>PERSIST key</code>: 移除键的过期时间。</li>
+</ul>
+</li>
+<li><strong>查找符合给定模式的键</strong>:<ul>
+<li><code>KEYS pattern</code>: 查找所有符合给定模式的键。</li>
+<li><code>SCAN cursor [MATCH pattern] [COUNT count]</code>: 迭代数据库中的数据库键。</li>
+</ul>
+</li>
+<li><strong>重命名键</strong>:<ul>
+<li><code>RENAME key newkey</code>: 修改键名。</li>
+<li><code>RENAMENX key newkey</code>: 仅当 newkey 不存在时，将 key 改名为 newkey。</li>
+</ul>
+</li>
+<li><strong>随机返回一个键</strong>:<ul>
+<li><code>RANDOMKEY</code>: 从数据库中随机返回一个键。</li>
+</ul>
+</li>
+<li><strong>键类型查询</strong>:<ul>
+<li><code>TYPE key</code>: 返回键所储存的值的类型。</li>
+</ul>
+</li>
+<li><strong>移动键到另一个数据库</strong>:<ul>
+<li><code>MOVE key db</code>: 将当前数据库的键移动到指定的数据库 db 当中。</li>
+</ul>
+</li>
+<li><strong>键的字节串长度查询</strong>:<ul>
+<li><code>STRLEN key</code>: 获取指定键所储存的字符串值的长度。</li>
+</ul>
+</li>
+<li><strong>原子操作</strong>:<ul>
+<li><code>DUMP key</code>: 返回存储在指定键的值的序列化版本。</li>
+<li><code>RESTORE key ttl serialized-value [REPLACE]</code>: 通过序列化值创建一个键，ttl 为存活时间，REPLACE 表示是否替换已存在的键。</li>
+</ul>
+</li>
+</ul>
+<h6 id="事务（Transaction）"><a href="#事务（Transaction）" class="headerlink" title="事务（Transaction）"></a>事务（Transaction）</h6><p>在 Redis 中，事务提供了一种将多个命令打包然后一次性、按顺序执行的机制。它通过一系列命令来实现事务的开始、执行和管理。</p>
+<ul>
+<li><strong>开始事务</strong>:<ul>
+<li><code>MULTI</code>: 标记一个事务块的开始。后续的命令将会被队列化，而不是立即执行。</li>
+</ul>
+</li>
+<li><strong>命令入队</strong>:<ul>
+<li>在 <code>MULTI</code> 命令之后输入的命令不会立即被执行，而是会被放入一个队列中。当执行 <code>EXEC</code> 命令时，队列中的所有命令会被连续执行。</li>
+</ul>
+</li>
+<li><strong>执行事务</strong>:<ul>
+<li><code>EXEC</code>: 执行所有在 <code>MULTI</code> 之后入队的命令。如果在执行 <code>EXEC</code> 之前连接被断开，那么事务中的所有命令都不会被执行。</li>
+</ul>
+</li>
+<li><strong>放弃事务</strong>:<ul>
+<li><code>DISCARD</code>: 取消事务，放弃执行事务块内的所有命令。</li>
+</ul>
+</li>
+<li><strong>监视键</strong>:<ul>
+<li><code>WATCH key1 [key2 ...]</code>: 在执行事务之前监视一个或多个键。如果在调用 <code>EXEC</code> 命令之前这些键被其他命令改变了，那么事务将被放弃。</li>
+</ul>
+</li>
+<li><strong>取消监视键</strong>:<ul>
+<li><code>UNWATCH</code>: 取消 WATCH 命令对所有键的监视。</li>
+</ul>
+</li>
+<li><strong>Redis 事务的特点：</strong><ul>
+<li><strong>原子性</strong>: Redis 的事务保证了事务内的命令要么全部执行，要么全部不执行。</li>
+<li><strong>没有隔离级别</strong>: Redis 不支持传统数据库意义上的事务隔离级别。如果事务执行期间，有其他客户端修改了被 <code>WATCH</code> 命令监视的键，那么该事务将被取消。</li>
+<li><strong>不支持回滚</strong>: 在 Redis 中，事务没有回滚的概念。如果事务中某个操作失败，其他操作仍会继续执行。</li>
+</ul>
+</li>
+</ul>
+<h6 id="发布-订阅"><a href="#发布-订阅" class="headerlink" title="发布&#x2F;订阅"></a>发布&#x2F;订阅</h6><p>Redis 的发布&#x2F;订阅（pub&#x2F;sub）是一种消息通信模式，它使得消息的发送者（发布者）不需要知道消息的接收者（订阅者），反之亦然。这种模式非常适合构建松耦合的应用程序和服务。</p>
+<ul>
+<li><strong>发布消息</strong>:<ul>
+<li><code>PUBLISH channel message</code>: 将消息发送到指定的频道。</li>
+</ul>
+</li>
+<li><strong>订阅频道</strong>:<ul>
+<li><code>SUBSCRIBE channel1 [channel2 ...]</code>: 订阅一个或多个频道。订阅后，客户端将接收这些频道上发布的所有消息。</li>
+</ul>
+</li>
+<li><strong>退订频道</strong>:<ul>
+<li><code>UNSUBSCRIBE [channel1 [channel2 ...]]</code>: 退订一个或多个频道。如果没有提供频道名，客户端将退订所有频道。</li>
+</ul>
+</li>
+<li><strong>按模式订阅频道</strong>:<ul>
+<li><code>PSUBSCRIBE pattern1 [pattern2 ...]</code>: 根据给定的模式订阅频道。模式可以包含通配符。</li>
+</ul>
+</li>
+<li><strong>按模式退订频道</strong>:<ul>
+<li><code>PUNSUBSCRIBE [pattern1 [pattern2 ...]]</code>: 根据给定的模式退订频道。如果没有提供模式，客户端将退订所有模式。</li>
+</ul>
+</li>
+<li><strong>列出当前活跃的频道</strong>:<ul>
+<li><code>PUBSUB CHANNELS [pattern]</code>: 列出当前的活跃频道。可选的模式参数可以用来过滤频道名。</li>
+</ul>
+</li>
+<li><strong>列出特定频道的订阅者数量</strong>:<ul>
+<li><code>PUBSUB NUMSUB [channel1 [channel2 ...]]</code>: 返回一个或多个频道的订阅者数量。</li>
+</ul>
+</li>
+<li><strong>列出按模式订阅的数量</strong>:<ul>
+<li><code>PUBSUB NUMPAT</code>: 返回按模式订阅的数量。</li>
+</ul>
+</li>
+</ul>
+<h6 id="地理位置"><a href="#地理位置" class="headerlink" title="地理位置"></a>地理位置</h6><p>Redis 从 3.2 版本开始引入了地理空间支持，允许使用一组命令来存储、查询和操作地理位置信息。这些功能基于 Redis 的有序集合实现，每个元素都是一个带有经纬度的地理空间信息。</p>
+<ul>
+<li><strong>添加地理位置信息</strong>:<ul>
+<li><code>GEOADD key longitude latitude member [longitude latitude member ...]</code>: 将指定的地理空间位置（经度、纬度、成员）添加到指定的 key 中。</li>
+</ul>
+</li>
+<li><strong>地理位置查询</strong>:<ul>
+<li><code>GEOPOS key member [member ...]</code>: 返回一个或多个成员位置的经纬度。</li>
+</ul>
+</li>
+<li><strong>计算两地距离</strong>:<ul>
+<li><code>GEODIST key member1 member2 [unit]</code>: 计算两个成员之间的距离。单位可以是 m（米）、km（千米）、mi（英里）或 ft（英尺）。</li>
+</ul>
+</li>
+<li><strong>按半径查询成员</strong>:<ul>
+<li><code>GEORADIUS key longitude latitude radius m|km|mi|ft [WITHCOORD] [WITHDIST] [WITHHASH] [COUNT count] [ASC|DESC] [STORE key] [STOREDIST key]</code>: 以指定的经纬度为中心，查找在指定半径内的元素。可选参数提供了多种查询功能，例如排序、限制返回数量等。</li>
+<li><code>GEORADIUSBYMEMBER key member radius m|km|mi|ft [WITHCOORD] [WITHDIST] [WITHHASH] [COUNT count] [ASC|DESC] [STORE key] [STOREDIST key]</code>: 以指定成员为中心，查找在指定半径内的元素。</li>
+</ul>
+</li>
+<li><strong>地理空间索引的哈希值</strong>:<ul>
+<li><code>GEOHASH key member [member ...]</code>: 返回一个或多个位置对象的 Geohash 字符串。</li>
+</ul>
+</li>
+</ul>
+<h6 id="基于概率的数据结构"><a href="#基于概率的数据结构" class="headerlink" title="基于概率的数据结构"></a>基于概率的数据结构</h6><p>Redis 支持几种基于概率的数据结构，允许在内存效率和准确性之间取得平衡。这些数据结构特别适用于处理大规模数据集，其中完全准确的结果要么不可行，要么成本过高。</p>
+<ul>
+<li><p><strong>HyperLogLog</strong></p>
+<p>用于高效的基数估计（即估计唯一元素的数量）。</p>
+<ul>
+<li><code>PFADD key element [element ...]</code>: 向 HyperLogLog 中添加元素。</li>
+<li><code>PFCOUNT key [key ...]</code>: 返回 HyperLogLog 的近似基数估计值。</li>
+<li><code>PFMERGE destkey sourcekey [sourcekey ...]</code>: 合并多个 HyperLogLog 到一个新的 HyperLogLog 中。</li>
+</ul>
+</li>
+<li><p><strong>布隆过滤器</strong>（通过 RedisBloom 模块）</p>
+<p>布隆过滤器是一种空间效率很高的数据结构，用于测试一个元素是否是集合的一部分。它可能返回假阳性，但不会返回假阴性。</p>
+<ul>
+<li><p><code>BF.ADD key element</code>: 将元素添加到布隆过滤器。</p>
+</li>
+<li><p><code>BF.MADD key element [element ...]</code>: 向布隆过滤器中添加多个元素。</p>
+</li>
+<li><p><code>BF.EXISTS key element</code>: 检查元素是否可能存在于布隆过滤器中。</p>
+</li>
+<li><p><code>BF.MEXISTS key element [element ...]</code>: 检查多个元素是否可能存在于布隆过滤器中。</p>
+</li>
+</ul>
+</li>
+<li><p>计数最小Sketch（通过 RedisBloom 模块）</p>
+<p>计数最小 Sketch 是一种用于频率估计的数据结构，它可以估计一个元素在数据流中出现的次数。</p>
+<ul>
+<li><code>CMS.INITBYDIM key width depth</code>: 通过指定宽度和深度初始化计数最小 Sketch。</li>
+<li><code>CMS.INITBYPROB key error probability</code>: 通过指定错误率和置信度初始化计数最小 Sketch。</li>
+<li><code>CMS.INCRBY key item count [item count ...]</code>: 增加一个或多个元素的计数值。</li>
+<li><code>CMS.QUERY key item [item ...]</code>: 查询一个或多个元素的计数值。</li>
+</ul>
+</li>
+<li><p>Top-K 结构（通过 RedisBloom 模块）</p>
+<p>Top-K 结构用于跟踪数据流中最常见的元素。</p>
+<ul>
+<li><code>TOPK.RESERVE key topk width depth decay</code>: 创建一个 Top-K 结构。</li>
+<li><code>TOPK.ADD key item [item ...]</code>: 向 Top-K 结构中添加一个或多个元素。</li>
+<li><code>TOPK.QUERY key item [item ...]</code>: 查询一个或多个元素是否在 Top-K 结构中。</li>
+<li><code>TOPK.LIST key</code>: 列出 Top-K 结构中的元素。</li>
+</ul>
+</li>
+</ul>
+<h6 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h6><ul>
+<li><code>PING</code>：检查服务是否运行。</li>
+<li><code>INFO</code>：获取服务器的信息和统计。</li>
+</ul>
+<h5 id="数据持久化"><a href="#数据持久化" class="headerlink" title="数据持久化"></a>数据持久化</h5><h6 id="RDB（Redis-Database）"><a href="#RDB（Redis-Database）" class="headerlink" title="RDB（Redis Database）"></a>RDB（Redis Database）</h6><p>RDB是Redis的一种持久化机制，它会在指定的时间间隔内生成数据集的时间点快照。</p>
+<ul>
+<li><strong>触发机制</strong>: 可以通过<code>SAVE</code>命令手动触发，或者配置在<code>redis.conf</code>文件中的规则自动触发。</li>
+<li><strong>优点</strong>: 提供了一个非常紧凑的数据文件，适合灾难恢复，快照频率可配置，可以最大化性能和数据持久性之间的权衡。</li>
+<li><strong>缺点</strong>: 在生成快照时可能会消耗大量的IO和CPU资源，如果Redis在快照之间崩溃，那么自上次快照以来的所有数据将丢失。</li>
+</ul>
+<h6 id="AOF（Append-Only-File）"><a href="#AOF（Append-Only-File）" class="headerlink" title="AOF（Append Only File）"></a>AOF（Append Only File）</h6><p>AOF是另一种Redis持久化机制，记录了执行过的所有写操作命令，并在服务器启动时重新执行这些命令来重建数据集。</p>
+<ul>
+<li><strong>触发机制</strong>: 每个写操作命令都会追加到AOF文件中。</li>
+<li><strong>优点</strong>: 提供了更好的持久性和安全性，可以配置不同的同步方式，如每秒同步或每写操作同步。</li>
+<li><strong>缺点</strong>: AOF文件通常比RDB文件大，且恢复速度可能慢于RDB方式。</li>
+</ul>
+<h5 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h5><ul>
+<li><strong>会话缓存</strong>: 存储用户会话信息，如登录状态或用户的临时偏好设置，以便快速读取。</li>
+<li><strong>队列</strong>: 利用Redis的列表数据结构实现消息队列，支持多种队列模式，如FIFO（先进先出），LIFO（后进先出）。</li>
+<li><strong>排行榜</strong>: 使用Redis的有序集合数据类型，它可以保持元素插入的顺序，适合实时排行榜系统。</li>
+<li><strong>计数器</strong>: 利用Redis的原子操作如<code>INCR</code>实现计数器，常用于统计点击数、用户在线数等。</li>
+<li><strong>发布&#x2F;订阅</strong>: Redis提供了PUB&#x2F;SUB模式，允许客户端订阅频道并接收发布到这些频道的消息，适用于实时消息系统如聊天室。</li>
+</ul>
+<h2 id="Redis如何开启远程服务"><a href="#Redis如何开启远程服务" class="headerlink" title="Redis如何开启远程服务"></a>Redis如何开启远程服务</h2><p>Redis开启远程服务的操作方法：</p>
+<ol>
+<li>打开redis的配置文件<code>redis.conf</code></li>
+<li>将<code>bind 127.0.0.1</code>注释掉</li>
+<li>将<code>protected-mode yes</code>改成<code>protected-mode no</code></li>
+<li>添加<code>daemonize no</code></li>
+<li>重启redis服务</li>
+</ol>
+<h2 id="Scrapy-Redis-中存储的数据类型及其用途"><a href="#Scrapy-Redis-中存储的数据类型及其用途" class="headerlink" title="Scrapy-Redis 中存储的数据类型及其用途"></a>Scrapy-Redis 中存储的数据类型及其用途</h2><ul>
+<li><p><strong>List类型 (<code>spidername:items</code>)</strong></p>
+<ul>
+<li>用途：存储爬虫获取到的数据项，数据项是JSON格式的字符串。</li>
+<li>例如：<code>db250:items</code> 存储豆瓣电影 Top 250 的爬取数据。</li>
+</ul>
+</li>
+<li><p><strong>Set类型 (<code>spidername:dupefilter</code>)</strong></p>
+<ul>
+<li>用途：用于存储已访问URL的哈希值，以实现去重。</li>
+<li>特点：存储的是URL的40字符哈希字符串。</li>
+</ul>
+</li>
+<li><p><strong>List类型 (<code>spidername:start_urls</code>)</strong></p>
+<ul>
+<li>用途：存储启动爬虫时的初始URL。</li>
+<li>例如：<code>db250:start_urls</code> 可以存储 <code>https://www.movie.douban.com/top250</code> 作为起始页面。</li>
+</ul>
+</li>
+<li><p><strong>ZSet类型 (<code>spidername:requests</code>)</strong></p>
+<ul>
+<li>用途：存储待调度的请求，内容是序列化的请求对象。</li>
+<li>特点：使用ZSet可以对请求进行优先级排序。</li>
+</ul>
+</li>
+</ul>
+<h2 id="常用设置及其说明"><a href="#常用设置及其说明" class="headerlink" title="常用设置及其说明"></a>常用设置及其说明</h2><ol>
+<li><strong>调度器设置</strong><ul>
+<li><code>SCHEDULER = &quot;scrapy_redis.scheduler.Scheduler&quot;</code></li>
+<li>功能：启用Scrapy-Redis的调度器，将请求存储到Redis中。</li>
+</ul>
+</li>
+<li><strong>去重过滤器设置</strong><ul>
+<li><code>DUPEFILTER_CLASS = &quot;scrapy_redis.dupefilter.RFPDupeFilter&quot;</code></li>
+<li>功能：确保所有的Spider通过Redis共享相同的重复过滤器。</li>
+</ul>
+</li>
+<li><strong>管道设置</strong><ul>
+<li><code>ITEM_PIPELINES = &#123;&#39;scrapy_redis.pipelines.RedisPipeline&#39;: 300,&#125;</code></li>
+<li>功能：启用Redis管道，将爬取的项存储到Redis中。</li>
+</ul>
+</li>
+<li><strong>Redis连接设置</strong><ul>
+<li><code>REDIS_HOST = &#39;localhost&#39;</code></li>
+<li><code>REDIS_PORT = 6379</code></li>
+<li>功能：指定连接到Redis服务器的主机和端口。</li>
+</ul>
+</li>
+<li><strong>调度器持久化设置</strong><ul>
+<li><code># SCHEDULER_PERSIST = True</code></li>
+<li>功能：设置为True时，不清理Redis队列，允许爬虫暂停和恢复，数据不会丢失。</li>
+<li>特点：这是一个可选设置，根据需求选择是否启用。</li>
+</ul>
+</li>
+</ol>
+<h3 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h3><ul>
+<li><strong>扩展性</strong>：Scrapy-Redis的设计使得Scrapy爬虫具有更好的扩展性，特别适用于大规模分布式爬取。</li>
+<li><strong>负载均衡</strong>：通过Redis队列，多个爬虫实例可以共享URL请求，实现负载均衡。</li>
+<li><strong>数据共享</strong>：所有的Spider可以通过Redis数据库共享去重信息和待抓取的URL，从而协同工作。</li>
+</ul>
+<h2 id="分布式项目演示"><a href="#分布式项目演示" class="headerlink" title="分布式项目演示"></a>分布式项目演示</h2><h3 id="演示逻辑"><a href="#演示逻辑" class="headerlink" title="演示逻辑"></a>演示逻辑</h3><ol>
+<li>将代码设置成可以进行分布式爬取代码</li>
+<li>将分布式代码copy一份,一共两份</li>
+<li>两份代码,两处内容存放的位置,两处爬取的内容之和是整体内容</li>
+</ol>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3d744628-c6fd-402a-f2b1-1ffddfabf700/public"
+                      width = "500"
+                >
+
+
+
+<h5 id="项目配置及项目代码"><a href="#项目配置及项目代码" class="headerlink" title="项目配置及项目代码"></a>项目配置及项目代码</h5><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c93190e8-9dcf-4716-b691-64e7b98ffe00/public"
+                      width = "500"
+                >
+
+<p><strong>spider作了简单改动,更重要的是在settings里作一些设置</strong></p>
+<h6 id="Spider文件"><a href="#Spider文件" class="headerlink" title="Spider文件"></a>Spider文件</h6><p>代码作了简单改动</p>
+<ol>
+<li><p>导出RedisSpider</p>
+</li>
+<li><p>类继承 RedisSpider</p>
+</li>
+<li><p>注销start_urls   设置  redis_key &#x3D; “db:start_urls”  开启爬虫</p>
+</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"><span class="keyword">from</span> ..items <span class="keyword">import</span> DbItem</span><br><span class="line"><span class="keyword">from</span> scrapy_redis.spiders <span class="keyword">import</span> RedisSpider</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dbtest1Spider</span>(<span class="title class_ inherited__">RedisSpider</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;#1 Spider on...&quot;</span>)</span><br><span class="line">    name = <span class="string">&quot;dbtest1&quot;</span></span><br><span class="line">    allowed_domains = [<span class="string">&quot;movie.douban.com&quot;</span>]</span><br><span class="line">    <span class="comment"># start_urls = [&quot;https://movie.douban.com/top250&quot;]  # 修改为开始爬取的页面</span></span><br><span class="line">    redis_key = <span class="string">&quot;dbtest1:start_urls&quot;</span>  <span class="comment"># 3.开启爬虫的key</span></span><br><span class="line">    page_num = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># parse 里面我们只需要关注 怎么解析就行， 因为scrapy会自动帮我们去请求指定的网址</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">parse</span>(<span class="params">self, response</span>):</span><br><span class="line">        node_list = response.xpath(<span class="string">&#x27;//div[@class=&quot;info&quot;]&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> node_list:</span><br><span class="line">            <span class="keyword">for</span> node <span class="keyword">in</span> node_list:</span><br><span class="line">                <span class="comment"># 标题</span></span><br><span class="line">                movie_name = node.xpath(<span class="string">&#x27;./div/a/span/text()&#x27;</span>).get()</span><br><span class="line">                <span class="comment"># 导演</span></span><br><span class="line">                director = node.xpath(<span class="string">&#x27;./div/p/text()&#x27;</span>).get().strip()</span><br><span class="line">                <span class="comment"># 分数</span></span><br><span class="line">                score = node.xpath(<span class="string">&#x27;.//span[@class=&quot;rating_num&quot;]/text()&#x27;</span>).get()</span><br><span class="line"></span><br><span class="line">                item = DbItem()</span><br><span class="line">                item[<span class="string">&quot;movie_name&quot;</span>] = movie_name</span><br><span class="line">                item[<span class="string">&quot;director&quot;</span>] = director</span><br><span class="line">                item[<span class="string">&quot;score&quot;</span>] = score</span><br><span class="line"></span><br><span class="line">                <span class="comment"># 电影详情页</span></span><br><span class="line">                detail_url = node.xpath(<span class="string">&#x27;./div/a/@href&#x27;</span>).get()</span><br><span class="line">                <span class="keyword">yield</span> scrapy.Request(detail_url, callback=self.get_detail, meta=&#123;<span class="string">&quot;info&quot;</span>:item&#125;)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 发送新一页的请求</span></span><br><span class="line">            <span class="comment"># 构造url</span></span><br><span class="line">            <span class="keyword">if</span> response.meta.get(<span class="string">&quot;num&quot;</span>):</span><br><span class="line">                self.page_num = response.meta.get(<span class="string">&#x27;num&#x27;</span>)</span><br><span class="line">            page_url = <span class="string">&quot;https://movie.douban.com/top250?start=&#123;&#125;&amp;filter=&quot;</span>.<span class="built_in">format</span>(self.page_num*<span class="number">25</span>)</span><br><span class="line">            <span class="keyword">yield</span> scrapy.Request(page_url, callback=self.parse, meta=&#123;<span class="string">&quot;num&quot;</span>: self.page_num&#125;)</span><br><span class="line">            self.page_num +=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> self.page_num ==<span class="number">6</span>:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 详情页解析</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_detail</span>(<span class="params">self,response</span>):</span><br><span class="line">        item = DbItem()</span><br><span class="line">        info = response.meta.get(<span class="string">&quot;info&quot;</span>)</span><br><span class="line">        item.update(info)</span><br><span class="line">        description_list = response.xpath(<span class="string">&#x27;//div[@id=&quot;link-report&quot;]/span[@class=&quot;all hidden&quot;]/text()|//div[@id=&quot;link-report&quot;]/span[@property=&quot;v:summary&quot;]/text()&#x27;</span>).getall()</span><br><span class="line">        description = <span class="string">&#x27;&#x27;</span>.join([des.strip() <span class="keyword">for</span> des <span class="keyword">in</span> description_list])</span><br><span class="line"></span><br><span class="line">        item[<span class="string">&quot;description&quot;</span>] = description</span><br><span class="line">        <span class="keyword">yield</span> item</span><br></pre></td></tr></table></figure></div>
+
+<h6 id="Items文件"><a href="#Items文件" class="headerlink" title="Items文件"></a>Items文件</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DbItem</span>(scrapy.Item):</span><br><span class="line">    <span class="comment"># define the fields for your item here like:</span></span><br><span class="line">    <span class="comment"># name = scrapy.Field()</span></span><br><span class="line">    movie_name = scrapy.Field()</span><br><span class="line">    director = scrapy.Field()</span><br><span class="line">    score = scrapy.Field()</span><br><span class="line">    description = scrapy.Field()</span><br></pre></td></tr></table></figure></div>
+
+<h6 id="Pipelines文件"><a href="#Pipelines文件" class="headerlink" title="Pipelines文件"></a>Pipelines文件</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itemadapter <span class="keyword">import</span> ItemAdapter</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DbPipeline</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">open_spider</span>(<span class="params">self, spider</span>):</span><br><span class="line">        self.f = <span class="built_in">open</span>(<span class="string">&#x27;film.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">process_item</span>(<span class="params">self, item, spider</span>):</span><br><span class="line">        json_str = json.dumps(<span class="built_in">dict</span>(item), ensure_ascii=<span class="literal">False</span>) + <span class="string">&#x27;\n&#x27;</span></span><br><span class="line">        self.f.write(json_str)</span><br><span class="line">        <span class="keyword">return</span> item</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">close_spider</span>(<span class="params">self, spider</span>):</span><br><span class="line">        self.f.close()</span><br></pre></td></tr></table></figure></div>
+
+<h6 id="Settings文件"><a href="#Settings文件" class="headerlink" title="Settings文件"></a>Settings文件</h6><p>settings文件需要配置</p>
+<ul>
+<li><p>公共的调度器  SCHEDULER</p>
+</li>
+<li><p>公共的过滤器  DUPEFILTER_CLASS</p>
+</li>
+<li><p>公共存储区域  redis</p>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">BOT_NAME = <span class="string">&#x27;db&#x27;</span></span><br><span class="line"></span><br><span class="line">SPIDER_MODULES = [<span class="string">&#x27;db.spiders&#x27;</span>]</span><br><span class="line">NEWSPIDER_MODULE = <span class="string">&#x27;db.spiders&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Obey robots.txt rules</span></span><br><span class="line">ROBOTSTXT_OBEY = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">DOWNLOAD_DELAY = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Override the default request headers:</span></span><br><span class="line">DEFAULT_REQUEST_HEADERS = &#123;</span><br><span class="line">  <span class="string">&#x27;Accept&#x27;</span>: <span class="string">&#x27;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;Accept-Language&#x27;</span>: <span class="string">&#x27;en&#x27;</span>,</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启用调度将请求存储进redis</span></span><br><span class="line"><span class="comment"># 必须</span></span><br><span class="line">SCHEDULER = <span class="string">&quot;scrapy_redis.scheduler.Scheduler&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 确保所有spider通过redis共享相同的重复过滤。</span></span><br><span class="line"><span class="comment"># 必须</span></span><br><span class="line">DUPEFILTER_CLASS = <span class="string">&quot;scrapy_redis.dupefilter.RFPDupeFilter&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#公共管道</span></span><br><span class="line">ITEM_PIPELINES  =  &#123;</span><br><span class="line">    <span class="string">&#x27;scrapy_redis.pipelines.RedisPipeline&#x27;</span>:<span class="number">300</span>,</span><br><span class="line">    <span class="string">&#x27;db.pipelines.DbPipeline&#x27;</span>: <span class="number">200</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 指定连接到Redis时要使用的主机和端口。</span></span><br><span class="line"><span class="comment"># 必须</span></span><br><span class="line">REDIS_HOST = <span class="string">&#x27;localhost&#x27;</span></span><br><span class="line">REDIS_PORT = <span class="number">6379</span></span><br><span class="line"><span class="comment"># 不清理redis队列，允许暂停/恢复抓取。</span></span><br><span class="line"><span class="comment"># 可选  允许暂停,redis数据不丢失</span></span><br><span class="line">SCHEDULER_PERSIST = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#日志文件配置</span></span><br><span class="line"><span class="comment"># LOG_FILE=&quot;db_redis.log&quot;</span></span><br><span class="line">LOG_ENABLED=<span class="literal">True</span></span><br><span class="line"></span><br><span class="line">LOG_FORMAT=<span class="string">&#x27;%(asctime)s  [%(name)s] %(levelname)s: %(message)s&#x27;</span></span><br><span class="line">LOG_DATEFORMAT=<span class="string">&#x27;%Y&#x27;</span></span><br><span class="line"></span><br><span class="line">LOG_ENCODING=<span class="string">&quot;utf-8&quot;</span></span><br><span class="line">LOG_LEVEL=<span class="string">&quot;INFO&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="执行演示"><a href="#执行演示" class="headerlink" title="执行演示"></a>执行演示</h3><h4 id="爬虫执行"><a href="#爬虫执行" class="headerlink" title="爬虫执行"></a>爬虫执行</h4><p>可以发现爬虫1和爬虫2未有提交URL时进行了等待</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f6ccb84b-d743-4808-d3d7-43f76e432300/public"
+                      width = "500"
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/06dd7665-94c0-40d4-5c1f-299482eacc00/public"
+                      width = "500"
+                >
+
+
+
+
+  <div class="note-large orange">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-exclamation"></i><p>注意</p>
+
+    </div>
+    <div class="notel-content">
+      <p><code>TypeError: ExecutionEngine.crawl() got an unexpected keyword argument &#39;spider&#39;</code></p>
+<p>Scrapy版本和scrapy-redis版本有概率不兼容，我的案例是修正Scrapy版本为2.8.0解决问题</p>
+
+    </div>
+  </div>
+
+<h4 id="添加URL给Redis开启爬取"><a href="#添加URL给Redis开启爬取" class="headerlink" title="添加URL给Redis开启爬取"></a>添加URL给Redis开启爬取</h4><p>执行命令在Redis添加列表添加URL</p>
+<p><code>LPUSH dbtest1:start_urls &quot;https://movie.douban.com/top250&quot;</code></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/06de15f7-f417-4391-da20-53457d9cef00/public"
+                      width = "500"
+                >
+
+<p>随后两个爬虫就会开始进行爬取即可</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3f8dbe81-e702-43c5-fbea-690e44e5b200/public"
+                      width = "500"
+                >
+
+<h2 id="Scrapy-Redis-源码解读"><a href="#Scrapy-Redis-源码解读" class="headerlink" title="Scrapy-Redis 源码解读"></a>Scrapy-Redis 源码解读</h2><h3 id="connection-py"><a href="#connection-py" class="headerlink" title="connection.py"></a>connection.py</h3><p>这个模块的作用是建立与Redis数据库的连接。它通常提供一个工厂方法，用于创建Redis连接对象，这使得Scrapy项目能够连接到Redis服务器并执行各种操作，如存储或检索数据。</p>
+<h3 id="defaults-py"><a href="#defaults-py" class="headerlink" title="defaults.py"></a>defaults.py</h3><p>这里定义了Scrapy-Redis用到的一些默认设置。这可能包括默认的Redis URL、连接参数、队列名称等。这些常量和默认值对于确保Scrapy-Redis的标准行为至关重要。</p>
+<h3 id="dupefilter-py"><a href="#dupefilter-py" class="headerlink" title="dupefilter.py"></a>dupefilter.py</h3><p>这个 <code>dupefilter.py</code> 源码是Scrapy-Redis扩展的一部分，专门用于处理请求去重。请求去重是网页爬虫中的一个关键步骤，用于确保不重复爬取相同的网页，从而提高效率和减少资源浪费。这个模块使用Redis作为存储后端来记录已经处理过的请求。</p>
+<p><strong>类 <code>RFPDupeFilter</code></strong></p>
+<p><code>RFPDupeFilter</code> 类继承自 Scrapy 的 <code>BaseDupeFilter</code>，是一个基于Redis的请求去重过滤器。</p>
+<p><strong>初始化方法 <code>__init__</code></strong></p>
+<ul>
+<li><code>server</code>: 接收一个 Redis 实例，用于与Redis数据库通信。</li>
+<li><code>key</code>: 指定在Redis中用于存储去重指纹（fingerprints）的键。</li>
+<li><code>debug</code>: 一个布尔值，用于确定是否打印日志信息，用于调试。</li>
+</ul>
+<p><strong>类方法 <code>from_settings</code></strong></p>
+<p>这个方法用于从Scrapy的设置中创建一个 <code>RFPDupeFilter</code> 实例。它读取相关配置并实例化一个连接到Redis的去重过滤器。</p>
+<p><strong>类方法 <code>from_crawler</code></strong></p>
+<p>这个方法从Scrapy的爬虫中创建 <code>RFPDupeFilter</code> 实例。它是 <code>from_settings</code> 的包装方法，提供了一个从 <code>Crawler</code> 对象获取设置的快捷方式。</p>
+<p><strong>方法 <code>request_seen</code></strong></p>
+<p>这个方法用于检查一个请求是否已经被看到（即之前已经处理过）。它使用请求的指纹（fingerprint），如果这个指纹已经存在于Redis中，就认为这个请求是重复的。</p>
+<ul>
+<li><code>request_fingerprint</code> 方法用于生成请求的指纹，通常基于请求的URL和其他特征。</li>
+</ul>
+<p><strong>方法 <code>close</code> 和 <code>clear</code></strong></p>
+<ul>
+<li><code>close</code> 方法在过滤器关闭时被调用，用于执行清理工作。</li>
+<li><code>clear</code> 方法用于从Redis中删除所有的去重指纹数据。</li>
+</ul>
+<p><strong>方法 <code>log</code></strong></p>
+<p>这个方法用于在启用调试模式时打印日志信息，记录被过滤掉的重复请求。</p>
+<p><strong>整体工作流程</strong></p>
+<ol>
+<li>当Scrapy爬虫启动时，<code>RFPDupeFilter</code> 会被实例化，并与Redis建立连接。</li>
+<li>对于每个发出的请求，<code>RFPDupeFilter</code> 会计算其指纹并检查这个指纹是否已经存储在Redis中。</li>
+<li>如果指纹已存在，表明请求是重复的，将不会再次处理该请求。</li>
+<li>所有的指纹都存储在Redis中，这允许在分布式爬虫环境下跨多个爬虫实例共享去重信息。</li>
+</ol>
+<h3 id="picklecompat-py"><a href="#picklecompat-py" class="headerlink" title="picklecompat.py"></a>picklecompat.py</h3><p>这个模块是用于数据序列化和反序列化的。虽然您提到它类似于JSON转换，但它实际上更多使用的是pickle库，这是Python中一个常用的序列化方法。它允许复杂的数据结构如Python对象被转换为可以存储在Redis中的形式。</p>
+<h3 id="pipelines-py"><a href="#pipelines-py" class="headerlink" title="pipelines.py"></a>pipelines.py</h3><p>在Scrapy框架中，pipelines用于处理爬取的数据。Scrapy-Redis的这一模块扩展了这个概念，允许将爬取的数据存储在Redis数据库中。这对于分布式爬虫来说特别重要，因为它允许多个爬虫实例共享和存储数据。</p>
+<h3 id="queue-py"><a href="#queue-py" class="headerlink" title="queue.py"></a>queue.py</h3><p>这个模块维护了请求队列。在Scrapy-Redis中，通常有几种类型的队列，例如FIFO（先进先出）、LIFO（后进先出）等，用于控制请求的处理顺序。通过Redis来管理这些队列，可以实现跨多个爬虫实例的请求共享。</p>
+<h3 id="scheduler-py"><a href="#scheduler-py" class="headerlink" title="scheduler.py"></a>scheduler.py</h3><p>这是Scrapy-Redis中的一个核心组件。调度器负责决定何时以及如何发送请求。在Scrapy-Redis中，这通常涉及从Redis队列中获取请求，并在分布式环境下有效地管理这些请求。</p>
+<p><strong>类 <code>Scheduler</code></strong></p>
+<p><code>Scheduler</code> 类是一个基于 Redis 的调度器。</p>
+<p><strong>初始化方法 <code>__init__</code></strong></p>
+<ul>
+<li><code>server</code>: Redis 服务器实例，用于和 Redis 数据库进行交互。</li>
+<li><code>persist</code>: 表示在关闭时是否保留请求数据。如果为 <code>False</code>，则在关闭时清空队列。</li>
+<li><code>flush_on_start</code>: 表示在启动时是否清空 Redis 队列。</li>
+<li><code>queue_key</code>: 请求队列在 Redis 中的键名。</li>
+<li><code>queue_cls</code>: 请求队列的类的路径，用于动态加载队列类。</li>
+<li><code>dupefilter_key</code>: 去重过滤器在 Redis 中的键名。</li>
+<li><code>dupefilter_cls</code>: 去重过滤器类的路径，用于动态加载去重类。</li>
+<li><code>idle_before_close</code>: 在关闭前等待的空闲时间，如果在这段时间内没有接收到消息，则关闭调度器。</li>
+<li><code>serializer</code>: 用于序列化请求的类或模块。</li>
+</ul>
+<p><strong>类方法 <code>from_settings</code></strong></p>
+<p>这个方法从 Scrapy 的设置中创建一个 <code>Scheduler</code> 实例。它读取相关配置并基于这些配置创建一个实例。</p>
+<p><strong>类方法 <code>from_crawler</code></strong></p>
+<p>这个方法从 Scrapy 的爬虫对象中创建一个 <code>Scheduler</code> 实例。它是 <code>from_settings</code> 的包装器，提供从爬虫对象获取设置的方式。</p>
+<p><strong>方法 <code>open</code></strong></p>
+<p>在爬虫开启时调用，用于初始化请求队列和去重过滤器。</p>
+<p><strong>方法 <code>close</code></strong></p>
+<p>在爬虫关闭时调用，根据 <code>persist</code> 参数决定是否清空队列。</p>
+<p><strong>方法 <code>flush</code></strong></p>
+<p>清空队列和去重过滤器中的数据。</p>
+<p><strong>方法 <code>enqueue_request</code></strong></p>
+<p>将新的请求加入队列。如果请求不需要过滤且之前没有见过，那么它将被加入队列。</p>
+<p><strong>方法 <code>next_request</code></strong></p>
+<p>从队列中弹出下一个请求。</p>
+<p><strong>方法 <code>has_pending_requests</code></strong></p>
+<p>检查是否还有等待处理的请求。</p>
+<p><strong>工作流程</strong></p>
+<ol>
+<li>当爬虫启动时，<code>Scheduler</code> 会被初始化。它会创建请求队列和去重过滤器。</li>
+<li>如果设置了 <code>flush_on_start</code>，则在启动时清空 Redis 队列。</li>
+<li>在爬虫运行期间，所有新的请求都会通过 <code>enqueue_request</code> 方法加入队列。如果请求被去重过滤器认为是重复的，它将不会被加入队列。</li>
+<li><code>next_request</code> 方法用于获取下一个要处理的请求，这个过程可能会根据 <code>idle_before_close</code> 设置等待一段时间。</li>
+<li>当爬虫关闭时，根据 <code>persist</code> 设置决定是否清空 Redis 队列。</li>
+</ol>
+<h2 id="通过扩展关闭分布式爬虫"><a href="#通过扩展关闭分布式爬虫" class="headerlink" title="通过扩展关闭分布式爬虫"></a>通过扩展关闭分布式爬虫</h2><p>在Scrapy和Scrapy-Redis中，利用扩展（Extensions）来智能地关闭分布式爬虫是一种有效的策略。这种方法主要依赖于Scrapy的信号系统和对 <code>spider_idle</code> 信号的处理。</p>
+<h3 id="Scrapy-Redis-的-spider-idle-方法"><a href="#Scrapy-Redis-的-spider-idle-方法" class="headerlink" title="Scrapy-Redis 的 spider_idle 方法"></a>Scrapy-Redis 的 spider_idle 方法</h3><p>在Scrapy-Redis中，当一个爬虫耗尽其内部队列中的所有请求时，Scrapy的信号系统会触发 <code>spider_idle</code> 信号。Scrapy-Redis通过重写 <code>spider_idle</code> 方法，并在方法中主动从Redis队列中调度新的请求。由于这个方法抛出了 <code>DontCloseSpider</code> 异常，所以即使没有剩余的本地请求，爬虫也不会停止，而是会继续等待新的请求从Redis中被调度。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The idle signal is called when the spider has no requests left,that&#x27;s when we will schedule new requests from redis queue</span></span><br><span class="line">爬虫程序没有剩余请求时,空闲信号就会被调用，也就是我们将从redis队列调度新请求的时候</span><br><span class="line">crawler.signals.connect(self.spider_idle, signal=signals.spider_idle)</span><br><span class="line">意思就非常明显了,空闲的信号被调用---&gt; spide_idle</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">spider_idle</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Schedules a request if available, otherwise waits.&quot;&quot;&quot;</span></span><br><span class="line">        <span class="comment"># <span class="doctag">XXX:</span> Handle a sentinel to close the spider.</span></span><br><span class="line">        self.schedule_next_requests()</span><br><span class="line">        <span class="keyword">raise</span> DontCloseSpider</span><br></pre></td></tr></table></figure></div>
+
+<p>因为抛出了<code>DontCloseSpider</code>异常，所以当触发spider_idle信号的时候整个爬虫也不会停止。</p>
+<h3 id="自定义扩展"><a href="#自定义扩展" class="headerlink" title="自定义扩展"></a>自定义扩展</h3><p>这个自定义扩展<code>RedisSpiderSmartClosedExtensions</code>的目的是在某些条件下智能地关闭爬虫，而不是无限期地等待新的请求。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> scrapy <span class="keyword">import</span> signals <span class="comment"># 引入信号</span></span><br><span class="line"><span class="keyword">from</span> scrapy.exceptions <span class="keyword">import</span> NotConfigured <span class="comment"># 在settings 设置是否开启这个拓展</span></span><br><span class="line"></span><br><span class="line">logger = logging.getLogger(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ResdisSpiderSmartClosedExtensions</span>:  <span class="comment"># 高内聚 低耦合</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, idle_number, crawler</span>):</span><br><span class="line">        <span class="comment"># 数量值</span></span><br><span class="line">        self.idle_number = idle_number</span><br><span class="line">        <span class="comment"># 这个就是settings里面的一些配置项</span></span><br><span class="line">        self.crawler = crawler</span><br><span class="line">        <span class="comment"># 专门记录触发信号的时间</span></span><br><span class="line">        self.idle_list = []</span><br><span class="line">        <span class="comment"># 记录次数,进行对比</span></span><br><span class="line">        self.idle_count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">from_crawler</span>(<span class="params">cls, crawler</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> crawler.settings.getbool(<span class="string">&#x27;MYEXT_ENABLED&#x27;</span>):</span><br><span class="line">            <span class="keyword">raise</span> NotConfigured</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 判断一下 你是不是一个redis爬虫</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="string">&#x27;redis_key&#x27;</span> <span class="keyword">in</span> crawler.spidercls.__dict__.keys():</span><br><span class="line">            <span class="keyword">raise</span> NotConfigured(<span class="string">&#x27;Only Support Redis Version&#x27;</span>)</span><br><span class="line">        idle_number = crawler.settings.getint(<span class="string">&#x27;IDLE_NUMBER&#x27;</span>, <span class="number">10</span>)</span><br><span class="line">        ext = cls(idle_number, crawler)</span><br><span class="line"></span><br><span class="line">        crawler.signals.connect(ext.spider_idle, signal=signals.spider_idle)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ext</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">spider_idle</span>(<span class="params">self, spider</span>):</span><br><span class="line">        self.idle_count += <span class="number">1</span></span><br><span class="line">        self.idle_list.append(time.time())</span><br><span class="line">        idle_list_len = <span class="built_in">len</span>(self.idle_list)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 长度大于二就证明已经空转很多次了,  key有存在就证明你还没有抓完</span></span><br><span class="line">        <span class="keyword">if</span> idle_list_len &gt; <span class="number">2</span> <span class="keyword">and</span> spider.server.exists(spider.redis_key):</span><br><span class="line">            self.idle_list = [self.idle_list[-<span class="number">1</span>]]</span><br><span class="line">        <span class="keyword">elif</span> idle_list_len &gt; self.idle_number:</span><br><span class="line">            logger.info(<span class="string">&#x27;\n continued idle number exceed &#123;&#125; Times&#x27;</span></span><br><span class="line">                        <span class="string">&#x27;\n meet the idle shutdown conditions, will close the reptile operation&#x27;</span></span><br><span class="line">                        <span class="string">&#x27;\n idle start time: &#123;&#125;,close spider time: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(self.idle_number,</span><br><span class="line">                                                                              self.idle_list[<span class="number">0</span>],</span><br><span class="line">                                                                              self.idle_list[-<span class="number">1</span>]))</span><br><span class="line">            self.crawler.engine.close_spider(spider, <span class="string">&#x27;closespider_pagecount&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>初始化方法 <code>__init__</code></strong></p>
+<ul>
+<li><code>idle_number</code>: 表示允许爬虫空闲的次数（没有新请求的情况）。</li>
+<li><code>crawler</code>: Scrapy的爬虫对象。</li>
+<li><code>idle_list</code>: 用于记录每次空闲时的时间戳。</li>
+<li><code>idle_count</code>: 记录空闲发生的次数。</li>
+</ul>
+<p><strong>方法 <code>from_crawler</code></strong></p>
+<p>这个类方法用于从爬虫的配置中创建扩展实例，并连接到Scrapy的信号。</p>
+<p><strong>方法 <code>spider_opened</code> 和 <code>spider_closed</code></strong></p>
+<ul>
+<li><code>spider_opened</code>: 在爬虫开启时调用，用于记录初始信息。</li>
+<li><code>spider_closed</code>: 在爬虫关闭时调用，用于记录关闭信息。</li>
+</ul>
+<p><strong>方法 <code>spider_idle</code></strong></p>
+<p>这是关键方法。每次爬虫空闲时，都会增加 <code>idle_count</code> 的值，并记录当前时间。如果连续空闲次数超过设定的 <code>idle_number</code>，并且Redis队列中没有新的请求，那么爬虫将被关闭。</p>
+<p><strong><code>settings.py</code> 中的相关设置</strong></p>
+<ul>
+<li><code>EXTENSIONS</code>: 在这里配置自定义的扩展类。</li>
+<li><code>MYEXT_ENABLED</code>: 用于启用或禁用这个扩展。</li>
+<li><code>IDLE_NUMBER</code>: 设置允许的最大空闲次数。</li>
+</ul>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">EXTENSIONS = &#123;</span><br><span class="line">    <span class="comment"># &#x27;scrapy.extensions.telnet.TelnetConsole&#x27;: None,</span></span><br><span class="line">    <span class="string">&#x27;db.extensions.RedisSpiderSmartIdleClosedExensions&#x27;</span>: <span class="number">500</span></span><br><span class="line">&#125;</span><br><span class="line">MYEXT_ENABLED = <span class="literal">True</span></span><br><span class="line">IDLE_NUMBER = <span class="number">5</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>工作流程</strong></p>
+<ol>
+<li>当爬虫开始运行时，<code>RedisSpiderSmartClosedExtensions</code> 被初始化，并连接到相应的Scrapy信号。</li>
+<li>在爬虫运行期间，每当它空闲时（没有新的请求），<code>spider_idle</code> 方法会被触发。</li>
+<li>如果连续空闲次数超过 <code>IDLE_NUMBER</code> 设置的阈值，并且Redis中没有新的请求，那么这个扩展会指示Scrapy关闭爬虫。</li>
+<li>这种方法使得爬虫在完成其任务后不会无限期地等待，从而有效管理资源。</li>
+</ol>
+<h2 id="Scrapyd"><a href="#Scrapyd" class="headerlink" title="Scrapyd"></a>Scrapyd</h2><p>Scrapyd是一个用于部署和运行Scrapy爬虫的应用，它提供了一个JSON API，通过该API可以实现爬虫的部署、启动、停止等操作。</p>
+<h3 id="安装-Scrapyd-和-Scrapyd-client"><a href="#安装-Scrapyd-和-Scrapyd-client" class="headerlink" title="安装 Scrapyd 和 Scrapyd-client"></a>安装 Scrapyd 和 Scrapyd-client</h3><ol>
+<li><p><strong>安装 Scrapyd</strong></p>
+<p>使用命令 <code>pip install scrapyd</code> 来安装 Scrapyd。</p>
+<p><strong>验证：</strong> 输入 <code>scrapyd</code> 命令。如果能够访问 <code>http://localhost:6800/</code> 页面，表示安装成功。</p>
+</li>
+<li><p><strong>安装 Scrapyd-client</strong></p>
+<p>使用命令 <code>pip install scrapyd-client</code> 来安装 Scrapyd-client，这是一个用于与Scrapyd交互的命令行工具。</p>
+<p><strong>验证：</strong> 在Scrapy项目目录下输入 <code>scrapyd-deploy</code>，如果出现提示 <code>Unknown target: default</code>，表示安装成功。</p>
+</li>
+</ol>
+<h3 id="配置-Scrapy-cfg"><a href="#配置-Scrapy-cfg" class="headerlink" title="配置 Scrapy.cfg"></a>配置 Scrapy.cfg</h3><p>在 <code>scrapy.cfg</code> 文件中，配置部署信息。例如：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[deploy:douban]  <span class="comment"># 部署名称，可自定义</span></span><br><span class="line">url = http://localhost:<span class="number">6800</span>/  <span class="comment"># Scrapyd服务器地址</span></span><br><span class="line">project = db250  <span class="comment"># 项目名称</span></span><br><span class="line">username = xxx  <span class="comment"># 服务器访问用户名（可选）</span></span><br><span class="line">password = xxx  <span class="comment"># 服务器访问密码（可选）</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>验证：</strong> 使用命令 <code>scrapyd-deploy -l</code> 可以查看设置的部署名称和URL。</p>
+<h3 id="执行打包命令"><a href="#执行打包命令" class="headerlink" title="执行打包命令"></a>执行打包命令</h3><p>在包含 <code>scrapy.cfg</code> 的目录下执行部署命令：</p>
+<p><code>scrapyd-deploy [部署名称] -p [项目名称]</code></p>
+<p>例如：</p>
+<p><code>scrapyd-deploy douban -p db250</code></p>
+<p>成功部署后，终端会显示类似如下信息：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Deploying to project <span class="string">&quot;db250&quot;</span> <span class="keyword">in</span> http://localhost:<span class="number">6800</span>/addversion.json</span><br><span class="line">Server response (<span class="number">200</span>):</span><br><span class="line">&#123;<span class="string">&quot;node_name&quot;</span>: <span class="string">&quot;YNRBYA8RP4AT92A&quot;</span>, <span class="string">&quot;status&quot;</span>: <span class="string">&quot;ok&quot;</span>, <span class="string">&quot;project&quot;</span>: <span class="string">&quot;db250&quot;</span>, <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1595508145&quot;</span>, <span class="string">&quot;spiders&quot;</span>: <span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="启动爬虫"><a href="#启动爬虫" class="headerlink" title="启动爬虫"></a>启动爬虫</h3><p>使用 curl 命令启动爬虫：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:6800/schedule.json -d project=[项目名称] -d spider=[爬虫名称]</span><br></pre></td></tr></table></figure></div>
+
+<p>成功启动后，会返回包含 <code>jobid</code> 的响应，如：</p>
+<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;node_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;YNRBYA8RP4AT92A&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;status&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ok&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;jobid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;98785578cce211eab46598fa9b72ce54&quot;</span><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="关闭爬虫"><a href="#关闭爬虫" class="headerlink" title="关闭爬虫"></a>关闭爬虫</h3><p>使用 curl 命令关闭爬虫：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:6800/cancel.json -d project=[项目名称] -d job=[jobid]</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="列出项目"><a href="#列出项目" class="headerlink" title="列出项目"></a>列出项目</h3><p>列出Scrapyd服务器上的所有项目：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:6800/listprojects.json</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="删除项目"><a href="#删除项目" class="headerlink" title="删除项目"></a>删除项目</h3><p>从Scrapyd服务器上删除指定项目：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:6800/delproject.json -d project=[项目名称]</span><br></pre></td></tr></table></figure></div>
+
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 分布式爬取</li>
+        <li><strong>作者:</strong> Yiuhang Chan</li>
+        <li><strong>创建于
+                :</strong> 2021-12-18 08:24:32</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-02-28 18:50:38
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://www.yiuhangblog.com/2021/12/18/20211218分布式爬取/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%90%86%E8%AE%BA/">#理论</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%88%AC%E8%99%AB/">#爬虫</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Scrapy/">#Scrapy</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Redis/">#Redis</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">#分布式</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%BD%91%E9%A1%B5%E6%8A%93%E5%8F%96/">#网页抓取</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Scrapyd/">#Scrapyd</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2021/12/27/20211227%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">编码与加解密</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2021/10/28/20211128scrapy/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Scrapy</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://comment.yiuhangblog.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">分布式爬取</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%A6%82%E5%BF%B5%E5%92%8C%E4%BD%9C%E7%94%A8"><span class="nav-text">分布式概念和作用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%EF%BC%88Distributed-Systems%EF%BC%89"><span class="nav-text">分布式系统（Distributed Systems）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E4%B8%8E%E7%89%B9%E7%82%B9"><span class="nav-text">作用与特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%9A%84%E7%BB%93%E5%90%88"><span class="nav-text">分布式系统与网络爬虫的结合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%EF%BC%88Web-Crawler%EF%BC%89%E6%A6%82%E5%BF%B5"><span class="nav-text">网络爬虫（Web Crawler）概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E5%90%88%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-text">结合分布式系统的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="nav-text">应用实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0"><span class="nav-text">技术实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-Redis"><span class="nav-text">Scrapy-Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-1"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84"><span class="nav-text">应用架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="nav-text">Redis的安装与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8Ubuntu-Debian%E4%B8%8A%E5%AE%89%E8%A3%85Redis"><span class="nav-text">在Ubuntu&#x2F;Debian上安装Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6%EF%BC%88Prerequisites%EF%BC%89"><span class="nav-text">先决条件（Prerequisites）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E4%BB%93%E5%BA%93%EF%BC%88Repository%EF%BC%89"><span class="nav-text">添加仓库（Repository）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis-%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF%E5%92%8C%E6%93%8D%E4%BD%9C"><span class="nav-text">Redis 基本信息和操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="nav-text">基本信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="nav-text">配置信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#redis%E5%91%BD%E4%BB%A4"><span class="nav-text">redis命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88String%EF%BC%89%E6%93%8D%E4%BD%9C"><span class="nav-text">字符串（String）操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%EF%BC%88Hash%EF%BC%89%E6%93%8D%E4%BD%9C"><span class="nav-text">哈希表（Hash）操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%EF%BC%88List%EF%BC%89%E6%93%8D%E4%BD%9C"><span class="nav-text">列表（List）操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%9B%86%E5%90%88%EF%BC%88Set%EF%BC%89%E6%93%8D%E4%BD%9C"><span class="nav-text">集合（Set）操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88%EF%BC%88Sorted-Set%EF%BC%89%E6%93%8D%E4%BD%9C"><span class="nav-text">有序集合（Sorted Set）操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%94%AE%EF%BC%88Key%EF%BC%89%E7%AE%A1%E7%90%86"><span class="nav-text">键（Key）管理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%EF%BC%88Transaction%EF%BC%89"><span class="nav-text">事务（Transaction）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85"><span class="nav-text">发布&#x2F;订阅</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE"><span class="nav-text">地理位置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%A6%82%E7%8E%87%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-text">基于概率的数据结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-text">数据持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#RDB%EF%BC%88Redis-Database%EF%BC%89"><span class="nav-text">RDB（Redis Database）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#AOF%EF%BC%88Append-Only-File%EF%BC%89"><span class="nav-text">AOF（Append Only File）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="nav-text">应用场景</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1"><span class="nav-text">Redis如何开启远程服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-Redis-%E4%B8%AD%E5%AD%98%E5%82%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%85%B6%E7%94%A8%E9%80%94"><span class="nav-text">Scrapy-Redis 中存储的数据类型及其用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E5%8F%8A%E5%85%B6%E8%AF%B4%E6%98%8E"><span class="nav-text">常用设置及其说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="nav-text">补充说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%A1%B9%E7%9B%AE%E6%BC%94%E7%A4%BA"><span class="nav-text">分布式项目演示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%94%E7%A4%BA%E9%80%BB%E8%BE%91"><span class="nav-text">演示逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E5%8F%8A%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81"><span class="nav-text">项目配置及项目代码</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Spider%E6%96%87%E4%BB%B6"><span class="nav-text">Spider文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Items%E6%96%87%E4%BB%B6"><span class="nav-text">Items文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Pipelines%E6%96%87%E4%BB%B6"><span class="nav-text">Pipelines文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Settings%E6%96%87%E4%BB%B6"><span class="nav-text">Settings文件</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E6%BC%94%E7%A4%BA"><span class="nav-text">执行演示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E6%89%A7%E8%A1%8C"><span class="nav-text">爬虫执行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0URL%E7%BB%99Redis%E5%BC%80%E5%90%AF%E7%88%AC%E5%8F%96"><span class="nav-text">添加URL给Redis开启爬取</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-Redis-%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB"><span class="nav-text">Scrapy-Redis 源码解读</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#connection-py"><span class="nav-text">connection.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#defaults-py"><span class="nav-text">defaults.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dupefilter-py"><span class="nav-text">dupefilter.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#picklecompat-py"><span class="nav-text">picklecompat.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pipelines-py"><span class="nav-text">pipelines.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#queue-py"><span class="nav-text">queue.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scheduler-py"><span class="nav-text">scheduler.py</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E6%89%A9%E5%B1%95%E5%85%B3%E9%97%AD%E5%88%86%E5%B8%83%E5%BC%8F%E7%88%AC%E8%99%AB"><span class="nav-text">通过扩展关闭分布式爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrapy-Redis-%E7%9A%84-spider-idle-%E6%96%B9%E6%B3%95"><span class="nav-text">Scrapy-Redis 的 spider_idle 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%89%A9%E5%B1%95"><span class="nav-text">自定义扩展</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapyd"><span class="nav-text">Scrapyd</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Scrapyd-%E5%92%8C-Scrapyd-client"><span class="nav-text">安装 Scrapyd 和 Scrapyd-client</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-Scrapy-cfg"><span class="nav-text">配置 Scrapy.cfg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E6%89%93%E5%8C%85%E5%91%BD%E4%BB%A4"><span class="nav-text">执行打包命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E7%88%AC%E8%99%AB"><span class="nav-text">启动爬虫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E7%88%AC%E8%99%AB"><span class="nav-text">关闭爬虫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E5%87%BA%E9%A1%B9%E7%9B%AE"><span class="nav-text">列出项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E9%A1%B9%E7%9B%AE"><span class="nav-text">删除项目</span></a></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2018</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 5s"></i>&nbsp;&nbsp;<a href="/">Yiuhang Chan</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 41 篇文章
+                    </span>
+                    
+                        <span>
+                            共 348k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex justify-center items-center">
+                <a class="flex justify-center items-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/libs/mermaid.min.js"></script>
+
+    
+<script src="/js/plugins/mermaid.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html lang="zh-CN,en,zh-TW,default">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Yiuhang Chan">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://www.yiuhangblog.com/2021/12/27/20211227编码与加解密/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="爬虫相关加密与解密理论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编码与加解密">
+<meta property="og:url" content="https://www.yiuhangblog.com/2021/12/27/20211227%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/index.html">
+<meta property="og:site_name" content="角灯随笔">
+<meta property="og:description" content="爬虫相关加密与解密理论">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/45b56ed7-7556-439b-b46a-4551c4ee9500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/98f61b9f-84d3-418a-4623-8f6709e1b900/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/549c1891-ff37-4f92-56a4-9a5677af6800/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/1b31bb8b-62ec-487a-110c-6fe1cb20ae00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f0d23f60-6fcd-4ddf-f78c-24fa737bdf00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f03b3c3b-cb6b-4ed1-5450-13fbf5896a00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/287ba295-5ce2-4f70-3044-a9c9fa3f6700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b7807e29-1aa4-47d9-e958-1101f5f05100/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/691f968c-5097-4d90-0e4b-d6a3795ace00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c9a1ab53-f434-4bc7-a745-56ab0aabb600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3a4c86c8-472f-48ad-30e8-c03533220900/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2f98db38-f83d-4d4b-0561-b1c4eadfdd00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e525b4e3-2eba-44c4-3764-54a4f3604700/public">
+<meta property="article:published_time" content="2021-12-27T10:12:46.000Z">
+<meta property="article:modified_time" content="2024-02-28T10:35:03.000Z">
+<meta property="article:author" content="Yiuhang Chan">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="理论">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="编码">
+<meta property="article:tag" content="加解密">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/45b56ed7-7556-439b-b46a-4551c4ee9500/public">
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-MQ43G0NKCT"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MQ43G0NKCT');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <meta name="theme-color" content="#A1AFC9">
+    <link rel="shortcut icon" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <!--- Page Info-->
+    
+    <title>
+        
+            编码与加解密 -
+        
+        角灯随笔
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        角灯随笔
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"www.yiuhangblog.com","root":"/","language":["zh-CN","en","zh-TW","default"]};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":6,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":5,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A1AFC9","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":true,"id":"G-MQ43G0NKCT"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e63fc400-dd0e-4395-bd1b-9ee1ac3bfb00/public","dark":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a34140d6-7960-45dd-b8b5-c3ddd14d1f00/public"},"title":"角灯随笔","subtitle":{"text":["全栈也不是不行"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/CosmicTrace","instagram":null,"zhihu":null,"twitter":null,"email":"kenchansk0@gmail.com"},"qrs":null}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"娱乐":{"icon":"fa-solid fa-gamepad","submenus":{"王者荣耀":"/hok","守望先锋":"/ow","使命召唤":"/cod"}},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/CosmicTrace"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"谦逊","show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":8}},"footerStart":"2018/07/15 10:15:24"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="角灯随笔" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                角灯随笔
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/"
+                                        >
+                                    <i class="fa-solid fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-solid fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-solid fa-gamepad fa-fw"></i>
+                                    娱乐
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/hok">
+                                                    王者荣耀
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/ow">
+                                                    守望先锋
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/cod">
+                                                    使命召唤
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/CosmicTrace">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-solid fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-solid fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-娱乐"
+                        >
+                            <span>
+                                娱乐
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-娱乐">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/hok">王者荣耀</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/ow">守望先锋</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/cod">使命召唤</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/CosmicTrace">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">96</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">41</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/996d08fc-9cac-4893-fb6d-8de30a6b4200/public" alt="编码与加解密" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">编码与加解密</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/26329e9f-d1fb-4280-a0a5-754547bf8500/public">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Yiuhang Chan</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2021-12-27 18:12:46</span>
+        <span class="mobile">2021-12-27 18:12:46</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-02-28 18:35:03</span>
+            <span class="mobile">2024-02-28 18:35:03</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/">数据抓取</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%90%86%E8%AE%BA/">理论</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%BC%96%E7%A0%81/">编码</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/">加解密</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>8.4k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>32 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="概念和作用"><a href="#概念和作用" class="headerlink" title="概念和作用"></a>概念和作用</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a><strong>概念</strong></h3><p><strong>加密解密</strong> 是一种信息安全技术，用于保护数据免受未经授权的访问。加密是将原始数据（明文）转换为无法被轻易读懂的格式（密文）的过程。解密则是将密文还原为原始数据的过程。加密和解密确保只有拥有正确密钥的人可以访问和理解这些数据。</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a><strong>作用</strong></h3><p>加密解密技术在网络信息传输安全中起着至关重要的作用，主要涉及以下三个方面：</p>
+<ul>
+<li>**保密性(Confidentiality)**：确保信息在传输过程中不被未授权的人员窥视或窃取。</li>
+<li>**完整性(Integrity)**：确保信息在传输过程中未被修改或篡改。</li>
+<li>**有效性(Availability)**：确保信息的接收者是合法且被授权的。</li>
+</ul>
+<h3 id="常用加密方式"><a href="#常用加密方式" class="headerlink" title="常用加密方式"></a><strong>常用加密方式</strong></h3><table>
+<thead>
+<tr>
+<th><strong>数据加密方式</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>主要解决的问题</strong></th>
+<th><strong>常用算法</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>对称加密</td>
+<td>使用同一个密钥进行数据的加密和解密。加密和解密速度快，适合大量数据的处理，但密钥的分发和管理是一个挑战。</td>
+<td>数据的机密性</td>
+<td>DES, AES</td>
+</tr>
+<tr>
+<td>非对称加密</td>
+<td>使用一对密钥，即公钥和私钥。公钥用于加密数据，私钥用于解密。公钥可以公开，而私钥必须保密。非对称加密通常用于密钥交换和数字签名，提供身份验证和数据机密性。</td>
+<td>身份验证、数据机密性</td>
+<td>DSA，RSA</td>
+</tr>
+<tr>
+<td>单向加密</td>
+<td>仅提供单向加密过程，不能被逆转。通常用于存储敏感信息，如密码哈希。</td>
+<td>数据的完整性、验证数据未被篡改</td>
+<td>MD5，SHA系列算法</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>对称加密</strong> 的例子包括 DES（数据加密标准）和 AES（高级加密标准）。AES是现代最常用的对称加密算法，广泛用于WiFi安全、VPN以及许多其他应用中。</li>
+<li><strong>非对称加密</strong> 的知名算法包括 RSA（由Rivest、Shamir和Adleman开发）和 DSA（数字签名算法）。RSA不仅用于加密，也用于数字签名，而DSA主要用于数字签名。</li>
+<li><strong>单向加密（哈希）</strong> 通常用于验证数据完整性。MD5（消息摘要算法第5版）虽然在许多应用中仍在使用，但由于安全性问题，现在更推荐使用SHA系列（安全哈希算法），如SHA-256。</li>
+</ul>
+<h2 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h2><h3 id="进制"><a href="#进制" class="headerlink" title="进制"></a><strong>进制</strong></h3><p>在计算机中，所有信息最终都是以二进制形式存储的。字符编码就是字符（如字母、数字和符号）与二进制数之间的映射规则。不同的字符编码系统可以支持不同的字符集和语言。</p>
+<h3 id="常见的字符编码"><a href="#常见的字符编码" class="headerlink" title="常见的字符编码"></a>常见的字符编码</h3><ol>
+<li><strong>ASCII（美国标准信息交换码）</strong>:<ul>
+<li>最初设计用于表示英文字符。</li>
+<li>使用7位二进制数来表示一个字符（128个可能的字符）。</li>
+</ul>
+</li>
+<li><strong>Unicode</strong>:<ul>
+<li>为了包含全球所有语言的字符，Unicode被设计出来。</li>
+<li>最常用的形式是UTF-8，它是一种变长编码，可以用1到4个字节表示一个字符。</li>
+</ul>
+</li>
+<li><strong>UTF-8</strong>:<ul>
+<li>在UTF-8编码中，ASCII字符只需一个字节，而其他字符可能需要多达四个字节。</li>
+<li>由于其对ASCII的兼容性和对多字节字符的支持，UTF-8成为了互联网上最常用的编码方式。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><strong>二进制</strong>（Base-2）: 只使用0和1。每一位的值是2的幂。</li>
+<li><strong>十进制</strong>（Base-10）: 我们平常使用的数系统，使用0到9。每一位的值是10的幂。</li>
+<li><strong>十六进制</strong>（Base-16）: 使用0到9和A到F。十六进制广泛用于计算机系统中，因为它可以更简洁地表示二进制数。每一位的值是16的幂。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>十进制</th>
+<th>十六进制</th>
+<th>二进制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0000 0000</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0000 0001</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>0000 0010</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>0000 0011</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>0000 0100 &#x3D; 2^2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5</td>
+<td>0000 0101</td>
+</tr>
+<tr>
+<td>6</td>
+<td>6</td>
+<td>0000 0110</td>
+</tr>
+<tr>
+<td>7</td>
+<td>7</td>
+<td>0000 0111</td>
+</tr>
+<tr>
+<td>8</td>
+<td>8</td>
+<td>0000 1000 &#x3D; 2^3</td>
+</tr>
+<tr>
+<td>9</td>
+<td>9</td>
+<td>0000 1001&#x3D;2^3+2^0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>A</td>
+<td>0000 1010&#x3D;2^3+2^1</td>
+</tr>
+<tr>
+<td>11</td>
+<td>B</td>
+<td>0000 1011</td>
+</tr>
+<tr>
+<td>12</td>
+<td>C</td>
+<td>0000 1100</td>
+</tr>
+<tr>
+<td>13</td>
+<td>D</td>
+<td>0000 1101&#x3D;2^3+2^2+2^0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>E</td>
+<td>0000 1110&#x3D;2^3+2^2+2^1</td>
+</tr>
+<tr>
+<td>15</td>
+<td>F</td>
+<td>0000 1111&#x3D;2^3+2^2+2^1+2^0</td>
+</tr>
+</tbody></table>
+<h3 id="进制间转换方法"><a href="#进制间转换方法" class="headerlink" title="进制间转换方法"></a>进制间转换方法</h3><h4 id="Python中的进制转换"><a href="#Python中的进制转换" class="headerlink" title="Python中的进制转换"></a>Python中的进制转换</h4><p><strong>十进制与二进制</strong></p>
+<p>在Python中，可以使用 <code>bin()</code> 函数将十进制数转换为二进制字符串，<code>int()</code> 函数用于将二进制字符串转换回十进制数。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 十进制转二进制</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">bin</span>(<span class="number">255</span>))  <span class="comment"># 输出: &#x27;0b11111111&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 二进制转十进制</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">int</span>(<span class="string">&quot;0b11111111&quot;</span>, <span class="number">2</span>))  <span class="comment"># 输出: 255</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>十进制与十六进制</strong></p>
+<p>类似地，<code>hex()</code> 函数用于将十进制数转换为十六进制字符串，<code>int()</code> 函数也可以用于将十六进制字符串转换回十进制数。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 十进制转十六进制</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">hex</span>(<span class="number">255</span>))  <span class="comment"># 输出: &#x27;0xff&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 十六进制转十进制</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">int</span>(<span class="string">&quot;0xff&quot;</span>, <span class="number">16</span>))  <span class="comment"># 输出: 255</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Unicode-与字符编码"><a href="#Unicode-与字符编码" class="headerlink" title="Unicode 与字符编码"></a>Unicode 与字符编码</h3><p>Unicode是一个国际标准，它为世界上大多数的文字系统提供了唯一的码位。不同的编码方式（如UTF-8、UTF-16、UTF-32、GBK等）可以用来表示这些码位。</p>
+<ul>
+<li><strong>字符与Unicode码位</strong>：<ul>
+<li>使用 <code>ord()</code> 函数可以获取字符的Unicode码位。</li>
+<li><code>chr()</code> 函数则可以将Unicode码位转换回对应的字符。</li>
+</ul>
+</li>
+<li><strong>字符编码</strong>：<ul>
+<li>字符串的 <code>encode()</code> 方法用于将Unicode字符串编码为特定编码格式的字节串。</li>
+<li>相对地，字节串的 <code>decode()</code> 方法用于将字节串解码为Unicode字符串。</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Unicode码位</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">ord</span>(<span class="string">&quot;中&quot;</span>))  <span class="comment"># 输出: 20013</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">chr</span>(<span class="number">20013</span>))  <span class="comment"># 输出: &#x27;中&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编码为字节串</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;中&quot;</span>.encode(<span class="string">&quot;utf-8&quot;</span>))  <span class="comment"># 输出: b&#x27;\xe4\xb8\xad&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;中&quot;</span>.encode(<span class="string">&quot;gbk&quot;</span>))    <span class="comment"># 输出: b&#x27;\xd6\xd0&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><strong>UTF-8编码</strong>：<ul>
+<li>UTF-8是一种变长的编码方式，可以使用1到4个字节来表示一个Unicode字符。</li>
+<li>对于ASCII字符（U+0000到U+007F），UTF-8与ASCII编码完全相同，使用单个字节表示。</li>
+</ul>
+</li>
+<li><strong>GBK编码</strong>：<ul>
+<li>GBK是用于简体中文的扩展编码集，是在GB2312基础上扩展而来。</li>
+<li>在GBK编码中，汉字通常使用两个字节表示。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Base64编码原理"><a href="#Base64编码原理" class="headerlink" title="Base64编码原理"></a>Base64编码原理</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>Base64编码是一种编码方法，用于将二进制数据转换成ASCII字符串。Base64编码主要用于在不支持二进制数据的系统上存储和传输数据，例如在网页中嵌入图像数据或在电子邮件中发送二进制文件。Base64不是加密方法，它不提供任何安全性或数据保护。Base64是一种基于64个可打印字符来表示二进制数据的编码方法。这些字符包括26个大写字母、26个小写字母、10个数字，以及<code>+</code>和<code>/</code>，共计64个字符。</p>
+<h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><ol>
+<li><strong>处理非ASCII字符</strong>：最初设计用于电子邮件系统，后来被广泛用于处理包含非ASCII字符的情况，例如中文、日文等。</li>
+<li><strong>网络传输</strong>：在网络上传输数据时，特别是需要通过文本格式传输的二进制数据（如图片、加密数据等），Base64能将这些数据转换成由可打印字符组成的字符串。</li>
+<li><strong>数据表示</strong>：在一些应用中，如电子邮件附件、证书、网页内嵌资源等，Base64用于表示和传输数据。</li>
+</ol>
+<h3 id="Base64编码表"><a href="#Base64编码表" class="headerlink" title="Base64编码表"></a><strong>Base64编码表</strong></h3><p>Base64编码表是将二进制数据按6位一组划分，每组对应一个可打印字符。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/45b56ed7-7556-439b-b46a-4551c4ee9500/public"
+                      width = "500"
+                >
+
+<h3 id="文本到base64格式的转换"><a href="#文本到base64格式的转换" class="headerlink" title="文本到base64格式的转换"></a>文本到base64格式的转换</h3><p>转换过程通常包括以下步骤：</p>
+<ol>
+<li><strong>将文本转换为ASCII码</strong>：每个字符转换为其对应的ASCII值。</li>
+<li><strong>将ASCII码转换为二进制</strong>：每个ASCII值转换为8位二进制数。</li>
+<li><strong>划分6位一组</strong>：将二进制串划分为每组6位。</li>
+<li><strong>映射到Base64字符</strong>：每组二进制数映射到Base64编码表中对应的字符。</li>
+</ol>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/98f61b9f-84d3-418a-4623-8f6709e1b900/public"
+                      width = "500"
+                >
+
+<h4 id="ASCII码转换"><a href="#ASCII码转换" class="headerlink" title="ASCII码转换"></a>ASCII码转换</h4><p>首先，文本字符转换为它们对应的ASCII码：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">ord</span>(<span class="string">&quot;M&quot;</span>)</span><br><span class="line"><span class="number">77</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">ord</span>(<span class="string">&quot;a&quot;</span>)</span><br><span class="line"><span class="number">97</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">ord</span>(<span class="string">&quot;n&quot;</span>)</span><br><span class="line"><span class="number">110</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="ASCII转二进制"><a href="#ASCII转二进制" class="headerlink" title="ASCII转二进制"></a>ASCII转二进制</h4><p>然后，ASCII码转换为8位的二进制表示：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">bin</span>(<span class="number">77</span>)</span><br><span class="line"><span class="string">&#x27;0b1001101&#x27;</span>  <span class="comment"># 实际上应该是 01001101</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">bin</span>(<span class="number">97</span>)</span><br><span class="line"><span class="string">&#x27;0b1100001&#x27;</span>  <span class="comment"># 实际上应该是 01100001</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">bin</span>(<span class="number">110</span>)</span><br><span class="line"><span class="string">&#x27;0b1101110&#x27;</span>  <span class="comment"># 实际上应该是 01101110</span></span><br></pre></td></tr></table></figure></div>
+
+<p>请注意，为了确保每个ASCII码都是8位二进制，通常需要在前面补0。</p>
+<h4 id="组合二进制并划分"><a href="#组合二进制并划分" class="headerlink" title="组合二进制并划分"></a>组合二进制并划分</h4><p>接着，将这些二进制串连起来，并每6位分为一组：</p>
+<p><code>010011 010110 000101 101110</code></p>
+<h4 id="二进制转Base64编码"><a href="#二进制转Base64编码" class="headerlink" title="二进制转Base64编码"></a>二进制转Base64编码</h4><p>每组二进制数转换为Base64编码表中对应的字符：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">int</span>(<span class="string">&quot;010011&quot;</span>, <span class="number">2</span>)</span><br><span class="line"><span class="number">19</span>  <span class="comment"># 对应Base64表中的 &#x27;T&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">int</span>(<span class="string">&quot;010110&quot;</span>, <span class="number">2</span>)</span><br><span class="line"><span class="number">22</span>  <span class="comment"># 对应Base64表中的 &#x27;W&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">int</span>(<span class="string">&quot;000101&quot;</span>, <span class="number">2</span>)</span><br><span class="line"><span class="number">5</span>   <span class="comment"># 对应Base64表中的 &#x27;F&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">int</span>(<span class="string">&quot;101110&quot;</span>, <span class="number">2</span>)</span><br><span class="line"><span class="number">46</span>  <span class="comment"># 对应Base64表中的 &#x27;u&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>因此，”Man” 这个字符串在Base64编码中表示为 <code>&quot;TWFu&quot;</code>。</p>
+<ul>
+<li><strong>Base64编码</strong>：Base64编码是一种二进制到文本的编码方法，用于在文本格式中表示二进制数据。每个6位二进制数映射到Base64编码表中的一个字符。</li>
+<li><strong>补码</strong>：在Base64编码中，如果最后一组不足6位，则用0补足6位，并在编码结果末尾添加一个或两个等号（<code>=</code>）作为填充。</li>
+</ul>
+<h3 id="BASE64编码补码"><a href="#BASE64编码补码" class="headerlink" title="BASE64编码补码"></a>BASE64编码补码</h3><p>在Base64编码中，如果二进制数据的位数不是6的倍数，将使用补码<code>=</code>来填充，以保证编码后的字符串长度是4的倍数。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/549c1891-ff37-4f92-56a4-9a5677af6800/public"
+                      width = "500"
+                >
+
+<ul>
+<li><p><strong>编码与加密的区别</strong>：Base64编码并不是加密过程。它不提供数据保护，只是一种编码方案，任何人都可以使用Base64算法将编码后的字符串解码回原始数据。</p>
+</li>
+<li><p><strong>使用场景</strong>：虽然Base64主要用于在需要以文本格式传输二进制数据的场合，但它并不限于此。例如，Base64也常用于在Web应用中嵌入小的图像或其他类型的文件。</p>
+</li>
+</ul>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <p>凯撒密码（Caesar Cipher）是一种最简单和最广为人知的加密技术。它是一种替换密码，其中每个字母在明文中被移动了一定数目的位置。例如，当偏移量是3的时候，所有的字母都将向前移动三个位置，因此 ‘A’ 变成了 ‘D’，’B’ 变成了 ‘E’，以此类推。这种密码得名于朱利叶斯·凯撒（Julius Caesar），他用它来保护重要的军事信息。</p>
+<p><strong>工作原理</strong></p>
+<ul>
+<li><strong>加密过程</strong>：在凯撒密码中，字母表中的每个字母都被向右或向左移动一定的固定数目。例如，如果我们选择向右移动3个位置，那么’A’就变成了’D’，’B’变成了’E’，依此类推。</li>
+<li><strong>解密过程</strong>：解密是加密过程的逆过程。如果我们知道了位移的数目，我们可以通过反方向移动同样数目的位置来还原原文。</li>
+</ul>
+<p><strong>示例</strong></p>
+<p>假设我们有一个明文 “HELLO”，我们使用向右位移3的凯撒密码加密：</p>
+<ul>
+<li>‘H’ -&gt; ‘K’</li>
+<li>‘E’ -&gt; ‘H’</li>
+<li>‘L’ -&gt; ‘O’</li>
+<li>‘L’ -&gt; ‘O’</li>
+<li>‘O’ -&gt; ‘R’</li>
+</ul>
+<p>因此，加密后的密文是 “KHOOR”。</p>
+<p><strong>Python实现</strong></p>
+<p>以下是凯撒密码的一个简单Python实现：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">caesar_cipher</span>(<span class="params">text, shift</span>):</span><br><span class="line">    result = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(text)):</span><br><span class="line">        char = text[i]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 加密大写字母</span></span><br><span class="line">        <span class="keyword">if</span> char.isupper():</span><br><span class="line">            result += <span class="built_in">chr</span>((<span class="built_in">ord</span>(char) + shift - <span class="number">65</span>) % <span class="number">26</span> + <span class="number">65</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 加密小写字母</span></span><br><span class="line">        <span class="keyword">elif</span> char.islower():</span><br><span class="line">            result += <span class="built_in">chr</span>((<span class="built_in">ord</span>(char) + shift - <span class="number">97</span>) % <span class="number">26</span> + <span class="number">97</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result += char</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试加密</span></span><br><span class="line">text = <span class="string">&quot;HELLO&quot;</span></span><br><span class="line">shift = <span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Plain Text : &quot;</span> + text)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Shift pattern : &quot;</span> + <span class="built_in">str</span>(shift))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Cipher: &quot;</span> + caesar_cipher(text, shift))</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>安全性</strong></p>
+<p>凯撒密码是一种非常基础的加密方法，由于其算法简单且容易破解（特别是在现代计算技术的帮助下），因此它不适合用于保护重要的信息。凯撒密码的主要用途在于教育和娱乐。在实际的安全应用中，需要使用更为复杂和安全的加密算法。</p>
+
+    </div>
+  </div>
+
+<h2 id="单向加密"><a href="#单向加密" class="headerlink" title="单向加密"></a>单向加密</h2><h3 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a><strong>概念</strong></h3><p>单向加密，也被称为哈希（Hashing），是一种加密过程，其中明文数据被转换成固定长度的唯一散列值，但这个过程是不可逆的。这意味着从散列值无法还原回原始数据。单向加密常用于存储密码、验证数据完整性和安全性。</p>
+<h3 id="常见方法"><a href="#常见方法" class="headerlink" title="常见方法"></a><strong>常见方法</strong></h3><p>两种常见的单向加密算法是MD5（Message-Digest Algorithm）和SHA（Secure Hash Algorithm）。</p>
+<ol>
+<li><strong>MD5</strong>：<ul>
+<li>MD5生成的散列值长度为128位（即16字节）。</li>
+<li>通常以32个十六进制字符表示（因为每4位二进制可以表示为1位十六进制，所以128位二进制等于32位十六进制）。</li>
+</ul>
+</li>
+<li><strong>SHA</strong>：<ul>
+<li>SHA家族包括多种算法，如SHA-1、SHA-256、SHA-512等，其中SHA-256生成的散列值长度为256位。</li>
+<li>SHA-256的结果通常表示为64个十六进制字符。</li>
+</ul>
+</li>
+<li><strong>更新哈希值</strong>：<ul>
+<li><code>update()</code> 方法用于向哈希对象添加数据。如果同一个哈希对象被多次调用 <code>update()</code>，则新增的数据会被附加到原有数据后面，最终的哈希值是所有数据的总和。</li>
+</ul>
+</li>
+</ol>
+<h4 id="MD5加密"><a href="#MD5加密" class="headerlink" title="MD5加密"></a>MD5加密</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> md5</span><br><span class="line"></span><br><span class="line">md5_obj = md5()  <span class="comment"># 创建MD5算法加密对象</span></span><br><span class="line">md5_obj.update(<span class="string">&quot;加密数据&quot;</span>.encode())  <span class="comment"># 添加要加密的数据</span></span><br><span class="line"><span class="built_in">print</span>(md5_obj.hexdigest())  <span class="comment"># 获取十六进制表示的散列值</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="SHA加密"><a href="#SHA加密" class="headerlink" title="SHA加密"></a>SHA加密</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</span><br><span class="line"></span><br><span class="line">sha256_obj = sha256()  <span class="comment"># 创建SHA-256算法加密对象</span></span><br><span class="line">sha256_obj.update(<span class="string">&quot;加密数据&quot;</span>.encode())  <span class="comment"># 添加要加密的数据</span></span><br><span class="line"><span class="built_in">print</span>(sha256_obj.hexdigest())  <span class="comment"># 获取十六进制表示的散列值</span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><strong>安全性</strong>：<ul>
+<li>MD5和SHA-1由于存在安全漏洞，不再推荐用于安全敏感的场合。</li>
+<li>SHA-256是更安全的选择，广泛用于加密货币、SSL证书等。</li>
+</ul>
+</li>
+<li><strong>用途</strong>：<ul>
+<li>单向加密主要用于密码存储、数据完整性校验和数字签名等。</li>
+</ul>
+</li>
+<li><strong>不可逆性</strong>：<ul>
+<li>哈希函数的一个关键特性是它们是单向的，无法逆转。这意味着无法从散列值推算出原始输入。</li>
+</ul>
+</li>
+</ul>
+<h2 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h2><h3 id="概念与简介"><a href="#概念与简介" class="headerlink" title="概念与简介"></a>概念与简介</h3><p><strong>概念</strong>: 对称加密是一种加密方法，其中加密和解密使用相同的密钥。</p>
+<p><strong>简介:</strong></p>
+<ul>
+<li>对称加密算法通常速度较快，适合加密大量数据。常用的对称加密算法包括 <strong>DES</strong>（Data Encryption Standard）、<strong>3DES</strong>（Triple DES）和 <strong>AES</strong>（Advanced Encryption Standard）。<ul>
+<li>**DES (Data Encryption Standard)**：是最初的对称加密标准，使用56位密钥。尽管存在8位校验位，但实际上只用到了56位。DES由于密钥长度较短，容易受到暴力破解攻击。</li>
+<li>**3DES (Triple DES)**：是DES的改进版本，通过使用三重DES加密过程提高安全性。它使用两个或三个密钥，有效长度为112或168位。</li>
+<li><strong>AES</strong> 是一种更现代的对称加密标准，提供多种密钥长度（128、192和256位）。被认为是DES的继任者，提供了更高的安全性和更好的性能。AES在现代加密应用中非常普遍。</li>
+</ul>
+</li>
+</ul>
+<p><strong>特点：</strong></p>
+<ul>
+<li><strong>相同密钥</strong>：加密和解密使用相同的密钥，因此密钥的保密性极为重要。</li>
+<li><strong>密钥长度</strong>：一般较短，通常小于256位。密钥越长，安全性越高，但性能可能受影响。</li>
+<li><strong>对称加密的应用</strong>：对称加密算法通常用于加密大量数据，如文件加密、数据库加密等。</li>
+</ul>
+<h3 id="DES"><a href="#DES" class="headerlink" title="DES"></a>DES</h3><h4 id="概念-3"><a href="#概念-3" class="headerlink" title="概念"></a>概念</h4><p>DES是一种经典的对称加密算法，尽管由于其较短的密钥长度（56位有效长度），在现代计算能力下已不再安全。</p>
+<h4 id="DES加密原理"><a href="#DES加密原理" class="headerlink" title="DES加密原理"></a>DES加密原理</h4><p>DES的加密过程包括初始置换、16轮迭代运算和逆初始置换。每轮迭代运算包括扩展置换、S盒置换和P盒置换，以及与子密钥的混合。<strong>初始置换</strong>（Initial Permutation, IP）和<strong>逆初始置换</strong>（Final Permutation, FP）是DES加密过程中的第一步和最后一步，它们是固定的非加密置换。</p>
+<ul>
+<li><strong>初始置换</strong>：打乱明文数据的顺序。</li>
+<li><strong>16轮迭代运算</strong>：每轮使用不同的密钥进行加密。</li>
+<li><strong>逆初始置换</strong>：恢复数据到最终加密状态。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/1b31bb8b-62ec-487a-110c-6fe1cb20ae00/public"
+                      width = "500"
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f0d23f60-6fcd-4ddf-f78c-24fa737bdf00/public"
+                      width = "500"
+                >
+
+<p><strong>初始IP置换表</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">58</th>
+<th align="right">50</th>
+<th>12</th>
+<th>34</th>
+<th>26</th>
+<th>18</th>
+<th>10</th>
+<th>2</th>
+<th>60</th>
+<th>52</th>
+<th>44</th>
+<th>36</th>
+<th>28</th>
+<th>20</th>
+<th>12</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">62</td>
+<td align="right">54</td>
+<td>46</td>
+<td>38</td>
+<td>30</td>
+<td>22</td>
+<td>14</td>
+<td>6</td>
+<td>64</td>
+<td>56</td>
+<td>48</td>
+<td>40</td>
+<td>32</td>
+<td>24</td>
+<td>16</td>
+<td>8</td>
+</tr>
+<tr>
+<td align="center">57</td>
+<td align="right">49</td>
+<td>41</td>
+<td>33</td>
+<td>25</td>
+<td>17</td>
+<td>9</td>
+<td>1</td>
+<td>59</td>
+<td>51</td>
+<td>43</td>
+<td>35</td>
+<td>27</td>
+<td>19</td>
+<td>11</td>
+<td>3</td>
+</tr>
+<tr>
+<td align="center">61</td>
+<td align="right">53</td>
+<td>45</td>
+<td>37</td>
+<td>29</td>
+<td>21</td>
+<td>13</td>
+<td>5</td>
+<td>63</td>
+<td>55</td>
+<td>47</td>
+<td>39</td>
+<td>31</td>
+<td>23</td>
+<td>15</td>
+<td>7</td>
+</tr>
+</tbody></table>
+<p><strong>逆置置换表</strong></p>
+<table>
+<thead>
+<tr>
+<th>40</th>
+<th align="center">8</th>
+<th>48</th>
+<th>16</th>
+<th>56</th>
+<th>24</th>
+<th>64</th>
+<th>32</th>
+<th>39</th>
+<th>7</th>
+<th>47</th>
+<th>15</th>
+<th>55</th>
+<th>23</th>
+<th>63</th>
+<th>31</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>38</td>
+<td align="center">6</td>
+<td>46</td>
+<td>14</td>
+<td>54</td>
+<td>22</td>
+<td>62</td>
+<td>30</td>
+<td>37</td>
+<td>5</td>
+<td>45</td>
+<td>13</td>
+<td>53</td>
+<td>21</td>
+<td>61</td>
+<td>29</td>
+</tr>
+<tr>
+<td>36</td>
+<td align="center">4</td>
+<td>44</td>
+<td>12</td>
+<td>52</td>
+<td>20</td>
+<td>60</td>
+<td>28</td>
+<td>35</td>
+<td>3</td>
+<td>43</td>
+<td>11</td>
+<td>51</td>
+<td>19</td>
+<td>59</td>
+<td>27</td>
+</tr>
+<tr>
+<td>34</td>
+<td align="center">2</td>
+<td>42</td>
+<td>10</td>
+<td>50</td>
+<td>18</td>
+<td>58</td>
+<td>26</td>
+<td>33</td>
+<td>1</td>
+<td>41</td>
+<td>9</td>
+<td>49</td>
+<td>17</td>
+<td>57</td>
+<td>25</td>
+</tr>
+</tbody></table>
+<h4 id="Python实现DES加密"><a href="#Python实现DES加密" class="headerlink" title="Python实现DES加密"></a>Python实现DES加密</h4><p>使用Python进行DES加密需要安装<code>pycryptodomex</code>或<code>pycryptodome</code>库。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Cryptodome.Cipher <span class="keyword">import</span> DES</span><br><span class="line"></span><br><span class="line">key = <span class="string">b&#x27;1234abcd&#x27;</span>  <span class="comment"># 8字节密钥</span></span><br><span class="line">des = DES.new(key, DES.MODE_ECB)  <span class="comment"># 创建DES加密对象，ECB模式</span></span><br><span class="line">content = <span class="string">&quot;加密内容&quot;</span>  </span><br><span class="line"><span class="comment"># 确保内容长度是8的倍数</span></span><br><span class="line">padding = (<span class="number">8</span> - <span class="built_in">len</span>(content) % <span class="number">8</span>) * <span class="string">&quot;-&quot;</span></span><br><span class="line">en_data = content + padding</span><br><span class="line">en_data = des.encrypt(en_data.encode())  <span class="comment"># 加密</span></span><br><span class="line"><span class="built_in">print</span>(en_data)</span><br><span class="line">de_data = des.decrypt(en_data)  <span class="comment"># 解密</span></span><br><span class="line"><span class="built_in">print</span>(de_data.decode())</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><strong>密钥管理</strong>：对称加密的一个挑战是密钥的安全传输和管理，因为密钥必须在通信双方之间共享。</li>
+<li><strong>加密模式</strong>：除了ECB（Electronic Codebook）模式，还有其他几种模式，如CBC（Cipher Block Chaining）和CFB（Cipher Feedback），每种模式有其特点和用途。</li>
+<li><strong>安全性考量</strong>：随着计算能力的提高，DES由于其较短的密钥长度而变得不够安全，AES由于其更长的密钥和更高效的算法成为更好的选择。</li>
+</ul>
+<h3 id="3DES"><a href="#3DES" class="headerlink" title="3DES"></a>3DES</h3><h4 id="概念-4"><a href="#概念-4" class="headerlink" title="概念"></a>概念</h4><p>3DES（或称为Triple DES）是三重数据加密算法（TDEA，Triple Data Encryption Algorithm）块密码的通称。它相当于是对每个数据块应用<strong>三次DES加密算法</strong>。</p>
+<p>由于计算机运算能力的增强，原版DES密码的密钥长度变得容易被暴力破解。3DES即是设计用来提供一种相对简单的方法，即通过增加DES的密钥长度来避免类似的攻击，而不是设计一种全新的块密码算法。</p>
+<h4 id="3DES加密原理"><a href="#3DES加密原理" class="headerlink" title="3DES加密原理"></a>3DES加密原理</h4><p>3DES（即Triple DES）是DES向AES过渡的加密算法（1999年，NIST将3-DES指定为过渡的加密标准），加密算法，其具体实现如下：设Ek()和Dk()代表DES算法的加密和解密过程，K代表DES算法使用的密钥，M代表明文，</p>
+<ul>
+<li><strong>加密过程</strong>：<code>C = Ek3(Dk2(Ek1(M)))</code><ul>
+<li>其中，<code>Ek()</code> 表示用密钥 <code>k</code> 进行DES加密，<code>Dk()</code> 表示用密钥 <code>k</code> 进行DES解密。</li>
+<li><code>M</code> 代表明文，<code>C</code> 代表密文。</li>
+<li><code>k1</code>、<code>k2</code> 和 <code>k3</code> 是三个不同的密钥。</li>
+</ul>
+</li>
+<li><strong>解密过程</strong>：<code>M = Dk1(Ek2(Dk3(C)))</code><ul>
+<li>解密过程是加密过程的逆过程。</li>
+</ul>
+</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f03b3c3b-cb6b-4ed1-5450-13fbf5896a00/public"
+                      width = "500"
+                >
+
+<h4 id="Python实现3DES加密"><a href="#Python实现3DES加密" class="headerlink" title="Python实现3DES加密"></a>Python实现3DES加密</h4><p>实际上，3DES有几种不同的实现方式，包括使用三个不同密钥的3-key模式（最安全，但也最慢），以及使用两个不同密钥的2-key模式。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Cryptodome.Cipher <span class="keyword">import</span> DES3</span><br><span class="line"></span><br><span class="line">key = <span class="string">b&#x27;12345678abcdefgh&#x27;</span>  <span class="comment"># 16字节密钥用于2-key模式，24字节密钥用于3-key模式</span></span><br><span class="line">des = DES3.new(key, DES3.MODE_ECB)  <span class="comment"># 创建3DES加密对象，ECB模式</span></span><br><span class="line">content = <span class="string">&quot;加密内容&quot;</span>  </span><br><span class="line"><span class="comment"># 确保内容长度是8的倍数</span></span><br><span class="line">padding = (<span class="number">8</span> - <span class="built_in">len</span>(content) % <span class="number">8</span>) * <span class="string">&quot;-&quot;</span></span><br><span class="line">en_data = content + padding</span><br><span class="line">en_data = des.encrypt(en_data.encode())  <span class="comment"># 加密</span></span><br><span class="line"><span class="built_in">print</span>(en_data)</span><br><span class="line">de_data = des.decrypt(en_data)  <span class="comment"># 解密</span></span><br><span class="line"><span class="built_in">print</span>(de_data.decode())</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><strong>性能</strong>：由于3DES使用了三次DES加密过程，它在相同硬件上比单次DES加密慢三倍左右。</li>
+<li><strong>安全性</strong>：虽然3DES比原始的DES更安全，但它的速度和效率不及更现代的算法，如AES。</li>
+<li><strong>用途</strong>：3DES通常用于需要与旧系统兼容的场景，但新的系统和应用更倾向于使用AES。</li>
+</ul>
+<h3 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h3><h4 id="概念-5"><a href="#概念-5" class="headerlink" title="概念"></a>概念</h4><p>AES（Advanced Encryption Standard），又称Rijndael加密法，是一种区块加密标准，用于替代原来的DES。AES是美国国家标准技术研究所（NIST）于2001年采纳的加密标准，并被广泛使用。</p>
+<h4 id="加密过程"><a href="#加密过程" class="headerlink" title="加密过程"></a>加密过程</h4><ul>
+<li><p><strong>分组密码</strong>：AES将明文分为固定大小的数据块进行加密，每个数据块的大小为128位，即16个字节。</p>
+</li>
+<li><p><strong>密钥长度</strong>：AES支持三种长度的密钥：128位、192位和256位。不同的密钥长度会影响加密的轮数。</p>
+</li>
+<li><p>加密轮数</p>
+<p>：根据密钥长度的不同，AES有不同的加密轮数：</p>
+<ul>
+<li>AES-128：10轮</li>
+<li>AES-192：12轮</li>
+<li>AES-256：14轮</li>
+</ul>
+</li>
+<li><p><strong>每轮加密操作</strong>：每一轮包括若干步骤，如字节代换、行移位、列混淆和轮密钥加。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">AES</th>
+<th align="center"><strong>密钥长度（32位比特字)</strong></th>
+<th align="center"><strong>分组长度(32位比特字)</strong></th>
+<th align="center"><strong>加密轮数</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">AES-128</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">AES-192</td>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">AES-256</td>
+<td align="center">8</td>
+<td align="center">4</td>
+<td align="center">14</td>
+</tr>
+</tbody></table>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/287ba295-5ce2-4f70-3044-a9c9fa3f6700/public"
+                      width = "500"
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b7807e29-1aa4-47d9-e958-1101f5f05100/public"
+                      width = "500"
+                >
+
+<h4 id="Python实现AES加密"><a href="#Python实现AES加密" class="headerlink" title="Python实现AES加密"></a>Python实现AES加密</h4><p>在Python中使用AES加密时，可以选择不同的加密模式，如CBC（Cipher Block Chaining）模式。CBC模式需要一个初始化向量（IV）来提高安全性。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Cryptodome.Cipher <span class="keyword">import</span> AES</span><br><span class="line"></span><br><span class="line">key = <span class="string">b&#x27;abcdefghijklnmop&#x27;</span>  <span class="comment"># 16字节密钥</span></span><br><span class="line">iv = <span class="string">b&#x27;1234567890abcdef&#x27;</span>   <span class="comment"># 初始化向量</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建AES加密器实例</span></span><br><span class="line">aes = AES.new(key, AES.MODE_CBC, iv)</span><br><span class="line"></span><br><span class="line">content = <span class="string">&quot;我爱你&quot;</span></span><br><span class="line">b_content = content.encode()</span><br><span class="line"><span class="comment"># 补足到16的倍数</span></span><br><span class="line">bytes_content = content + (<span class="number">16</span> - <span class="built_in">len</span>(b_content) % <span class="number">16</span>) * <span class="string">&quot;*&quot;</span></span><br><span class="line">en_data = aes.encrypt(bytes_content.encode())</span><br><span class="line"><span class="built_in">print</span>(en_data)  <span class="comment"># 加密后的数据</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 解密</span></span><br><span class="line">aes_decrypt = AES.new(key, AES.MODE_CBC, iv)</span><br><span class="line">de_data = aes_decrypt.decrypt(en_data)</span><br><span class="line"><span class="built_in">print</span>(de_data.decode().rstrip(<span class="string">&#x27;*&#x27;</span>))  <span class="comment"># 解密后的数据，去除填充的&#x27;*&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><h3 id="概念与简介-1"><a href="#概念与简介-1" class="headerlink" title="概念与简介"></a><strong>概念</strong>与简介</h3><p>非对称加密是一种加密方法，其中使用一对密钥：一个公钥和一个私钥。公钥用于加密数据，而私钥用于解密。这种方法的关键优势在于，公钥可以公开共享，而私钥则保持私密，从而确保了信息的安全传输。</p>
+<h4 id="主要特点"><a href="#主要特点" class="headerlink" title="主要特点"></a>主要特点</h4><ul>
+<li><strong>安全性</strong>：非对称加密提供了高度的安全性，因为即使公钥是公开的，没有相应的私钥也无法解密信息。</li>
+<li><strong>密钥传输</strong>：不需要安全地传输密钥，因为公钥可以公开。</li>
+<li><strong>效率</strong>：相较于对称加密，非对称加密过程速度较慢，尤其是在处理大量数据时。</li>
+</ul>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><ul>
+<li>常用于加密少量重要数据，如加密会话密钥。</li>
+<li>广泛应用于数字签名和身份验证。</li>
+</ul>
+<h3 id="RSA加密算法"><a href="#RSA加密算法" class="headerlink" title="RSA加密算法"></a>RSA加密算法</h3><h4 id="数论基础"><a href="#数论基础" class="headerlink" title="数论基础"></a>数论基础</h4><h5 id="素数-Prime-Numbers"><a href="#素数-Prime-Numbers" class="headerlink" title="素数 (Prime Numbers)"></a>素数 (Prime Numbers)</h5><p>素数，也称为质数，指的是一个大于1的自然数，它除了1和其自身外，不能被其他自然数整除。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/691f968c-5097-4d90-0e4b-d6a3795ace00/public"
+                      width = "300"
+                >
+
+<h5 id="模运算-Modulo-Operation"><a href="#模运算-Modulo-Operation" class="headerlink" title="模运算 (Modulo Operation)"></a>模运算 (Modulo Operation)</h5><p>模运算，即求余运算，在数学中通常用”mod”表示。它与”同余”的概念密切相关。如果两个整数除以同一个正整数得到相同的余数，那么这两个整数是同余的。</p>
+<p>例如，若两个整数$a$和$b$，除以正整数$m$得到的余数相等，则$a \equiv b \ (\text{mod} \ m)$，即$a$同余于$b$模$m$。如：$26 \equiv 14 \ (\text{mod} \ 12)$。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c9a1ab53-f434-4bc7-a745-56ab0aabb600/public"
+                      width = "300"
+                >
+
+
+<h5 id="互质关系（Coprime）"><a href="#互质关系（Coprime）" class="headerlink" title="互质关系（Coprime）"></a>互质关系（Coprime）</h5><p>互质关系是指两个正整数$a$和$b$之间的关系，它们除了1以外没有其他共同的正因子。互质关系表示为$\text{gcd}(a, b) &#x3D; 1$，其中$\text{gcd}(a, b)$表示$a$和$b$的最大公因子。</p>
+<p>性质和应用：</p>
+<ul>
+<li>任意两个质数互质。</li>
+<li>如果一个数是质数，另一个数不是它的倍数，它们互质。</li>
+<li>如果两数中较大的那个是质数，则它们互质。</li>
+<li>1和任意自然数互质。</li>
+<li>对于大于1的整数$p$，$p$和$p-1$互质。</li>
+<li>对于大于1的奇数$p$，$p$和$p-2$互质。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3a4c86c8-472f-48ad-30e8-c03533220900/public"
+                      width = "400"
+                >
+
+<h5 id="欧拉函数-Euler’s-Totient-Function"><a href="#欧拉函数-Euler’s-Totient-Function" class="headerlink" title="欧拉函数 (Euler’s Totient Function)"></a>欧拉函数 (Euler’s Totient Function)</h5><p>欧拉函数，记作$\phi(n)$，是一个数论中的重要函数。它的定义是：对于任意正整数$n$，欧拉函数$\phi(n)$表示在$1$到$n$之间与$n$互质的正整数的数量。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2f98db38-f83d-4d4b-0561-b1c4eadfdd00/public"
+                      width = "400"
+                >
+
+<p><strong>定义</strong></p>
+<p>对于正整数$n$，欧拉函数$\phi(n)$被定义为：</p>
+<p>$$ \phi(n) &#x3D; \text{数量}{k \in \mathbb{N} : 1 \leq k \leq n, \text{gcd}(k, n) &#x3D; 1} $$</p>
+<p>这里，$\text{gcd}(k, n)$表示$k$和$n$的最大公因数。</p>
+<p><strong>性质</strong></p>
+<ol>
+<li><p><strong>对于质数$p$</strong>:</p>
+<p>因为一个质数除了自身和 $1$ 以外，没有其他因子。因此，除了自身之外，所有小于 $p$ 的正整数都与 $p$ 互质。 </p>
+<p>$$ \phi(p) &#x3D; p - 1 $$ </p>
+<p><strong>推导</strong> </p>
+<p>​	对于质数 $p$，它没有除 $1$ 和自身以外的因子。 	</p>
+<p>​	因此，$1, 2, …, p-1$ 都是与 $p$ 互质的。</p>
+<p>​	这意味着与 $p$ 互质的正整数的数量是 $p-1$。</p>
+</li>
+<li><p><strong>两个不同质数的乘积</strong>:</p>
+<p>当 $n$ 是两个不同质数 $p$ 和 $q$ 的乘积时，欧拉函数的计算变得稍微复杂一点</p>
+<p>$$ \phi(pq) &#x3D; (p - 1)(q - 1) $$</p>
+<p><strong>推导</strong></p>
+<p>​	首先，由于 $p$ 和 $q$ 是质数，所以除了 $1$ 和它们自身外，它们没有其他因子。 </p>
+<p>​	任何小于 $pq$ 且不是 $p$ 或 $q$ 的倍数的数都与 $pq$ 互质。 </p>
+<p>​	在 $1$ 到 $pq$ 的数中，有 $q$ 个数是 $p$ 的倍数，有 $p$ 个数是 $q$ 的倍数，但 $pq$ 被算了两次。</p>
+<p>​	因此，与 $pq$ 互质的数的数量是 $pq - p - q + 1$。 - 这可以重写为 $(p - 1)(q - 1)$。</p>
+</li>
+<li><p><strong>对于质数$p$的幂$p^n$</strong>:</p>
+<p>当 $n$ 是质数 $p$ 的幂，即 $n &#x3D; p^k$（其中 $k &gt; 1$）时，欧拉函数的计算方式如下： </p>
+<p>$$ \phi(p^k) &#x3D; p^k - p^{k-1} $$</p>
+<p><strong>推导</strong></p>
+<p>​	在 $1$ 到 $p^k$ 的数中，与 $p^k$ 不互质的数是 $p$ 的倍数。 </p>
+<p>​	这些数是 $p, 2p, 3p, \ldots, p^{k-1}p$，总共有 $p^{k-1}$ 个。 </p>
+<p>​	因此，与 $p^k$ 互质的数的数量是 $p^k - p^{k-1}$。</p>
+</li>
+</ol>
+<p><strong>示例</strong></p>
+<ul>
+<li>计算 $\phi(10)$:<ul>
+<li>由于 $10 &#x3D; 2 \times 5$，且 $2$ 和 $5$ 是质数，$\phi(10) &#x3D; (2-1)(5-1) &#x3D; 4$。   </li>
+<li>与 $10$ 互质的数有 $1, 3, 7, 9$。</li>
+</ul>
+</li>
+</ul>
+<p><strong>应用</strong></p>
+<p>欧拉函数在密码学和数论中有着重要的应用，例如在RSA加密算法中，它被用来选择密钥。</p>
+<h5 id="模反元素-模逆元（Modular-Multiplicative-Inverse）"><a href="#模反元素-模逆元（Modular-Multiplicative-Inverse）" class="headerlink" title="模反元素&#x2F;模逆元（Modular Multiplicative Inverse）"></a>模反元素&#x2F;模逆元（Modular Multiplicative Inverse）</h5><p>模反元素是数论和代数中的一个重要概念。当两个正整数$a$和$n$互质时（即它们的最大公因数为$1$），$a$在模$n$下的模反元素是指一个整数$b$，使得$a$乘以$b$在模$n$下的结果等于$1$。</p>
+<p><strong>定义</strong></p>
+<ul>
+<li><p>对于给定的正整数$a$和$n$，如果存在整数$b$满足以下等式，则$b$是$a$的模反元素：</p>
+<p>$$ ab \equiv 1 \pmod{n} $$</p>
+</li>
+<li><p>这里的$\equiv$表示同余，而$\pmod{n}$表示对$n$取模。</p>
+</li>
+</ul>
+<p><strong>计算方法</strong></p>
+<ul>
+<li>要找到$a$在模$n$下的模反元素$b$，可以使用扩展欧几里得算法或费马小定理（如果$n$是质数）。</li>
+</ul>
+<p><strong>示例</strong></p>
+<ul>
+<li>假设$a &#x3D; 3$和$n &#x3D; 11$，那么$3$和$11$互质。</li>
+<li>要找到一个数$b$，使得$3b \equiv 1 \pmod{11}$。</li>
+<li>在这个例子中，$b &#x3D; 4$是$3$的模反元素，因为$3 \cdot 4 &#x3D; 12$，且$12 \equiv 1 \pmod{11}$。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e525b4e3-2eba-44c4-3764-54a4f3604700/public"
+                      width = "200"
+                >
+
+<p><strong>应用</strong></p>
+<ul>
+<li>模反元素在密码学中非常重要，尤其是在公钥加密和数字签名算法中。</li>
+<li>它也用于计算机科学中的某些算法，如模算术和散列函数。</li>
+</ul>
+<h4 id="概念-6"><a href="#概念-6" class="headerlink" title="概念"></a><strong>概念</strong></h4><p>RSA是一种广泛使用的非对称加密算法，由Rivest、Shamir和Adleman三位数学家提出。RSA的安全性基于大数分解的难题。在RSA中，加密密钥（公钥）是公开的，而解密密钥（私钥）则必须保密。由于RSA计算量大，通常用于加密小量数据或加密对称加密的密钥。常见的做法是使用RSA加密对称密钥，然后用该对称密钥进行实际数据的加密和解密，这样结合了两者的优点：RSA的安全性和对称加密的效率。</p>
+<h4 id="RSA加密原理"><a href="#RSA加密原理" class="headerlink" title="RSA加密原理"></a>RSA加密原理</h4><p>RSA加密的基本步骤可以分为三个阶段：密钥生成、加密和解密。</p>
+<h5 id="密钥生成过程"><a href="#密钥生成过程" class="headerlink" title="密钥生成过程"></a>密钥生成过程</h5><ol>
+<li><strong>选择两个大的质数</strong> $p$ 和 $q$。这些质数需要足够大，以确保加密的安全性。 </li>
+<li><strong>计算它们的乘积</strong> $n &#x3D; p \times q$。这个乘积 $n$ 用于公钥和私钥，且其长度决定了密钥长度。 </li>
+<li><strong>计算欧拉函数</strong> $\phi(n) &#x3D; (p-1)(q-1)$。这是公钥和私钥生成的关键部分。 </li>
+<li><strong>选择一个公钥指数</strong> $e$。$e$ 是一个小于 $\phi(n)$ 的正整数，并且 $e$ 和 $\phi(n)$ 互质。常见的选择是 $e &#x3D; 65537$，但确保 $e &lt; \phi(n)$。 </li>
+<li><strong>计算私钥</strong> $d$。$d$ 是 $e$ 相对于 $\phi(n)$ 的模逆元，即找到一个整数 $d$ 使得 $ed \equiv 1 \mod \phi(n)$。这可以通过扩展欧几里得算法来实现。</li>
+</ol>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>扩展欧几里得算法及其在RSA加密中的应用</strong></p>
+<p>扩展欧几里得算法是一种用于求解两个整数 <code>a</code> 和 <code>b</code> 的最大公因数（GCD）的同时，找到整数 <code>x</code> 和 <code>y</code> 使得 <code>ax + by = gcd(a, b)</code> 的算法。</p>
+<p><strong>算法描述</strong></p>
+<ol>
+<li><p><strong>基本思想</strong>:</p>
+<ul>
+<li>扩展欧几里得算法基于欧几里得算法的原理，通过反复应用除法原理，直到余数为0。</li>
+<li>在每一步中，算法维护着等式 <code>ax + by = gcd(a, b)</code> 的一个解。</li>
+</ul>
+</li>
+<li><p><strong>算法步骤</strong>:</p>
+<ul>
+<li>如果 <code>b = 0</code>，则 <code>gcd(a, b) = a</code>，且 <code>x = 1</code>, <code>y = 0</code>。</li>
+<li>否则，递归调用扩展欧几里得算法：<code>gcd(b, a % b)</code>。</li>
+<li>通过回溯的方式，计算出 <code>x</code> 和 <code>y</code> 的值。</li>
+</ul>
+</li>
+</ol>
+<p><strong>在RSA加密中的应用</strong></p>
+<p>在RSA加密中，扩展欧几里得算法用于计算私钥 <code>d</code>，这是公钥指数 <code>e</code> 的模逆元相对于 <code>φ(n)</code>。</p>
+<ol>
+<li><p><strong>公钥和私钥的生成</strong>:</p>
+<ul>
+<li>已知公钥指数 <code>e</code> 和 <code>φ(n)</code>（其中 <code>n = pq</code> 是两个质数 <code>p</code> 和 <code>q</code> 的乘积）。</li>
+<li>需要找到一个整数 <code>d</code> 使得 <code>ed ≡ 1 (mod φ(n))</code>。</li>
+<li>这意味着需要找到 <code>x</code> 和 <code>y</code> 使得 <code>ex + φ(n)y = 1</code>。</li>
+</ul>
+</li>
+<li><p><strong>使用扩展欧几里得算法</strong>:</p>
+<ul>
+<li>应用扩展欧几里得算法于 <code>e</code> 和 <code>φ(n)</code>。</li>
+<li>算法将产生 <code>x</code> 和 <code>y</code>，其中 <code>x</code> 就是所求的 <code>d</code>。</li>
+<li>即使 <code>x</code> 是负数，也可以通过加上 <code>φ(n)</code> 来得到正的模逆元。</li>
+</ul>
+</li>
+</ol>
+<p><strong>示例</strong></p>
+<p>假设 <code>e = 17</code> 和 <code>φ(n) = 3120</code>，使用扩展欧几里得算法找到 <code>d</code>，使得 <code>17d ≡ 1 (mod 3120)</code>。算法将返回 <code>d</code> 的值，这是私钥的一部分。</p>
+<p>这种方法确保了RSA加密算法中私钥的生成既安全又有效率。</p>
+
+    </div>
+  </div>
+
+<h5 id="加密过程-1"><a href="#加密过程-1" class="headerlink" title="加密过程"></a>加密过程</h5><p>加密过程是将明文消息 $M$ 转换成密文 $C$。这通过以下公式完成：  </p>
+<p>$$ C &#x3D; M^e \mod n $$ </p>
+<p>使用公钥 $(n, e)$ 对明文 $M$ 进行加密。 </p>
+<h5 id="解密过程"><a href="#解密过程" class="headerlink" title="解密过程"></a>解密过程</h5><p>解密过程是将密文 $C$ 还原回原始明文 $M$。这通过以下公式完成：  </p>
+<p>$$ M &#x3D; C^d \mod n $$ </p>
+<p>使用私钥 $(n, d)$，可以将密文 $C$ 解密回明文 $M$。 </p>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <p>在RSA加密算法中，公钥指数 e 的选择对于加密的效率和安全性都至关重要。e &#x3D; 65537 是一个广泛使用的值，其原因如下：</p>
+<ol>
+<li><strong>安全性</strong>:   e 应该是一个与 $\phi(n)$ 互质的大质数。65537 是一个质数，且大多数情况下不会与 $\phi(n)$ 有共同因子。 </li>
+<li><strong>效率</strong>:   65537 在二进制表示中只有两个 1（即 10000000000000001）。这使得进行模幂运算（用于加密和解密）时更加高效。较少的 1 位意味着需要更少的乘法操作。 </li>
+<li><strong>历史原因</strong>:   在RSA的早期，较小的值如 3 和 17 也被作为公钥指数使用。然而，随着对RSA安全性的更深入理解，这些较小的值被认为在某些情况下不够安全。65537 提供了良好的安全性，同时保持了计算效率。 </li>
+<li><strong>平衡性</strong>:   65537 是一个在保持计算效率和确保足够安全性之间的良好平衡。它足够大，可以避免某些已知的攻击方法，同时又不会像更大的数那样使计算量过大。 </li>
+<li>总结来说，e &#x3D; 65537 是RSA加密中的一个标准选择，因为它在安全性和计算效率之间提供了一个很好的平衡点。</li>
+</ol>
+
+    </div>
+  </div>
+
+<h4 id="RSA加密算法的安全性"><a href="#RSA加密算法的安全性" class="headerlink" title="RSA加密算法的安全性"></a>RSA加密算法的安全性</h4><p>RSA加密算法的安全性主要基于大数分解的难度。当选择的两个大素数<code>p</code>和<code>q</code>足够大时，它们的乘积<code>n = p * q</code>难以分解，这是RSA算法的核心安全基础。</p>
+<ul>
+<li><strong>大素数分解难题</strong>：目前，没有已知的高效算法可以在合理时间内分解非常大的数。这个数学难题是RSA安全性的基石。</li>
+</ul>
+<h4 id="RSA加密算法的缺点"><a href="#RSA加密算法的缺点" class="headerlink" title="RSA加密算法的缺点"></a>RSA加密算法的缺点</h4><p>尽管RSA加密算法被广泛使用，但它确实有一些缺点：</p>
+<ol>
+<li><strong>密钥生成困难</strong>：生成大素数需要特定的算法和足够的计算资源。在某些环境下，这可能是一个限制。</li>
+<li><strong>计算效率低</strong>：由于涉及大数运算，RSA加密和解密过程相对较慢，尤其是当使用较长的密钥时。</li>
+<li><strong>理论安全性未证明</strong>：尽管大数分解被认为是困难的，但尚无理论证明表明破解RSA加密的难度与大数分解的难度等价。</li>
+</ol>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.PublicKey <span class="keyword">import</span> RSA</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> PKCS1_OAEP</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成密钥对</span></span><br><span class="line">key = RSA.generate(<span class="number">2048</span>)</span><br><span class="line">private_key = key.export_key()</span><br><span class="line">public_key = key.publickey().export_key()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 明文</span></span><br><span class="line">message = <span class="string">&quot;Hello RSA!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用公钥加密</span></span><br><span class="line">public_key = RSA.import_key(public_key)</span><br><span class="line">cipher = PKCS1_OAEP.new(public_key)</span><br><span class="line">encrypted_message = cipher.encrypt(message.encode())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用私钥解密</span></span><br><span class="line">private_key = RSA.import_key(private_key)</span><br><span class="line">cipher = PKCS1_OAEP.new(private_key)</span><br><span class="line">decrypted_message = cipher.decrypt(encrypted_message)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Original Message:&quot;</span>, message)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Encrypted Message:&quot;</span>, binascii.hexlify(encrypted_message))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Decrypted Message:&quot;</span>, decrypted_message.decode())</span><br></pre></td></tr></table></figure></div>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 编码与加解密</li>
+        <li><strong>作者:</strong> Yiuhang Chan</li>
+        <li><strong>创建于
+                :</strong> 2021-12-27 18:12:46</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-02-28 18:35:03
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://www.yiuhangblog.com/2021/12/27/20211227编码与加解密/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%90%86%E8%AE%BA/">#理论</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%88%AC%E8%99%AB/">#爬虫</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%BC%96%E7%A0%81/">#编码</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/">#加解密</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2022/01/08/20220108JS%E9%80%86%E5%90%91/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">JS逆向</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2021/12/18/20211218%E5%88%86%E5%B8%83%E5%BC%8F%E7%88%AC%E5%8F%96/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">分布式爬取</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://comment.yiuhangblog.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">编码与加解密</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E5%92%8C%E4%BD%9C%E7%94%A8"><span class="nav-text">概念和作用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F"><span class="nav-text">常用加密方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-text">字符编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E5%88%B6"><span class="nav-text">进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-text">常见的字符编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E5%88%B6%E9%97%B4%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%B3%95"><span class="nav-text">进制间转换方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Python%E4%B8%AD%E7%9A%84%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="nav-text">Python中的进制转换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unicode-%E4%B8%8E%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-text">Unicode 与字符编码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Base64%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86"><span class="nav-text">Base64编码原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-1"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-1"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Base64%E7%BC%96%E7%A0%81%E8%A1%A8"><span class="nav-text">Base64编码表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E5%88%B0base64%E6%A0%BC%E5%BC%8F%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-text">文本到base64格式的转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ASCII%E7%A0%81%E8%BD%AC%E6%8D%A2"><span class="nav-text">ASCII码转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ASCII%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="nav-text">ASCII转二进制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B9%B6%E5%88%92%E5%88%86"><span class="nav-text">组合二进制并划分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BD%ACBase64%E7%BC%96%E7%A0%81"><span class="nav-text">二进制转Base64编码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BASE64%E7%BC%96%E7%A0%81%E8%A1%A5%E7%A0%81"><span class="nav-text">BASE64编码补码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E5%90%91%E5%8A%A0%E5%AF%86"><span class="nav-text">单向加密</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-2"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95"><span class="nav-text">常见方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MD5%E5%8A%A0%E5%AF%86"><span class="nav-text">MD5加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SHA%E5%8A%A0%E5%AF%86"><span class="nav-text">SHA加密</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-text">对称加密</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%AE%80%E4%BB%8B"><span class="nav-text">概念与简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DES"><span class="nav-text">DES</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-3"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DES%E5%8A%A0%E5%AF%86%E5%8E%9F%E7%90%86"><span class="nav-text">DES加密原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python%E5%AE%9E%E7%8E%B0DES%E5%8A%A0%E5%AF%86"><span class="nav-text">Python实现DES加密</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3DES"><span class="nav-text">3DES</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-4"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3DES%E5%8A%A0%E5%AF%86%E5%8E%9F%E7%90%86"><span class="nav-text">3DES加密原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python%E5%AE%9E%E7%8E%B03DES%E5%8A%A0%E5%AF%86"><span class="nav-text">Python实现3DES加密</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AES"><span class="nav-text">AES</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-5"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B"><span class="nav-text">加密过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python%E5%AE%9E%E7%8E%B0AES%E5%8A%A0%E5%AF%86"><span class="nav-text">Python实现AES加密</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-text">非对称加密</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%AE%80%E4%BB%8B-1"><span class="nav-text">概念与简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="nav-text">主要特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-text">使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RSA%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="nav-text">RSA加密算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="nav-text">数论基础</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B4%A0%E6%95%B0-Prime-Numbers"><span class="nav-text">素数 (Prime Numbers)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E8%BF%90%E7%AE%97-Modulo-Operation"><span class="nav-text">模运算 (Modulo Operation)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%92%E8%B4%A8%E5%85%B3%E7%B3%BB%EF%BC%88Coprime%EF%BC%89"><span class="nav-text">互质关系（Coprime）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0-Euler%E2%80%99s-Totient-Function"><span class="nav-text">欧拉函数 (Euler’s Totient Function)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E5%8F%8D%E5%85%83%E7%B4%A0-%E6%A8%A1%E9%80%86%E5%85%83%EF%BC%88Modular-Multiplicative-Inverse%EF%BC%89"><span class="nav-text">模反元素&#x2F;模逆元（Modular Multiplicative Inverse）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-6"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RSA%E5%8A%A0%E5%AF%86%E5%8E%9F%E7%90%86"><span class="nav-text">RSA加密原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90%E8%BF%87%E7%A8%8B"><span class="nav-text">密钥生成过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B-1"><span class="nav-text">加密过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8B"><span class="nav-text">解密过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RSA%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7"><span class="nav-text">RSA加密算法的安全性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RSA%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-text">RSA加密算法的缺点</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2018</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 5s"></i>&nbsp;&nbsp;<a href="/">Yiuhang Chan</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 41 篇文章
+                    </span>
+                    
+                        <span>
+                            共 348k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex justify-center items-center">
+                <a class="flex justify-center items-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/libs/mermaid.min.js"></script>
+
+    
+<script src="/js/plugins/mermaid.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

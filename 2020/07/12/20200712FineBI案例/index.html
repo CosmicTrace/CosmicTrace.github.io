@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="zh-CN,en,zh-TW,default">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Yiuhang Chan">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://www.yiuhangblog.com/2020/07/12/20200712finebi案例/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="FineBI 简要案例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FineBI案例">
+<meta property="og:url" content="https://www.yiuhangblog.com/2020/07/12/20200712FineBI%E6%A1%88%E4%BE%8B/index.html">
+<meta property="og:site_name" content="角灯随笔">
+<meta property="og:description" content="FineBI 简要案例">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/9d18c84b-5d1c-4dd2-811e-78f71ca75000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e11894f7-92bf-4060-4580-f90fe04ebb00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6b7097c6-93aa-499b-d6d8-5f777bab2e00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e0eacc07-81cd-45d5-870c-c195046b2400/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/dbbb2018-57c1-4329-1caa-0a777136e100/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ac27bcea-7655-455b-babc-95e9fa649b00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2300d3d0-78cf-43a3-d09e-a756441bac00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7ea94391-9668-465a-56bd-afbc5d7a7700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2c5a6a49-8fc6-499d-3d75-e5171aa00d00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/36296a93-2c35-417c-492e-462563c36e00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/11a41a23-dfc5-449d-7f1e-eb22f9863300/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b288dfa5-893b-499d-1db4-963909928500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/625e57bd-29fa-4c18-2af4-9b5d155f1100/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/305f5811-d11a-4095-6690-460c96443a00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/cae6adca-f75f-4f12-2e00-5f280c12d500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/82a88c16-9cee-4f68-507d-cb4f4a6ecf00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b74d33e9-9a39-48a6-9afa-7339fc37ca00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e83f4100-50e6-4d8a-7da1-07db1aa50000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/8fc2d14a-3379-4030-92d7-117ea11f7200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6b090638-bd25-43b4-ec12-d15a8bfa6500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/8b45fc78-292d-4515-ab1c-824e66a16000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d65274c4-b3a2-4476-76ac-2053ff66b600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f4f2f1cc-d800-4c93-1451-efc653372a00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/71557ff6-0a21-409c-b0bb-8d1123c43c00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3d6ad888-85c5-4778-7925-13732cf06200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/8a1fffec-73bc-471a-f5ad-257ddde84b00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/582faa0b-a85a-42b0-0b4c-12bf4eb03b00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/189c2142-a97a-4fa9-ada8-a8a17c04bd00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/914f812b-87ae-46e3-06c3-7bca763a8600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/811d639f-ef4b-410a-01de-798481044600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/63cf2f35-becb-456f-93c6-bb0dbbe7f000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3e361c3f-dd61-4614-553a-5ed09256a800/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c7397b67-7def-4519-990c-fc00f2b17b00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d2948f46-9f90-40aa-709b-fc47d0268c00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b11257e4-51e6-4989-61f1-0e73a62f1c00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a6e757e8-7d70-4a84-41c4-94d228368200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2744c44c-fe6d-404f-e63d-8e4567f70a00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ee8365f1-c8fc-43d8-f7ef-852eecbf2800/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e48133c4-9fe0-476e-15cb-22c9ba55b600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/8cd442bc-7f41-46f5-ccfc-105d5a95e800/public">
+<meta property="article:published_time" content="2020-07-12T05:45:23.000Z">
+<meta property="article:modified_time" content="2024-02-28T10:49:52.000Z">
+<meta property="article:author" content="Yiuhang Chan">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="数据分析">
+<meta property="article:tag" content="商务智能">
+<meta property="article:tag" content="FineBI">
+<meta property="article:tag" content="数据处理">
+<meta property="article:tag" content="案例">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/9d18c84b-5d1c-4dd2-811e-78f71ca75000/public">
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-MQ43G0NKCT"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MQ43G0NKCT');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <meta name="theme-color" content="#A1AFC9">
+    <link rel="shortcut icon" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <!--- Page Info-->
+    
+    <title>
+        
+            FineBI案例 -
+        
+        角灯随笔
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        角灯随笔
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"www.yiuhangblog.com","root":"/","language":["zh-CN","en","zh-TW","default"]};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":6,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":5,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A1AFC9","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":true,"id":"G-MQ43G0NKCT"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e63fc400-dd0e-4395-bd1b-9ee1ac3bfb00/public","dark":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a34140d6-7960-45dd-b8b5-c3ddd14d1f00/public"},"title":"角灯随笔","subtitle":{"text":["全栈也不是不行"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/CosmicTrace","instagram":null,"zhihu":null,"twitter":null,"email":"kenchansk0@gmail.com"},"qrs":null}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"娱乐":{"icon":"fa-solid fa-gamepad","submenus":{"王者荣耀":"/hok","守望先锋":"/ow","使命召唤":"/cod"}},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/CosmicTrace"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"谦逊","show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":8}},"footerStart":"2018/07/15 10:15:24"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="角灯随笔" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                角灯随笔
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/"
+                                        >
+                                    <i class="fa-solid fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-solid fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-solid fa-gamepad fa-fw"></i>
+                                    娱乐
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/hok">
+                                                    王者荣耀
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/ow">
+                                                    守望先锋
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/cod">
+                                                    使命召唤
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/CosmicTrace">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-solid fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-solid fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-娱乐"
+                        >
+                            <span>
+                                娱乐
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-娱乐">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/hok">王者荣耀</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/ow">守望先锋</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/cod">使命召唤</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/CosmicTrace">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">96</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">41</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/055633a6-ab97-4dc2-8cf7-7bd9179f3a00/public" alt="FineBI案例" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">FineBI案例</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/26329e9f-d1fb-4280-a0a5-754547bf8500/public">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Yiuhang Chan</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2020-07-12 13:45:23</span>
+        <span class="mobile">2020-07-12 13:45:23</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-02-28 18:49:52</span>
+            <span class="mobile">2024-02-28 18:49:52</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%95%86%E5%8A%A1%E6%99%BA%E8%83%BD/">商务智能</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/FineBI/">FineBI</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">数据处理</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%A1%88%E4%BE%8B/">案例</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.4k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>8 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="案例-1-营业额问题分析"><a href="#案例-1-营业额问题分析" class="headerlink" title="案例 1 营业额问题分析"></a>案例 1 营业额问题分析</h2><h3 id="案例背景"><a href="#案例背景" class="headerlink" title="案例背景"></a>案例背景</h3><p>作为数据分析师，面对某公司8月营业额的问题，主要任务是识别问题并提出解决方案。重点关注两个方面：</p>
+<ol>
+<li><strong>商品进货预测</strong>:<ul>
+<li>分析销售额最高的商品以预测热门商品，以便进行有效的库存管理。</li>
+<li>通过不同商品类别的销售额占比分析，优化货架空间分配，提高销售效率。</li>
+</ul>
+</li>
+<li><strong>分析8月毛利额下滑原因</strong>:<ul>
+<li>使用毛利率衡量公司盈利能力，分析8月毛利额下滑原因。</li>
+<li>发现湖南省虽销售额高，但毛利率低，进一步分析揭示成本额较高。</li>
+</ul>
+</li>
+</ol>
+<h3 id="分析思路"><a href="#分析思路" class="headerlink" title="分析思路"></a>分析思路</h3><ol>
+<li><strong>商品进货预测</strong>:<ul>
+<li>确定销售额最大的前10件产品，预测未来进货需求。</li>
+</ul>
+</li>
+<li><strong>毛利额下滑分析</strong>:<ul>
+<li>分析8月毛利额较低的省份、城市、门店和产品，寻找原因。</li>
+</ul>
+</li>
+</ol>
+<h4 id="关注指标"><a href="#关注指标" class="headerlink" title="关注指标"></a>关注指标</h4><ul>
+<li><strong>销售额</strong>和<strong>毛利额</strong>（销售额 - 成本额）</li>
+<li><strong>毛利率</strong>：衡量公司盈利能力的关键指标，受时间、地区、商品等因素影响。</li>
+<li><strong>毛利率计算公式</strong>：毛利率 &#x3D; (毛利额 &#x2F; 销售额) × 100%<ul>
+<li><strong>FineBI中毛利率计算</strong>：SUM_agg(毛利额) &#x2F; SUM_agg(销售额)</li>
+</ul>
+</li>
+</ul>
+
+  <div class="note-large orange">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-exclamation"></i><p>注意</p>
+
+    </div>
+    <div class="notel-content">
+      <ol>
+<li>尽管8月的营业额出现问题，但原因可能不仅仅局限于8月。</li>
+<li>需要考虑部分商品可能存在季节性变化，这也可能是影响因素之一。</li>
+<li>单价并不是决定营收的关键因素</li>
+</ol>
+
+    </div>
+  </div>
+
+<h3 id="分析报告实现步骤"><a href="#分析报告实现步骤" class="headerlink" title="分析报告实现步骤"></a>分析报告实现步骤</h3><h4 id="上传数据表"><a href="#上传数据表" class="headerlink" title="上传数据表"></a>上传数据表</h4><p>获取相关数据，进行初步整理，寻找异常值。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/9d18c84b-5d1c-4dd2-811e-78f71ca75000/public"
+                      width = "600"
+                >
+
+<p>由于表中存在四万条数据，因此存在空值影响不大。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e11894f7-92bf-4060-4580-f90fe04ebb00/public"
+                      width = "600"
+                >
+
+<p>挑选票据号数量最大的，过滤筛选查看其值，可以发现同一时间点同一票据下存在多个数量相同商品相同类似批次销售的数据，对此可以进行分析，根据自身业务与同事沟通是否存在数据本身的重复，还是正常销售客户进货行为，还是存在涉嫌黑产的行为。若是重复则进行去重，正常则不作处理，若是其它行为则不是数据分析的范畴了。</p>
+<h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h4><p>对数据进行清洗、整理，确保数据准确性。</p>
+<p>根据上述的初步数据整理，假设是正常销售行为，因此本案例不作数据处理。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6b7097c6-93aa-499b-d6d8-5f777bab2e00/public"
+                      width = "600"
+                >
+
+<p>添加毛利额</p>
+<h4 id="组件交互"><a href="#组件交互" class="headerlink" title="组件交互"></a>组件交互</h4><p>通过交互式组件展示分析结果，增强报告的可读性和互动性。</p>
+<h5 id="新增销售额排名分组表"><a href="#新增销售额排名分组表" class="headerlink" title="新增销售额排名分组表"></a>新增销售额排名分组表</h5><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e0eacc07-81cd-45d5-870c-c195046b2400/public"
+                      width = "600"
+                >
+
+<p>拖动需要的表头维度<code>商品名称</code>，指标<code>数量</code>，<code>销售额</code>和<code>毛利额</code>到分组表，过滤维度数量最大为10</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/dbbb2018-57c1-4329-1caa-0a777136e100/public"
+                      width = "600"
+                >
+
+<p>降序排列销售额，即可得到完整处理后的销售额最大的前10件产品</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ac27bcea-7655-455b-babc-95e9fa649b00/public"
+                      width = "600"
+                >
+
+<p>随后在客制化如颜色，数字显示格式后，重命名该组件为销售额最大的10件商品以作区分后新建一个新组件</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2300d3d0-78cf-43a3-d09e-a756441bac00/public"
+                      width = "600"
+                >
+
+<p>拖动维度<code>日期(年月日)</code>，两个指标<code>毛利额</code>，然后设定日期为年月格式进行汇总</p>
+<h5 id="新增毛利额环比增长率"><a href="#新增毛利额环比增长率" class="headerlink" title="新增毛利额环比增长率"></a>新增毛利额环比增长率</h5><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7ea94391-9668-465a-56bd-afbc5d7a7700/public"
+                      width = "600"
+                >
+
+<p>新增环比增长率</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2c5a6a49-8fc6-499d-3d75-e5171aa00d00/public"
+                      width = "600"
+                >
+
+<p>随后重命名以示区分，即可完成毛利额环比增长率的分组表</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/36296a93-2c35-417c-492e-462563c36e00/public"
+                      width = "600"
+                >
+
+<p>为了不影响源数据，复制一份新的毛利额环比增长率的分组表然后修改为自定义图表</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/11a41a23-dfc5-449d-7f1e-eb22f9863300/public"
+                      width = "600"
+                >
+
+<p>通过修改毛利额为折线图，环比增长率的直轴为右侧对两组数据的可视化进行分割展示</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b288dfa5-893b-499d-1db4-963909928500/public"
+                      width = "600"
+                >
+
+<p>按业务需求客制化如颜色，命名，是否加标签即可</p>
+<h5 id="新增销售品类占比饼图"><a href="#新增销售品类占比饼图" class="headerlink" title="新增销售品类占比饼图"></a>新增销售品类占比饼图</h5><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/625e57bd-29fa-4c18-2af4-9b5d155f1100/public"
+                      width = "600"
+                >
+
+<p>拖动维度<code>商品类别</code>，指标<code>销售额</code>，然后更改指标为占比</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/305f5811-d11a-4095-6690-460c96443a00/public"
+                      width = "600"
+                >
+
+<p>切换到饼图，然后添加标签即可</p>
+<h5 id="对8月毛利额较低的维度钻取分析下滑原因"><a href="#对8月毛利额较低的维度钻取分析下滑原因" class="headerlink" title="对8月毛利额较低的维度钻取分析下滑原因"></a>对8月毛利额较低的维度钻取分析下滑原因</h5><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/cae6adca-f75f-4f12-2e00-5f280c12d500/public"
+                      width = "600"
+                >
+
+<p>添加毛利率计算公式</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/82a88c16-9cee-4f68-507d-cb4f4a6ecf00/public"
+                      width = "600"
+                >
+
+<p>添加<code>城市</code>与<code>省份</code>的地理角色，然后拖动<code>城市</code>到<code>省份</code>进行钻取</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b74d33e9-9a39-48a6-9afa-7339fc37ca00/public"
+                      width = "600"
+                >
+
+<p>继续添加<code>门店名称</code>和<code>商品名称</code>到钻取目录，根据从属关系由上自下排列</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e83f4100-50e6-4d8a-7da1-07db1aa50000/public"
+                      width = "600"
+                >
+
+<p>将拖动维度钻取目录<code>省份,城市</code>，拖动指标<code>毛利率</code>，<code>毛利额</code>，<code>销售额</code>，<code>成本额</code>，升序毛利率查看省份最低的是哪一个</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/8fc2d14a-3379-4030-92d7-117ea11f7200/public"
+                      width = "600"
+                >
+
+<p>点击最低毛利率的湖南省右侧的箭头进行多次钻取，查看受影响的门店</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6b090638-bd25-43b4-ec12-d15a8bfa6500/public"
+                      width = "600"
+                >
+
+<p>最后钻取该门店的商品可以发现德芙巧克力处于亏本状态</p>
+<h4 id="添加到仪表板"><a href="#添加到仪表板" class="headerlink" title="添加到仪表板"></a>添加到仪表板</h4><p>将分析结果整合到仪表板中，方便管理层进行决策参考。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/8b45fc78-292d-4515-ab1c-824e66a16000/public"
+                      width = "600"
+                >
+
+<p>拖动先前制作的所有组件到仪表盘中</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d65274c4-b3a2-4476-76ac-2053ff66b600/public"
+                      width = "600"
+                >
+
+<p>添加过滤组件年月日并拖动到仪表盘中，然后对该仪表盘进行设置为当前数据的日期范围<code>日期(年月日)</code></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f4f2f1cc-d800-4c93-1451-efc653372a00/public"
+                      width = "600"
+                >
+
+<p>随后在生成的过滤组件中对日期进行设置即可，修改受影响的组件可以通过重新编辑过滤组件即可</p>
+<h3 id="进行分析"><a href="#进行分析" class="headerlink" title="进行分析"></a>进行分析</h3><p>通过之前分析可以发现八月份环比存在异常，因此需要专门分析八月份的门店营收情况</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/71557ff6-0a21-409c-b0bb-8d1123c43c00/public"
+                      width = "600"
+                >
+
+<p>根据之前钻取的结果，分别把毛利率异常的维度筛选下来，做成折线图可以发现在八月十七号出现异常</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3d6ad888-85c5-4778-7925-13732cf06200/public"
+                      width = "600"
+                >
+
+<p>再对仪表盘组件进行重新编辑和分析时，我们观察到一个显著的现象：8月17日，即中国的七夕节当天，德芙巧克力的销售额出现异常波动，销售额显著增加但毛利额异常低下。鉴于七夕节在现代被广泛认为是情侣之间表达爱意的节日，巧克力作为爱情的象征，在这一天的销售激增与节日背景高度相关。因此，在这种情况下，运营团队需要深入了解公司是否实施了特定的营销活动，例如会员优惠、积分折扣等。</p>
+<p>若确认存在此类营销策略，接下来的重点应是评估这些活动是否受到了不正当的利用，比如黑灰产用户的滥用或是门店员工的内部舞弊行为。这些风险因素的识别和管理是风控部门职责范围内的关键事项。因此，建议风控部门对这一异常数据进行详细分析，以确保企业运营的安全和效率。</p>
+<h2 id="案例-2-旅程项目分析"><a href="#案例-2-旅程项目分析" class="headerlink" title="案例 2 旅程项目分析"></a>案例 2 旅程项目分析</h2><h3 id="案例背景-1"><a href="#案例背景-1" class="headerlink" title="案例背景"></a>案例背景</h3><p>某初创项目咨询公司，发现差旅费过高的问题，需要给出差旅费用改善方案</p>
+<p>已知数据表<code>报销明细</code>，<code>机票全价</code>，<code>项目列表</code>和<code>住宿标准</code>，对他们汇总对旅程价格进行分析，基于结果发现问题和给出决策建议</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/8a1fffec-73bc-471a-f5ad-257ddde84b00/public"
+                      width = "600"
+                >
+
+<h3 id="分析报告实现步骤-1"><a href="#分析报告实现步骤-1" class="headerlink" title="分析报告实现步骤"></a>分析报告实现步骤</h3><h4 id="数据处理-1"><a href="#数据处理-1" class="headerlink" title="数据处理"></a>数据处理</h4><p>首先根据<code>行程</code>作为主键对表<code>报销明细</code>和<code>机票全价</code>就行左合并</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/582faa0b-a85a-42b0-0b4c-12bf4eb03b00/public"
+                      width = "600"
+                >
+
+<p>随后对合并后的表与<code>项目列表</code>根据<code>项目编号</code>继续左合并</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/189c2142-a97a-4fa9-ada8-a8a17c04bd00/public"
+                      width = "600"
+                >
+
+<p>最后类似的，根据<code>住宿地</code>继续左合并<code>住宿标准</code></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/914f812b-87ae-46e3-06c3-7bca763a8600/public"
+                      width = "600"
+                >
+
+<p>由于机票价格存在季节性，因此需要计算机票折扣，则新增公式列<code>机票折扣</code></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/811d639f-ef4b-410a-01de-798481044600/public"
+                      width = "600"
+                >
+
+<p>住宿存在预算标准限制，因此需要计算住宿超标率，新增公式列<code>住宿超标率</code></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/63cf2f35-becb-456f-93c6-bb0dbbe7f000/public"
+                      width = "600"
+                >
+
+<h4 id="组件交互-1"><a href="#组件交互-1" class="headerlink" title="组件交互"></a>组件交互</h4><h5 id="月度差旅趋势分析"><a href="#月度差旅趋势分析" class="headerlink" title="月度差旅趋势分析"></a>月度差旅趋势分析</h5><p>添加组件，作为月度差旅趋势分析，同时添加是否计费帮助进行占比分析</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3e361c3f-dd61-4614-553a-5ed09256a800/public"
+                      width = "600"
+                >
+
+<h5 id="费用种类占比"><a href="#费用种类占比" class="headerlink" title="费用种类占比"></a>费用种类占比</h5><p>添加组件，对费用种类占比进行可视化</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c7397b67-7def-4519-990c-fc00f2b17b00/public"
+                      width = "600"
+                >
+
+<h5 id="计费项目排名"><a href="#计费项目排名" class="headerlink" title="计费项目排名"></a>计费项目排名</h5><p>添加分区柱形图，转化<code>项目编号</code>为维度，转化其区间分组为相同值为一组，使非计费项目的颜色为深色，创建非计费项目排名</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d2948f46-9f90-40aa-709b-fc47d0268c00/public"
+                      width = "600"
+                >
+
+<h5 id="非计费项目差旅费占比变化趋势"><a href="#非计费项目差旅费占比变化趋势" class="headerlink" title="非计费项目差旅费占比变化趋势"></a>非计费项目差旅费占比变化趋势</h5><p>过滤金额为非计费项目命名为非计费项目金额，创建新的计算规则为<code>SUM_AGG($&#123;非计费项目金额&#125;)/SUM_AGG($&#123;金额&#125;)</code>非计费项目差旅费占比，添加进组件分区折线图，得出占比变化趋势</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b11257e4-51e6-4989-61f1-0e73a62f1c00/public"
+                      width = "600"
+                >
+
+<h5 id="机票折扣分布"><a href="#机票折扣分布" class="headerlink" title="机票折扣分布"></a>机票折扣分布</h5><p>转化<code>机票折扣</code>为维度，过滤<code>费用种类</code>为机票。设置区间分组为三组，1-7折，8-9折和全价，创建组件分区柱形图，根据<code>日期</code>与<code>次数</code>进行分类</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a6e757e8-7d70-4a84-41c4-94d228368200/public"
+                      width = "600"
+                >
+
+<h5 id="高额订票人员表"><a href="#高额订票人员表" class="headerlink" title="高额订票人员表"></a>高额订票人员表</h5><p>复制之前创建的机票折扣分布，继承其<code>机票折扣</code>的过滤条件，对<code>机票折扣</code>进行二次过滤，只选择8-9折和全价区间。添加<code>发起人姓名</code>作为第二个维度，删除<code>日期</code>。添加组件分组表，对次数进行降序得出高额订票人员排名。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2744c44c-fe6d-404f-e63d-8e4567f70a00/public"
+                      width = "600"
+                >
+
+<h5 id="住宿超标率构成"><a href="#住宿超标率构成" class="headerlink" title="住宿超标率构成"></a>住宿超标率构成</h5><p>复制<code>住宿超标率</code>重命名为<code>住宿超标分组</code>并转化为维度，设置区间分组三组为不超标，超20%和超50%，设置过滤<code>费用种类</code>为住宿，添加组件饼图</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ee8365f1-c8fc-43d8-f7ef-852eecbf2800/public"
+                      width = "600"
+                >
+
+<h5 id="超标率地区分布"><a href="#超标率地区分布" class="headerlink" title="超标率地区分布"></a>超标率地区分布</h5><p>对<code>住宿天数</code>和<code>住宿超标率</code>在散点图进行四象限创建</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e48133c4-9fe0-476e-15cb-22c9ba55b600/public"
+                      width = "600"
+                >
+
+<h4 id="添加到仪表板-1"><a href="#添加到仪表板-1" class="headerlink" title="添加到仪表板"></a>添加到仪表板</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/8cd442bc-7f41-46f5-ccfc-105d5a95e800/public"
+                      width = "600"
+                >
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> FineBI案例</li>
+        <li><strong>作者:</strong> Yiuhang Chan</li>
+        <li><strong>创建于
+                :</strong> 2020-07-12 13:45:23</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-02-28 18:49:52
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://www.yiuhangblog.com/2020/07/12/20200712FineBI案例/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">#数据分析</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%95%86%E5%8A%A1%E6%99%BA%E8%83%BD/">#商务智能</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/FineBI/">#FineBI</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">#数据处理</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E6%A1%88%E4%BE%8B/">#案例</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2020/07/28/20200728%20%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A%E6%80%9D%E8%B7%AF/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">数据分析思路模板</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2020/06/26/20200626FineBI%E7%BB%84%E4%BB%B6/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">FineBI组件</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://comment.yiuhangblog.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">FineBI案例</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B-1-%E8%90%A5%E4%B8%9A%E9%A2%9D%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-text">案例 1 营业额问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%E8%83%8C%E6%99%AF"><span class="nav-text">案例背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E6%80%9D%E8%B7%AF"><span class="nav-text">分析思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E6%B3%A8%E6%8C%87%E6%A0%87"><span class="nav-text">关注指标</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="nav-text">分析报告实现步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="nav-text">上传数据表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E4%BA%A4%E4%BA%92"><span class="nav-text">组件交互</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E9%94%80%E5%94%AE%E9%A2%9D%E6%8E%92%E5%90%8D%E5%88%86%E7%BB%84%E8%A1%A8"><span class="nav-text">新增销售额排名分组表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E6%AF%9B%E5%88%A9%E9%A2%9D%E7%8E%AF%E6%AF%94%E5%A2%9E%E9%95%BF%E7%8E%87"><span class="nav-text">新增毛利额环比增长率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E9%94%80%E5%94%AE%E5%93%81%E7%B1%BB%E5%8D%A0%E6%AF%94%E9%A5%BC%E5%9B%BE"><span class="nav-text">新增销售品类占比饼图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%B98%E6%9C%88%E6%AF%9B%E5%88%A9%E9%A2%9D%E8%BE%83%E4%BD%8E%E7%9A%84%E7%BB%B4%E5%BA%A6%E9%92%BB%E5%8F%96%E5%88%86%E6%9E%90%E4%B8%8B%E6%BB%91%E5%8E%9F%E5%9B%A0"><span class="nav-text">对8月毛利额较低的维度钻取分析下滑原因</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%88%B0%E4%BB%AA%E8%A1%A8%E6%9D%BF"><span class="nav-text">添加到仪表板</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E8%A1%8C%E5%88%86%E6%9E%90"><span class="nav-text">进行分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B-2-%E6%97%85%E7%A8%8B%E9%A1%B9%E7%9B%AE%E5%88%86%E6%9E%90"><span class="nav-text">案例 2 旅程项目分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%E8%83%8C%E6%99%AF-1"><span class="nav-text">案例背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4-1"><span class="nav-text">分析报告实现步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-1"><span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E4%BA%A4%E4%BA%92-1"><span class="nav-text">组件交互</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%88%E5%BA%A6%E5%B7%AE%E6%97%85%E8%B6%8B%E5%8A%BF%E5%88%86%E6%9E%90"><span class="nav-text">月度差旅趋势分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B4%B9%E7%94%A8%E7%A7%8D%E7%B1%BB%E5%8D%A0%E6%AF%94"><span class="nav-text">费用种类占比</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E8%B4%B9%E9%A1%B9%E7%9B%AE%E6%8E%92%E5%90%8D"><span class="nav-text">计费项目排名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9D%9E%E8%AE%A1%E8%B4%B9%E9%A1%B9%E7%9B%AE%E5%B7%AE%E6%97%85%E8%B4%B9%E5%8D%A0%E6%AF%94%E5%8F%98%E5%8C%96%E8%B6%8B%E5%8A%BF"><span class="nav-text">非计费项目差旅费占比变化趋势</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%BA%E7%A5%A8%E6%8A%98%E6%89%A3%E5%88%86%E5%B8%83"><span class="nav-text">机票折扣分布</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%AB%98%E9%A2%9D%E8%AE%A2%E7%A5%A8%E4%BA%BA%E5%91%98%E8%A1%A8"><span class="nav-text">高额订票人员表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%8F%E5%AE%BF%E8%B6%85%E6%A0%87%E7%8E%87%E6%9E%84%E6%88%90"><span class="nav-text">住宿超标率构成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B6%85%E6%A0%87%E7%8E%87%E5%9C%B0%E5%8C%BA%E5%88%86%E5%B8%83"><span class="nav-text">超标率地区分布</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%88%B0%E4%BB%AA%E8%A1%A8%E6%9D%BF-1"><span class="nav-text">添加到仪表板</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2018</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 5s"></i>&nbsp;&nbsp;<a href="/">Yiuhang Chan</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 41 篇文章
+                    </span>
+                    
+                        <span>
+                            共 348k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex justify-center items-center">
+                <a class="flex justify-center items-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/libs/mermaid.min.js"></script>
+
+    
+<script src="/js/plugins/mermaid.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

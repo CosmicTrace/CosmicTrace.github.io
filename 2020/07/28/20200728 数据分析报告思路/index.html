@@ -1,0 +1,2460 @@
+<!DOCTYPE html>
+<html lang="zh-CN,en,zh-TW,default">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Yiuhang Chan">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://www.yiuhangblog.com/2020/07/28/20200728 数据分析报告思路/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="进行数据分析和撰写报告的思路模板">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据分析思路模板">
+<meta property="og:url" content="https://www.yiuhangblog.com/2020/07/28/20200728%20%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A%E6%80%9D%E8%B7%AF/index.html">
+<meta property="og:site_name" content="角灯随笔">
+<meta property="og:description" content="进行数据分析和撰写报告的思路模板">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4837a94c-2b23-49a3-c53f-6afde7bfae00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/93da82bc-cbb6-4a6c-b1ec-08fbbf3d3e00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d8e34a0f-2e7e-42cf-35f9-b400eaad0f00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3f415a79-578e-45a6-8356-5f6d8d93be00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d40061d6-8560-41c0-df79-9cdb8211a200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/93da82bc-cbb6-4a6c-b1ec-08fbbf3d3e00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7c10b1c5-4426-4b88-cb7a-2fa4e1694700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e5eeba5f-9fa4-4f59-1606-82a6486f6600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/1e64a965-e97d-496e-a40f-e6a6d734e400/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6d9c771b-fb0d-45b7-704b-80d8e8ccd400/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/93da82bc-cbb6-4a6c-b1ec-08fbbf3d3e00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ead85be6-6d21-46bd-d764-c765dc22e400/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/db3017a9-75e1-4ab2-c704-099bfc267600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/42756a2d-5893-419d-59e9-cd033cf93200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e4cedc54-5bbc-496f-ae0f-53359624e600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7c4dceb6-8ed5-4659-ed75-bdf6f9dfbb00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b304e470-5529-4060-7a5e-bd3bb10d0d00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a11b30dc-77b5-4213-aae6-ee60cbd12700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d6d0270d-5d0f-4f7a-d2c7-4248965ae500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/5609d4bb-0cbf-4540-622c-9aae5164e800/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ad11600d-048e-4e21-a294-9589ecda4400/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a0d957b0-a905-4294-70e8-1d9e04cfb000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d47d0f4e-0b0a-41ce-b966-213e04b9c700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6df92af1-6559-4e48-9b36-a5fc583bec00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/90228bc6-3d82-4bff-8a5e-f8cc6172d300/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/fea5656f-ae45-492d-204e-8c5ff3901600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/93da82bc-cbb6-4a6c-b1ec-08fbbf3d3e00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/137c2931-47c2-4f97-c4ad-3a5431876800/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/38a40682-6f87-4bde-8e0b-f801550d4a00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/292fcc3d-6ffa-421e-7212-c2db8eabd800/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c36cc924-91ff-40c8-608b-15ec437f8d00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/79394181-c2c1-4940-888f-a9829cbb3d00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/57f0aa2a-a3e7-4666-9dcc-fcc4a0c6e700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2f77bbb2-847f-47d1-4766-19824e1c5700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f2017124-0355-450e-92c9-80b26510ed00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f21740ba-9442-43a2-caf3-abe54f1b6600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/bd40cb75-c854-4f6e-2001-f9ffa90dad00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7cf68e7d-764a-41e6-cb05-9aac926b0c00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ed78cbf5-3efa-4c96-1dfb-bce15cb0b100/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/69ccf146-d53d-4f0c-bfe0-834c9e55c700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d08a8097-d142-4cf8-b8ea-428703955700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c62668de-65e2-4a87-d49d-32963a01e200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/55414aa5-161d-47a1-7b99-b43716cf9a00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2245d3d2-e38d-435c-df11-067dae0dac00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/fac09ef5-8764-4329-2aff-2928dcaf4600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/45222d41-e9bc-4bf6-9d1f-c32321afc500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/9d30be7b-959f-4964-366c-63997f808500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/62852949-b864-4430-80b4-f20e8bc25700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b9cac6eb-3651-460c-9e4c-bd530654b000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b8dc7259-410d-4187-328d-20c63be9ad00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/92867763-7250-425e-1b46-ce3667b15100/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ca4e5cc2-a223-46eb-b3d9-2a4a78e1c000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/9394bfd4-14a0-4de8-292e-e32d9ed79d00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d3454629-01f2-4cec-c44d-95821490ed00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/99c1cd0b-1bc0-47e2-32ec-b76007c7da00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4a99610a-ad80-4f84-acc4-7c7a3489e900/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/11314251-e088-49bd-e224-488b3b035700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/39ad592c-a50b-40e4-c0ff-d6164438cc00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d31ca533-2cdd-424d-e969-c487fb0aff00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/13c9c007-da05-43f2-5db2-f66937cf0200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b3cf835a-4a4e-4fa2-465d-7f928d722c00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/21a9340f-1a9b-4ecb-d65e-8497f0582900/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c3059193-069c-4af4-7a32-1afef0d2a300/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6070452a-fcbb-4c4f-cdb1-cc6b16e64f00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ef21f6b8-8ee4-48f1-5582-21c5f821df00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/22ff948c-44f4-4a9a-7a87-a2b96f182300/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7d53fb48-01b6-4387-e8b1-3a6581b16000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b5e4308d-0e6a-47e4-d26f-ffb9beece100/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/0b487232-9868-4e31-4060-f9fa4a422c00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2f06664e-bd90-486c-563c-5d0c14208d00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/00535ea5-70bf-48c3-2470-77c98b812a00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d07c42bb-bc57-46ae-2d4d-fe48de88df00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a19cefbf-1024-4c3c-c916-48f034e11500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/432a2896-10e3-440a-f981-26aaaf948100/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/35f1bad9-4f0f-492d-a9ad-989503c2a000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ba7f2392-7eea-47af-93bc-a5254ab27600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/141b3067-6fbf-4b20-703e-2ca4a8db1d00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/205ae976-2761-4d1b-867f-870e396c6f00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3d0d1c23-92b0-4afc-bb5d-8caac0f37100/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/0c1bd611-2e13-4d0c-cbcd-341491e1c000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/dc47784f-e379-4867-7232-2905541b7400/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/8c3fddb0-de09-4777-9adc-2d517d876e00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b02d15f5-784b-4c95-4456-222e1db79c00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e57c9752-81fe-4669-c0b0-be0fcdda7700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/760d55c6-bc20-4899-8e11-3352d921e900/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/02119820-a795-43de-87cd-a20c0ed5da00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/93da82bc-cbb6-4a6c-b1ec-08fbbf3d3e00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/db321ddd-19bf-469a-a035-ba2d7088af00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2baf744b-4c16-4266-e451-3ed9d7f86500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4808be71-107a-4eea-0f08-ae475cd22900/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f205c80d-8cec-43c9-f22f-7625f26fa900/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/920387dd-fe70-4638-12be-ef4ea0489100/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d5c5a1e7-a0e6-491d-dc12-df21652d1900/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ed8c0bf8-16c5-41b8-986d-78e013e9b400/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6639f303-6793-4c12-c805-3c7fe1218800/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/418091a4-e4d9-4d17-714b-63e90dfbf400/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/1b1277d2-4e17-4f87-0466-16de7023c600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e0ab7a9e-5c3a-48e6-7658-94dd5f96d000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/cb95419a-73a7-4b34-4c04-0b1e2d01f200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/93da82bc-cbb6-4a6c-b1ec-08fbbf3d3e00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6fc30248-c0ee-4a2c-bbf5-465599a62700/public">
+<meta property="article:published_time" content="2020-07-28T01:32:16.000Z">
+<meta property="article:modified_time" content="2024-02-28T10:49:55.000Z">
+<meta property="article:author" content="Yiuhang Chan">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="数据分析">
+<meta property="article:tag" content="商务智能">
+<meta property="article:tag" content="思路">
+<meta property="article:tag" content="报告">
+<meta property="article:tag" content="模板">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4837a94c-2b23-49a3-c53f-6afde7bfae00/public">
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-MQ43G0NKCT"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MQ43G0NKCT');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <meta name="theme-color" content="#A1AFC9">
+    <link rel="shortcut icon" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <!--- Page Info-->
+    
+    <title>
+        
+            数据分析思路模板 -
+        
+        角灯随笔
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        角灯随笔
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"www.yiuhangblog.com","root":"/","language":["zh-CN","en","zh-TW","default"]};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":6,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":5,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A1AFC9","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":true,"id":"G-MQ43G0NKCT"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e63fc400-dd0e-4395-bd1b-9ee1ac3bfb00/public","dark":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a34140d6-7960-45dd-b8b5-c3ddd14d1f00/public"},"title":"角灯随笔","subtitle":{"text":["全栈也不是不行"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/CosmicTrace","instagram":null,"zhihu":null,"twitter":null,"email":"kenchansk0@gmail.com"},"qrs":null}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"娱乐":{"icon":"fa-solid fa-gamepad","submenus":{"王者荣耀":"/hok","守望先锋":"/ow","使命召唤":"/cod"}},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/CosmicTrace"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"谦逊","show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":8}},"footerStart":"2018/07/15 10:15:24"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="角灯随笔" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                角灯随笔
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/"
+                                        >
+                                    <i class="fa-solid fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-solid fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-solid fa-gamepad fa-fw"></i>
+                                    娱乐
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/hok">
+                                                    王者荣耀
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/ow">
+                                                    守望先锋
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/cod">
+                                                    使命召唤
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/CosmicTrace">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-solid fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-solid fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-娱乐"
+                        >
+                            <span>
+                                娱乐
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-娱乐">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/hok">王者荣耀</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/ow">守望先锋</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/cod">使命召唤</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/CosmicTrace">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">96</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">41</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/aecc2a6e-f16a-4cfa-84ec-40bdfe734d00/public" alt="数据分析思路模板" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">数据分析思路模板</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/26329e9f-d1fb-4280-a0a5-754547bf8500/public">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Yiuhang Chan</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2020-07-28 09:32:16</span>
+        <span class="mobile">2020-07-28 09:32:16</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-02-28 18:49:55</span>
+            <span class="mobile">2024-02-28 18:49:55</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%95%86%E5%8A%A1%E6%99%BA%E8%83%BD/">商务智能</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%80%9D%E8%B7%AF/">思路</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%8A%A5%E5%91%8A/">报告</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%A8%A1%E6%9D%BF/">模板</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>12k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>42 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="定量"><a href="#定量" class="headerlink" title="定量"></a>定量</h2><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4837a94c-2b23-49a3-c53f-6afde7bfae00/public"
+                      width = "600"
+                >
+
+<ol>
+<li><strong>明确目标</strong>：这是开始任何数据分析项目的第一步。明确目标意味着确定想通过数据分析解决的具体问题或达成的具体目标。这可能包括理解特定现象、预测未来趋势、识别模式或关系等。</li>
+<li><strong>数据处理</strong>：在这一步中，将收集相关数据并进行预处理。数据处理包括清洗（去除或纠正错误、不完整、不一致的数据）、格式化、结构化，以及可能的数据转换，以便于进一步分析。</li>
+<li><strong>数据分析</strong>：这一阶段是定量分析的核心，涉及使用统计方法、算法、模型等对数据进行深入探究。这可能包括描述性统计分析、推理统计分析、预测建模、聚类分析等。</li>
+<li><strong>数据展现</strong>：数据分析的结果需要以清晰、易懂的方式展现。这通常涉及数据可视化（如图表、图形、仪表板等），以及用于解释数据的文本描述。</li>
+<li><strong>报告撰写</strong>：最后一步是撰写报告，将分析过程、结果、以及洞察呈现给相关利益相关者。报告应该包括关键发现、数据分析的方法论、结论，以及可能的建议或行动方案。</li>
+</ol>
+<h3 id="明确目标"><a href="#明确目标" class="headerlink" title="明确目标"></a>明确目标</h3><ol>
+<li><p>在对数据进行分析之前，首先第一步便是要明确目标。</p>
+</li>
+<li><p>明确目标这个环节往往需要做到以下三点，分别是：</p>
+<ul>
+<li><p>明确分析需求</p>
+</li>
+<li><p>搭建分析框架</p>
+</li>
+<li><p>收集分析数据</p>
+</li>
+</ul>
+</li>
+<li><p>接下来结合防护服装厂案例，来了解一下在这三个环节都分别需要做些什么。</p>
+</li>
+<li><p>首先来学习一下如何明确分析需求。</p>
+</li>
+</ol>
+
+  <div class="note-large orange">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-exclamation"></i><p>注意</p>
+
+    </div>
+    <div class="notel-content">
+      <blockquote>
+<p>现状和痛点这两个事都要藏在心里面不要不要直接说（写这两个的都被优化了🤣）</p>
+</blockquote>
+
+    </div>
+  </div>
+
+<h4 id="明确分析需求"><a href="#明确分析需求" class="headerlink" title="明确分析需求"></a>明确分析需求</h4><p>防护服装厂从 2020 年初开始售卖防护服，到 7 月初的时候，营销总监发现账目上已经开始出现亏损。总监十分焦虑，想要在短时间内快速找到亏损的原因，以及对应的解决策略。</p>
+<p>从总监遇到的难题中不难发现，这次的任务需要解决两个问题，分别是：</p>
+<ul>
+<li>找到亏损原因</li>
+<li>找出对应的解决策略</li>
+</ul>
+<p>在明白了这次的任务需要做什么以后，接下来就要思考如何去解决这些问题了。而要想解决问题，往往就需要搭建一个分析框架，系统地指导我们该如何去解决问题。</p>
+<h5 id="报告制式"><a href="#报告制式" class="headerlink" title="报告制式"></a>报告制式</h5><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/93da82bc-cbb6-4a6c-b1ec-08fbbf3d3e00/public"
+                      width = "300"
+                >
+
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## 一、背景</span></span><br><span class="line">某某科技公司，运营了一家小型的<span class="strong">****</span>工厂，该厂经营状态过往处于不稳定的状态，在今年6月底，经营开始处于亏损状态。通过本次对该厂历史经营数据的分析，帮助公司推断该厂的发展，并对该厂的亏损问题处理提供建议。</span><br><span class="line"></span><br><span class="line"><span class="section">## 二、目的 </span></span><br><span class="line">探寻该厂的亏损问题的原因、及下一阶段的经营发展趋势，并对防护服装厂的亏损问题处理提供建议。</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="搭建分析框架"><a href="#搭建分析框架" class="headerlink" title="搭建分析框架"></a>搭建分析框架</h4><p>通过刚才的分析，已经知道了这次任务首先要做的就是找到防护服付账厂亏损背后的原因。</p>
+<p>而亏损意味着利润为负，所以本质上我们要研究的是防护服装厂的利润情况。</p>
+<p>订单量、单价、成本以及销售额都是会影响防护服付账厂利润的。</p>
+<p>现在的问题是，即便知道了这四个因素会影响防护服付账厂的利润，接下来该如何动手去分析呢？到这里思路依旧不明朗。</p>
+<p>尤其是这些因素，彼此之间又存在一些关联，互相影响。比如想研究订单量的变化情况，结果发现订单量对利润可能不构成直接影响。</p>
+<h5 id="公式拆解法"><a href="#公式拆解法" class="headerlink" title="公式拆解法"></a>公式拆解法</h5><p>一种比较适合这个问题场景的方法：公式拆解法。首先来了解一下公式拆解法是什么。</p>
+<p>公式拆解法就是利用数学公式，将会影响因变量的因素按照层级关系罗列出来。然后通过分析这些因素的变化情况，来推演因变量是如何受到这些因素影响的，如下图所示：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d8e34a0f-2e7e-42cf-35f9-b400eaad0f00/public"
+                      width = "600"
+                >
+
+<p>首先从最根本的研究对象，或者说因变量开始拆解。由于防护服装厂的亏损本质上就是利润为负，那么利润就是最终想要研究的对象，放在最顶层</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3f415a79-578e-45a6-8356-5f6d8d93be00/public"
+                      width = "600"
+                >
+
+<p>在对销售额拆解完毕以后，正常情况下应该思考成本会和哪些因素有关。</p>
+<p>不过这里有个好消息，就是之前的一位员工在计算防护服付账厂各月成本的时候，已经求得防护服付账厂在 2020 年 1 月到 6 月期间，各月成本&#x2F;工资&#x2F;投放&#x2F;房租&#x2F;水电暖几乎没有变化，成本这块儿可以忽略不计。</p>
+<p>所以利润这个因素可以看作只受到销售额的影响，之后没有必要对成本继续拆解了。</p>
+<p>当然，这个拆解的过程是可以不断细分下去的，但是有一点要考虑，数据的采集成本。</p>
+<p>比如说想要继续研究订单量这个因素，我们可能会觉得这和市场的供货量有关，于是就想要去采集 2020年年初到 6 月份期间市场上防护服装厂的总产能，想通过产能的变化来分析订单量的变化原因。</p>
+<p>防护服付账厂的订单量很有可能是被这部分”大客户“所主导的。</p>
+<p>如果因为某些原因，“大客户”出现了比较严重的流失，那么就会对订单量产生比较大的影响。</p>
+<p>基于这条拆解思路，可以根据公式：订单量 &#x3D; 订单量（省份1） + 订单量（省份2） + 订单量（省份3）+ …，对订单量进行进一步的拆解</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d40061d6-8560-41c0-df79-9cdb8211a200/public"
+                      width = "600"
+                >
+
+<p>到这里就已经利用公式拆解法对防护服付账厂的利润情况进行了拆解。</p>
+<p>从搭建的模型来看，后续的分析需要用到以下四层信息：销售额、订单量、防护服付账单价、订单来源省份。</p>
+<h5 id="报告制式-1"><a href="#报告制式-1" class="headerlink" title="报告制式"></a>报告制式</h5><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/93da82bc-cbb6-4a6c-b1ec-08fbbf3d3e00/public"
+                      width = "300"
+                >
+
+
+
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## 三 、分析思路</span></span><br><span class="line"><span class="section">### 3.1方法：</span></span><br><span class="line">利润 = 销售额-成本，现已知1-6月份防护服装成本是变动微小，故本次分析主要从“销售额”进行分析。</span><br><span class="line"></span><br><span class="line"><span class="section">### 3.2总方法：</span></span><br><span class="line">通过销售额及其影响因子的分析，对过往销售额变化的规律、变化原因进行剖析</span><br><span class="line"></span><br><span class="line"><span class="section">### 3.3公式：</span></span><br><span class="line">销售额 = 订单量 × 单价</span><br><span class="line">订单量 = 省份1+省份2...+省份n</span><br><span class="line"></span><br><span class="line"><span class="section">### 3.4分析框架：</span></span><br><span class="line">分析各月的“销售额”变化趋势，分析变化规律与原因。</span><br><span class="line">分析各月“订单量”的变化趋势，分析变化规律与原因。</span><br><span class="line">分析各月“单价”的变化趋势，分析变化规律与原因。</span><br><span class="line">分析各月各省份“订单量”的变化趋势，分析变化规律及原因。</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="数据收集"><a href="#数据收集" class="headerlink" title="数据收集"></a>数据收集</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7c10b1c5-4426-4b88-cb7a-2fa4e1694700/public"
+                      width = "600"
+                >
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入 CSV 数据</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">protective_clothing = np.loadtxt(<span class="string">&#x27;mask_data.csv&#x27;</span>, dtype = <span class="built_in">str</span>, encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(protective_clothing)</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e5eeba5f-9fa4-4f59-1606-82a6486f6600/public"
+                      width = "600"
+                >
+
+<p><code>numpy</code>库为读取各种文件类型的数据提供了非常简便高效的方法。</p>
+<p><code>np.loadtxt(&#39;path&#39;, dtype , encoding )</code> 就是其中一种高效读取 csv 文件的方法.</p>
+<p>这个方法有很多参数，这里先介绍三种最常用的：<code>path</code>，<code>dtype</code>，<code>encoding</code>。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/1e64a965-e97d-496e-a40f-e6a6d734e400/public"
+                      width = "600"
+                >
+
+<p>对于参数 <code>path</code>，需要传一个文件路径给它，可以是相对路径，也可以是绝对路径。这里出于方便，就可以传一个相对路径给参数 <code>path</code>。</p>
+<p>对于参数<code>dtype</code>，根据业务需要转换成我们想要的数据类型，在该案例中，因为数据是字符串类型，我们就要转换成<code>dtype = str</code></p>
+<p>对于参数 <code>encoding</code>，需要传一个文件编码格式给它。文件编码格式的选取需要根据所读文件的编码格式来定。</p>
+<p>从拆解好的思路中不难发现，需要用到的信息有：销售额、订单量、单价以及省份信息。</p>
+<p>同时，刚才也分析过我们需要用到时间这个维度的信息，与之对应的日期这一列数据，也存在与我们的数据之中。</p>
+<p>不过在观察各列的数据时，数据的异常情况，如下图所示：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6d9c771b-fb0d-45b7-704b-80d8e8ccd400/public"
+                      width = "600"
+                >
+
+<h5 id="报告制式-2"><a href="#报告制式-2" class="headerlink" title="报告制式"></a>报告制式</h5><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/93da82bc-cbb6-4a6c-b1ec-08fbbf3d3e00/public"
+                      width = "300"
+                >
+
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## 四、数据来源</span></span><br><span class="line">从公司数据库中导入营销数据mask<span class="emphasis">_data.csv，原始数据一共包含101942行，数据的结构如下：</span></span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ead85be6-6d21-46bd-d764-c765dc22e400/public"
+                      width = "600"
+                >
+
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/db3017a9-75e1-4ab2-c704-099bfc267600/public"
+                      width = "800"
+                >
+
+<h3 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h3><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/42756a2d-5893-419d-59e9-cd033cf93200/public"
+                      width = "600"
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e4cedc54-5bbc-496f-ae0f-53359624e600/public"
+                      width = "600"
+                >
+
+
+  <div class="note-large orange">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-exclamation"></i><p>注意</p>
+
+    </div>
+    <div class="notel-content">
+      <blockquote>
+<p>数据清洗和数据处理不是一回事，数据清洗属于数据处理的一个环节</p>
+</blockquote>
+
+    </div>
+  </div>
+
+<h4 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7c4dceb6-8ed5-4659-ed75-bdf6f9dfbb00/public"
+                      width = "600"
+                >
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入Pandas库并将其简化为pd</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd <span class="comment"># 导入数据分析库</span></span><br><span class="line"><span class="comment"># 读取本地口罩厂的数据</span></span><br><span class="line">mask_data = pd.read_csv(<span class="string">&quot;mask_data.csv&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(mask_data)</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="缺失值"><a href="#缺失值" class="headerlink" title="缺失值"></a>缺失值</h5><h6 id="处理缺失值"><a href="#处理缺失值" class="headerlink" title="处理缺失值"></a>处理缺失值</h6><p>使用<code>df.info()</code>方法查看数据集信息</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b304e470-5529-4060-7a5e-bd3bb10d0d00/public"
+                      width = "600"
+                >
+
+<p>其中，日期，省，订单量，单价，销售额这些列的非空数据都比数据总量要小，说明都有缺失值</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a11b30dc-77b5-4213-aae6-ee60cbd12700/public"
+                      width = "300"
+                >
+
+<p>在 <code>pandas</code> 库中，我们可以使用<code>isna()</code>方法来查找<code>DataFrame</code> 对象 以及 <code>Series</code> 对象中的缺失值。它可以将查找结果以 <code>DataFrame</code> 对象或者 <code>Series</code> 对象的形式进行返回。<code>df.isna()</code>返回的是 <code>DataFrame</code> 对象，<code>Series.isna()</code> 返回的就是 <code>Series</code> 对象。</p>
+<p><code>protective_clothing.isna()</code></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看数据后5行</span></span><br><span class="line">protective_clothing.tail()</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d6d0270d-5d0f-4f7a-d2c7-4248965ae500/public"
+                      width = "600"
+                >
+
+<h6 id="删除缺失值"><a href="#删除缺失值" class="headerlink" title="删除缺失值"></a>删除缺失值</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除所有缺失值</span></span><br><span class="line"></span><br><span class="line">mask_data_na_clean = mask_data.dropna()</span><br></pre></td></tr></table></figure></div>
+
+<h6 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h6><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/5609d4bb-0cbf-4540-622c-9aae5164e800/public"
+                      width = "800"
+                >
+
+<h5 id="重复值"><a href="#重复值" class="headerlink" title="重复值"></a>重复值</h5><h6 id="处理重复值"><a href="#处理重复值" class="headerlink" title="处理重复值"></a>处理重复值</h6><p>重复值很好理解，就跟字面意思一样，指的是表格中重复出现的数据。在多数情况中，重复值都是完全相同的数据。</p>
+<p>重复值处理的第一步和缺失值一样，还是要先查找重复值。</p>
+<p>我们可以直接使用<code>df.duplicated()</code> （中文意思：重复的）方法来查找<code>DataFrame</code> 对象中的重复数据。</p>
+<p>使用 <code>df.duplicated()</code> 方法会返回一个 <code>Series</code> 对象，找出所有重复值。重复为 <code>True</code>，不重复为<code>False</code>。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找 protective_clothing 中的重复行</span></span><br><span class="line">mask_data_na_clean.duplicated()</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ad11600d-048e-4e21-a294-9589ecda4400/public"
+                      width = "600"
+                >
+
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 protective_clothing 中的重复数据</span></span><br><span class="line">mask_data_na_clean[mask_data_na_clean.duplicated()]</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a0d957b0-a905-4294-70e8-1d9e04cfb000/public"
+                      width = "600"
+                >
+
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接删除所有重复值</span></span><br><span class="line">mask_data_na_dup_clean = mask_data_na_clean.drop_duplicates()</span><br><span class="line"><span class="comment"># 查看 protective_clothing 中的重复数据</span></span><br><span class="line">mask_data_na_dup_clean[mask_data_na_dup_clean.duplicated()]</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d47d0f4e-0b0a-41ce-b966-213e04b9c700/public"
+                      width = "600"
+                >
+
+<p>在运行结果中我们能看见<code>mask_data_na_dup_clean</code>的表头下面是空的，说明到这里已经没有重复数据了。值得一提的是，<code>df.drop_duplicates()</code> 方法并不会将所有重复的行都删除。</p>
+<h6 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h6><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6df92af1-6559-4e48-9b36-a5fc583bec00/public"
+                      width = "800"
+                >
+
+<h5 id="异常值"><a href="#异常值" class="headerlink" title="异常值"></a>异常值</h5><h6 id="处理异常值"><a href="#处理异常值" class="headerlink" title="处理异常值"></a>处理异常值</h6><p>有时数据中有一个或多个异常大或异常小的数值，超出了这份数据实际的限定范围，这样的数值被称为<br>异常值。</p>
+<p>我们在数据清洗中要先对异常值进行识别，因为它有可能是一个错误的数值。</p>
+<p>对于异常值，我们首先要做的是检查数据是否存在异常。若数据存在异常我们则需要抽取限定范围的数据，过滤异常值。</p>
+<p><strong>检查异常值</strong></p>
+<ul>
+<li>检查数据是否存在异常的方法 —— <code>describe()</code>。</li>
+<li><code>describe</code> 单词在英语里是描述的意思，而在 <code>pandas</code> 库中 <code>describe()</code> 方法则可以查看 <code>Series</code> 对象或者 <code>DataFrame</code> 对象的描述性统计信息。</li>
+</ul>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 protective_clothing 的描述性统计信息</span></span><br><span class="line">mask_data_na_dup_clean.describe()</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/90228bc6-3d82-4bff-8a5e-f8cc6172d300/public"
+                      width = "600"
+                >
+
+<p>抽取数据范围，在<code>pandas</code>库中，有一种筛选数据的方法叫做布尔索引，使用<code>df[&#39;列索引&#39;]</code> 来提取某一列的信息。在 <code>pandas</code> 库中，我们还可以在 <code>df[]</code> 中通过表达式的形式来提取一定范围的数据。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看单价小于等于200的数据</span></span><br><span class="line">mask_data_na_dup_clean[mask_data_na_dup_clean[<span class="string">&#x27;单价&#x27;</span>] &lt;= <span class="number">200</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看单价小于等于200的数据</span></span><br><span class="line">mask_data_na_dup_clean[<span class="string">&#x27;单价&#x27;</span>] &lt;= <span class="number">200</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 筛选单价小于等于200的数据</span></span><br><span class="line">mask_data_na_dup_s200_clean = mask_data_na_dup_clean[mask_data_na_dup_clean[<span class="string">&#x27;单价&#x27;</span>] &lt;= <span class="number">200</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看防护服装厂数据的描述性统计信息</span></span><br><span class="line">mask_data_na_dup_s200_clean.describe()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 筛选订单量大于0的数据</span></span><br><span class="line">mask_data_na_dup_l0_s200_clean = mask_data_na_dup_s200_clean[mask_data_na_dup_s200_clean[<span class="string">&#x27;订单量&#x27;</span>] &gt; <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看mask_data的描述性统计信息</span></span><br><span class="line">mask_data_na_dup_l0_s200_clean.describe()</span><br><span class="line">mask_data_na_dup_l0_s200_clean.info()</span><br></pre></td></tr></table></figure></div>
+
+<h6 id="小结-3"><a href="#小结-3" class="headerlink" title="小结"></a>小结</h6><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/fea5656f-ae45-492d-204e-8c5ff3901600/public"
+                      width = "800"
+                >
+
+<h4 id="数据整理"><a href="#数据整理" class="headerlink" title="数据整理"></a>数据整理</h4><h5 id="转换日期数据"><a href="#转换日期数据" class="headerlink" title="转换日期数据"></a>转换日期数据</h5><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mask_data_na_dup_l0_s200_clean_date_fot = pd.to_datetime(mask_data_na_dup_l0_s200_clean[<span class="string">&#x27;日期&#x27;</span>], <span class="built_in">format</span> = <span class="string">&#x27;%Y-%m-%d&#x27;</span>)</span><br><span class="line"><span class="comment"># 查看date_data</span></span><br><span class="line"><span class="built_in">print</span>(mask_data_na_dup_l0_s200_clean_date_fot)</span><br></pre></td></tr></table></figure></div>
+
+<h6 id="提取月份信息"><a href="#提取月份信息" class="headerlink" title="提取月份信息"></a>提取月份信息</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提取日期数据中的月份信息</span></span><br><span class="line">month_mask_data = mask_data_na_dup_l0_s200_clean_date_fot.dt.month</span><br><span class="line"><span class="comment"># 查看month_data</span></span><br><span class="line"><span class="built_in">print</span>(month_mask_data)</span><br></pre></td></tr></table></figure></div>
+
+<h6 id="增加新列"><a href="#增加新列" class="headerlink" title="增加新列"></a>增加新列</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将月份数据添加到原数据中</span></span><br><span class="line">mask_data_na_dup_l0_s200_clean[<span class="string">&#x27;月份&#x27;</span>] = month_mask_data</span><br><span class="line"><span class="comment"># 查看原数据</span></span><br><span class="line"><span class="built_in">print</span>(mask_data_na_dup_l0_s200_clean)</span><br></pre></td></tr></table></figure></div>
+
+<h6 id="保存文件"><a href="#保存文件" class="headerlink" title="保存文件"></a>保存文件</h6><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 保存清洗干净的数据，并取消写入行索引</span></span><br><span class="line">mask_data_na_dup_l0_s200_clean.to_csv(<span class="string">&#x27;mask_data.csv&#x27;</span>, index = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="报告制式-3"><a href="#报告制式-3" class="headerlink" title="报告制式"></a>报告制式</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/93da82bc-cbb6-4a6c-b1ec-08fbbf3d3e00/public"
+                      width = "300"
+                >
+
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## 五、数据处理</span></span><br><span class="line"><span class="section">### 5.1清洗数据：</span></span><br><span class="line"><span class="code">	缺失值</span></span><br><span class="line"><span class="code">	重复值</span></span><br><span class="line"><span class="code">	异常值</span></span><br><span class="line"><span class="code">### 5.2 整理数据：</span></span><br><span class="line"><span class="code">	多增加【月份】这一列，时间维度</span></span><br><span class="line"><span class="code">### 5.3 清洗结果：</span></span><br><span class="line"><span class="code">    我们对以上三种数据均进行了删除处理，其中清洗前数据一共有101942，清洗后数据一共有99485行。</span></span><br><span class="line"><span class="code">    清洗数据占比：占比2%</span></span><br><span class="line"><span class="code">    清洗前后数据量变化极小，因此可以忽略对结果的影响。</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="小结-4"><a href="#小结-4" class="headerlink" title="小结"></a>小结</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/137c2931-47c2-4f97-c4ad-3a5431876800/public"
+                      width = "800"
+                >
+
+<h3 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h3><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/38a40682-6f87-4bde-8e0b-f801550d4a00/public"
+                      width = "600"
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/292fcc3d-6ffa-421e-7212-c2db8eabd800/public"
+                      width = "600"
+                >
+
+<p>根据前面的分析拆解，我们知道本次分析的重点是—销售额，订单量，单价，各省订单量随着时间变化的趋势及其变化原因。</p>
+<p>那么，我们可以通过分组聚合对每一组数据进行描述性统计分析，然后利用折线图进行变化趋势的分析。</p>
+<p>防护服装厂的任务，需要解决总监的两个问题—找到亏损原因、找出对应的解决策略。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c36cc924-91ff-40c8-608b-15ec437f8d00/public"
+                      width = "600"
+                >
+
+<h4 id="分组聚合，统计数据"><a href="#分组聚合，统计数据" class="headerlink" title="分组聚合，统计数据"></a>分组聚合，统计数据</h4><p>本次分析的影响因素是销售额、订单量、单价、各省订单量，而且是以一个月为颗粒度，进行时间维度上的变化趋势和原因分析。</p>
+<p>清洗后的数据<code>mask_data_clean</code>，它的列索引中包含着我们需要的销售额、订单量等数据。</p>
+<p>以销售额为例，如果要分别查看 1 月到 6 月以来的销售额，可以根据月份对数据<code>mask_data_clean</code>进行分组。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/79394181-c2c1-4940-888f-a9829cbb3d00/public"
+                      width = "600"
+                >
+
+<p>我们可以计算出销售额的总数，因为它代表着这个月销售额的总体情况，可以通过对比它的上升或下降，查看其每月变化。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/57f0aa2a-a3e7-4666-9dcc-fcc4a0c6e700/public"
+                      width = "600"
+                >
+
+<p>首先要根据月份对数据集进行分组<code>groupby</code>，同时还需要对销售额列进行一次聚合计算，计算出销售额的总和<code>sum</code>。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入Pandas库并将其简化为pd</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd <span class="comment"># 导入数据分析库</span></span><br><span class="line"><span class="comment"># 读取本地口罩厂的数据</span></span><br><span class="line">mask_data = pd.read_csv(<span class="string">&quot;mask_data_clean.csv&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取每月销售额总数</span></span><br><span class="line">sales_income = mask_data_clean.groupby(<span class="string">&#x27;月份&#x27;</span>)[<span class="string">&#x27;销售额&#x27;</span>].<span class="built_in">sum</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看数据</span></span><br><span class="line">sales_income</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2f77bbb2-847f-47d1-4766-19824e1c5700/public"
+                      width = "600"
+                >
+
+<p>可以看到，打印的结果是一个 <code>Series</code> 对象，它的值是销售额的总数，行索引是月份。</p>
+<p>根据数值已经可以大致看出，1-3 月总销售额增加， 3-6 月则在下降。基于这样的每月销售额统计数据，才能方便地进入后续趋势分析步骤中。</p>
+<p>那么应该如何去分析其他3个影响因素呢？上一节课我们提到过公式拆解法搭建我们的分析框架和方法，销售额 &#x3D; 订单量*单价</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f2017124-0355-450e-92c9-80b26510ed00/public"
+                      width = "600"
+                >
+
+<p>根据对各月销售额的分析，我们可以总结出：不同影响因素进行分组聚合操作时，有两个要点。</p>
+<ul>
+<li>根据什么进行分组；</li>
+<li>选择什么代表性的统计方法，进行聚合计算。</li>
+</ul>
+<p>那么对于各月订单量、各月单价、各月各省订单量，应该根据什么进行分组，应该选择什么统计性数值呢？</p>
+<p>例如对不同班级、不同班级不同性别、不同班级不同性别是否带眼镜等等情况都是如何一一进行分组聚合的。</p>
+<p>​	比如，不同班级不同性别的分组聚合方式是这样的：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f21740ba-9442-43a2-caf3-abe54f1b6600/public"
+                      width = "600"
+                >
+
+<p>不过单价的平均值可以反映出某一商品在一定时期内的平均价格，一定程度上可以体现普遍的价格数量。因此选择平均数作为单价的统计性指标。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mask_data_clean.head(<span class="number">3</span>)</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/bd40cb75-c854-4f6e-2001-f9ffa90dad00/public"
+                      width = "600"
+                >
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取各月总订单量</span></span><br><span class="line">order_number = mask_data_clean.groupby(<span class="string">&#x27;月份&#x27;</span>)[<span class="string">&#x27;订单量&#x27;</span>].<span class="built_in">sum</span>()</span><br><span class="line">order_number</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7cf68e7d-764a-41e6-cb05-9aac926b0c00/public"
+                      width = "600"
+                >
+
+<p>不错，它同样能够体现出这个月所有订单量的变化情况，1-3 月数量上升，3-6 月数量下降。</p>
+<p>接下来来看每月单价，找一下如何计算单价的平均值：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ed78cbf5-3efa-4c96-1dfb-bce15cb0b100/public"
+                      width = "600"
+                >
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取每月平均单价</span></span><br><span class="line">month_price = mask_data_clean.groupby(<span class="string">&#x27;月份&#x27;</span>)[<span class="string">&#x27;单价&#x27;</span>].mean()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看数据</span></span><br><span class="line">month_price</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/69ccf146-d53d-4f0c-bfe0-834c9e55c700/public"
+                      width = "600"
+                >
+
+<p>要用列表来包含两个用于分组的索引</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取各省各月总订单量</span></span><br><span class="line">month_order = mask_data_clean.groupby([<span class="string">&#x27;省&#x27;</span>, <span class="string">&#x27;月份&#x27;</span>])[<span class="string">&#x27;订单量&#x27;</span>].<span class="built_in">sum</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看数据</span></span><br><span class="line">month_order</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d08a8097-d142-4cf8-b8ea-428703955700/public"
+                      width = "600"
+                >
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取各省各月总订单量</span></span><br><span class="line">month_order_2 = mask_data_clean.groupby([<span class="string">&#x27;月份&#x27;</span>, <span class="string">&#x27;省&#x27;</span>])[<span class="string">&#x27;订单量&#x27;</span>].<span class="built_in">sum</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看数据</span></span><br><span class="line">month_order_2</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c62668de-65e2-4a87-d49d-32963a01e200/public"
+                      width = "600"
+                >
+
+<p>终端打印出的 Series 数据，它的外层索引是月份，内层是省份，因此从上往下，看到的是每个月不同省的总订单量数据。</p>
+<ul>
+<li>通过 <code>month_order</code>，我们能大致看出某个省的总订单量随月份的变化情况；</li>
+<li>而通过 <code>month_order_2</code> ，则可以看出某个月时不同省份总订单量的变化情况。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/55414aa5-161d-47a1-7b99-b43716cf9a00/public"
+                      width = "600"
+                >
+
+<h4 id="折线分析，确定趋势"><a href="#折线分析，确定趋势" class="headerlink" title="折线分析，确定趋势"></a>折线分析，确定趋势</h4><p>首先还是来看每月总销售额，前面我们将它存储在变量 sales_income 中，怎么画出对应的折线图</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取每月销售额总数</span></span><br><span class="line">sales_income = mask_data_clean.groupby(<span class="string">&#x27;月份&#x27;</span>)[<span class="string">&#x27;销售额&#x27;</span>].<span class="built_in">sum</span>()</span><br><span class="line">sales_income</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2245d3d2-e38d-435c-df11-067dae0dac00/public"
+                      width = "600"
+                >
+
+<p>这是一个Series对象，行索引是月份，值是每月总销售额。因此可以直接用 pandas 的plot()方法画图。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/fac09ef5-8764-4329-2aff-2928dcaf4600/public"
+                      width = "600"
+                >
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入matplotlib库的pyplot模块</span></span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.rcParams[<span class="string">&quot;font.sans-serif&quot;</span>]=[<span class="string">&quot;SimHei&quot;</span>] <span class="comment">#设置字体</span></span><br><span class="line">plt.rcParams[<span class="string">&quot;axes.unicode_minus&quot;</span>]=<span class="literal">False</span> <span class="comment">#该语句解决图像中的“-”负号的乱码问题</span></span><br><span class="line">sales_income.plot(kind = <span class="string">&#x27;line&#x27;</span>, figsize = (<span class="number">7</span>,<span class="number">7</span>) ,title = (<span class="string">&#x27;画出各月总销售额的折线图&#x27;</span>))</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/45222d41-e9bc-4bf6-9d1f-c32321afc500/public"
+                      width = "600"
+                >
+
+<p>直接使用前面的<code>Series</code>对象，就可以画出来一个以月份为横坐标，以单位数值为纵坐标，总销售额为数据点的折线图。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/9d30be7b-959f-4964-366c-63997f808500/public"
+                      width = "600"
+                >
+
+<p>按理来说，画出各月总销售额的折线图之后，就可以继续去分析其统计值的变化趋势了。</p>
+<p>但是下面我们会先把“各月订单量、单价、各省订单量”剩下 3 个折线图都画出来之后，再进入下一步的趋势分析。</p>
+<p>因为这 4 个影响因素关系密切：订单量不变时，单价越高销售额也会越高；同理单价不变时，订单量越多销售额也会越高。</p>
+<p>如果这些因素的变化趋势也呈现这样的某些共性，就可以综合起来进行分析，就更容易抓住关键性的影响因素，可以聚焦问题。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 画出各月总订单量的折线图</span></span><br><span class="line">order_number.plot(kind = <span class="string">&#x27;line&#x27;</span>, figsize = (<span class="number">7</span>, <span class="number">7</span>), title = <span class="string">&#x27;各月总订单量趋势图&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/62852949-b864-4430-80b4-f20e8bc25700/public"
+                      width = "600"
+                >
+
+<p>可以得到以月份为横坐标，单位数值为纵坐标，平均单价为数据点的折线图，单位为元。</p>
+<p>最后来看各省各月总订单量的变化趋势，它的特殊之处在于，需要通过多条折线图来直观体现出不同省份不同月份的区别。</p>
+<p>前面我们将各省各月的统计数据存储在变量 <code>month_order</code>和 <code>month_order_2</code>中，它们是两个 <code>Series</code> 对象。</p>
+<p>但是多条折线图需要基于 <code>DataFrame</code> 数据来画，因此我们需要使用 <code>unstack()</code> 方法将 <code>Series</code> 对象变为 <code>DataFrame</code> 对象。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将month_order1转换为DataFrame，存储在month_order_df中</span></span><br><span class="line">month_order_df = month_order.unstack()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看month_order1_df中的数据</span></span><br><span class="line">month_order_df</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b9cac6eb-3651-460c-9e4c-bd530654b000/public"
+                      width = "600"
+                >
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 根据month_order_df绘制多条折线图，标题为&#x27;各月各省总订单量趋势图&#x27;</span></span><br><span class="line">month_order_df.plot(kind = <span class="string">&#x27;line&#x27;</span>, figsize = (<span class="number">7</span>, <span class="number">7</span>), title = <span class="string">&#x27;各月各省总订单量趋势图&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b8dc7259-410d-4187-328d-20c63be9ad00/public"
+                      width = "600"
+                >
+
+<p>我们画出来的是各月各省总订单量趋势图，它以不同颜色线条表示不同月份，以省份为横坐标，以数值单位为纵坐标，以订单量数值为数据点形成的折线图。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将month_order_2转换为DataFrame，存储在month_order_2_df中</span></span><br><span class="line">month_order_2_df = month_order_2.unstack()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据month_order2_df绘制多条折线图，标题为&#x27;各省各月总订单量趋势图&#x27;</span></span><br><span class="line">month_order_2_df.plot(kind = <span class="string">&#x27;line&#x27;</span>,figsize = (<span class="number">7</span>, <span class="number">7</span>), title = <span class="string">&#x27;各省各月总订单量趋势图&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/92867763-7250-425e-1b46-ce3667b15100/public"
+                      width = "600"
+                >
+
+<p>现在我们已经画完了 4 个需要的折线图，接着就可以具体观察折线图，详细分析不同影响因素的变化趋势</p>
+<p>观察折线图，有3个要点，</p>
+<p>​	一是整体的<strong>走势</strong></p>
+<p>​	二是走势的<strong>规律性</strong></p>
+<p>​	三是走势的<strong>波动</strong></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ca4e5cc2-a223-46eb-b3d9-2a4a78e1c000/public"
+                      width = "600"
+                >
+
+<p>我们可以直接通过折线图的线条倾斜程度，看出走势波动的强烈程度，比如下图就是不同变化程度的体现.</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/9394bfd4-14a0-4de8-292e-e32d9ed79d00/public"
+                      width = "600"
+                >
+
+<p>基于这三个要点，可以让我们更加全面地描述折线图的趋势特征。接下来我们整体来看一看四个影响因素随月份变化时对应的折线图。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d3454629-01f2-4cec-c44d-95821490ed00/public"
+                      width = "600"
+                >
+
+<p>可以发现无论各月的总销售额、总订单量、平均单价，以及各省在各月的总订单量，变化趋势有很大的相似性：</p>
+<p>1）在 1 月到 3 月的折线是随着时间增长而增加，整体呈增加趋势，其中 2 月到 3 月增长快速；3 月之后整体呈下降趋势，3 月到 4 月出现了“急跌”。</p>
+<p>2）目前的折线中未出现多个类似形状的起伏波动，未体现出任何规律性。</p>
+<p>3）而且图中只有一处波动起伏，在这个起伏的最高点，对应着 3 月的数据，此处为最大值。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/99c1cd0b-1bc0-47e2-32ec-b76007c7da00/public"
+                      width = "600"
+                >
+
+<p>本质上，趋势是由背后的原因推动的。看趋势，更得看背后的原因，而不是单纯的看着结果走势想当然。</p>
+<p>因此接下来的时间，我们来分析防护服装厂各项影响因素的统计值都在“走下坡路”的原因，给总监一个“交代”。</p>
+<h4 id="原因剖析，聚焦问题"><a href="#原因剖析，聚焦问题" class="headerlink" title="原因剖析，聚焦问题"></a>原因剖析，聚焦问题</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4a99610a-ad80-4f84-acc4-7c7a3489e900/public"
+                      width = "600"
+                >
+
+<p>这里趋势变化非常明显，最大值（转折点）为 3 月，因此我们重点关注这个值，以其特殊性作为突破口。</p>
+<p>根据订单量、单价的变化，我们可以知道，3 月之前，工厂的防护服装需求量和价格都增长猛烈，3 月之后却又出现大幅下降。</p>
+<p>按理来说，防护服装属于医用防护品和日用生活品，不受季节、时间的影响。一般其需求源头比较稳定，物价也很稳定。</p>
+<p>但是对比 1-3 月份总订单量的变化，其纵坐标的值是 0 到 2，但是单位是百万。因此是从 1 月份的万余盒，增长到 2 月份的 30 余万盒，突然涨到 3 月份 196 万余盒，变化迅猛。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/11314251-e088-49bd-e224-488b3b035700/public"
+                      width = "600"
+                >
+
+<p>另外通过折线图也能够发现趋势变化的强烈程度，比如 3 月到 4 月的订单量，就是一个“急跌”，订单量一下子缩水了 100 多万！</p>
+<p>因此认为，要想在两三个月内迅速改变防护服装的供需关系，应该是属于社会性问题的外部冲击。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/39ad592c-a50b-40e4-c0ff-d6164438cc00/public"
+                      width = "600"
+                >
+
+<p>与防护服装使用的历史一致，几乎每次大的普及推广都是受传染性疾病或空气污染等外部影响。</p>
+<p>因此这里排除业务内部原因，比如偶发性降价促销活动带来的客流量上涨与衰退，以及工厂竞争能力降低带来的市场占有率从高到低等等内部问题。</p>
+<p>因为这些情况都属于常规运营问题，造成的影响远不会如此剧烈。</p>
+<p>实际上，从 2020 年 1 月底开始，国内就蔓延出了新冠的传染性疾病，到了 3 月份，疫情感染人数才逐渐得到控制。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d31ca533-2cdd-424d-e969-c487fb0aff00/public"
+                      width = "600"
+                >
+
+<p>当然我们还是要结合疫情的情况，进行材料的佐证，这样才能尽量合情合理的去解释所发生的现象。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/13c9c007-da05-43f2-5db2-f66937cf0200/public"
+                      width = "600"
+                >
+
+<p>疫情最严重的时期为 2 月份，2 月初电视中还经常出现药店防护服装断供的新闻，3 月中下旬开始，全国陆续开始复工，人群流动性增加的情况下，防护服装的需求也是达到了最高点。</p>
+<p>而且我们也可以看到，各省的订单量变化中，以湖北省的变化最为强烈，在 2020年的新冠疫情中，湖北省是重灾区，全省 5927 万人口，是非常大的需求缺口。</p>
+<p>据说我们的工厂整个 2-3 月都在加班加点进行生产，但是防护服装的价格与销量都还是只增不降，说明需求根本无法及时得到满足。</p>
+<p>而到 3 月之后，疫情好转，全国各地陆续放松，尤其是不再要求必须在公众场合佩戴防护服装，人们对于防护服装的需求迅速回落，一直到 6 月销量和价格都仍在下落的过程中。</p>
+<p>可以说，2020 年 1 月到 6 月，由于新冠疫情的影响，防护服装的供需关系发生了很大的波动变化，导致工厂防护服装的订单量、价格以及整体销售额也自然随之发生变化。</p>
+<p>但如果直接给出结论，就只是空口无凭了，做数据分析就是要能够发掘和解释其背后的逻辑。</p>
+<h4 id="深入洞察，提出对策"><a href="#深入洞察，提出对策" class="headerlink" title="深入洞察，提出对策"></a>深入洞察，提出对策</h4><p>说到问题根源，其实还是一个供需关系，如果防护服装厂商在供需矛盾中不占优势，想要继续维持原来高价格高销量的情况几乎是不可能。</p>
+<p>因为人们的购买标准，将从“能用”升级为性价比高、质量好、服务好等更复杂的行业竞争力问题上。</p>
+<p>因此当疫情减少，刚性需求减少后，防护服装行业的市场竞争将会越发激烈。</p>
+<p>1 月这段时间基本不属于疫情影响范围内，比较能够体现出日常情况下人们对于防护服装的需求。我们可以以此对比一下疫情前后，订单量和单价的情况：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b3cf835a-4a4e-4fa2-465d-7f928d722c00/public"
+                      width = "600"
+                >
+
+<p>如果这种状态下，6 月份防护服装厂是处于亏损，那么未来这段时间，防护服装厂将继续处于亏损状态。</p>
+<p>众所周知，“比亚迪”作为一个汽车企业，由于这次生产转型，其在防护服装行业也占有了一席之地。因此，现在的情况是危机也是转机，是打开稳定市场的好机会。</p>
+<p>基于这样的分析，跟总监提出两种不同的建议：</p>
+<p>1)公司可以对防护服装厂进行改革，不过对于工厂的优势，改革的重点及规划，还有待进一步对产品、营销体系等情况的分析。</p>
+<p>2)如果公司不对防护服装厂进行新的投入和改革，防护服装厂将会持续亏损，建议尽早对防护服装厂做转让处理。</p>
+<p>当然，还有第三种方案，那就是基于国际局势考虑，目前南半球及欧美国家，由于气候及政策等原因，新冠疫情的危机是越演愈烈。<br>预计对于疫情为加重趋势的国家，防护服装的需求量仍会比较高涨。</p>
+<p>3)如果可以及时打开国际销售渠道，并维持相对较低的成本，工厂将仍能保持供需矛盾中的优势地位，维持高单价高销量的营收情况。</p>
+<h4 id="小结-5"><a href="#小结-5" class="headerlink" title="小结"></a>小结</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/21a9340f-1a9b-4ecb-d65e-8497f0582900/public"
+                      width = "800"
+                >
+
+<p>我们说整个数据分析过程就是根据分析目的，用适当的分析方法及工具，对数据进行处理和分析，提取有价值的信息，其目的是总结出所研究对象的内在规律。</p>
+<p>在实际工作中，数据分析能够帮助管理者进行判断和决策，以便制定适当的策略与采取相应的行动。因此掌握数据分析能力对于我们的工作会有很多的帮助。</p>
+<h3 id="数据展现"><a href="#数据展现" class="headerlink" title="数据展现"></a>数据展现</h3><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c3059193-069c-4af4-7a32-1afef0d2a300/public"
+                      width = "600"
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6070452a-fcbb-4c4f-cdb1-cc6b16e64f00/public"
+                      width = "600"
+                >
+
+<h4 id="选对图表"><a href="#选对图表" class="headerlink" title="选对图表"></a>选对图表</h4><p>不同图表的适用场景</p>
+<p>不同的图表一般会有不同的适用场景，我们将折线图、柱状图和饼图进行简单对比。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ef21f6b8-8ee4-48f1-5582-21c5f821df00/public"
+                      width = "600"
+                >
+
+<p>可以清晰地看到，折线图主要是呈现数据变化的趋势；柱状图让数值大小的比较更加明显；至于饼图，能够直观地显示各部分相对于整体的占比。</p>
+<p>多条折线图兼具了折线图和柱状图的优势，能够比较多组数据在同一个维度上的趋势，比如上一节课绘制的“各省各月订单量趋势图”就是各个省份的订单量在同一个维度“月”进行的比较。</p>
+<h4 id="明确数据展现的目标"><a href="#明确数据展现的目标" class="headerlink" title="明确数据展现的目标"></a>明确数据展现的目标</h4><h5 id="思路1"><a href="#思路1" class="headerlink" title="思路1"></a>思路1</h5><p>各月的总销售额、总订单量、平均单价以及各省在各月总订单量，都出现了1-3月迅猛增长呈增长趋势，3-6月呈下降趋势的情况。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/22ff948c-44f4-4a9a-7a87-a2b96f182300/public"
+                      width = "600"
+                >
+
+<p>使用折线图呈现总销售额、总订单量以及平均单价在1-6月之间的变化趋势是合理的，但是我们仔细观察这三张图就会发现：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7d53fb48-01b6-4387-e8b1-3a6581b16000/public"
+                      width = "600"
+                >
+
+<ol>
+<li>观察 y 轴，不能很快知道数据的数量级和单位；</li>
+<li>图中折线颜色均是默认的蓝色，放在一起对比不容易区分；</li>
+<li>图中折线对应的数据标记点不够明显，无法很好地与坐标轴上的值进行对应；</li>
+<li>此外，图中的图表标题、坐标轴刻度、坐标轴标题等字体都太小了，看不清楚。</li>
+</ol>
+<p>所以，我们重点调整这几张图的坐标轴标题、折线以及数据标记点样式，并调整图表标题、坐标轴刻度、坐标轴标题等字体大小。</p>
+<p>用多条折线图呈现各省在各月总订单量的变化趋势是合理的，但同样也存在一些问题：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b5e4308d-0e6a-47e4-d26f-ffb9beece100/public"
+                      width = "600"
+                >
+
+<ol>
+<li>观察 y 轴，不能很快知道数据的数量级和单位；</li>
+<li>图中折线对应的数据标记点不够明显，无法很好地与坐标轴上的值进行对应；</li>
+<li>此外，图中的图表标题、坐标轴刻度、坐标轴标题等字体都太小了，看不清楚。</li>
+</ol>
+<p>因此，我们重点调整多条折线图的坐标轴标题、折线以及数据标记点样式，并调整图表标题、坐标轴刻度、坐标轴标题重点调整的字体大小。</p>
+<h5 id="思路2"><a href="#思路2" class="headerlink" title="思路2"></a>思路2</h5><p>通过对比 1 月和 6 月的订单量、平均单价，发现 6 月的订单量虽然比日常（1月）要高，但是平均单价已经降至比 1 月还低。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/0b487232-9868-4e31-4060-f9fa4a422c00/public"
+                      width = "600"
+                >
+
+<p>使用折线图呈现订单量、平均单价在 1 月和 6 月的数值比较是不合理的，建议用柱状图。除此之外：</p>
+<ol>
+<li>图中 y 轴均缺少标题，不能很快得知它们的数量级；</li>
+<li>对 1 月和 6 月的数值比较，但是图中没有数值，而是添加了额外的标注；</li>
+<li>强调 1 月和 6 月进行对比，但是颜色没有做专门的区分。</li>
+<li>此外，图中的图表标题、坐标轴刻度、坐标轴标题等字体都太小了，看不清楚。</li>
+</ol>
+<p>因此，我们绘制柱状图，并重点关注该柱状图的坐标轴标题、数据标签以及柱子样式，并调整图表标题、坐标轴刻度、坐标轴标题重点调整的字体大小。</p>
+<h4 id="绘制各月总订单量趋势图"><a href="#绘制各月总订单量趋势图" class="headerlink" title="绘制各月总订单量趋势图"></a>绘制各月总订单量趋势图</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入pandas库</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="comment"># 读取清洗好的数据</span></span><br><span class="line">mask_data_clean = pd.read_csv(<span class="string">&#x27;mask_data_clean.csv&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取各月总订单量</span></span><br><span class="line">order_number = mask_data_clean.groupby(<span class="string">&#x27;月份&#x27;</span>)[<span class="string">&#x27;订单量&#x27;</span>].<span class="built_in">sum</span>()</span><br><span class="line">order_number</span><br></pre></td></tr></table></figure></div>
+
+<p>x 坐标值是月份的信息，y 坐标值是每个月对应的口罩订单量合计值。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2f06664e-bd90-486c-563c-5d0c14208d00/public"
+                      width = "600"
+                >
+
+<p>我们发现折线图中每一个点的 x 坐标值就对应着 <code>order_number</code> 对象左边的索引，而折线图中每一个点的 y 坐标值就对应着 <code>order_number</code> 对象右边的数据。下面就以两个点为例：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/00535ea5-70bf-48c3-2470-77c98b812a00/public"
+                      width = "600"
+                >
+
+<p>可以用 Series 对象的 index 和 values 属性分别获取左边的索引和右边的数据。</p>
+<p>首先看一下 index 属性</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">order_number.index</span><br><span class="line"></span><br><span class="line"><span class="comment"># Int64Index([1, 2, 3, 4, 5, 6], dtype=&#x27;int64&#x27;, name=&#x27;月份&#x27;)</span></span><br></pre></td></tr></table></figure></div>
+
+<p>这里返回的是一个 index 对象，里面存储了月份信息。</p>
+<p>我们再来看一下 values 属性</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">order_number.values</span><br><span class="line"></span><br><span class="line"><span class="comment"># array([ 13852., 389319., 1961480., 546276., 158188., 22222.])</span></span><br></pre></td></tr></table></figure></div>
+
+<p>确定了 x&#x2F;y 坐标值，我们就调用折线图绘图函数 <code>plt.plot()</code> 开始绘图。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = order_number.index</span><br><span class="line">y = order_number.values</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成画布，并设置画布的大小</span></span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制折线图</span></span><br><span class="line">plt.plot(x, y)</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d07c42bb-bc57-46ae-2d4d-fe48de88df00/public"
+                      width = "600"
+                >
+
+<p>绘图函数 plt.plot()本身是很强大的，通过调整其中的参数还可以进一步调整折线的样式</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a19cefbf-1024-4c3c-c916-48f034e11500/public"
+                      width = "600"
+                >
+
+<p>基于刚才确定的目标，我们重点调整坐标轴标题、折线以及数据标记点样式，并调整图表标题、坐标轴刻度、坐标轴标题的字体大小。</p>
+<p>先看线条的宽度和颜色，需要用到的参数分别是 <code>linewidth</code> 和 <code>color</code>。</p>
+<p>参数 <code>linewidth</code> 可以设置线条的宽度，常见为数值类型。</p>
+<p>参数 <code>color</code> 可以设置线条的的颜色。下图为 <code>matplotlib</code> 库支持的颜色，只需要向 <code>color</code> 传入颜色块旁边对应的英文单词即可，常见为字符串类型。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/432a2896-10e3-440a-f981-26aaaf948100/public"
+                      width = "600"
+                >
+
+<p>设置线条的宽度为3：<code>linewidth=3</code>，颜色为红色：<code>color=&#39;r&#39;</code>（’red’可以简写为’r’）</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成画布，并设置画布的大小</span></span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line"><span class="comment"># 绘制折线图，只调整线条的样式</span></span><br><span class="line">plt.plot(x, y, linewidth=<span class="number">3</span>, color=<span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/35f1bad9-4f0f-492d-a9ad-989503c2a000/public"
+                      width = "600"
+                >
+
+<p>可以看到调整参数 <code>linewidth</code> 和 <code>color</code> 后，线条宽度变宽，并且变成红色。</p>
+<p>接着调整数据标记点的样式，需要用到的参数是 <code>marker</code>、<code>markerfacecolor</code> 和 <code>markersize</code>。</p>
+<p>参数 <code>marker</code> 可以设置数据标记点的形状，有点、圆、加号等，常见为字符串类型，更多的形状</p>
+<p>参数 <code>markersize</code> 和 <code>markerfacecolor</code> 用来设置数据标记点的大小和填充颜色。<code>markersize</code> 的设置方法与 <code>linewidth</code> 参数相同，而 <code>markerfacecolor</code> 参数的设置方法与 <code>color</code>参数一致。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ba7f2392-7eea-47af-93bc-a5254ab27600/public"
+                      width = "600"
+                >
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成画布，并设置画布的大小</span></span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line"><span class="comment"># 绘制折线图，只调整数据标记点的样式</span></span><br><span class="line">plt.plot(x, y, linewidth=<span class="number">3</span>, color=<span class="string">&#x27;r&#x27;</span>, marker=<span class="string">&#x27;o&#x27;</span>,markersize=<span class="number">10</span>,markerfacecolor=<span class="string">&#x27;w&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/141b3067-6fbf-4b20-703e-2ca4a8db1d00/public"
+                      width = "400"
+                >
+
+<p>可以看到调整 <code>marker</code>、<code>markersize</code> 以及 <code>markerfacecolor</code> 之后，数据标记点形状变成圆形，尺寸更大，填充颜色为白色。</p>
+<p>调整折线图中图表标题、坐标轴刻度、坐标轴标题的字体样式</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成画布，并设置画布的大小</span></span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line"><span class="comment"># 设置 x/y 坐标值</span></span><br><span class="line">x = order_number.index</span><br><span class="line">y = order_number.values</span><br><span class="line"><span class="comment"># 绘制折线图，并调整线条、标记点的样式</span></span><br><span class="line">plt.plot(x, y, linewidth=<span class="number">3</span>, color=<span class="string">&#x27;r&#x27;</span>, marker=<span class="string">&#x27;o&#x27;</span>, markerfacecolor=<span class="string">&#x27;w&#x27;</span>, markersize=<span class="number">10</span>)</span><br><span class="line"><span class="comment"># 设置图表标题名及字体大小</span></span><br><span class="line">plt.title(<span class="string">&#x27;各月总订单量趋势图&#x27;</span>, fontsize=<span class="number">20</span>)</span><br><span class="line"><span class="comment"># 设置坐标轴的刻度字体大小</span></span><br><span class="line">plt.xticks(fontsize=<span class="number">12</span>)</span><br><span class="line">plt.yticks(fontsize=<span class="number">12</span>)</span><br><span class="line"><span class="comment"># 设置坐标轴的标题名及字体大小</span></span><br><span class="line">plt.xlabel(<span class="string">&#x27;月份&#x27;</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;各月总订单量（百万）&#x27;</span>, fontsize=<span class="number">15</span>)</span><br><span class="line"><span class="comment"># 保存画布</span></span><br><span class="line">plt.savefig(<span class="string">&#x27;各月总订单量趋势图.png&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/205ae976-2761-4d1b-867f-870e396c6f00/public"
+                      width = "400"
+                >
+
+<h5 id="小结-6"><a href="#小结-6" class="headerlink" title="小结"></a>小结</h5><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3d0d1c23-92b0-4afc-bb5d-8caac0f37100/public"
+                      width = "800"
+                >
+
+<h4 id="绘制各省各月订单量趋势图"><a href="#绘制各省各月订单量趋势图" class="headerlink" title="绘制各省各月订单量趋势图"></a>绘制各省各月订单量趋势图</h4><p>重点调整多条折线图的坐标轴标题、折线以及数据标记点样式，并调整图表标题、坐标轴刻度、坐标轴标题的字体大小。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 调整画布大小</span></span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line"><span class="comment"># 设置 x/y 坐标值</span></span><br><span class="line">x = month_order_df.index</span><br><span class="line">y = month_order_df.values</span><br><span class="line"><span class="comment"># 绘制折线图，并调整线条、标记点的样式</span></span><br><span class="line">plt.plot(x, y, linewidth=<span class="number">2</span>, marker=<span class="string">&#x27;o&#x27;</span>, markerfacecolor=<span class="string">&#x27;w&#x27;</span>, markersize=<span class="number">10</span>)</span><br><span class="line"><span class="comment"># 设置图表标题名及字体大小</span></span><br><span class="line">plt.title(<span class="string">&#x27;各省各月口罩订单量变化折线图&#x27;</span>, fontsize=<span class="number">20</span>)</span><br><span class="line"><span class="comment"># 设置坐标轴的刻度字体大小</span></span><br><span class="line">plt.xticks(fontsize=<span class="number">12</span>)</span><br><span class="line">plt.yticks(fontsize=<span class="number">12</span>)</span><br><span class="line"><span class="comment"># 设置坐标轴的标题名及字体大小</span></span><br><span class="line">plt.xlabel(<span class="string">&#x27;月份&#x27;</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;各省各月口罩订单量（百万）&#x27;</span>, fontsize=<span class="number">15</span>)</span><br><span class="line"><span class="comment"># 添加图例</span></span><br><span class="line">plt.legend([<span class="string">&#x27;其它&#x27;</span>,<span class="string">&#x27;广东&#x27;</span>,<span class="string">&#x27;江苏&#x27;</span>,<span class="string">&#x27;河南&#x27;</span>,<span class="string">&#x27;湖北&#x27;</span>,<span class="string">&#x27;湖南&#x27;</span>])</span><br><span class="line"><span class="comment"># 保存画布</span></span><br><span class="line">plt.savefig(<span class="string">&#x27;各省各月口罩订单量变化折线图.png&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/0c1bd611-2e13-4d0c-cbcd-341491e1c000/public"
+                      width = "300"
+                >
+
+<h5 id="小结-7"><a href="#小结-7" class="headerlink" title="小结"></a>小结</h5><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/dc47784f-e379-4867-7232-2905541b7400/public"
+                      width = "800"
+                >
+
+<h4 id="绘制各月平均单价分布图"><a href="#绘制各月平均单价分布图" class="headerlink" title="绘制各月平均单价分布图"></a>绘制各月平均单价分布图</h4><p>“各月平均单价趋势图”和“各月平均单价分布图”拥有相同的数据“单价”以及相同的时间维度“月”，因此 “各月平均单价趋势图”的 x&#x2F;y 坐标值同样可以用在“各月平均单价柱状图”中。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 求得各月平均单价数据，并将其赋值给变量 mask_price</span></span><br><span class="line">mask_price = mask_data_clean.groupby(<span class="string">&#x27;月份&#x27;</span>)[<span class="string">&#x27;单价&#x27;</span>].mean()</span><br><span class="line"><span class="comment"># 查看mask_price</span></span><br><span class="line">mask_price</span><br><span class="line"><span class="comment"># 设置 x 坐标值</span></span><br><span class="line">x = mask_price.index</span><br><span class="line"><span class="comment"># 设置 y 坐标值</span></span><br><span class="line">y = mask_price.values</span><br></pre></td></tr></table></figure></div>
+
+<p>确定好 x&#x2F;y 坐标值，接下来调用柱状图绘图函数 <code>plt.bar()</code>开始绘图，与绘图函数 <code>plt.plot()</code>相似，<code>plt.bar()</code>也可以通过调整其中的参数去改变柱子的样式</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/8c3fddb0-de09-4777-9adc-2d517d876e00/public"
+                      width = "600"
+                >
+
+<p>基于刚才确定的目标，我们重点关注该柱状图的坐标轴标题、数据标签以及柱子样式，并调整图表标题、坐标轴刻度、坐标轴标题的字体大小。</p>
+<p>先调整柱子的颜色和宽度，用到的参数分别是 <code>color</code> 和 <code>width</code>。这里的<code>color</code> 和折线图中的<code>color</code> 略有不同，当设置一种颜色时，传入值的类型为字符串；设置多种颜色时，传入值的类型为列表。<code>width</code> 则需要传入(0, 1]区间 (大于 0，小于等于 1) 内的浮点数，数值越大表示柱子的宽度越宽；当 <code>width</code> 的值为 1 时，柱子之间的间隙就为 0。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成画布，并设置画布的大小</span></span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line"><span class="comment"># 绘制柱状图，设置柱子的颜色为绿色，宽度为 0.6</span></span><br><span class="line">plt.bar(x, height=y, color=<span class="string">&#x27;g&#x27;</span>, width=<span class="number">0.6</span>)</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b02d15f5-784b-4c95-4456-222e1db79c00/public"
+                      width = "600"
+                >
+
+<p>可以看到添加了参数 <code>color</code> 和 <code>width</code> 之后，柱子宽度变窄，并且变成绿色。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e57c9752-81fe-4669-c0b0-be0fcdda7700/public"
+                      width = "600"
+                >
+
+<p>需要注意，柱的颜色是按照列表中颜色字符串的顺序设置的。</p>
+<p>但是这个绿色太深了，只能用“丑”来形容，得想办法优化一下。</p>
+<p>参数 <code>alpha</code> 可以设置柱子颜色的透明度，需要传入(0, 1]区间内的浮点数，数值越小，表示柱子颜色越浅；相反，则越深。适当地调整颜色深浅，可以提升视觉舒适度。</p>
+<p>综上，我们设置柱子颜色透明度为 60%：<code>alpha=6</code>；调整 1 月份和 6 月份的柱子颜色分别为红色、蓝色，其他柱子依然是绿色：<code>color=[&#39;r&#39;, &#39;g&#39;, &#39;g&#39;, &#39;g&#39;, &#39;g&#39;, &#39;b&#39;]</code>。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成画布，并设置画布的大小</span></span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制柱状图，并调整柱子的颜色和透明度</span></span><br><span class="line">plt.bar(x, height=y, color=[<span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;g&#x27;</span>, <span class="string">&#x27;g&#x27;</span>,<span class="string">&#x27;g&#x27;</span>, <span class="string">&#x27;g&#x27;</span>, <span class="string">&#x27;b&#x27;</span>], width=<span class="number">0.6</span>, alpha=<span class="number">0.6</span>)</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/760d55c6-bc20-4899-8e11-3352d921e900/public"
+                      width = "400"
+                >
+
+<p>可以看到，柱子颜色变浅了，而且1 月份和 6 月份的柱子颜色分别变成红色、蓝色。</p>
+<h5 id="小结-8"><a href="#小结-8" class="headerlink" title="小结"></a>小结</h5><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/02119820-a795-43de-87cd-a20c0ed5da00/public"
+                      width = "800"
+                >
+
+<h4 id="报告制式-4"><a href="#报告制式-4" class="headerlink" title="报告制式"></a>报告制式</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/93da82bc-cbb6-4a6c-b1ec-08fbbf3d3e00/public"
+                      width = "300"
+                >
+
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## 六、数据分析</span></span><br><span class="line"><span class="section">### 6.1变化趋势</span></span><br><span class="line"><span class="code">	销售额、订单量、单价变化趋势</span></span><br><span class="line"><span class="code">#### 1. 各月“销售额”：</span></span><br><span class="line"><span class="code">	“销售额”2～3月份急剧上升、3～4月急剧下降，在3月份达到顶峰。</span></span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/db321ddd-19bf-469a-a035-ba2d7088af00/public"
+                      width = "400"
+                >
+
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">#### 2.各月“订单量”：</span></span><br><span class="line"><span class="code">	“订单量”表现与“销售额”月表现趋势相同。2～3月份急剧上升、3～4月急下降。在3月份达到顶峰。</span></span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2baf744b-4c16-4266-e451-3ed9d7f86500/public"
+                      width = "400"
+                >
+
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">与疫情前对比，6月份比1月份的订单总量略高（1月份的防护服装订单总量为13852盒，6月份22222盒）</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4808be71-107a-4eea-0f08-ae475cd22900/public"
+                      width = "400"
+                >
+
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">#### 3. 各月“单价”：</span></span><br><span class="line"><span class="code">	从变化趋势来看，“单价”表现与“销售额”、“订单量”表现趋势相同。2～3月份急剧上升、3～4月急剧下降。在3月份达到顶峰。</span></span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f205c80d-8cec-43c9-f22f-7625f26fa900/public"
+                      width = "400"
+                >
+
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">与疫情前对比，6月份比1月份的防护服装单价更低（1月份的防护服装单价为39元/盒，6月份30元/盒）。</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/920387dd-fe70-4638-12be-ef4ea0489100/public"
+                      width = "400"
+                >
+
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## 6.2原因分析/内因外因</span></span><br><span class="line"><span class="bullet">1.</span> 销售额、订单量、单价波动情况</span><br><span class="line">“销售额”波动：2～3月份急剧上升、3～4月急剧下降。在3月份达到顶峰。</span><br><span class="line">“单价”波动：2～3月份急剧上升、3～4月急剧下降。在3月份达到顶峰。</span><br><span class="line">“订单量”波动：2～3月份急剧上升、3～4月急剧下降。3月份达到顶峰。</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d5c5a1e7-a0e6-491d-dc12-df21652d1900/public"
+                      width = "700"
+                >
+
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“各省份订单量”波动：各客户之间的变化趋势相同，并且我们发现湖北省的防护服装订单量显著大于其他省份，湖北省为我们的“大客户”，并且“大客户”的订单量也在大幅降低</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ed8c0bf8-16c5-41b8-986d-78e013e9b400/public"
+                      width = "400"
+                >
+
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">2.</span> 疫情是在1-3月份呈上升、3-6月份呈下降，疫情与销售额、订单量、单价变化趋势表现一致。与此同时“大客户“群体也同样是疫情期间的影响重灾地区。因此，过往在3月份的明显波动的盈利状况主要与疫情有关系。</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6639f303-6793-4c12-c805-3c7fe1218800/public"
+                      width = "700"
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/418091a4-e4d9-4d17-714b-63e90dfbf400/public"
+                      width = "700"
+                >
+
+<blockquote>
+<p>图片来自网络，数据与国家卫健委官网一致</p>
+</blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_aladin_banner" >https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_aladin_banner <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">3.</span> 与1月（日常情况）对比可知，6月的单价已经降到比较低的水平，订单量相对日常情况略高。由于疫情已经趋于稳定，之后订单量与单价不会再继续同时升高，那么6月已经亏损的情况下，之后的一段时间仍会继续亏损。</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="撰写数据分析报告"><a href="#撰写数据分析报告" class="headerlink" title="撰写数据分析报告"></a>撰写数据分析报告</h3><p>撰写数据分析报告的是为了将分析结果、建议以及其他有价值的信息传递给读者。对于“口罩厂”项目来说，读者是总监，我们要让总监正确地理解结果和建议，并做出有针对性的决策。</p>
+<h4 id="数据分析报告的形式"><a href="#数据分析报告的形式" class="headerlink" title="数据分析报告的形式"></a>数据分析报告的形式</h4><p>先来看看数据分析报告的形式，其实不限于文档、演示文稿以及表格。但是在不同的场景下，选对形式还是很关键的。</p>
+<p>下图是不同形式报告的优劣对比，你可以根据自己的需求选择合适的形式。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/1b1277d2-4e17-4f87-0466-16de7023c600/public"
+                      width = "700"
+                >
+
+<h4 id="数据分析报告的结构"><a href="#数据分析报告的结构" class="headerlink" title="数据分析报告的结构"></a>数据分析报告的结构</h4><p>再来看数据分析报告的结构，一般会采用总分总结构，包括：背景、目的、分析思路、分析正文、结论及建议、附录等。</p>
+<p>1）背景：阐述进行数据分析的原因、意义，以及其他相关信息，比如公司现阶段的经营情况。</p>
+<p>2）目的：这次分析要解决什么问题，达到何种目的。有时会将背景和目的放在一起写。</p>
+<p>3）分析思路：用到了什么分析方法，得到的分析框架是什么。</p>
+<p>4）分析正文是报告的主体部分，包含所有的数据事实和观点，通过数据图表和文字呈现，一般包括三个</p>
+<p>部分：<br>第一步.数据来源：解释数据的来源，并展示数据的基本情况。<br>第二步.数据处理：进行了哪些数据处理操作以及处理的结果是什么。<br>第三步.数据分析：以图文结合的方式展示分析过程和结果，并能证明分析过程合理，分析结果能够应用于实际的工作场景。</p>
+<p>5）结论及建议：以综述性文字展现数据分析结果，并结合公司的具体业务或问题给出建议。</p>
+<p>6）附录：提供正文中涉及到的，但是未详细阐述的资料，一般包括名词解释、源数据以及分析代码等，为整个分析报告提供补充说明。</p>
+<h4 id="项目回顾"><a href="#项目回顾" class="headerlink" title="项目回顾"></a>项目回顾</h4><p>1）背景<br>跟着项目一路走来，你应该再熟悉不过了：公司有一家小型口罩工厂，在今年 6 月底开始处于亏损状态。</p>
+<p>2）目标<br>对历史经营数据进行分析，找到亏损原因，并结合公司实际情况提供对应的解决策略。</p>
+<p>3）分析思路<br>借助公式拆解法，推演出影响口罩厂利润的几个因素以及分析的维度。</p>
+<p>4）分析正文</p>
+<ul>
+<li>基于分析框架向公司数据部门提交需求，拿到的数据基本符合需求，但也存在一些问题，比如一些数据是脏数据，一些数据则用不到，还有一些数据不是目标格式。</li>
+<li>针对上述存在的问题，进行了数据清洗、数据整理、分组聚合以及描述性统计分析等操作。</li>
+<li>整理完数据后，根据销售额、订单量、口罩单价、订单来源省份的影响因素以及月的时间维度进行分析，并通过作图查看各个数据的对比和趋势，最终发现数据变化的规律和原因。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e0ab7a9e-5c3a-48e6-7658-94dd5f96d000/public"
+                      width = "700"
+                >
+
+<p>除了分析某厂内部的数据，还结合外部环境数据去佐证我们的结论。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/cb95419a-73a7-4b34-4c04-0b1e2d01f200/public"
+                      width = "700"
+                >
+
+<p>5）结论及建议<br>最后，总结数据变化的规律和原因，并结合口罩厂数据和外部环境数据，从避免亏损和追求盈利两个方向给出建议。</p>
+<p>6）附录<br>在分析报告中没有难以理解的名词，整个过程主要用 Python 对数据进行了分析，所以附上原始数据和分析代码。</p>
+<h4 id="报告制式-5"><a href="#报告制式-5" class="headerlink" title="报告制式"></a>报告制式</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/93da82bc-cbb6-4a6c-b1ec-08fbbf3d3e00/public"
+                      width = "300"
+                >
+
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">### 七、结论及建议</span></span><br><span class="line"><span class="section">## 【结论】</span></span><br><span class="line"><span class="code">    结论1：防护服装厂的“销售额”在1-3月份呈上升态势，3-6月份呈下降态势，并且在2-3月份急剧上升，3-4月份急剧下降。“订单量”、“单价”都表现出同样的变化情况。</span></span><br><span class="line"><span class="code">    结论2：疫情是影响防护服装厂销售额、订单量、单价在2-3月份、3-4月份出现急剧上升、急剧下降的现象的原因。</span></span><br><span class="line"><span class="code">    结论3：根据疫情逐渐稳定，防护服装需求下降的情况，可以推断防护服装厂6月份之后还将持续亏损。</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="section">## 【建议】</span></span><br><span class="line"><span class="code">    建议1：如果公司不对防护服装厂新投入和改革，防护服装厂会持续亏损，建议尽早对防护服装厂进行转让处理。</span></span><br><span class="line"><span class="code">    建议2：如果公司对防护服装厂新投入和改革，那需要进一步分析产品情况、营销体系等因素对于日常营销的影响，把握住改革重点。</span></span><br><span class="line"><span class="code">    建议3：结合国外的疫情发展，可考虑打开疫情重灾国家的销售渠道，以便保持高单价高销量的营收模式。</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6fc30248-c0ee-4a2c-bbf5-465599a62700/public"
+                      width = "800"
+                >
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 数据分析思路模板</li>
+        <li><strong>作者:</strong> Yiuhang Chan</li>
+        <li><strong>创建于
+                :</strong> 2020-07-28 09:32:16</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-02-28 18:49:55
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://www.yiuhangblog.com/2020/07/28/20200728 数据分析报告思路/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">#数据分析</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%95%86%E5%8A%A1%E6%99%BA%E8%83%BD/">#商务智能</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E6%80%9D%E8%B7%AF/">#思路</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E6%8A%A5%E5%91%8A/">#报告</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E6%A8%A1%E6%9D%BF/">#模板</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2020/08/15/20200815%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">数据分析方法与流程</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2020/07/12/20200712FineBI%E6%A1%88%E4%BE%8B/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">FineBI案例</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://comment.yiuhangblog.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">数据分析思路模板</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E9%87%8F"><span class="nav-text">定量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%8E%E7%A1%AE%E7%9B%AE%E6%A0%87"><span class="nav-text">明确目标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%8E%E7%A1%AE%E5%88%86%E6%9E%90%E9%9C%80%E6%B1%82"><span class="nav-text">明确分析需求</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E5%91%8A%E5%88%B6%E5%BC%8F"><span class="nav-text">报告制式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E5%88%86%E6%9E%90%E6%A1%86%E6%9E%B6"><span class="nav-text">搭建分析框架</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%AC%E5%BC%8F%E6%8B%86%E8%A7%A3%E6%B3%95"><span class="nav-text">公式拆解法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E5%91%8A%E5%88%B6%E5%BC%8F-1"><span class="nav-text">报告制式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86"><span class="nav-text">数据收集</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E5%91%8A%E5%88%B6%E5%BC%8F-2"><span class="nav-text">报告制式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-text">数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97"><span class="nav-text">数据清洗</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%BA%E5%A4%B1%E5%80%BC"><span class="nav-text">缺失值</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E7%BC%BA%E5%A4%B1%E5%80%BC"><span class="nav-text">处理缺失值</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%BC%BA%E5%A4%B1%E5%80%BC"><span class="nav-text">删除缺失值</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-1"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E5%A4%8D%E5%80%BC"><span class="nav-text">重复值</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E9%87%8D%E5%A4%8D%E5%80%BC"><span class="nav-text">处理重复值</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-2"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E5%80%BC"><span class="nav-text">异常值</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%BC%82%E5%B8%B8%E5%80%BC"><span class="nav-text">处理异常值</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-3"><span class="nav-text">小结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%95%B4%E7%90%86"><span class="nav-text">数据整理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E6%97%A5%E6%9C%9F%E6%95%B0%E6%8D%AE"><span class="nav-text">转换日期数据</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E6%9C%88%E4%BB%BD%E4%BF%A1%E6%81%AF"><span class="nav-text">提取月份信息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E6%96%B0%E5%88%97"><span class="nav-text">增加新列</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BF%9D%E5%AD%98%E6%96%87%E4%BB%B6"><span class="nav-text">保存文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%A5%E5%91%8A%E5%88%B6%E5%BC%8F-3"><span class="nav-text">报告制式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-4"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="nav-text">数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E8%81%9A%E5%90%88%EF%BC%8C%E7%BB%9F%E8%AE%A1%E6%95%B0%E6%8D%AE"><span class="nav-text">分组聚合，统计数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%98%E7%BA%BF%E5%88%86%E6%9E%90%EF%BC%8C%E7%A1%AE%E5%AE%9A%E8%B6%8B%E5%8A%BF"><span class="nav-text">折线分析，确定趋势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0%E5%89%96%E6%9E%90%EF%BC%8C%E8%81%9A%E7%84%A6%E9%97%AE%E9%A2%98"><span class="nav-text">原因剖析，聚焦问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%B1%E5%85%A5%E6%B4%9E%E5%AF%9F%EF%BC%8C%E6%8F%90%E5%87%BA%E5%AF%B9%E7%AD%96"><span class="nav-text">深入洞察，提出对策</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-5"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%B1%95%E7%8E%B0"><span class="nav-text">数据展现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E5%AF%B9%E5%9B%BE%E8%A1%A8"><span class="nav-text">选对图表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%8E%E7%A1%AE%E6%95%B0%E6%8D%AE%E5%B1%95%E7%8E%B0%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="nav-text">明确数据展现的目标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF1"><span class="nav-text">思路1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF2"><span class="nav-text">思路2</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E5%90%84%E6%9C%88%E6%80%BB%E8%AE%A2%E5%8D%95%E9%87%8F%E8%B6%8B%E5%8A%BF%E5%9B%BE"><span class="nav-text">绘制各月总订单量趋势图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-6"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E5%90%84%E7%9C%81%E5%90%84%E6%9C%88%E8%AE%A2%E5%8D%95%E9%87%8F%E8%B6%8B%E5%8A%BF%E5%9B%BE"><span class="nav-text">绘制各省各月订单量趋势图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-7"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E5%90%84%E6%9C%88%E5%B9%B3%E5%9D%87%E5%8D%95%E4%BB%B7%E5%88%86%E5%B8%83%E5%9B%BE"><span class="nav-text">绘制各月平均单价分布图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-8"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%A5%E5%91%8A%E5%88%B6%E5%BC%8F-4"><span class="nav-text">报告制式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%92%B0%E5%86%99%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A"><span class="nav-text">撰写数据分析报告</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A%E7%9A%84%E5%BD%A2%E5%BC%8F"><span class="nav-text">数据分析报告的形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-text">数据分析报告的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE"><span class="nav-text">项目回顾</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%A5%E5%91%8A%E5%88%B6%E5%BC%8F-5"><span class="nav-text">报告制式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2018</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 5s"></i>&nbsp;&nbsp;<a href="/">Yiuhang Chan</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 41 篇文章
+                    </span>
+                    
+                        <span>
+                            共 348k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex justify-center items-center">
+                <a class="flex justify-center items-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/libs/mermaid.min.js"></script>
+
+    
+<script src="/js/plugins/mermaid.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

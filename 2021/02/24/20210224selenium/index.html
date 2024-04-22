@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="zh-CN,en,zh-TW,default">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Yiuhang Chan">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://www.yiuhangblog.com/2021/02/24/20210224selenium/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="Selenium库对各浏览器执行自动化处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Selenium 自动化工具">
+<meta property="og:url" content="https://www.yiuhangblog.com/2021/02/24/20210224selenium/index.html">
+<meta property="og:site_name" content="角灯随笔">
+<meta property="og:description" content="Selenium库对各浏览器执行自动化处理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6046ad3d-1616-4556-cad2-43aec3aba200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2740a8fa-10ec-4b01-54bb-8b122882a300/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/0978a1c2-4285-4bfe-9363-4a9f645ef900/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/02973d1e-8c41-469c-f871-89dacc9f6500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7fe9c27b-1bf4-4a32-ff6a-1ae6f5878200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/29cb1dc7-157f-4133-c136-0f5423299400/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a408a82f-53ec-4121-05c6-a51dcbbbb700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f9839300-70b4-4bb0-d810-2c6d45d6a800/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2a6f985c-e50f-43bf-bef4-468bae939900/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4ab0edc0-3598-48ac-b4cb-c9a0d8975500/public">
+<meta property="article:published_time" content="2021-02-23T22:12:56.000Z">
+<meta property="article:modified_time" content="2024-02-28T10:50:27.000Z">
+<meta property="article:author" content="Yiuhang Chan">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="理论">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="Selenium">
+<meta property="article:tag" content="自动化工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6046ad3d-1616-4556-cad2-43aec3aba200/public">
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-MQ43G0NKCT"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MQ43G0NKCT');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <meta name="theme-color" content="#A1AFC9">
+    <link rel="shortcut icon" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Selenium 自动化工具 -
+        
+        角灯随笔
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        角灯随笔
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"www.yiuhangblog.com","root":"/","language":["zh-CN","en","zh-TW","default"]};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":6,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":5,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A1AFC9","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":true,"id":"G-MQ43G0NKCT"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e63fc400-dd0e-4395-bd1b-9ee1ac3bfb00/public","dark":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a34140d6-7960-45dd-b8b5-c3ddd14d1f00/public"},"title":"角灯随笔","subtitle":{"text":["全栈也不是不行"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/CosmicTrace","instagram":null,"zhihu":null,"twitter":null,"email":"kenchansk0@gmail.com"},"qrs":null}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"娱乐":{"icon":"fa-solid fa-gamepad","submenus":{"王者荣耀":"/hok","守望先锋":"/ow","使命召唤":"/cod"}},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/CosmicTrace"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"谦逊","show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":8}},"footerStart":"2018/07/15 10:15:24"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="角灯随笔" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                角灯随笔
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/"
+                                        >
+                                    <i class="fa-solid fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-solid fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-solid fa-gamepad fa-fw"></i>
+                                    娱乐
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/hok">
+                                                    王者荣耀
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/ow">
+                                                    守望先锋
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/cod">
+                                                    使命召唤
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/CosmicTrace">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-solid fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-solid fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-娱乐"
+                        >
+                            <span>
+                                娱乐
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-娱乐">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/hok">王者荣耀</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/ow">守望先锋</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/cod">使命召唤</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/CosmicTrace">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">96</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">41</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/3bf8a052-fda1-409f-dcf6-6abac9eabd00/public" alt="Selenium 自动化工具" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">Selenium 自动化工具</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/26329e9f-d1fb-4280-a0a5-754547bf8500/public">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Yiuhang Chan</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2021-02-24 06:12:56</span>
+        <span class="mobile">2021-02-24 06:12:56</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-02-28 18:50:27</span>
+            <span class="mobile">2024-02-28 18:50:27</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/">数据抓取</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%90%86%E8%AE%BA/">理论</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Selenium/">Selenium</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/">自动化工具</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.3k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>5 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>Selenium 是一个web自动化工具</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol>
+<li>自动化测试<br>通过它，我们可以写出自动化程序，模拟浏览器里操作web界面。 比如点击界面按钮，在文本框中输入文字 等操作。</li>
+<li>获取信息<br>而且还能从web界面获取信息。 比如招聘网站职位信息，财经网站股票价格信息 等等，然后用程序进行分析处理。</li>
+</ol>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6046ad3d-1616-4556-cad2-43aec3aba200/public"
+                      width = "300"
+                >
+
+<p>Selenium测试直接运行在浏览器中，就好像一个真正的用户在操作一样， 支持大部分主流的浏览器，包括IE(7,8,9,10,11)，Firefox，Safari，Chrome，Opera等。</p>
+<p>我们可以利用它来模拟用户点击访问网站，绕过一些复杂的认证场景，通过selenium+驱动浏览器这种组合可以直接渲染解析js，绕过大部分的参数构造和反爬。</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>新版本的Selenium已经不在支持phantomjs，原作者也已经放弃维护该项目了。</p>
+<p>还有在做爬虫的时候尽量不要用这种方法，Selenium+浏览器的组合速度慢，应付不了数据量比较大的爬取以及并发爬取。并且很吃电脑资源。</p>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flowchart TD</span><br><span class="line">    A(selenium) --&gt; B(Chrome)</span><br><span class="line">    B --&gt; C(Chrome Drive)</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># selenium ------http------&gt; 浏览器驱动， 去操作浏览器实现效果 -------&gt; 浏览器驱动 ----------&gt; selenium</span><br><span class="line"># 浏览器驱动相当于 http server</span><br><span class="line"># 浏览器驱动和浏览器版本要一致</span><br></pre></td></tr></table></figure></div>
+
+<p>注意:每个驱动该对应每个浏览器;有时候浏览器会自动升级,导致浏览器不可用;</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="selenium安装"><a href="#selenium安装" class="headerlink" title="selenium安装"></a>selenium安装</h4><p><code>终端输入 pip install selenium==4.0.0</code></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">为什么一定要装这个版本 </span><br><span class="line">我们在给图片定位的时候（0,0）坐标点是选在图片的左上角位置的</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="浏览器驱动安装"><a href="#浏览器驱动安装" class="headerlink" title="浏览器驱动安装"></a>浏览器驱动安装</h4><blockquote>
+<p>chrome驱动下载地址:<br><a class="link"   target="_blank" rel="noopener" href="https://chromedriver.chromium.org/downloads" >https://chromedriver.chromium.org/downloads <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>xxxxxxxxxx op1&#x3D;&gt;operation: 1.找到目标数据op2&#x3D;&gt;operation: 2.分析请求流程op3&#x3D;&gt;operation: 3.构造http请求op4&#x3D;&gt;operation: 4.提取数据op5&#x3D;&gt;operation: 5.数据持久化​op1(right)-&gt;op2(right)-&gt;op3(right)-&gt;op4(right)-&gt;op5(right)flowCreated with Raphaël 2.2.01.找到目标数据2.分析请求流程3.构造http请求4.提取数据5.数据持久化</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://developer.microsoft.com/zh-cn/microsoft-edge/tools/webdriver/" >Microsoft Edge WebDriver - Microsoft Edge Developer <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>所有edge驱动版本</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://msedgewebdriverstorage.z22.web.core.windows.net/" >Microsoft Edge - Webdriver (windows.net) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>如何禁止更新–参考博客</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/jylsrnzb/article/details/131492090" >https://blog.csdn.net/jylsrnzb/article/details/131492090 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+</blockquote>
+<p>然后把下载成功的驱动放到python环境的根目录</p>
+<h4 id="验证运行是否成功（Chrome）为例"><a href="#验证运行是否成功（Chrome）为例" class="headerlink" title="验证运行是否成功（Chrome）为例"></a>验证运行是否成功（Chrome）为例</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">wb = webdriver.Chrome()</span><br><span class="line"></span><br><span class="line">wb.get(<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>运行后成功自动弹出Chrome即可：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2740a8fa-10ec-4b01-54bb-8b122882a300/public"
+                      width = "500"
+                >
+
+<h3 id="元素选取"><a href="#元素选取" class="headerlink" title="元素选取"></a>元素选取</h3><h4 id="find-element-s-by-…方法"><a href="#find-element-s-by-…方法" class="headerlink" title="find_element(s)by_…方法"></a>find_element(s)<em>by</em>_…方法</h4><p>在一个页面中有很多不同的策略可以定位一个元素。我们可以选择最合适的方法去查找元素。Selenium提供了下列的方法:</p>
+<p>注： 其中的element加上一个s，则是对应的多个元素的查找方法</p>
+<h4 id="老版本selenium的方法"><a href="#老版本selenium的方法" class="headerlink" title="老版本selenium的方法"></a>老版本selenium的方法</h4><table>
+<thead>
+<tr>
+<th><strong>单个元素查找方法</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>find_element_by_xpath()</td>
+<td>通过Xpath查找</td>
+</tr>
+<tr>
+<td>find_element_by_class_name()</td>
+<td>通过class属性查找</td>
+</tr>
+<tr>
+<td>find_element_by_id()</td>
+<td>通过id属性查找</td>
+</tr>
+<tr>
+<td>find_element_by_name()</td>
+<td>通过name属性进行查找</td>
+</tr>
+<tr>
+<td>find_element_by_css_selector()</td>
+<td>通过css选择器查找 语法规则</td>
+</tr>
+<tr>
+<td>find_element_by_link_text()</td>
+<td>通过链接文本查找</td>
+</tr>
+<tr>
+<td>find_element_by_partial_link_text()</td>
+<td>通过链接文本的部分匹配查找</td>
+</tr>
+<tr>
+<td>find_element_by_tag_name()</td>
+<td>通过标签名查找</td>
+</tr>
+</tbody></table>
+<h4 id="新版本的用法：By对象查找"><a href="#新版本的用法：By对象查找" class="headerlink" title="新版本的用法：By对象查找"></a>新版本的用法：By对象查找</h4><p>除了以上的多种查找方式，还有两种私有方法集成了上面的所有的查找方法，让我们更方便的使用</p>
+<table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>find_element(By.XPATH, ‘&#x2F;&#x2F;button&#x2F;span’)</td>
+<td>通过Xpath查找一个</td>
+</tr>
+<tr>
+<td>find_elements(By.XPATH, ‘&#x2F;&#x2F;button&#x2F;span’)</td>
+<td>通过Xpath查找多个</td>
+</tr>
+</tbody></table>
+<p>其中的第一个参数可以选择使用查找的方法，By.xxx 使用xxx方式解析，解析方法如下：</p>
+<p>注：By对象导入：  from selenium.webdriver.common.by   import   By</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ID = <span class="string">&quot;id&quot;</span> </span><br><span class="line">XPATH = <span class="string">&quot;xpath&quot;</span> </span><br><span class="line">LINK_TEXT = <span class="string">&quot;link text&quot;</span> </span><br><span class="line">PARTIAL_LINK_TEXT = <span class="string">&quot;partial link text&quot;</span> </span><br><span class="line">NAME = <span class="string">&quot;name&quot;</span> </span><br><span class="line">TAG_NAME = <span class="string">&quot;tag name&quot;</span> </span><br><span class="line">CLASS_NAME = <span class="string">&quot;class name&quot;</span> </span><br><span class="line">CSS_SELECTOR = <span class="string">&quot;css selector&quot;</span> </span><br></pre></td></tr></table></figure></div>
+
+<h4 id="文本输入-提交"><a href="#文本输入-提交" class="headerlink" title="文本输入,提交"></a>文本输入,提交</h4><pre><code>chrome.find_element_by_id(&quot;all&quot;).send_keys(&quot;username&quot;)
+
+chrome.find_element_by_id(&quot;password&quot;).send_keys(&quot;password&quot;)
+
+chrome.find_element_by_css_selector(&quot;submit button&quot;).click()
+</code></pre>
+<h4 id="使用案例（以豆瓣为例）"><a href="#使用案例（以豆瓣为例）" class="headerlink" title="使用案例（以豆瓣为例）"></a>使用案例（以豆瓣为例）</h4><p>通过分析搜索框元素发现输入的元素内容<code>search_text</code>：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/0978a1c2-4285-4bfe-9363-4a9f645ef900/public"
+                      width = "500"
+                >
+
+<p>通过分析搜索框元素发现提交的元素内容<code>submit</code>：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/02973d1e-8c41-469c-f871-89dacc9f6500/public"
+                      width = "500"
+                >
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"></span><br><span class="line">wb = webdriver.Edge()</span><br><span class="line"></span><br><span class="line">wb.get(<span class="string">&#x27;https://movie.douban.com/top250&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 老版本</span></span><br><span class="line"><span class="comment"># wb.find_element_by_xpath(&#x27;//input[@name=&quot;search_text&quot;]&#x27;).send_keys(&#x27;周杰伦&#x27;)</span></span><br><span class="line"><span class="comment"># wb.find_element_by_xpath(&#x27;//input[@type=&quot;submit&quot;]&#x27;).click()</span></span><br><span class="line"><span class="comment"># 新版本</span></span><br><span class="line">wb.find_element(by=By.XPATH, value=<span class="string">&#x27;//input[@name=&quot;search_text&quot;]&#x27;</span>).send_keys(<span class="string">&#x27;张译&#x27;</span>) <span class="comment"># 等同于输入框输入值</span></span><br><span class="line">wb.find_element(By.XPATH, value=<span class="string">&#x27;//div[@class=&quot;inp-btn&quot;]/input&#x27;</span>).click() <span class="comment"># 等同于点击搜索</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="动作切换"><a href="#动作切换" class="headerlink" title="动作切换"></a>动作切换</h2><h3 id="窗口切换"><a href="#窗口切换" class="headerlink" title="窗口切换"></a>窗口切换</h3><p>用selenium操作浏览器如果需要在打开新的页面，这个时候会有问题，因为我们用selenium操作的是第一个打开的窗口，所以新打开的页面我们是无法去操作的，所以我们要用到切换窗口：即handle切换的方法</p>
+<table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>js &#x3D; ‘window.open(“<a class="link"   target="_blank" rel="noopener" href="https://www.baidu.com" );'chrome.execute_script(js)/">https://www.baidu.com&quot;);&#39;chrome.execute_script(js) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></td>
+<td>打开新标签</td>
+</tr>
+<tr>
+<td>window_handles</td>
+<td>获取所有页面窗口的句柄</td>
+</tr>
+<tr>
+<td>current_window_handle</td>
+<td>获取当前页面窗口的句柄</td>
+</tr>
+<tr>
+<td>switch_to.window(window_name)</td>
+<td>定位页面转到指定的window_name页面</td>
+</tr>
+</tbody></table>
+<p>Window_handles的顺序并不是浏览器上标签的顺序，尽量避免多标签操作</p>
+<h4 id="窗口切换案例（少量页面）"><a href="#窗口切换案例（少量页面）" class="headerlink" title="窗口切换案例（少量页面）"></a>窗口切换案例（少量页面）</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">wb = webdriver.Chrome()</span><br><span class="line"></span><br><span class="line">wb.get(<span class="string">&#x27;https://movie.douban.com/top250&#x27;</span>)</span><br><span class="line"></span><br><span class="line">js = <span class="string">&#x27;window.open(&quot;https://www.baidu.com&quot;)&#x27;</span></span><br><span class="line">wb.execute_script(js) <span class="comment"># 执行js代码</span></span><br><span class="line"><span class="comment"># time.sleep(10) # 10s避免闪退展示影响效果</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(wb.title) # 豆瓣电影 Top 250，焦点在https://movie.douban.com/top250上</span></span><br><span class="line"><span class="comment"># print(wb.window_handles) # [&#x27;14DB233ADDD3A1A9EF54DBDFF3412AE0&#x27;, &#x27;BD2EDCF05D390B30B0F86FA7BE5A4948&#x27;] 查看句柄</span></span><br><span class="line"></span><br><span class="line">wb.switch_to.window(wb.window_handles[<span class="number">1</span>]) <span class="comment"># 切换句柄到第二个[1]窗口</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(wb.title) # 百度一下，你就知道 焦点在https://www.baidu.com上</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="页面切换"><a href="#页面切换" class="headerlink" title="页面切换"></a>页面切换</h3><p>在实际的爬虫中，明明定位的路径没问题，这个时候我们可以考虑一下是否是该页面存在frame&#x2F;iframe&#x2F;frameset的问题导有时候我们会遇到找不到元素的问题致的定位不到元素。</p>
+<table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>switch_to.frame(frame_reference)</td>
+<td>切到指定frame，可用id或name(str)、index(int)、元素(WebElement)定位</td>
+</tr>
+<tr>
+<td>switch_to.parent_frame()</td>
+<td>切到父级frame，如果已是主文档，则无效果， 相当于后退回去</td>
+</tr>
+<tr>
+<td>switch_to_default_content()</td>
+<td>切换到主页面，DOM树最开始的frame</td>
+</tr>
+</tbody></table>
+<h4 id="页面切换案例"><a href="#页面切换案例" class="headerlink" title="页面切换案例"></a>页面切换案例</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7fe9c27b-1bf4-4a32-ff6a-1ae6f5878200/public"
+                      width = "500"
+                >
+
+<p>由于登录的元素后续跟随有时间戳<code>auto-id-1701347680519</code>，因此选用同样是id的<code>id=&quot;j-nav-login&quot;</code>，保持唯一性</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/29cb1dc7-157f-4133-c136-0f5423299400/public"
+                      width = "500"
+                >
+
+<p>对于弹窗，首先应获取iframe标签，切换句柄</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a408a82f-53ec-4121-05c6-a51dcbbbb700/public"
+                      width = "500"
+                >
+
+<p>然后根据其按钮所在元素模拟点击</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/f9839300-70b4-4bb0-d810-2c6d45d6a800/public"
+                      width = "500"
+                >
+
+<p>账号密码通过<code>placeholder</code>来进行定位</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">目的： 实现 https://study.163.com/自动登录</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"></span><br><span class="line">wb = webdriver.Chrome()</span><br><span class="line">wb.maximize_window()  <span class="comment"># 全屏，避免元素点击不到</span></span><br><span class="line"></span><br><span class="line">wb.get(<span class="string">&#x27;https://study.163.com/&#x27;</span>)</span><br><span class="line"></span><br><span class="line">wb.find_element(by=By.XPATH, value=<span class="string">&#x27;//span[@class=&quot;ux-btn th-bk-main ux-btn- ux-btn- ux-modal-btn um-modal-btn_ok th-bk-main&quot;]&#x27;</span>).click() <span class="comment">#点击弹窗</span></span><br><span class="line">wb.find_element(by=By.ID, value=<span class="string">&quot;j-nav-login&quot;</span>).click()</span><br><span class="line"></span><br><span class="line">time.sleep(<span class="number">2</span>)</span><br><span class="line"><span class="comment"># 先获取iframe标签</span></span><br><span class="line">fr = wb.find_element(by=By.XPATH,value=<span class="string">&#x27;//iframe[@frameborder=&quot;0&quot;]&#x27;</span>)</span><br><span class="line"><span class="comment"># 再切换焦点到iframe上</span></span><br><span class="line">wb.switch_to.frame(fr)</span><br><span class="line"></span><br><span class="line">wb.find_element(by=By.XPATH, value=<span class="string">&#x27;//input[@placeholder=&quot;请输入手机号&quot;]&#x27;</span>).send_keys(<span class="string">&#x27;18300000000&#x27;</span>)</span><br><span class="line">wb.find_element(by=By.XPATH, value=<span class="string">&#x27;//input[@placeholder=&quot;请输入密码&quot;]&#x27;</span>).send_keys(<span class="string">&#x27;qwe123...&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="页面弹窗"><a href="#页面弹窗" class="headerlink" title="页面弹窗"></a>页面弹窗</h3><p>有的时候还会遇到弹窗的问题， 主要有两种一种是浏览器弹窗（alert&#x2F;prompt），一种是自定义弹窗<br>自定义弹窗，就是一个自定义的div层，是隐藏页面中的，当触发了这个弹窗后，他就显示出来，这种方式我们通过正常的定位方式是可以定位到的。<br>alert弹窗，就要用下面的方法处理：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 老的版本使用的是switch_to_alert</span><br><span class="line"># 现在使用的是switch_to</span><br></pre></td></tr></table></figure></div>
+
+<table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>switch_to</td>
+<td>定位到alert弹窗，返回一个弹窗的对象</td>
+</tr>
+<tr>
+<td>dismiss()</td>
+<td>对弹窗对象的取消操作（相当于点击弹窗上的取消按钮）</td>
+</tr>
+<tr>
+<td>accept()</td>
+<td>对弹窗对象的确定操作（相当于点击弹窗上的确定按钮）</td>
+</tr>
+<tr>
+<td>send_keys(key)</td>
+<td>对弹窗对象内的输入框输入数据（针对于prompt弹窗）</td>
+</tr>
+<tr>
+<td>text</td>
+<td>获取弹窗内的文本</td>
+</tr>
+</tbody></table>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--第一种--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">id</span>=<span class="string">&quot;alert&quot;</span> <span class="attr">value</span>=<span class="string">&quot;alert&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;alert(&#x27;welcome! 请按确认继续&#x27;)&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--第二种--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">id</span>=<span class="string">&quot;confirm&quot;</span> <span class="attr">value</span>=<span class="string">&quot;confirm&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;confirm(&#x27;确认吗？&#x27;)&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--第三种--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">id</span>=<span class="string">&quot;prompt&quot;</span> <span class="attr">value</span>=<span class="string">&quot;prompt&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;var name=prompt(&#x27;请输入的名字:&#x27;); document.write(name)&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">wb = webdriver.Chrome()</span><br><span class="line">wb.get(<span class="string">r&#x27;\弹框.html&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一种</span></span><br><span class="line"><span class="comment"># wb.find_element(by=By.ID, value=&#x27;alert&#x27;).click()</span></span><br><span class="line"><span class="comment"># print(wb.switch_to.alert.text)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二种</span></span><br><span class="line"><span class="comment"># wb.find_element(by=By.ID, value=&#x27;confirm&#x27;).click()</span></span><br><span class="line"><span class="comment"># print(wb.switch_to.alert.text)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第三种</span></span><br><span class="line"><span class="comment"># wb.find_element(by=By.ID, value=&#x27;prompt&#x27;).click()</span></span><br><span class="line"><span class="comment"># prompt_tag = wb.switch_to.alert</span></span><br><span class="line"><span class="comment"># time.sleep(2)</span></span><br><span class="line"><span class="comment"># prompt_tag.send_keys(&quot;CosTrace&quot;)</span></span><br><span class="line"><span class="comment"># time.sleep(2)</span></span><br><span class="line"><span class="comment"># prompt_tag.accept()</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="等待"><a href="#等待" class="headerlink" title="等待"></a>等待</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>在selenium操作浏览器的过程中，每一次请求url，selenium都会等待页面加载完成以后，才会将操作权限在交给我们的程序。但是，由于ajax和各种JS代码的异步加载问题，当一个页面被加载到浏览器时，该页面内的元素可以在不同的时间点被加载，这就使得元素的定位变得十分困难，当元素不再页面中时，使用selenium去查找的时候会抛出ElementNotVisibleException异常。为了解决这个问题，selenium提供了两种等待页面加载的方式，显示等待和隐式等待，让我们可以等待元素加载完成后在进行操作。</p>
+<h3 id="显式等待"><a href="#显式等待" class="headerlink" title="显式等待"></a>显式等待</h3><p>显式等待： 显式等待指定某个条件，然后设置最长等待时间，程序每隔XX时间看一眼，如果条件成立，则执行下一步，否则继续等待，直到超过设置的最长时间，然后抛出超时异常（TimeoutException）。<br>显示等待主要使用了WebDriverWait类与expected_conditions模块。<br>一般写法：WebDriverWait(driver, timeout, poll_frequency, igonred_exceptions).until(method, message)<br>Driver：传入WebDriver实例。<br>timeout: 超时时间，等待的最长时间（同时要考虑隐性等待时间）<br>poll_frequency: 调用until中的方法的间隔时间，默认是0.5秒<br>ignored_exceptions: 忽略的异常，如果在调用until的过程中抛出这个元组中的异常，则不中断代码，继续等待.<br>Method：可执行方法<br>Message： 超时时返回的信息</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.wait <span class="keyword">import</span> WebDriverWait</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取等待的元素</span></span><br><span class="line">element = (By.XPATH, <span class="string">&#x27;//iframe[@frameborder=&quot;0&quot;]&#x27;</span>)</span><br><span class="line"><span class="comment"># 显式等待</span></span><br><span class="line">WebDriverWait(driver=wb, timeout=<span class="number">5</span>, poll_frequency=<span class="number">0.2</span>).until(EC.presence_of_element_located(element), <span class="string">&#x27;Not Found&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="expected-conditions条件"><a href="#expected-conditions条件" class="headerlink" title="expected_conditions条件"></a>expected_conditions条件</h3><p>expected_conditions是selenium的一个子模块，其中包含一系列可用于判断的条件，配合该类的方法，就能够根据条件而进行灵活地等待了</p>
+<table>
+<thead>
+<tr>
+<th><strong>ActionChains提供的方法</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title_is                                             title_contains</td>
+<td>这两个条件类验证title，验证传入的参数title是否等于或包含于driver</td>
+</tr>
+<tr>
+<td><strong>presence_of_element_located</strong>            presence_of_all_elements_located</td>
+<td>这两个条件验证元素是否出现，传入的参数都是元组类型的locator，如(By.ID, ‘kw’)顾名思义，一个只要一个符合条件的元素加载出来就通过；另一个必须所有符合条件的元素都加载出来才行</td>
+</tr>
+<tr>
+<td>visibility_of_element_located                  invisibility_of_element_located                                              visibility_of</td>
+<td>这三个条件验证元素是否可见，前两个传入参数是元组类型的locator，第三个传入WebElement</td>
+</tr>
+<tr>
+<td>text_to_be_present_in_element text_to_be_present_in_element_value</td>
+<td>判断某段文本是否出现在某元素中,一个判断元素的text，一个判断元素的value</td>
+</tr>
+<tr>
+<td>frame_to_be_available_and_switch_to_it</td>
+<td>判断frame是否可切入，可传入locator元组或者直接传入定位方式：id、name、index或WebElement</td>
+</tr>
+<tr>
+<td>alert_is_present</td>
+<td>判断是否有alert出现</td>
+</tr>
+<tr>
+<td><strong>element_to_be_clickable</strong></td>
+<td>判断元素是否可点击，传入locator</td>
+</tr>
+</tbody></table>
+<h3 id="隐性等待"><a href="#隐性等待" class="headerlink" title="隐性等待"></a>隐性等待</h3><p>隐性等待implicitly_wait(xx) ：设置了一个最长等待时间，如果在规定时间内网页加载完成，则执行下一步，否则一直等到时间截止，然后执行下一步。<br>弊端就是程序会一直等待整个页面加载完成，就算需要的元素加载出来了还是需要等待。也就是一般情况下看到浏览器标签栏那个小圈不再转，才会执行下一步，<br>隐性等待对整个driver的周期都起作用，所以只要设置一次即可<br>隐性等待和显性等待可以同时用，但要注意：等待的最长时间取两者之中的大者<br>默认等待时间为0，可以通过下面的方式设置：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.implicitly_wait(<span class="number">10</span>)        <span class="comment">#隐式等待，最长10s</span></span><br><span class="line">driver.get(<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="强制等待"><a href="#强制等待" class="headerlink" title="强制等待"></a>强制等待</h3><p>强制等待就是不论如何,在此处都需要阻塞等待一段时间,及time.sleep()</p>
+<h2 id="动作链"><a href="#动作链" class="headerlink" title="动作链"></a>动作链</h2><p>在selenium当中除了简单的点击动作外，还有一些稍微复杂的动作，就需要用到ActionChains（动作链）这个子模块来满足我们的需求。</p>
+<p>ActionChains可以完成复杂一点的页面交互行为，例如元素的拖拽，鼠标移动，悬停行为，内容菜单交互。它的执行原理就是当调用ActionChains方法的时候不会立即执行，而是将所有的操作暂时储存在一个队列中，当调用perform()方法的时候，会按照队列中放入的先后顺序执行前面的操作。</p>
+<p>ActionChains包：from selenium.webdriver.common.action_chains  import ActionChains</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><table>
+<thead>
+<tr>
+<th><strong>ActionChains提供的方法</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>click(on_element&#x3D;None)</td>
+<td>鼠标左键单击传入的元素</td>
+</tr>
+<tr>
+<td>double_click(on_element&#x3D;None)</td>
+<td>双击鼠标左键</td>
+</tr>
+<tr>
+<td>context_click(on_element&#x3D;None)</td>
+<td>点击鼠标右键</td>
+</tr>
+<tr>
+<td>click_and_hold(on_element&#x3D;None)</td>
+<td>点击鼠标左键，按住不放</td>
+</tr>
+<tr>
+<td>release(on_element&#x3D;None)</td>
+<td>在某个元素位置松开鼠标左键</td>
+</tr>
+<tr>
+<td>drag_and_drop(source, target)</td>
+<td>拖拽到某个元素然后松开</td>
+</tr>
+<tr>
+<td>drag_and_drop_by_offset(source, xoffset, yoffset)</td>
+<td>拖拽到某个坐标然后松开</td>
+</tr>
+<tr>
+<td>move_to_element(to_element)</td>
+<td>鼠标移动到某个元素</td>
+</tr>
+<tr>
+<td>move_by_offset(xoffset, yoffset)</td>
+<td>移动鼠标到指定的x，y位置</td>
+</tr>
+<tr>
+<td>move_to_element_with_offset(to_element, xoffset, yoffset)</td>
+<td>将鼠标移动到距某个元素多少距离的位置</td>
+</tr>
+<tr>
+<td>perform()</td>
+<td>执行链中的所有动作</td>
+</tr>
+</tbody></table>
+<h3 id="动作链示例"><a href="#动作链示例" class="headerlink" title="动作链示例"></a>动作链示例</h3><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2a6f985c-e50f-43bf-bef4-468bae939900/public"
+                      width = "500"
+                >
+
+<p>通过查看登录按钮的元素，发现其父级类为<code>el-button</code>，确定登录对象</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4ab0edc0-3598-48ac-b4cb-c9a0d8975500/public"
+                      width = "500"
+                >
+
+<p>通过查看滑块元素，确定滑块对象<code>geetest_slider_button</code></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.action_chains <span class="keyword">import</span> ActionChains</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选取驱动</span></span><br><span class="line">wb = webdriver.Chrome()</span><br><span class="line"><span class="comment"># 挑选页面</span></span><br><span class="line">wb.get(<span class="string">&#x27;https://captcha1.scrape.center/&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">move_silder</span>(<span class="params">tracks</span>):</span><br><span class="line">    time.sleep(<span class="number">5</span>)</span><br><span class="line">    <span class="comment"># 确定登录对象</span></span><br><span class="line">    wb.find_element(by=By.CLASS_NAME, value=<span class="string">&#x27;el-button&#x27;</span>).click()</span><br><span class="line"></span><br><span class="line">    time.sleep(<span class="number">3</span>) <span class="comment"># 或者使用隐式代码询问验证滑块是否跳出</span></span><br><span class="line">    <span class="comment"># 确定滑块对象</span></span><br><span class="line">    element = wb.find_element(by=By.CLASS_NAME, value=<span class="string">&#x27;geetest_slider_button&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 动作链</span></span><br><span class="line">    <span class="comment"># 实例化新对象</span></span><br><span class="line">    action_chains = ActionChains(wb)</span><br><span class="line">	<span class="comment"># 进行模拟操作</span></span><br><span class="line">    action_chains.click_and_hold(element) <span class="comment"># 按住不放</span></span><br><span class="line">    action_chains.pause(<span class="number">1</span>)  <span class="comment"># 在执行下一个动作之前 暂停1秒</span></span><br><span class="line">    action_chains.move_by_offset(tracks, <span class="number">0</span>) <span class="comment"># 滑动tracks的距离</span></span><br><span class="line">    action_chains.pause(<span class="number">1</span>)  <span class="comment"># 在执行下一个动作之前 暂停1秒</span></span><br><span class="line">    action_chains.move_by_offset(tracks - <span class="number">50</span>, <span class="number">0</span>) <span class="comment">#滑动tracks-50的距离</span></span><br><span class="line">    action_chains.pause(<span class="number">1</span>)	<span class="comment"># 在执行下一个动作之前 暂停1秒</span></span><br><span class="line">    action_chains.release().perform() <span class="comment"># 执行以上所有动作链</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">move_silder(<span class="number">150</span>) <span class="comment"># 调用函数，tracks = 150</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chrome.refresh()</td>
+<td>刷新页面</td>
+</tr>
+<tr>
+<td>Chrome.close()</td>
+<td>关闭当前标签</td>
+</tr>
+<tr>
+<td>Chrome.quit()</td>
+<td>关闭所有标签</td>
+</tr>
+<tr>
+<td>Chrome.page_source</td>
+<td>网页源代码</td>
+</tr>
+<tr>
+<td>Chrome.cookies</td>
+<td>本页保存的cookie</td>
+</tr>
+<tr>
+<td>Chrome.maximize_window()</td>
+<td>最大化窗口</td>
+</tr>
+</tbody></table>
+<h3 id="无界面设置"><a href="#无界面设置" class="headerlink" title="无界面设置"></a>无界面设置</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置chrome  无界面</span></span><br><span class="line"><span class="keyword">from</span>  selenium.webdriver.chrome.options <span class="keyword">import</span> Options</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span>   webdriver</span><br><span class="line">chrome_options=Options()</span><br><span class="line">chrome_options.add_argument(<span class="string">&quot;--headless&quot;</span>)</span><br><span class="line">wd_headless=webdriver.Chrome(options=chrome_options)</span><br><span class="line">wd_headless.get(<span class="string">&#x27;http://www.treejs.cn/v3/demo/cn/exedit/drag.html&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;无界面操纵&quot;</span>,wd_headless.page_source)  </span><br></pre></td></tr></table></figure></div>
+
+<h3 id="截图功能"><a href="#截图功能" class="headerlink" title="截图功能"></a>截图功能</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">selenium的webdriver对象本身就自带截图功能</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">wb = webdriver.Chrome()</span><br><span class="line">wb.maximize_window()</span><br><span class="line">wb.get(<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># wb.save_screenshot(&#x27;baidu.png&#x27;) # 建议使用png</span></span><br><span class="line"><span class="comment"># wb.get_screenshot_as_file(&#x27;baidu01.png&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(wb.get_screenshot_as_base64())</span></span><br><span class="line"><span class="comment"># print(wb.get_screenshot_as_png())</span></span><br></pre></td></tr></table></figure></div>
+
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> Selenium 自动化工具</li>
+        <li><strong>作者:</strong> Yiuhang Chan</li>
+        <li><strong>创建于
+                :</strong> 2021-02-24 06:12:56</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-02-28 18:50:27
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://www.yiuhangblog.com/2021/02/24/20210224selenium/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%90%86%E8%AE%BA/">#理论</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%88%AC%E8%99%AB/">#爬虫</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Selenium/">#Selenium</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/">#自动化工具</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2021/10/26/20211026%E9%AA%8C%E8%AF%81%E8%AF%86%E5%88%AB/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">验证识别</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2021/02/23/20210223%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">页面解析工具</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://comment.yiuhangblog.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">Selenium 自动化工具</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="nav-text">运行环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-text">基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#selenium%E5%AE%89%E8%A3%85"><span class="nav-text">selenium安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="nav-text">浏览器驱动安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E8%BF%90%E8%A1%8C%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F%EF%BC%88Chrome%EF%BC%89%E4%B8%BA%E4%BE%8B"><span class="nav-text">验证运行是否成功（Chrome）为例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E9%80%89%E5%8F%96"><span class="nav-text">元素选取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#find-element-s-by-%E2%80%A6%E6%96%B9%E6%B3%95"><span class="nav-text">find_element(s)by_…方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%80%81%E7%89%88%E6%9C%ACselenium%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-text">老版本selenium的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E7%89%88%E6%9C%AC%E7%9A%84%E7%94%A8%E6%B3%95%EF%BC%9ABy%E5%AF%B9%E8%B1%A1%E6%9F%A5%E6%89%BE"><span class="nav-text">新版本的用法：By对象查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E8%BE%93%E5%85%A5-%E6%8F%90%E4%BA%A4"><span class="nav-text">文本输入,提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B%EF%BC%88%E4%BB%A5%E8%B1%86%E7%93%A3%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-text">使用案例（以豆瓣为例）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E4%BD%9C%E5%88%87%E6%8D%A2"><span class="nav-text">动作切换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E5%88%87%E6%8D%A2"><span class="nav-text">窗口切换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E5%88%87%E6%8D%A2%E6%A1%88%E4%BE%8B%EF%BC%88%E5%B0%91%E9%87%8F%E9%A1%B5%E9%9D%A2%EF%BC%89"><span class="nav-text">窗口切换案例（少量页面）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E5%88%87%E6%8D%A2"><span class="nav-text">页面切换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E5%88%87%E6%8D%A2%E6%A1%88%E4%BE%8B"><span class="nav-text">页面切换案例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E5%BC%B9%E7%AA%97"><span class="nav-text">页面弹窗</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%89%E5%BE%85"><span class="nav-text">等待</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-1"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%BE%E5%BC%8F%E7%AD%89%E5%BE%85"><span class="nav-text">显式等待</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#expected-conditions%E6%9D%A1%E4%BB%B6"><span class="nav-text">expected_conditions条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E6%80%A7%E7%AD%89%E5%BE%85"><span class="nav-text">隐性等待</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E7%AD%89%E5%BE%85"><span class="nav-text">强制等待</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E4%BD%9C%E9%93%BE"><span class="nav-text">动作链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-text">方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E4%BD%9C%E9%93%BE%E7%A4%BA%E4%BE%8B"><span class="nav-text">动作链示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%95%8C%E9%9D%A2%E8%AE%BE%E7%BD%AE"><span class="nav-text">无界面设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%AA%E5%9B%BE%E5%8A%9F%E8%83%BD"><span class="nav-text">截图功能</span></a></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2018</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 5s"></i>&nbsp;&nbsp;<a href="/">Yiuhang Chan</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 41 篇文章
+                    </span>
+                    
+                        <span>
+                            共 348k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex justify-center items-center">
+                <a class="flex justify-center items-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/libs/mermaid.min.js"></script>
+
+    
+<script src="/js/plugins/mermaid.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="zh-CN,en,zh-TW,default">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Yiuhang Chan">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://www.yiuhangblog.com/2022/01/08/20220108js逆向/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="JS逆向基础理论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS逆向">
+<meta property="og:url" content="https://www.yiuhangblog.com/2022/01/08/20220108JS%E9%80%86%E5%90%91/index.html">
+<meta property="og:site_name" content="角灯随笔">
+<meta property="og:description" content="JS逆向基础理论">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/232002a1-fe68-4401-97ad-2ddb65a4ce00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a81e1962-4cfc-400a-f12c-0ea54567e000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/905e8fed-305a-4c48-96f3-07db1ffa4f00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/04a3d114-05d8-4dd8-d9fd-4741a5b32200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/9070fc9c-f1cd-43f0-3300-c9483e09a900/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/9cec1c36-4375-4a7b-3000-cee0548ed000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e46a1fb6-57a0-49ff-7f08-d44a3a82a700/public">
+<meta property="article:published_time" content="2022-01-08T10:12:46.000Z">
+<meta property="article:modified_time" content="2024-02-28T10:35:10.000Z">
+<meta property="article:author" content="Yiuhang Chan">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="理论">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="JS逆向">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/232002a1-fe68-4401-97ad-2ddb65a4ce00/public">
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-MQ43G0NKCT"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MQ43G0NKCT');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <meta name="theme-color" content="#A1AFC9">
+    <link rel="shortcut icon" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <!--- Page Info-->
+    
+    <title>
+        
+            JS逆向 -
+        
+        角灯随笔
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        角灯随笔
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"www.yiuhangblog.com","root":"/","language":["zh-CN","en","zh-TW","default"]};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":6,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":5,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A1AFC9","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":true,"id":"G-MQ43G0NKCT"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e63fc400-dd0e-4395-bd1b-9ee1ac3bfb00/public","dark":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a34140d6-7960-45dd-b8b5-c3ddd14d1f00/public"},"title":"角灯随笔","subtitle":{"text":["全栈也不是不行"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/CosmicTrace","instagram":null,"zhihu":null,"twitter":null,"email":"kenchansk0@gmail.com"},"qrs":null}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"娱乐":{"icon":"fa-solid fa-gamepad","submenus":{"王者荣耀":"/hok","守望先锋":"/ow","使命召唤":"/cod"}},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/CosmicTrace"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"谦逊","show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":8}},"footerStart":"2018/07/15 10:15:24"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="角灯随笔" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                角灯随笔
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/"
+                                        >
+                                    <i class="fa-solid fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-solid fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-solid fa-gamepad fa-fw"></i>
+                                    娱乐
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/hok">
+                                                    王者荣耀
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/ow">
+                                                    守望先锋
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/cod">
+                                                    使命召唤
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/CosmicTrace">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-solid fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-solid fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-娱乐"
+                        >
+                            <span>
+                                娱乐
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-娱乐">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/hok">王者荣耀</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/ow">守望先锋</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/cod">使命召唤</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/CosmicTrace">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">96</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">41</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2da2f0a1-1020-47e1-478e-963ef4b1a400/public" alt="JS逆向" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">JS逆向</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/26329e9f-d1fb-4280-a0a5-754547bf8500/public">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Yiuhang Chan</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2022-01-08 18:12:46</span>
+        <span class="mobile">2022-01-08 18:12:46</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-02-28 18:35:10</span>
+            <span class="mobile">2024-02-28 18:35:10</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/">数据抓取</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%90%86%E8%AE%BA/">理论</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/JS%E9%80%86%E5%90%91/">JS逆向</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.4k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>10 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="JS逆向简要介绍案例：模拟百度翻译请求"><a href="#JS逆向简要介绍案例：模拟百度翻译请求" class="headerlink" title="JS逆向简要介绍案例：模拟百度翻译请求"></a>JS逆向简要介绍案例：模拟百度翻译请求</h2><h3 id="检查百度翻译请求"><a href="#检查百度翻译请求" class="headerlink" title="检查百度翻译请求"></a>检查百度翻译请求</h3><p>首先，对百度翻译的请求进行了检查。通过分析发现，百度翻译使用的是<code>POST</code>请求方法。在翻译过程中的请求载荷内容进行了详细观察。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/232002a1-fe68-4401-97ad-2ddb65a4ce00/public"
+                      width = "300"
+                >
+
+<h3 id="请求参数分析"><a href="#请求参数分析" class="headerlink" title="请求参数分析"></a>请求参数分析</h3><p>在请求的脚本参数中，发现了<code>from</code>和<code>to</code>字段。通过模拟操作，可以推断出这些参数代表着翻译的源语言和目标语言，例如从中文翻译到英文。进一步观察表单数据，可以看到请求所携带的所有参数。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a81e1962-4cfc-400a-f12c-0ea54567e000/public"
+                      width = "600"
+                >
+
+<h3 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h3><p>对于请求的表头参数也进行了检查，以便在模拟请求时能够更准确地伪装。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/905e8fed-305a-4c48-96f3-07db1ffa4f00/public"
+                      width = "600"
+                >
+
+<h3 id="Sign参数"><a href="#Sign参数" class="headerlink" title="Sign参数"></a>Sign参数</h3><p>首先<code>ctrl</code>+<code>shift</code>+<code>f</code> 全局搜索<code>sign</code>参数所在源代码</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/04a3d114-05d8-4dd8-d9fd-4741a5b32200/public"
+                      width = "600"
+                >
+
+<p>一个个查看这些<code>sign</code>参数，对符合js模式的进行断点</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/9070fc9c-f1cd-43f0-3300-c9483e09a900/public"
+                      width = "600"
+                >
+
+<p>重新执行翻译过程，可以发现断点停留在<code>sign: b(e)</code>，即js方法调用处</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/9cec1c36-4375-4a7b-3000-cee0548ed000/public"
+                      width = "600"
+                >
+
+<p>在控制台输入参数可以看到<code>sign</code>的值</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e46a1fb6-57a0-49ff-7f08-d44a3a82a700/public"
+                      width = "600"
+                >
+
+<p>跳转这个调用到其源代码</p>
+<h3 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h3><h4 id="爬虫代码"><a href="#爬虫代码" class="headerlink" title="爬虫代码"></a>爬虫代码</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> jsdata</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置请求URL和头部信息</span></span><br><span class="line">url = <span class="string">&#x27;https://fanyi.baidu.com/v2transapi?from=zh&amp;to=en&#x27;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 ...&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Cookie&#x27;</span>: <span class="string">&#x27;PSTM=1694260469; BIDUPSID=...; Hm_lpvt_64ecd82404c51e03dc91cb9e8c025574=1703248315;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Acs-Token&#x27;</span>: <span class="string">&#x27;1703217664841_1703248346365_aQyvrnWWYIouJv2VqASm...&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取用户输入的翻译内容</span></span><br><span class="line">a = <span class="built_in">input</span>(<span class="string">&#x27;输入你要翻译的内容:&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用jsdata模块生成签名</span></span><br><span class="line">sign = jsdata.make_js_data(a)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构建表单数据</span></span><br><span class="line">form_data = &#123;</span><br><span class="line">    <span class="string">&quot;from&quot;</span>: <span class="string">&quot;zh&quot;</span>,</span><br><span class="line">    <span class="string">&quot;to&quot;</span>: <span class="string">&quot;en&quot;</span>,</span><br><span class="line">    <span class="string">&quot;query&quot;</span>: a,</span><br><span class="line">    <span class="string">&quot;transtype&quot;</span>: <span class="string">&quot;realtime&quot;</span>,</span><br><span class="line">    <span class="string">&quot;simple_means_flag&quot;</span>: <span class="string">&quot;3&quot;</span>,</span><br><span class="line">    <span class="string">&quot;sign&quot;</span>: sign,</span><br><span class="line">    <span class="string">&quot;token&quot;</span>: <span class="string">&quot;2977c992c92eb0731d89f23d17b6edd7&quot;</span>,</span><br><span class="line">    <span class="string">&quot;domain&quot;</span>: <span class="string">&quot;common&quot;</span>,</span><br><span class="line">    <span class="string">&quot;ts&quot;</span>: <span class="built_in">str</span>(<span class="built_in">int</span>(time.time()*<span class="number">1000</span>)),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送POST请求并输出结果</span></span><br><span class="line">res = requests.post(url, headers=headers, data=form_data)</span><br><span class="line"><span class="built_in">print</span>(res.json().get(<span class="string">&quot;trans_result&quot;</span>).get(<span class="string">&quot;data&quot;</span>)[<span class="number">0</span>].get(<span class="string">&#x27;dst&#x27;</span>))</span><br></pre></td></tr></table></figure></div>
+
+<p>以上代码首先导入了必要的模块，设置了请求的URL和头部信息。通过用户输入获取翻译内容，然后使用<code>jsdata</code>模块来生成签名。随后构建表单数据，包括语言类型、查询词、时间戳等，并发送POST请求。最后，从返回的JSON数据中提取并打印翻译结果。</p>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-info"></i><p>信息</p>
+
+    </div>
+    <div class="notel-content">
+      <p><code>&quot;ts&quot;: str(int(time.time()*1000))</code> 用于生成一个时间戳，这个时间戳是表单数据（form_data）的一部分，发送给百度翻译的服务器。下面详细解释这个时间戳的生成过程：</p>
+<ol>
+<li><code>time.time()</code>: 这个函数来自Python的<code>time</code>模块，用于获取当前时间。它返回的是一个浮点数，代表自1970年1月1日（称为Unix纪元或Epoch时间）以来的秒数。</li>
+<li><code>time.time() * 1000</code>: 由于<code>time.time()</code>返回的是秒数，而通常服务器端需要的时间戳是以毫秒为单位的。因此，将其乘以1000，将秒转换成毫秒。</li>
+<li><code>int(...)</code>: 这个函数将浮点数转换为整数。在这里，它将乘以1000后的结果转换成整数形式，因为时间戳通常是整数形式的毫秒值。</li>
+<li><code>str(...)</code>: 最后，<code>int</code>类型的时间戳被转换成字符串（<code>str</code>），因为在构建表单数据时，需要的是字符串形式的时间戳。</li>
+</ol>
+<p>综合来看，<code>&quot;ts&quot;: str(int(time.time()*1000))</code> 这一行代码生成了一个表示当前时间的毫秒级时间戳，并将其转换为字符串格式，以便作为HTTP请求的一部分发送。</p>
+
+    </div>
+  </div>
+
+<h4 id="JS逆向代码"><a href="#JS逆向代码" class="headerlink" title="JS逆向代码"></a>JS逆向代码</h4><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">n</span>(<span class="params">t, e</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> n = <span class="number">0</span>; n &lt; e.<span class="property">length</span> - <span class="number">2</span>; n += <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> r = e.<span class="title function_">charAt</span>(n + <span class="number">2</span>);</span><br><span class="line">        r = <span class="string">&quot;a&quot;</span> &lt;= r ? r.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) - <span class="number">87</span> : <span class="title class_">Number</span>(r),</span><br><span class="line">        r = <span class="string">&quot;+&quot;</span> === e.<span class="title function_">charAt</span>(n + <span class="number">1</span>) ? t &gt;&gt;&gt; r : t &lt;&lt; r,</span><br><span class="line">        t = <span class="string">&quot;+&quot;</span> === e.<span class="title function_">charAt</span>(n) ? t + r &amp; <span class="number">4294967295</span> : t ^ r</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> r = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">const</span> gtk = <span class="string">&#x27;320305.131321201&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test_JS_re_code</span>(<span class="params">t,gtk</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> o, i = t.<span class="title function_">match</span>(<span class="regexp">/[\uD800-\uDBFF][\uDC00-\uDFFF]/g</span>);</span><br><span class="line">            <span class="keyword">if</span> (<span class="literal">null</span> === i) &#123;</span><br><span class="line">                <span class="keyword">var</span> a = t.<span class="property">length</span>;</span><br><span class="line">                a &gt; <span class="number">30</span> &amp;&amp; (t = <span class="string">&quot;&quot;</span>.<span class="title function_">concat</span>(t.<span class="title function_">substr</span>(<span class="number">0</span>, <span class="number">10</span>)).<span class="title function_">concat</span>(t.<span class="title function_">substr</span>(<span class="title class_">Math</span>.<span class="title function_">floor</span>(a / <span class="number">2</span>) - <span class="number">5</span>, <span class="number">10</span>)).<span class="title function_">concat</span>(t.<span class="title function_">substr</span>(-<span class="number">10</span>, <span class="number">10</span>)))</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> s = t.<span class="title function_">split</span>(<span class="regexp">/[\uD800-\uDBFF][\uDC00-\uDFFF]/</span>), c = <span class="number">0</span>, u = s.<span class="property">length</span>, l = []; c &lt; u; c++)</span><br><span class="line">                    <span class="string">&quot;&quot;</span> !== s[c] &amp;&amp; l.<span class="property">push</span>.<span class="title function_">apply</span>(l, <span class="keyword">function</span>(<span class="params">t</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (<span class="title class_">Array</span>.<span class="title function_">isArray</span>(t))</span><br><span class="line">                            <span class="keyword">return</span> <span class="title function_">e</span>(t)</span><br><span class="line">                    &#125;(o = s[c].<span class="title function_">split</span>(<span class="string">&quot;&quot;</span>)) || <span class="keyword">function</span>(<span class="params">t</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (<span class="string">&quot;undefined&quot;</span> != <span class="keyword">typeof</span> <span class="title class_">Symbol</span> &amp;&amp; <span class="literal">null</span> != t[<span class="title class_">Symbol</span>.<span class="property">iterator</span>] || <span class="literal">null</span> != t[<span class="string">&quot;@@iterator&quot;</span>])</span><br><span class="line">                            <span class="keyword">return</span> <span class="title class_">Array</span>.<span class="title function_">from</span>(t)</span><br><span class="line">                    &#125;(o) || <span class="keyword">function</span>(<span class="params">t, n</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (t) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (<span class="string">&quot;string&quot;</span> == <span class="keyword">typeof</span> t)</span><br><span class="line">                                <span class="keyword">return</span> <span class="title function_">e</span>(t, n);</span><br><span class="line">                            <span class="keyword">var</span> r = <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(t).<span class="title function_">slice</span>(<span class="number">8</span>, -<span class="number">1</span>);</span><br><span class="line">                            <span class="keyword">return</span> <span class="string">&quot;Object&quot;</span> === r &amp;&amp; t.<span class="property">constructor</span> &amp;&amp; (r = t.<span class="property">constructor</span>.<span class="property">name</span>),</span><br><span class="line">                            <span class="string">&quot;Map&quot;</span> === r || <span class="string">&quot;Set&quot;</span> === r ? <span class="title class_">Array</span>.<span class="title function_">from</span>(t) : <span class="string">&quot;Arguments&quot;</span> === r || <span class="regexp">/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/</span>.<span class="title function_">test</span>(r) ? <span class="title function_">e</span>(t, n) : <span class="keyword">void</span> <span class="number">0</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;(o) || <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">                        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">TypeError</span>(<span class="string">&quot;Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.&quot;</span>)</span><br><span class="line">                    &#125;()),</span><br><span class="line">                    c !== u - <span class="number">1</span> &amp;&amp; l.<span class="title function_">push</span>(i[c]);</span><br><span class="line">                <span class="keyword">var</span> p = l.<span class="property">length</span>;</span><br><span class="line">                p &gt; <span class="number">30</span> &amp;&amp; (t = l.<span class="title function_">slice</span>(<span class="number">0</span>, <span class="number">10</span>).<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>) + l.<span class="title function_">slice</span>(<span class="title class_">Math</span>.<span class="title function_">floor</span>(p / <span class="number">2</span>) - <span class="number">5</span>, <span class="title class_">Math</span>.<span class="title function_">floor</span>(p / <span class="number">2</span>) + <span class="number">5</span>).<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>) + l.<span class="title function_">slice</span>(-<span class="number">10</span>).<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>))</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> d = <span class="string">&quot;&quot;</span>.<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">103</span>)).<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">116</span>)).<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">107</span>)), h = (<span class="literal">null</span> !== r ? r : (r = gtk || <span class="string">&quot;&quot;</span>) || <span class="string">&quot;&quot;</span>).<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>), f = <span class="title class_">Number</span>(h[<span class="number">0</span>]) || <span class="number">0</span>, m = <span class="title class_">Number</span>(h[<span class="number">1</span>]) || <span class="number">0</span>, g = [], y = <span class="number">0</span>, v = <span class="number">0</span>; v &lt; t.<span class="property">length</span>; v++) &#123;</span><br><span class="line">                <span class="keyword">var</span> _ = t.<span class="title function_">charCodeAt</span>(v);</span><br><span class="line">                _ &lt; <span class="number">128</span> ? g[y++] = _ : (_ &lt; <span class="number">2048</span> ? g[y++] = _ &gt;&gt; <span class="number">6</span> | <span class="number">192</span> : (<span class="number">55296</span> == (<span class="number">64512</span> &amp; _) &amp;&amp; v + <span class="number">1</span> &lt; t.<span class="property">length</span> &amp;&amp; <span class="number">56320</span> == (<span class="number">64512</span> &amp; t.<span class="title function_">charCodeAt</span>(v + <span class="number">1</span>)) ? (_ = <span class="number">65536</span> + ((<span class="number">1023</span> &amp; _) &lt;&lt; <span class="number">10</span>) + (<span class="number">1023</span> &amp; t.<span class="title function_">charCodeAt</span>(++v)),</span><br><span class="line">                g[y++] = _ &gt;&gt; <span class="number">18</span> | <span class="number">240</span>,</span><br><span class="line">                g[y++] = _ &gt;&gt; <span class="number">12</span> &amp; <span class="number">63</span> | <span class="number">128</span>) : g[y++] = _ &gt;&gt; <span class="number">12</span> | <span class="number">224</span>,</span><br><span class="line">                g[y++] = _ &gt;&gt; <span class="number">6</span> &amp; <span class="number">63</span> | <span class="number">128</span>),</span><br><span class="line">                g[y++] = <span class="number">63</span> &amp; _ | <span class="number">128</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> b = f, w = <span class="string">&quot;&quot;</span>.<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">43</span>)).<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">45</span>)).<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">97</span>)) + <span class="string">&quot;&quot;</span>.<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">94</span>)).<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">43</span>)).<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">54</span>)), k = <span class="string">&quot;&quot;</span>.<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">43</span>)).<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">45</span>)).<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">51</span>)) + <span class="string">&quot;&quot;</span>.<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">94</span>)).<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">43</span>)).<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">98</span>)) + <span class="string">&quot;&quot;</span>.<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">43</span>)).<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">45</span>)).<span class="title function_">concat</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(<span class="number">102</span>)), x = <span class="number">0</span>; x &lt; g.<span class="property">length</span>; x++)</span><br><span class="line">                b = <span class="title function_">n</span>(b += g[x], w);</span><br><span class="line">            <span class="keyword">return</span> b = <span class="title function_">n</span>(b, k),</span><br><span class="line">            (b ^= m) &lt; <span class="number">0</span> &amp;&amp; (b = <span class="number">2147483648</span> + (<span class="number">2147483647</span> &amp; b)),</span><br><span class="line">            <span class="string">&quot;&quot;</span>.<span class="title function_">concat</span>((b %= <span class="number">1e6</span>).<span class="title function_">toString</span>(), <span class="string">&quot;.&quot;</span>).<span class="title function_">concat</span>(b ^ f)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>对复制过来的调用JavaScript源代码进行适配修改：</p>
+<ol>
+<li>去掉<code>t.exports</code>属性，不需要赋值，重新命名函数为<code>test_JS_re_code</code></li>
+</ol>
+<p><strong><code>n</code> 函数</strong></p>
+<p>这个函数对给定的整数<code>t</code>和字符串<code>e</code>进行一系列位操作。</p>
+<ul>
+<li><code>t</code>: 初始整数值。</li>
+<li><code>e</code>: 用于操作的字符串，其字符用于决定如何变换<code>t</code>。</li>
+<li>函数通过遍历字符串<code>e</code>并根据其字符执行位移和位异或操作来转换<code>t</code>。</li>
+<li>最后，返回转换后的整数<code>t</code>。</li>
+</ul>
+<p><code>test_JS_re_code</code>函数</p>
+<p>这个函数是主要的函数，用于生成百度翻译的<code>sign</code>值。</p>
+<ul>
+<li><code>t</code>: 要翻译的文本。</li>
+<li><code>gtk</code>: 百度翻译API的一个关键变量，用于生成签名的固定密钥之一。</li>
+</ul>
+<p>这个函数的工作流程大致如下：</p>
+<ol>
+<li><strong>处理输入文本</strong>: 如果文本过长或包含特殊字符（比如表情符号），它会被适当地截断或转换。</li>
+<li><strong>字符编码处理</strong>: 文本<code>t</code>中的每个字符被转换为其ASCII或Unicode编码。</li>
+<li><strong>生成初始值</strong>: 通过某些固定字符和可能是密钥<code>gtk</code>的变量<code>r</code>组合，生成一个初始整数值<code>b</code>。</li>
+<li><strong>迭代处理</strong>: 对上一步得到的整数值<code>b</code>和文本的每个字符编码进行迭代处理，使用<code>n</code>函数和特定的字符串（在变量<code>w</code>和<code>k</code>中定义）进行变换。</li>
+<li><strong>生成最终<code>sign</code>值</strong>: 最终的<code>b</code>值经过一系列操作后，与<code>gtk</code>的某个部分进行操作，生成最终的<code>sign</code>值。</li>
+</ol>
+<h4 id="执行测试代码"><a href="#执行测试代码" class="headerlink" title="执行测试代码"></a>执行测试代码</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> execjs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">make_js_data</span>(<span class="params">que</span>):</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;translate.js&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        translate = f.read()</span><br><span class="line">        <span class="comment"># 生成js操作对象</span></span><br><span class="line">        js_data = execjs.<span class="built_in">compile</span>(translate)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    sign = js_data.call(<span class="string">&#x27;test_JS_re_code&#x27;</span>,que)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> sign</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>导入了<code>execjs</code>模块，这个模块允许Python运行JavaScript代码。</li>
+<li>定义了一个名为<code>make_js_data</code>的函数，这个函数接受一个参数<code>que</code>，这个参数是用户想要翻译的文本。</li>
+<li>这段代码从<code>translate.js</code>文件中读取JavaScript代码。<code>translate.js</code>包含了先前分析的那段JavaScript代码（包括<code>n</code>函数和<code>test_JS_re_code</code>函数）。<code>execjs.compile</code>方法编译这段JavaScript代码，使其可以在Python环境中执行。</li>
+<li>通过<code>execjs</code>对象的<code>call</code>方法调用<code>translate.js</code>中的<code>test_JS_re_code</code>函数，传入要翻译的文本<code>que</code>作为参数，生成并返回<code>sign</code>值。</li>
+<li>函数返回计算得到的<code>sign</code>值。</li>
+</ul>
+
+  <div class="note-large orange">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-circle-exclamation"></i><p>注意</p>
+
+    </div>
+    <div class="notel-content">
+      <ul>
+<li><code>gtk</code> 和 <code>token</code> 的实际值通常是动态生成的，可能会随着百度翻译网站的更新而变化。在实际应用中，这些值需要从网站的某些部分（如JavaScript代码或隐藏的表单字段）中动态获取。</li>
+<li>硬编码的值只用于示例和概念验证。如果要实现一个可靠和长期有效的解决方案，就需要实现一个方法来动态获取这些值。</li>
+<li>使用硬编码的值可能会导致在百度翻译更新其验证机制后，代码无法正常工作。</li>
+<li><strong><code>gtk</code></strong>: 这通常是一个固定的字符串，用于生成翻译请求中的<code>sign</code>参数。<code>sign</code>参数是基于要翻译的文本和<code>gtk</code>值计算得出的，用于验证请求的合法性。</li>
+<li><strong><code>token</code></strong>: 这是另一个重要的验证参数，通常也是在发送翻译请求时必须包含的。它可能用于识别用户或会话，或者作为另一层的安全验证。</li>
+<li><code>gtk</code>为<code>&#39;320305.131321201&#39;</code>，<code>token</code>为<code>2977c992c92eb0731d89f23d17b6edd7</code></li>
+</ul>
+
+    </div>
+  </div>
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> JS逆向</li>
+        <li><strong>作者:</strong> Yiuhang Chan</li>
+        <li><strong>创建于
+                :</strong> 2022-01-08 18:12:46</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-02-28 18:35:10
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://www.yiuhangblog.com/2022/01/08/20220108JS逆向/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%90%86%E8%AE%BA/">#理论</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%88%AC%E8%99%AB/">#爬虫</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/JS%E9%80%86%E5%90%91/">#JS逆向</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/04/01/20240401%E5%BC%98%E7%8E%91Cyclone%20RPA/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">弘玑 Cyclone RPA</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2021/12/27/20211227%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">编码与加解密</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://comment.yiuhangblog.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">JS逆向</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E9%80%86%E5%90%91%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D%E6%A1%88%E4%BE%8B%EF%BC%9A%E6%A8%A1%E6%8B%9F%E7%99%BE%E5%BA%A6%E7%BF%BB%E8%AF%91%E8%AF%B7%E6%B1%82"><span class="nav-text">JS逆向简要介绍案例：模拟百度翻译请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E7%99%BE%E5%BA%A6%E7%BF%BB%E8%AF%91%E8%AF%B7%E6%B1%82"><span class="nav-text">检查百度翻译请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E5%88%86%E6%9E%90"><span class="nav-text">请求参数分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="nav-text">请求头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sign%E5%8F%82%E6%95%B0"><span class="nav-text">Sign参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">Python代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E4%BB%A3%E7%A0%81"><span class="nav-text">爬虫代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JS%E9%80%86%E5%90%91%E4%BB%A3%E7%A0%81"><span class="nav-text">JS逆向代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="nav-text">执行测试代码</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2018</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 5s"></i>&nbsp;&nbsp;<a href="/">Yiuhang Chan</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 41 篇文章
+                    </span>
+                    
+                        <span>
+                            共 348k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex justify-center items-center">
+                <a class="flex justify-center items-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/libs/mermaid.min.js"></script>
+
+    
+<script src="/js/plugins/mermaid.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

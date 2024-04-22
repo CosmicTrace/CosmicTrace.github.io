@@ -1,0 +1,2222 @@
+<!DOCTYPE html>
+<html lang="zh-CN,en,zh-TW,default">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Yiuhang Chan">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://www.yiuhangblog.com/2021/02/21/20210221爬虫与网络基础理论/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="爬虫基本网络架构，协议和代理的基础理论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬虫与网络基础理论">
+<meta property="og:url" content="https://www.yiuhangblog.com/2021/02/21/20210221%E7%88%AC%E8%99%AB%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/index.html">
+<meta property="og:site_name" content="角灯随笔">
+<meta property="og:description" content="爬虫基本网络架构，协议和代理的基础理论">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b1b8fc73-a200-4851-39c2-7a1215f04400/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b170bba4-9797-4d82-dd05-3a989c0af600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/59b240ec-9b36-4b0f-dac3-b43000cf7500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c1f9aca9-86b4-4408-6f58-436f42451500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2e329670-03c8-4027-f700-262ed2cf8100/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7eb4679e-5912-4490-967e-a290b8ae9900/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6bafc412-7112-4ee9-fc77-ae3ee9e0d500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7be10293-630a-482d-b915-990eb2b3f600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d6583f3c-fc5b-4198-39c2-29dfab953300/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ed98322c-970c-49b1-a6d6-f69642432a00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/09e8f9e0-c9ad-4ad5-d5ba-09b7ac4a2200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e538edf8-39e3-43a8-0ba4-4c3a3d801600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/46ff809f-7716-4c87-55d6-f3c52ab4a500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/66286d0a-04fb-481e-05f2-d47e4e79da00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/18cc1f8a-33f7-4268-9a44-09b8cb1e8800/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/029cd3ca-3829-4227-d16e-aa7a7a574500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ef7ff1e9-0a79-4e15-5837-8aab82499000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7a571f26-f4da-40ae-2107-bfc1072edd00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/5a18fc87-3c20-42ec-1547-32250ab6a800/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/eceb2f61-a305-4213-7d9d-8a758f5d4c00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c007fc78-95b5-4f3c-3a43-1227649fbd00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4a5843b6-2f70-49ed-f1f3-717dcb105000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2c8641ae-0ec6-4933-ba7b-fbfdf0a13200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/78ec936a-ce05-4fa1-6cd9-d40fee243700/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/0c6186dc-d6dc-4f9d-0e71-d61ea67b3100/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4fc6823f-b725-4840-dd22-7022178f5000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/cd57e0a7-6f0d-4fc5-ac07-b45d213e3300/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/29f184f7-16d4-4280-bf06-95871ba21600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/9d674372-c8f5-45ec-32bb-f27cc6dd8c00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/8264d6d7-2f81-4943-d6dc-d4647052f300/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a67df357-6a03-4119-a6f4-b8de4a7ed900/public">
+<meta property="article:published_time" content="2021-02-20T19:12:54.000Z">
+<meta property="article:modified_time" content="2024-02-28T10:50:14.000Z">
+<meta property="article:author" content="Yiuhang Chan">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="理论">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="网络协议">
+<meta property="article:tag" content="网络类型">
+<meta property="article:tag" content="网络架构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b1b8fc73-a200-4851-39c2-7a1215f04400/public">
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-MQ43G0NKCT"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MQ43G0NKCT');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <meta name="theme-color" content="#A1AFC9">
+    <link rel="shortcut icon" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <!--- Page Info-->
+    
+    <title>
+        
+            爬虫与网络基础理论 -
+        
+        角灯随笔
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        角灯随笔
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"www.yiuhangblog.com","root":"/","language":["zh-CN","en","zh-TW","default"]};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":6,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":5,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A1AFC9","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":true,"id":"G-MQ43G0NKCT"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e63fc400-dd0e-4395-bd1b-9ee1ac3bfb00/public","dark":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a34140d6-7960-45dd-b8b5-c3ddd14d1f00/public"},"title":"角灯随笔","subtitle":{"text":["全栈也不是不行"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/CosmicTrace","instagram":null,"zhihu":null,"twitter":null,"email":"kenchansk0@gmail.com"},"qrs":null}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"娱乐":{"icon":"fa-solid fa-gamepad","submenus":{"王者荣耀":"/hok","守望先锋":"/ow","使命召唤":"/cod"}},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/CosmicTrace"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"谦逊","show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":8}},"footerStart":"2018/07/15 10:15:24"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="角灯随笔" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                角灯随笔
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/"
+                                        >
+                                    <i class="fa-solid fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-solid fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-solid fa-gamepad fa-fw"></i>
+                                    娱乐
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/hok">
+                                                    王者荣耀
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/ow">
+                                                    守望先锋
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/cod">
+                                                    使命召唤
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/CosmicTrace">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-solid fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-solid fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-娱乐"
+                        >
+                            <span>
+                                娱乐
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-娱乐">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/hok">王者荣耀</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/ow">守望先锋</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/cod">使命召唤</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/CosmicTrace">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">96</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">41</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a96e2636-6e4e-4642-4868-79bdc19f6700/public" alt="爬虫与网络基础理论" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">爬虫与网络基础理论</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/26329e9f-d1fb-4280-a0a5-754547bf8500/public">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Yiuhang Chan</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2021-02-21 03:12:54</span>
+        <span class="mobile">2021-02-21 03:12:54</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-02-28 18:50:14</span>
+            <span class="mobile">2024-02-28 18:50:14</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/">数据抓取</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%90%86%E8%AE%BA/">理论</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络协议</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/">网络类型</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84/">网络架构</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>12k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>42 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="一-爬虫概念"><a href="#一-爬虫概念" class="headerlink" title="一.爬虫概念"></a>一.爬虫概念</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li>网络爬虫也叫网络蜘蛛，特指一类自动批量下载网络资源的程序，这是一个比较口语化的定义。</li>
+<li>更加专业和全面对的定义是：<strong>网络爬虫是伪装成客户端与服务端进行数据交互的程序</strong>。</li>
+</ul>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol>
+<li>数据采集<strong>（重要）</strong><ul>
+<li>大数据监控，产品推荐</li>
+<li>大数据杀熟，某平台订酒店时间长了会贵一点</li>
+<li>灰产，内部买卖</li>
+</ul>
+</li>
+<li>搜索引擎<ul>
+<li>百度，谷歌（比较少），主要还是页面存储</li>
+</ul>
+</li>
+<li>模拟操作<ul>
+<li>测试机器人</li>
+<li>灌水机器人（快速刷屏）</li>
+</ul>
+</li>
+</ol>
+<h3 id="种类"><a href="#种类" class="headerlink" title="种类"></a>种类</h3><ol>
+<li>通用爬虫<ul>
+<li>百度，谷歌</li>
+</ul>
+</li>
+<li>聚焦爬虫<ul>
+<li>专门为某站点制作的</li>
+</ul>
+</li>
+<li>增量爬虫<ul>
+<li>监控站点，一旦有更新就爬取（在线小说，漫画）</li>
+</ul>
+</li>
+<li>深网爬虫<ul>
+<li>输入表单才能获取数据（登录账号密码之后才能获取）</li>
+</ul>
+</li>
+</ol>
+<h3 id="爬虫开发的重难点"><a href="#爬虫开发的重难点" class="headerlink" title="爬虫开发的重难点"></a>爬虫开发的重难点</h3><ol>
+<li><p>数据的获取</p>
+<ul>
+<li>伪装</li>
+</ul>
+</li>
+<li><p>采集的速度</p>
+<ul>
+<li>多爬虫</li>
+<li>分布式</li>
+</ul>
+</li>
+</ol>
+<h2 id="二-网络与HTTP-HTTPS协议"><a href="#二-网络与HTTP-HTTPS协议" class="headerlink" title="二.网络与HTTP&#x2F;HTTPS协议"></a>二.网络与HTTP&#x2F;HTTPS协议</h2><h3 id="网络类型（Network-Types）"><a href="#网络类型（Network-Types）" class="headerlink" title="网络类型（Network  Types）"></a>网络类型<strong>（Network  Types）</strong></h3><p>网络类型主要指的是不同的网络构建方式和范围：</p>
+<p>更多关注于网络的物理或逻辑结构和地理范围。它们描述的是网络的“形状”和“大小”，以及设备间连接的物理或无线方式。</p>
+<blockquote>
+<h4 id="1-本地区域网-LAN-Local-Area-Network"><a href="#1-本地区域网-LAN-Local-Area-Network" class="headerlink" title="1. 本地区域网 (LAN - Local Area Network)"></a>1. 本地区域网 (LAN - Local Area Network)</h4><ul>
+<li><strong>定义</strong>：LAN是一个小范围内的网络，通常用于单个建筑或一组紧密相连的建筑。</li>
+<li><strong>用途</strong>：用于连接个人电脑或工作站，以便于共享资源（如打印机）和交换信息。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b1b8fc73-a200-4851-39c2-7a1215f04400/public"
+                      width = "500"
+                >
+</blockquote>
+<blockquote>
+<h4 id="2-广域网-WAN-Wide-Area-Network"><a href="#2-广域网-WAN-Wide-Area-Network" class="headerlink" title="2. 广域网 (WAN - Wide Area Network)"></a>2. 广域网 (WAN - Wide Area Network)</h4><ul>
+<li><strong>定义</strong>：WAN覆盖广泛的地理区域，可以是城市、国家甚至跨国。</li>
+<li><strong>用途</strong>：用于连接不同地理位置的LANs，允许不同地区的用户和组织之间交换数据。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b170bba4-9797-4d82-dd05-3a989c0af600/public"
+                      width = "500"
+                >
+
+<p><strong>芝加哥（Accounts Receivable）</strong></p>
+<ul>
+<li><strong>网络</strong>：使用IPv4。</li>
+<li><strong>设备</strong>：包括iSeries A服务器，有一个IPv6地址（4321::54bc）和一个IPv4地址（10.1.1.1）。</li>
+<li><strong>IPv4路由器</strong>：连接iSeries A服务器和Internet。</li>
+</ul>
+<p><strong>达拉斯（Accounts Payable）</strong></p>
+<ul>
+<li><strong>网络</strong>：使用IPv6。</li>
+<li><strong>设备</strong>：包括iSeries B服务器，有一个IPv6地址（9876::55cc）。</li>
+<li><strong>客户端</strong>：连接到iSeries B服务器。</li>
+<li><strong>2838 Ethernet adapter</strong>：表示连接设备使用的网络适配器。</li>
+</ul>
+<p><strong>中间部分</strong></p>
+<ul>
+<li><strong>IPv4&#x2F;6路由器</strong>：具有IPv4地址（10.1.2.1）和IPv6地址（9876::55bb），这表明它能够处理IPv4和IPv6的数据包。</li>
+</ul>
+<p><strong>连接</strong></p>
+<ul>
+<li><strong>绿色线</strong>：表示配置了一个隧道，它允许在IPv4和IPv6网络之间安全地传输数据。隧道的本地端点是芝加哥的IPv4地址（10.1.1.1），远程端点是达拉斯的IPv4地址（10.1.2.1），并且隧道的本地IPv6地址是芝加哥的IPv6地址（4321::54bc）。</li>
+</ul>
+<p>图示展示了两个使用不同IP协议版本的网络之间的互联方式，并通过一个配置了隧道的路由器进行数据传输。这显示了在IPv4和IPv6共存环境中如何实现网络互操作性。</p>
+<p>IPv4和IPv6是两种互联网协议版本，它们是互联网通信的基础。</p>
+<p><strong>IPv4（Internet Protocol version 4）</strong></p>
+<ul>
+<li><strong>IPv4</strong> 是第四版的互联网协议，目前广泛使用于互联网中。</li>
+<li>它基于32位地址长度，这意味着它可以支持大约43亿个独特的IP地址。</li>
+<li>IPv4地址通常以点分十进制形式表示，例如192.168.1.1。</li>
+</ul>
+<p><strong>IPv6（Internet Protocol version 6）</strong></p>
+<ul>
+<li><strong>IPv6</strong> 是为了解决IPv4地址耗尽问题而设计的下一代互联网协议。</li>
+<li>它基于128位地址长度，这意味着它可以支持几乎无限数量的设备。</li>
+<li>IPv6地址通常以冒号分隔的十六进制形式表示，例如2001:0db8:85a3:0000:0000:8a2e:0370:7334。</li>
+</ul>
+<p><strong>主要区别</strong></p>
+<ul>
+<li><strong>地址空间</strong>：IPv4的地址空间相对较小，而IPv6提供了更大的地址空间来满足互联网的增长需求。</li>
+<li><strong>安全性</strong>：IPv6设计之初就考虑了安全性，包括IPsec（一种用于IP网络通信加密和认证的框架）作为标准部分，而IPv4中IPsec是可选的。</li>
+<li><strong>配置</strong>：IPv6支持自动配置能力，设备可以自动分配IP地址，而IPv4通常需要手动分配或通过DHCP（动态主机配置协议）实现自动分配。</li>
+<li><strong>数据包处理</strong>：IPv6简化了数据包头部结构，以提高处理速度和效率。</li>
+<li><strong>移动性和多播</strong>：IPv6原生支持移动性和多播传输，而IPv4则需要额外的协议支持。</li>
+</ul>
+<p>IPv4到IPv6的过渡是一个复杂的过程，因为它们不直接兼容。为了解决这个问题，实施了多种过渡技术，例如隧道和双栈策略，以便两种协议可以在同一网络内协同工作。</p>
+</blockquote>
+<blockquote>
+<h4 id="3-城域网-MAN-Metropolitan-Area-Network"><a href="#3-城域网-MAN-Metropolitan-Area-Network" class="headerlink" title="3. 城域网 (MAN - Metropolitan Area Network)"></a>3. 城域网 (MAN - Metropolitan Area Network)</h4><ul>
+<li><strong>定义</strong>：MAN是介于LAN和WAN之间的网络，通常覆盖一个城市。</li>
+<li><strong>用途</strong>：常用于连接多个局域网，提供高速网络服务给整个城市</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/59b240ec-9b36-4b0f-dac3-b43000cf7500/public"
+                      width = "500"
+                >
+
+<p>MAN连接了多个局域网（LAN - Local Area Network），每个LAN都通过一个网络处理引擎（NPE - Network Processing Engine）与MAN相连。</p>
+<ol>
+<li><strong>城域网（MAN）</strong>：位于图中心，代表了城市或都市区域的网络。</li>
+<li><strong>局域网（LAN）</strong>：分布在MAN周围，每个LAN可能代表一个不同的组织、办公室建筑或校园网络。</li>
+<li><strong>网络处理引擎（NPE）</strong>：在每个LAN和MAN之间的连接点处，有一个标记为NPE的设备。这些设备负责处理进入和离开局域网的数据，可能执行数据路由、交换、安全和其他网络服务。</li>
+</ol>
+<p>NPE（Network Processing Engine）通常指的是一种高性能的网络处理器，它被设计用来处理和转发数据包。在城域网（MAN - Metropolitan Area Network）的环境中，NPE的作用是尤为关键的，因为它可以处理高速网络流量，确保数据包的快速和有效传输。</p>
+<p>在城域网中，NPE可以用于以下几个主要方面：</p>
+<ol>
+<li><strong>数据包转发</strong>：NPE负责在网络设备中高效地处理和转发数据包。由于城域网通常连接着多个局域网（LANs），NPE在处理大量跨网络流量时的性能至关重要。</li>
+<li><strong>路由决策</strong>：NPE可以进行复杂的路由计算，以确定数据包的最佳路径。这对于确保在城域网环境中数据传输的高效性和可靠性非常重要。</li>
+<li><strong>流量管理</strong>：在城域网中，NPE可能涉及流量整形、负载平衡和拥塞管理等任务，以优化网络性能和资源利用。</li>
+<li><strong>安全处理</strong>：NPE还可以执行一些安全相关的功能，比如入侵检测、防火墙功能和VPN支持。</li>
+<li><strong>质量服务（QoS）</strong>：NPE可以帮助实施QoS策略，确保关键应用和服务得到优先的网络资源，保证服务质量。</li>
+</ol>
+<p>在城域网这样的高速网络环境中，NPE的作用不仅仅局限于数据包的基本转发，它还涉及到整个网络性能和服务质量的维护和提升。随着网络技术的发展，NPE的功能和重要性只会继续增长。</p>
+</blockquote>
+<blockquote>
+<h4 id="4-个人区域网-PAN-Personal-Area-Network"><a href="#4-个人区域网-PAN-Personal-Area-Network" class="headerlink" title="4. 个人区域网 (PAN - Personal Area Network)"></a>4. 个人区域网 (PAN - Personal Area Network)</h4><ul>
+<li><strong>定义</strong>：PAN是一个非常小的网络，用于连接个人设备，如手机、笔记本电脑和平板电脑。</li>
+<li><strong>用途</strong>：用于个人设备间的数据传输，如通过蓝牙或Wi-Fi。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c1f9aca9-86b4-4408-6f58-436f42451500/public"
+                      width = "500"
+                >
+</blockquote>
+<blockquote>
+<h4 id="5-无线局域网-WLAN-Wireless-Local-Area-Network"><a href="#5-无线局域网-WLAN-Wireless-Local-Area-Network" class="headerlink" title="5. 无线局域网 (WLAN - Wireless Local Area Network)"></a>5. 无线局域网 (WLAN - Wireless Local Area Network)</h4><ul>
+<li><strong>定义</strong>：WLAN是一种无线的局域网，使用无线数据连接来链接多个设备。</li>
+<li><strong>用途</strong>：提供与LAN相似的功能，但无需物理连线，增加了移动性。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2e329670-03c8-4027-f700-262ed2cf8100/public"
+                      width = "500"
+                >
+</blockquote>
+<blockquote>
+<h4 id="6-虚拟私人网-VPN-Virtual-Private-Network"><a href="#6-虚拟私人网-VPN-Virtual-Private-Network" class="headerlink" title="6. 虚拟私人网 (VPN - Virtual Private Network)"></a>6. 虚拟私人网 (VPN - Virtual Private Network)</h4><ul>
+<li><strong>定义</strong>：VPN是一种通过公共网络（如互联网）提供加密连接的网络技术。</li>
+<li><strong>用途</strong>：允许远程用户安全地访问内部网络资源，常用于企业远程工作和数据保护。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7eb4679e-5912-4490-967e-a290b8ae9900/public"
+                      width = "500"
+                >
+
+<ol>
+<li><p><strong>互联网服务提供商（ISP）</strong>：连接用户到互联网的公司或组织。</p>
+</li>
+<li><p><strong>互联网</strong>：全球性的公共网络。</p>
+</li>
+<li><p><strong>内部网（Intranet）</strong>：一个私人网络，通常是公司或组织内部的网络，它包含了受保护的资源和服务。</p>
+</li>
+<li><p><strong>VPN连接</strong>：一个安全的连接，通过公共互联网从用户到内部网。</p>
+</li>
+<li><p><strong>隧道</strong>：VPN连接创建了一条加密的“隧道”，它通过不安全的互联网传输数据。隧道保护了数据不被外部读取或干扰，即使数据在公共互联网上传输。</p>
+<p>在这个场景中，用户通过ISP连接到互联网，并通过VPN创建一个安全的隧道连接到其公司的内部网。这种方式允许远程用户安全地访问公司网络内部的资源，如同他们直接连接到公司的局域网（LAN）一样。这是远程工作和保护数据在不安全网络上传输的常见方式。</p>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<h4 id="7-企业私人网络-EPN-Enterprise-Private-Network"><a href="#7-企业私人网络-EPN-Enterprise-Private-Network" class="headerlink" title="7. 企业私人网络 (EPN - Enterprise Private Network)"></a>7. 企业私人网络 (EPN - Enterprise Private Network)</h4><ul>
+<li><strong>定义</strong>：EPN是专为特定企业设计的私人网络，用于连接企业内部各部门和资源。</li>
+<li><strong>用途</strong>：用于大型企业，确保数据安全性和网络管理的高效性。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6bafc412-7112-4ee9-fc77-ae3ee9e0d500/public"
+                      width = "500"
+                >
+
+<p>远程工作者（Telecommuters）如何通过本地互联网服务提供商（Local ISP）连接到企业局域网（Enterprise LAN），并访问位于企业内部的资源:</p>
+<ol>
+<li><strong>远程工作人员（Telecommuters）</strong>：流程开始于远程工作者。这些用户需要从家庭或远程办公地点通过其个人电脑接入企业网络。</li>
+<li><strong>本地ISP（Local ISP）</strong>：远程工作者通过本地互联网服务提供商连接到互联网。本地ISP负责将用户的数据传输到互联网上，并且是用户通往互联网的桥梁。</li>
+<li><strong>互联网</strong>：一旦远程工作者的数据流通过本地ISP，它就进入了互联网，这是一个全球性的公共网络。</li>
+<li><strong>远程接入服务器（Remote Access Server）</strong>：远程工作者通过互联网连接到企业的远程接入服务器。这通常涉及到建立一个虚拟私人网络（VPN）连接，它在用户和企业网络之间创建了一条加密的通道，确保数据传输的安全性。</li>
+<li><strong>企业局域网（Enterprise LAN）</strong>：一旦远程工作者通过VPN连接成功，他们就可以访问企业局域网，就如同他们物理地处于企业的办公室内一样。</li>
+<li><strong>文件服务器（File Servers）</strong>：在连接到企业LAN之后，远程工作者可以访问文件服务器，这些服务器存储了企业的共享文档和资源。</li>
+<li><strong>服务器农场（Server Farm）</strong>：除了文件服务器，远程工作者还可能需要访问服务器农场中的应用服务器，这些服务器提供了企业运行所需的关键业务应用程序和数据处理服务。</li>
+<li><strong>第二层交换机（L2 Switch）</strong>：LAN中的数据流通过第二层交换机，它负责在数据链路层转发数据帧到正确的目的地。</li>
+<li><strong>网关路由器（Gateway Router）</strong>：如果远程工作者需要访问互联网上的资源，流量会经过企业的网关路由器。这台路由器也可能执行网络地址转换（NAT）和安全功能，如防火墙。</li>
+<li><strong>企业ISP（Enterprise ISP）</strong>：最后，如果数据需要发送到企业外部的目的地，它将通过企业的互联网服务提供商转发出去。</li>
+</ol>
+</blockquote>
+<blockquote>
+<h4 id="8-内容分发网络-CDN-Content-Delivery-Network"><a href="#8-内容分发网络-CDN-Content-Delivery-Network" class="headerlink" title="8. 内容分发网络 (CDN - Content Delivery Network)"></a>8. 内容分发网络 (CDN - Content Delivery Network)</h4><ul>
+<li><strong>定义</strong>：CDN是一组分布在多个地理位置的服务器，用于有效地传递互联网内容。</li>
+<li><strong>用途</strong>：用于快速传送大量数据，常用于网页内容、视频流媒体等。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7be10293-630a-482d-b915-990eb2b3f600/public"
+                       width = "500"
+                >
+</blockquote>
+<blockquote>
+<h4 id="9-云计算网络"><a href="#9-云计算网络" class="headerlink" title="9. 云计算网络"></a>9. 云计算网络</h4><ul>
+<li><strong>定义</strong>：这类网络是基于云计算技术，提供资源和服务的虚拟化网络。</li>
+<li><strong>用途</strong>：支持各种云服务，如软件即服务（SaaS）、平台即服务（PaaS）和基础设施即服务（IaaS）。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d6583f3c-fc5b-4198-39c2-29dfab953300/public"
+                      width = "500" 
+                >
+
+<p><strong>云计算（Cloud Computing）</strong></p>
+<p>云计算是一种利用远程服务器网络（通常在互联网上）来存储、管理和处理数据的模式，而不是在本地计算机或服务器上。这种模型允许用户和企业使用互联网来访问更强大的计算资源和大规模存储设施。</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li><strong>集中式数据处理</strong>：数据处理和存储在中心化的数据中心进行。</li>
+<li><strong>可扩展性</strong>：云服务提供动态扩展能力，根据需求增减资源。</li>
+<li><strong>成本效益</strong>：用户通常按使用量付费，减少了前期投资和维护成本。</li>
+<li><strong>全球访问</strong>：用户可以从世界任何地方通过互联网访问服务。</li>
+</ul>
+<p><strong>边缘计算（Edge Computing）</strong></p>
+<p>边缘计算则是数据在产生源头附近的网络边缘或设备上进行处理。这种模式旨在将计算任务从中心化的数据中心转移到网络的边缘，减少延迟，提高响应速度。</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li><strong>分布式数据处理</strong>：数据处理在离数据源更近的地方进行，如用户的设备或本地服务器上。</li>
+<li><strong>降低延迟</strong>：通过在数据产生的地方进行处理，减少了数据传输到中心数据中心的需要，从而降低了延迟。</li>
+<li><strong>带宽效率</strong>：减少了大量数据传输，节省了带宽，对于带宽受限的场景特别有用。</li>
+<li><strong>实时处理</strong>：适用于需要即时反馈的应用，如自动驾驶车辆、工业自动化等。</li>
+</ul>
+<p><strong>云计算 vs 边缘计算</strong></p>
+<p>​	<strong>数据中心远近</strong>：云计算依赖远程数据中心，而边缘计算依赖近端处理。</p>
+<p>​	<strong>延迟问题</strong>：云计算可能面临网络延迟问题，边缘计算则能提供更低延迟。</p>
+<p>​	<strong>带宽需求</strong>：云计算可能需要更多的带宽来传输数据，边缘计算减少了跨网络的数据流量。</p>
+<p>​	<strong>适用场景</strong>：</p>
+<ul>
+<li>云计算适用于需要大量计算和存储资源，但对延迟要求不是特别高的场景。</li>
+<li>边缘计算适用于对实时分析和响应有严格要求的场景。</li>
+</ul>
+<p><strong>结合使用</strong></p>
+<p>云计算和边缘计算可以结合使用，形成云边协同的架构。在这种架构中，边缘计算负责实时的数据处理和决策，而云计算则负责深度分析和长期存储。这种模式可以最大化地利用两者的优势，满足不同的业务需求。</p>
+</blockquote>
+<blockquote>
+<h4 id="10-其它"><a href="#10-其它" class="headerlink" title="10.其它"></a>10.其它</h4><ul>
+<li><strong>传感器网络（Sensor Networks）</strong>：由许多分布式传感器组成，用于监测和记录物理环境的条件，并将收集的数据传输到一个中心位置。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ed98322c-970c-49b1-a6d6-f69642432a00/public"
+                      width = "500"
+                >
+
+<ul>
+<li><strong>虚拟网络（Virtual Networks）</strong>：通常建立在其他网络之上，通过软件定义网络（SDN）等技术实现。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/09e8f9e0-c9ad-4ad5-d5ba-09b7ac4a2200/public"
+                      width = "500"
+                >
+
+<ul>
+<li><strong>存储区域网络（SAN - Storage Area Network）</strong>：连接存储设备和服务器的专用高速网络，允许服务器访问共享存储资源。SAN是一个高速的专用网络，连接存储设备与服务器，通常使用光纤通道（Fibre Channel）或iSCSI协议。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e538edf8-39e3-43a8-0ba4-4c3a3d801600/public"
+                      width = "500"
+                >
+
+<p>​		        <strong>特点</strong>：</p>
+<p>​				<strong>性能高</strong>：SAN为服务器提供块级别的存储，可以实现高速数据传输。</p>
+<p>​				<strong>可扩展性强</strong>：可以支持大量存储设备，适合大型企业。</p>
+<p>​				<strong>灵活性</strong>：存储资源可以在SAN中被多个服务器共享。</p>
+<p>​			<strong>适用场景</strong>：</p>
+<p>​				数据中心</p>
+<p>​				大型数据库应用</p>
+<p>​				高性能计算环境</p>
+<p>​			<strong>NAS（Network Attached Storage 网络附加存储）</strong>: </p>
+<p>​			NAS是一种专用的文件存储设备，它通过网络提供数据访问给网络上的其他设备。</p>
+<p>​			<strong>特点</strong>：</p>
+<p>​				<strong>易于访问和共享</strong>：NAS通过标准的网络协议（如NFS、SMB&#x2F;CIFS）提供文件级别的存储和访问，使得不同操作系统的用户可以共享数据。</p>
+<p>​				<strong>配置简单</strong>：通常易于安装和配置，适合于需要文件共享的小型办公环境。</p>
+<p>​				<strong>可扩展性</strong>：可以根据需要添加更多的存储设备。</p>
+<p>​			<strong>适用场景</strong>：</p>
+<p>​				文件共享, 小型企业的数据备份, 媒体服务器</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/46ff809f-7716-4c87-55d6-f3c52ab4a500/public"
+                      width = "500"
+                >
+
+<p>​			<strong>DAS（直接附加存储 Direct  Attached  Storage）</strong></p>
+<p>​			DAS是直接连接到计算机的存储设备，例如内部或外部硬盘驱动器。</p>
+<p>​			<strong>特点</strong>：</p>
+<p>​				<strong>成本低</strong>：相比NAS和SAN，DAS通常更便宜，因为它不需要额外的网络设备。</p>
+<p>​				<strong>简单性</strong>：直接连接到服务器，不需要复杂的配置。</p>
+<p>​				<strong>性能</strong>：由于是直接连接的，可以提供良好的数据传输速度。</p>
+<p>​			<strong>适用场景</strong>：</p>
+<p>​				个人计算机, 小型办公环境, 需要快速数据访问的应用</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/66286d0a-04fb-481e-05f2-d47e4e79da00/public"
+                      width = "500"
+                >
+
+<ul>
+<li><p><strong>集成服务数字网络（ISDN - Integrated Services Digital Network）</strong>：早期的高速网络服务，提供语音和数据服务。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/18cc1f8a-33f7-4268-9a44-09b8cb1e8800/public"
+                      width = "500"
+                ></li>
+</ul>
+</blockquote>
+<h3 id="网络架构（Network-Architectures）"><a href="#网络架构（Network-Architectures）" class="headerlink" title="网络架构（Network  Architectures）"></a>网络架构<strong>（Network  Architectures）</strong></h3><p>架构模式则是指在这些网络中实现数据交换和处理的方法和设计：</p>
+<p>关注于如何在网络中设计和组织资源、服务和数据流。它们描述的是网络内部数据和服务的组织和流动方式。</p>
+<blockquote>
+<h4 id="1-客户端-服务器（C-S-Client-Server）"><a href="#1-客户端-服务器（C-S-Client-Server）" class="headerlink" title="1. 客户端&#x2F;服务器（C&#x2F;S - Client&#x2F;Server）"></a>1. 客户端&#x2F;服务器（C&#x2F;S - Client&#x2F;Server）</h4><ul>
+<li><strong>定义</strong>：C&#x2F;S架构中，客户端和服务器是两个独立的实体。客户端发送请求到服务器，服务器处理请求并返回数据。</li>
+<li><strong>特点</strong>：客户端软件通常需要安装在用户的设备上，可以提供丰富的功能和良好的用户体验。服务器负责数据处理和存储。</li>
+<li><strong>应用</strong>：常见于企业应用、多用户系统、网络游戏等领域。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/029cd3ca-3829-4227-d16e-aa7a7a574500/public"
+                      width = "500"
+                >
+</blockquote>
+<blockquote>
+<h4 id="2-浏览器-服务器（B-S-Browser-Server）"><a href="#2-浏览器-服务器（B-S-Browser-Server）" class="headerlink" title="2. 浏览器&#x2F;服务器（B&#x2F;S - Browser&#x2F;Server）"></a>2. 浏览器&#x2F;服务器（B&#x2F;S - Browser&#x2F;Server）</h4><ul>
+<li><strong>定义</strong>：B&#x2F;S架构中，用户通过浏览器（作为客户端）来访问服务器上的资源和服务。</li>
+<li><strong>特点</strong>：不需要在客户端安装特定的软件，只需一个浏览器即可访问服务。服务器处理后端逻辑和数据存储。</li>
+<li><strong>应用</strong>：互联网网站、Web应用程序等。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ef7ff1e9-0a79-4e15-5837-8aab82499000/public"
+                      width = "500"
+                >
+</blockquote>
+<blockquote>
+<h4 id="3-移动端-服务器（M-S-Mobile-Server）"><a href="#3-移动端-服务器（M-S-Mobile-Server）" class="headerlink" title="3. 移动端&#x2F;服务器（M&#x2F;S - Mobile&#x2F;Server）"></a>3. 移动端&#x2F;服务器（M&#x2F;S - Mobile&#x2F;Server）</h4><ul>
+<li><strong>定义</strong>：M&#x2F;S架构专注于移动设备作为客户端，与服务器进行交互。</li>
+<li><strong>特点</strong>：适应了移动设备的特性，如触摸界面、定位服务和推送通知。服务器处理复杂的逻辑和数据存储。</li>
+<li><strong>应用</strong>：移动应用程序，如社交媒体应用、移动电子商务应用等。</li>
+</ul>
+</blockquote>
+<blockquote>
+<h4 id="4-对等网络（P2P-Peer-to-Peer）"><a href="#4-对等网络（P2P-Peer-to-Peer）" class="headerlink" title="4. 对等网络（P2P - Peer-to-Peer）"></a>4. 对等网络（P2P - Peer-to-Peer）</h4><ul>
+<li><strong>定义</strong>：在P2P架构中，每个节点既作为客户端又作为服务器，节点之间直接交换数据。</li>
+<li><strong>特点</strong>：不依赖中心化的服务器，提高了系统的可扩展性和容错能力。</li>
+<li><strong>应用</strong>：文件共享系统、加密货币网络、某些通信应用等。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7a571f26-f4da-40ae-2107-bfc1072edd00/public"
+                      width = "500"
+                >
+</blockquote>
+<blockquote>
+<h4 id="5-微服务架构（Microservices-Architecture）"><a href="#5-微服务架构（Microservices-Architecture）" class="headerlink" title="5.微服务架构（Microservices  Architecture）"></a>5.微服务架构（Microservices  Architecture）</h4><ul>
+<li><strong>定义</strong>：微服务架构是一种将应用程序作为一组小服务开发的方法，每个服务在其自己的进程中运行，通常围绕业务能力构建。</li>
+<li><strong>特点</strong>：服务之间通过轻量级的通信机制进行交互，每个服务独立部署，可在不同的环境中独立扩展。</li>
+<li><strong>应用</strong>：现代云应用、大型企业级应用等。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/5a18fc87-3c20-42ec-1547-32250ab6a800/public"
+                      width = "500"
+                >
+</blockquote>
+<blockquote>
+<h4 id="6-服务导向架构（SOA-Service-Oriented-Architecture）"><a href="#6-服务导向架构（SOA-Service-Oriented-Architecture）" class="headerlink" title="6. 服务导向架构（SOA - Service-Oriented Architecture）"></a>6. 服务导向架构（SOA - Service-Oriented Architecture）</h4><ul>
+<li><strong>定义</strong>：SOA是一种设计模式，其中应用程序的组件提供服务给其他组件，通过网络中的通信协议进行交互。</li>
+<li><strong>特点</strong>：强调可重用的服务，服务之间通常是松耦合的。</li>
+<li><strong>应用</strong>：企业级应用、系统集成等。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/eceb2f61-a305-4213-7d9d-8a758f5d4c00/public"
+                      width = "500"
+                >
+</blockquote>
+<blockquote>
+<h4 id="7-网格计算（Grid-Computing）"><a href="#7-网格计算（Grid-Computing）" class="headerlink" title="7. 网格计算（Grid Computing）"></a>7. 网格计算（Grid Computing）</h4><ul>
+<li><strong>定义</strong>：网格计算是一种分布式计算形式，它将来自不同域的计算资源连接起来，以达到共同的目标。</li>
+<li><strong>特点</strong>：高度分布式，适合于大规模的数据处理和复杂计算任务。</li>
+<li><strong>应用</strong>：科学研究、大规模模拟、数据分析等。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/c007fc78-95b5-4f3c-3a43-1227649fbd00/public"
+                      width = "500"
+                >
+</blockquote>
+<blockquote>
+<h4 id="8-雾计算（Fog-Computing）"><a href="#8-雾计算（Fog-Computing）" class="headerlink" title="8. 雾计算（Fog  Computing）"></a>8. 雾计算（Fog  Computing）</h4><ul>
+<li><strong>定义</strong>：雾计算是一种分布式计算架构，它将计算、存储和网络服务扩展到网络的边缘。</li>
+<li><strong>特点</strong>：减少了对中心数据中心的依赖，减少延迟，提高了数据处理的速度。</li>
+<li><strong>应用</strong>：物联网（IoT）、实时数据分析、智能城市等。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4a5843b6-2f70-49ed-f1f3-717dcb105000/public"
+                      width = "500"
+                >
+</blockquote>
+<p>总的来说，网络类型和架构模式是网络设计的两个不同层面。类型更侧重于网络的物理和逻辑布局，而架构则侧重于系统的内部设计和数据流动。两者相辅相成，共同构成完整的网络系统。</p>
+<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><h4 id="背景知识：OSI模型"><a href="#背景知识：OSI模型" class="headerlink" title="背景知识：OSI模型"></a>背景知识：OSI模型</h4><blockquote>
+<p>OSI模型，全称是“开放式系统互连参考模型”（Open Systems Interconnection Reference Model），是一个用于解释和标准化网络内不同计算机系统之间通信过程的概念模型。这个模型由国际标准化组织（ISO）在1980年代初期开发，目的是促进不同类型计算机系统之间的兼容性和标准化通信。</p>
+<table>
+<thead>
+<tr>
+<th>层面</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>物理层（Physical Layer）</strong></td>
+<td>负责实际的物理连接，包括电缆、光纤、无线电频率等的传输媒介。</td>
+</tr>
+<tr>
+<td><strong>数据链路层（Data Link Layer）</strong></td>
+<td>负责在相邻节点之间的可靠连接，处理帧定界、物理地址寻址、流量控制等。</td>
+</tr>
+<tr>
+<td><strong>网络层（Network Layer）</strong></td>
+<td>负责在多个网络之间建立、维护和终止连接，包括路由选择、分组转发等。</td>
+</tr>
+<tr>
+<td><strong>传输层（Transport Layer）</strong></td>
+<td>负责在端到端的通信中保持数据的完整性，处理错误检测和恢复、数据传输顺序等。</td>
+</tr>
+<tr>
+<td><strong>会话层（Session Layer）</strong></td>
+<td>负责建立、管理和终止会话，控制数据交换的对话和同步。</td>
+</tr>
+<tr>
+<td><strong>表示层（Presentation Layer）</strong></td>
+<td>负责数据的表示、加密和压缩，确保一个系统的应用层所发送的信息可以被另一个系统的应用层读取。</td>
+</tr>
+<tr>
+<td><strong>应用层（Application Layer）</strong></td>
+<td>为各种应用软件提供服务，包括电子邮件、文件传输和其他网络软件服务。</td>
+</tr>
+</tbody></table>
+<p>每一层都有其特定的功能，它们一起协作，确保从一个设备到另一个设备的数据传输是顺畅和高效的。虽然在实际的网络实现中，如因特网的TCP&#x2F;IP模型更为普遍，但OSI模型仍然是理解网络通信非常重要的一个概念工具。</p>
+</blockquote>
+<h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a><strong>原因</strong></h4><p>计算机之间也是需要一种<strong>规则</strong>，保障之间信息的<strong>有效交流</strong>，这就是<strong>HTTP协议</strong>;</p>
+<h4 id="概念及特点"><a href="#概念及特点" class="headerlink" title="概念及特点"></a><strong>概念及特点</strong></h4><ul>
+<li><p>HTTP是 Hyper Text Transfer Protocol（<strong>超文本传输协议</strong>）的缩写，是用于从<strong>万维网</strong>（WWW: World Wide Web ）服务器传输<strong>超文本</strong>到<strong>本地浏览器</strong>的传送协议。</p>
+</li>
+<li><p>目前互连网上90%的网络传输都是基于HTTP协议。</p>
+</li>
+<li><p>HTTP是一个基于TCP&#x2F;IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）; </p>
+<ul>
+<li><p>使用TCP通信协议的重要的原因是基于其<strong>面向连接的</strong>特点：</p>
+<blockquote>
+<p>TCP&#x2F;IP（传输控制协议&#x2F;网际协议）是一组用于控制网络通信的协议，并且是因特网的基础。它由两个主要的协议组成：TCP和IP。</p>
+<ol>
+<li><p><strong>IP（网际协议）</strong>：负责将数据包从发送方路由到接收方。IP提供了一种机制，可以识别发送和接收设备的唯一地址（即IP地址）。IP协议主要负责数据包的寻址和路由，确保数据能够在网络中正确地从一个点传送到另一个点。</p>
+</li>
+<li><p><strong>TCP（传输控制协议）</strong>：在IP提供的基础上，TCP负责在两个终端之间建立可靠的连接，确保数据准确无误地传输。它通过分割数据为多个部分、确保每个部分都被正确接收，并且在必要时进行重传，来完成这一任务。TCP还负责控制数据传输的速率，防止网络拥塞。</p>
+</li>
+<li><p>TCP&#x2F;IP模型通常被划分为四层，每层都有其特定的功能：</p>
+<table>
+<thead>
+<tr>
+<th>层面</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>应用层</strong></td>
+<td>直接为用户的应用程序（如浏览器、电子邮件客户端等）提供服务。</td>
+</tr>
+<tr>
+<td><strong>传输层</strong></td>
+<td>包括TCP和UDP（用户数据报协议），负责提供端对端的通信。</td>
+</tr>
+<tr>
+<td><strong>互联网层</strong></td>
+<td>主要包括IP协议，负责在多个网络之间传输数据包。</td>
+</tr>
+<tr>
+<td><strong>网络接口层</strong></td>
+<td>包括用于实际网络连接的各种协议，负责数据在物理网络上的传输。</td>
+</tr>
+</tbody></table>
+<p>TCP&#x2F;IP模型由于其简洁性和高效性，在互联网的发展中起到了核心作用，是现代网络通信不可或缺的一部分。</p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTPS（安全超文本传输协议）"><a href="#HTTPS（安全超文本传输协议）" class="headerlink" title="HTTPS（安全超文本传输协议）"></a>HTTPS（安全超文本传输协议）</h3><ol>
+<li><strong>定义与用途</strong>：<ul>
+<li>HTTPS是HTTP的安全版本，用于在不安全的网络上安全传输数据。</li>
+<li>它通过加密和认证确保数据传输的安全性和完整性。</li>
+</ul>
+</li>
+<li><strong>加密机制</strong>：<ul>
+<li><strong>传输层安全性（TLS）或安全套接层（SSL）</strong>：HTTPS使用这些协议对数据进行加密。</li>
+<li>加密保护数据不被中间人攻击（MITM）窃听或篡改。</li>
+</ul>
+</li>
+<li><strong>数字证书</strong>：<ul>
+<li>HTTPS使用数字证书验证服务器的身份，确保用户正在与预期的服务器通信。</li>
+<li>数字证书由权威的证书颁发机构（CA）签发。</li>
+</ul>
+</li>
+<li><strong>特点</strong>：<ul>
+<li><strong>增加了安全层</strong>：相比HTTP，HTTPS提供了数据的机密性和完整性。</li>
+<li><strong>性能开销</strong>：加密和解密过程需要额外的处理，可能会略微影响性能。</li>
+</ul>
+</li>
+</ol>
+<h3 id="HTTP与HTTPS的比较"><a href="#HTTP与HTTPS的比较" class="headerlink" title="HTTP与HTTPS的比较"></a>HTTP与HTTPS的比较</h3><ul>
+<li><strong>安全性</strong>：HTTPS明显优于HTTP，因为它通过加密保护数据。</li>
+<li><strong>端口</strong>：HTTP通常使用端口80，而HTTPS使用端口443。</li>
+<li><strong>应用场景</strong>：对于需要保护数据安全的网站（如在线银行、电子商务等），强烈推荐使用HTTPS。</li>
+</ul>
+<p>总之，HTTP和HTTPS都是实现网络通信的重要协议，但HTTPS在安全性方面提供了显著的优势。随着网络安全意识的提高，越来越多的网站和服务正在转向HTTPS。</p>
+<h2 id="三-HTTP协议的使用"><a href="#三-HTTP协议的使用" class="headerlink" title="三.HTTP协议的使用"></a>三.HTTP协议的使用</h2><h3 id="HTTP请求流程"><a href="#HTTP请求流程" class="headerlink" title="HTTP请求流程"></a>HTTP请求流程</h3><p>一次http请求的基本流程是，有客户端向服务端发起一次请求(request), 而服务器在接收到以后返回给客户端一个响应（response）。所以一次完整的http请求包含请求和响应两部分。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2c8641ae-0ec6-4933-ba7b-fbfdf0a13200/public"
+                      width = "500"
+                >
+
+<ol>
+<li><strong>客户端打开连接</strong>：当在浏览器中输入一个URL或点击一个链接时，浏览器会向服务器发起一个HTTP请求。这通常开始于TCP的三次握手过程，建立客户端和服务器之间的连接。</li>
+<li><strong>发送HTTP请求</strong>：一旦TCP连接建立，客户端（如浏览器）就会通过这个连接发送一个HTTP请求。这个请求包含了请求行（如“GET &#x2F;index.html HTTP&#x2F;1.1”）、请求头（包含用户代理信息、接受的内容类型等）和（在POST请求中）一个请求体。</li>
+<li><strong>服务器处理请求</strong>：服务器接收到HTTP请求后，会根据请求的资源（如HTML文件、图像等）进行处理。</li>
+<li><strong>服务器响应</strong>：服务器处理完请求后，会回送一个HTTP响应。这个响应包含一个状态行（如“HTTP&#x2F;1.1 200 OK”）、响应头（包含内容类型、长度等）和响应体（请求的数据）。</li>
+<li><strong>关闭连接</strong>：在交换完数据后，通常由客户端发起TCP的四次挥手过程来关闭TCP连接。</li>
+</ol>
+<blockquote>
+<h4 id="TCP三次握手（建立连接）"><a href="#TCP三次握手（建立连接）" class="headerlink" title="TCP三次握手（建立连接）"></a>TCP三次握手（建立连接）</h4><ol>
+<li><strong>SYN</strong>：客户端发送一个SYN（同步序列编号）标志的TCP包到服务器，以开始一个新的连接。</li>
+<li><strong>SYN-ACK</strong>：服务器接收到SYN包后，回送一个包含SYN和ACK（确认字符）标志的TCP包以确认收到。</li>
+<li><strong>ACK</strong>：客户端收到服务器的SYN-ACK包后，再发送一个ACK包作为响应，完成连接建立。</li>
+</ol>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/78ec936a-ce05-4fa1-6cd9-d40fee243700/public"
+                      width = "500" 
+                >
+
+<p>这个过程主要确保双方都准备好开始新的连接。</p>
+<h4 id="数据传输（正在连接）"><a href="#数据传输（正在连接）" class="headerlink" title="数据传输（正在连接）"></a>数据传输（正在连接）</h4><p>一旦TCP连接建立，HTTP请求就可以通过这个连接发送了。</p>
+<ol>
+<li><strong>HTTP请求</strong>：客户端通过建立好的TCP连接，发送一个HTTP请求到服务器。这个请求包含了请求方法（如GET或POST）、请求的资源（如网页）、以及其他必要的头信息。</li>
+<li><strong>服务器处理</strong>：服务器接收并处理这个请求，然后准备相应的HTTP响应。</li>
+<li><strong>HTTP响应</strong>：服务器通过同一个TCP连接返回一个HTTP响应。响应通常包含状态码（如200 OK），响应头信息，以及请求的数据（如HTML文档）。</li>
+</ol>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/0c6186dc-d6dc-4f9d-0e71-d61ea67b3100/public"
+                      width = "500" 
+                >
+
+<h4 id="TCP四次挥手（关闭连接）"><a href="#TCP四次挥手（关闭连接）" class="headerlink" title="TCP四次挥手（关闭连接）"></a>TCP四次挥手（关闭连接）</h4><ol>
+<li><strong>FIN</strong>：当通信结束时，发起关闭的一方（通常是客户端）会发送一个FIN（结束）标志的TCP包，表明它已经没有数据发送了。</li>
+<li><strong>ACK</strong>：接收方接到FIN包后，会回送一个ACK包作为确认。</li>
+<li><strong>FIN</strong>：接着，接收方发送一个带有FIN标志的TCP包，以表明它也没有数据发送了。</li>
+<li><strong>ACK</strong>：最后，发起关闭的一方收到FIN后，再发送一个ACK包作为响应。一段时间后，连接被完全关闭。</li>
+</ol>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/4fc6823f-b725-4840-dd22-7022178f5000/public"
+                      width = "500" 
+                >
+
+<p>这个过程确保了双方都能够完成所有数据的发送和接收，从而安全地关闭连接。</p>
+</blockquote>
+<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a><strong>URL</strong></h3><p>发送http请求时，通过URL对网络资源进行定位。</p>
+<p>URL（Uniform Resource Locator），中文叫统一资源定位符。是用来标识某一处资源的地址。也即是我们常说的网址。以下面这个URL为例，普通URL的各部分组成：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/cd57e0a7-6f0d-4fc5-ac07-b45d213e3300/public"
+                      width = "500" 
+                >
+
+<blockquote>
+<ol>
+<li><p>协议</p>
+<ul>
+<li><p><strong>定义</strong>：指定了如何通过网络访问资源的方法或规则。</p>
+</li>
+<li><p><strong>常见例子</strong>：<code>http</code>, <code>https</code>。这决定了与服务器交互时使用的规则和标准。</p>
+</li>
+</ul>
+</li>
+<li><p>域名</p>
+<ul>
+<li><p><strong>定义</strong>：是互联网上一个服务器或一组服务器的易于记忆的地址。</p>
+</li>
+<li><p><strong>作用</strong>：它被解析成一个IP地址，这是定位服务器的实际数字标识。</p>
+</li>
+<li><p><strong>例子</strong>：<code>example.com</code>。</p>
+</li>
+</ul>
+</li>
+<li><p>端口（默认80）</p>
+<ul>
+<li><p><strong>定义</strong>：一个网络地址的一部分，用于标识特定的进程或服务。</p>
+</li>
+<li><p><strong>默认值</strong>：</p>
+<ul>
+<li>对于HTTP，端口默认是80。</li>
+<li>对于HTTPS，端口默认是443。</li>
+</ul>
+</li>
+<li><p><strong>说明</strong>：在URL中通常省略默认端口。</p>
+</li>
+<li><p>端口在网络通信中是一个重要的概念，它们用于区分一台计算机上的不同服务或进程。在TCP&#x2F;IP协议中，一个端口被定义为一个数字，这个数字用来区分主机上的不同服务或应用程序。每个TCP或UDP包都有特定的端口号，以确保数据传输的正确性。</p>
+<p><strong>端口分类</strong></p>
+<p>​	端口号的范围从0到65535，根据用途不同，端口被划分为以下几类：</p>
+<ul>
+<li><strong>系统或保留端口</strong>（0-1023）：<ul>
+<li>这些是众所周知的端口号，通常由系统或者特定的应用程序使用。</li>
+<li>例如，HTTP服务通常使用端口80，HTTPS服务使用端口443，FTP使用端口21。</li>
+</ul>
+</li>
+<li><strong>用户或注册端口</strong>（1024-49151）：<ul>
+<li>这些端口可由用户或应用程序使用，不需要系统级权限。</li>
+<li>很多著名的应用程序会使用这一范围内的端口号。</li>
+</ul>
+</li>
+<li><strong>动态或私有端口</strong>（49152-65535）：<ul>
+<li>这些端口一般不用于特定服务，而是动态分配给客户端临时通信。</li>
+</ul>
+</li>
+</ul>
+<p><strong>常见服务的标准端口</strong></p>
+<ul>
+<li><strong>MySQL</strong>：默认端口为3306。</li>
+<li><strong>MongoDB</strong>：默认端口为27017。</li>
+<li><strong>REST API</strong>：没有固定端口。REST API是一种设计风格，而不是应用程序或服务。它可以运行在任何端口上，通常选择的是80或443（如果使用HTTPS）。</li>
+</ul>
+<p><strong>端口的重要性</strong></p>
+<ul>
+<li><strong>安全性</strong>：一些端口因为常用于特定服务而更受攻击者关注，例如80和443。因此，网络安全措施经常涉及这些端口的监控和保护。</li>
+<li><strong>配置和管理</strong>：正确配置端口对于确保网络服务正确运行至关重要。例如，在部署数据库或API时，必须确保端口设置正确，且不与其他服务冲突。</li>
+</ul>
+<p><strong>结论</strong></p>
+<p>端口是网络通信的基本组成部分，正确理解和使用端口对于维护网络服务的健康和安全非常重要。每种服务都可能有一个或多个默认端口，但这些可以根据具体需求或安全考虑进行更改。</p>
+</li>
+</ul>
+</li>
+<li><p>路径</p>
+<ul>
+<li><p><strong>定义</strong>：表示服务器上资源的具体位置。</p>
+</li>
+<li><p><strong>结构</strong>：通常由一系列的斜杠(<code>/</code>)分隔的部分组成。</p>
+</li>
+<li><p><strong>例子</strong>：在URL <code>http://example.com/photos/image.jpg</code> 中，<code>/photos/image.jpg</code> 是路径，指向服务器上的特定图片。</p>
+</li>
+</ul>
+</li>
+<li><p>参数</p>
+<ul>
+<li><p><strong>定义</strong>：用于提供额外信息以完成对资源的请求。</p>
+</li>
+<li><p><strong>结构</strong>：通常以问号（<code>?</code>）开始，后跟一系列的“键-值”对，每对之间用和号（<code>&amp;</code>）分隔。</p>
+</li>
+<li><p><strong>例子</strong>：在URL <code>http://example.com/index.html?page=2&amp;sort=asc</code> 中，<code>page=2&amp;sort=asc</code> 是参数，用于指示页面编号和排序方式。</p>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="HTTP请求格式-请求行-请求头-空行-请求体"><a href="#HTTP请求格式-请求行-请求头-空行-请求体" class="headerlink" title="HTTP请求格式 (请求行,请求头,空行,请求体)"></a><strong>HTTP请求格式 (请求行,请求头,空行,请求体)</strong></h3><p>客户端发送一个HTTP请求到服务器的请求消息包括以下部分：请求行，请求头，空行和请求数据。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/29f184f7-16d4-4280-bf06-95871ba21600/public"
+                      width = "500"
+                >
+
+<p>一旦TCP连接建立，HTTP请求就发生在这个连接上。HTTP请求是在<strong>应用层</strong>发生的，HTTP请求依赖于TCP连接。在HTTP请求发送之前，TCP三次握手必须先完成，以确保数据传输的可靠性，具体分为以下几个部分：</p>
+<ol>
+<li><p><strong>请求行</strong>：</p>
+<p>​	包括HTTP方法（如GET, POST等）、请求的资源路径和HTTP版本，例如，<code>GET /index.html HTTP/1.1</code>。</p>
+<p>​	HTTP请求方法定义了客户端与服务器交互的不同方式。每种方法都有其特定用途。以下是HTTP 1.0和HTTP 1.1中定义的请求方法及其描述的整理：</p>
+<p><strong>HTTP 1.0 定义的请求方法</strong></p>
+<ul>
+<li><strong>GET</strong><ul>
+<li>描述：请求指定的页面信息，并返回实体主体。</li>
+<li>特点：URL中添加请求参数，显示在地址栏；请求字符串限制1024个字节；主要用于获取数据。</li>
+</ul>
+</li>
+<li><strong>POST</strong><ul>
+<li>描述：向指定资源提交数据进行处理请求（如提交表单或上传文件）。数据包含在请求体中。可能导致新资源的建立和&#x2F;或已有资源的修改。</li>
+<li>特点：没有大小限制；相对于GET更安全，因为数据不会显示在URL中。</li>
+</ul>
+</li>
+<li><strong>HEAD</strong><ul>
+<li>描述：类似于GET，但服务器返回的响应中不包含实体的主体部分。用于获取报头。</li>
+<li>特点：常用于验证资源是否存在，以及获取资源的元数据。</li>
+</ul>
+</li>
+</ul>
+<p><strong>HTTP 1.1 新增的请求方法</strong></p>
+<ul>
+<li><strong>OPTIONS</strong><ul>
+<li>描述：允许客户端查看服务器的性能。</li>
+<li>特点：用于客户端确定服务器对特定资源支持的方法。</li>
+</ul>
+</li>
+<li><strong>PUT</strong><ul>
+<li>描述：向指定资源位置上传其最新内容，通常用于更新内容。</li>
+<li>特点：替换所有当前表示的内容。</li>
+</ul>
+</li>
+<li><strong>DELETE</strong><ul>
+<li>描述：请求服务器删除指定的资源。</li>
+<li>特点：用于删除资源。</li>
+</ul>
+</li>
+<li><strong>TRACE</strong><ul>
+<li>描述：回显服务器收到的请求，主要用于测试或诊断。</li>
+<li>特点：用于诊断信息。</li>
+</ul>
+</li>
+<li><strong>CONNECT</strong><ul>
+<li>描述：预留给能够将连接改为管道方式的代理服务器。</li>
+<li>特点：用于代理服务器。</li>
+</ul>
+</li>
+</ul>
+<p><strong>注意事项</strong></p>
+<ul>
+<li>方法名称是区分大小写的。</li>
+<li>当资源不支持某个方法时，服务器应返回状态码405（Method Not Allowed）；当服务器不认识或不支持某个方法时，应返回状态码501（Not Implemented）。</li>
+<li>HTTP服务器至少应实现GET和HEAD&#x2F;POST方法，其他方法是可选的。服务器还可以支持扩展的自定义方法。</li>
+</ul>
+<p>总的来说，不同的HTTP请求方法支持不同的操作，选择适当的方法取决于执行的操作和所需的结果。GET和POST是最常用的两种方法，分别用于获取和提交数据。</p>
+</li>
+<li><p><strong>请求头</strong>：包含关于请求的附加信息，如用户代理、接受类型等。由多个头部字段组成，每个字段包含一个名称和一个值，用冒号(<code>:</code>)分隔。请求头提供了关于请求的附加信息，例如客户端信息、所需内容类型等。例如：</p>
+<div class="highlight-container" data-rel="Makefile"><figure class="iseeu highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">Host: www.baidu.com	请求的目标主机和端口号（如果非默认端口）</span></span><br><span class="line"><span class="section">User-Agent: Mozilla/5.0 (Windows NT 10.0; ...)	发出请求的浏览器或其他客户端的标识</span></span><br><span class="line"><span class="section">Referer: http://www.example.com/index.html	页面跳转处，指出产生请求的页面URL</span></span><br><span class="line"><span class="section">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8	客户端能够接收的内容类型</span></span><br><span class="line"><span class="section">Accept-Language: en-US,en;q=0.5	用户希望优先接收的语言和地区</span></span><br><span class="line"><span class="section">Accept-Encoding: gzip, deflate, br	客户端支持的内容编码（如压缩算法）</span></span><br><span class="line"><span class="section">Accept-Charset: 	utf-8, iso-8859-1;q=0.5	可接受的应答的字符集</span></span><br><span class="line"><span class="section">Connection: keep-alive	控制选项，如是否保持连接持续</span></span><br><span class="line"><span class="section">Cache-Control: max-age=0	关于缓存的指令</span></span><br><span class="line"><span class="section">Cookie: BAIDUID=...	包含服务器之前发送到用户浏览器的Cookie</span></span><br><span class="line"><span class="section">Content-Length: 348	发送给HTTP服务器数据的长度</span></span><br><span class="line"><span class="section">Content-Type: application/json	具体请求的媒体类型</span></span><br><span class="line"><span class="section">Content-Range: bytes 21010-47021/47022	响应资源的范围</span></span><br><span class="line"><span class="section">Cache-Control: no-cache	指定请求和响应遵循的缓存机制</span></span><br></pre></td></tr></table></figure></div>
+
+<p>每次HTTP请求的头部可能会有所不同，这取决于发出请求的客户端、用户的配置、网站的要求等多种因素。</p>
+<p>如果想查看一个具体网站（比如百度官网）的HTTP请求头，可以使用浏览器的开发者工具来查看。可以通过右键点击网页并选择“检查”或者使用F12键来打开开发者工具，然后切换到“网络”选项卡，查看具体的请求详情。</p>
+</li>
+<li><p><strong>空行</strong>：请求头和请求体之间的一个空行，标识请求头的结束。</p>
+</li>
+<li><p><strong>请求体</strong>：不是所有的HTTP请求都有请求体，它主要用于像POST这样的方法，包含了发送给服务器的数据。例如，在表单提交时，请求体可能包含填写的表单数据。POST 方法适用于需要客户填写表单的场合。与请求体相关的最常使用的是包体类型 Content-Type 和包体长度 Content-Length;</p>
+</li>
+</ol>
+<h3 id="HTTP响应格式-状态行-响应头-空行-响应正文"><a href="#HTTP响应格式-状态行-响应头-空行-响应正文" class="headerlink" title="HTTP响应格式 (状态行,响应头,空行,响应正文)"></a>HTTP响应格式 (状态行,响应头,空行,响应正文)</h3><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/9d674372-c8f5-45ec-32bb-f27cc6dd8c00/public"
+                      width = "500"
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/8264d6d7-2f81-4943-d6dc-d4647052f300/public"
+                      width = "500"
+                >
+
+<ol>
+<li><strong>状态行</strong></li>
+</ol>
+<p>​	状态行由 HTTP 协议版本、状态码和状态码的描述文本 3 个部分组成，他们之间使用空格隔开;</p>
+<ul>
+<li><p>状态码   由三位数字组成，第一位数字表示响应的类型，常用的状态码有五大类如下所示：</p>
+<ul>
+<li><p>1xx：表示服务器已接收了客户端请求，客户端可继续发送请求;</p>
+</li>
+<li><p>2xx：表示服务器已成功接收到请求并进行处理;</p>
+</li>
+<li><p>3xx：表示服务器要求客户端重定向;</p>
+</li>
+<li><p>4xx：表示客户端的请求有非法内容;</p>
+</li>
+<li><p>5xx：表示服务器未能正常处理客户端的请求而出现意外错误;</p>
+</li>
+</ul>
+</li>
+<li><p>状态码描述文本有如下取值：</p>
+<ul>
+<li><p>200 OK：表示客户端请求成功;</p>
+</li>
+<li><p>400 Bad Request：表示客户端请求有语法错误，不能被服务器所理解;</p>
+</li>
+<li><p>401 Unauthonzed：表示请求未经授权，该状态代码必须与 WWW-Authenticate 报头域一起使用;</p>
+</li>
+<li><p>403 Forbidden：表示服务器收到请求，但是拒绝提供服务，通常会在响应正文中给出不提供服务的原因;</p>
+</li>
+<li><p>404 Not Found：请求的资源不存在，例如，输入了错误的URL;</p>
+</li>
+<li><p>500 Internal Server Error：表示服务器发生不可预期的错误，导致无法完成客户端的请求;</p>
+</li>
+<li><p>503 Service Unavailable：表示服务器当前不能够处理客户端的请求，在一段时间之后，服务器可能会恢复正常;</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>响应头</strong></li>
+</ol>
+<p>​	响应头的具体内容可以根据服务器的配置和特定请求而变化。</p>
+<ul>
+<li>Allow服务器支持哪些请求方法（如GET、POST等）。</li>
+<li>Date表示消息发送的时间，时间的描述格式由rfc822定义。例如，Date:Mon，31Dec200104：25：57GMT。Date描述的时间表示世界标准时，换算成本地时间，需要知道用户所在的时区。</li>
+<li>Set-Cookie非常重要的header，用于把cookie发送到客户端浏览器，每一个写入cookie都会需要一个Set-Cookie。</li>
+<li>Expires指定Response的过期时间，从而不再缓存它，重新从服务器获取，会更新缓存。过期之前使用本地缓存。降低服务器负载，缩短加载时间。</li>
+<li>Content-Type WEB服务器告诉客户端自己响应的对急的类型和字符集。</li>
+<li>Content-Encoding：内容编码格式</li>
+</ul>
+<ol start="3">
+<li><strong>空行</strong></li>
+</ol>
+<p>响应头和响应体由空行连接。 最后一个响应头之后是一个空行，发送回车符和换行符，通知客户端以下不再有请响应头;</p>
+<ol start="4">
+<li><strong>响应体</strong></li>
+</ol>
+<p>该响应消息的响应体是一个HTML文档。浏览器可以直接识别这个HTML文件。而我们访问的是一个JSP文件，响应回去的是一个HTML文件。说明服务器将该JSP翻译成了一个HTML，然后再响应给浏览器。</p>
+<h3 id="HTTP三点注意事项"><a href="#HTTP三点注意事项" class="headerlink" title="HTTP三点注意事项"></a><strong>HTTP三点注意事项</strong></h3><ul>
+<li>HTTP是无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。HTTP&#x2F;1.1开始支持持久连接（keep-alive），允许在一个连接上处理多个请求，但是是串行处理不是并行。</li>
+<li>HTTP是媒体独立的：这意味着，只要客户端和服务器知道如何处理的数据内容，任何类型的数据都可以通过HTTP发送。</li>
+<li>HTTP是无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。 这种无状态的情况，并不适合我们进行业务需求，我们需要保持我们的登录状态，方便我们访问。通常使用cookies、session等技术在HTTP层之上维护状态。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a67df357-6a03-4119-a6f4-b8de4a7ed900/public"
+                      width = "500"
+                >
+
+<h2 id="四-会话技术"><a href="#四-会话技术" class="headerlink" title="四.会话技术"></a>四.会话技术</h2><p><strong>原因</strong></p>
+<p>HTTP是无状态的，那服务端怎么区分同一个用户的连续请求呢，这就用到了会话技术：Cookies和session。</p>
+<p><strong>概念</strong></p>
+<ul>
+<li><p>Cookie  有时也用其复数形式 Cookies。<br>指某些网站为了辨别用户身份、进行 Session 跟踪而储存在用户本地终端上的数据（通常经过加密）。最新的规范是 RFC6265  。</p>
+</li>
+<li><p>Cookie   可以理解为一个凭证<br>1.实际是由服务器发给客户端的特殊信息，<br>2.这些信息以文本文件的方式存放在客户端，<br>3.客户端每次向服务器发送请求的时候都会带上这些特殊的信息。<br>服务器在接收到Cookie以后，会验证Cookie的信息，以此来辨别用户的身份。</p>
+</li>
+</ul>
+<p><strong>Session</strong>中文经常翻译为会话，其本来的含义是指有始有终的一系列动作&#x2F;消息，比如打电话时从拿起电话拨号到挂断电话这中间的一系列过程可以称之为一个Session。这个词在各个领域都有在使用，而我们Web领域，一般使用的是其本义，一个浏览器窗口从打开到关闭这个期间。</p>
+<p>Session的目的则是，在一个客户从打开浏览器到关闭浏览器这个期间内，发起的所有请求都可以被识别为同一个用户。</p>
+<p>而实现的方式则是，在一个客户打开浏览器开始访问网站的时候，会生成一个Cookie，SessionID，这个ID每次的访问都会带上，而服务器会识别这个SessionID并且将与这个SessionID有关的数据保存在服务器上。由此来实现客户端的状态识别。因此<strong>Session是基于cookie的</strong>.</p>
+<p>Session与Cookie相反，<strong>Session是存储在服务器上的数据</strong>，只由客户端传上来的SessionID来进行判定，所以相对于Cookie，Session的安全性更高。</p>
+<p>一般SessionID会在浏览器被关闭时丢弃，或者服务器会验证Session的活跃程度，例如30分钟某一个SessionID都没有活跃，那么也会被识别为失效。</p>
+<h2 id="五-Proxy-代理"><a href="#五-Proxy-代理" class="headerlink" title="五.Proxy 代理"></a>五.Proxy 代理</h2><h3 id="代理的概念"><a href="#代理的概念" class="headerlink" title="代理的概念"></a>代理的概念</h3><p>代理实际指代理服务器，它的功能是代替用户取获取网络信息，就像是一个网络信息的中转站。正常情况下请求一个网站时，我们发送请求给web服务器，然后web服务器把响应传回给我们；而如果设置了代理服务器，此时我们就不是直接给web服务器发送请求，而是先向代理服务器发送请求，然后代理服务器再把我们的请求转发给目标web服务器，接着web服务器把响应返回给代理服务器，之后代理服务器再把响应返回给我们。使用这样的访问方式，我们同样可以正常访问网页，但是中间经过了代理服务器后，web服务器就不能识别到我们本机的IP了，只能识别代理服务器的IP，这样我们本机的真实IP就被伪装起来了，这就是代理服务器的基本原理和作用。</p>
+<h3 id="代理的作用"><a href="#代理的作用" class="headerlink" title="代理的作用"></a>代理的作用</h3><p>代理具体有什么作用呢</p>
+<ul>
+<li>突破自身IP访问限制，访问一些自身IP不能访问的站点。</li>
+<li>访问一些单位或团体内部资源：比如使用教育网内地址段免费代理服务器，就可以用于对教育网开放的各类FTP下载上传，以及各类资料查询共享等服务。</li>
+<li>提高访问速度：通常代理服务器都设置一个较大的硬盘缓冲区，当有外界的信息通过时，同时也将其保存到缓冲区中，当其他用户再访问相同的信息时，则直接由缓冲区中取出信息，传给用户，以提高访问速度。</li>
+<li>隐藏真实IP：上网者也可以通过这种方法隐藏自己的IP，免受攻击。对于爬虫来说，我们用代理就是为了隐藏自身IP，防止自身的IP被封锁。</li>
+</ul>
+<p>代理对于爬虫的作用</p>
+<p>由于爬虫爬取速度过快，在爬取过程中可能遇到同一个IP访问过于频繁的问题，此时网站就会让我们输入验证码登录或者直接封锁IP，这样会给爬取带来极大的不便。使用代理隐藏真实的IP，让服务器误以为是代理服务器在请求自己。这样在爬取过程中通过不断更换代理，就不会被封锁，可以达到很好的爬取效果。</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 爬虫与网络基础理论</li>
+        <li><strong>作者:</strong> Yiuhang Chan</li>
+        <li><strong>创建于
+                :</strong> 2021-02-21 03:12:54</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-02-28 18:50:14
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://www.yiuhangblog.com/2021/02/21/20210221爬虫与网络基础理论/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%90%86%E8%AE%BA/">#理论</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%88%AC%E8%99%AB/">#爬虫</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">#网络协议</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B/">#网络类型</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84/">#网络架构</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2021/02/22/20210222requests/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Requests</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2020/10/05/20201005Tableau%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%9B%BE%E8%A1%A8/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Tableau数据可视化图表</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://comment.yiuhangblog.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">爬虫与网络基础理论</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E7%88%AC%E8%99%AB%E6%A6%82%E5%BF%B5"><span class="nav-text">一.爬虫概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%8D%E7%B1%BB"><span class="nav-text">种类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E7%9A%84%E9%87%8D%E9%9A%BE%E7%82%B9"><span class="nav-text">爬虫开发的重难点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E7%BD%91%E7%BB%9C%E4%B8%8EHTTP-HTTPS%E5%8D%8F%E8%AE%AE"><span class="nav-text">二.网络与HTTP&#x2F;HTTPS协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B%EF%BC%88Network-Types%EF%BC%89"><span class="nav-text">网络类型（Network  Types）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%9C%AC%E5%9C%B0%E5%8C%BA%E5%9F%9F%E7%BD%91-LAN-Local-Area-Network"><span class="nav-text">1. 本地区域网 (LAN - Local Area Network)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B9%BF%E5%9F%9F%E7%BD%91-WAN-Wide-Area-Network"><span class="nav-text">2. 广域网 (WAN - Wide Area Network)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%9F%8E%E5%9F%9F%E7%BD%91-MAN-Metropolitan-Area-Network"><span class="nav-text">3. 城域网 (MAN - Metropolitan Area Network)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%B8%AA%E4%BA%BA%E5%8C%BA%E5%9F%9F%E7%BD%91-PAN-Personal-Area-Network"><span class="nav-text">4. 个人区域网 (PAN - Personal Area Network)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91-WLAN-Wireless-Local-Area-Network"><span class="nav-text">5. 无线局域网 (WLAN - Wireless Local Area Network)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E8%99%9A%E6%8B%9F%E7%A7%81%E4%BA%BA%E7%BD%91-VPN-Virtual-Private-Network"><span class="nav-text">6. 虚拟私人网 (VPN - Virtual Private Network)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E4%BC%81%E4%B8%9A%E7%A7%81%E4%BA%BA%E7%BD%91%E7%BB%9C-EPN-Enterprise-Private-Network"><span class="nav-text">7. 企业私人网络 (EPN - Enterprise Private Network)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E5%86%85%E5%AE%B9%E5%88%86%E5%8F%91%E7%BD%91%E7%BB%9C-CDN-Content-Delivery-Network"><span class="nav-text">8. 内容分发网络 (CDN - Content Delivery Network)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-%E4%BA%91%E8%AE%A1%E7%AE%97%E7%BD%91%E7%BB%9C"><span class="nav-text">9. 云计算网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-%E5%85%B6%E5%AE%83"><span class="nav-text">10.其它</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84%EF%BC%88Network-Architectures%EF%BC%89"><span class="nav-text">网络架构（Network  Architectures）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%A2%E6%88%B7%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88C-S-Client-Server%EF%BC%89"><span class="nav-text">1. 客户端&#x2F;服务器（C&#x2F;S - Client&#x2F;Server）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%B5%8F%E8%A7%88%E5%99%A8-%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88B-S-Browser-Server%EF%BC%89"><span class="nav-text">2. 浏览器&#x2F;服务器（B&#x2F;S - Browser&#x2F;Server）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88M-S-Mobile-Server%EF%BC%89"><span class="nav-text">3. 移动端&#x2F;服务器（M&#x2F;S - Mobile&#x2F;Server）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%AF%B9%E7%AD%89%E7%BD%91%E7%BB%9C%EF%BC%88P2P-Peer-to-Peer%EF%BC%89"><span class="nav-text">4. 对等网络（P2P - Peer-to-Peer）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%EF%BC%88Microservices-Architecture%EF%BC%89"><span class="nav-text">5.微服务架构（Microservices  Architecture）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E6%9C%8D%E5%8A%A1%E5%AF%BC%E5%90%91%E6%9E%B6%E6%9E%84%EF%BC%88SOA-Service-Oriented-Architecture%EF%BC%89"><span class="nav-text">6. 服务导向架构（SOA - Service-Oriented Architecture）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E7%BD%91%E6%A0%BC%E8%AE%A1%E7%AE%97%EF%BC%88Grid-Computing%EF%BC%89"><span class="nav-text">7. 网格计算（Grid Computing）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E9%9B%BE%E8%AE%A1%E7%AE%97%EF%BC%88Fog-Computing%EF%BC%89"><span class="nav-text">8. 雾计算（Fog  Computing）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="nav-text">HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86%EF%BC%9AOSI%E6%A8%A1%E5%9E%8B"><span class="nav-text">背景知识：OSI模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0"><span class="nav-text">原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E5%8F%8A%E7%89%B9%E7%82%B9"><span class="nav-text">概念及特点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS%EF%BC%88%E5%AE%89%E5%85%A8%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-text">HTTPS（安全超文本传输协议）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP%E4%B8%8EHTTPS%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-text">HTTP与HTTPS的比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-HTTP%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">三.HTTP协议的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B"><span class="nav-text">HTTP请求流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%88%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="nav-text">TCP三次握手（建立连接）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%EF%BC%88%E6%AD%A3%E5%9C%A8%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="nav-text">数据传输（正在连接）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%EF%BC%88%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="nav-text">TCP四次挥手（关闭连接）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL"><span class="nav-text">URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP%E8%AF%B7%E6%B1%82%E6%A0%BC%E5%BC%8F-%E8%AF%B7%E6%B1%82%E8%A1%8C-%E8%AF%B7%E6%B1%82%E5%A4%B4-%E7%A9%BA%E8%A1%8C-%E8%AF%B7%E6%B1%82%E4%BD%93"><span class="nav-text">HTTP请求格式 (请求行,请求头,空行,请求体)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP%E5%93%8D%E5%BA%94%E6%A0%BC%E5%BC%8F-%E7%8A%B6%E6%80%81%E8%A1%8C-%E5%93%8D%E5%BA%94%E5%A4%B4-%E7%A9%BA%E8%A1%8C-%E5%93%8D%E5%BA%94%E6%AD%A3%E6%96%87"><span class="nav-text">HTTP响应格式 (状态行,响应头,空行,响应正文)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP%E4%B8%89%E7%82%B9%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">HTTP三点注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF"><span class="nav-text">四.会话技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-Proxy-%E4%BB%A3%E7%90%86"><span class="nav-text">五.Proxy 代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-text">代理的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-text">代理的作用</span></a></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2018</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 5s"></i>&nbsp;&nbsp;<a href="/">Yiuhang Chan</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 41 篇文章
+                    </span>
+                    
+                        <span>
+                            共 348k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex justify-center items-center">
+                <a class="flex justify-center items-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/libs/mermaid.min.js"></script>
+
+    
+<script src="/js/plugins/mermaid.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

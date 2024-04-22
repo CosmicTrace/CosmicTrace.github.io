@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="zh-CN,en,zh-TW,default">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Yiuhang Chan">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://www.yiuhangblog.com/2021/02/23/20210223页面解析工具/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="利用beautifulsoup4 Xpath JSONPath等工具对各网站进行基本的解析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="页面解析工具">
+<meta property="og:url" content="https://www.yiuhangblog.com/2021/02/23/20210223%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:site_name" content="角灯随笔">
+<meta property="og:description" content="利用beautifulsoup4 Xpath JSONPath等工具对各网站进行基本的解析">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e21bc48e-0303-49dd-5507-71e48db20900/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7b181ea1-88a1-429b-37cf-d5c83a623500/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ea4c88db-d785-4838-620c-824192d29e00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ee60116b-f76c-4300-49be-2f984d22f100/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b910c03f-f531-4694-3d13-2fbd9365e200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2de98c8e-4ce0-4841-7819-d1b9a3695600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/de2ffe23-49cf-4fe4-345d-94013c995300/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7e787bdf-efd4-48ce-f495-dd8785421c00/public">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/%E9%80%89%E5%8F%96%E5%A4%9A%E4%B8%AA%E8%B7%AF%E5%BE%84.png">
+<meta property="article:published_time" content="2021-02-23T06:12:56.000Z">
+<meta property="article:modified_time" content="2024-02-28T10:50:23.000Z">
+<meta property="article:author" content="Yiuhang Chan">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="理论">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="Requests">
+<meta property="article:tag" content="页面解析">
+<meta property="article:tag" content="BS4">
+<meta property="article:tag" content="beautifulsoup4">
+<meta property="article:tag" content="Xpath">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e21bc48e-0303-49dd-5507-71e48db20900/public">
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-MQ43G0NKCT"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MQ43G0NKCT');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <meta name="theme-color" content="#A1AFC9">
+    <link rel="shortcut icon" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <!--- Page Info-->
+    
+    <title>
+        
+            页面解析工具 -
+        
+        角灯随笔
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        角灯随笔
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"www.yiuhangblog.com","root":"/","language":["zh-CN","en","zh-TW","default"]};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":6,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":5,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A1AFC9","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":true,"id":"G-MQ43G0NKCT"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e63fc400-dd0e-4395-bd1b-9ee1ac3bfb00/public","dark":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a34140d6-7960-45dd-b8b5-c3ddd14d1f00/public"},"title":"角灯随笔","subtitle":{"text":["全栈也不是不行"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/CosmicTrace","instagram":null,"zhihu":null,"twitter":null,"email":"kenchansk0@gmail.com"},"qrs":null}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"娱乐":{"icon":"fa-solid fa-gamepad","submenus":{"王者荣耀":"/hok","守望先锋":"/ow","使命召唤":"/cod"}},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/CosmicTrace"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"谦逊","show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":8}},"footerStart":"2018/07/15 10:15:24"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="角灯随笔" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                角灯随笔
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/"
+                                        >
+                                    <i class="fa-solid fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-solid fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-solid fa-gamepad fa-fw"></i>
+                                    娱乐
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/hok">
+                                                    王者荣耀
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/ow">
+                                                    守望先锋
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/cod">
+                                                    使命召唤
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/CosmicTrace">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-solid fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-solid fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-娱乐"
+                        >
+                            <span>
+                                娱乐
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-娱乐">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/hok">王者荣耀</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/ow">守望先锋</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/cod">使命召唤</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/CosmicTrace">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">96</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">41</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/717c182e-7daf-42d4-703f-986d8f1f8a00/public" alt="页面解析工具" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">页面解析工具</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/26329e9f-d1fb-4280-a0a5-754547bf8500/public">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Yiuhang Chan</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2021-02-23 14:12:56</span>
+        <span class="mobile">2021-02-23 14:12:56</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-02-28 18:50:23</span>
+            <span class="mobile">2024-02-28 18:50:23</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96/">数据抓取</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%90%86%E8%AE%BA/">理论</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Requests/">Requests</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90/">页面解析</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/BS4/">BS4</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/beautifulsoup4/">beautifulsoup4</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Xpath/">Xpath</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>3.7k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>17 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="BS4"><a href="#BS4" class="headerlink" title="BS4"></a>BS4</h2><p>BeautifulSoup 是一个可以从HTML或XML文件中提取数据的Python库，它的使用方式相对于正则来说更加的简单方便，常常能够节省我们大量的时间。</p>
+<h3 id="官方中文文档"><a href="#官方中文文档" class="headerlink" title="官方中文文档"></a>官方中文文档</h3><p><a class="link"   target="_blank" rel="noopener" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html" >https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><strong>pip install beautifulsoup4</strong></p>
+<h3 id="解析器"><a href="#解析器" class="headerlink" title="解析器"></a>解析器</h3><table>
+<thead>
+<tr>
+<th><strong>解析器</strong></th>
+<th><strong>使用方法</strong></th>
+<th><strong>优势</strong></th>
+<th><strong>劣势</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Python标准库</td>
+<td>BeautifulSoup(markup, “html.parser”)</td>
+<td>Python的内置标准库执行速度适中文档容错能力强</td>
+<td>Python 2.7.3 or 3.2.2)前 的版本中文档容错能力差</td>
+</tr>
+<tr>
+<td>lxml HTML 解析器</td>
+<td>BeautifulSoup(markup, “lxml”)</td>
+<td>速度快文档容错能力强</td>
+<td>需要安装C语言库</td>
+</tr>
+<tr>
+<td>lxml XML 解析器</td>
+<td>BeautifulSoup(markup, [“lxml”, “xml”])&#96;&#96;BeautifulSoup(markup, “xml”)</td>
+<td>速度快唯一支持XML的解析器</td>
+<td>需要安装C语言库</td>
+</tr>
+<tr>
+<td>html5lib</td>
+<td>BeautifulSoup(markup, “html5lib”)</td>
+<td>最好的容错性以浏览器的方式解析文档生成HTML5格式的文档</td>
+<td>速度慢不依赖外部扩展</td>
+</tr>
+</tbody></table>
+<p>由于这个解析的过程在大规模的爬取中是会影响到整个爬虫系统的速度的，所以推荐使用的是lxml，速度会快很多，而lxml需要单独安装：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install lxml</span><br><span class="line">soup = BeautifulSoup(html_doc, <span class="string">&#x27;lxml&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>如果一段HTML或XML文档格式不正确的话,那么在不同的解析器中返回的结果可能是不一样的，所以要指定某一个解析器。</p>
+<h3 id="节点对象"><a href="#节点对象" class="headerlink" title="节点对象"></a>节点对象</h3><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e21bc48e-0303-49dd-5507-71e48db20900/public"
+                      width = "500"
+                >
+
+<h4 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h4><p>tag就是标签的意思，tag还有许多的方法和属性。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7b181ea1-88a1-429b-37cf-d5c83a623500/public"
+                      width = "500"
+                >
+
+<h4 id="NavigableString"><a href="#NavigableString" class="headerlink" title="NavigableString"></a>NavigableString</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ea4c88db-d785-4838-620c-824192d29e00/public"
+                      width = "500"
+                >
+
+<h4 id="BeautifulSoup"><a href="#BeautifulSoup" class="headerlink" title="BeautifulSoup"></a>BeautifulSoup</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/ee60116b-f76c-4300-49be-2f984d22f100/public"
+                      width = "500"
+                >
+
+<h4 id="Comment"><a href="#Comment" class="headerlink" title="Comment"></a>Comment</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b910c03f-f531-4694-3d13-2fbd9365e200/public"
+                      width = "500"
+                >
+
+<h3 id="Tag和遍历文档树"><a href="#Tag和遍历文档树" class="headerlink" title="Tag和遍历文档树"></a>Tag和遍历文档树</h3><p>tag对象可以说是BeautifulSoup中最为重要的对象，通过BeautifulSoup来提取数据基本都围绕着这个对象来进行操作。<br>首先，一个节点中是可以包含多个子节点和多个字符串的。例如html节点中包含着head和body节点。所以BeautifulSoup就可以将一个HTML的网页用这样一层层嵌套的节点来进行表示。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2de98c8e-4ce0-4841-7819-d1b9a3695600/public"
+                      width = "500"
+                >
+
+<h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4  <span class="keyword">import</span> BeautifulSoup<span class="comment">#导包</span></span><br><span class="line">soup=BeautifulSoup(html_str,<span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"><span class="built_in">type</span>(soup)</span><br><span class="line"></span><br><span class="line">bs4.BeautifulSoup</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="Tag-标签取出简单示例"><a href="#Tag-标签取出简单示例" class="headerlink" title="Tag 标签取出简单示例"></a>Tag 标签取出简单示例</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html_data = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&lt;html&gt;</span></span><br><span class="line"><span class="string">  &lt;body&gt;</span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">      我们都是害虫</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;div id=&quot;info&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;span&gt;&lt;span class=&quot;pl&quot;&gt;导演&lt;/span&gt;: &lt;span class=&quot;attrs&quot;&gt;&lt;a href=&quot;/celebrity/1362276/&quot; rel=&quot;v:directedBy&quot;&gt;邢文雄&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span&gt;&lt;span class=&quot;pl&quot;&gt;编剧&lt;/span&gt;: &lt;span class=&quot;attrs&quot;&gt;&lt;a href=&quot;/celebrity/1362276/&quot;&gt;邢文雄&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;actor&quot;&gt;&lt;span class=&quot;pl&quot;&gt;主演&lt;/span&gt;: &lt;span class=&quot;attrs&quot;&gt;&lt;span&gt;&lt;a href=&quot;/celebrity/1319032/&quot; rel=&quot;v:starring&quot;&gt;马丽&lt;/a&gt; / &lt;/span&gt;&lt;span&gt;&lt;a href=&quot;/celebrity/1355058/&quot; rel=&quot;v:starring&quot;&gt;魏翔&lt;/a&gt; / &lt;/span&gt;&lt;span&gt;&lt;a href=&quot;/celebrity/1362567/&quot; rel=&quot;v:starring&quot;&gt;陈明昊&lt;/a&gt; / &lt;/span&gt;&lt;span&gt;&lt;a href=&quot;/celebrity/1319540/&quot; rel=&quot;v:starring&quot;&gt;周大勇&lt;/a&gt; / &lt;/span&gt;&lt;span&gt;&lt;a href=&quot;/celebrity/1363857/&quot; rel=&quot;v:starring&quot;&gt;黄才伦&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1350408/&quot; rel=&quot;v:starring&quot;&gt;艾伦&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1394939/&quot; rel=&quot;v:starring&quot;&gt;高海宝&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1386801/&quot; rel=&quot;v:starring&quot;&gt;韩笑&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1444360/&quot; rel=&quot;v:starring&quot;&gt;孙贵权&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1426220/&quot; rel=&quot;v:starring&quot;&gt;许猛&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1467304/&quot; rel=&quot;v:starring&quot;&gt;全容杓&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1467305/&quot; rel=&quot;v:starring&quot;&gt;卜俊男&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1316008/&quot; rel=&quot;v:starring&quot;&gt;张志忠&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1367242/&quot; rel=&quot;v:starring&quot;&gt;张建新&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1398260/&quot; rel=&quot;v:starring&quot;&gt;马驰&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1353283/&quot; rel=&quot;v:starring&quot;&gt;陶亮&lt;/a&gt; / &lt;/span&gt;&lt;span style=&quot;display: none;&quot;&gt;&lt;a href=&quot;/celebrity/1403276/&quot; rel=&quot;v:starring&quot;&gt;詹卢卡·佐帕&lt;/a&gt;&lt;/span&gt;&lt;a href=&quot;javascript:;&quot; class=&quot;more-actor&quot; title=&quot;更多主演&quot;&gt;更多...&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;类型:&lt;/span&gt; &lt;span property=&quot;v:genre&quot;&gt;喜剧&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;制片国家/地区:&lt;/span&gt; 中国大陆&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;语言:&lt;/span&gt; 汉语普通话&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;上映日期:&lt;/span&gt; &lt;span property=&quot;v:initialReleaseDate&quot; content=&quot;2022-02-01(中国大陆)&quot;&gt;2022-02-01(中国大陆)&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;片长:&lt;/span&gt; &lt;span property=&quot;v:runtime&quot; content=&quot;109&quot;&gt;109分钟&lt;/span&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;又名:&lt;/span&gt; Too Cool To Kill&lt;br&gt;</span></span><br><span class="line"><span class="string">        &lt;span class=&quot;pl&quot;&gt;IMDb:&lt;/span&gt; tt16254308&lt;br&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">  &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">soup = BeautifulSoup(html_data, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取第一个a标签(tag)里面的文本信息</span></span><br><span class="line"><span class="built_in">print</span>(soup.a.text, <span class="built_in">type</span>(soup.a.text))  <span class="comment"># 邢文雄 &lt;class &#x27;str&#x27;&gt;</span></span><br><span class="line"><span class="built_in">print</span>(soup.a.string, <span class="built_in">type</span>(soup.a.string))  <span class="comment"># 邢文雄 &lt;class &#x27;bs4.element.NavigableString&#x27;&gt;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;===========================================================&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 标签的属性</span></span><br><span class="line"><span class="built_in">print</span>(soup.a.get(<span class="string">&quot;href&quot;</span>))  <span class="comment"># /celebrity/1362276/</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;===========================================================&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 子代标签</span></span><br><span class="line">body = soup.body</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(body.children))  <span class="comment"># &lt;list_iterator object at 0x000001B973C23BE0&gt;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;===========================================================&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后代标签</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(body.descendants))  <span class="comment"># &lt;generator object Tag.descendants at 0x00000159C796A510&gt;</span></span><br><span class="line">test = body.descendants</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;===========================================================&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 兄弟标签  （同级的标签，有相同的父标签）</span></span><br><span class="line">span = body.span</span><br><span class="line"><span class="built_in">print</span>(span.next_sibling.next_sibling.next_sibling)  <span class="comment"># 下一个兄弟标签</span></span><br><span class="line"><span class="comment"># 第一个兄弟是 &lt;br&gt;</span></span><br><span class="line"><span class="comment"># 第二个兄弟是 \n</span></span><br><span class="line"><span class="comment"># 第三个兄弟是第一个内容标签</span></span><br><span class="line"><span class="built_in">print</span>(span.previous_sibling.previous_sibling)</span><br><span class="line"><span class="comment"># 第一个兄弟是 \n</span></span><br><span class="line"><span class="comment"># 第二个兄弟是 我们所需的标签</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;===========================================================&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 父类标签, 加了s就是所有父类标签，不加就是它本身</span></span><br><span class="line">p_parents = span.parents</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(p_parents))  <span class="comment"># &lt;generator object PageElement.parents at 0x000001A4DBD37E40&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<h5 id="1-find-all"><a href="#1-find-all" class="headerlink" title="1.find_all"></a>1.find_all</h5><p>直接通过名字和属性来进行访问，很多时候只能适用于比较简单的一些场景，所以BeautifulSoup还提供了搜索整个文档树的方法find_all()。</p>
+<ul>
+<li><p>通过<code>name</code>搜索，<code>find_all(&#39;b&#39;)</code>可以直接查找出整个文档树中所有的b标签，并返回列表</p>
+</li>
+<li><p>通过属性搜索，我们在搜索的时候一般只有标签名是不够的，因为可能同名的标签很多，那么这时候我们就要通过标签的属性来进行搜索。这时候我们可以通过传递给<code>attrs</code>一个字典参数来搜索属性。<br><code>soup.find_all(attrs=&#123;&#39;class&#39;: &#39;sister&#39;&#125;)</code></p>
+</li>
+<li><p>通过文本搜索，在find_all()方法中，还可以根据文本内容来进行搜索。<code>soup.find_all(string=&quot;Elsie&quot;)</code></p>
+</li>
+<li><p>限制查找范围为子节点<br><code>find_all()</code>方法会默认的去所有的子孙节点中搜索，而如果将<code>recursive</code>参数设置为<code>False</code>，则可以将搜索范围限制在直接子节点中。 <code>soup.html.find_all(&quot;title&quot;, recursive=False)</code></p>
+</li>
+<li><p>通过正则表达式来筛选查找结果在BeautifulSoup中，也是可以与re模块进行相互配合的，将<code>re.compile</code>编译的对象传入<code>find_all()</code>方法，即可通过正则来进行搜索。<code>tags = soup.find_all(re.compile(&quot;^b&quot;))</code></p>
+</li>
+<li><p>以之前的数据为例子：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(soup.find_all(<span class="string">&#x27;a&#x27;</span>, string=<span class="string">&#x27;邢文雄&#x27;</span>)) </span><br><span class="line"><span class="comment"># [&lt;a href=&quot;/celebrity/1362276/&quot; rel=&quot;v:directedBy&quot;&gt;邢文雄&lt;/a&gt;, &lt;a href=&quot;/celebrity/1362276/&quot;&gt;邢文雄&lt;/a&gt;]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(soup.find_all(<span class="string">&#x27;span&#x27;</span>, attrs=&#123;<span class="string">&#x27;class&#x27;</span>: <span class="string">&#x27;pl&#x27;</span>&#125;))</span><br><span class="line"><span class="comment"># [&lt;span class=&quot;pl&quot;&gt;导演&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;编剧&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;主演&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;类型:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;制片国家/地区:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;语言:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;上映日期:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;片长:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;又名:&lt;/span&gt;, &lt;span class=&quot;pl&quot;&gt;IMDb:&lt;/span&gt;]</span></span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h5 id="2-CSS选择器"><a href="#2-CSS选择器" class="headerlink" title="2.CSS选择器"></a>2.CSS选择器</h5><p>在BeautifulSoup中，同样也支持使用CSS选择器来进行搜索。使用select()，在其中传入字符串参数，就可以使用CSS选择器的语法来找到tag。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(soup.select(<span class="string">&#x27;a&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(soup.select(<span class="string">&#x27;span &gt; a&#x27;</span>))</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="JSON-Path"><a href="#JSON-Path" class="headerlink" title="JSON Path"></a>JSON Path</h2><p>JSON Path 是一种查询语言，用于从 JSON (JavaScript Object Notation) 数据中提取和处理信息。它类似于 SQL，但专门用于与 JSON 数据交互。使用 JSON Path，可以从复杂的 JSON 结构中轻松检索特定元素或值。这在处理大型或嵌套的 JSON 数据时特别有用。</p>
+<p>以下是 JSON Path 的一些主要用途：</p>
+<ol>
+<li><strong>数据提取</strong>：从 JSON 数据中选择和提取数据，例如提取特定属性的值或筛选符合特定条件的元素。</li>
+<li><strong>查询构建</strong>：创建灵活的查询来搜索和筛选 JSON 数据中的信息。</li>
+<li><strong>数据处理</strong>：简化对复杂 JSON 结构的遍历和分析，无需编写复杂的代码。</li>
+<li><strong>API 交互</strong>：常用于与 RESTful API 交互时解析和处理返回的 JSON 数据。</li>
+</ol>
+<p>JSON Path 通过提供一种简洁的语法来实现这些功能，使得从复杂的 JSON 结构中检索信息变得更加简单和直接。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jsonpath  <span class="comment"># pip install jsonpath</span></span><br><span class="line"></span><br><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;resultCode&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;resultMsg&quot;</span>: <span class="string">&quot;success&quot;</span>,</span><br><span class="line">    <span class="string">&quot;reqId&quot;</span>: <span class="string">&quot;52f9f3e1-1d76-47b4-b2ae-226633b61476&quot;</span>,</span><br><span class="line">    <span class="string">&quot;systemTime&quot;</span>: <span class="string">&quot;1681991278593&quot;</span>,</span><br><span class="line">    <span class="string">&quot;videoInfo&quot;</span>: &#123;  <span class="comment"># 父亲</span></span><br><span class="line">        <span class="string">&quot;playSta&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">        <span class="string">&quot;video_image&quot;</span>: <span class="string">&quot;https://image.pearvideo.com/cont/20170714/cont-1110173-10436784.png&quot;</span>,</span><br><span class="line">        <span class="string">&quot;srcUrl&quot;</span>: <span class="string">&quot;https://video.pearvideo.com/mp4/short/20170714/1681991278593-10632788-hd.mp4&quot;</span>,</span><br><span class="line">        <span class="string">&quot;videos&quot;</span>: &#123;  <span class="comment"># 儿子</span></span><br><span class="line">            <span class="string">&quot;hdUrl&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;hdflvUrl&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;sdUrl&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;sdflvUrl&quot;</span>: <span class="string">&quot;&quot;</span>,  <span class="comment"># 孙子</span></span><br><span class="line">            <span class="string">&quot;srcUrl&quot;</span>: <span class="string">&quot;https://video.pearvideo.com/mp4/short/20170714/1681991278593-10632788-hd.mp4&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># jsonpath(数据,&#x27;语法&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># dic.get(&quot;videoInfo&quot;).get(&quot;videos&quot;).get(&quot;srcUrl&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(jsonpath.jsonpath(dic, &#x27;$..srcUrl&#x27;))</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># print(jsonpath.jsonpath(dic, &#x27;$..video_image&#x27;))</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(jsonpath.jsonpath(dic, <span class="string">&#x27;$..videos.srcUrl&#x27;</span>)) </span><br><span class="line"><span class="comment">#[&#x27;https://video.pearvideo.com/mp4/short/20170714/1681991278593-10632788-hd.mp4&#x27;]</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="Xpath"><a href="#Xpath" class="headerlink" title="Xpath"></a>Xpath</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>XPath 是一门在 XML 文档中查找信息的语言。XPath 可用来在 XML 文档中对元素和属性进行遍历。<br>相比于BeautifulSoup，Xpath在提取数据时会更有效率。</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p><code>pip install lxml</code></p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>XPath 使用路径表达式在 XML&#x2F;HTML 文档中选取节点。节点是通过沿着路径或者 step 来选取的。</p>
+<p>下面列出了最有用的路径表达式：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/de2ffe23-49cf-4fe4-345d-94013c995300/public"
+                      width = "500"
+                >
+
+<h3 id="谓语"><a href="#谓语" class="headerlink" title="谓语"></a>谓语</h3><p>谓语用来查找某个或某些特定的节点或者包含某个指定值的节点<br>谓语被嵌在方括号中。在下面的表格中，我们列出了带有谓语的一些路径表达式，以及表达式的结果。实例:</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/7e787bdf-efd4-48ce-f495-dd8785421c00/public"
+                      width = "500"
+                >
+
+<h3 id="选取未知节点"><a href="#选取未知节点" class="headerlink" title="选取未知节点"></a>选取未知节点</h3><p>XPath通配符可用来选取未知节点</p>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td>匹配任何元素节点。</td>
+</tr>
+<tr>
+<td>@*</td>
+<td>匹配任何属性节点。</td>
+</tr>
+<tr>
+<td>node()</td>
+<td>匹配任何类型的节点。</td>
+</tr>
+</tbody></table>
+<h3 id="选取多个路径"><a href="#选取多个路径" class="headerlink" title="选取多个路径"></a>选取多个路径</h3><p>通过在路径表达式中使用”|”运算符，可以选取若干个路径。在下面的表格中，列出了一些路径表达式，以及这些表达式的结果：</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/CosmicTrace/Remote_img_load/Blog/%E9%80%89%E5%8F%96%E5%A4%9A%E4%B8%AA%E8%B7%AF%E5%BE%84.png"
+                      width = "500"
+                >
+
+<h3 id="获取节点下文本"><a href="#获取节点下文本" class="headerlink" title="获取节点下文本"></a>获取节点下文本</h3><p>用text()获取某个节点下的文本，用string()获取某个节点下所有的文本。</p>
+<h2 id="解析工具应用案例"><a href="#解析工具应用案例" class="headerlink" title="解析工具应用案例"></a>解析工具应用案例</h2><h3 id="1-明确目标："><a href="#1-明确目标：" class="headerlink" title="1. 明确目标："></a>1. 明确目标：</h3><p>以豆瓣电影排行榜为案例，抓取豆瓣电影的排行榜: <a class="link"   target="_blank" rel="noopener" href="https://movie.douban.com/chart" >https://movie.douban.com/chart <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>需要提取的数据：</p>
+<pre><code>1. movie_name	2. movie_actor	3. movie_score
+</code></pre>
+<h3 id="2-进行伪装与请求："><a href="#2-进行伪装与请求：" class="headerlink" title="2. 进行伪装与请求："></a>2. 进行伪装与请求：</h3><p>进行伪装与请求：</p>
+<ol>
+<li>requests</li>
+</ol>
+<h3 id="3-交互响应中去提取我们需要的信息："><a href="#3-交互响应中去提取我们需要的信息：" class="headerlink" title="3. 交互响应中去提取我们需要的信息："></a>3. 交互响应中去提取我们需要的信息：</h3><ol>
+<li>正则  	2. bs4 	3.  json() 	 4. xpath（可平替bs4）</li>
+</ol>
+<h3 id="4-保存结果"><a href="#4-保存结果" class="headerlink" title="4. 保存结果"></a>4. 保存结果</h3><ol>
+<li>文件</li>
+</ol>
+<h3 id="5-代码示例"><a href="#5-代码示例" class="headerlink" title="5. 代码示例"></a>5. 代码示例</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://movie.douban.com/chart&#x27;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">     <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36&#x27;</span>,</span><br><span class="line"> &#125;</span><br><span class="line">res = requests.get(url, headers=headers)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;douban.html&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="keyword">as</span> f: <span class="comment"># encoding=&#x27;utf8&#x27; 避免乱码</span></span><br><span class="line">     f.write(res.text)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># 读取已保存的文件 douban.html</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;douban.html&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过etree读取改文件，建立对象page</span></span><br><span class="line">page = etree.HTML(data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例操作，一层一层往下探究对象</span></span><br><span class="line">test = page.xpath(<span class="string">&#x27;//div[@class=&quot;pl2&quot;]/a/text()&#x27;</span>) <span class="comment"># xpath(xpath语法字符串)</span></span><br><span class="line"><span class="built_in">print</span>(test)</span><br><span class="line"> li = []</span><br><span class="line"> <span class="keyword">for</span> i <span class="keyword">in</span> test:</span><br><span class="line">     movie_name = i.replace(<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27;\n&#x27;</span>, <span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">     <span class="keyword">if</span> <span class="keyword">not</span> movie_name:</span><br><span class="line">         <span class="keyword">continue</span></span><br><span class="line">     li.append(movie_name)</span><br><span class="line"></span><br><span class="line"> <span class="built_in">print</span>(li) <span class="comment"># 获取处理后的列表，分析拿到片名，但是因为还有其它值，不可能多个循环，所以实际应用不能这么操作</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 实际操作</span></span><br><span class="line">test2 = page.xpath(<span class="string">&#x27;//tr[@class=&quot;item&quot;]&#x27;</span>)</span><br><span class="line"></span><br><span class="line">movie = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> yao:</span><br><span class="line">    <span class="comment"># 电影的名字</span></span><br><span class="line">    movie_name = i.xpath(<span class="string">&#x27;./td/a[@class=&quot;nbg&quot;]/@title&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    my_key = md5(movie_name.encode()).hexdigest()</span><br><span class="line">    <span class="comment"># print(movie_name)</span></span><br><span class="line">    <span class="comment"># 电影的演员表</span></span><br><span class="line">    movie_actor = i.xpath(<span class="string">&#x27;./td/div/p[@class=&quot;pl&quot;]/text()&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># print(movie_actor)</span></span><br><span class="line">    <span class="comment"># 电影的评分</span></span><br><span class="line">    <span class="comment"># movie_score = i.xpath(&#x27;//span[@class=&quot;rating_nums&quot;]/text()&#x27;)</span></span><br><span class="line">    <span class="comment"># movie_score = i.xpath(&#x27;./td/div/div/span[@class=&quot;rating_nums&quot;]/text()&#x27;)[0]</span></span><br><span class="line">    movie_score = i.xpath(<span class="string">&#x27;./td//span[@class=&quot;rating_nums&quot;]/text()&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># print(movie_score)</span></span><br><span class="line">    movie.update(&#123;my_key: [&#123;<span class="string">&#x27;片名&#x27;</span>:movie_name,<span class="string">&#x27;演员&#x27;</span>: movie_actor, <span class="string">&#x27;评分&#x27;</span>: movie_score&#125;]&#125;)</span><br><span class="line"><span class="built_in">print</span>(movie)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="6-租客网代码示例"><a href="#6-租客网代码示例" class="headerlink" title="6. 租客网代码示例"></a>6. 租客网代码示例</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://cs.zu.anjuke.com/?from=HomePage_TopBar&#x27;</span></span><br><span class="line"></span><br><span class="line">res = requests.get(url)</span><br><span class="line"></span><br><span class="line">tree = etree.HTML(res.text)</span><br><span class="line"></span><br><span class="line">div = tree.xpath(<span class="string">&#x27;//div[@class=&quot;zu-itemmod clearfix&quot;]&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> div:</span><br><span class="line">    <span class="comment"># 标题</span></span><br><span class="line">    title = i.xpath(<span class="string">&#x27;./div/h3/a/b[@class=&quot;strongbox&quot;]/text()&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 价格</span></span><br><span class="line">    price = i.xpath(<span class="string">&#x27;./div//strong[@class=&quot;price&quot;]/text()&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 地址</span></span><br><span class="line">    address = i.xpath(<span class="string">&#x27;./div//address[@class=&quot;details-item tag&quot;]/text()&#x27;</span>)</span><br><span class="line">    <span class="comment"># [&#x27;\n                            &#x27;, &#x27;\xa0\xa0\n                            芙蓉&#x27;, &#x27;五一广场 &#x27;, &#x27;韭菜园路101号                        &#x27;]</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    1.使用join 把列表转换成字符串了</span></span><br><span class="line"><span class="string">    2.字符串使用replace进行替换</span></span><br><span class="line"><span class="string">    总结： 先拼接再替换</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    address = <span class="string">&#x27;&#x27;</span>.join(address).replace(<span class="string">&#x27;\n&#x27;</span>, <span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(address)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 保存进文件中</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;租房信息.txt&#x27;</span>,<span class="string">&#x27;a&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(<span class="string">&quot;标题：&quot;</span>+ title + <span class="string">&quot;\t&quot;</span> + <span class="string">&quot;价格：&quot;</span> + price + <span class="string">&quot;\t&quot;</span>+ <span class="string">&quot;地址：&quot;</span> + address + <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 页面解析工具</li>
+        <li><strong>作者:</strong> Yiuhang Chan</li>
+        <li><strong>创建于
+                :</strong> 2021-02-23 14:12:56</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-02-28 18:50:23
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://www.yiuhangblog.com/2021/02/23/20210223页面解析工具/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%90%86%E8%AE%BA/">#理论</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%88%AC%E8%99%AB/">#爬虫</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Requests/">#Requests</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90/">#页面解析</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/BS4/">#BS4</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/beautifulsoup4/">#beautifulsoup4</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Xpath/">#Xpath</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2021/02/24/20210224selenium/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Selenium 自动化工具</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2021/02/22/20210222requests/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Requests</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://comment.yiuhangblog.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">页面解析工具</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BS4"><span class="nav-text">BS4</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3"><span class="nav-text">官方中文文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%99%A8"><span class="nav-text">解析器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E5%AF%B9%E8%B1%A1"><span class="nav-text">节点对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tag"><span class="nav-text">Tag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NavigableString"><span class="nav-text">NavigableString</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BeautifulSoup"><span class="nav-text">BeautifulSoup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Comment"><span class="nav-text">Comment</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tag%E5%92%8C%E9%81%8D%E5%8E%86%E6%96%87%E6%A1%A3%E6%A0%91"><span class="nav-text">Tag和遍历文档树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tag-%E6%A0%87%E7%AD%BE%E5%8F%96%E5%87%BA%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B"><span class="nav-text">Tag 标签取出简单示例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-find-all"><span class="nav-text">1.find_all</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-CSS%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">2.CSS选择器</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON-Path"><span class="nav-text">JSON Path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Xpath"><span class="nav-text">Xpath</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-1"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%93%E8%AF%AD"><span class="nav-text">谓语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E5%8F%96%E6%9C%AA%E7%9F%A5%E8%8A%82%E7%82%B9"><span class="nav-text">选取未知节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E5%8F%96%E5%A4%9A%E4%B8%AA%E8%B7%AF%E5%BE%84"><span class="nav-text">选取多个路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9%E4%B8%8B%E6%96%87%E6%9C%AC"><span class="nav-text">获取节点下文本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%B7%A5%E5%85%B7%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="nav-text">解析工具应用案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%98%8E%E7%A1%AE%E7%9B%AE%E6%A0%87%EF%BC%9A"><span class="nav-text">1. 明确目标：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%BF%9B%E8%A1%8C%E4%BC%AA%E8%A3%85%E4%B8%8E%E8%AF%B7%E6%B1%82%EF%BC%9A"><span class="nav-text">2. 进行伪装与请求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BA%A4%E4%BA%92%E5%93%8D%E5%BA%94%E4%B8%AD%E5%8E%BB%E6%8F%90%E5%8F%96%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E7%9A%84%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="nav-text">3. 交互响应中去提取我们需要的信息：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E4%BF%9D%E5%AD%98%E7%BB%93%E6%9E%9C"><span class="nav-text">4. 保存结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="nav-text">5. 代码示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E7%A7%9F%E5%AE%A2%E7%BD%91%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="nav-text">6. 租客网代码示例</span></a></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2018</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 5s"></i>&nbsp;&nbsp;<a href="/">Yiuhang Chan</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 41 篇文章
+                    </span>
+                    
+                        <span>
+                            共 348k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex justify-center items-center">
+                <a class="flex justify-center items-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/libs/mermaid.min.js"></script>
+
+    
+<script src="/js/plugins/mermaid.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

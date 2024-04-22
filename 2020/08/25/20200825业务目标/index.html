@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="zh-CN,en,zh-TW,default">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Yiuhang Chan">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://www.yiuhangblog.com/2020/08/25/20200825业务目标/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="业务目标的概念，拆解和调整">
+<meta property="og:type" content="article">
+<meta property="og:title" content="业务目标">
+<meta property="og:url" content="https://www.yiuhangblog.com/2020/08/25/20200825%E4%B8%9A%E5%8A%A1%E7%9B%AE%E6%A0%87/index.html">
+<meta property="og:site_name" content="角灯随笔">
+<meta property="og:description" content="业务目标的概念，拆解和调整">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/cc282ef0-4649-45c7-262d-7ae12d073000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b6f1e363-297d-412c-2ba1-10fd4c166200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6c030f43-4dfb-4f6b-7bc7-fae8ed75d600/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a696ee18-d006-469a-dfe7-faa5f007f000/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/bc8fd1f6-5d41-4778-a9e1-c79303606c00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/8cb76624-b3bd-4825-d029-ea33e77b4300/public">
+<meta property="article:published_time" content="2020-08-25T12:21:39.000Z">
+<meta property="article:modified_time" content="2024-02-28T10:50:02.000Z">
+<meta property="article:author" content="Yiuhang Chan">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="数据分析">
+<meta property="article:tag" content="商务智能">
+<meta property="article:tag" content="思路">
+<meta property="article:tag" content="业务目标">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/cc282ef0-4649-45c7-262d-7ae12d073000/public">
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-MQ43G0NKCT"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MQ43G0NKCT');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <meta name="theme-color" content="#A1AFC9">
+    <link rel="shortcut icon" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <!--- Page Info-->
+    
+    <title>
+        
+            业务目标 -
+        
+        角灯随笔
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        角灯随笔
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"www.yiuhangblog.com","root":"/","language":["zh-CN","en","zh-TW","default"]};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":6,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":5,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A1AFC9","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":true,"id":"G-MQ43G0NKCT"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e63fc400-dd0e-4395-bd1b-9ee1ac3bfb00/public","dark":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a34140d6-7960-45dd-b8b5-c3ddd14d1f00/public"},"title":"角灯随笔","subtitle":{"text":["全栈也不是不行"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/CosmicTrace","instagram":null,"zhihu":null,"twitter":null,"email":"kenchansk0@gmail.com"},"qrs":null}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"娱乐":{"icon":"fa-solid fa-gamepad","submenus":{"王者荣耀":"/hok","守望先锋":"/ow","使命召唤":"/cod"}},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/CosmicTrace"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"谦逊","show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":8}},"footerStart":"2018/07/15 10:15:24"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="角灯随笔" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                角灯随笔
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/"
+                                        >
+                                    <i class="fa-solid fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-solid fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-solid fa-gamepad fa-fw"></i>
+                                    娱乐
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/hok">
+                                                    王者荣耀
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/ow">
+                                                    守望先锋
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/cod">
+                                                    使命召唤
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/CosmicTrace">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-solid fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-solid fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-娱乐"
+                        >
+                            <span>
+                                娱乐
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-娱乐">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/hok">王者荣耀</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/ow">守望先锋</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/cod">使命召唤</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/CosmicTrace">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">96</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">41</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/690fcf43-632a-4b95-6ec5-13ac5a178c00/public" alt="业务目标" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">业务目标</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/26329e9f-d1fb-4280-a0a5-754547bf8500/public">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Yiuhang Chan</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2020-08-25 20:21:39</span>
+        <span class="mobile">2020-08-25 20:21:39</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-02-28 18:50:02</span>
+            <span class="mobile">2024-02-28 18:50:02</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%95%86%E5%8A%A1%E6%99%BA%E8%83%BD/">商务智能</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%80%9D%E8%B7%AF/">思路</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E4%B8%9A%E5%8A%A1%E7%9B%AE%E6%A0%87/">业务目标</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>3.7k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>12 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="对业务目标的理解"><a href="#对业务目标的理解" class="headerlink" title="对业务目标的理解"></a>对业务目标的理解</h2><h3 id="业务目标由谁制定"><a href="#业务目标由谁制定" class="headerlink" title="业务目标由谁制定"></a>业务目标由谁制定</h3><p>在互联网公司里，事业部中的商分团队，负责经营分析方向的同学协助业务线的负责人及核心 管理层，需要根据行业的增长空间，对比外部竞争对手的目前状态，历史过往的经营数据，以及年趋 势的增长性，及季节因素等，结合全年可支配的销售预算、营销费用预算，及市场投放的广告费用预 算等等，综合给出预估的未来一年的增长性。在这个目标的测算过程中可能和核心管理层多次沟通， 然后多次调整。目的是为了在此过程里对分项目，分渠道，分团队的各方向目标都能够做到可实现， 可落地，但并非躺赢。</p>
+<h3 id="业务目标有什么作用"><a href="#业务目标有什么作用" class="headerlink" title="业务目标有什么作用"></a>业务目标有什么作用</h3><p>目标，可以是定性的，也可以是粗定量的，也可以是细定量的。在企业的发展过程中，处于探索期或 者快速成长期的目标，往往一开始是由核心管理者的行业背景经验快速”拍”出来的，目标可能是一个 模糊的授意。那么就需要在执行过程里，将所有的目标变成可实现的，可衡量的具象化指标。另外， 企业发展到成熟期的，已经对市场环境、竞争对手和自身的发展规划相对清晰，制定目标已经成为了 工作流中很重要的一环。</p>
+<h2 id="业务目标如何制定"><a href="#业务目标如何制定" class="headerlink" title="业务目标如何制定"></a>业务目标如何制定</h2><h3 id="业务目标的制定方法"><a href="#业务目标的制定方法" class="headerlink" title="业务目标的制定方法"></a>业务目标的制定方法</h3><p>目标，就是对什么该做什么不该做的直观定义，并非一个数字，制定过程需符合SMAR T原则。目的就是为了判断阶段里所做的事情是否围绕目标服务，团队是否共同协作为了此目标努力。对于很多企业 来说，市场规模&amp;保证营收，都是企业非常关注且非常重要的目标。不管是规模指标还是营收指标， 前提都是完成一定的交易量级，交易额。</p>
+<h4 id="制定目标需考虑的因素"><a href="#制定目标需考虑的因素" class="headerlink" title="制定目标需考虑的因素"></a>制定目标需考虑的因素</h4><ul>
+<li>市场规模数据：通常来自于权威的行研分析报告，主要来自宏观的一些国家政策、人均可支配收入，在历史的发展上人均在这个行业上产生的GDP等等数据，拟合增长曲线后给出的市场规模数据。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/cc282ef0-4649-45c7-262d-7ae12d073000/public"
+                      width = "600"
+                >
+
+<ul>
+<li>线上化率预估：互联网公司中，很多运营操作其实就是讲消费者消费行为从线下引导到线上的动作，比如观影，从walkin到影院大厅购票到在网上自助购买，到大厅自助打票的过程。相对流 程简单，容易抽象的行业线上化率相对较高，一些行业内部的分散性高，或从业人员的学历低， 流程相对复杂个性化高的部分等等都会制约线上化率的发展，通常这类数据也来自于行研分析报 告。根据国家政策，例如5G,智能手机等等的普及，行业的历史发展的线上化率曲线，拟合线 上化率。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/b6f1e363-297d-412c-2ba1-10fd4c166200/public"
+                      width = "600"
+                >
+
+<ul>
+<li>市占水平：来自经营数据，或者财报数据。另外也可以从企业自身用户规模量级和转化效率佐证 这一数据是否合理.</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6c030f43-4dfb-4f6b-7bc7-fae8ed75d600/public"
+                      width = "300"
+                >
+
+<ul>
+<li>历史同期交易额增长：比如制定今年3月目标，会参考去年3月相对前年3月的增长情况，但对于 很多新生企业来说，没有这么久的历史数据，那么可以转而参考去年3月相对去年2月的增长情况。</li>
+</ul>
+<p>​	举例：<br>​	2020年3月GMV预估&#x3D;2019年3月GMV *（1 +2019年3月&#x2F;2018年3月的YOY）<br>​	2020年 3 月 GMV 预估&#x3D;2020年 2 月 GMV *（1 +2019年 3 月 &#x2F;2019 年2 月的YOY）</p>
+<ul>
+<li>交易商家数：商家单门店产出每月变化较小，会从供给角度校验下大数是否合理。但如果企业自身现在目前在市场的供给覆盖情况还不足，此项数据可参考性就需要再衡量。</li>
+</ul>
+<p>​		公式：2020年GMV预估&#x3D;20年市场规模预估 * 20年线上化率预估 * 20年自身占比规模 * 调整系数</p>
+<p>​		&#x3D; 19年交易量* （ 1+19年YOY ）<br>​		&#x3D; 20年用户量级预估*转化效率<br>​		&#x3D; 在线营业商家量*单商家贡献</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a696ee18-d006-469a-dfe7-faa5f007f000/public"
+                      width = "600"
+                >
+
+<h4 id="直接影响交易额增长的客观因素"><a href="#直接影响交易额增长的客观因素" class="headerlink" title="直接影响交易额增长的客观因素"></a>直接影响交易额增长的客观因素</h4><ul>
+<li>天气：例如雷雨、台风等</li>
+<li>温度：不同温度区间对消费需求的刺激情况，一般情况下，高温（超过35°C）或低温（低于0°C）会随 着恶劣程度对需求量正向&#x2F;负向刺激</li>
+<li>节假日：区分放假的节假日和不放假的节假日，且不同节假日的影响效果不同</li>
+<li>周末：周末普遍需求上涨</li>
+<li>补贴力度：不同补贴力度和活动类型对用户的刺激影响程度不同</li>
+</ul>
+<h3 id="业务目标的调整"><a href="#业务目标的调整" class="headerlink" title="业务目标的调整"></a>业务目标的调整</h3><p>通常来说，目标制定出来后，可以在原先的基础上进行调整，但是不会推翻目标重来。为什么呢？对于很多企业，目标就是价值和成果的象征，是凝聚团队成员朝一个方向去共同努力的风向标。频繁的 变更目标，会导致团队整体的方向感出现严重的问题，无法协作，无法形成凝聚力。</p>
+<p>以下条件下可以进行目标的调整:</p>
+<ul>
+<li>不可抗力。<ul>
+<li>举例：今年从春节左右开始的疫情，对于很多企业都是受到了发展的限制。</li>
+</ul>
+</li>
+<li>主要的客观条件、或者支持因素发生变化。<ul>
+<li>举例：国民出行意愿降低，地方政策管控聚集类场所阶段的不营业。</li>
+</ul>
+</li>
+<li>企业的战略方向调整。<ul>
+<li>举例：作为高优孵化的业务方向，调整为低优或限制发展。</li>
+</ul>
+</li>
+</ul>
+<h2 id="业务目标如何拆解"><a href="#业务目标如何拆解" class="headerlink" title="业务目标如何拆解"></a>业务目标如何拆解</h2><p>基于刚才提到的目标拆解的意义，需要开始着手进行分拆的事项。以下有几种常见的拆解方式，是基 于团队的之间的分工方式不同，而进行的流水线拆分，或者横向拆分的方法。也或者在项目中或者特 定的时间点需要将两者进行结合。</p>
+<h3 id="对达成的过程指标进行分拆"><a href="#对达成的过程指标进行分拆" class="headerlink" title="对达成的过程指标进行分拆"></a>对达成的过程指标进行分拆</h3><p>主要是面向的大家负责的是不同的职能范围。比如面向C端产运团队的同学，根据公式交易额&#x3D;UV * 转化率 * 单uv价格。里面基本三个过程指标都是变量的情况下，逐一确认变量。知晓各团队所扛的指标分别是多少。</p>
+<p>举例：</p>
+<p>预估2019年8月交易额需要达到1000W，已知单UV贡献的价格基本在150元左右。里面存在UV和转化率两个变量。</p>
+<p>(1) 给出2018年8月环比7月的转化率水平，再根据2019年7月的转化率水平得知是否可保持对应的 增长性。得知2019年8月的转化率目标需达到31.49%。</p>
+<table>
+<thead>
+<tr>
+<th>年</th>
+<th>月</th>
+<th>转化率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2018</td>
+<td>7</td>
+<td>27.60%</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>8</td>
+<td>30.50%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>7</td>
+<td>28.50%</td>
+</tr>
+</tbody></table>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/bc8fd1f6-5d41-4778-a9e1-c79303606c00/public"
+                      width = "600"
+                >
+
+<p>(2) 根据推算出来的转化率指标推算流量&#x3D;交易额&#x2F;单UV价格&#x2F;转化率&#x3D;211676</p>
+<p>结论：</p>
+<p>负责引流团队要保障引流动作带来用户在21.16W左右，同时负责补贴团队需要通过补贴手段保障转化率水平在31.49%左右。</p>
+<h3 id="按照品类-区域进行分拆"><a href="#按照品类-区域进行分拆" class="headerlink" title="按照品类&#x2F;区域进行分拆"></a>按照品类&#x2F;区域进行分拆</h3><p>这种情况通常来说，是大家面向的同样的工作范畴，但是可能负责的具体的产品范围或者地域范围不同。比如面向商拓团队的时候，这种情况非常常见，要从大区、区域、城市、个人，这样逐层拆解。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/8cb76624-b3bd-4825-d029-ea33e77b4300/public"
+                      width = "600"
+                >
+
+<p>拆分逻辑：<br>按照品类A+品类日&#x3D;总交易额的思路，先对目标进行分拆。</p>
+<p>方案一：品类A的19年8月目标&#x3D;品类A的18年完成值 *【1+ (19年7月-18年7月)&#x2F;18年7月】 *</p>
+<p>方案二：大区A的19年8月目标&#x3D;品类A的19年8月目标 *大区A占比。大区A占比，参考19年7月的各大区的占比情况</p>
+<h3 id="按照项目进行分拆"><a href="#按照项目进行分拆" class="headerlink" title="按照项目进行分拆"></a>按照项目进行分拆</h3><p>在企业的实际工作开展过程中，会针对在拓展获客渠道，捕捉时下热点，保障供给能力等方面分别发 起一些独立的项目，这些独立的项目可能是面向部分渠道，面向部分的产品。所以针对这类项目需要 单独进行目标的制定，目标不一定是以结果指标作为最终考核指标，也可能会以项目需要达成的导向 以过程指标作为目标。</p>
+<p>举例：<br>在时下疫情阶段，为了深化供给侧的合作深度，决定发起一个项目，去谈合作紧密型的优质商家，并且在C端页面给予一定的流量扶持。要给出该项目的项目目标。</p>
+<p>首先在制定目标前要考虑，这个项目的目标是为了得到什么结果，面向供给侧，是为了在阶段里拿下更多优质商家，面向用户侧是为了流量做倾斜处理。</p>
+<p>所以，需要先进行一拨数据摸底。明确优质商家的定性和定量的指标到底是什么。经过和业务侧的反复沟通，确认如下指标为衡量优质商家的标准。</p>
+<ul>
+<li>独家供给：对比其他竞对网站独家覆盖</li>
+<li>库存率高：在线库存量&#x2F;物理库存量＞&#x3D;70%</li>
+<li>绝对低价：对比其他竞对网站价格低</li>
+<li>拒单退款水平低：对比其他同类商家拒单水平低，退款水平低</li>
+</ul>
+<p>通过调取2019年7月的这些指标，得到了优质商家的覆盖量级在1.5w家左右。而现在站上根据用户主动搜索主动点评的这类明星商家大概有10w家左右，</p>
+<p>根据测算商家所处的省份，城市信息，确定各地可跟进的量级。大区A需要跟进4w家，大区B需要跟进3w家，大区C需要跟进1.5w家。</p>
+<p>按照各区的人员比例，确认一个商拓人员一周可以跟进的量级约在4家。大区A有200人，在8月约可以跟进3200家，大区B有100人约可以跟进1600家，大区C有100人约可以跟进1600家。</p>
+<p>再根据商家一个月可以自主报名的比例约在20%,约可以完成2w家。</p>
+<p>因此2019年8月优质商家覆盖的目标约为2.64W家。需要完成独家供给、库存率高、绝对价低，拒单 退款水平低的要求。</p>
+<p>流量扶持的目标则在引流和转化两个方向展开。</p>
+<h3 id="按照特定时间点进行分拆"><a href="#按照特定时间点进行分拆" class="headerlink" title="按照特定时间点进行分拆"></a>按照特定时间点进行分拆</h3><p>依据各行业的淡旺季情况的不同，对于旺季的特定时点往往会依据过去的历次时点的峰值水平，由核心管理层直接发起一个定性的峰值目标。例如在双十一天猫要冲破x百亿。</p>
+<p>分析师这时候需要做的是，首先确认特定时点的起止时间点。例如旅游行业的十一出行，确认是2019年9月30日-2019年10月7日，还是其他的时间点。</p>
+<p>按照时间点分拆分日目标，首先先要对用户出行的峰值时间进行预估，确认哪天是最容易达到峰值的。像今年的十一，十一当日肯定是出行的高峰时间，用户前后借假休的概率偏低，没有前后的周六 日。另外根据机票、火车票等用户的出行时间，都可以锁定，用户的出行时间。</p>
+<p>确认峰值时间点后，根据历次特定时点带来的用户量级和转化效率看，距离峰值目标的实际差距。通常情况下，企业内有大量的AB实验，确认各手段对于转化率的提升的作用。补贴到达一定水平后，其实转化率会趋于到一个顶峰值不再波动。</p>
+<p>根据峰值时间的交易量目标反推。交易量目标&#x3D;引流用户量级转化效率人均可产生的交易额</p>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>销售的业绩指标，分析师在每月中下旬开始做下月的预估，地面团队需要在每月20号给到下月明确的交易量目标；电销团队时间节奏基本保持一致。两团队逻辑保持基本一致。</p>
+<h3 id="具体计算逻辑"><a href="#具体计算逻辑" class="headerlink" title="具体计算逻辑"></a>具体计算逻辑</h3><h4 id="整体目标确定"><a href="#整体目标确定" class="headerlink" title="整体目标确定"></a>整体目标确定</h4><p>按照大盘下个月的目标，一般是交易额&#x2F;GMV ，计算出下个单的交易量目标</p>
+<p>业务线大盘2020的5月的交易额目标 11亿元 ，计算出交易量： 11亿&#x2F;120(客单价) * 80%(消费 人群) &#x3D;733万</p>
+<h4 id="分别确定地面和电销的整体目标"><a href="#分别确定地面和电销的整体目标" class="headerlink" title="分别确定地面和电销的整体目标"></a>分别确定地面和电销的整体目标</h4><p>计算逻辑一般是按照地面团队的180个城市和电销团队负责的2000县城在过去一个月或者一个季度全部消费间夜量在酒店夜住大盘的占比来确定。</p>
+<p>地面团队历史交易占比70% ，电销团队是30% ，根据交易量占比拆分，5月份的交易量 &#x3D; 733万 + 0.7 &#x3D; 513万 ， 电销交易量 &#x3D; 733万 * 0.3 &#x3D; 220万</p>
+<h4 id="分拆地面和电销的分城市-分区县目标"><a href="#分拆地面和电销的分城市-分区县目标" class="headerlink" title="分拆地面和电销的分城市&amp;分区县目标"></a>分拆地面和电销的分城市&amp;分区县目标</h4><p>地面团队：根据YOY ，拆分城市的各自数据</p>
+<p>电销团队：根据MOM，拆分区县的数据</p>
+<h4 id="调整目标"><a href="#调整目标" class="headerlink" title="调整目标"></a>调整目标</h4><p>可控：</p>
+<ul>
+<li><p>地面团队：对于分城市的YOY异常高的数据，可以参考上个月的实际完成值(大盘的本月目标 &#x2F; 上个月完成值)</p>
+</li>
+<li><p>电销团队 ：对于分区县的MOM异常，可以参考上个月的实际完成 值（大盘 的本月目标&#x2F;上个月完成值）</p>
+</li>
+</ul>
+<p>不可控：</p>
+<ul>
+<li>疫情、节假日出现、企业的战略方向(调整为低或者限制发展)、国民出行意愿低、天气温度等</li>
+</ul>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 业务目标</li>
+        <li><strong>作者:</strong> Yiuhang Chan</li>
+        <li><strong>创建于
+                :</strong> 2020-08-25 20:21:39</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-02-28 18:50:02
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://www.yiuhangblog.com/2020/08/25/20200825业务目标/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">#数据分析</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%95%86%E5%8A%A1%E6%99%BA%E8%83%BD/">#商务智能</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E6%80%9D%E8%B7%AF/">#思路</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E4%B8%9A%E5%8A%A1%E7%9B%AE%E6%A0%87/">#业务目标</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2020/08/29/20200829%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">用户画像</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2020/08/15/20200815%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">数据分析方法与流程</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://comment.yiuhangblog.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">业务目标</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E4%B8%9A%E5%8A%A1%E7%9B%AE%E6%A0%87%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-text">对业务目标的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E7%9B%AE%E6%A0%87%E7%94%B1%E8%B0%81%E5%88%B6%E5%AE%9A"><span class="nav-text">业务目标由谁制定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E7%9B%AE%E6%A0%87%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8"><span class="nav-text">业务目标有什么作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E7%9B%AE%E6%A0%87%E5%A6%82%E4%BD%95%E5%88%B6%E5%AE%9A"><span class="nav-text">业务目标如何制定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E7%9B%AE%E6%A0%87%E7%9A%84%E5%88%B6%E5%AE%9A%E6%96%B9%E6%B3%95"><span class="nav-text">业务目标的制定方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%B6%E5%AE%9A%E7%9B%AE%E6%A0%87%E9%9C%80%E8%80%83%E8%99%91%E7%9A%84%E5%9B%A0%E7%B4%A0"><span class="nav-text">制定目标需考虑的因素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%BD%B1%E5%93%8D%E4%BA%A4%E6%98%93%E9%A2%9D%E5%A2%9E%E9%95%BF%E7%9A%84%E5%AE%A2%E8%A7%82%E5%9B%A0%E7%B4%A0"><span class="nav-text">直接影响交易额增长的客观因素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E7%9B%AE%E6%A0%87%E7%9A%84%E8%B0%83%E6%95%B4"><span class="nav-text">业务目标的调整</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E7%9B%AE%E6%A0%87%E5%A6%82%E4%BD%95%E6%8B%86%E8%A7%A3"><span class="nav-text">业务目标如何拆解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%BE%BE%E6%88%90%E7%9A%84%E8%BF%87%E7%A8%8B%E6%8C%87%E6%A0%87%E8%BF%9B%E8%A1%8C%E5%88%86%E6%8B%86"><span class="nav-text">对达成的过程指标进行分拆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E7%85%A7%E5%93%81%E7%B1%BB-%E5%8C%BA%E5%9F%9F%E8%BF%9B%E8%A1%8C%E5%88%86%E6%8B%86"><span class="nav-text">按照品类&#x2F;区域进行分拆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E7%85%A7%E9%A1%B9%E7%9B%AE%E8%BF%9B%E8%A1%8C%E5%88%86%E6%8B%86"><span class="nav-text">按照项目进行分拆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E7%85%A7%E7%89%B9%E5%AE%9A%E6%97%B6%E9%97%B4%E7%82%B9%E8%BF%9B%E8%A1%8C%E5%88%86%E6%8B%86"><span class="nav-text">按照特定时间点进行分拆</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B"><span class="nav-text">举例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E8%AE%A1%E7%AE%97%E9%80%BB%E8%BE%91"><span class="nav-text">具体计算逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E7%9B%AE%E6%A0%87%E7%A1%AE%E5%AE%9A"><span class="nav-text">整体目标确定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E5%88%AB%E7%A1%AE%E5%AE%9A%E5%9C%B0%E9%9D%A2%E5%92%8C%E7%94%B5%E9%94%80%E7%9A%84%E6%95%B4%E4%BD%93%E7%9B%AE%E6%A0%87"><span class="nav-text">分别确定地面和电销的整体目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%8B%86%E5%9C%B0%E9%9D%A2%E5%92%8C%E7%94%B5%E9%94%80%E7%9A%84%E5%88%86%E5%9F%8E%E5%B8%82-%E5%88%86%E5%8C%BA%E5%8E%BF%E7%9B%AE%E6%A0%87"><span class="nav-text">分拆地面和电销的分城市&amp;分区县目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E7%9B%AE%E6%A0%87"><span class="nav-text">调整目标</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2018</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 5s"></i>&nbsp;&nbsp;<a href="/">Yiuhang Chan</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 41 篇文章
+                    </span>
+                    
+                        <span>
+                            共 348k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex justify-center items-center">
+                <a class="flex justify-center items-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/libs/mermaid.min.js"></script>
+
+    
+<script src="/js/plugins/mermaid.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

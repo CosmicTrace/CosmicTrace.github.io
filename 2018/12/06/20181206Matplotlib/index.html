@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="zh-CN,en,zh-TW,default">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Yiuhang Chan">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://www.yiuhangblog.com/2018/12/06/20181206matplotlib/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="Python Matplotlib包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matplotlib">
+<meta property="og:url" content="https://www.yiuhangblog.com/2018/12/06/20181206Matplotlib/index.html">
+<meta property="og:site_name" content="角灯随笔">
+<meta property="og:description" content="Python Matplotlib包">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6dae7a6b-6f7a-4223-16c8-744561ac4200/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2ead837c-5000-4251-438f-bfd515a5ee00/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/67c99c0c-c0a7-4261-edcc-038878636100/public">
+<meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/baecb3b6-6d65-483a-b9e5-a593a9218900/public">
+<meta property="article:published_time" content="2018-12-06T08:39:37.000Z">
+<meta property="article:modified_time" content="2024-03-19T11:05:01.000Z">
+<meta property="article:author" content="Yiuhang Chan">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="理论">
+<meta property="article:tag" content="数据分析">
+<meta property="article:tag" content="Matplotlib">
+<meta property="article:tag" content="可视化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6dae7a6b-6f7a-4223-16c8-744561ac4200/public">
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-MQ43G0NKCT"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MQ43G0NKCT');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <meta name="theme-color" content="#A1AFC9">
+    <link rel="shortcut icon" href="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Matplotlib -
+        
+        角灯随笔
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        角灯随笔
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"www.yiuhangblog.com","root":"/","language":["zh-CN","en","zh-TW","default"]};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":6,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":5,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A1AFC9","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":true,"id":"G-MQ43G0NKCT"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e63fc400-dd0e-4395-bd1b-9ee1ac3bfb00/public","dark":"https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/a34140d6-7960-45dd-b8b5-c3ddd14d1f00/public"},"title":"角灯随笔","subtitle":{"text":["全栈也不是不行"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/CosmicTrace","instagram":null,"zhihu":null,"twitter":null,"email":"kenchansk0@gmail.com"},"qrs":null}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"娱乐":{"icon":"fa-solid fa-gamepad","submenus":{"王者荣耀":"/hok","守望先锋":"/ow","使命召唤":"/cod"}},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/CosmicTrace"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":"谦逊","show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":8}},"footerStart":"2018/07/15 10:15:24"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="角灯随笔" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/e75f26bb-7787-428d-ec58-214a6faf9800/public">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                角灯随笔
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/"
+                                        >
+                                    <i class="fa-solid fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-solid fa-folder fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-solid fa-gamepad fa-fw"></i>
+                                    娱乐
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/hok">
+                                                    王者荣耀
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/ow">
+                                                    守望先锋
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/cod">
+                                                    使命召唤
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/CosmicTrace">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-solid fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-solid fa-folder fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-娱乐"
+                        >
+                            <span>
+                                娱乐
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-娱乐">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/hok">王者荣耀</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/ow">守望先锋</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/cod">使命召唤</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/CosmicTrace">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">96</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">41</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/d489b159-20d3-405c-f7eb-4293c9a06f00/public" alt="Matplotlib" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">Matplotlib</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/26329e9f-d1fb-4280-a0a5-754547bf8500/public">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Yiuhang Chan</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2018-12-06 16:39:37</span>
+        <span class="mobile">2018-12-06 16:39:37</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-03-19 19:05:01</span>
+            <span class="mobile">2024-03-19 19:05:01</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/Python/">Python</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%90%86%E8%AE%BA/">理论</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Matplotlib/">Matplotlib</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>5.2k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>21 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h2><p>Matplotlib 是一个广泛用于 Python 中的绘图库，它可以帮助我们创建各种图表和图形，适用于数据可视化。</p>
+<h3 id="安装-Matplotlib"><a href="#安装-Matplotlib" class="headerlink" title="安装 Matplotlib"></a>安装 Matplotlib</h3><p>为了安装 Matplotlib，我们首先确保 Python 和 pip（Python 的包安装器）已经安装在系统上。接着可以通过下面的命令来安装或更新 Matplotlib：</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">首先，更新 pip 到最新版本</span></span><br><span class="line">python -m pip install --upgrade pip</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">然后，使用 pip 安装 Matplotlib</span></span><br><span class="line">python -m pip install matplotlib</span><br></pre></td></tr></table></figure></div>
+
+<p>注意，如果使用的是 Linux 或 macOS 系统，可能需要使用 <code>python3</code> 和 <code>pip3</code> 命令替代 <code>python</code> 和 <code>pip</code>。</p>
+<h3 id="导入-Matplotlib"><a href="#导入-Matplotlib" class="headerlink" title="导入 Matplotlib"></a>导入 Matplotlib</h3><p>安装完成后，我们可以通过以下方式导入 Matplotlib：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib</span><br></pre></td></tr></table></figure></div>
+
+<p>实际上，更常见的做法是导入 <code>matplotlib.pyplot</code>，这是一个提供了类似 MATLAB 接口的绘图模块：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Matplotlib-Pyplot-常用函数"><a href="#Matplotlib-Pyplot-常用函数" class="headerlink" title="Matplotlib Pyplot 常用函数"></a>Matplotlib Pyplot 常用函数</h3><p>Pyplot 模块提供了很多用于创建和操作图形的函数。以下是一些常用的 Pyplot 函数：</p>
+<ul>
+<li><p><code>plot()</code>：这是最常用的函数之一，用于绘制点和线。例如，<code>plt.plot(x, y)</code> 会绘制 x 对 y 的图。</p>
+</li>
+<li><p><code>scatter()</code>：这个函数专门用于创建散点图。例如，<code>plt.scatter(x, y)</code> 会创建 x 和 y 数据点的散点图。</p>
+</li>
+<li><p><code>bar()</code>：这个函数用来创建条形图。例如，<code>plt.bar(x, height)</code> 会在 x 的位置创建条形图，其中 height 是条形的高度。</p>
+</li>
+<li><p><code>hist()</code>：此函数用于绘制直方图，是数据分布可视化的重要工具。例如，<code>plt.hist(data)</code> 会绘制 data 的直方图。</p>
+</li>
+<li><p><code>pie()</code>：这个函数用于绘制饼图，常用于显示部分整体的比例关系。例如，<code>plt.pie(sizes)</code> 会根据 sizes 的比例绘制一个饼图。</p>
+</li>
+<li><p><code>imshow()</code>：这个函数常用于显示图像，特别是在处理图像数据的时候。例如，<code>plt.imshow(image)</code> 会显示一个图像数组。</p>
+</li>
+<li><p><code>subplots()</code>：此函数用于创建一个包含多个子图的图形。例如，<code>fig, ax = plt.subplots()</code> 创建一个新的图形和一个子图。</p>
+</li>
+</ul>
+<h3 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h3><p>下面是一个简单的 Matplotlib Pyplot 使用示例：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 准备数据</span></span><br><span class="line">x = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">y = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">25</span>, <span class="number">30</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建图表</span></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制线图</span></span><br><span class="line">plt.plot(x, y, label=<span class="string">&#x27;Line&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制散点图</span></span><br><span class="line">plt.scatter(x, y, color=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;Scatter&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加标题和标签</span></span><br><span class="line">plt.title(<span class="string">&#x27;Sample Plot&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;X Axis&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Y Axis&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示图例</span></span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 展示图形</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="高级功能"><a href="#高级功能" class="headerlink" title="高级功能"></a>高级功能</h3><ul>
+<li><p><strong>图形风格</strong>：Matplotlib 允许选择多种预设的风格，例如 <code>plt.style.use(&#39;ggplot&#39;)</code>。</p>
+</li>
+<li><p><strong>保存图形</strong>：可以使用 <code>plt.savefig(&#39;filename.png&#39;)</code> 将图形保存到文件中。</p>
+</li>
+<li><p><strong>交互式模式</strong>：Matplotlib 还可以创建交互式图形，使用 <code>plt.ion()</code> 开启交互模式。</p>
+</li>
+</ul>
+<h2 id="完整制作示例"><a href="#完整制作示例" class="headerlink" title="完整制作示例"></a>完整制作示例</h2><p>制作图表是数据分析中一项重要的工作，它有助于从视觉上展现和理解数据。提供的步骤是图表制作的基本流程，包括了从导入库到设置xy轴数据，以及绘制和显示图形。现在我们就来细化这个流程，并添加一些细节和扩展，使其更为完整和专业。</p>
+<h3 id="步骤1：导入必要的库"><a href="#步骤1：导入必要的库" class="headerlink" title="步骤1：导入必要的库"></a>步骤1：导入必要的库</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure></div>
+
+<p>这一步导入了创建图表所需的主要 Python 库：<code>matplotlib</code> 用于绘图，<code>numpy</code> 用于处理数值数据，<code>pandas</code> 用于读取和处理数据文件。</p>
+<h3 id="步骤2：设置xy轴数据"><a href="#步骤2：设置xy轴数据" class="headerlink" title="步骤2：设置xy轴数据"></a>步骤2：设置xy轴数据</h3><h4 id="方法1：使用-Numpy-创建数据"><a href="#方法1：使用-Numpy-创建数据" class="headerlink" title="方法1：使用 Numpy 创建数据"></a>方法1：使用 Numpy 创建数据</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xpoints = np.array([<span class="number">0</span>, <span class="number">6</span>])</span><br><span class="line">ypoints = np.array([<span class="number">0</span>, <span class="number">100</span>])</span><br></pre></td></tr></table></figure></div>
+
+<p>这个方法是手动创建数据，适合理解绘图的基础概念或当有一些固定的数据点时使用。</p>
+<h4 id="方法2：从数据文件导入"><a href="#方法2：从数据文件导入" class="headerlink" title="方法2：从数据文件导入"></a>方法2：从数据文件导入</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从 CSV 文件中读取数据</span></span><br><span class="line">open_df = pd.read_csv(<span class="string">&#x27;./财务差旅人员费用分析.csv&#x27;</span>)</span><br><span class="line">xpoints = open_df[<span class="string">&#x27;姓名&#x27;</span>]</span><br><span class="line">ypoints = open_df[<span class="string">&#x27;金额&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 另一个例子</span></span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;./年龄段借款情况.csv&#x27;</span>)</span><br><span class="line">xpoints = df[<span class="string">&#x27;年龄&#x27;</span>]</span><br><span class="line">ypoints = df[<span class="string">&#x27;已还清&#x27;</span>]</span><br></pre></td></tr></table></figure></div>
+
+<p>在实际应用中，数据通常来源于数据集，因此使用 Pandas 读取和处理数据是非常常见的。</p>
+<h3 id="步骤3：绘制图形"><a href="#步骤3：绘制图形" class="headerlink" title="步骤3：绘制图形"></a>步骤3：绘制图形</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制基础的线图</span></span><br><span class="line">plt.plot(xpoints, ypoints)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置图表的标题和轴标签</span></span><br><span class="line">plt.title(<span class="string">&#x27;Loan Status by Age&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Age&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Loans Paid Off&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示图例</span></span><br><span class="line">plt.legend([<span class="string">&#x27;Loans Paid Off&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在图表中添加网格</span></span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置轴的范围</span></span><br><span class="line">plt.xlim(<span class="number">0</span>, <span class="number">100</span>)</span><br><span class="line">plt.ylim(<span class="number">0</span>, <span class="number">120</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 展示图形</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<p>这一步创建了图形，并对其进行了一些基础的格式设置，包括添加标题、轴标签、图例和网格，这使图表更易于理解和分析。</p>
+<h3 id="扩展和细节"><a href="#扩展和细节" class="headerlink" title="扩展和细节"></a>扩展和细节</h3><ul>
+<li><p><strong>样式定制</strong>：可以通过添加颜色、线型和标记样式来定制图形的外观，如 <code>plt.plot(xpoints, ypoints, &#39;o:r&#39;)</code>，表示圆圈标记、虚线和红色。</p>
+</li>
+<li><p><strong>多系列绘制</strong>：可以在同一个图中绘制多个数据系列，以对比不同数据集，如通过多次调用 <code>plt.plot()</code>。</p>
+</li>
+<li><p><strong>子图</strong>：使用 <code>plt.subplots()</code> 创建一个包含多个子图的图形布局。</p>
+</li>
+<li><p><strong>保存图形</strong>：使用 <code>plt.savefig(&#39;filename.png&#39;)</code> 将图形保存到文件中。</p>
+</li>
+<li><p><strong>其他图形类型</strong>：除了线图，还可以使用 <code>plt.bar()</code>, <code>plt.scatter()</code>, <code>plt.hist()</code> 等函数来创建条形图、散点图和直方图等。</p>
+</li>
+</ul>
+<p>通过以上步骤，我们可以创建一个简单但完整的图表。在实践中，可能需要根据数据的具体情况和分析目的进行更多的定制和调整。使用 Matplotlib，可以灵活地制作出满足不同需求的图表。</p>
+<p>图表的属性能够帮助我们创建更为精细和吸引人的视觉效果，这对于数据的呈现和解释非常重要。以下是有关如何使用 Matplotlib 的一些详细和专业的笔记，涵盖了图表窗口的创建和自定义，以及如何使用标记来突出数据点。</p>
+<h2 id="图表属性"><a href="#图表属性" class="headerlink" title="图表属性"></a>图表属性</h2><h3 id="画布"><a href="#画布" class="headerlink" title="画布"></a>画布</h3><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个新的图形窗口并设置尺寸</span></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>), dpi=<span class="number">150</span>, facecolor=<span class="string">&#x27;white&#x27;</span>, edgecolor=<span class="string">&#x27;black&#x27;</span>, tight_layout=<span class="literal">True</span>, num=<span class="string">&#x27;Window 1&#x27;</span>)</span><br><span class="line">plt.plot([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], [<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<p>画布属性说明：</p>
+<ul>
+<li><code>figsize</code>: 设置图形窗口的尺寸，单位为英寸。更大的尺寸可以让图表更清晰地显示更多的细节。</li>
+<li><code>dpi</code>: 分辨率（每英寸点数），默认通常为 100 或 80。增加此值可以获得更高清的图形。</li>
+<li><code>facecolor</code> 和 <code>edgecolor</code>: 分别用于设置图形窗口的背景色和边框颜色。</li>
+<li><code>tight_layout</code>: 当设置为 <code>True</code> 时，它会自动调整子图参数，以便子图填满图形窗口的整个画布区域。</li>
+<li><code>num</code>: 当你需要创建多个图形窗口时，使用此参数给图形命名或编号。</li>
+</ul>
+<h3 id="Marker"><a href="#Marker" class="headerlink" title="Marker"></a>Marker</h3><p>在 <code>plt.plot()</code> 中使用 <code>marker</code> 参数可以突出显示每个数据点，提高图表的可读性，特别是在绘制散点图或者需要标示数据点的场景中。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">xpoints = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">ypoints = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制带有自定义标记的线图</span></span><br><span class="line">plt.plot(xpoints, ypoints, marker=<span class="string">&#x27;o&#x27;</span>, ms=<span class="number">20</span>, mfc=<span class="string">&#x27;r&#x27;</span>, mec=<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<p>Marker 相关属性说明：</p>
+<ul>
+<li><code>marker</code>: 定义数据点的标记类型，如 <code>&#39;o&#39;</code> 表示圆圈。</li>
+<li><code>ms</code> (markersize): 标记的大小。</li>
+<li><code>mfc</code> (markerfacecolor): 标记内部的颜色。</li>
+<li><code>mec</code> (markeredgecolor): 标记边框的颜色。</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/6dae7a6b-6f7a-4223-16c8-744561ac4200/public"
+                      width = "600"
+                >
+
+<h3 id="扩展属性"><a href="#扩展属性" class="headerlink" title="扩展属性"></a>扩展属性</h3><ul>
+<li><p><strong>线条样式</strong>: 通过 <code>linestyle</code> 或简写 <code>ls</code> 参数定义线条的样式，如 <code>&#39;--&#39;</code> 表示虚线。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(xpoints, ypoints, linestyle=<span class="string">&#x27;--&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>线条宽度</strong>: 使用 <code>linewidth</code> 或简写 <code>lw</code> 参数定义线条的宽度。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(xpoints, ypoints, linewidth=<span class="number">2</span>)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>颜色</strong>: 通过 <code>color</code> 参数指定线条的颜色。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(xpoints, ypoints, color=<span class="string">&#x27;green&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>文本和注释</strong>: 使用 <code>plt.text()</code> 在图表中添加文本，使用 <code>plt.annotate()</code> 在图表中添加注释。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.text(<span class="number">1</span>, <span class="number">15</span>, <span class="string">&#x27;Sample Text&#x27;</span>, fontsize=<span class="number">12</span>)</span><br><span class="line">plt.annotate(<span class="string">&#x27;Important Point&#x27;</span>, xy=(<span class="number">2</span>, <span class="number">4</span>), xytext=(<span class="number">3</span>, <span class="number">5</span>), arrowprops=<span class="built_in">dict</span>(arrowstyle=<span class="string">&#x27;-&gt;&#x27;</span>))</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>坐标轴范围</strong>: 使用 <code>plt.xlim()</code> 和 <code>plt.ylim()</code> 设置坐标轴的范围。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.xlim(<span class="number">0</span>, <span class="number">5</span>)</span><br><span class="line">plt.ylim(<span class="number">0</span>, <span class="number">20</span>)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>坐标轴标签</strong>: 使用 <code>plt.xlabel()</code> 和 <code>plt.ylabel()</code> 给坐标轴添加标签。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.xlabel(<span class="string">&#x27;X Axis Label&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Y Axis Label&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>图表标题</strong>: 使用 <code>plt.title()</code> 添加图表的标题。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.title(<span class="string">&#x27;Chart Title&#x27;</span>)</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<p>在 Matplotlib 中，线条样式和宽度是定义图表外观的关键属性，它们可以帮助我们区分图中的不同数据系列或者强调某些数据点。下面详细说明了如何设置线条样式和宽度。</p>
+<h2 id="线条样式"><a href="#线条样式" class="headerlink" title="线条样式"></a>线条样式</h2><p><code>linestyle</code> 或简写 <code>ls</code> 参数用来定义线条的样式。这个参数可以接受多种不同的值，以改变线条的显示方式。</p>
+<h4 id="linestyle-的可用样式"><a href="#linestyle-的可用样式" class="headerlink" title="linestyle 的可用样式:"></a><code>linestyle</code> 的可用样式:</h4><ul>
+<li><code>&#39;-&#39;</code> 或 <code>&#39;solid&#39;</code>: 实线</li>
+<li><code>&#39;--&#39;</code> 或 <code>&#39;dashed&#39;</code>: 虚线</li>
+<li><code>&#39;-.&#39;</code> 或 <code>&#39;dashdot&#39;</code>: 点划线</li>
+<li><code>&#39;:&#39;</code> 或 <code>&#39;dotted&#39;</code>: 点线</li>
+<li><code>&#39;&#39;</code> 或 <code>&#39;None&#39;</code>: 无线条</li>
+</ul>
+<h4 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">xpoints = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">ypoints = [<span class="number">0</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">9</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用点线样式</span></span><br><span class="line">plt.plot(xpoints, ypoints, linestyle=<span class="string">&#x27;:&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/2ead837c-5000-4251-438f-bfd515a5ee00/public"
+                      width = "600"
+                >
+
+<h3 id="线条宽度"><a href="#线条宽度" class="headerlink" title="线条宽度"></a>线条宽度</h3><p><code>linewidth</code> 或简写 <code>lw</code> 参数用来定义线条的宽度，可以是任何浮点数。线宽越大，线条越粗。</p>
+<h4 id="示例代码：-1"><a href="#示例代码：-1" class="headerlink" title="示例代码："></a>示例代码：</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用线宽为10的实线</span></span><br><span class="line">plt.plot(xpoints, ypoints, linestyle=<span class="string">&#x27;-&#x27;</span>, linewidth=<span class="number">10</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<p>请注意，<code>linewidth</code> 的值不应该是字符串，因此 <code>lw=&#39;10&#39;</code> 需要改为 <code>lw=10</code>。</p>
+<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><p>除了线条样式和宽度，我们还可以通过 <code>color</code> 参数来定义线条的颜色。颜色可以是 CSS 颜色的名称（如 <code>&#39;blue&#39;</code>、<code>&#39;green&#39;</code> 等），也可以是十六进制颜色代码（如 <code>&#39;#008000&#39;</code>）或 RGB 元组（如 <code>(0, 0.5, 0)</code>）。</p>
+<h4 id="示例代码：-2"><a href="#示例代码：-2" class="headerlink" title="示例代码："></a>示例代码：</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用绿色线条</span></span><br><span class="line">plt.plot(xpoints, ypoints, color=<span class="string">&#x27;green&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="扩展属性-1"><a href="#扩展属性-1" class="headerlink" title="扩展属性"></a>扩展属性</h3><ul>
+<li><p><strong>坐标轴刻度</strong>: 使用 <code>plt.xticks()</code> 和 <code>plt.yticks()</code> 设置坐标轴的刻度。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.xticks([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">plt.yticks([<span class="number">0</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>])</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>网格线</strong>: 使用 <code>plt.grid()</code> 添加网格线，提高图表的可读性。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.grid(<span class="literal">True</span>)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>保存图表</strong>: 使用 <code>plt.savefig()</code> 保存图表到文件，支持多种格式，如 PNG、JPEG、SVG、PDF 等。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.savefig(<span class="string">&#x27;my_plot.png&#x27;</span>)</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<p>在 Matplotlib 中，色彩、多线条绘制、图表的标签和标题都是用来增强图表表达能力的重要元素。以下是对你所提供内容的整理和扩展。</p>
+<h2 id="颜色（Color）"><a href="#颜色（Color）" class="headerlink" title="颜色（Color）"></a>颜色（Color）</h2><p><code>color</code> 参数用于定义线条的颜色。可以使用多种方法来指定颜色，例如使用预定义的颜色码（如 <code>&#39;r&#39;</code> 表示红色）或者 CSS 颜色名称。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/67c99c0c-c0a7-4261-edcc-038878636100/public"
+                      width = "600"
+                >
+
+<h4 id="示例代码：-3"><a href="#示例代码：-3" class="headerlink" title="示例代码："></a>示例代码：</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(xpoints, ypoints, color=<span class="string">&#x27;red&#x27;</span>) <span class="comment"># 或者使用 &#x27;r&#x27;</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="多线条（Multiple-Lines）"><a href="#多线条（Multiple-Lines）" class="headerlink" title="多线条（Multiple Lines）"></a>多线条（Multiple Lines）</h2><p>在同一个图表中绘制多条线可以帮助我们比较不同数据集之间的关系。</p>
+<h4 id="示例代码：-4"><a href="#示例代码：-4" class="headerlink" title="示例代码："></a>示例代码：</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(xpoints, ypoints1, marker=<span class="string">&#x27;o&#x27;</span>, linestyle=<span class="string">&#x27;:&#x27;</span>, linewidth=<span class="number">1</span>, label=<span class="string">&#x27;Paid Off&#x27;</span>)</span><br><span class="line">plt.plot(xpoints, ypoints2, marker=<span class="string">&#x27;o&#x27;</span>, linestyle=<span class="string">&#x27;:&#x27;</span>, linewidth=<span class="number">1</span>, label=<span class="string">&#x27;Overdue&#x27;</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/baecb3b6-6d65-483a-b9e5-a593a9218900/public"
+                      width = "600"
+                >
+
+<p>这里，每条 <code>plot</code> 命令绘制了一组数据点，<code>label</code> 参数用于定义每条线的图例名称。</p>
+<h2 id="标签和标题（Labels-and-Title）"><a href="#标签和标题（Labels-and-Title）" class="headerlink" title="标签和标题（Labels and Title）"></a>标签和标题（Labels and Title）</h2><p>使用 <code>xlabel()</code>, <code>ylabel()</code>, 和 <code>title()</code> 方法来设置 x 轴、y 轴标签和图表的标题。</p>
+<h4 id="标题与标签的定位："><a href="#标题与标签的定位：" class="headerlink" title="标题与标签的定位："></a>标题与标签的定位：</h4><p>可以指定标题和标签在轴上的位置，以提高图表的美观度或强调某部分内容。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.title(<span class="string">&quot;Title&quot;</span>, loc=<span class="string">&#x27;left&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&quot;X Label&quot;</span>, loc=<span class="string">&#x27;center&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Y Label&quot;</span>, loc=<span class="string">&#x27;bottom&#x27;</span>)</span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<p><code>loc</code> 参数用于设置对齐方式。</p>
+<h2 id="标签设置（Setting-Line-Labels）"><a href="#标签设置（Setting-Line-Labels）" class="headerlink" title="标签设置（Setting Line Labels）"></a>标签设置（Setting Line Labels）</h2><p>为了区分图中的多条线，我们可以给每条线添加标签，然后用 <code>legend()</code> 方法显示图例。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(xpoints, ypoints1, label=<span class="string">&#x27;Paid Off&#x27;</span>)</span><br><span class="line">plt.plot(xpoints, ypoints2, label=<span class="string">&#x27;Overdue&#x27;</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="扩展和细节："><a href="#扩展和细节：" class="headerlink" title="扩展和细节："></a>扩展和细节：</h4><ul>
+<li><p><strong>字体大小和样式</strong>：可以通过 <code>fontsize</code> 和 <code>fontweight</code> 参数来调整标签和标题的字体大小和粗细。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.title(<span class="string">&quot;Title&quot;</span>, loc=<span class="string">&#x27;left&#x27;</span>, fontsize=<span class="number">14</span>, fontweight=<span class="string">&#x27;bold&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>图例位置和样式</strong>：<code>legend()</code> 方法接受 <code>loc</code> 参数来指定图例的位置，例如 <code>&#39;upper right&#39;</code>、<code>&#39;lower left&#39;</code> 等。还可以设置边框和背景。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.legend(loc=<span class="string">&#x27;upper right&#x27;</span>, frameon=<span class="literal">False</span>)  <span class="comment"># frameon=False 去除图例边框</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>设置网格</strong>：<code>grid()</code> 函数可用于添加网格线，提高图表的可读性。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.grid(color=<span class="string">&#x27;gray&#x27;</span>, linestyle=<span class="string">&#x27;--&#x27;</span>, linewidth=<span class="number">0.5</span>)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>坐标轴刻度格式</strong>：可以使用 <code>xticks()</code> 和 <code>yticks()</code> 方法来定制轴刻度的显示方式。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.xticks(rotation=<span class="number">45</span>)  <span class="comment"># X轴刻度标签旋转45度</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>坐标轴范围</strong>：使用 <code>xlim()</code> 和 <code>ylim()</code> 设置轴的范围，更精确地控制图表中显示的数据范围。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.xlim(<span class="number">0</span>, <span class="number">10</span>)</span><br><span class="line">plt.ylim(<span class="number">0</span>, <span class="number">20</span>)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>保存图表</strong>：使用 <code>savefig()</code> 方法，可以将图表保存到文件中，如 PNG、PDF、SVG等格式。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.savefig(<span class="string">&#x27;my_chart.png&#x27;</span>, dpi=<span class="number">300</span>, bbox_inches=<span class="string">&#x27;tight&#x27;</span>)</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h2 id="多图布局"><a href="#多图布局" class="headerlink" title="多图布局"></a>多图布局</h2><h3 id="创建多图"><a href="#创建多图" class="headerlink" title="创建多图"></a>创建多图</h3><p>在Python的matplotlib库中，<code>subplot()</code>和<code>subplots()</code>方法是绘制多图布局中非常重要的工具。这些方法允许我们在一个画布(canvas)上创建多个子图(subplots)。下面，我将对你提供的笔记进行整理和修正，确保其内容既准确又专业。</p>
+<h4 id="subplot"><a href="#subplot" class="headerlink" title="subplot()"></a>subplot()</h4><p><code>subplot()</code>方法用于在画布上创建单个子图。其使用方式如下：</p>
+<ul>
+<li><code>subplot(nrows, ncols, index, **kwargs)</code>: 将画布分为<code>nrows</code>行和<code>ncols</code>列，<code>index</code>确定子图的位置。</li>
+<li><code>subplot(pos, **kwargs)</code>: <code>pos</code>参数可以是三位数字，分别表示行数、列数和索引位置。</li>
+<li><code>subplot(**kwargs)</code>: 直接通过关键字参数来指定布局和位置。</li>
+<li><code>subplot(ax)</code>: 允许在已存在的轴对象<code>ax</code>上创建子图。</li>
+</ul>
+<p>在使用<code>subplot()</code>时，整个绘图区域被分成<code>nrows</code>行和<code>ncols</code>列，然后从左到右、从上到下对每个子区域进行编号（1到N）。左上的子区域编号为1，右下的区域编号为N。可以通过<code>index</code>参数指定子图的具体位置。</p>
+<h3 id="创建多图示例"><a href="#创建多图示例" class="headerlink" title="创建多图示例"></a>创建多图示例</h3><h4 id="示例1-1x2布局"><a href="#示例1-1x2布局" class="headerlink" title="示例1: 1x2布局"></a>示例1: 1x2布局</h4><div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置画布大小和分辨率</span></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">8</span>), dpi=<span class="number">120</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一个子图：借款笔数占比</span></span><br><span class="line">plt.subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line">x = df[<span class="string">&#x27;年龄&#x27;</span>]</span><br><span class="line">y = df[<span class="string">&#x27;借款笔数占比&#x27;</span>]</span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.title(<span class="string">&quot;借款笔数占比&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二个子图：已还清占比</span></span><br><span class="line">plt.subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">x = df[<span class="string">&#x27;年龄&#x27;</span>]</span><br><span class="line">y = df[<span class="string">&#x27;已还清占比&#x27;</span>]</span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.title(<span class="string">&quot;已还清占比&quot;</span>)</span><br><span class="line"></span><br><span class="line">plt.suptitle(<span class="string">&quot;借款情况分析&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="示例2-2x2布局"><a href="#示例2-2x2布局" class="headerlink" title="示例2: 2x2布局"></a>示例2: 2x2布局</h4><p>在2x2的布局中，我们可以创建4个子图：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置画布大小和分辨率</span></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">8</span>), dpi=<span class="number">120</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一个子图：年龄段已还清人数</span></span><br><span class="line">plt.subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line">x = df[<span class="string">&#x27;年龄&#x27;</span>]</span><br><span class="line">y = df[<span class="string">&#x27;已还清&#x27;</span>]</span><br><span class="line">plt.plot(x, y, marker=<span class="string">&#x27;v&#x27;</span>, color=<span class="string">&#x27;green&#x27;</span>, ls=<span class="string">&#x27;-.&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&quot;年龄段已还清人数&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二个子图：年龄段历史借款次数</span></span><br><span class="line">plt.subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">x = df[<span class="string">&#x27;年龄&#x27;</span>]</span><br><span class="line">y = df[<span class="string">&#x27;历史成功借款次数&#x27;</span>]</span><br><span class="line">plt.plot(x, y, marker=<span class="string">&#x27;v&#x27;</span>, color=<span class="string">&#x27;purple&#x27;</span>, ls=<span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&quot;年龄段历史借款次数&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第三个子图：年龄段正常还款</span></span><br><span class="line">plt.subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">x = df[<span class="string">&#x27;年龄&#x27;</span>]</span><br><span class="line">y = df[<span class="string">&#x27;正常还款中&#x27;</span>]</span><br><span class="line">plt.plot(x, y, marker=<span class="string">&#x27;x&#x27;</span>, color=<span class="string">&#x27;brown&#x27;</span>, ls=<span class="string">&#x27;:&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&quot;年龄段正常还款&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第四个子图：年龄段借款金额</span></span><br><span class="line">plt.subplot(<span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line">x = df[<span class="string">&#x27;年龄&#x27;</span>]</span><br><span class="line">y = df[<span class="string">&#x27;借款金额&#x27;</span>]</span><br><span class="line">plt.plot(x, y, marker=<span class="string">&#x27;X&#x27;</span>, color=<span class="string">&#x27;orange&#x27;</span>, ls=<span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&quot;年龄段借款金额&quot;</span>)</span><br><span class="line"></span><br><span class="line">plt.suptitle(<span class="string">&quot;年龄段借款情况&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<p>在上述示例中，<code>plt.figure()</code>用于设置整个画布的大小和分辨率，而<code>plt.subplot()</code>用于创建并定位子图。我们可以通过调整<code>marker</code>、<code>color</code>和<code>ls</code>（线型）参数来美化图表。</p>
+<p>接下来，我们将讨论如何在Matplotlib中共享x轴以及调整多图之间的间距，这对于创建清晰、易于理解的视觉表示特别重要。</p>
+<h3 id="共享X轴"><a href="#共享X轴" class="headerlink" title="共享X轴"></a>共享X轴</h3><p>在某些情况下，我们可能需要在同一图表中显示两组数据，这些数据共享x轴但有不同的y轴。这可以通过使用<code>ax.twinx()</code>方法来实现，它允许我们为同一个x轴创建一个新的y轴。</p>
+<h4 id="单图示例"><a href="#单图示例" class="headerlink" title="单图示例"></a>单图示例</h4><p>在单个图表中展示两组数据，共享x轴：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建第一个轴对象</span></span><br><span class="line">ax1 = plt.subplot()</span><br><span class="line">ax2 = ax1.twinx()  <span class="comment"># 创建共享x轴的第二个轴对象</span></span><br><span class="line"></span><br><span class="line">x = df[<span class="string">&#x27;年龄&#x27;</span>]</span><br><span class="line">y1 = df[<span class="string">&#x27;已还清&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在第一个轴上绘制数据</span></span><br><span class="line">ax1.plot(x, y1, marker=<span class="string">&#x27;v&#x27;</span>, color=<span class="string">&#x27;green&#x27;</span>, ls=<span class="string">&#x27;-.&#x27;</span>)</span><br><span class="line">ax1.set_ylabel(<span class="string">&#x27;已还清&#x27;</span>, color=<span class="string">&#x27;green&#x27;</span>)</span><br><span class="line"></span><br><span class="line">y2 = df[<span class="string">&#x27;历史成功借款次数&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在第二个轴上绘制数据</span></span><br><span class="line">ax2.plot(x, y2, marker=<span class="string">&#x27;v&#x27;</span>, color=<span class="string">&#x27;purple&#x27;</span>, ls=<span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">ax2.set_ylabel(<span class="string">&#x27;历史成功借款次数&#x27;</span>, color=<span class="string">&#x27;purple&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置共享x轴的标签</span></span><br><span class="line">ax1.set_xlabel(<span class="string">&#x27;年龄&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="多图示例"><a href="#多图示例" class="headerlink" title="多图示例"></a>多图示例</h4><p>在一个画布上绘制两个图表，每个图表中都展示两组数据，共享x轴：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一个图表</span></span><br><span class="line">ax1 = plt.subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line">ax2 = ax1.twinx()</span><br><span class="line"></span><br><span class="line">x = df[<span class="string">&#x27;年龄&#x27;</span>]</span><br><span class="line">y1 = df[<span class="string">&#x27;已还清&#x27;</span>]</span><br><span class="line"></span><br><span class="line">ax1.plot(x, y1, marker=<span class="string">&#x27;v&#x27;</span>, color=<span class="string">&#x27;green&#x27;</span>, ls=<span class="string">&#x27;-.&#x27;</span>)</span><br><span class="line">ax1.set_ylabel(<span class="string">&#x27;已还清&#x27;</span>, color=<span class="string">&#x27;green&#x27;</span>)</span><br><span class="line"></span><br><span class="line">y2 = df[<span class="string">&#x27;历史成功借款次数&#x27;</span>]</span><br><span class="line"></span><br><span class="line">ax2.plot(x, y2, marker=<span class="string">&#x27;v&#x27;</span>, color=<span class="string">&#x27;purple&#x27;</span>, ls=<span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">ax2.set_ylabel(<span class="string">&#x27;历史成功借款次数&#x27;</span>, color=<span class="string">&#x27;purple&#x27;</span>)</span><br><span class="line"></span><br><span class="line">ax1.set_xlabel(<span class="string">&#x27;年龄&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二个图表</span></span><br><span class="line">ax1 = plt.subplot(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">ax2 = ax1.twinx()</span><br><span class="line"></span><br><span class="line">y1 = df[<span class="string">&#x27;借款金额&#x27;</span>]</span><br><span class="line"></span><br><span class="line">ax1.plot(x, y1, marker=<span class="string">&#x27;v&#x27;</span>, color=<span class="string">&#x27;green&#x27;</span>, ls=<span class="string">&#x27;-.&#x27;</span>)</span><br><span class="line">ax1.set_ylabel(<span class="string">&#x27;借款金额&#x27;</span>, color=<span class="string">&#x27;green&#x27;</span>)</span><br><span class="line"></span><br><span class="line">y2 = df[<span class="string">&#x27;逾期中&#x27;</span>]</span><br><span class="line"></span><br><span class="line">ax2.plot(x, y2, marker=<span class="string">&#x27;v&#x27;</span>, color=<span class="string">&#x27;purple&#x27;</span>, ls=<span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">ax2.set_ylabel(<span class="string">&#x27;逾期中&#x27;</span>, color=<span class="string">&#x27;purple&#x27;</span>)</span><br><span class="line"></span><br><span class="line">ax1.set_xlabel(<span class="string">&#x27;年龄&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<p>注意：在第二个图表中，y轴的标签需要根据实际数据进行相应的修改。</p>
+<h3 id="调整多图之间的间距"><a href="#调整多图之间的间距" class="headerlink" title="调整多图之间的间距"></a>调整多图之间的间距</h3><p>当在一个画布上绘制多个子图时，可能需要调整它们之间的间距以避免标签和图表元素的相互重叠。这可以通过<code>plt.subplots_adjust()</code>方法实现：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 调整子图之间的水平间距</span></span><br><span class="line">plt.subplots_adjust(wspace=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调整子图之间的垂直间距</span></span><br><span class="line">plt.subplots_adjust(hspace=<span class="number">0.5</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p><code>wspace</code>和<code>hspace</code>参数控制子图之间的宽度和高度的间距，值为比例（相对于子图宽度和高度的比例）。</p>
+<p>柱状图是数据可视化中常用的图表类型，适用于展示不同类别间的比较。在Matplotlib中，使用<code>plt.bar()</code>和<code>plt.barh()</code>可以分别绘制垂直和水平的柱状图。以下是如何在Matplotlib中创建和自定义柱状图的详细说明。</p>
+<h3 id="基础柱状图"><a href="#基础柱状图" class="headerlink" title="基础柱状图"></a>基础柱状图</h3><p>创建一个基础柱状图，用于展示不同年龄段的已还清金额：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">10</span>), dpi=<span class="number">120</span>)</span><br><span class="line">x = df[<span class="string">&#x27;年龄&#x27;</span>]</span><br><span class="line">y = df[<span class="string">&#x27;已还清&#x27;</span>]</span><br><span class="line">plt.bar(x, y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h4><p>可以通过传递不同的参数来自定义柱状图的外观。</p>
+<ul>
+<li><p><strong>修改颜色</strong>：通过<code>color</code>参数设置柱子的颜色。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.bar(x, y, color=<span class="string">&#x27;green&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>修改柱宽</strong>：使用<code>width</code>参数调整柱的宽度。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.bar(x, y, width=<span class="number">0.5</span>)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>水平柱状图</strong>：<code>plt.barh()</code>用于绘制水平柱状图。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.barh(x, y)</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h3 id="堆叠柱状图"><a href="#堆叠柱状图" class="headerlink" title="堆叠柱状图"></a>堆叠柱状图</h3><p>堆叠柱状图适用于展示不同组数据在相同类别中的分布情况。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = df[<span class="string">&#x27;年龄&#x27;</span>]</span><br><span class="line">y1 = df[<span class="string">&#x27;已还清&#x27;</span>]</span><br><span class="line">y2 = df[<span class="string">&#x27;正常还款中&#x27;</span>]</span><br><span class="line"></span><br><span class="line">plt.bar(x, y1)</span><br><span class="line">plt.bar(x, y2, bottom=y1)</span><br><span class="line">plt.legend([<span class="string">&#x27;已还清&#x27;</span>, <span class="string">&#x27;正常还款中&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="显示数值"><a href="#显示数值" class="headerlink" title="显示数值"></a>显示数值</h4><p>在柱状图的柱子上显示数值，可以更直观地展示数据的具体数值。</p>
+<ul>
+<li><p><strong>单独柱子显示数值</strong>：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.bar_label(plt.bar(x, y1), labels=x, label_type=<span class="string">&#x27;edge&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>堆叠柱状图显示数值</strong>：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bar1 = plt.bar(x, y1)</span><br><span class="line">plt.bar_label(bar1, labels=y1, label_type=<span class="string">&#x27;edge&#x27;</span>)</span><br><span class="line">bar2 = plt.bar(x, y2, bottom=y1)</span><br><span class="line">plt.bar_label(bar2, labels=y2, label_type=<span class="string">&#x27;edge&#x27;</span>)</span><br><span class="line">plt.legend([<span class="string">&#x27;已还清&#x27;</span>, <span class="string">&#x27;正常还款中&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<p>这里，<code>label_type=&#39;center&#39;</code>将标签放在柱子的中心位置，而<code>label_type=&#39;edge&#39;</code>则将标签放在柱子的边缘位置。这些自定义选项使得柱状图不仅能够提供数据的视觉比较，还能提供精确的数值信息，使得数据的解读更加直观明了。</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> Matplotlib</li>
+        <li><strong>作者:</strong> Yiuhang Chan</li>
+        <li><strong>创建于
+                :</strong> 2018-12-06 16:39:37</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-03-19 19:05:01
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://www.yiuhangblog.com/2018/12/06/20181206Matplotlib/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%90%86%E8%AE%BA/">#理论</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">#数据分析</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Matplotlib/">#Matplotlib</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">#可视化</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2019/03/15/20190315%E8%AE%A4%E8%AF%86mysql/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">MySQL</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2018/11/28/20181128JavaScript/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">JavaScript</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://comment.yiuhangblog.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">Matplotlib</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Matplotlib"><span class="nav-text">Matplotlib</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Matplotlib"><span class="nav-text">安装 Matplotlib</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5-Matplotlib"><span class="nav-text">导入 Matplotlib</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matplotlib-Pyplot-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-text">Matplotlib Pyplot 常用函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B"><span class="nav-text">简单示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD"><span class="nav-text">高级功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E5%88%B6%E4%BD%9C%E7%A4%BA%E4%BE%8B"><span class="nav-text">完整制作示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A41%EF%BC%9A%E5%AF%BC%E5%85%A5%E5%BF%85%E8%A6%81%E7%9A%84%E5%BA%93"><span class="nav-text">步骤1：导入必要的库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A42%EF%BC%9A%E8%AE%BE%E7%BD%AExy%E8%BD%B4%E6%95%B0%E6%8D%AE"><span class="nav-text">步骤2：设置xy轴数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%951%EF%BC%9A%E4%BD%BF%E7%94%A8-Numpy-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE"><span class="nav-text">方法1：使用 Numpy 创建数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%952%EF%BC%9A%E4%BB%8E%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5"><span class="nav-text">方法2：从数据文件导入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A43%EF%BC%9A%E7%BB%98%E5%88%B6%E5%9B%BE%E5%BD%A2"><span class="nav-text">步骤3：绘制图形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E5%92%8C%E7%BB%86%E8%8A%82"><span class="nav-text">扩展和细节</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E8%A1%A8%E5%B1%9E%E6%80%A7"><span class="nav-text">图表属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%BB%E5%B8%83"><span class="nav-text">画布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Marker"><span class="nav-text">Marker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E5%B1%9E%E6%80%A7"><span class="nav-text">扩展属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%9D%A1%E6%A0%B7%E5%BC%8F"><span class="nav-text">线条样式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#linestyle-%E7%9A%84%E5%8F%AF%E7%94%A8%E6%A0%B7%E5%BC%8F"><span class="nav-text">linestyle 的可用样式:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="nav-text">示例代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%9D%A1%E5%AE%BD%E5%BA%A6"><span class="nav-text">线条宽度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81%EF%BC%9A-1"><span class="nav-text">示例代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%9C%E8%89%B2"><span class="nav-text">颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81%EF%BC%9A-2"><span class="nav-text">示例代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E5%B1%9E%E6%80%A7-1"><span class="nav-text">扩展属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%9C%E8%89%B2%EF%BC%88Color%EF%BC%89"><span class="nav-text">颜色（Color）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81%EF%BC%9A-3"><span class="nav-text">示例代码：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E6%9D%A1%EF%BC%88Multiple-Lines%EF%BC%89"><span class="nav-text">多线条（Multiple Lines）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81%EF%BC%9A-4"><span class="nav-text">示例代码：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E5%92%8C%E6%A0%87%E9%A2%98%EF%BC%88Labels-and-Title%EF%BC%89"><span class="nav-text">标签和标题（Labels and Title）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E4%B8%8E%E6%A0%87%E7%AD%BE%E7%9A%84%E5%AE%9A%E4%BD%8D%EF%BC%9A"><span class="nav-text">标题与标签的定位：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E8%AE%BE%E7%BD%AE%EF%BC%88Setting-Line-Labels%EF%BC%89"><span class="nav-text">标签设置（Setting Line Labels）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E5%92%8C%E7%BB%86%E8%8A%82%EF%BC%9A"><span class="nav-text">扩展和细节：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%9B%BE%E5%B8%83%E5%B1%80"><span class="nav-text">多图布局</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%A4%9A%E5%9B%BE"><span class="nav-text">创建多图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#subplot"><span class="nav-text">subplot()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%A4%9A%E5%9B%BE%E7%A4%BA%E4%BE%8B"><span class="nav-text">创建多图示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B1-1x2%E5%B8%83%E5%B1%80"><span class="nav-text">示例1: 1x2布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B2-2x2%E5%B8%83%E5%B1%80"><span class="nav-text">示例2: 2x2布局</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E4%BA%ABX%E8%BD%B4"><span class="nav-text">共享X轴</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E5%9B%BE%E7%A4%BA%E4%BE%8B"><span class="nav-text">单图示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E5%9B%BE%E7%A4%BA%E4%BE%8B"><span class="nav-text">多图示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E5%A4%9A%E5%9B%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E9%97%B4%E8%B7%9D"><span class="nav-text">调整多图之间的间距</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%9F%B1%E7%8A%B6%E5%9B%BE"><span class="nav-text">基础柱状图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7"><span class="nav-text">自定义属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%E5%8F%A0%E6%9F%B1%E7%8A%B6%E5%9B%BE"><span class="nav-text">堆叠柱状图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%95%B0%E5%80%BC"><span class="nav-text">显示数值</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2018</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 5s"></i>&nbsp;&nbsp;<a href="/">Yiuhang Chan</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 41 篇文章
+                    </span>
+                    
+                        <span>
+                            共 348k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex justify-center items-center">
+                <a class="flex justify-center items-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/libs/mermaid.min.js"></script>
+
+    
+<script src="/js/plugins/mermaid.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>
