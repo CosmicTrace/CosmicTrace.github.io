@@ -55,7 +55,7 @@
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/33f1f2de-75e4-4140-3f48-628a0cd44800/public">
 <meta property="og:image" content="https://imagedelivery.net/sodhLvOXTBoeXxRe03g_RA/be820dc8-4cc1-4691-1a32-66549a58b400/public">
 <meta property="article:published_time" content="2024-04-19T03:17:08.000Z">
-<meta property="article:modified_time" content="2024-04-25T07:50:07.219Z">
+<meta property="article:modified_time" content="2024-04-25T07:57:48.126Z">
 <meta property="article:author" content="Yiuhang Chan">
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="理论">
@@ -728,8 +728,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-04-25 15:50:07</span>
-            <span class="mobile">2024-04-25 15:50:07</span>
+            <span class="desktop">2024-04-25 15:57:48</span>
+            <span class="mobile">2024-04-25 15:57:48</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -1667,7 +1667,7 @@
 <h4 id="测试用例语法"><a href="#测试用例语法" class="headerlink" title="测试用例语法"></a>测试用例语法</h4><h5 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h5><p>测试用例是在测试用例部分中从可用关键字构建的。关键字可以从测试库或资源文件导入，或者在测试用例文件本身的关键字部分中创建。</p>
 <p>测试用例部分的第一列包含测试用例名称。测试用例从此列中有内容的行开始，并继续到下一个测试用例名称或部分的结束。在部分标题和第一个测试之间有内容是错误的。</p>
 <p>第二列通常有关键字名称。此规则的一个例外是从关键字返回值设置变量，当第二列和可能的后续列包含变量名称，并且关键字名称位于它们之后。在任一情况下，关键字名称后的列包含指定关键字的可能参数。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">*** Test Cases ***</span><br><span class="line">Valid Login</span><br><span class="line">    Open Login Page</span><br><span class="line">    Input Username    demo</span><br><span class="line">    Input Password    mode</span><br><span class="line">    Submit Credentials</span><br><span class="line">    Welcome Page Should Be Open</span><br><span class="line"></span><br><span class="line">Setting Variables</span><br><span class="line">    Do Something    first argument    second argument</span><br><span class="line">    $&#123;value&#125; =    Get Some Value</span><br><span class="line">    Should Be Equal    $&#123;value&#125;    Expected value</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">*** Test Cases ***</span><br><span class="line">Valid Login</span><br><span class="line">    Open Login Page</span><br><span class="line">    Input Username    demo</span><br><span class="line">    Input Password    mode</span><br><span class="line">    Submit Credentials</span><br><span class="line">    Welcome Page Should Be Open</span><br><span class="line"></span><br><span class="line">Setting Variables</span><br><span class="line">    Do Something    first argument    second argument</span><br><span class="line">    $&#123;value&#125; =    Get Some Value</span><br><span class="line">    Should Be Equal    $&#123;value&#125;    Expected value</span><br><span class="line">Note</span><br></pre></td></tr></table></figure></div>
 
 
   <div class="note-large orange">
@@ -1730,7 +1730,7 @@
 <p>关键字可以接受零个或多个参数，某些参数可能具有默认值。关键字接受哪些参数取决于其实现，通常最好的信息来源是关键字的文档。在本节的例子中，文档预期是使用Libdoc工具生成的，但相同的信息也可在使用通用文档工具如pydoc生成的文档中找到。</p>
 <h5 id="位置参数"><a href="#位置参数" class="headerlink" title="位置参数"></a>位置参数</h5><p>大多数关键字都有一定数量的参数，必须始终给出。在关键字文档中，这通过指定用逗号分隔的参数名表示，如 <code>first, second, third</code>。在这种情况下，参数名实际上并不重要，除了它们应该解释参数的作用，但重要的是必须有与文档中指定的完全相同数量的参数。使用的参数太少或太多都会导致错误。</p>
 <p>下面的测试使用了来自<a class="link"   target="_blank" rel="noopener" href="https://robotframework.org/robotframework/latest/libraries/OperatingSystem.html" >OperatingSystem <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>库的关键字 <code>Create Directory</code> 和 <code>Copy File</code>。它们的参数分别指定为 <code>path</code> 和 <code>source, destination</code>，这意味着它们分别接受一个和两个参数。最后一个关键字，来自BuiltIn的 No Operation，不接受任何参数。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">*** Settings ***</span><br><span class="line">Library         OperatingSystem</span><br><span class="line">*** Test Cases ***</span><br><span class="line">Example</span><br><span class="line">    Create Directory    \$&#123;TEMPDIR&#125;/stuff</span><br><span class="line">    Copy File    \$&#123;CURDIR&#125;/file.txt    \$&#123;TEMPDIR&#125;/stuff</span><br><span class="line">    No Operation</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*** Test Cases ***</span><br><span class="line">Example</span><br><span class="line">    Create Directory    $&#123;TEMPDIR&#125;/stuff</span><br><span class="line">    Copy File    $&#123;CURDIR&#125;/file.txt    $&#123;TEMPDIR&#125;/stuff</span><br><span class="line">    No Operation</span><br></pre></td></tr></table></figure></div>
 
 <h5 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h5><p>参数通常具有默认值，可以给出或不给出。在文档中，默认值通常与参数名称用等号分隔，如 <code>name=default value</code>。所有参数都有默认值是可能的，但在具有默认值的参数之后不能有任何位置参数。</p>
 <p>使用默认值的示例如下所示，其中使用了 <code>Create File</code> 关键字，其参数为 <code>path</code>、<code>content=</code> 和 <code>encoding=UTF-8</code>。尝试在没有任何参数或多于三个参数的情况下使用它将无法正常工作。</p>
@@ -7617,7 +7617,7 @@ robot:recursive-continue-on-failure
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-04-25 15:50:07
+                    :</strong> 2024-04-25 15:57:48
             </li>
         
         <li>
